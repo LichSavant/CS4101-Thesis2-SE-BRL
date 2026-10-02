@@ -41,6 +41,10 @@ The following SE-BRL foundation components have been implemented:
 
 The SE-BRL foundation is intentionally isolated from the current rule-based analyzer.
 
+### Pre-training analytical infrastructure
+
+The internal [SE-BRL pre-training pipeline](docs/se-brl-pretraining.md) prepares evidence-preserving email/webpage content, conventional features, candidate indicator rules, and E1/E2/E3 feature boundaries. It does not train models or return phishing predictions; learned behavioral values remain unavailable. The SE-BRL model is not complete.
+
 ## SE-BRL status endpoint
 
 ```http
@@ -67,12 +71,12 @@ The following components require the manuscript-defined dataset and experimental
 - Duplicate, leakage, and source-confounding checks
 - Grouped development, calibration, and sealed-test partitions
 - Frozen behavioral evidence-detection rules
-- Email and webpage feature-extraction pipelines
+- Dataset-fitted email and webpage feature pipelines and learned behavioral representations
 - Model training and comparison
 - Five-fold grouped cross-validation
 - Probability calibration
 - Low, Medium, and High risk thresholds
-- Explainable evidence generation
+- Validated model explanations and SHAP attribution
 - Completed SE-BRL analytical outputs
 - Extension and dashboard SE-BRL integration
 - Final sealed-test evaluation and performance reporting
@@ -144,8 +148,7 @@ Automatic tracking is explicitly opt-in.
 ```powershell
 npm run typecheck
 npm test
-.venv\Scripts\python -m pytest ml/tests
-.venv\Scripts\python -m pytest backend/tests
+.venv\Scripts\python -m pytest backend/tests ml/tests
 npm run build
 ```
 
@@ -173,3 +176,4 @@ Additional documentation:
 - [Privacy and permissions](docs/privacy-and-permissions.md)
 - [Gmail integration](docs/gmail-integration.md)
 - [SE-BRL foundation](ml/README.md)
+- [SE-BRL pre-training pipeline](docs/se-brl-pretraining.md)
