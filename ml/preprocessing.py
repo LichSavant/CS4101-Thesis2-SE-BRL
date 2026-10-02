@@ -18,7 +18,10 @@ MAX_FIELD_CHARS = 200_000
 MAX_URLS = 500
 MAX_DOM_DEPTH = 128
 MAX_DOM_NODES = 20_000
-PREPROCESSING_VERSION = "0.1.0"
+PREPROCESSING_VERSION = "0.2.0"
+REPLY_HEADER = re.compile(
+    r"\s*(?:On .+ wrote:|-+\s*(?:Original|Forwarded) Message\s*-+|Begin forwarded message:)", re.I
+)
 SAFE_HEADERS = frozenset({"date", "message-id", "in-reply-to", "references", "content-type"})
 URL_PATTERN = re.compile(r"https?://[^\s<>\"']+", re.I)
 MODALITIES = {
@@ -124,9 +127,7 @@ def _email_segments(field: str, text: str) -> list[TextEvidence]:
     offset = 0
     reply_tail = False
     for line in text.splitlines(keepends=True):
-        if field == "body" and re.match(
-            r"\s*(?:On .+ wrote:|-+\s*(?:Original|Forwarded) [Mm]essage\s*-+)", line
-        ):
+        if field == "body" and REPLY_HEADER.match(line):
             reply_tail = True
         quoted = field == "body" and (reply_tail or line.lstrip().startswith(">"))
         segments.append(TextEvidence(field, offset, offset + len(line), line, field, quoted))

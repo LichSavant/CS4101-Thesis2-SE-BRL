@@ -17,7 +17,10 @@ from ml.preprocessing import (
 )
 from ml.se_brl import ResultEnvelope, failed_result, not_evaluated_result, review_required_result
 from ml.se_brl.extraction import RuleEngine
+from ml.se_brl.detectors import DetectorContext
 from ml.se_brl.representation import BrlRepresentation
+from ml.datasets import DatasetRecord
+from ml.readiness import ReadinessReport, pipeline_readiness
 
 
 class ComponentExecutionError(RuntimeError):
@@ -41,14 +44,32 @@ class PipelineResult:
         raise ValueError("Feature configuration was not prepared")
 
 
+@dataclass(frozen=True, slots=True)
+class DatasetPipelineResult:
+    record: DatasetRecord
+    analysis: PipelineResult
+
+
 class PretrainingPipeline:
     def __init__(self, conventional: ConventionalExtractor | None = None,
                  rules: RuleEngine | None = None) -> None:
         self.conventional = conventional if conventional is not None else ConventionalFeatureBuilder()
         self.rules = rules if rules is not None else RuleEngine()
         self.model = UnavailableModel()
+        self.feature_builders = tuple(ExperimentFeatureBuilder(config) for config in FeatureConfiguration)
 
-    def run(self, raw: Mapping[str, object]) -> PipelineResult:
+    def readiness(self, result: PipelineResult | None = None) -> ReadinessReport:
+        return pipeline_readiness(result)
+
+    def run_record(self, record: DatasetRecord, *, detector_context: DetectorContext | None = None) -> DatasetPipelineResult:
+        if not isinstance(record, DatasetRecord):
+            raise TypeError("Expected a canonical dataset record")
+        result = self.run(record.artifact_input, detector_context=detector_context)
+        if result.artifact is not None:
+            record.validate_prepared(result.artifact)
+        return DatasetPipelineResult(record, result)
+
+    def run(self, raw: Mapping[str, object], *, detector_context: DetectorContext | None = None) -> PipelineResult:
         try:
             modality = detect_modality(raw)
         except ArtifactValidationError:
@@ -61,10 +82,9 @@ class PretrainingPipeline:
             return PipelineResult(review_required_result(modality, ("parser_failure",)))
         try:
             conventional = self.conventional.transform(artifact)
-            extraction = self.rules.extract(artifact)
+            extraction = self.rules.extract(artifact, detector_context)
             brl = BrlRepresentation(extraction)
-            bundles = tuple(ExperimentFeatureBuilder(config).build(conventional, brl)
-                            for config in FeatureConfiguration)
+            bundles = tuple(builder.build(conventional, brl) for builder in self.feature_builders)
         except ComponentExecutionError:
             # The existing envelope has no preprocessing/feature component IDs.
             # The pre-model analytical branch belongs to behavior_identification.
