@@ -6,7 +6,7 @@ Identity/brand/authority adjudication is deliberately deferred.
 
 from dataclasses import dataclass
 
-RULESET_VERSION = "0.1.0"
+RULESET_VERSION = "0.2.0"
 
 
 @dataclass(frozen=True, slots=True)

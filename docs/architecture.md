@@ -57,6 +57,13 @@ candidate indicator rules, evidence locators, BRL placeholders, E1/E2/E3 feature
 boundaries, and future classifier/trainer interfaces. It reuses the codebook,
 assessment resolver, and fail-closed envelope without changing the existing API.
 
+Canonical dataset adapter records now preserve provenance outside the API envelope
+and keep phishing source labels separate from behavioral annotations. Supplied
+group metadata can be checked against existing split manifests. Evidence-aware
+trust detectors require independent references; versioned feature configuration
+manifests, sparse-compatible feature storage, and an internal readiness report
+prepare the dataset phase without training or generating learned outputs.
+
 Dataset audits, validated behavioral models, calibration, thresholds, completed
 outputs, extension integration, and dashboard integration remain deferred.
 Rule evidence is neither learned behavioral probability nor final phishing

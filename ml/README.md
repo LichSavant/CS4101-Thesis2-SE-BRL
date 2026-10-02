@@ -10,6 +10,8 @@ SE-BRL is an instrument and pre-training pipeline, not a trained model. No behav
 
 See [pre-training architecture and research boundaries](../docs/se-brl-pretraining.md) for preprocessing, conventional features, candidate rules, evidence records, BRL placeholders, E1/E2/E3 boundaries, model interfaces, and usage. Dataset provenance and availability audits, annotation and reviewer validation, learned E2/E3 values, model training, calibration, controlled evaluation, and sealed-test work remain deferred.
 
+The pre-training infrastructure now also includes independent-evidence trust detector interfaces, stronger context guards, typed dataset/provenance records with distinct phishing and behavioral labels, supplied-group split validation, feature configuration fingerprints, a sparse-compatible storage boundary, and a programmatic readiness report. No datasets are acquired or models trained by these components.
+
 ## Modality assessment foundation
 
 `se_brl/assessment.py` resolves caller-supplied Boolean observations into the canonical `supported`, `absent`, and `unavailable` evidence states. It reads modality mappings, support-code semantics, dimension ordering, evidence-state IDs, and versions from the canonical JSON. `A` requires content, `A*` requires both content and the conditional identity/brand or visual/structural evidence opportunity, and `U` always remains unavailable regardless of caller flags.

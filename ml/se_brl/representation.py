@@ -36,6 +36,9 @@ class BrlRepresentation:
             if not valid:
                 raise ValueError("Indicator state contradicts availability or detector status")
             for evidence in indicator.evidence:
+                if any(span.quoted or span.start < 0 or span.end - span.start != len(span.text)
+                       for span in evidence.supporting_spans):
+                    raise ValueError("Invalid supporting evidence span")
                 if (evidence.indicator_id != indicator.indicator_id
                         or evidence.modality_id != self.extraction.assessment.modality_id
                         or evidence.ruleset_version != self.extraction.ruleset_version

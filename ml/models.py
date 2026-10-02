@@ -69,7 +69,7 @@ def prepare_training_input(features: Mapping[str, FeatureBundle], labels: Mappin
     for record_id in manifest.train_ids:
         bundle = features[record_id]
         numeric = bundle.block.require_numeric()
-        if tuple(numeric) != names or bundle.configuration != first.configuration:
+        if tuple(numeric) != names or bundle.configuration != first.configuration or bundle.schema != first.schema:
             raise ValueError("Training rows require identical feature schemas and configurations")
         if type(labels[record_id]) is not str or not labels[record_id].strip():
             raise ValueError("Training labels must be explicitly supplied")
