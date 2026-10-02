@@ -38,8 +38,10 @@ In Chrome, open `chrome://extensions`, enable Developer mode, choose **Load unpa
 ```powershell
 npm run typecheck
 npm test
-.venv\Scripts\python -m pytest backend/tests
+.venv\Scripts\python -m pytest backend/tests ml/tests
 npm run build
 ```
 
 The local SQLite database is `database/phishing_defense.db` and is ignored by Git. The equivalent Supabase schema is [database/migrations/001_email_open_vertical_slice.sql](database/migrations/001_email_open_vertical_slice.sql). See [docs/architecture.md](docs/architecture.md), [privacy-and-permissions.md](docs/privacy-and-permissions.md), and [gmail-integration.md](docs/gmail-integration.md).
+
+The internal [SE-BRL pre-training pipeline](docs/se-brl-pretraining.md) prepares evidence, candidate rules, and conventional/E1/E2/E3 feature boundaries. It does not train models or return phishing predictions; learned behavioral values remain unavailable.

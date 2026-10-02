@@ -51,7 +51,13 @@ domain-to-Pydantic adapter. It constructs only `not_evaluated`,
 `review_required`, and `failed` responses with canonical identifiers and fixed,
 non-sensitive limitations. No completed analytical path exists.
 
-Dataset audits, evidence rules, trained models, calibration, thresholds,
-completed outputs, extension integration, and dashboard integration remain
-deferred to later phases. Step 1 refers only to the software foundation; it does
-not mean the complete research system is finished.
+The internal [pre-training analytical pipeline](se-brl-pretraining.md) now adds
+artifact preprocessing, conventional fit/transform feature interfaces, versioned
+candidate indicator rules, evidence locators, BRL placeholders, E1/E2/E3 feature
+boundaries, and future classifier/trainer interfaces. It reuses the codebook,
+assessment resolver, and fail-closed envelope without changing the existing API.
+
+Dataset audits, validated behavioral models, calibration, thresholds, completed
+outputs, extension integration, and dashboard integration remain deferred.
+Rule evidence is neither learned behavioral probability nor final phishing
+probability. The SE-BRL model is not complete.
