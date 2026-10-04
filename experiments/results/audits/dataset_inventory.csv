@@ -1,0 +1,9 @@
+dataset,modality,file_name,format,rows,columns,size_mb,sha256
+CEAS-08,email,CEAS_08.csv,csv,39154,7,64.76,22375e7d5f5a8229dbe987914ee9b3705656c590038662a7df6054629b376074
+Enron,email,Enron.csv,csv,29767,3,42.76,11f28a5bdd3603f1829681ab6b55071b5f9af781b4e6694e39216b2996a96883
+Nazario,email,Nazario.csv,csv,1565,7,7.45,b8fbc4158fbdfaff1ed98584c43d72e283c6352d7ade4d457d34c1d79488d184
+SpamAssassin,email,SpamAssasin.csv,csv,5809,7,14.19,3bfe8f8abff89f69a98456be50413c2fcb20a476141116dd84ee1507b980c00e
+PhiUSIIL,webpage,PhiUSIIL_Phishing_URL_Dataset.csv,csv,235795,56,54.22,a236549cd369cd80bd478ff8e1779cbf44c58d5c3f79f7a51a1adbed7d06d1c6
+UCI Phishing Websites,webpage,Training Dataset.arff,arff,11055,31,0.76,3bcf93b1612306537ee2737751f1bac185b2a77886ab376644c3bf0c7f7cb3e6
+ISCX-URL2016,url,All.csv,csv,36707,80,11.12,39bd96b0c4738daf7be9db7fb9561512afa5599ab34484aa5b7e70c1c55034c5
+ISCX-URL2016,url,Phishing.csv,csv,15367,80,4.42,99c732baf469f76fe7fa79e28291b3fb685d06b86e307f26ba09fd2ba7d8ae99
