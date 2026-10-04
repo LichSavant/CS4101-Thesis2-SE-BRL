@@ -23,6 +23,12 @@ from urllib.parse import urlsplit
 from ml.preprocessing import PreparedArtifact, PREPROCESSING_VERSION
 from ml.se_brl.codebook import load_codebook
 from ml.se_brl.representation import BrlRepresentation
+from ml.feature_schema import FeatureSchema
+from ml.feature_storage import CombinedFeatureValues, SparseFeatureValues
+from ml.metadata import canonical_json, fingerprint
+
+CONVENTIONAL_FEATURE_VERSION = "0.1.0"
+WORD_TOKENS = re.compile(r"\b\w+\b")
 
 
 class FeatureUnavailableError(ValueError):
@@ -55,8 +61,12 @@ class SplitManifest:
 class FeatureBlock:
     values: Mapping[str, float | None]
     missing_components: tuple[str, ...] = ()
+    configuration_json: str | None = None
+    preprocessing_version: str | None = None
 
     def __post_init__(self) -> None:
+        if isinstance(self.values, (SparseFeatureValues, CombinedFeatureValues)):
+            return  # These implementations validate and freeze their own storage.
         values = dict(self.values)
         if any(not isinstance(k, str) or not k for k in values):
             raise ValueError("Feature names must be nonempty strings")
@@ -65,8 +75,12 @@ class FeatureBlock:
         object.__setattr__(self, "values", MappingProxyType(values))
 
     def require_numeric(self) -> Mapping[str, float]:
-        if self.missing_components or any(value is None for value in self.values.values()):
+        sparse = isinstance(self.values, (SparseFeatureValues, CombinedFeatureValues))
+        missing = self.values.has_missing_values if sparse else any(value is None for value in self.values.values())
+        if self.missing_components or missing:
             raise FeatureUnavailableError("Required feature components are unavailable")
+        if sparse:
+            return self.values
         return MappingProxyType({key: float(value) for key, value in self.values.items()})
 
 
@@ -83,12 +97,30 @@ class TfidfExtractor:
             raise ValueError("Invalid TF-IDF configuration")
         self.analyzer = analyzer
         self.ngram_range = ngram_range
-        self.vocabulary: tuple[str, ...] | None = None
-        self.idf: Mapping[str, float] | None = None
-        self.fit_manifest: SplitManifest | None = None
+        self._vocabulary: tuple[str, ...] | None = None
+        self._idf: Mapping[str, float] | None = None
+        self._fit_manifest: SplitManifest | None = None
+        self._fitted_state_id: str | None = None
+        self._fitted_configuration: tuple[str, tuple[int, int]] | None = None
+
+    @property
+    def vocabulary(self) -> tuple[str, ...] | None:
+        return self._vocabulary
+
+    @property
+    def idf(self) -> Mapping[str, float] | None:
+        return self._idf
+
+    @property
+    def fit_manifest(self) -> SplitManifest | None:
+        return self._fit_manifest
+
+    @property
+    def fitted_state_id(self) -> str | None:
+        return self._fitted_state_id
 
     def _terms(self, text: str) -> Counter[str]:
-        tokens = re.findall(r"\b\w+\b", text) if self.analyzer == "word" else list(text)
+        tokens = WORD_TOKENS.findall(text) if self.analyzer == "word" else list(text)
         joiner = " " if self.analyzer == "word" else ""
         return Counter(joiner.join(tokens[start:start + n])
                        for n in range(self.ngram_range[0], self.ngram_range[1] + 1)
@@ -105,12 +137,27 @@ class TfidfExtractor:
             frequencies.update(set(self._terms(artifact.model_text)))
         # Empty training text is a valid zero-column text block, never invented tokens.
         vocabulary = tuple(sorted(frequencies))
-        self.idf = MappingProxyType({term: math.log((1 + len(artifacts)) / (1 + frequencies[term])) + 1
+        self._idf = MappingProxyType({term: math.log((1 + len(artifacts)) / (1 + frequencies[term])) + 1
                                      for term in vocabulary})
-        self.vocabulary = vocabulary
-        self.fit_manifest = manifest
+        self._vocabulary = vocabulary
+        self._fit_manifest = manifest
+        self._fitted_configuration = (self.analyzer, self.ngram_range)
+        self._fitted_state_id = fingerprint({
+            "vocabulary": vocabulary, "idf": self.idf,
+            "split": {"id": manifest.manifest_id, "train": manifest.train_ids,
+                      "validation": manifest.validation_ids, "test": manifest.test_ids},
+            "training_text": {key: fingerprint(value.model_text) for key, value in artifacts.items()},
+        })
+
+    def describe_configuration(self) -> dict[str, object]:
+        if self._fitted_configuration is not None and self._fitted_configuration != (self.analyzer, self.ngram_range):
+            raise ValueError("TF-IDF configuration changed after fitting")
+        return {"analyzer": self.analyzer, "ngram_range": self.ngram_range,
+                "tf": "raw_count", "idf": "smoothed_log", "normalization": "l2",
+                "fitted_state_id": self.fitted_state_id}
 
     def transform(self, artifact: PreparedArtifact) -> FeatureBlock:
+        self.describe_configuration()
         if self.vocabulary is None or self.idf is None:
             raise FeatureUnavailableError("TF-IDF has not been fitted on training data")
         if artifact.preprocessing_version != PREPROCESSING_VERSION:
@@ -186,7 +233,9 @@ class ConventionalFeatureBuilder:
                 missing.append(f"{extractor.analyzer}_tfidf_not_fitted")
             else:
                 values.update(extractor.transform(artifact).values)
-        return FeatureBlock(values, tuple(missing))
+        configuration = canonical_json({"version": CONVENTIONAL_FEATURE_VERSION,
+                                        "tfidf": tuple(e.describe_configuration() for e in self.text_extractors)})
+        return FeatureBlock(values, tuple(missing), configuration, artifact.preprocessing_version)
 
 
 class FeatureConfiguration(StrEnum):
@@ -199,6 +248,7 @@ class FeatureConfiguration(StrEnum):
 class FeatureBundle:
     configuration: FeatureConfiguration
     block: FeatureBlock
+    schema: FeatureSchema | None = None
 
 
 class ExperimentFeatureBuilder:
@@ -206,15 +256,21 @@ class ExperimentFeatureBuilder:
 
     def __init__(self, configuration: FeatureConfiguration) -> None:
         self.configuration = FeatureConfiguration(configuration)
+        self.slots = load_codebook()["vector_ordering"]["future_structure"]
 
     def build(self, conventional: FeatureBlock, brl: BrlRepresentation) -> FeatureBundle:
-        values: dict[str, float | None] = {}
+        parts = []
         missing = []
         if self.configuration in {FeatureConfiguration.E1, FeatureConfiguration.E3}:
-            values.update(conventional.values)
+            parts.append(conventional.values)
             missing.extend(conventional.missing_components)
         if self.configuration in {FeatureConfiguration.E2, FeatureConfiguration.E3}:
-            slots = load_codebook()["vector_ordering"]["future_structure"]
-            values.update({f"se_brl:{name}": value for name, value in zip(slots, brl.slots, strict=True)})
+            slots = self.slots
+            parts.append({f"se_brl:{name}": value for name, value in zip(slots, brl.slots, strict=True)})
             missing.append("learned_behavioral_values_not_available")
-        return FeatureBundle(self.configuration, FeatureBlock(values, tuple(missing)))
+        values = parts[0] if len(parts) == 1 else CombinedFeatureValues(tuple(parts))
+        schema = FeatureSchema(conventional.preprocessing_version,
+                               conventional.configuration_json if self.configuration != FeatureConfiguration.E2 else None,
+                               brl.extraction.assessment.codebook_version, brl.extraction.ruleset_version,
+                               self.configuration.value)
+        return FeatureBundle(self.configuration, FeatureBlock(values, tuple(missing)), schema)

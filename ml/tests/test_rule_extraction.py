@@ -33,7 +33,7 @@ def test_each_rule_family_has_exact_evidence(indicator, text):
         span = evidence.span
         assert text[span.start:span.end] == span.text
         assert evidence.provenance == "rule-based"
-        assert evidence.ruleset_version == "0.1.0"
+        assert evidence.ruleset_version == "0.2.0"
 
 
 @pytest.mark.parametrize("text", [
