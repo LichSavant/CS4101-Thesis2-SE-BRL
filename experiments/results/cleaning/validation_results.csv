@@ -1,0 +1,19 @@
+dataset,check,passed,details
+UCI Phishing Websites,No complete duplicate rows,True,0 duplicates remaining
+ISCX-URL2016 All,No complete duplicate rows,True,0 duplicates remaining
+ISCX-URL2016 Phishing,No complete duplicate rows,True,0 duplicates remaining
+CEAS-08,No missing subject/body values,True,0 missing text values
+Enron,No missing subject/body values,True,0 missing text values
+Nazario,No missing subject/body values,True,0 missing text values
+SpamAssassin,No missing subject/body values,True,0 missing text values
+ISCX-URL2016 All,No infinite numeric values,True,0 infinite values
+ISCX-URL2016 Phishing,No infinite numeric values,True,0 infinite values
+UCI Phishing Websites,UCI values converted to integer representation,True,31 columns checked
+CEAS-08,Dataset contains observations,True,"39,154 rows"
+Enron,Dataset contains observations,True,"29,767 rows"
+Nazario,Dataset contains observations,True,"1,565 rows"
+SpamAssassin,Dataset contains observations,True,"5,809 rows"
+PhiUSIIL,Dataset contains observations,True,"235,795 rows"
+UCI Phishing Websites,Dataset contains observations,True,"5,849 rows"
+ISCX-URL2016 All,Dataset contains observations,True,"26,953 rows"
+ISCX-URL2016 Phishing,Dataset contains observations,True,"14,823 rows"
