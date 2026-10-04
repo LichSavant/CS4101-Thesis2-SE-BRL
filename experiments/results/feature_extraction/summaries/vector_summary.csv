@@ -1,0 +1,17 @@
+dataset,dimension,support_rate_percent,availability_rate_percent
+Email,pressure_threat,10.26,100.0
+Email,lure_attention,13.97,100.0
+Email,trust_identity,16.59,100.0
+Email,requested_action_consequence,35.53,100.0
+PhiUSIIL,pressure_threat,0.01,100.0
+PhiUSIIL,lure_attention,0.03,100.0
+PhiUSIIL,trust_identity,0.04,100.0
+PhiUSIIL,requested_action_consequence,43.22,100.0
+UCI,pressure_threat,0.0,0.0
+UCI,lure_attention,0.0,0.0
+UCI,trust_identity,0.0,0.0
+UCI,requested_action_consequence,0.0,0.0
+ISCX,pressure_threat,0.0,0.0
+ISCX,lure_attention,0.0,0.0
+ISCX,trust_identity,0.0,0.0
+ISCX,requested_action_consequence,0.0,0.0
