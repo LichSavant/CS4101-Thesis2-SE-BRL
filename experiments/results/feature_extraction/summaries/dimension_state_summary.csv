@@ -1,0 +1,17 @@
+dataset,dimension,supported,absent,unavailable
+Email,pressure_threat,3977,34782,0
+Email,lure_attention,5413,33346,0
+Email,trust_identity,6431,32328,0
+Email,requested_action_consequence,13771,24988,0
+PhiUSIIL,pressure_threat,29,235766,0
+PhiUSIIL,lure_attention,67,235728,0
+PhiUSIIL,trust_identity,104,235691,0
+PhiUSIIL,requested_action_consequence,101911,133884,0
+UCI,pressure_threat,0,0,5849
+UCI,lure_attention,0,0,5849
+UCI,trust_identity,0,0,5849
+UCI,requested_action_consequence,0,0,5849
+ISCX,pressure_threat,0,0,14823
+ISCX,lure_attention,0,0,14823
+ISCX,trust_identity,0,0,14823
+ISCX,requested_action_consequence,0,0,14823

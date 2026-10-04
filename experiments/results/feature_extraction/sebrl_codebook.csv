@@ -1,0 +1,13 @@
+dimension_id,dimension_name,indicator_id,indicator_name
+pressure_threat,Pressure / Threat,urgency,Urgency
+pressure_threat,Pressure / Threat,fear_threat,Fear or Threat
+pressure_threat,Pressure / Threat,scarcity,Scarcity
+lure_attention,Lure / Attention,curiosity,Curiosity
+lure_attention,Lure / Attention,reward_lure,Reward or Lure
+trust_identity,Trust / Identity,authority,Authority
+trust_identity,Trust / Identity,impersonation,Impersonation
+trust_identity,Trust / Identity,brand_exploitation,Brand Exploitation
+trust_identity,Trust / Identity,confidentiality_isolation,Confidentiality / Isolation
+requested_action_consequence,Requested Action / Consequence,call_to_action,Call-to-Action
+requested_action_consequence,Requested Action / Consequence,credential_sensitive_request,Credential / Sensitive-Data Request
+requested_action_consequence,Requested Action / Consequence,financial_action_request,Financial-Action Request

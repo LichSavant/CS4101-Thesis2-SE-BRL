@@ -1,0 +1,11 @@
+indicator_id,email_supported,phiusiil_supported
+urgency,3224,29
+fear_threat,850,0
+scarcity,122,0
+curiosity,207,0
+reward_lure,5315,67
+authority,5748,96
+confidentiality_isolation,1054,8
+call_to_action,11820,371
+credential_sensitive_request,1254,8
+financial_action_request,3208,48
