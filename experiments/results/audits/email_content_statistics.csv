@@ -1,0 +1,5 @@
+dataset,rows,subject_median_chars,subject_mean_chars,subject_max_chars,body_median_chars,body_mean_chars,body_max_chars,combined_median_chars,combined_mean_chars,combined_max_chars
+CEAS-08,39154,35.0,38.9,285,570.0,1571.1,143996,602.0,1610.0,144050
+Enron,29767,30.0,34.1,7170,694.0,1464.6,228353,728.0,1498.7,228367
+Nazario,1565,36.0,40.6,510,720.0,4730.0,4599644,765.0,4770.6,4599693
+SpamAssassin,5809,35.0,37.5,242,1084.0,2406.5,299201,1122.0,2444.0,299271

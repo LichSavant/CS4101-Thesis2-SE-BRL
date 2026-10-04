@@ -1,0 +1,272 @@
+dataset,column,missing_count,missing_percent
+CEAS-08,sender,0,0.0
+CEAS-08,receiver,462,1.18
+CEAS-08,date,0,0.0
+CEAS-08,subject,28,0.07
+CEAS-08,body,0,0.0
+CEAS-08,label,0,0.0
+CEAS-08,urls,0,0.0
+Enron,subject,198,0.67
+Enron,body,0,0.0
+Enron,label,0,0.0
+Nazario,sender,0,0.0
+Nazario,receiver,96,6.13
+Nazario,date,1,0.06
+Nazario,subject,4,0.26
+Nazario,body,0,0.0
+Nazario,urls,0,0.0
+Nazario,label,0,0.0
+SpamAssassin,sender,0,0.0
+SpamAssassin,receiver,210,3.62
+SpamAssassin,date,0,0.0
+SpamAssassin,subject,16,0.28
+SpamAssassin,body,1,0.02
+SpamAssassin,label,0,0.0
+SpamAssassin,urls,0,0.0
+PhiUSIIL,FILENAME,0,0.0
+PhiUSIIL,URL,0,0.0
+PhiUSIIL,URLLength,0,0.0
+PhiUSIIL,Domain,0,0.0
+PhiUSIIL,DomainLength,0,0.0
+PhiUSIIL,IsDomainIP,0,0.0
+PhiUSIIL,TLD,0,0.0
+PhiUSIIL,URLSimilarityIndex,0,0.0
+PhiUSIIL,CharContinuationRate,0,0.0
+PhiUSIIL,TLDLegitimateProb,0,0.0
+PhiUSIIL,URLCharProb,0,0.0
+PhiUSIIL,TLDLength,0,0.0
+PhiUSIIL,NoOfSubDomain,0,0.0
+PhiUSIIL,HasObfuscation,0,0.0
+PhiUSIIL,NoOfObfuscatedChar,0,0.0
+PhiUSIIL,ObfuscationRatio,0,0.0
+PhiUSIIL,NoOfLettersInURL,0,0.0
+PhiUSIIL,LetterRatioInURL,0,0.0
+PhiUSIIL,NoOfDegitsInURL,0,0.0
+PhiUSIIL,DegitRatioInURL,0,0.0
+PhiUSIIL,NoOfEqualsInURL,0,0.0
+PhiUSIIL,NoOfQMarkInURL,0,0.0
+PhiUSIIL,NoOfAmpersandInURL,0,0.0
+PhiUSIIL,NoOfOtherSpecialCharsInURL,0,0.0
+PhiUSIIL,SpacialCharRatioInURL,0,0.0
+PhiUSIIL,IsHTTPS,0,0.0
+PhiUSIIL,LineOfCode,0,0.0
+PhiUSIIL,LargestLineLength,0,0.0
+PhiUSIIL,HasTitle,0,0.0
+PhiUSIIL,Title,0,0.0
+PhiUSIIL,DomainTitleMatchScore,0,0.0
+PhiUSIIL,URLTitleMatchScore,0,0.0
+PhiUSIIL,HasFavicon,0,0.0
+PhiUSIIL,Robots,0,0.0
+PhiUSIIL,IsResponsive,0,0.0
+PhiUSIIL,NoOfURLRedirect,0,0.0
+PhiUSIIL,NoOfSelfRedirect,0,0.0
+PhiUSIIL,HasDescription,0,0.0
+PhiUSIIL,NoOfPopup,0,0.0
+PhiUSIIL,NoOfiFrame,0,0.0
+PhiUSIIL,HasExternalFormSubmit,0,0.0
+PhiUSIIL,HasSocialNet,0,0.0
+PhiUSIIL,HasSubmitButton,0,0.0
+PhiUSIIL,HasHiddenFields,0,0.0
+PhiUSIIL,HasPasswordField,0,0.0
+PhiUSIIL,Bank,0,0.0
+PhiUSIIL,Pay,0,0.0
+PhiUSIIL,Crypto,0,0.0
+PhiUSIIL,HasCopyrightInfo,0,0.0
+PhiUSIIL,NoOfImage,0,0.0
+PhiUSIIL,NoOfCSS,0,0.0
+PhiUSIIL,NoOfJS,0,0.0
+PhiUSIIL,NoOfSelfRef,0,0.0
+PhiUSIIL,NoOfEmptyRef,0,0.0
+PhiUSIIL,NoOfExternalRef,0,0.0
+PhiUSIIL,label,0,0.0
+UCI Phishing Websites,having_IP_Address,0,0.0
+UCI Phishing Websites,URL_Length,0,0.0
+UCI Phishing Websites,Shortining_Service,0,0.0
+UCI Phishing Websites,having_At_Symbol,0,0.0
+UCI Phishing Websites,double_slash_redirecting,0,0.0
+UCI Phishing Websites,Prefix_Suffix,0,0.0
+UCI Phishing Websites,having_Sub_Domain,0,0.0
+UCI Phishing Websites,SSLfinal_State,0,0.0
+UCI Phishing Websites,Domain_registeration_length,0,0.0
+UCI Phishing Websites,Favicon,0,0.0
+UCI Phishing Websites,port,0,0.0
+UCI Phishing Websites,HTTPS_token,0,0.0
+UCI Phishing Websites,Request_URL,0,0.0
+UCI Phishing Websites,URL_of_Anchor,0,0.0
+UCI Phishing Websites,Links_in_tags,0,0.0
+UCI Phishing Websites,SFH,0,0.0
+UCI Phishing Websites,Submitting_to_email,0,0.0
+UCI Phishing Websites,Abnormal_URL,0,0.0
+UCI Phishing Websites,Redirect,0,0.0
+UCI Phishing Websites,on_mouseover,0,0.0
+UCI Phishing Websites,RightClick,0,0.0
+UCI Phishing Websites,popUpWidnow,0,0.0
+UCI Phishing Websites,Iframe,0,0.0
+UCI Phishing Websites,age_of_domain,0,0.0
+UCI Phishing Websites,DNSRecord,0,0.0
+UCI Phishing Websites,web_traffic,0,0.0
+UCI Phishing Websites,Page_Rank,0,0.0
+UCI Phishing Websites,Google_Index,0,0.0
+UCI Phishing Websites,Links_pointing_to_page,0,0.0
+UCI Phishing Websites,Statistical_report,0,0.0
+UCI Phishing Websites,Result,0,0.0
+ISCX-URL2016/All.csv,Querylength,0,0.0
+ISCX-URL2016/All.csv,domain_token_count,0,0.0
+ISCX-URL2016/All.csv,path_token_count,0,0.0
+ISCX-URL2016/All.csv,avgdomaintokenlen,0,0.0
+ISCX-URL2016/All.csv,longdomaintokenlen,0,0.0
+ISCX-URL2016/All.csv,avgpathtokenlen,280,0.76
+ISCX-URL2016/All.csv,tld,0,0.0
+ISCX-URL2016/All.csv,charcompvowels,0,0.0
+ISCX-URL2016/All.csv,charcompace,0,0.0
+ISCX-URL2016/All.csv,ldl_url,0,0.0
+ISCX-URL2016/All.csv,ldl_domain,0,0.0
+ISCX-URL2016/All.csv,ldl_path,0,0.0
+ISCX-URL2016/All.csv,ldl_filename,0,0.0
+ISCX-URL2016/All.csv,ldl_getArg,0,0.0
+ISCX-URL2016/All.csv,dld_url,0,0.0
+ISCX-URL2016/All.csv,dld_domain,0,0.0
+ISCX-URL2016/All.csv,dld_path,0,0.0
+ISCX-URL2016/All.csv,dld_filename,0,0.0
+ISCX-URL2016/All.csv,dld_getArg,0,0.0
+ISCX-URL2016/All.csv,urlLen,0,0.0
+ISCX-URL2016/All.csv,domainlength,0,0.0
+ISCX-URL2016/All.csv,pathLength,0,0.0
+ISCX-URL2016/All.csv,subDirLen,0,0.0
+ISCX-URL2016/All.csv,fileNameLen,0,0.0
+ISCX-URL2016/All.csv,this.fileExtLen,0,0.0
+ISCX-URL2016/All.csv,ArgLen,0,0.0
+ISCX-URL2016/All.csv,pathurlRatio,0,0.0
+ISCX-URL2016/All.csv,ArgUrlRatio,0,0.0
+ISCX-URL2016/All.csv,argDomanRatio,0,0.0
+ISCX-URL2016/All.csv,domainUrlRatio,0,0.0
+ISCX-URL2016/All.csv,pathDomainRatio,0,0.0
+ISCX-URL2016/All.csv,argPathRatio,0,0.0
+ISCX-URL2016/All.csv,executable,0,0.0
+ISCX-URL2016/All.csv,isPortEighty,0,0.0
+ISCX-URL2016/All.csv,NumberofDotsinURL,0,0.0
+ISCX-URL2016/All.csv,ISIpAddressInDomainName,0,0.0
+ISCX-URL2016/All.csv,CharacterContinuityRate,0,0.0
+ISCX-URL2016/All.csv,LongestVariableValue,0,0.0
+ISCX-URL2016/All.csv,URL_DigitCount,0,0.0
+ISCX-URL2016/All.csv,host_DigitCount,0,0.0
+ISCX-URL2016/All.csv,Directory_DigitCount,0,0.0
+ISCX-URL2016/All.csv,File_name_DigitCount,0,0.0
+ISCX-URL2016/All.csv,Extension_DigitCount,0,0.0
+ISCX-URL2016/All.csv,Query_DigitCount,0,0.0
+ISCX-URL2016/All.csv,URL_Letter_Count,0,0.0
+ISCX-URL2016/All.csv,host_letter_count,0,0.0
+ISCX-URL2016/All.csv,Directory_LetterCount,0,0.0
+ISCX-URL2016/All.csv,Filename_LetterCount,0,0.0
+ISCX-URL2016/All.csv,Extension_LetterCount,0,0.0
+ISCX-URL2016/All.csv,Query_LetterCount,0,0.0
+ISCX-URL2016/All.csv,LongestPathTokenLength,0,0.0
+ISCX-URL2016/All.csv,Domain_LongestWordLength,0,0.0
+ISCX-URL2016/All.csv,Path_LongestWordLength,0,0.0
+ISCX-URL2016/All.csv,sub-Directory_LongestWordLength,0,0.0
+ISCX-URL2016/All.csv,Arguments_LongestWordLength,0,0.0
+ISCX-URL2016/All.csv,URL_sensitiveWord,0,0.0
+ISCX-URL2016/All.csv,URLQueries_variable,0,0.0
+ISCX-URL2016/All.csv,spcharUrl,0,0.0
+ISCX-URL2016/All.csv,delimeter_Domain,0,0.0
+ISCX-URL2016/All.csv,delimeter_path,0,0.0
+ISCX-URL2016/All.csv,delimeter_Count,0,0.0
+ISCX-URL2016/All.csv,NumberRate_URL,0,0.0
+ISCX-URL2016/All.csv,NumberRate_Domain,0,0.0
+ISCX-URL2016/All.csv,NumberRate_DirectoryName,10,0.03
+ISCX-URL2016/All.csv,NumberRate_FileName,10,0.03
+ISCX-URL2016/All.csv,NumberRate_Extension,10130,27.6
+ISCX-URL2016/All.csv,NumberRate_AfterPath,3,0.01
+ISCX-URL2016/All.csv,SymbolCount_URL,0,0.0
+ISCX-URL2016/All.csv,SymbolCount_Domain,0,0.0
+ISCX-URL2016/All.csv,SymbolCount_Directoryname,0,0.0
+ISCX-URL2016/All.csv,SymbolCount_FileName,0,0.0
+ISCX-URL2016/All.csv,SymbolCount_Extension,0,0.0
+ISCX-URL2016/All.csv,SymbolCount_Afterpath,0,0.0
+ISCX-URL2016/All.csv,Entropy_URL,0,0.0
+ISCX-URL2016/All.csv,Entropy_Domain,0,0.0
+ISCX-URL2016/All.csv,Entropy_DirectoryName,8468,23.07
+ISCX-URL2016/All.csv,Entropy_Filename,236,0.64
+ISCX-URL2016/All.csv,Entropy_Extension,40,0.11
+ISCX-URL2016/All.csv,Entropy_Afterpath,6,0.02
+ISCX-URL2016/All.csv,URL_Type_obf_Type,0,0.0
+ISCX-URL2016/Phishing.csv,Querylength,0,0.0
+ISCX-URL2016/Phishing.csv,domain_token_count,0,0.0
+ISCX-URL2016/Phishing.csv,path_token_count,0,0.0
+ISCX-URL2016/Phishing.csv,avgdomaintokenlen,0,0.0
+ISCX-URL2016/Phishing.csv,longdomaintokenlen,0,0.0
+ISCX-URL2016/Phishing.csv,avgpathtokenlen,271,1.76
+ISCX-URL2016/Phishing.csv,tld,0,0.0
+ISCX-URL2016/Phishing.csv,charcompvowels,0,0.0
+ISCX-URL2016/Phishing.csv,charcompace,0,0.0
+ISCX-URL2016/Phishing.csv,ldl_url,0,0.0
+ISCX-URL2016/Phishing.csv,ldl_domain,0,0.0
+ISCX-URL2016/Phishing.csv,ldl_path,0,0.0
+ISCX-URL2016/Phishing.csv,ldl_filename,0,0.0
+ISCX-URL2016/Phishing.csv,ldl_getArg,0,0.0
+ISCX-URL2016/Phishing.csv,dld_url,0,0.0
+ISCX-URL2016/Phishing.csv,dld_domain,0,0.0
+ISCX-URL2016/Phishing.csv,dld_path,0,0.0
+ISCX-URL2016/Phishing.csv,dld_filename,0,0.0
+ISCX-URL2016/Phishing.csv,dld_getArg,0,0.0
+ISCX-URL2016/Phishing.csv,urlLen,0,0.0
+ISCX-URL2016/Phishing.csv,domainlength,0,0.0
+ISCX-URL2016/Phishing.csv,pathLength,0,0.0
+ISCX-URL2016/Phishing.csv,subDirLen,0,0.0
+ISCX-URL2016/Phishing.csv,fileNameLen,0,0.0
+ISCX-URL2016/Phishing.csv,this.fileExtLen,0,0.0
+ISCX-URL2016/Phishing.csv,ArgLen,0,0.0
+ISCX-URL2016/Phishing.csv,pathurlRatio,0,0.0
+ISCX-URL2016/Phishing.csv,ArgUrlRatio,0,0.0
+ISCX-URL2016/Phishing.csv,argDomanRatio,0,0.0
+ISCX-URL2016/Phishing.csv,domainUrlRatio,0,0.0
+ISCX-URL2016/Phishing.csv,pathDomainRatio,0,0.0
+ISCX-URL2016/Phishing.csv,argPathRatio,0,0.0
+ISCX-URL2016/Phishing.csv,executable,0,0.0
+ISCX-URL2016/Phishing.csv,isPortEighty,0,0.0
+ISCX-URL2016/Phishing.csv,NumberofDotsinURL,0,0.0
+ISCX-URL2016/Phishing.csv,ISIpAddressInDomainName,0,0.0
+ISCX-URL2016/Phishing.csv,CharacterContinuityRate,0,0.0
+ISCX-URL2016/Phishing.csv,LongestVariableValue,0,0.0
+ISCX-URL2016/Phishing.csv,URL_DigitCount,0,0.0
+ISCX-URL2016/Phishing.csv,host_DigitCount,0,0.0
+ISCX-URL2016/Phishing.csv,Directory_DigitCount,0,0.0
+ISCX-URL2016/Phishing.csv,File_name_DigitCount,0,0.0
+ISCX-URL2016/Phishing.csv,Extension_DigitCount,0,0.0
+ISCX-URL2016/Phishing.csv,Query_DigitCount,0,0.0
+ISCX-URL2016/Phishing.csv,URL_Letter_Count,0,0.0
+ISCX-URL2016/Phishing.csv,host_letter_count,0,0.0
+ISCX-URL2016/Phishing.csv,Directory_LetterCount,0,0.0
+ISCX-URL2016/Phishing.csv,Filename_LetterCount,0,0.0
+ISCX-URL2016/Phishing.csv,Extension_LetterCount,0,0.0
+ISCX-URL2016/Phishing.csv,Query_LetterCount,0,0.0
+ISCX-URL2016/Phishing.csv,LongestPathTokenLength,0,0.0
+ISCX-URL2016/Phishing.csv,Domain_LongestWordLength,0,0.0
+ISCX-URL2016/Phishing.csv,Path_LongestWordLength,0,0.0
+ISCX-URL2016/Phishing.csv,sub-Directory_LongestWordLength,0,0.0
+ISCX-URL2016/Phishing.csv,Arguments_LongestWordLength,0,0.0
+ISCX-URL2016/Phishing.csv,URL_sensitiveWord,0,0.0
+ISCX-URL2016/Phishing.csv,URLQueries_variable,0,0.0
+ISCX-URL2016/Phishing.csv,spcharUrl,0,0.0
+ISCX-URL2016/Phishing.csv,delimeter_Domain,0,0.0
+ISCX-URL2016/Phishing.csv,delimeter_path,0,0.0
+ISCX-URL2016/Phishing.csv,delimeter_Count,0,0.0
+ISCX-URL2016/Phishing.csv,NumberRate_URL,0,0.0
+ISCX-URL2016/Phishing.csv,NumberRate_Domain,0,0.0
+ISCX-URL2016/Phishing.csv,NumberRate_DirectoryName,9,0.06
+ISCX-URL2016/Phishing.csv,NumberRate_FileName,9,0.06
+ISCX-URL2016/Phishing.csv,NumberRate_Extension,7355,47.86
+ISCX-URL2016/Phishing.csv,NumberRate_AfterPath,3,0.02
+ISCX-URL2016/Phishing.csv,SymbolCount_URL,0,0.0
+ISCX-URL2016/Phishing.csv,SymbolCount_Domain,0,0.0
+ISCX-URL2016/Phishing.csv,SymbolCount_Directoryname,0,0.0
+ISCX-URL2016/Phishing.csv,SymbolCount_FileName,0,0.0
+ISCX-URL2016/Phishing.csv,SymbolCount_Extension,0,0.0
+ISCX-URL2016/Phishing.csv,SymbolCount_Afterpath,0,0.0
+ISCX-URL2016/Phishing.csv,Entropy_URL,0,0.0
+ISCX-URL2016/Phishing.csv,Entropy_Domain,0,0.0
+ISCX-URL2016/Phishing.csv,Entropy_DirectoryName,1826,11.88
+ISCX-URL2016/Phishing.csv,Entropy_Filename,190,1.24
+ISCX-URL2016/Phishing.csv,Entropy_Extension,3,0.02
+ISCX-URL2016/Phishing.csv,Entropy_Afterpath,3,0.02
+ISCX-URL2016/Phishing.csv,URL_Type_obf_Type,0,0.0

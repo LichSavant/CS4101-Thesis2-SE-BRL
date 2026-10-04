@@ -1,0 +1,9 @@
+dataset,rows,exact_duplicate_rows,duplicate_percent
+CEAS-08,39154,0,0.0
+Enron,29767,0,0.0
+Nazario,1565,0,0.0
+SpamAssassin,5809,0,0.0
+PhiUSIIL,235795,0,0.0
+UCI Phishing Websites,11055,5206,47.09
+ISCX-URL2016/All.csv,36707,9754,26.57
+ISCX-URL2016/Phishing.csv,15367,544,3.54

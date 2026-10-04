@@ -1,0 +1,10 @@
+dataset,native_label,verified_meaning,status
+PhiUSIIL,1,legitimate,verified from source documentation
+PhiUSIIL,0,phishing,verified from source documentation
+UCI Phishing Websites,1,legitimate,verified from source documentation
+UCI Phishing Websites,-1,phishy,verified from source documentation
+ISCX-URL2016,native strings,benign / phishing / spam / malware / Defacement,explicit in raw dataset
+CEAS-08,0 / 1,pending provenance verification,do not map yet
+Enron,0 / 1,pending provenance verification,do not map yet
+Nazario,1,pending provenance verification,do not map yet
+SpamAssassin,0 / 1,pending provenance verification,do not map yet
