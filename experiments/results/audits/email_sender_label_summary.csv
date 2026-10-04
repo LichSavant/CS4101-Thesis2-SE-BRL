@@ -1,0 +1,4 @@
+dataset,unique_senders,senders_with_multiple_labels,percent_conflicting_senders
+CEAS-08,24578,5,0.0203
+Nazario,1438,0,0.0
+SpamAssassin,2523,0,0.0
