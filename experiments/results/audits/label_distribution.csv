@@ -1,0 +1,17 @@
+dataset,label_column,native_label,count,percent
+CEAS-08,label,1,21842,55.78
+CEAS-08,label,0,17312,44.22
+Enron,label,0,15791,53.05
+Enron,label,1,13976,46.95
+Nazario,label,1,1565,100.0
+SpamAssassin,label,0,4091,70.43
+SpamAssassin,label,1,1718,29.57
+PhiUSIIL,label,1,134850,57.19
+PhiUSIIL,label,0,100945,42.81
+UCI Phishing Websites,Result,b'1',6157,55.69
+UCI Phishing Websites,Result,b'-1',4898,44.31
+ISCX-URL2016,URL_Type_obf_Type,'Defacement',7930,21.6
+ISCX-URL2016,URL_Type_obf_Type,'benign',7781,21.2
+ISCX-URL2016,URL_Type_obf_Type,'phishing',7586,20.67
+ISCX-URL2016,URL_Type_obf_Type,'malware',6712,18.29
+ISCX-URL2016,URL_Type_obf_Type,'spam',6698,18.25
