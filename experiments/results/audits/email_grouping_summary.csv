@@ -1,0 +1,5 @@
+dataset,sender_available,rows,rows_with_sender,unique_senders,repeated_senders,rows_in_repeated_sender_groups,largest_sender_group
+CEAS-08,True,39154,39154,24578,2405,16981,462
+Enron,False,29767,0,0,0,0,0
+Nazario,True,1565,1565,1438,69,196,31
+SpamAssassin,True,5809,5809,2523,462,3748,109
