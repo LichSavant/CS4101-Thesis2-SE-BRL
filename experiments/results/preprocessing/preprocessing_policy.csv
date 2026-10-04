@@ -1,0 +1,8 @@
+operation,learned_from_data,fit_stage,global_fit_allowed
+Missing-value imputation,True,Training fold / development only,False
+Feature scaling,True,Training fold / development only,False
+Variance-based feature removal,True,Training fold / development only,False
+Text vocabulary / vectorizer fitting,True,Training fold / development only,False
+Class weighting / resampling,True,Training fold only,False
+Target mapping from documented source semantics,False,Deterministic preprocessing,True
+Stable observation/group identifier construction,False,Deterministic preprocessing,True
