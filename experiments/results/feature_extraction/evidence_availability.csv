@@ -1,0 +1,5 @@
+dataset,modality,text_content,sender_identity,url_or_link,domain_identity,structured_web_features,engineered_url_features
+Email,email,True,True,True,False,False,False
+PhiUSIIL,webpage,True,False,True,True,True,False
+UCI,url,False,False,False,False,False,True
+ISCX,url,False,False,False,False,False,True
