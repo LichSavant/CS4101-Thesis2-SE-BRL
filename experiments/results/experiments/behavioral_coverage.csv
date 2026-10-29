@@ -1,0 +1,17 @@
+dataset,dimension,available_rate,supported_rate,supported_when_available
+email,pressure_threat,1.0,0.10260842642999045,0.10260842642999045
+email,lure_attention,1.0,0.1396578859103692,0.1396578859103692
+email,trust_identity,1.0,0.16592275342501098,0.16592275342501098
+email,requested_action_consequence,1.0,0.3552981243066127,0.3552981243066127
+phiusiil,pressure_threat,1.0,0.00012298818889289426,0.00012298818889289426
+phiusiil,lure_attention,1.0,0.0002841451260628936,0.0002841451260628936
+phiusiil,trust_identity,1.0,0.0004410610912021035,0.0004410610912021035
+phiusiil,requested_action_consequence,1.0,0.43220170062978436,0.43220170062978436
+iscx,pressure_threat,0.0,0.0,
+iscx,lure_attention,0.0,0.0,
+iscx,trust_identity,0.0,0.0,
+iscx,requested_action_consequence,0.0,0.0,
+uci,pressure_threat,0.0,0.0,
+uci,lure_attention,0.0,0.0,
+uci,trust_identity,0.0,0.0,
+uci,requested_action_consequence,0.0,0.0,
