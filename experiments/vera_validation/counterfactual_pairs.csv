@@ -1,0 +1,21 @@
+pair_id,target_indicator,baseline_text,counterfactual_text,baseline_expected_provisional,counterfactual_expected_provisional,human_review_status
+C001,urgency,Please review your account details when convenient.,Please review your account details before midnight.,absent,supported,pending
+C002,urgency,You may complete the verification process at any time.,You must complete the verification process before your next login.,absent,supported,pending
+C003,urgency,Your request can be processed whenever you are ready.,Your request must be processed within the next ten minutes.,absent,supported,pending
+C004,urgency,You can submit the form whenever convenient.,You must submit the form today to keep your account active.,absent,supported,pending
+C005,fear_threat,Your account settings are available for review.,Your account will be disabled if you do not review your settings.,absent,supported,pending
+C006,fear_threat,You can review your stored files through the portal.,Your stored files will be permanently removed unless you respond.,absent,supported,pending
+C007,fear_threat,Your current account status is unchanged.,Failure to provide the requested details will result in account closure.,absent,supported,pending
+C008,fear_threat,You may update your profile information.,Your profile will be locked if you refuse to update your information.,absent,supported,pending
+C009,scarcity,Registration is currently available.,Only three registration places remain.,absent,supported,pending
+C010,scarcity,You can apply for the membership program.,The membership program has only two available places.,absent,supported,pending
+C011,scarcity,Invitations are available to interested participants.,The remaining invitations will go to the first three respondents.,absent,supported,pending
+C012,scarcity,You may register for the event.,Registration closes when the last available seat is taken.,absent,supported,pending
+C013,reward_lure,Complete the form to review your subscription options.,Complete the form to receive a complimentary subscription.,absent,supported,pending
+C014,reward_lure,Submit your information to view available offers.,Submit your information to receive a shopping voucher.,absent,supported,pending
+C015,reward_lure,Visit the portal to review your account.,Visit the portal to collect a free membership.,absent,supported,pending
+C016,reward_lure,Register to access the program information.,Register to receive a bonus gift.,absent,supported,pending
+C017,credential_sensitive_data_request,Review the security guidance for your account.,Provide your account password to complete the review.,absent,supported,pending
+C018,credential_sensitive_data_request,Read the instructions about account recovery.,Provide the answers to your account recovery questions.,absent,supported,pending
+C019,credential_sensitive_data_request,Review your login security settings.,Enter the secret code used to access your account.,absent,supported,pending
+C020,credential_sensitive_data_request,Open the account information page.,Submit your banking credentials through the account page.,absent,supported,pending
