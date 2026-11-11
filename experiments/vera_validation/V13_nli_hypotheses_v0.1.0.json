@@ -1,0 +1,105 @@
+{
+  "version": "0.1.0",
+  "status": "candidate_unvalidated",
+  "model": "cross-encoder/nli-MiniLM2-L6-H768",
+  "source_codebook": "ml/se_brl/codebook.v0.1.0.json",
+  "purpose": "Experimental codebook-grounded NLI hypotheses",
+  "dimensions": {
+    "pressure_threat_cues": [
+      "urgency",
+      "fear_threat",
+      "scarcity"
+    ],
+    "lure_attention_cues": [
+      "curiosity",
+      "reward_lure"
+    ],
+    "trust_identity_manipulation": [
+      "authority",
+      "impersonation",
+      "brand_exploitation",
+      "confidentiality_isolation"
+    ],
+    "requested_action_consequence": [
+      "call_to_action",
+      "credential_sensitive_data_request",
+      "financial_action_request"
+    ]
+  },
+  "hypotheses": {
+    "urgency": [
+      "The recipient is instructed to complete an action before a deadline.",
+      "The recipient is pressured to act immediately.",
+      "The message imposes a time limit on the recipient's response."
+    ],
+    "fear_threat": [
+      "The recipient is warned of a negative consequence if they do not comply.",
+      "The message threatens the recipient with a loss or punishment.",
+      "The sender uses a harmful consequence to pressure the recipient."
+    ],
+    "scarcity": [
+      "The message claims that only a limited number of opportunities remain.",
+      "The message states that availability is restricted.",
+      "The recipient is told that an opportunity may run out."
+    ],
+    "curiosity": [
+      "The message deliberately withholds information to encourage the recipient to investigate.",
+      "The sender uses a mystery or surprise to attract the recipient's attention.",
+      "The recipient is encouraged to open or inspect something to discover hidden information."
+    ],
+    "reward_lure": [
+      "The recipient is offered a reward for completing an action.",
+      "The message promises a benefit to encourage the recipient to respond.",
+      "The recipient is offered an incentive in exchange for participating."
+    ],
+    "authority": [
+      "The sender claims to hold an official position of authority.",
+      "The message invokes organizational authority to influence the recipient.",
+      "The sender presents an instruction as coming from a person in charge."
+    ],
+    "impersonation": [
+      "The sender claims to be another person or organization.",
+      "The message presents the sender as an account representative or official.",
+      "The sender assumes an identity to influence the recipient."
+    ],
+    "brand_exploitation": [
+      "The message uses the identity of a recognizable brand to establish trust.",
+      "The sender invokes a company's name to make a request appear credible.",
+      "The message relies on brand identity to persuade the recipient."
+    ],
+    "confidentiality_isolation": [
+      "The recipient is instructed to keep the communication secret.",
+      "The sender discourages the recipient from consulting other people.",
+      "The recipient is asked not to disclose the request to anyone else."
+    ],
+    "call_to_action": [
+      "The recipient is instructed to perform a specific action.",
+      "The message asks the recipient to complete a task.",
+      "The sender directs the recipient to take a particular step."
+    ],
+    "credential_sensitive_data_request": [
+      "The recipient is asked to reveal a password or authentication secret.",
+      "The recipient is instructed to provide sensitive account information.",
+      "The sender requests personal credentials or account recovery details."
+    ],
+    "financial_action_request": [
+      "The recipient is instructed to send or transfer money.",
+      "The recipient is asked to make a financial payment.",
+      "The sender requests a financial transaction from the recipient."
+    ]
+  },
+  "decision_policy": {
+    "aggregation": "not_selected",
+    "thresholds": "not_calibrated",
+    "unavailable_state": "determined_by_modality_and_required_evidence",
+    "evidence_grounding": "required_before_explanation",
+    "hypothesis_selection": "freeze_before_held_out_evaluation"
+  },
+  "limitations": [
+    "Candidate hypotheses require researcher and adviser review.",
+    "NLI scores are not calibrated behavioral probabilities.",
+    "Textual identity claims do not establish verified impersonation.",
+    "Evidence availability varies by modality and indicator.",
+    "No behavioral performance claim is supported by this file alone."
+  ]
+}

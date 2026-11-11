@@ -1,0 +1,21 @@
+case_id,challenge_type,text,target_indicator,expected_state_provisional
+L001,keyword_without_behavior,Our awareness training explains how phishing emails use urgent messages.,urgency,absent
+L002,keyword_without_behavior,The word urgent appears in this dictionary example.,urgency,absent
+L003,implicit_behavior,Complete your verification before your account access ends tonight.,urgency,supported
+L004,implicit_behavior,You have until your next login to confirm your identity.,urgency,supported
+L005,keyword_without_behavior,This article explains why scammers threaten to suspend accounts.,fear_threat,absent
+L006,keyword_without_behavior,The workshop examines fear and threats in fraudulent messages.,fear_threat,absent
+L007,implicit_behavior,"Unless you provide the requested details, your account access will be removed.",fear_threat,supported
+L008,implicit_behavior,Failure to comply will result in permanent loss of your saved files.,fear_threat,supported
+L009,keyword_without_behavior,Today's lesson defines limited-time offers and scarcity marketing.,scarcity,absent
+L010,keyword_without_behavior,The phrase only two left is an example used in our marketing class.,scarcity,absent
+L011,implicit_behavior,The remaining invitations will be assigned to the next people who respond.,scarcity,supported
+L012,implicit_behavior,"Once the remaining places are taken, no additional applications will be considered.",scarcity,supported
+L013,keyword_without_behavior,Our lecture explains how attackers promise rewards to attract victims.,reward_lure,absent
+L014,keyword_without_behavior,This textbook discusses free prizes in online fraud examples.,reward_lure,absent
+L015,implicit_behavior,Complete the form to receive a complimentary three-month subscription.,reward_lure,supported
+L016,implicit_behavior,Submit your details to receive a shopping voucher.,reward_lure,supported
+L017,keyword_without_behavior,The training manual says never share your password with strangers.,credential_sensitive_data_request,absent
+L018,keyword_without_behavior,This security article discusses requests for banking information.,credential_sensitive_data_request,absent
+L019,implicit_behavior,Enter the secret code you use to access your account.,credential_sensitive_data_request,supported
+L020,implicit_behavior,Provide the answers to your account recovery questions.,credential_sensitive_data_request,supported
