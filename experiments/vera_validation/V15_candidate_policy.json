@@ -1,0 +1,14 @@
+{
+  "name": "semantic_first_candidate_v15",
+  "status": "candidate_unvalidated",
+  "support_votes": 2,
+  "absence_votes": 2,
+  "selection_basis": "provisional engineering policy, not fitted to evaluation labels",
+  "limitations": [
+    "Three NLI hypotheses are correlated, not independent votes.",
+    "Semantic scores are not calibrated behavioral probabilities.",
+    "A literal evidence span does not prove semantic correctness.",
+    "Constraints may increase abstention and reduce coverage.",
+    "The policy is not yet approved for final E2/E3 evaluation."
+  ]
+}
