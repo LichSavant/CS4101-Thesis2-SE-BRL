@@ -1,0 +1,42 @@
+{
+  "status": "development_diagnostic",
+  "model": "cross-encoder/nli-MiniLM2-L6-H768",
+  "indicator": "credential_sensitive_data_request",
+  "observations": {
+    "direct_otp_request": [
+      "neutral",
+      "neutral",
+      "neutral"
+    ],
+    "direct_password_request": [
+      "neutral",
+      "neutral",
+      "neutral"
+    ],
+    "otp_prohibition": [
+      "neutral",
+      "neutral",
+      "neutral"
+    ],
+    "educational_discussion": [
+      "neutral",
+      "neutral",
+      "neutral"
+    ],
+    "unrelated_instruction": [
+      "neutral",
+      "neutral",
+      "neutral"
+    ],
+    "mixed_instructions": [
+      "entailment",
+      "neutral",
+      "neutral"
+    ]
+  },
+  "finding": "Revised hypotheses do not consistently establish semantic support for direct credential requests.",
+  "accuracy_validated": false,
+  "threshold_optimization_performed": false,
+  "held_out_test_accessed": false,
+  "recommended_action": "Retain as baseline; evaluate alternative semantic inference under independent annotation and codebook constraints."
+}

@@ -1,0 +1,200 @@
+{
+  "name": "SE-BRL twelve-indicator semantic evidence contracts",
+  "version": "V19-development",
+  "status": "candidate_requires_researcher_adviser_review",
+  "source_codebook_version": "0.1.0",
+  "purpose": "Operational specification, not an inference model",
+  "accuracy_validated": false,
+  "approved_for_E2_E3": false,
+  "supported_output_requires": [
+    "codebook-specific semantic relationship",
+    "traceable original-artifact evidence",
+    "appropriate modality and required identity evidence",
+    "context, quotation, negation and contradiction checks",
+    "validated decision policy"
+  ],
+  "modalities": {
+    "content_bearing_email": {
+      "pressure_threat_cues": "A",
+      "lure_attention_cues": "A",
+      "trust_identity_manipulation": "A*",
+      "requested_action_consequence": "A"
+    },
+    "content_bearing_webpage": {
+      "pressure_threat_cues": "A",
+      "lure_attention_cues": "A",
+      "trust_identity_manipulation": "A*",
+      "requested_action_consequence": "A"
+    },
+    "standalone_url": {
+      "pressure_threat_cues": "U",
+      "lure_attention_cues": "U",
+      "trust_identity_manipulation": "U",
+      "requested_action_consequence": "U"
+    },
+    "engineered_technical_record": {
+      "pressure_threat_cues": "U",
+      "lure_attention_cues": "U",
+      "trust_identity_manipulation": "U",
+      "requested_action_consequence": "U"
+    }
+  },
+  "indicators": {
+    "urgency": {
+      "dimension": "pressure_threat_cues",
+      "qualifying_relation": "A request pressures the recipient to act under an immediate or consequential time constraint.",
+      "insufficient_or_excluded_evidence": "Routine dates, historical deadlines, or urgency unrelated to recipient action.",
+      "requires_grounded_text_span": true,
+      "requires_semantic_relation": true,
+      "requires_context_and_negation_review": true,
+      "requires_identity_or_structural_evidence": false,
+      "requires_independent_identity_verification_for_support": false,
+      "on_insufficient_evidence": "abstained",
+      "on_missing_required_modality": "unavailable",
+      "on_positive_evidence": "candidate_only_until_validated"
+    },
+    "fear_threat": {
+      "dimension": "pressure_threat_cues",
+      "qualifying_relation": "The message connects recipient noncompliance to a threatened loss, penalty, or adverse consequence.",
+      "insufficient_or_excluded_evidence": "Neutral descriptions of danger, safety advice, or historical consequences.",
+      "requires_grounded_text_span": true,
+      "requires_semantic_relation": true,
+      "requires_context_and_negation_review": true,
+      "requires_identity_or_structural_evidence": false,
+      "requires_independent_identity_verification_for_support": false,
+      "on_insufficient_evidence": "abstained",
+      "on_missing_required_modality": "unavailable",
+      "on_positive_evidence": "candidate_only_until_validated"
+    },
+    "scarcity": {
+      "dimension": "pressure_threat_cues",
+      "qualifying_relation": "Limited availability is presented as a reason for the recipient to act.",
+      "insufficient_or_excluded_evidence": "Ordinary inventory facts or availability notices without persuasive pressure.",
+      "requires_grounded_text_span": true,
+      "requires_semantic_relation": true,
+      "requires_context_and_negation_review": true,
+      "requires_identity_or_structural_evidence": false,
+      "requires_independent_identity_verification_for_support": false,
+      "on_insufficient_evidence": "abstained",
+      "on_missing_required_modality": "unavailable",
+      "on_positive_evidence": "candidate_only_until_validated"
+    },
+    "curiosity": {
+      "dimension": "lure_attention_cues",
+      "qualifying_relation": "Information is deliberately withheld or framed as a mystery to induce recipient engagement.",
+      "insufficient_or_excluded_evidence": "Ordinary questions, factual uncertainty, or educational explanations.",
+      "requires_grounded_text_span": true,
+      "requires_semantic_relation": true,
+      "requires_context_and_negation_review": true,
+      "requires_identity_or_structural_evidence": false,
+      "requires_independent_identity_verification_for_support": false,
+      "on_insufficient_evidence": "abstained",
+      "on_missing_required_modality": "unavailable",
+      "on_positive_evidence": "candidate_only_until_validated"
+    },
+    "reward_lure": {
+      "dimension": "lure_attention_cues",
+      "qualifying_relation": "A promised benefit or incentive is used to induce recipient interaction.",
+      "insufficient_or_excluded_evidence": "Routine compensation or informational descriptions of rewards.",
+      "requires_grounded_text_span": true,
+      "requires_semantic_relation": true,
+      "requires_context_and_negation_review": true,
+      "requires_identity_or_structural_evidence": false,
+      "requires_independent_identity_verification_for_support": false,
+      "on_insufficient_evidence": "abstained",
+      "on_missing_required_modality": "unavailable",
+      "on_positive_evidence": "candidate_only_until_validated"
+    },
+    "authority": {
+      "dimension": "trust_identity_manipulation",
+      "qualifying_relation": "Claimed institutional or positional authority is invoked to influence recipient behavior.",
+      "insufficient_or_excluded_evidence": "A job title mentioned incidentally without an authority-based appeal.",
+      "requires_grounded_text_span": true,
+      "requires_semantic_relation": true,
+      "requires_context_and_negation_review": true,
+      "requires_identity_or_structural_evidence": true,
+      "requires_independent_identity_verification_for_support": false,
+      "on_insufficient_evidence": "abstained",
+      "on_missing_required_modality": "unavailable",
+      "on_positive_evidence": "candidate_only_until_validated"
+    },
+    "impersonation": {
+      "dimension": "trust_identity_manipulation",
+      "qualifying_relation": "A claimed identity conflicts with independently verified identity or provenance evidence.",
+      "insufficient_or_excluded_evidence": "Unverified suspicion, a sender name alone, or an unsupported identity claim.",
+      "requires_grounded_text_span": true,
+      "requires_semantic_relation": true,
+      "requires_context_and_negation_review": true,
+      "requires_identity_or_structural_evidence": true,
+      "requires_independent_identity_verification_for_support": true,
+      "on_insufficient_evidence": "abstained",
+      "on_missing_required_modality": "unavailable",
+      "on_positive_evidence": "candidate_only_until_validated"
+    },
+    "brand_exploitation": {
+      "dimension": "trust_identity_manipulation",
+      "qualifying_relation": "Brand identity is used to induce trust, with independently supported misleading or unauthorized use.",
+      "insufficient_or_excluded_evidence": "Ordinary brand references, authorized branding, or unverified suspicion.",
+      "requires_grounded_text_span": true,
+      "requires_semantic_relation": true,
+      "requires_context_and_negation_review": true,
+      "requires_identity_or_structural_evidence": true,
+      "requires_independent_identity_verification_for_support": true,
+      "on_insufficient_evidence": "abstained",
+      "on_missing_required_modality": "unavailable",
+      "on_positive_evidence": "candidate_only_until_validated"
+    },
+    "confidentiality_isolation": {
+      "dimension": "trust_identity_manipulation",
+      "qualifying_relation": "The recipient is directed to conceal the interaction or avoid independent consultation or verification.",
+      "insufficient_or_excluded_evidence": "Ordinary privacy notices or legitimate confidentiality statements without isolation.",
+      "requires_grounded_text_span": true,
+      "requires_semantic_relation": true,
+      "requires_context_and_negation_review": true,
+      "requires_identity_or_structural_evidence": true,
+      "requires_independent_identity_verification_for_support": false,
+      "on_insufficient_evidence": "abstained",
+      "on_missing_required_modality": "unavailable",
+      "on_positive_evidence": "candidate_only_until_validated"
+    },
+    "call_to_action": {
+      "dimension": "requested_action_consequence",
+      "qualifying_relation": "The message directs the recipient to perform a specific observable action.",
+      "insufficient_or_excluded_evidence": "Passive descriptions, quoted instructions, or warnings against performing an action.",
+      "requires_grounded_text_span": true,
+      "requires_semantic_relation": true,
+      "requires_context_and_negation_review": true,
+      "requires_identity_or_structural_evidence": false,
+      "requires_independent_identity_verification_for_support": false,
+      "on_insufficient_evidence": "abstained",
+      "on_missing_required_modality": "unavailable",
+      "on_positive_evidence": "candidate_only_until_validated"
+    },
+    "credential_sensitive_data_request": {
+      "dimension": "requested_action_consequence",
+      "qualifying_relation": "The recipient is requested to disclose, enter, or transmit protected credentials or sensitive information.",
+      "insufficient_or_excluded_evidence": "Mentioning credentials, prohibiting disclosure, or describing an attack.",
+      "requires_grounded_text_span": true,
+      "requires_semantic_relation": true,
+      "requires_context_and_negation_review": true,
+      "requires_identity_or_structural_evidence": false,
+      "requires_independent_identity_verification_for_support": false,
+      "on_insufficient_evidence": "abstained",
+      "on_missing_required_modality": "unavailable",
+      "on_positive_evidence": "candidate_only_until_validated"
+    },
+    "financial_action_request": {
+      "dimension": "requested_action_consequence",
+      "qualifying_relation": "The recipient is requested to make a payment, transfer funds, or perform a financial transaction.",
+      "insufficient_or_excluded_evidence": "Transaction histories, completed-payment notices, or financial discussion without a request.",
+      "requires_grounded_text_span": true,
+      "requires_semantic_relation": true,
+      "requires_context_and_negation_review": true,
+      "requires_identity_or_structural_evidence": false,
+      "requires_independent_identity_verification_for_support": false,
+      "on_insufficient_evidence": "abstained",
+      "on_missing_required_modality": "unavailable",
+      "on_positive_evidence": "candidate_only_until_validated"
+    }
+  }
+}
