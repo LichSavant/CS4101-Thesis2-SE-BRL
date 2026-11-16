@@ -3,6 +3,8 @@ import { EmailSourceUnavailableError, type EmailSourceAdapter } from "./emailSou
 import { extractDomain, identityFromHash, parseSender } from "./gmailParsing";
 import { GMAIL_SELECTORS } from "./gmailSelectors";
 
+// Legacy body flags are retained for caller compatibility but cannot authorize
+// collection. A future body feature requires a reviewed setting/study purpose.
 export interface GmailAdapterOptions { includeLinks?: boolean; includeBody?: boolean; bodyAuthorized?: boolean; }
 
 export class GmailEmailSourceAdapter implements EmailSourceAdapter {
@@ -26,12 +28,7 @@ export class GmailEmailSourceAdapter implements EmailSourceAdapter {
       userId: "demo-user-001", messageId, senderEmail: sender.email, senderName: sender.name,
       senderDomain: extractDomain(sender.email), subject, openedAt: new Date().toISOString()
     };
-    if (this.options.includeLinks) metadata.links = this.extractLinks(container);
-    if (this.options.includeBody && this.options.bodyAuthorized) {
-      const body = this.firstWithin(container, GMAIL_SELECTORS.messageBody)?.innerText
-        .replace(/\u00a0/g, " ").replace(/[ \t]+/g, " ").replace(/\n{3,}/g, "\n\n").trim();
-      if (body) metadata.bodyText = body.slice(0, 20_000);
-    }
+    if (this.options.includeLinks === true) metadata.links = this.extractLinks(container);
     return metadata;
   }
 
@@ -54,7 +51,7 @@ export class GmailEmailSourceAdapter implements EmailSourceAdapter {
   }
 
   private extractLinks(container: HTMLElement): string[] {
-    return [...new Set(Array.from(container.querySelectorAll<HTMLAnchorElement>(".a3s a[href]"))
+    return [...new Set(Array.from(container.querySelectorAll<HTMLAnchorElement>(GMAIL_SELECTORS.messageLinks))
       .map((link) => link.href).filter((url) => /^https?:\/\//.test(url)).slice(0, 50))];
   }
 

@@ -24,7 +24,7 @@ chrome.runtime.onMessage.addListener((message: RuntimeMessage, _sender, sendResp
 
 async function handleEmail(email: EmailSourceMetadata): Promise<ExtensionResult> {
   const settings = await loadSettings();
-  lastResult = await processEmail(settings.backendUrl, email);
+  lastResult = await processEmail(settings.backendUrl, email, { includeLinks: settings.includeLinks });
   await chrome.storage.local.set({ lastResult });
   return lastResult;
 }

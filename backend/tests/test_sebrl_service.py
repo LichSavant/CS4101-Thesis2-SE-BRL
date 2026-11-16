@@ -117,7 +117,7 @@ def test_not_evaluated_preserves_required_reason_codes() -> None:
 def test_not_evaluated_uses_fixed_safe_limitations() -> None:
     response = SebrlAnalysisService().not_evaluated(canonical_modalities()[0])
     assert response.limitations == (
-        "A validated behavioral model is not integrated.",
+        "A validated phishing classifier is not integrated in this legacy status endpoint.",
         "A validated calibrator is not integrated.",
         "Frozen decision rules are not available.",
     )

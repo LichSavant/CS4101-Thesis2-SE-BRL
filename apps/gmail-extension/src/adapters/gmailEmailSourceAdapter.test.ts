@@ -24,11 +24,11 @@ describe("GmailEmailSourceAdapter fixture", () => {
     document.body.innerHTML = "<main role='main'></main>";
     await expect(new GmailEmailSourceAdapter(document).extractCurrentEmail()).rejects.toThrow("Open a Gmail message");
   });
-  it("normalizes formatted message text only when explicitly authorized", async () => {
+  it("does not read body text from stale legacy authorization flags", async () => {
     document.body.innerHTML = `<h2 class="hP">Formatted</h2><div data-legacy-message-id="html-1"><span email="sender@example.com" name="Sender"></span><div class="a3s"><b>Urgent</b><br>verify account</div></div>`;
-    const body = document.querySelector<HTMLElement>(".a3s")!; Object.defineProperty(body, "innerText", { value: "Urgent   verify account\n\n\nnow" });
+    const body = document.querySelector<HTMLElement>(".a3s")!; Object.defineProperty(body, "innerText", { get: () => { throw new Error("Body must not be read"); } });
     const result = await new GmailEmailSourceAdapter(document, { includeBody: true, bodyAuthorized: true }).extractCurrentEmail();
-    expect(result.bodyText).toBe("Urgent verify account\n\nnow");
+    expect(result.bodyText).toBeUndefined();
   });
   it("deduplicates multiple links from the selected message", async () => {
     document.body.innerHTML = `<h2 class="hP">Links</h2><div data-legacy-message-id="links-1"><span email="sender@example.com" name="Sender"></span><div class="a3s"><a href="https://one.example/a">one</a><a href="https://two.example/b">two</a><a href="https://one.example/a">again</a></div></div>`;

@@ -5,7 +5,7 @@ from dataclasses import asdict, dataclass
 
 from ml.metadata import canonical_json, fingerprint, require_text
 
-FEATURE_SCHEMA_VERSION = "0.1.0"
+FEATURE_SCHEMA_VERSION = "0.2.0"
 
 
 @dataclass(frozen=True, slots=True)

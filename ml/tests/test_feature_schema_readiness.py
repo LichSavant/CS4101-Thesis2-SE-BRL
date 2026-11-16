@@ -3,7 +3,7 @@ import json
 
 import pytest
 
-from ml.feature_schema import FeatureSchema
+from ml.feature_schema import FeatureSchema, FEATURE_SCHEMA_VERSION
 from ml.feature_storage import CombinedFeatureValues, SparseFeatureValues
 from ml.features import ConventionalFeatureBuilder, FeatureBlock, FeatureConfiguration, FeatureUnavailableError, SplitManifest, TfidfExtractor
 from ml.models import prepare_training_input
@@ -27,7 +27,7 @@ def test_feature_schema_is_reproducible_and_round_trips():
     assert len({b.schema.configuration_id for b in first.features}) == 3
     assert "Hello" not in first.features[0].schema.to_json()
     with pytest.raises(ValueError):
-        FeatureSchema.from_json(first.features[0].schema.to_json().replace('"schema_version":"0.1.0"', '"schema_version":"99"'))
+        FeatureSchema.from_json(first.features[0].schema.to_json().replace(f'"schema_version":"{FEATURE_SCHEMA_VERSION}"', '"schema_version":"99"'))
 
 
 def test_fitted_tfidf_signature_is_deterministic_and_changes_with_training_input():
@@ -51,7 +51,7 @@ def test_training_rejects_same_columns_with_different_feature_configuration():
         prepare_training_input({"a": bundle, "b": different}, {"a": "fixture", "b": "fixture"}, SplitManifest("fixture", ("a", "b")))
 
 
-def test_sparse_mapping_survives_e1_and_e3_and_never_imputes_unknown_z():
+def test_sparse_mapping_survives_e1_and_e3_with_deterministic_support_masks():
     values = SparseFeatureValues(("a", "b", "c"), {"b": 2.0})
     assert dict(values) == {"a": 0.0, "b": 2.0, "c": 0.0}
     class SparseExtractor:
@@ -62,9 +62,9 @@ def test_sparse_mapping_survives_e1_and_e3_and_never_imputes_unknown_z():
     assert result.features[0].block.require_numeric() is values
     assert isinstance(result.features[2].block.values, CombinedFeatureValues)
     assert result.features[2].block.values["a"] == 0.0
-    assert result.features[2].block.values["se_brl:z1"] is None
-    with pytest.raises(FeatureUnavailableError):
-        result.features[2].block.require_numeric()
+    assert result.features[2].block.values["pressure_threat_cues_supported"] == 0
+    assert result.features[2].block.values["trust_identity_manipulation_available"] == 0
+    assert result.features[2].block.require_numeric()
     with pytest.raises(AttributeError):
         values._values = {}
     with pytest.raises(ValueError):
@@ -80,16 +80,17 @@ def test_readiness_never_promotes_research_stages():
     stages = {s["stage"]: s for s in report["stages"]}
     assert stages["preprocessing"]["status"] == "ready"
     assert stages["candidate_rule_extraction"]["status"] == "partial"
-    assert stages["behavioral_model"]["status"] == "not_trained"
-    assert stages["behavioral_ground_truth"]["dependencies"] == ["dataset_dependent", "ground_truth_dependent"]
+    assert "behavioral_model" not in stages and "behavioral_ground_truth" not in stages
+    assert stages["behavioral_specification"]["status"] == "not_frozen"
     assert stages["E1"]["status"] == "structurally_ready"
-    assert stages["E2"]["status"] == stages["E3"]["status"] == "blocked_by_z_values"
+    assert stages["E2"]["status"] == stages["E3"]["status"] == "structurally_ready"
     assert stages["decision_rules"]["status"] == "not_frozen"
     assert json.loads(json.dumps(report)) == report
     pipeline = PretrainingPipeline(ConventionalFeatureBuilder(include_tfidf=False))
     good = pipeline.run({"kind": "email", "subject": "Hello"})
     statuses = {s.stage: s.status.value for s in pipeline.readiness(good).stages}
     assert statuses["E1"] == "ready" and statuses["classifier"] == "not_trained"
+    assert statuses["E2"] == statuses["E3"] == "ready"
     bad = pipeline.run({"kind": "email", "subject": 2})
     assert {s.stage: s.status.value for s in pipeline.readiness(bad).stages}["E1"] == "unavailable"
 

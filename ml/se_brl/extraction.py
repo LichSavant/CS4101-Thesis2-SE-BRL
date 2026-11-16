@@ -44,6 +44,17 @@ class ExtractionResult:
     detector_reports: tuple[DetectorReport, ...] = ()
 
 
+def unavailable_technical_extraction(modality_id):
+    """Technical U1 has no content-rule execution or inferred absence."""
+    if modality_id not in {"standalone_url", "engineered_technical_record"}:
+        raise ValueError("Technical-only modality required")
+    codebook = load_codebook()
+    assessment = assess(AssessmentInput(modality_id, False, False,
+        {d["id"]: False for d in codebook["dimensions"]}))
+    return ExtractionResult(tuple(IndicatorResult(i["id"], d["id"], "unavailable", "unavailable", ())
+        for d in codebook["dimensions"] for i in d["indicators"]), assessment, RULESET_VERSION)
+
+
 class RuleEngine:
     def __init__(self, rules: tuple[Rule, ...] = RULES, version: str = RULESET_VERSION,
                  trust_detector: EvidenceAwareDetector | None = None) -> None:

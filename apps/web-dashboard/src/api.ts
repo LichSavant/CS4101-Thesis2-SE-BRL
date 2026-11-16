@@ -1,6 +1,13 @@
 import type { EmailScanRecord, TrackedEmail } from "@phishing-defense/shared";
+import { readArtifactDecision, type ArtifactDecision, type ArtifactSubmission } from "@phishing-defense/shared";
 
 const API = (import.meta.env.VITE_API_BASE_URL ?? "http://127.0.0.1:8000").replace(/\/$/, "");
+
+export async function submitArtifact(submission: ArtifactSubmission): Promise<ArtifactDecision> {
+  const response = await fetch(`${API}/api/v1/artifact-analysis`, { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify(submission) });
+  if (!response.ok) throw new Error(`Artifact analysis unavailable (${response.status}). No definitive result.`);
+  return readArtifactDecision(await response.json());
+}
 
 async function getJson<T>(path: string): Promise<T> {
   const response = await fetch(`${API}${path}`);

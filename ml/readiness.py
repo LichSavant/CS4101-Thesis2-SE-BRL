@@ -39,7 +39,7 @@ class StageReadiness:
 @dataclass(frozen=True, slots=True)
 class ReadinessReport:
     stages: tuple[StageReadiness, ...]
-    report_version: str = "0.1.0"
+    report_version: str = "0.2.0"
 
     def to_dict(self) -> dict[str, object]:
         return {"report_version": self.report_version, "stages": [
@@ -66,29 +66,27 @@ def pipeline_readiness(result: "PipelineResult | None" = None) -> ReadinessRepor
         StageReadiness("group_validation", status.READY, (dep.DATASET,)),
         StageReadiness("feature_schema", status.READY),
         StageReadiness("conventional_features", status.UNAVAILABLE if unavailable_input else status.READY),
-        StageReadiness("candidate_rule_extraction", status.UNAVAILABLE if unavailable_behavior else status.PARTIAL, (dep.INDEPENDENT_EVIDENCE, dep.GROUND_TRUTH),
-                       ("candidate_rules_not_validated", "trust_detectors_require_independent_evidence")),
-        StageReadiness("behavioral_ground_truth", status.NOT_AVAILABLE, (dep.DATASET, dep.GROUND_TRUTH)),
-        StageReadiness("behavioral_model", status.NOT_TRAINED, (dep.GROUND_TRUTH, dep.TRAINING, dep.VALIDATION)),
+        StageReadiness("candidate_rule_extraction", status.UNAVAILABLE if unavailable_behavior else status.PARTIAL, (dep.INDEPENDENT_EVIDENCE, dep.VALIDATION),
+                       ("operational_rules_not_frozen", "trust_detectors_require_independent_evidence")),
+        StageReadiness("behavioral_specification", status.NOT_FROZEN, (dep.VALIDATION,),
+                       ("rule_language_locator_and_partial_availability_freeze_required",)),
     ]
     bundles = {b.configuration.value: b for b in result.features} if result else {}
     for configuration in ("E1", "E2", "E3"):
         bundle = bundles.get(configuration)
         if unavailable_input:
             current, blockers = status.UNAVAILABLE, ("input_processing_incomplete",)
-        elif configuration != "E1":
-            current, blockers = status.BLOCKED_BY_Z_VALUES, ("learned_behavioral_values_not_available",)
         elif bundle is not None and not bundle.block.missing_components and all(v is not None for v in bundle.block.values.values()):
             current, blockers = status.READY, ()
         else:
             current = status.STRUCTURALLY_READY
             blockers = bundle.block.missing_components if bundle else ("feature_fit_or_explicit_configuration_required",)
         stages.append(StageReadiness(configuration, current,
-                                     (dep.DATASET,) if configuration == "E1" else (dep.GROUND_TRUTH, dep.TRAINING), blockers))
+                                     (dep.DATASET,) if configuration == "E1" else (dep.DATASET, dep.VALIDATION), blockers))
     stages.extend((
         StageReadiness("classifier", status.NOT_TRAINED, (dep.DATASET, dep.TRAINING, dep.VALIDATION)),
         StageReadiness("calibration", status.NOT_TRAINED, (dep.DATASET, dep.TRAINING, dep.VALIDATION)),
         StageReadiness("SHAP", status.NOT_AVAILABLE, (dep.TRAINING, dep.VALIDATION)),
-        StageReadiness("decision_rules", status.NOT_FROZEN, (dep.GROUND_TRUTH, dep.VALIDATION)),
+        StageReadiness("decision_rules", status.NOT_FROZEN, (dep.VALIDATION,)),
     ))
     return ReadinessReport(tuple(stages))

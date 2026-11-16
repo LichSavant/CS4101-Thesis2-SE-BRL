@@ -1,4 +1,5 @@
-import type { AnalyzeEmailRequest, EmailScanRecord, EmailSourceMetadata, ScanFeedbackRequest, TrackedEmail } from "@phishing-defense/shared";
+import type { AnalyzeEmailRequest, EmailOpenRequest, EmailScanRecord, EmailSourceMetadata, ScanFeedbackRequest, TrackedEmail } from "@phishing-defense/shared";
+import { artifactSchemaVersion, readArtifactDecision, type ArtifactDecision } from "@phishing-defense/shared";
 import type { ExtensionResult } from "../messages";
 
 export class ApiError extends Error { constructor(message: string, readonly offline = false) { super(message); } }
@@ -26,13 +27,33 @@ export async function recordScanFeedback(baseUrl: string, feedback: ScanFeedback
   await request<void>(baseUrl, "/api/v1/scan-feedback", feedback);
 }
 
-export async function processEmail(baseUrl: string, email: EmailSourceMetadata): Promise<ExtensionResult> {
-  const trackedEmail = await request<TrackedEmail>(baseUrl, "/api/v1/interactions/email-open", email);
+/** Manual thesis analysis only. Never records a view or collects a body. */
+export async function analyzeSelectedArtifact(baseUrl: string, email: EmailSourceMetadata, language: "en" | "unknown", includeLinks: boolean): Promise<ArtifactDecision> {
+  const artifact: Record<string, unknown> = { kind: "email", subject: email.subject };
+  if (email.senderEmail) artifact.sender = email.senderEmail;
+  if (includeLinks === true && email.links !== undefined) {
+    artifact.urls = email.links;
+    artifact.link_extraction_authorized = true;
+  }
+  const result = await request<unknown>(baseUrl, "/api/v1/artifact-analysis", {
+    schema_version: artifactSchemaVersion, artifact, language, submission_authorized: true, retain_metadata: false
+  });
+  return readArtifactDecision(result);
+}
+
+export async function processEmail(baseUrl: string, email: EmailSourceMetadata, options: { includeLinks?: boolean } = {}): Promise<ExtensionResult> {
+  // Project both wire payloads. Caller objects may contain stale body fields or
+  // unrelated private properties; their presence never establishes consent.
+  const metadata: EmailOpenRequest = {
+    userId: email.userId, messageId: email.messageId, senderEmail: email.senderEmail,
+    senderName: email.senderName, subject: email.subject, openedAt: email.openedAt
+  };
+  const trackedEmail = await request<TrackedEmail>(baseUrl, "/api/v1/interactions/email-open", metadata);
   const analysisRequest: AnalyzeEmailRequest = {
     schemaVersion: "1.0", messageId: email.messageId, senderEmail: email.senderEmail,
     senderName: email.senderName, senderDomain: email.senderDomain, subject: email.subject,
-    openedAt: email.openedAt, links: email.links ?? [], bodyText: email.bodyText,
-    bodyCollectionAuthorized: Boolean(email.bodyText)
+    openedAt: email.openedAt, links: options.includeLinks === true ? email.links ?? [] : [],
+    bodyCollectionAuthorized: false
   };
   const analysis = await request<EmailScanRecord>(baseUrl, "/api/v1/analyze-email", analysisRequest);
   return { trackedEmail, analysis };

@@ -1,0 +1,41 @@
+{
+  "tests": [
+    "ml/tests/test_engineering_leakage.py",
+    "ml/tests/test_experiment_inputs.py",
+    "ml/tests/test_development_experiments.py",
+    "ml/tests/test_notebook_contracts.py",
+    "ml/tests/test_preparation_integrity.py",
+    "ml/tests/test_preparation_execution.py",
+    "ml/tests/test_research_protocol.py",
+    "ml/tests/test_source_controls.py",
+    "ml/tests/test_behavioral_path_conformance.py",
+    "ml/tests/test_deterministic_representation.py",
+    "ml/tests/test_content_preparation.py",
+    "ml/tests/test_prospective_allocation.py",
+    "ml/tests/test_branch_preparation.py",
+    "ml/tests/test_uci_preparation.py",
+    "ml/tests/test_web_development_contract.py",
+    "ml/tests/test_execution_identity.py",
+    "ml/tests/test_existing_bundle_integration.py",
+    "backend/tests/test_artifact_worker_bounds.py",
+    "backend/tests/test_artifact_service.py::test_invalid_consent_schema_payload_and_errors_do_not_echo_content",
+    "backend/tests/test_artifact_service.py::test_missing_tampered_bundle_and_outage_are_not_legitimate",
+    "ml/tests/test_engineering_completion.py",
+    "ml/tests/test_csv_source_audit.py",
+    "ml/tests/test_source_audit.py",
+    "ml/tests/test_web_source_audit.py",
+    "ml/tests/test_release_candidate.py",
+    "ml/tests/test_preflight.py",
+    "backend/tests/test_api.py",
+    "backend/tests/test_sebrl_contract.py",
+    "backend/tests/test_sebrl_endpoint.py",
+    "backend/tests/test_sebrl_pipeline.py",
+    "backend/tests/test_sebrl_service.py",
+    "ml/tests/test_behavioral_compatibility.py",
+    "ml/tests/test_source_exclusion_boundary.py",
+    "ml/tests/test_source_acquisition.py"
+  ],
+  "deselected": [
+    "ml/tests/test_web_development_contract.py::test_existing_genuine_adapter_accepts_web_e3_without_a_duplicate_engine"
+  ]
+}
