@@ -30,7 +30,46 @@ python -m venv .venv-transformer
 .venv-transformer/Scripts/python -m pip check
 ```
 
-## Remaining acquisition requirement
+## Original acquisition requirement (resolved)
+
+The follow-up acquisition was explicitly approved. All seven allowlisted files
+from the exact pinned revision passed upstream size/digest checks before loading.
+See `tools/verification/pinned-minilm-files.json` for upstream metadata and
+`pinned-minilm-offline-verification.json` for the complete synthetic verification
+record. The model lock and scientific contracts remain unchanged.
+
+Reproduce with the already acquired, ignored local cache:
+
+```powershell
+.venv-transformer/Scripts/python -B scripts/verify_pinned_minilm.py --cache .venv-transformer/model-cache/hub --output .venv-transformer/pinned-minilm-offline-results.json
+```
+
+This verifier never downloads. It verifies the exact seven files before loading,
+blocks network/subprocess operations and research-file reads, and runs on CPU with
+two inference threads. urllib3's local IPv6 capability probe is denied and recorded;
+all unexpected blocked operations fail verification. On this Windows host, native
+dependency imports require execution outside the agent sandbox; network remains
+blocked by the verifier's process audit throughout model loading and inference.
+
+Results: 681 guarded regressions passed; 20 real-model synthetic review cases
+passed, including all twelve behavioral indicators, with 312 real scorer calls.
+Evidence tampering and predictor export were rejected; oversized input abstained
+before model execution. Unknown content, unsupported modalities and unaudited
+identity evidence remained unavailable. Deterministic labels/evidence stayed
+unchanged, candidates stayed abstained/unavailable, learned slots stayed empty,
+and scientific gates stayed closed. All twelve target indicator cases raised
+review disagreements; this is engineering integration evidence, not accuracy.
+
+Observed loading time was 2.97 seconds after integrity hashing (OS cache may be
+warm; dependency imports excluded). Three-hypothesis scorer calls had median
+75.2 ms, mean 75.3 ms and p95 95.0 ms on two CPU threads. Whole-process peak
+resident memory was 487.7 MiB and peak committed memory was 1.32 GiB; these
+include native allocations and dependencies, not just model memory. The seven
+files and local cache occupy 331,111,701 logical file bytes (315.8 MiB), including
+328,499,560 weight bytes. No runtime blocker remains. Semantic accuracy,
+calibration, independent identity truth and scientific release remain unvalidated.
+
+### Historical pre-acquisition state
 
 Known Hugging Face and sentence-transformer cache directories were absent; no
 cache environment overrides were configured. The installed runtime's effective
