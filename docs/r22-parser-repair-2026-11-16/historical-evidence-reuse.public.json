@@ -1,0 +1,12 @@
+{
+  "records": {
+    "integration-acceptance.json": "d838f97ac664c707de3cbe74165cc5e181242d4e40337e56a1d3a939b9175de3",
+    "agreed-integration-contract.md": "a9f8aff2c036844c63bd1d6743865aa72abd23f9fb7e7bb03d66913a047ddf0b",
+    "vera-runtime-manifest.json": "a34a4cdb741583afaec27f982bb7ebd21bd4d601745e712e48eb1dc17aa83f77",
+    "counterpart-source-manifest.json": "a42ef2053d7f6e973765f137739261fb97941dd106450efc74dfcbf0cfe2b994",
+    "counterpart-verification.json": "2cd01868e7926f8fbb6ddda924b9cfe4dd29ec88a47bb24d6af933be59eb5184",
+    "safeguards-verification.json": "ef559cd554e75a8ba8e62507cc5f6248ecaa3959c1a1250642dfac64b0f713c4"
+  },
+  "scope": "Verified saved native 420 counterpart and 145 safeguard results; not freshly executed in this publication phase. Current 85-file owned runtime and all 144 selected peer source hashes match these records. Original packet retained locally, byte-identical.",
+  "new_counterpart_checkout_selected_source_files": 144
+}

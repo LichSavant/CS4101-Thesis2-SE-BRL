@@ -1,0 +1,195 @@
+{
+  "policy_version": "1.0.1",
+  "status": "research_release_blocked",
+  "excluded_dataset_identifiers": [
+    "spaphish",
+    "spa phish",
+    "spa-phish",
+    "spa_phish",
+    "spafish",
+    "spa fish",
+    "spa-fish",
+    "spa_fish"
+  ],
+  "excluded_file_sha256": [
+    "51d501037e05f2dd117f8d46c4131d08971fa1f21b220bcc401670741605cdba",
+    "656b2245d58da72d640680e5c2a168673a130b38607f2a427c773bbb167e995e",
+    "8f6230bdf67994c5125ee8230f84ba1a36dd6e25c9d52d6a6f285866897667aa",
+    "ce44b6c86de0873f8b5d8baf4aaeb1a1710916e81966b97bbc549cfd294ab7ca",
+    "d9be5ebc74ef50fdd5f750ab65966e1e1f65ae90eaa69ba49f794c026caa9623"
+  ],
+  "approved_training_datasets": [],
+  "approved_annotation_sources": [],
+  "accepted_experiments": [],
+  "historical_holdout_status": "already_evaluated_not_untouched",
+  "artifacts": {
+    "experiments/data/interim/url/iscx_url2016_phishing_clean.csv": {
+      "sha256": "733931f402c844cfea403dc10f0351e84f14341f1ce9e9f5152b70cf05d5eef2",
+      "size": 4636563,
+      "role": "historical_integrity_only",
+      "accepted_for_research": false
+    },
+    "experiments/data/interim/url/iscx_url2016_all_clean.csv": {
+      "sha256": "eef39623340e249d8444423d7fd4ff42702b4db8b6a9fa6acea8c37b5f3166ad",
+      "size": 8742754,
+      "role": "historical_integrity_only",
+      "accepted_for_research": false
+    },
+    "experiments/data/interim/email/enron_clean.csv": {
+      "sha256": "11f28a5bdd3603f1829681ab6b55071b5f9af781b4e6694e39216b2996a96883",
+      "size": 44837129,
+      "role": "historical_integrity_only",
+      "accepted_for_research": false
+    },
+    "experiments/data/interim/email/nazario_clean.csv": {
+      "sha256": "b8fbc4158fbdfaff1ed98584c43d72e283c6352d7ade4d457d34c1d79488d184",
+      "size": 7811841,
+      "role": "historical_integrity_only",
+      "accepted_for_research": false
+    },
+    "experiments/data/interim/email/ceas_08_clean.csv": {
+      "sha256": "22375e7d5f5a8229dbe987914ee9b3705656c590038662a7df6054629b376074",
+      "size": 67902056,
+      "role": "historical_integrity_only",
+      "accepted_for_research": false
+    },
+    "experiments/data/interim/email/spamassassin_clean.csv": {
+      "sha256": "3bfe8f8abff89f69a98456be50413c2fcb20a476141116dd84ee1507b980c00e",
+      "size": 14879195,
+      "role": "historical_integrity_only",
+      "accepted_for_research": false
+    },
+    "experiments/data/interim/webpage/phiusiil_clean.csv": {
+      "sha256": "8e2776b211706bff45ec9543c8fcd7dabfec43af9839b0f41875ccf1f26da386",
+      "size": 58920541,
+      "role": "historical_integrity_only",
+      "accepted_for_research": false
+    },
+    "experiments/data/interim/webpage/uci_phishing_websites_clean.csv": {
+      "sha256": "5bdf3b3429f31b4c31d137f3872eede81fe45f9473ad033afb425dd50e62ba92",
+      "size": 420700,
+      "role": "historical_integrity_only",
+      "accepted_for_research": false
+    },
+    "experiments/data/processed/features/sebrl/iscx_sebrl_features.csv": {
+      "sha256": "e59a4d381a71999066d90a94f970a987ba215f8972f3549cfe8507f1ae2b7368",
+      "size": 908929,
+      "role": "historical_integrity_only",
+      "accepted_for_research": false
+    },
+    "experiments/data/processed/features/sebrl/email_sebrl_features.csv": {
+      "sha256": "e704fd8cdb7cfe6ecada601d984ca58589de259328dfd0a2356aa0739bb883fa",
+      "size": 2519073,
+      "role": "historical_integrity_only",
+      "accepted_for_research": false
+    },
+    "experiments/data/processed/features/sebrl/phiusiil_sebrl_features.csv": {
+      "sha256": "edee73c21e2fdf90b008e14549f3720e6d7df65276d8a02d904c0cd8b7fbd960",
+      "size": 16878445,
+      "role": "historical_integrity_only",
+      "accepted_for_research": false
+    },
+    "experiments/data/processed/features/sebrl/uci_sebrl_features.csv": {
+      "sha256": "c7f039c60910d2d026692305aed238a127839cfd8e37d9f92445a0452714a1c4",
+      "size": 344554,
+      "role": "historical_integrity_only",
+      "accepted_for_research": false
+    },
+    "experiments/data/processed/preprocessed/email_preprocessed.csv": {
+      "sha256": "4478a4972bbc11cf5d0447ef80b1f2fdfda396290ba4d703fc0424b8a646566e",
+      "size": 178766418,
+      "role": "historical_integrity_only",
+      "accepted_for_research": false
+    },
+    "experiments/data/processed/preprocessed/phiusiil_preprocessed.csv": {
+      "sha256": "1e090bc2167dfd799e38e461342594373fcde85117492f9c84138d37c7ee5f07",
+      "size": 80986100,
+      "role": "historical_integrity_only",
+      "accepted_for_research": false
+    },
+    "experiments/data/processed/preprocessed/uci_phishing_websites_preprocessed.csv": {
+      "sha256": "e5558bced50e80b3133ea3c60ac7f062c5c02fa0bb3ce9df24d5ddba557bfadf",
+      "size": 1208480,
+      "role": "historical_integrity_only",
+      "accepted_for_research": false
+    },
+    "experiments/data/processed/preprocessed/iscx_url2016_preprocessed.csv": {
+      "sha256": "298b5891bd0ea7fa86e50e0b3c73798b9bef6f1bf74d26241b6f3da6f41663f6",
+      "size": 6675565,
+      "role": "historical_integrity_only",
+      "accepted_for_research": false
+    },
+    "experiments/results/preprocessing/partitions/email_partition_manifest.csv": {
+      "sha256": "e69484a395930f041ed582013cafd4957197057cba295e47d169131416790ceb",
+      "size": 2197659,
+      "role": "historical_partition_integrity_only",
+      "accepted_for_research": false
+    },
+    "experiments/results/preprocessing/partitions/phiusiil_partition_manifest.csv": {
+      "sha256": "5e8fd44753f8bef7ac9987d7cdc35c7172a0bcbdf9ad42925a058ce20334847e",
+      "size": 15227665,
+      "role": "historical_partition_integrity_only",
+      "accepted_for_research": false
+    },
+    "experiments/results/preprocessing/partitions/uci_partition_manifest.csv": {
+      "sha256": "304bb9446748e27bd4d1a7521513b1b2e31e0bab3be4f6fac0c8a0673ca7e6fd",
+      "size": 379433,
+      "role": "historical_partition_integrity_only",
+      "accepted_for_research": false
+    },
+    "experiments/results/preprocessing/partitions/iscx_partition_manifest.csv": {
+      "sha256": "4528c2102cb89d6631903212524aab90d678dc35cfef16c0baf2171b432ec36d",
+      "size": 997652,
+      "role": "historical_partition_integrity_only",
+      "accepted_for_research": false
+    },
+    "experiments/datasets-raw/url/iscx-url-2016/Phishing.csv": {
+      "sha256": "99c732baf469f76fe7fa79e28291b3fb685d06b86e307f26ba09fd2ba7d8ae99",
+      "size": 4635808,
+      "role": "native_custody_inspection_only",
+      "accepted_for_research": false
+    },
+    "experiments/datasets-raw/url/iscx-url-2016/All.csv": {
+      "sha256": "39bd96b0c4738daf7be9db7fb9561512afa5599ab34484aa5b7e70c1c55034c5",
+      "size": 11661240,
+      "role": "native_custody_inspection_only",
+      "accepted_for_research": false
+    },
+    "experiments/datasets-raw/email/spamassasin/SpamAssasin.csv": {
+      "sha256": "3bfe8f8abff89f69a98456be50413c2fcb20a476141116dd84ee1507b980c00e",
+      "size": 14879195,
+      "role": "native_custody_inspection_only",
+      "accepted_for_research": false
+    },
+    "experiments/datasets-raw/email/nazario/Nazario.csv": {
+      "sha256": "b8fbc4158fbdfaff1ed98584c43d72e283c6352d7ade4d457d34c1d79488d184",
+      "size": 7811841,
+      "role": "native_custody_inspection_only",
+      "accepted_for_research": false
+    },
+    "experiments/datasets-raw/email/ceas_08/CEAS_08.csv": {
+      "sha256": "22375e7d5f5a8229dbe987914ee9b3705656c590038662a7df6054629b376074",
+      "size": 67902056,
+      "role": "native_custody_inspection_only",
+      "accepted_for_research": false
+    },
+    "experiments/datasets-raw/email/enron/Enron.csv": {
+      "sha256": "11f28a5bdd3603f1829681ab6b55071b5f9af781b4e6694e39216b2996a96883",
+      "size": 44837129,
+      "role": "native_custody_inspection_only",
+      "accepted_for_research": false
+    },
+    "experiments/datasets-raw/webpage/PhiUSIL/PhiUSIIL_Phishing_URL_Dataset.csv": {
+      "sha256": "a236549cd369cd80bd478ff8e1779cbf44c58d5c3f79f7a51a1adbed7d06d1c6",
+      "size": 56854345,
+      "role": "native_custody_inspection_only",
+      "accepted_for_research": false
+    },
+    "experiments/datasets-raw/webpage/uci/phishing+websites/Training Dataset.arff": {
+      "sha256": "3bcf93b1612306537ee2737751f1bac185b2a77886ab376644c3bf0c7f7cb3e6",
+      "size": 800920,
+      "role": "native_custody_inspection_only",
+      "accepted_for_research": false
+    }
+  }
+}

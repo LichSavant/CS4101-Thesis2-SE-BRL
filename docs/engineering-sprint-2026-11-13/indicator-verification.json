@@ -1,0 +1,173 @@
+{
+  "scope": "Synthetic engineering contracts only; not semantic model accuracy",
+  "indicators": [
+    {
+      "indicator": "urgency",
+      "explicit_parameterized_contract_cases": 15,
+      "failed": 0,
+      "coverage": [
+        "email/webpage original spans",
+        "positive/negative/negated/counterfactual mock scores",
+        "missing content",
+        "standalone URL/technical restrictions",
+        "malformed scorer responses",
+        "abstention and no learned z"
+      ],
+      "scientific_validation": "PENDING"
+    },
+    {
+      "indicator": "fear_threat",
+      "explicit_parameterized_contract_cases": 15,
+      "failed": 0,
+      "coverage": [
+        "email/webpage original spans",
+        "positive/negative/negated/counterfactual mock scores",
+        "missing content",
+        "standalone URL/technical restrictions",
+        "malformed scorer responses",
+        "abstention and no learned z"
+      ],
+      "scientific_validation": "PENDING"
+    },
+    {
+      "indicator": "scarcity",
+      "explicit_parameterized_contract_cases": 15,
+      "failed": 0,
+      "coverage": [
+        "email/webpage original spans",
+        "positive/negative/negated/counterfactual mock scores",
+        "missing content",
+        "standalone URL/technical restrictions",
+        "malformed scorer responses",
+        "abstention and no learned z"
+      ],
+      "scientific_validation": "PENDING"
+    },
+    {
+      "indicator": "curiosity",
+      "explicit_parameterized_contract_cases": 15,
+      "failed": 0,
+      "coverage": [
+        "email/webpage original spans",
+        "positive/negative/negated/counterfactual mock scores",
+        "missing content",
+        "standalone URL/technical restrictions",
+        "malformed scorer responses",
+        "abstention and no learned z"
+      ],
+      "scientific_validation": "PENDING"
+    },
+    {
+      "indicator": "reward_lure",
+      "explicit_parameterized_contract_cases": 15,
+      "failed": 0,
+      "coverage": [
+        "email/webpage original spans",
+        "positive/negative/negated/counterfactual mock scores",
+        "missing content",
+        "standalone URL/technical restrictions",
+        "malformed scorer responses",
+        "abstention and no learned z"
+      ],
+      "scientific_validation": "PENDING"
+    },
+    {
+      "indicator": "authority",
+      "explicit_parameterized_contract_cases": 15,
+      "failed": 0,
+      "coverage": [
+        "email/webpage original spans",
+        "positive/negative/negated/counterfactual mock scores",
+        "missing content",
+        "standalone URL/technical restrictions",
+        "malformed scorer responses",
+        "abstention and no learned z"
+      ],
+      "scientific_validation": "PENDING"
+    },
+    {
+      "indicator": "impersonation",
+      "explicit_parameterized_contract_cases": 15,
+      "failed": 0,
+      "coverage": [
+        "email/webpage original spans",
+        "positive/negative/negated/counterfactual mock scores",
+        "missing content",
+        "standalone URL/technical restrictions",
+        "malformed scorer responses",
+        "abstention and no learned z"
+      ],
+      "scientific_validation": "PENDING"
+    },
+    {
+      "indicator": "brand_exploitation",
+      "explicit_parameterized_contract_cases": 15,
+      "failed": 0,
+      "coverage": [
+        "email/webpage original spans",
+        "positive/negative/negated/counterfactual mock scores",
+        "missing content",
+        "standalone URL/technical restrictions",
+        "malformed scorer responses",
+        "abstention and no learned z"
+      ],
+      "scientific_validation": "PENDING"
+    },
+    {
+      "indicator": "confidentiality_isolation",
+      "explicit_parameterized_contract_cases": 15,
+      "failed": 0,
+      "coverage": [
+        "email/webpage original spans",
+        "positive/negative/negated/counterfactual mock scores",
+        "missing content",
+        "standalone URL/technical restrictions",
+        "malformed scorer responses",
+        "abstention and no learned z"
+      ],
+      "scientific_validation": "PENDING"
+    },
+    {
+      "indicator": "call_to_action",
+      "explicit_parameterized_contract_cases": 15,
+      "failed": 0,
+      "coverage": [
+        "email/webpage original spans",
+        "positive/negative/negated/counterfactual mock scores",
+        "missing content",
+        "standalone URL/technical restrictions",
+        "malformed scorer responses",
+        "abstention and no learned z"
+      ],
+      "scientific_validation": "PENDING"
+    },
+    {
+      "indicator": "credential_sensitive_data_request",
+      "explicit_parameterized_contract_cases": 15,
+      "failed": 0,
+      "coverage": [
+        "email/webpage original spans",
+        "positive/negative/negated/counterfactual mock scores",
+        "missing content",
+        "standalone URL/technical restrictions",
+        "malformed scorer responses",
+        "abstention and no learned z"
+      ],
+      "scientific_validation": "PENDING"
+    },
+    {
+      "indicator": "financial_action_request",
+      "explicit_parameterized_contract_cases": 15,
+      "failed": 0,
+      "coverage": [
+        "email/webpage original spans",
+        "positive/negative/negated/counterfactual mock scores",
+        "missing content",
+        "standalone URL/technical restrictions",
+        "malformed scorer responses",
+        "abstention and no learned z"
+      ],
+      "scientific_validation": "PENDING"
+    }
+  ]
+}

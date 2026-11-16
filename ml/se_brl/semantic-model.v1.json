@@ -1,0 +1,14 @@
+{
+  "lock_version": "1.0.0",
+  "model": "cross-encoder/nli-MiniLM2-L6-H768",
+  "tokenizer": "cross-encoder/nli-MiniLM2-L6-H768",
+  "revision": "b95119ce93d3e065de6214e38cd4a97b0f2f2c6d",
+  "revision_evidence": "Existing local Hugging Face cache refs/main observed 2026-11-13; not independently verified upstream",
+  "hypotheses_sha256": "e4ccfdbb799d064c13ccccedf50be1a49818e910b9e9c0f9b3557b7da1ecfb2d",
+  "local_files_only": true,
+  "device": "cpu",
+  "max_tokens": 512,
+  "oversized_evidence_policy": "abstain_without_truncation",
+  "confidence_calibrated": false,
+  "scientifically_accepted": false
+}

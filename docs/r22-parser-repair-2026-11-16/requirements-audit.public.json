@@ -1,0 +1,702 @@
+{
+  "rubric_sha256": "a30442f1263773f1952ec23951919be912328100ca9541bdfdcb5dbb32cf9f78",
+  "fixed_denominator": 22,
+  "complete": 21,
+  "blocked": 1,
+  "completion_percent": 95.45454545454545,
+  "requirements": [
+    {
+      "id": "R01",
+      "name": "Preservation",
+      "acceptance": "Baseline source snapshot and exact file inventory; no deletion or forbidden repository/history change.",
+      "status": "PASSED",
+      "fresh_reproduced_prior_node_ids": [],
+      "source_evidence_unchanged": true,
+      "previous_evidence_role": "Prior engineering acceptance carried forward after source-hash check; never scientific acceptance.",
+      "implementation_evidence": [
+        "preservation-static.json",
+        "source-changes.json"
+      ],
+      "missing": [],
+      "dependencies": [
+        "Preserved original acceptance evidence and current executable software tests"
+      ]
+    },
+    {
+      "id": "R02",
+      "name": "Policy authority",
+      "acceptance": "Deterministic observations preserved; no semantic override or autonomous scientific promotion.",
+      "status": "PASSED",
+      "fresh_reproduced_prior_node_ids": [
+        "ml/tests/test_legacy_semantic_boundaries.py::test_v14_review_only_invariants_with_fake_scores_not_a_real_model_run",
+        "ml/tests/test_master3_regressions.py::test_legacy_review_ties_require_review_without_changing_labels[V13D_hybrid_extractor-extract]",
+        "ml/tests/test_master3_regressions.py::test_legacy_review_ties_require_review_without_changing_labels[V13E_review_policy-assess]",
+        "ml/tests/test_semantic_review.py::test_each_indicator_executes_grounded_functionality_without_neural_override[entailment-content_bearing_email-urgency]",
+        "ml/tests/test_semantic_review.py::test_each_indicator_executes_grounded_functionality_without_neural_override[entailment-content_bearing_email-fear_threat]",
+        "ml/tests/test_semantic_review.py::test_each_indicator_executes_grounded_functionality_without_neural_override[entailment-content_bearing_email-scarcity]",
+        "ml/tests/test_semantic_review.py::test_each_indicator_executes_grounded_functionality_without_neural_override[entailment-content_bearing_email-curiosity]",
+        "ml/tests/test_semantic_review.py::test_each_indicator_executes_grounded_functionality_without_neural_override[entailment-content_bearing_email-reward_lure]",
+        "ml/tests/test_semantic_review.py::test_each_indicator_executes_grounded_functionality_without_neural_override[entailment-content_bearing_email-authority]",
+        "ml/tests/test_semantic_review.py::test_each_indicator_executes_grounded_functionality_without_neural_override[entailment-content_bearing_email-impersonation]",
+        "ml/tests/test_semantic_review.py::test_each_indicator_executes_grounded_functionality_without_neural_override[entailment-content_bearing_email-brand_exploitation]",
+        "ml/tests/test_semantic_review.py::test_each_indicator_executes_grounded_functionality_without_neural_override[entailment-content_bearing_email-confidentiality_isolation]",
+        "ml/tests/test_semantic_review.py::test_each_indicator_executes_grounded_functionality_without_neural_override[entailment-content_bearing_email-call_to_action]",
+        "ml/tests/test_semantic_review.py::test_each_indicator_executes_grounded_functionality_without_neural_override[entailment-content_bearing_email-credential_sensitive_data_request]",
+        "ml/tests/test_semantic_review.py::test_each_indicator_executes_grounded_functionality_without_neural_override[entailment-content_bearing_email-financial_action_request]",
+        "ml/tests/test_semantic_review.py::test_each_indicator_executes_grounded_functionality_without_neural_override[entailment-content_bearing_webpage-urgency]",
+        "ml/tests/test_semantic_review.py::test_each_indicator_executes_grounded_functionality_without_neural_override[entailment-content_bearing_webpage-fear_threat]",
+        "ml/tests/test_semantic_review.py::test_each_indicator_executes_grounded_functionality_without_neural_override[entailment-content_bearing_webpage-scarcity]",
+        "ml/tests/test_semantic_review.py::test_each_indicator_executes_grounded_functionality_without_neural_override[entailment-content_bearing_webpage-curiosity]",
+        "ml/tests/test_semantic_review.py::test_each_indicator_executes_grounded_functionality_without_neural_override[entailment-content_bearing_webpage-reward_lure]",
+        "ml/tests/test_semantic_review.py::test_each_indicator_executes_grounded_functionality_without_neural_override[entailment-content_bearing_webpage-authority]",
+        "ml/tests/test_semantic_review.py::test_each_indicator_executes_grounded_functionality_without_neural_override[entailment-content_bearing_webpage-impersonation]",
+        "ml/tests/test_semantic_review.py::test_each_indicator_executes_grounded_functionality_without_neural_override[entailment-content_bearing_webpage-brand_exploitation]",
+        "ml/tests/test_semantic_review.py::test_each_indicator_executes_grounded_functionality_without_neural_override[entailment-content_bearing_webpage-confidentiality_isolation]",
+        "ml/tests/test_semantic_review.py::test_each_indicator_executes_grounded_functionality_without_neural_override[entailment-content_bearing_webpage-call_to_action]",
+        "ml/tests/test_semantic_review.py::test_each_indicator_executes_grounded_functionality_without_neural_override[entailment-content_bearing_webpage-credential_sensitive_data_request]",
+        "ml/tests/test_semantic_review.py::test_each_indicator_executes_grounded_functionality_without_neural_override[entailment-content_bearing_webpage-financial_action_request]",
+        "ml/tests/test_semantic_review.py::test_each_indicator_executes_grounded_functionality_without_neural_override[neutral-content_bearing_email-urgency]",
+        "ml/tests/test_semantic_review.py::test_each_indicator_executes_grounded_functionality_without_neural_override[neutral-content_bearing_email-fear_threat]",
+        "ml/tests/test_semantic_review.py::test_each_indicator_executes_grounded_functionality_without_neural_override[neutral-content_bearing_email-scarcity]",
+        "ml/tests/test_semantic_review.py::test_each_indicator_executes_grounded_functionality_without_neural_override[neutral-content_bearing_email-curiosity]",
+        "ml/tests/test_semantic_review.py::test_each_indicator_executes_grounded_functionality_without_neural_override[neutral-content_bearing_email-reward_lure]",
+        "ml/tests/test_semantic_review.py::test_each_indicator_executes_grounded_functionality_without_neural_override[neutral-content_bearing_email-authority]",
+        "ml/tests/test_semantic_review.py::test_each_indicator_executes_grounded_functionality_without_neural_override[neutral-content_bearing_email-impersonation]",
+        "ml/tests/test_semantic_review.py::test_each_indicator_executes_grounded_functionality_without_neural_override[neutral-content_bearing_email-brand_exploitation]",
+        "ml/tests/test_semantic_review.py::test_each_indicator_executes_grounded_functionality_without_neural_override[neutral-content_bearing_email-confidentiality_isolation]",
+        "ml/tests/test_semantic_review.py::test_each_indicator_executes_grounded_functionality_without_neural_override[neutral-content_bearing_email-call_to_action]",
+        "ml/tests/test_semantic_review.py::test_each_indicator_executes_grounded_functionality_without_neural_override[neutral-content_bearing_email-credential_sensitive_data_request]",
+        "ml/tests/test_semantic_review.py::test_each_indicator_executes_grounded_functionality_without_neural_override[neutral-content_bearing_email-financial_action_request]",
+        "ml/tests/test_semantic_review.py::test_each_indicator_executes_grounded_functionality_without_neural_override[neutral-content_bearing_webpage-urgency]",
+        "ml/tests/test_semantic_review.py::test_each_indicator_executes_grounded_functionality_without_neural_override[neutral-content_bearing_webpage-fear_threat]",
+        "ml/tests/test_semantic_review.py::test_each_indicator_executes_grounded_functionality_without_neural_override[neutral-content_bearing_webpage-scarcity]",
+        "ml/tests/test_semantic_review.py::test_each_indicator_executes_grounded_functionality_without_neural_override[neutral-content_bearing_webpage-curiosity]",
+        "ml/tests/test_semantic_review.py::test_each_indicator_executes_grounded_functionality_without_neural_override[neutral-content_bearing_webpage-reward_lure]",
+        "ml/tests/test_semantic_review.py::test_each_indicator_executes_grounded_functionality_without_neural_override[neutral-content_bearing_webpage-authority]",
+        "ml/tests/test_semantic_review.py::test_each_indicator_executes_grounded_functionality_without_neural_override[neutral-content_bearing_webpage-impersonation]",
+        "ml/tests/test_semantic_review.py::test_each_indicator_executes_grounded_functionality_without_neural_override[neutral-content_bearing_webpage-brand_exploitation]",
+        "ml/tests/test_semantic_review.py::test_each_indicator_executes_grounded_functionality_without_neural_override[neutral-content_bearing_webpage-confidentiality_isolation]",
+        "ml/tests/test_semantic_review.py::test_each_indicator_executes_grounded_functionality_without_neural_override[neutral-content_bearing_webpage-call_to_action]",
+        "ml/tests/test_semantic_review.py::test_each_indicator_executes_grounded_functionality_without_neural_override[neutral-content_bearing_webpage-credential_sensitive_data_request]",
+        "ml/tests/test_semantic_review.py::test_each_indicator_executes_grounded_functionality_without_neural_override[neutral-content_bearing_webpage-financial_action_request]",
+        "ml/tests/test_semantic_review.py::test_each_indicator_executes_grounded_functionality_without_neural_override[contradiction-content_bearing_email-urgency]",
+        "ml/tests/test_semantic_review.py::test_each_indicator_executes_grounded_functionality_without_neural_override[contradiction-content_bearing_email-fear_threat]",
+        "ml/tests/test_semantic_review.py::test_each_indicator_executes_grounded_functionality_without_neural_override[contradiction-content_bearing_email-scarcity]",
+        "ml/tests/test_semantic_review.py::test_each_indicator_executes_grounded_functionality_without_neural_override[contradiction-content_bearing_email-curiosity]",
+        "ml/tests/test_semantic_review.py::test_each_indicator_executes_grounded_functionality_without_neural_override[contradiction-content_bearing_email-reward_lure]",
+        "ml/tests/test_semantic_review.py::test_each_indicator_executes_grounded_functionality_without_neural_override[contradiction-content_bearing_email-authority]",
+        "ml/tests/test_semantic_review.py::test_each_indicator_executes_grounded_functionality_without_neural_override[contradiction-content_bearing_email-impersonation]",
+        "ml/tests/test_semantic_review.py::test_each_indicator_executes_grounded_functionality_without_neural_override[contradiction-content_bearing_email-brand_exploitation]",
+        "ml/tests/test_semantic_review.py::test_each_indicator_executes_grounded_functionality_without_neural_override[contradiction-content_bearing_email-confidentiality_isolation]",
+        "ml/tests/test_semantic_review.py::test_each_indicator_executes_grounded_functionality_without_neural_override[contradiction-content_bearing_email-call_to_action]",
+        "ml/tests/test_semantic_review.py::test_each_indicator_executes_grounded_functionality_without_neural_override[contradiction-content_bearing_email-credential_sensitive_data_request]",
+        "ml/tests/test_semantic_review.py::test_each_indicator_executes_grounded_functionality_without_neural_override[contradiction-content_bearing_email-financial_action_request]",
+        "ml/tests/test_semantic_review.py::test_each_indicator_executes_grounded_functionality_without_neural_override[contradiction-content_bearing_webpage-urgency]",
+        "ml/tests/test_semantic_review.py::test_each_indicator_executes_grounded_functionality_without_neural_override[contradiction-content_bearing_webpage-fear_threat]",
+        "ml/tests/test_semantic_review.py::test_each_indicator_executes_grounded_functionality_without_neural_override[contradiction-content_bearing_webpage-scarcity]",
+        "ml/tests/test_semantic_review.py::test_each_indicator_executes_grounded_functionality_without_neural_override[contradiction-content_bearing_webpage-curiosity]",
+        "ml/tests/test_semantic_review.py::test_each_indicator_executes_grounded_functionality_without_neural_override[contradiction-content_bearing_webpage-reward_lure]",
+        "ml/tests/test_semantic_review.py::test_each_indicator_executes_grounded_functionality_without_neural_override[contradiction-content_bearing_webpage-authority]",
+        "ml/tests/test_semantic_review.py::test_each_indicator_executes_grounded_functionality_without_neural_override[contradiction-content_bearing_webpage-impersonation]",
+        "ml/tests/test_semantic_review.py::test_each_indicator_executes_grounded_functionality_without_neural_override[contradiction-content_bearing_webpage-brand_exploitation]",
+        "ml/tests/test_semantic_review.py::test_each_indicator_executes_grounded_functionality_without_neural_override[contradiction-content_bearing_webpage-confidentiality_isolation]",
+        "ml/tests/test_semantic_review.py::test_each_indicator_executes_grounded_functionality_without_neural_override[contradiction-content_bearing_webpage-call_to_action]",
+        "ml/tests/test_semantic_review.py::test_each_indicator_executes_grounded_functionality_without_neural_override[contradiction-content_bearing_webpage-credential_sensitive_data_request]",
+        "ml/tests/test_semantic_review.py::test_each_indicator_executes_grounded_functionality_without_neural_override[contradiction-content_bearing_webpage-financial_action_request]"
+      ],
+      "source_evidence_unchanged": true,
+      "previous_evidence_role": "Prior engineering acceptance carried forward after source-hash check; never scientific acceptance.",
+      "implementation_evidence": [],
+      "missing": [],
+      "dependencies": [
+        "Preserved original acceptance evidence and current executable software tests"
+      ]
+    },
+    {
+      "id": "R03",
+      "name": "Twelve indicators",
+      "acceptance": "All canonical indicators have executable positive/negative, conditional evidence and context acceptance cases.",
+      "status": "PASSED",
+      "fresh_reproduced_prior_node_ids": [
+        "ml/tests/test_semantic_review.py::test_each_indicator_executes_grounded_functionality_without_neural_override[entailment-content_bearing_email-urgency]",
+        "ml/tests/test_semantic_review.py::test_each_indicator_executes_grounded_functionality_without_neural_override[entailment-content_bearing_email-fear_threat]",
+        "ml/tests/test_semantic_review.py::test_each_indicator_executes_grounded_functionality_without_neural_override[entailment-content_bearing_email-scarcity]",
+        "ml/tests/test_semantic_review.py::test_each_indicator_executes_grounded_functionality_without_neural_override[entailment-content_bearing_email-curiosity]",
+        "ml/tests/test_semantic_review.py::test_each_indicator_executes_grounded_functionality_without_neural_override[entailment-content_bearing_email-reward_lure]",
+        "ml/tests/test_semantic_review.py::test_each_indicator_executes_grounded_functionality_without_neural_override[entailment-content_bearing_email-authority]",
+        "ml/tests/test_semantic_review.py::test_each_indicator_executes_grounded_functionality_without_neural_override[entailment-content_bearing_email-impersonation]",
+        "ml/tests/test_semantic_review.py::test_each_indicator_executes_grounded_functionality_without_neural_override[entailment-content_bearing_email-brand_exploitation]",
+        "ml/tests/test_semantic_review.py::test_each_indicator_executes_grounded_functionality_without_neural_override[entailment-content_bearing_email-confidentiality_isolation]",
+        "ml/tests/test_semantic_review.py::test_each_indicator_executes_grounded_functionality_without_neural_override[entailment-content_bearing_email-call_to_action]",
+        "ml/tests/test_semantic_review.py::test_each_indicator_executes_grounded_functionality_without_neural_override[entailment-content_bearing_email-credential_sensitive_data_request]",
+        "ml/tests/test_semantic_review.py::test_each_indicator_executes_grounded_functionality_without_neural_override[entailment-content_bearing_email-financial_action_request]",
+        "ml/tests/test_semantic_review.py::test_each_indicator_executes_grounded_functionality_without_neural_override[entailment-content_bearing_webpage-urgency]",
+        "ml/tests/test_semantic_review.py::test_each_indicator_executes_grounded_functionality_without_neural_override[entailment-content_bearing_webpage-fear_threat]",
+        "ml/tests/test_semantic_review.py::test_each_indicator_executes_grounded_functionality_without_neural_override[entailment-content_bearing_webpage-scarcity]",
+        "ml/tests/test_semantic_review.py::test_each_indicator_executes_grounded_functionality_without_neural_override[entailment-content_bearing_webpage-curiosity]",
+        "ml/tests/test_semantic_review.py::test_each_indicator_executes_grounded_functionality_without_neural_override[entailment-content_bearing_webpage-reward_lure]",
+        "ml/tests/test_semantic_review.py::test_each_indicator_executes_grounded_functionality_without_neural_override[entailment-content_bearing_webpage-authority]",
+        "ml/tests/test_semantic_review.py::test_each_indicator_executes_grounded_functionality_without_neural_override[entailment-content_bearing_webpage-impersonation]",
+        "ml/tests/test_semantic_review.py::test_each_indicator_executes_grounded_functionality_without_neural_override[entailment-content_bearing_webpage-brand_exploitation]",
+        "ml/tests/test_semantic_review.py::test_each_indicator_executes_grounded_functionality_without_neural_override[entailment-content_bearing_webpage-confidentiality_isolation]",
+        "ml/tests/test_semantic_review.py::test_each_indicator_executes_grounded_functionality_without_neural_override[entailment-content_bearing_webpage-call_to_action]",
+        "ml/tests/test_semantic_review.py::test_each_indicator_executes_grounded_functionality_without_neural_override[entailment-content_bearing_webpage-credential_sensitive_data_request]",
+        "ml/tests/test_semantic_review.py::test_each_indicator_executes_grounded_functionality_without_neural_override[entailment-content_bearing_webpage-financial_action_request]",
+        "ml/tests/test_semantic_review.py::test_each_indicator_executes_grounded_functionality_without_neural_override[neutral-content_bearing_email-urgency]",
+        "ml/tests/test_semantic_review.py::test_each_indicator_executes_grounded_functionality_without_neural_override[neutral-content_bearing_email-fear_threat]",
+        "ml/tests/test_semantic_review.py::test_each_indicator_executes_grounded_functionality_without_neural_override[neutral-content_bearing_email-scarcity]",
+        "ml/tests/test_semantic_review.py::test_each_indicator_executes_grounded_functionality_without_neural_override[neutral-content_bearing_email-curiosity]",
+        "ml/tests/test_semantic_review.py::test_each_indicator_executes_grounded_functionality_without_neural_override[neutral-content_bearing_email-reward_lure]",
+        "ml/tests/test_semantic_review.py::test_each_indicator_executes_grounded_functionality_without_neural_override[neutral-content_bearing_email-authority]",
+        "ml/tests/test_semantic_review.py::test_each_indicator_executes_grounded_functionality_without_neural_override[neutral-content_bearing_email-impersonation]",
+        "ml/tests/test_semantic_review.py::test_each_indicator_executes_grounded_functionality_without_neural_override[neutral-content_bearing_email-brand_exploitation]",
+        "ml/tests/test_semantic_review.py::test_each_indicator_executes_grounded_functionality_without_neural_override[neutral-content_bearing_email-confidentiality_isolation]",
+        "ml/tests/test_semantic_review.py::test_each_indicator_executes_grounded_functionality_without_neural_override[neutral-content_bearing_email-call_to_action]",
+        "ml/tests/test_semantic_review.py::test_each_indicator_executes_grounded_functionality_without_neural_override[neutral-content_bearing_email-credential_sensitive_data_request]",
+        "ml/tests/test_semantic_review.py::test_each_indicator_executes_grounded_functionality_without_neural_override[neutral-content_bearing_email-financial_action_request]",
+        "ml/tests/test_semantic_review.py::test_each_indicator_executes_grounded_functionality_without_neural_override[neutral-content_bearing_webpage-urgency]",
+        "ml/tests/test_semantic_review.py::test_each_indicator_executes_grounded_functionality_without_neural_override[neutral-content_bearing_webpage-fear_threat]",
+        "ml/tests/test_semantic_review.py::test_each_indicator_executes_grounded_functionality_without_neural_override[neutral-content_bearing_webpage-scarcity]",
+        "ml/tests/test_semantic_review.py::test_each_indicator_executes_grounded_functionality_without_neural_override[neutral-content_bearing_webpage-curiosity]",
+        "ml/tests/test_semantic_review.py::test_each_indicator_executes_grounded_functionality_without_neural_override[neutral-content_bearing_webpage-reward_lure]",
+        "ml/tests/test_semantic_review.py::test_each_indicator_executes_grounded_functionality_without_neural_override[neutral-content_bearing_webpage-authority]",
+        "ml/tests/test_semantic_review.py::test_each_indicator_executes_grounded_functionality_without_neural_override[neutral-content_bearing_webpage-impersonation]",
+        "ml/tests/test_semantic_review.py::test_each_indicator_executes_grounded_functionality_without_neural_override[neutral-content_bearing_webpage-brand_exploitation]",
+        "ml/tests/test_semantic_review.py::test_each_indicator_executes_grounded_functionality_without_neural_override[neutral-content_bearing_webpage-confidentiality_isolation]",
+        "ml/tests/test_semantic_review.py::test_each_indicator_executes_grounded_functionality_without_neural_override[neutral-content_bearing_webpage-call_to_action]",
+        "ml/tests/test_semantic_review.py::test_each_indicator_executes_grounded_functionality_without_neural_override[neutral-content_bearing_webpage-credential_sensitive_data_request]",
+        "ml/tests/test_semantic_review.py::test_each_indicator_executes_grounded_functionality_without_neural_override[neutral-content_bearing_webpage-financial_action_request]",
+        "ml/tests/test_semantic_review.py::test_each_indicator_executes_grounded_functionality_without_neural_override[contradiction-content_bearing_email-urgency]",
+        "ml/tests/test_semantic_review.py::test_each_indicator_executes_grounded_functionality_without_neural_override[contradiction-content_bearing_email-fear_threat]",
+        "ml/tests/test_semantic_review.py::test_each_indicator_executes_grounded_functionality_without_neural_override[contradiction-content_bearing_email-scarcity]",
+        "ml/tests/test_semantic_review.py::test_each_indicator_executes_grounded_functionality_without_neural_override[contradiction-content_bearing_email-curiosity]",
+        "ml/tests/test_semantic_review.py::test_each_indicator_executes_grounded_functionality_without_neural_override[contradiction-content_bearing_email-reward_lure]",
+        "ml/tests/test_semantic_review.py::test_each_indicator_executes_grounded_functionality_without_neural_override[contradiction-content_bearing_email-authority]",
+        "ml/tests/test_semantic_review.py::test_each_indicator_executes_grounded_functionality_without_neural_override[contradiction-content_bearing_email-impersonation]",
+        "ml/tests/test_semantic_review.py::test_each_indicator_executes_grounded_functionality_without_neural_override[contradiction-content_bearing_email-brand_exploitation]",
+        "ml/tests/test_semantic_review.py::test_each_indicator_executes_grounded_functionality_without_neural_override[contradiction-content_bearing_email-confidentiality_isolation]",
+        "ml/tests/test_semantic_review.py::test_each_indicator_executes_grounded_functionality_without_neural_override[contradiction-content_bearing_email-call_to_action]",
+        "ml/tests/test_semantic_review.py::test_each_indicator_executes_grounded_functionality_without_neural_override[contradiction-content_bearing_email-credential_sensitive_data_request]",
+        "ml/tests/test_semantic_review.py::test_each_indicator_executes_grounded_functionality_without_neural_override[contradiction-content_bearing_email-financial_action_request]",
+        "ml/tests/test_semantic_review.py::test_each_indicator_executes_grounded_functionality_without_neural_override[contradiction-content_bearing_webpage-urgency]",
+        "ml/tests/test_semantic_review.py::test_each_indicator_executes_grounded_functionality_without_neural_override[contradiction-content_bearing_webpage-fear_threat]",
+        "ml/tests/test_semantic_review.py::test_each_indicator_executes_grounded_functionality_without_neural_override[contradiction-content_bearing_webpage-scarcity]",
+        "ml/tests/test_semantic_review.py::test_each_indicator_executes_grounded_functionality_without_neural_override[contradiction-content_bearing_webpage-curiosity]",
+        "ml/tests/test_semantic_review.py::test_each_indicator_executes_grounded_functionality_without_neural_override[contradiction-content_bearing_webpage-reward_lure]",
+        "ml/tests/test_semantic_review.py::test_each_indicator_executes_grounded_functionality_without_neural_override[contradiction-content_bearing_webpage-authority]",
+        "ml/tests/test_semantic_review.py::test_each_indicator_executes_grounded_functionality_without_neural_override[contradiction-content_bearing_webpage-impersonation]",
+        "ml/tests/test_semantic_review.py::test_each_indicator_executes_grounded_functionality_without_neural_override[contradiction-content_bearing_webpage-brand_exploitation]",
+        "ml/tests/test_semantic_review.py::test_each_indicator_executes_grounded_functionality_without_neural_override[contradiction-content_bearing_webpage-confidentiality_isolation]",
+        "ml/tests/test_semantic_review.py::test_each_indicator_executes_grounded_functionality_without_neural_override[contradiction-content_bearing_webpage-call_to_action]",
+        "ml/tests/test_semantic_review.py::test_each_indicator_executes_grounded_functionality_without_neural_override[contradiction-content_bearing_webpage-credential_sensitive_data_request]",
+        "ml/tests/test_semantic_review.py::test_each_indicator_executes_grounded_functionality_without_neural_override[contradiction-content_bearing_webpage-financial_action_request]",
+        "ml/tests/test_semantic_review.py::test_each_indicator_has_an_assessable_negative_or_explicit_unavailable[urgency]",
+        "ml/tests/test_semantic_review.py::test_each_indicator_has_an_assessable_negative_or_explicit_unavailable[fear_threat]",
+        "ml/tests/test_semantic_review.py::test_each_indicator_has_an_assessable_negative_or_explicit_unavailable[scarcity]",
+        "ml/tests/test_semantic_review.py::test_each_indicator_has_an_assessable_negative_or_explicit_unavailable[curiosity]",
+        "ml/tests/test_semantic_review.py::test_each_indicator_has_an_assessable_negative_or_explicit_unavailable[reward_lure]",
+        "ml/tests/test_semantic_review.py::test_each_indicator_has_an_assessable_negative_or_explicit_unavailable[authority]",
+        "ml/tests/test_semantic_review.py::test_each_indicator_has_an_assessable_negative_or_explicit_unavailable[impersonation]",
+        "ml/tests/test_semantic_review.py::test_each_indicator_has_an_assessable_negative_or_explicit_unavailable[brand_exploitation]",
+        "ml/tests/test_semantic_review.py::test_each_indicator_has_an_assessable_negative_or_explicit_unavailable[confidentiality_isolation]",
+        "ml/tests/test_semantic_review.py::test_each_indicator_has_an_assessable_negative_or_explicit_unavailable[call_to_action]",
+        "ml/tests/test_semantic_review.py::test_each_indicator_has_an_assessable_negative_or_explicit_unavailable[credential_sensitive_data_request]",
+        "ml/tests/test_semantic_review.py::test_each_indicator_has_an_assessable_negative_or_explicit_unavailable[financial_action_request]",
+        "ml/tests/test_semantic_review.py::test_every_indicator_excludes_contextual_counterexamples_before_semantic_scoring[The poster says \"{}\"-urgency]",
+        "ml/tests/test_semantic_review.py::test_every_indicator_excludes_contextual_counterexamples_before_semantic_scoring[The poster says \"{}\"-fear_threat]",
+        "ml/tests/test_semantic_review.py::test_every_indicator_excludes_contextual_counterexamples_before_semantic_scoring[The poster says \"{}\"-scarcity]",
+        "ml/tests/test_semantic_review.py::test_every_indicator_excludes_contextual_counterexamples_before_semantic_scoring[The poster says \"{}\"-curiosity]",
+        "ml/tests/test_semantic_review.py::test_every_indicator_excludes_contextual_counterexamples_before_semantic_scoring[The poster says \"{}\"-reward_lure]",
+        "ml/tests/test_semantic_review.py::test_every_indicator_excludes_contextual_counterexamples_before_semantic_scoring[The poster says \"{}\"-authority]",
+        "ml/tests/test_semantic_review.py::test_every_indicator_excludes_contextual_counterexamples_before_semantic_scoring[The poster says \"{}\"-impersonation]",
+        "ml/tests/test_semantic_review.py::test_every_indicator_excludes_contextual_counterexamples_before_semantic_scoring[The poster says \"{}\"-brand_exploitation]",
+        "ml/tests/test_semantic_review.py::test_every_indicator_excludes_contextual_counterexamples_before_semantic_scoring[The poster says \"{}\"-confidentiality_isolation]",
+        "ml/tests/test_semantic_review.py::test_every_indicator_excludes_contextual_counterexamples_before_semantic_scoring[The poster says \"{}\"-call_to_action]",
+        "ml/tests/test_semantic_review.py::test_every_indicator_excludes_contextual_counterexamples_before_semantic_scoring[The poster says \"{}\"-credential_sensitive_data_request]",
+        "ml/tests/test_semantic_review.py::test_every_indicator_excludes_contextual_counterexamples_before_semantic_scoring[The poster says \"{}\"-financial_action_request]",
+        "ml/tests/test_semantic_review.py::test_every_indicator_excludes_contextual_counterexamples_before_semantic_scoring[Security training: {}-urgency]",
+        "ml/tests/test_semantic_review.py::test_every_indicator_excludes_contextual_counterexamples_before_semantic_scoring[Security training: {}-fear_threat]",
+        "ml/tests/test_semantic_review.py::test_every_indicator_excludes_contextual_counterexamples_before_semantic_scoring[Security training: {}-scarcity]",
+        "ml/tests/test_semantic_review.py::test_every_indicator_excludes_contextual_counterexamples_before_semantic_scoring[Security training: {}-curiosity]",
+        "ml/tests/test_semantic_review.py::test_every_indicator_excludes_contextual_counterexamples_before_semantic_scoring[Security training: {}-reward_lure]",
+        "ml/tests/test_semantic_review.py::test_every_indicator_excludes_contextual_counterexamples_before_semantic_scoring[Security training: {}-authority]",
+        "ml/tests/test_semantic_review.py::test_every_indicator_excludes_contextual_counterexamples_before_semantic_scoring[Security training: {}-impersonation]",
+        "ml/tests/test_semantic_review.py::test_every_indicator_excludes_contextual_counterexamples_before_semantic_scoring[Security training: {}-brand_exploitation]",
+        "ml/tests/test_semantic_review.py::test_every_indicator_excludes_contextual_counterexamples_before_semantic_scoring[Security training: {}-confidentiality_isolation]",
+        "ml/tests/test_semantic_review.py::test_every_indicator_excludes_contextual_counterexamples_before_semantic_scoring[Security training: {}-call_to_action]",
+        "ml/tests/test_semantic_review.py::test_every_indicator_excludes_contextual_counterexamples_before_semantic_scoring[Security training: {}-credential_sensitive_data_request]",
+        "ml/tests/test_semantic_review.py::test_every_indicator_excludes_contextual_counterexamples_before_semantic_scoring[Security training: {}-financial_action_request]",
+        "ml/tests/test_semantic_review.py::test_every_indicator_excludes_contextual_counterexamples_before_semantic_scoring[Hypothetical: {}-urgency]",
+        "ml/tests/test_semantic_review.py::test_every_indicator_excludes_contextual_counterexamples_before_semantic_scoring[Hypothetical: {}-fear_threat]",
+        "ml/tests/test_semantic_review.py::test_every_indicator_excludes_contextual_counterexamples_before_semantic_scoring[Hypothetical: {}-scarcity]",
+        "ml/tests/test_semantic_review.py::test_every_indicator_excludes_contextual_counterexamples_before_semantic_scoring[Hypothetical: {}-curiosity]",
+        "ml/tests/test_semantic_review.py::test_every_indicator_excludes_contextual_counterexamples_before_semantic_scoring[Hypothetical: {}-reward_lure]",
+        "ml/tests/test_semantic_review.py::test_every_indicator_excludes_contextual_counterexamples_before_semantic_scoring[Hypothetical: {}-authority]",
+        "ml/tests/test_semantic_review.py::test_every_indicator_excludes_contextual_counterexamples_before_semantic_scoring[Hypothetical: {}-impersonation]",
+        "ml/tests/test_semantic_review.py::test_every_indicator_excludes_contextual_counterexamples_before_semantic_scoring[Hypothetical: {}-brand_exploitation]",
+        "ml/tests/test_semantic_review.py::test_every_indicator_excludes_contextual_counterexamples_before_semantic_scoring[Hypothetical: {}-confidentiality_isolation]",
+        "ml/tests/test_semantic_review.py::test_every_indicator_excludes_contextual_counterexamples_before_semantic_scoring[Hypothetical: {}-call_to_action]",
+        "ml/tests/test_semantic_review.py::test_every_indicator_excludes_contextual_counterexamples_before_semantic_scoring[Hypothetical: {}-credential_sensitive_data_request]",
+        "ml/tests/test_semantic_review.py::test_every_indicator_excludes_contextual_counterexamples_before_semantic_scoring[Hypothetical: {}-financial_action_request]",
+        "ml/tests/test_semantic_review.py::test_every_indicator_excludes_contextual_counterexamples_before_semantic_scoring[It is not true: {}-urgency]",
+        "ml/tests/test_semantic_review.py::test_every_indicator_excludes_contextual_counterexamples_before_semantic_scoring[It is not true: {}-fear_threat]",
+        "ml/tests/test_semantic_review.py::test_every_indicator_excludes_contextual_counterexamples_before_semantic_scoring[It is not true: {}-scarcity]",
+        "ml/tests/test_semantic_review.py::test_every_indicator_excludes_contextual_counterexamples_before_semantic_scoring[It is not true: {}-curiosity]",
+        "ml/tests/test_semantic_review.py::test_every_indicator_excludes_contextual_counterexamples_before_semantic_scoring[It is not true: {}-reward_lure]",
+        "ml/tests/test_semantic_review.py::test_every_indicator_excludes_contextual_counterexamples_before_semantic_scoring[It is not true: {}-authority]",
+        "ml/tests/test_semantic_review.py::test_every_indicator_excludes_contextual_counterexamples_before_semantic_scoring[It is not true: {}-impersonation]",
+        "ml/tests/test_semantic_review.py::test_every_indicator_excludes_contextual_counterexamples_before_semantic_scoring[It is not true: {}-brand_exploitation]",
+        "ml/tests/test_semantic_review.py::test_every_indicator_excludes_contextual_counterexamples_before_semantic_scoring[It is not true: {}-confidentiality_isolation]",
+        "ml/tests/test_semantic_review.py::test_every_indicator_excludes_contextual_counterexamples_before_semantic_scoring[It is not true: {}-call_to_action]",
+        "ml/tests/test_semantic_review.py::test_every_indicator_excludes_contextual_counterexamples_before_semantic_scoring[It is not true: {}-credential_sensitive_data_request]",
+        "ml/tests/test_semantic_review.py::test_every_indicator_excludes_contextual_counterexamples_before_semantic_scoring[It is not true: {}-financial_action_request]"
+      ],
+      "source_evidence_unchanged": true,
+      "previous_evidence_role": "Prior engineering acceptance carried forward after source-hash check; never scientific acceptance.",
+      "implementation_evidence": [],
+      "missing": [],
+      "dependencies": [
+        "Preserved original acceptance evidence and current executable software tests"
+      ]
+    },
+    {
+      "id": "R04",
+      "name": "Context",
+      "acceptance": "Quotation, warnings, education, hypotheticals and negation cannot authorize unsupported semantic assertions.",
+      "status": "PASSED",
+      "fresh_reproduced_prior_node_ids": [
+        "ml/tests/test_master3_regressions.py::test_double_negated_isolation_is_reviewed_without_scoring_the_reversed_directive",
+        "ml/tests/test_semantic_review.py::test_contexts_cannot_create_neural_support[The article quotes \"Submit your password\".]",
+        "ml/tests/test_semantic_review.py::test_contexts_cannot_create_neural_support[Security training: Submit your password.]",
+        "ml/tests/test_semantic_review.py::test_contexts_cannot_create_neural_support[Hypothetical: Submit your password.]",
+        "ml/tests/test_semantic_review.py::test_contexts_cannot_create_neural_support[Imagine you are told to submit your password.]",
+        "ml/tests/test_semantic_review.py::test_contexts_cannot_create_neural_support[A warning says submit your password.]",
+        "ml/tests/test_semantic_review.py::test_contexts_cannot_create_neural_support[Could you submit your password?]",
+        "ml/tests/test_semantic_review.py::test_contexts_cannot_create_neural_support[Never submit your password.]"
+      ],
+      "source_evidence_unchanged": true,
+      "previous_evidence_role": "Prior engineering acceptance carried forward after source-hash check; never scientific acceptance.",
+      "implementation_evidence": [],
+      "missing": [],
+      "dependencies": [
+        "Preserved original acceptance evidence and current executable software tests"
+      ]
+    },
+    {
+      "id": "R05",
+      "name": "Identity",
+      "acceptance": "Independent-reference declarations must be typed, source-linked and assessable; flags alone rejected.",
+      "status": "PASSED",
+      "fresh_reproduced_prior_node_ids": [
+        "ml/tests/test_master3_regressions.py::test_canonical_identity_evidence_rejects_boolean_offsets_and_nonboolean_quote_flags[start-False]",
+        "ml/tests/test_master3_regressions.py::test_canonical_identity_evidence_rejects_boolean_offsets_and_nonboolean_quote_flags[quoted-0]",
+        "ml/tests/test_semantic_review.py::test_identity_needs_typed_audited_artifact_linked_references"
+      ],
+      "source_evidence_unchanged": true,
+      "previous_evidence_role": "Prior engineering acceptance carried forward after source-hash check; never scientific acceptance.",
+      "implementation_evidence": [],
+      "missing": [],
+      "dependencies": [
+        "Preserved original acceptance evidence and current executable software tests"
+      ]
+    },
+    {
+      "id": "R06",
+      "name": "Missingness",
+      "acceptance": "Missing content, unsupported modality, absent, abstained and unavailable remain distinct.",
+      "status": "PASSED",
+      "fresh_reproduced_prior_node_ids": [
+        "ml/tests/test_review_adapter.py::test_unknown_vs_known_empty_and_explicit_collection_consent",
+        "ml/tests/test_semantic_review.py::test_noncontent_modalities_do_not_call_the_scorer[url-standalone_url-fields0]",
+        "ml/tests/test_semantic_review.py::test_noncontent_modalities_do_not_call_the_scorer[technical-engineered_technical_record-fields1]"
+      ],
+      "source_evidence_unchanged": true,
+      "previous_evidence_role": "Prior engineering acceptance carried forward after source-hash check; never scientific acceptance.",
+      "implementation_evidence": [],
+      "missing": [],
+      "dependencies": [
+        "Preserved original acceptance evidence and current executable software tests"
+      ]
+    },
+    {
+      "id": "R07",
+      "name": "NLI score contract",
+      "acceptance": "Strict finite normalized three-label scores, logit/token shapes and ties handled.",
+      "status": "PASSED",
+      "fresh_reproduced_prior_node_ids": [
+        "ml/tests/test_master3_regressions.py::test_legacy_score_consumers_reject_booleans_instead_of_treating_them_as_certainty[V13D_hybrid_extractor-extract]",
+        "ml/tests/test_master3_regressions.py::test_legacy_score_consumers_reject_booleans_instead_of_treating_them_as_certainty[V13E_review_policy-assess]",
+        "ml/tests/test_master3_regressions.py::test_legacy_score_consumers_reject_booleans_instead_of_treating_them_as_certainty[V15_autonomous_inference-decision_labels]",
+        "ml/tests/test_master3_regressions.py::test_legacy_score_consumers_reject_booleans_instead_of_treating_them_as_certainty[V13F_ablation_audit-candidate_top_labels]",
+        "ml/tests/test_master3_regressions.py::test_experimental_autonomous_voting_cannot_turn_a_tie_into_support",
+        "ml/tests/test_semantic_review.py::test_malformed_scores_fail_closed[scores0]",
+        "ml/tests/test_semantic_review.py::test_malformed_scores_fail_closed[scores1]",
+        "ml/tests/test_semantic_review.py::test_malformed_scores_fail_closed[scores2]",
+        "ml/tests/test_semantic_review.py::test_malformed_scores_fail_closed[scores3]"
+      ],
+      "source_evidence_unchanged": true,
+      "previous_evidence_role": "Prior engineering acceptance carried forward after source-hash check; never scientific acceptance.",
+      "implementation_evidence": [],
+      "missing": [],
+      "dependencies": [
+        "Preserved original acceptance evidence and current executable software tests"
+      ]
+    },
+    {
+      "id": "R08",
+      "name": "NLI resources",
+      "acceptance": "Pinned local-only explicit initialization; dependency/model failures sanitized without default predictions.",
+      "status": "PASSED",
+      "fresh_reproduced_prior_node_ids": [
+        "ml/tests/test_master3_regressions.py::test_optional_dependency_import_failures_are_sanitized[error0]",
+        "ml/tests/test_master3_regressions.py::test_optional_dependency_import_failures_are_sanitized[error1]",
+        "ml/tests/test_master3_regressions.py::test_optional_dependency_import_failures_are_sanitized[error2]",
+        "ml/tests/test_semantic_model_failures.py::test_noncanonical_logit_index_mappings_are_unavailable[labels0-3]",
+        "ml/tests/test_semantic_model_failures.py::test_noncanonical_logit_index_mappings_are_unavailable[labels1-3]",
+        "ml/tests/test_semantic_model_failures.py::test_noncanonical_logit_index_mappings_are_unavailable[labels2-3]",
+        "ml/tests/test_semantic_model_failures.py::test_noncanonical_logit_index_mappings_are_unavailable[labels3-3]",
+        "ml/tests/test_semantic_model_failures.py::test_noncanonical_logit_index_mappings_are_unavailable[labels4-4]",
+        "ml/tests/test_semantic_model_failures.py::test_noncanonical_logit_index_mappings_are_unavailable[labels5-True]",
+        "ml/tests/test_semantic_model_failures.py::test_token_shape_and_limit_fail_before_forward[shape0]",
+        "ml/tests/test_semantic_model_failures.py::test_token_shape_and_limit_fail_before_forward[shape1]",
+        "ml/tests/test_semantic_model_failures.py::test_token_shape_and_limit_fail_before_forward[shape2]",
+        "ml/tests/test_semantic_model_failures.py::test_token_shape_and_limit_fail_before_forward[shape3]",
+        "ml/tests/test_semantic_model_failures.py::test_token_shape_and_limit_fail_before_forward[shape4]"
+      ],
+      "source_evidence_unchanged": true,
+      "previous_evidence_role": "Prior engineering acceptance carried forward after source-hash check; never scientific acceptance.",
+      "implementation_evidence": [],
+      "missing": [],
+      "dependencies": [
+        "Preserved original acceptance evidence and current executable software tests"
+      ]
+    },
+    {
+      "id": "R09",
+      "name": "Reproducibility",
+      "acceptance": "Codebook/model/hypothesis/preprocessing/policy versions and fingerprints bind source contracts.",
+      "status": "PASSED",
+      "fresh_reproduced_prior_node_ids": [
+        "ml/tests/test_master3_regressions.py::test_evaluation_plan_detects_controller_source_drift_under_unchanged_versions",
+        "ml/tests/test_master3_regressions.py::test_reference_packet_v1_stays_supported_but_unbound_old_plans_are_not_silently_upgraded",
+        "ml/tests/test_runtime_compatibility.py::test_saved_local_declaration_binds_the_current_uncommitted_runtime"
+      ],
+      "source_evidence_unchanged": true,
+      "previous_evidence_role": "Prior engineering acceptance carried forward after source-hash check; never scientific acceptance.",
+      "implementation_evidence": [],
+      "missing": [],
+      "dependencies": [
+        "Preserved original acceptance evidence and current executable software tests"
+      ]
+    },
+    {
+      "id": "R10",
+      "name": "Evidence-only input",
+      "acceptance": "Explicit consent, language, opaque IDs, bounded source fields and predictor bookkeeping isolation.",
+      "status": "PASSED",
+      "fresh_reproduced_prior_node_ids": [
+        "ml/tests/test_review_adapter.py::test_published_callback_shape_is_supported_without_bookkeeping_predictors",
+        "ml/tests/test_review_adapter.py::test_unknown_vs_known_empty_and_explicit_collection_consent",
+        "ml/tests/test_review_adapter.py::test_unsupported_or_unknown_languages_are_not_ordinary_negatives[und]",
+        "ml/tests/test_review_adapter.py::test_unsupported_or_unknown_languages_are_not_ordinary_negatives[es]",
+        "ml/tests/test_review_adapter.py::test_unsupported_or_unknown_languages_are_not_ordinary_negatives[EN]",
+        "ml/tests/test_review_adapter.py::test_unsupported_or_unknown_languages_are_not_ordinary_negatives[None]",
+        "ml/tests/test_review_adapter.py::test_unsupported_or_unknown_languages_are_not_ordinary_negatives[True]"
+      ],
+      "source_evidence_unchanged": true,
+      "previous_evidence_role": "Prior engineering acceptance carried forward after source-hash check; never scientific acceptance.",
+      "implementation_evidence": [],
+      "missing": [],
+      "dependencies": [
+        "Preserved original acceptance evidence and current executable software tests"
+      ]
+    },
+    {
+      "id": "R11",
+      "name": "Output validation",
+      "acceptance": "Malformed, duplicated, forged, inconsistent or unapproved review documents fail closed.",
+      "status": "PASSED",
+      "fresh_reproduced_prior_node_ids": [
+        "ml/tests/test_master3_regressions.py::test_review_cannot_claim_context_blocking_when_context_is_eligible",
+        "ml/tests/test_master3_regressions.py::test_review_cannot_invent_semantic_disagreement_without_scores",
+        "ml/tests/test_semantic_review.py::test_output_schema_rejects_policy_and_type_changes[deterministic_state-absent]",
+        "ml/tests/test_semantic_review.py::test_output_schema_rejects_policy_and_type_changes[candidate_state-supported]",
+        "ml/tests/test_semantic_review.py::test_output_schema_rejects_policy_and_type_changes[needs_review-1]",
+        "ml/tests/test_semantic_review.py::test_output_schema_rejects_policy_and_type_changes[semantic_status-validated]"
+      ],
+      "source_evidence_unchanged": true,
+      "previous_evidence_role": "Prior engineering acceptance carried forward after source-hash check; never scientific acceptance.",
+      "implementation_evidence": [],
+      "missing": [],
+      "dependencies": [
+        "Preserved original acceptance evidence and current executable software tests"
+      ]
+    },
+    {
+      "id": "R12",
+      "name": "Compatibility safeguards",
+      "acceptance": "Executable runtime contract comparison rejects equal-version source/ordering/semantics mismatches and missing declarations.",
+      "status": "PASSED",
+      "fresh_reproduced_prior_node_ids": [
+        "ml/tests/test_runtime_compatibility.py::test_declaration_roundtrip_and_matching_claim_never_approve_integration",
+        "ml/tests/test_runtime_compatibility.py::test_equal_preprocessing_version_with_different_source_is_incompatible",
+        "ml/tests/test_runtime_compatibility.py::test_each_contract_area_is_compared_exactly[codebook]",
+        "ml/tests/test_runtime_compatibility.py::test_each_contract_area_is_compared_exactly[admission]",
+        "ml/tests/test_runtime_compatibility.py::test_each_contract_area_is_compared_exactly[normalization]",
+        "ml/tests/test_runtime_compatibility.py::test_each_contract_area_is_compared_exactly[taxonomy]",
+        "ml/tests/test_runtime_compatibility.py::test_each_contract_area_is_compared_exactly[input]",
+        "ml/tests/test_runtime_compatibility.py::test_each_contract_area_is_compared_exactly[output]",
+        "ml/tests/test_runtime_compatibility.py::test_each_contract_area_is_compared_exactly[representation]",
+        "ml/tests/test_runtime_compatibility.py::test_each_contract_area_is_compared_exactly[semantic_model]",
+        "ml/tests/test_runtime_compatibility.py::test_each_contract_area_is_compared_exactly[reference_validation]",
+        "ml/tests/test_runtime_compatibility.py::test_each_contract_area_is_compared_exactly[policy]",
+        "ml/tests/test_runtime_compatibility.py::test_each_contract_area_is_compared_exactly[source_files_utf8_lf_sha256]"
+      ],
+      "source_evidence_unchanged": true,
+      "previous_evidence_role": "Prior engineering acceptance carried forward after source-hash check; never scientific acceptance.",
+      "implementation_evidence": [],
+      "missing": [],
+      "dependencies": [
+        "Preserved original acceptance evidence and current executable software tests"
+      ]
+    },
+    {
+      "id": "R13",
+      "name": "Reference import",
+      "acceptance": "Immutable artifact-bound declared-human response validation; no generated judgments or authenticity claims.",
+      "status": "PASSED",
+      "fresh_reproduced_prior_node_ids": [
+        "ml/tests/test_behavioral_validation.py::test_reference_import_is_bound_immutable_and_does_not_authenticate_humans",
+        "ml/tests/test_master3_regressions.py::test_blinded_packet_cannot_carry_hidden_predictor_or_label_hints[target]",
+        "ml/tests/test_master3_regressions.py::test_blinded_packet_cannot_carry_hidden_predictor_or_label_hints[AI_rationale]",
+        "ml/tests/test_master3_regressions.py::test_blinded_packet_cannot_carry_hidden_predictor_or_label_hints[model_scores]",
+        "ml/tests/test_master3_regressions.py::test_blank_instrument_and_artifact_binding_are_checked_for_every_packet[indicators-value0]",
+        "ml/tests/test_master3_regressions.py::test_blank_instrument_and_artifact_binding_are_checked_for_every_packet[evidence-value1]",
+        "ml/tests/test_master3_regressions.py::test_blank_instrument_and_artifact_binding_are_checked_for_every_packet[uncertainty-value2]",
+        "ml/tests/test_master3_regressions.py::test_blank_instrument_and_artifact_binding_are_checked_for_every_packet[annotation_notes-previous model conclusion]",
+        "ml/tests/test_master3_regressions.py::test_blank_instrument_and_artifact_binding_are_checked_for_every_packet[modality-value4]",
+        "ml/tests/test_master3_regressions.py::test_blank_instrument_and_artifact_binding_are_checked_for_every_packet[text_hash-0000000000000000000000000000000000000000000000000000000000000000]"
+      ],
+      "source_evidence_unchanged": true,
+      "previous_evidence_role": "Prior engineering acceptance carried forward after source-hash check; never scientific acceptance.",
+      "implementation_evidence": [],
+      "missing": [],
+      "dependencies": [
+        "Preserved original acceptance evidence and current executable software tests"
+      ]
+    },
+    {
+      "id": "R14",
+      "name": "Adjudication",
+      "acceptance": "Separate immutable adjudication, strict provenance and binding; no source-response mutation or automatic voting.",
+      "status": "PASSED",
+      "fresh_reproduced_prior_node_ids": [
+        "ml/tests/test_behavioral_validation.py::test_adjudication_is_separate_bound_and_cannot_replace_responses",
+        "ml/tests/test_master3_regressions.py::test_adjudication_cannot_smuggle_ignored_authority_or_version_claims[AI_generated-True]",
+        "ml/tests/test_master3_regressions.py::test_adjudication_cannot_smuggle_ignored_authority_or_version_claims[codebook_version-999]",
+        "ml/tests/test_master3_regressions.py::test_adjudication_cannot_smuggle_ignored_authority_or_version_claims[modality-standalone_url]",
+        "ml/tests/test_master3_regressions.py::test_adjudication_reference_shape_failure_is_stable[None]",
+        "ml/tests/test_master3_regressions.py::test_adjudication_reference_shape_failure_is_stable[True]",
+        "ml/tests/test_master3_regressions.py::test_adjudication_reference_shape_failure_is_stable[refs2]",
+        "ml/tests/test_master3_regressions.py::test_adjudication_reference_shape_failure_is_stable[refs3]"
+      ],
+      "source_evidence_unchanged": true,
+      "previous_evidence_role": "Prior engineering acceptance carried forward after source-hash check; never scientific acceptance.",
+      "implementation_evidence": [],
+      "missing": [],
+      "dependencies": [
+        "Preserved original acceptance evidence and current executable software tests"
+      ]
+    },
+    {
+      "id": "R15",
+      "name": "Evaluation utilities",
+      "acceptance": "Bounded synthetic arithmetic, valid uncertainty interfaces and explicit denominators; no research accuracy evaluation.",
+      "status": "PASSED",
+      "fresh_reproduced_prior_node_ids": [
+        "ml/tests/test_behavioral_validation.py::test_synthetic_metrics_keep_abstention_unavailable_and_missing_separate",
+        "ml/tests/test_behavioral_validation.py::test_invalid_interval_counts_fail[True-1]",
+        "ml/tests/test_behavioral_validation.py::test_invalid_interval_counts_fail[1-True]",
+        "ml/tests/test_behavioral_validation.py::test_invalid_interval_counts_fail[-1-2]",
+        "ml/tests/test_behavioral_validation.py::test_invalid_interval_counts_fail[3-2]",
+        "ml/tests/test_behavioral_validation.py::test_invalid_interval_counts_fail[0--1]",
+        "ml/tests/test_behavioral_validation.py::test_wilson_extremes_and_closed_real_research_entrypoint"
+      ],
+      "source_evidence_unchanged": true,
+      "previous_evidence_role": "Prior engineering acceptance carried forward after source-hash check; never scientific acceptance.",
+      "implementation_evidence": [],
+      "missing": [],
+      "dependencies": [
+        "Preserved original acceptance evidence and current executable software tests"
+      ]
+    },
+    {
+      "id": "R16",
+      "name": "Reference separation",
+      "acceptance": "Exact supplied record/group separation and immutable evaluation plans; sealed-test execution closed.",
+      "status": "PASSED",
+      "fresh_reproduced_prior_node_ids": [
+        "ml/tests/test_behavioral_validation.py::test_plan_binds_model_policy_references_and_supplied_groups",
+        "ml/tests/test_behavioral_validation.py::test_wilson_extremes_and_closed_real_research_entrypoint"
+      ],
+      "source_evidence_unchanged": true,
+      "previous_evidence_role": "Prior engineering acceptance carried forward after source-hash check; never scientific acceptance.",
+      "implementation_evidence": [],
+      "missing": [],
+      "dependencies": [
+        "Preserved original acceptance evidence and current executable software tests"
+      ]
+    },
+    {
+      "id": "R17",
+      "name": "Exclusion and admission",
+      "acceptance": "Excluded sources rejected at owned boundaries; approvals remain empty and all research stages closed.",
+      "status": "PASSED",
+      "fresh_reproduced_prior_node_ids": [
+        "ml/tests/test_finalization_policy.py::test_every_research_stage_stays_closed",
+        "ml/tests/test_master3_regressions.py::test_legacy_corpus_entrypoints_stop_at_admission_before_reading_any_input[V13D_run_regression-run-args0]",
+        "ml/tests/test_master3_regressions.py::test_legacy_corpus_entrypoints_stop_at_admission_before_reading_any_input[V13F_ablation_audit-load_cases-args1]",
+        "ml/tests/test_master3_regressions.py::test_legacy_corpus_entrypoints_stop_at_admission_before_reading_any_input[V13F_ablation_audit-main-args2]",
+        "ml/tests/test_master3_regressions.py::test_legacy_corpus_entrypoints_stop_at_admission_before_reading_any_input[V14_annotation_integrity-inspect-args3]",
+        "ml/tests/test_master3_regressions.py::test_legacy_corpus_entrypoints_stop_at_admission_before_reading_any_input[V14_dataset_lineage-audit-args4]"
+      ],
+      "source_evidence_unchanged": true,
+      "previous_evidence_role": "Prior engineering acceptance carried forward after source-hash check; never scientific acceptance.",
+      "implementation_evidence": [],
+      "missing": [],
+      "dependencies": [
+        "Preserved original acceptance evidence and current executable software tests"
+      ]
+    },
+    {
+      "id": "R18",
+      "name": "Source evidence",
+      "acceptance": "All accepted locators match original Unicode fields and eligible source units; no corruption or fabricated support.",
+      "status": "PASSED",
+      "fresh_reproduced_prior_node_ids": [
+        "ml/tests/test_master3_regressions.py::test_canonical_identity_evidence_rejects_boolean_offsets_and_nonboolean_quote_flags[start-False]",
+        "ml/tests/test_master3_regressions.py::test_canonical_identity_evidence_rejects_boolean_offsets_and_nonboolean_quote_flags[quoted-0]",
+        "ml/tests/test_semantic_review.py::test_unicode_offsets_and_malformed_nested_output_are_rejected",
+        "ml/tests/test_semantic_review.py::test_offsets_context_and_availability_cannot_be_forged"
+      ],
+      "source_evidence_unchanged": true,
+      "previous_evidence_role": "Prior engineering acceptance carried forward after source-hash check; never scientific acceptance.",
+      "implementation_evidence": [],
+      "missing": [],
+      "dependencies": [
+        "Preserved original acceptance evidence and current executable software tests"
+      ]
+    },
+    {
+      "id": "R19",
+      "name": "No-fit verification",
+      "acceptance": "All permitted owned tests/static checks run with explicit restrictions, actual counters, and individual exclusion accounting.",
+      "status": "PASSED",
+      "fresh_reproduced_prior_node_ids": [],
+      "source_evidence_unchanged": true,
+      "previous_evidence_role": "Prior engineering acceptance carried forward after source-hash check; never scientific acceptance.",
+      "implementation_evidence": [
+        "verification.json",
+        "regression.xml",
+        "preservation-static.json"
+      ],
+      "missing": [],
+      "dependencies": [
+        "Preserved original acceptance evidence and current executable software tests"
+      ]
+    },
+    {
+      "id": "R20",
+      "name": "Handoff",
+      "acceptance": "Current source-only version comparison, exact changes, traceability, reproducible commands and classified blockers recorded.",
+      "status": "PASSED",
+      "fresh_reproduced_prior_node_ids": [],
+      "source_evidence_unchanged": true,
+      "previous_evidence_role": "Prior engineering acceptance carried forward after source-hash check; never scientific acceptance.",
+      "implementation_evidence": [
+        "INTEGRATION_HANDOFF.md",
+        "counterpart-sources.json",
+        "counterpart-verification.json"
+      ],
+      "missing": [],
+      "dependencies": [
+        "Preserved original acceptance evidence and current executable software tests"
+      ]
+    },
+    {
+      "id": "R21",
+      "name": "Notebook source verification",
+      "acceptance": "Verify all five actual notebook guards against an output-free source snapshot without opening protected retained outputs.",
+      "status": "PASSED",
+      "fresh_reproduced_prior_node_ids": [
+        "ml/tests/test_finalization_policy.py::test_all_notebooks_gate_before_side_effects_and_use_checked_loaders",
+        "ml/tests/test_notebook_sources.py::test_only_code_source_decoded_even_when_source_precedes_type[x = 1\\n]",
+        "ml/tests/test_notebook_sources.py::test_only_code_source_decoded_even_when_source_precedes_type[source1]",
+        "ml/tests/test_notebook_sources.py::test_noncode_source_is_not_decoded[markdown]",
+        "ml/tests/test_notebook_sources.py::test_noncode_source_is_not_decoded[raw]",
+        "ml/tests/test_notebook_sources.py::test_ambiguous_or_malformed_sources_rejected[{\"nbformat\":4,\"nbformat\":4,\"cells\":[]}]",
+        "ml/tests/test_notebook_sources.py::test_ambiguous_or_malformed_sources_rejected[{\"nbformat\":4,\"cells\":[{\"cell_type\":\"code\",\"source\":\"\",\"source\":\"x\"}]}]",
+        "ml/tests/test_notebook_sources.py::test_ambiguous_or_malformed_sources_rejected[{\"nbformat\":4,\"cells\":[{\"cell_type\":\"code\",\"source\":[1]}]}]",
+        "ml/tests/test_notebook_sources.py::test_ambiguous_or_malformed_sources_rejected[{\"nbformat\":true,\"cells\":[]}]",
+        "ml/tests/test_notebook_sources.py::test_ambiguous_or_malformed_sources_rejected[{\"nbformat\":3,\"cells\":[]}]",
+        "ml/tests/test_notebook_sources.py::test_ambiguous_or_malformed_sources_rejected[{\"nbformat\":4,\"cells\":[]} false]",
+        "ml/tests/test_notebook_sources.py::test_ambiguous_or_malformed_sources_rejected[{\"nbformat\":4,\"cells\":[],}]",
+        "ml/tests/test_notebook_sources.py::test_ambiguous_or_malformed_sources_rejected[{\"nbformat\":4,\"cells\":[{\"cell_type\":\"code\",\"source\":\"\",\"outputs\":[NaN]}]}]",
+        "ml/tests/test_notebook_sources.py::test_ambiguous_or_malformed_sources_rejected[{\"nbformat\":4,\"cells\":[{\"cell_type\":\"code\",\"source\":\"\",\"outputs\":[\"\\\\q\"]}]}]",
+        "ml/tests/test_notebook_sources.py::test_symlink_source_rejected",
+        "ml/tests/test_notebook_sources.py::test_projection_guard_and_loader_mutations_fail_closed[conditional]",
+        "ml/tests/test_notebook_sources.py::test_projection_guard_and_loader_mutations_fail_closed[side_effect]",
+        "ml/tests/test_notebook_sources.py::test_projection_guard_and_loader_mutations_fail_closed[wrong_stage]",
+        "ml/tests/test_notebook_sources.py::test_projection_guard_and_loader_mutations_fail_closed[reordered]",
+        "ml/tests/test_notebook_sources.py::test_projection_guard_and_loader_mutations_fail_closed[output]",
+        "ml/tests/test_notebook_sources.py::test_projection_guard_and_loader_mutations_fail_closed[unchecked_csv]",
+        "ml/tests/test_notebook_sources.py::test_projection_guard_and_loader_mutations_fail_closed[unchecked_arff]",
+        "ml/tests/test_notebook_sources.py::test_projection_guard_and_loader_mutations_fail_closed[absent]",
+        "ml/tests/test_notebook_sources.py::test_projection_guard_and_loader_mutations_fail_closed[drift]",
+        "ml/tests/test_notebook_sources.py::test_all_five_guards_closed_and_historical_invalid_cell_reported"
+      ],
+      "source_evidence_unchanged": true,
+      "previous_evidence_role": "Prior engineering acceptance carried forward after source-hash check; never scientific acceptance.",
+      "implementation_evidence": [
+        "notebook-verification.json",
+        "notebook-reproduction.json",
+        "regression.xml"
+      ],
+      "missing": [],
+      "dependencies": [
+        "Preserved original acceptance evidence and current executable software tests"
+      ]
+    },
+    {
+      "id": "R22",
+      "name": "External integration acceptance",
+      "acceptance": "Obtain a current counterpart runtime declaration and agreed acceptance evidence tied to an authoritative commit; do not infer integration from local fixtures.",
+      "status": "BLOCKED",
+      "fresh_reproduced_prior_node_ids": [],
+      "source_evidence_unchanged": true,
+      "previous_evidence_role": "Prior engineering acceptance carried forward after source-hash check; never scientific acceptance.",
+      "implementation_evidence": [
+        "integration-acceptance.json",
+        "counterpart-runtime.json",
+        "counterpart-source-manifest.json",
+        "agreed-integration-contract.md",
+        "vera-runtime-manifest.json",
+        "counterpart-verification.json",
+        "vera-verification.json",
+        "parser-verification.json",
+        "preprocessing-verification.json",
+        "safeguards-verification.json"
+      ],
+      "missing": [
+        "Dhanwil endorsement of the current source-derived runtime declaration",
+        "Vera attributable approval of exact runtime/contract/packet",
+        "Dhanwil attributable approval of same contract/packet"
+      ],
+      "dependencies": [
+        "Both researchers exact-hash sign-off"
+      ]
+    }
+  ],
+  "fresh_owned_tests": 1067,
+  "counts_not_additive": "50 joint and 34 parser/source cases are included in the 1067 owned cases. 52 peer preprocessing cases are also included in the verified historical 420 counterpart cases."
+}

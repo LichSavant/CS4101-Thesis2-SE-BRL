@@ -1,0 +1,273 @@
+{
+  "declaration_version": "1.0.0",
+  "base_commit": "85f6105ef2c520f98304c68b5d30f3cf657c04ae",
+  "source_state": "working_tree",
+  "contracts": {
+    "codebook": {
+      "schema_version": "1.0.0",
+      "version": "0.1.0",
+      "semantic_sha256": "dc6d0b1ff9800f0b0e894d809b18d8dde332f8bfa5382f6e2d1dd65e5a898e6a"
+    },
+    "preprocessing": {
+      "version": "0.2.0",
+      "source_utf8_lf_sha256": "56618ce593492dead9f7b1a3165522002de01553b2d8a85a7c202796708eebff"
+    },
+    "admission": {
+      "policy_version": "1.0.1",
+      "configuration_sha256": "88d5546ef58d3bcef5da0f85f8b246694c7d12cb40501f32ed5d0916393f92c6",
+      "approved_training_datasets": [],
+      "approved_annotation_sources": [],
+      "accepted_experiments": []
+    },
+    "normalization": {
+      "model_text": "HTML_unescape_then_NFKC_then_casefold_then_whitespace_collapse",
+      "source_evidence": "unchanged_original_fields",
+      "locators": "half_open_python_unicode_characters",
+      "unknown": null,
+      "known_empty_text": "",
+      "known_empty_links": []
+    },
+    "taxonomy": {
+      "indicator_order": [
+        "urgency",
+        "fear_threat",
+        "scarcity",
+        "curiosity",
+        "reward_lure",
+        "authority",
+        "impersonation",
+        "brand_exploitation",
+        "confidentiality_isolation",
+        "call_to_action",
+        "credential_sensitive_data_request",
+        "financial_action_request"
+      ],
+      "parents": {
+        "urgency": "pressure_threat_cues",
+        "fear_threat": "pressure_threat_cues",
+        "scarcity": "pressure_threat_cues",
+        "curiosity": "lure_attention_cues",
+        "reward_lure": "lure_attention_cues",
+        "authority": "trust_identity_manipulation",
+        "impersonation": "trust_identity_manipulation",
+        "brand_exploitation": "trust_identity_manipulation",
+        "confidentiality_isolation": "trust_identity_manipulation",
+        "call_to_action": "requested_action_consequence",
+        "credential_sensitive_data_request": "requested_action_consequence",
+        "financial_action_request": "requested_action_consequence"
+      },
+      "dimension_order": [
+        "pressure_threat_cues",
+        "lure_attention_cues",
+        "trust_identity_manipulation",
+        "requested_action_consequence"
+      ],
+      "modality_support": {
+        "content_bearing_email": {
+          "pressure_threat_cues": "A",
+          "lure_attention_cues": "A",
+          "trust_identity_manipulation": "A*",
+          "requested_action_consequence": "A"
+        },
+        "content_bearing_webpage": {
+          "pressure_threat_cues": "A",
+          "lure_attention_cues": "A",
+          "trust_identity_manipulation": "A*",
+          "requested_action_consequence": "A"
+        },
+        "standalone_url": {
+          "pressure_threat_cues": "U",
+          "lure_attention_cues": "U",
+          "trust_identity_manipulation": "U",
+          "requested_action_consequence": "U"
+        },
+        "engineered_technical_record": {
+          "pressure_threat_cues": "U",
+          "lure_attention_cues": "U",
+          "trust_identity_manipulation": "U",
+          "requested_action_consequence": "U"
+        }
+      }
+    },
+    "input": {
+      "schema_version": "1.0.0",
+      "required_fields": [
+        "artifact_id",
+        "body_collection_authorized",
+        "codebook_version",
+        "fields",
+        "language",
+        "link_extraction_authorized",
+        "modality",
+        "schema_version",
+        "source_id",
+        "source_reference",
+        "study_purpose"
+      ],
+      "modality_fields": {
+        "content_bearing_email": [
+          "body",
+          "headers",
+          "reply_to",
+          "sender",
+          "subject",
+          "urls"
+        ],
+        "content_bearing_webpage": [
+          "html",
+          "page_url",
+          "title",
+          "urls",
+          "visible_text"
+        ],
+        "standalone_url": [
+          "url",
+          "urls"
+        ],
+        "engineered_technical_record": []
+      },
+      "content_language": "explicit_english_only",
+      "body_consent": "explicit_plus_study_purpose",
+      "links": "opt_in"
+    },
+    "output": {
+      "schema_version": "1.0.0",
+      "envelope_fields": [
+        "artifact_id",
+        "artifact_sha256",
+        "availability_mask",
+        "codebook_version",
+        "dimension_order",
+        "indicators",
+        "learned_values",
+        "modality",
+        "policy_id",
+        "policy_version",
+        "preprocessing_contract",
+        "provenance_metadata",
+        "research_release",
+        "ruleset_version",
+        "schema_version",
+        "semantic_changes_labels",
+        "semantic_contract",
+        "source_id"
+      ],
+      "indicator_fields": [
+        "candidate_state",
+        "constraints",
+        "deterministic_state",
+        "dimension_id",
+        "evaluation_status",
+        "evidence",
+        "failure_codes",
+        "indicator_id",
+        "needs_review",
+        "review_reasons",
+        "semantic_candidates",
+        "semantic_status"
+      ],
+      "deterministic_states": [
+        "supported",
+        "absent",
+        "unavailable",
+        null
+      ],
+      "candidate_states": [
+        "abstained",
+        "unavailable"
+      ],
+      "availability_mask": "four_strict_binary_values"
+    },
+    "representation": {
+      "representation_types": [
+        "rule_derived_binary_v1",
+        "semantic_candidate_v1",
+        "validated_behavioral_decision_v1",
+        "learned_dimension_values_v1"
+      ],
+      "learned_feature_order": [
+        "z1",
+        "z2",
+        "z3",
+        "z4",
+        "a1",
+        "a2",
+        "a3",
+        "a4"
+      ],
+      "historical_binary_feature_order": [
+        "pressure_threat_supported",
+        "lure_attention_supported",
+        "trust_identity_supported",
+        "requested_action_consequence_supported",
+        "pressure_threat_available",
+        "lure_attention_available",
+        "trust_identity_available",
+        "requested_action_consequence_available"
+      ],
+      "historical_dimension_aliases": {
+        "pressure_threat": "pressure_threat_cues",
+        "lure_attention": "lure_attention_cues",
+        "trust_identity": "trust_identity_manipulation",
+        "requested_action_consequence": "requested_action_consequence"
+      },
+      "historical_indicator_aliases": {
+        "credential_sensitive_request": "credential_sensitive_data_request"
+      },
+      "learned_values": [
+        null,
+        null,
+        null,
+        null
+      ],
+      "accepted_behavioral_features": []
+    },
+    "semantic_model": {
+      "model": "cross-encoder/nli-MiniLM2-L6-H768",
+      "tokenizer": "cross-encoder/nli-MiniLM2-L6-H768",
+      "revision": "b95119ce93d3e065de6214e38cd4a97b0f2f2c6d",
+      "hypotheses_sha256": "e4ccfdbb799d064c13ccccedf50be1a49818e910b9e9c0f9b3557b7da1ecfb2d",
+      "max_tokens": 512,
+      "oversized_evidence_policy": "abstain_without_truncation",
+      "confidence_calibrated": false
+    },
+    "reference_validation": {
+      "packet_schema_version": "1.0.0",
+      "evaluation_plan_version": "1.1.0",
+      "independence_authenticated": false,
+      "research_execution_authorized": false
+    },
+    "policy": {
+      "policy_version": "1.0.0",
+      "policy_id": "deterministic_labels_semantic_review_v1",
+      "labels": "deterministic_observations_preserved",
+      "neural_authority": "review_only",
+      "source_custody": "caller_declaration_not_authenticated",
+      "confidence": "uncalibrated"
+    },
+    "source_files_utf8_lf_sha256": {
+      "ml/preprocessing.py": "56618ce593492dead9f7b1a3165522002de01553b2d8a85a7c202796708eebff",
+      "ml/datasets.py": "22fe1b4e20c42aa51764497673a66f5cbb113b1f4c2331b6d6cd46e3c54f8cb8",
+      "ml/metadata.py": "343bfe6ea9bdd037e71a07cee1dfdc5e1d9738ed20dc25536124db77b1448a3a",
+      "ml/research_policy.py": "1ebcb5ea14146ef301a5328586352f46a36cdbfaa8b86a0636470480fd827ea2",
+      "ml/research-inputs.v1.json": "828300024f3f6e17016469b0406181ce06f71b377b9f48dfa3454fe120c22d38",
+      "ml/behavioral_validation.py": "1911fa85428eb98f231bead3097de8925358aeb683ac82eefaf4fcd57741b456",
+      "ml/annotation_validation.py": "b63f74dc258ceb9bda18c64200068c5c0434cc1e49032a93e9151343a23733ef",
+      "ml/se_brl/context.py": "db4fb95a902928f9bb239b1931815f191035b2672f89c7712d691db6f7fbb86f",
+      "ml/se_brl/extraction.py": "068b7f53afe0019bad0a6d2f3a6e5721b8f72d4310ff5cade02a01cbf99bd104",
+      "ml/se_brl/detectors.py": "330f39c2dafb148f13ca10501f6cfbe73c396e73da1b4b692068c2cf456f2352",
+      "ml/se_brl/rules.py": "83364e399cbc39b51a6a90f1ff3ebd9c6b7ebacccab8e805b83813ccbd8192bc",
+      "ml/se_brl/semantic_review.py": "1411f43f4068e442dd0ca51be991bf725a11c7e48c6dce5e7da77ba83a193ad6",
+      "ml/se_brl/review_adapter.py": "e3af9338d043c48ebbd2b90eb70257a747315fad81127c148b8a671e7afb5bb7",
+      "ml/se_brl/semantic_candidates.py": "b38573962980dd4b99b47688083d172c250271502b0a66046f9afd2b67b195c3",
+      "ml/se_brl/codebook.py": "abfe10d4b1f926cf84e732c4a944d9f721eff0c245c811b0b7d17b7fb1478134",
+      "ml/se_brl/representation_contract.py": "2901320d54e27b3668e1100ab5bba493093b747bf06332b01b8ff1699671640e",
+      "ml/se_brl/runtime_compatibility.py": "6d967418e5ebd3ca8990b8fab3724c2e22570ede90619d3df61ec30a3a7f52f0"
+    }
+  },
+  "research_release": {
+    "approved_for_E2_E3": false,
+    "approved_for_sealed_test": false,
+    "publishable_as_validated_results": false
+  }
+}

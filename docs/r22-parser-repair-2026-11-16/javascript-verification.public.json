@@ -1,0 +1,56 @@
+{
+  "commands": {
+    "npm test": {
+      "exit_code": 0,
+      "extension_passed": 21,
+      "dashboard_passed": 8,
+      "total_passed": 29
+    },
+    "npm run typecheck": {
+      "exit_code": 0
+    },
+    "npm run build": {
+      "exit_code": 0
+    },
+    "node scripts/verify_gmail_privacy.cjs <typescript.js>": {
+      "exit_code": 0,
+      "synthetic_vm_checks": 7
+    },
+    "npm audit --json --ignore-scripts": {
+      "exit_code": 1,
+      "vulnerabilities": {
+        "info": 0,
+        "low": 0,
+        "moderate": 3,
+        "high": 4,
+        "critical": 2,
+        "total": 9
+      },
+      "affected_packages": [
+        "@vitest/mocker",
+        "baseline-browser-mapping",
+        "browserslist",
+        "nanoid",
+        "postcss",
+        "source-map-js",
+        "tinypool",
+        "vite",
+        "vitest"
+      ]
+    }
+  },
+  "node": "22.16.0",
+  "npm": "10.9.2",
+  "installed_package_versions": {
+    "vite": "6.4.3",
+    "vitest": "3.2.7",
+    "typescript": "5.9.3",
+    "react": "18.3.1",
+    "react-dom": "18.3.1",
+    "@vitejs/plugin-react": "4.7.0",
+    "jsdom": "25.0.1"
+  },
+  "dependencies": "Copied into isolated checkout from existing declared installation; no original dependency writes or lockfile changes.",
+  "production_security_clearance": false,
+  "research_inference_executed": false
+}

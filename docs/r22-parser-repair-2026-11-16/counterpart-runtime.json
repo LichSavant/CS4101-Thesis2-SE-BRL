@@ -1,0 +1,308 @@
+{
+  "declaration_version": "1.0.0",
+  "base_commit": "ae20372db6014d4f83153c03ccc2cd92f445ca8c",
+  "source_state": "committed",
+  "contracts": {
+    "codebook": {
+      "schema_version": "1.0.0",
+      "version": "0.1.0",
+      "semantic_sha256": "dc6d0b1ff9800f0b0e894d809b18d8dde332f8bfa5382f6e2d1dd65e5a898e6a"
+    },
+    "preprocessing": {
+      "version": "0.2.0",
+      "source_utf8_lf_sha256": "56618ce593492dead9f7b1a3165522002de01553b2d8a85a7c202796708eebff",
+      "unsupported_declaration_rejection": true,
+      "observed_upstream_test_failure": null,
+      "repair_commit": "ae20372db6014d4f83153c03ccc2cd92f445ca8c",
+      "native_verification_environment": {
+        "python_version": "3.12.16",
+        "sys_version": "3.12.16 (main, Oct 25 2026, 18:24:37) [Clang 15.0.0 (clang-1500.3.9.4)]",
+        "implementation": "CPython",
+        "native_execution": true,
+        "parser_modules_replaced": false,
+        "parser_modules": {
+          "html.parser": {
+            "sha256": "a4c5558209ffe6d677dbe18e4a4b2d34672c73aee46e39b1d118846afa62a9ff"
+          },
+          "_markupbase": {
+            "sha256": "cb14dd6f2e2439eb70b806cd49d19911363d424c2b6b9f4b73c9c08022d47030"
+          }
+        },
+        "dependency_versions": {
+          "pytest": "8.4.2",
+          "pydantic": "2.14.2",
+          "fastapi": "0.162.0",
+          "httpx": "0.28.1",
+          "sqlalchemy": null
+        }
+      }
+    },
+    "admission": {
+      "approval_inferred": false,
+      "compatibility_research_ready": false,
+      "policy_blockers": [
+        "P6_behavioral_semantics_unreconciled",
+        "P7_feature_dictionary_not_accepted",
+        "P11_research_authorization_required"
+      ]
+    },
+    "normalization": {
+      "model_text": "HTML_unescape_then_NFKC_then_casefold_then_whitespace_collapse",
+      "source_evidence": "unchanged_original_fields",
+      "locators": "half_open_python_unicode_characters",
+      "unknown": null,
+      "known_empty_text": "",
+      "known_empty_links": []
+    },
+    "taxonomy": {
+      "indicator_order": [
+        "urgency",
+        "fear_threat",
+        "scarcity",
+        "curiosity",
+        "reward_lure",
+        "authority",
+        "impersonation",
+        "brand_exploitation",
+        "confidentiality_isolation",
+        "call_to_action",
+        "credential_sensitive_data_request",
+        "financial_action_request"
+      ],
+      "parents": {
+        "urgency": "pressure_threat_cues",
+        "fear_threat": "pressure_threat_cues",
+        "scarcity": "pressure_threat_cues",
+        "curiosity": "lure_attention_cues",
+        "reward_lure": "lure_attention_cues",
+        "authority": "trust_identity_manipulation",
+        "impersonation": "trust_identity_manipulation",
+        "brand_exploitation": "trust_identity_manipulation",
+        "confidentiality_isolation": "trust_identity_manipulation",
+        "call_to_action": "requested_action_consequence",
+        "credential_sensitive_data_request": "requested_action_consequence",
+        "financial_action_request": "requested_action_consequence"
+      },
+      "dimension_order": [
+        "pressure_threat_cues",
+        "lure_attention_cues",
+        "trust_identity_manipulation",
+        "requested_action_consequence"
+      ]
+    },
+    "input": {
+      "adapter_version": "0.1.0",
+      "integration_version": "0.1.0",
+      "evidence_view_fields": [
+        "subject",
+        "body",
+        "sender",
+        "links"
+      ],
+      "text_wrapper_fields": [
+        "value"
+      ],
+      "link_wrapper_fields": [
+        "value"
+      ],
+      "view_contains_identity_language_or_consent": false,
+      "availability_states": [
+        "unavailable",
+        "known_empty",
+        "available"
+      ]
+    },
+    "output": {
+      "envelope_contract_version": "0.1.0",
+      "api_schema_sha256": "2a0bbf099005a1bba78a9bd021fdfee7ebcd6e5d4f159fdc785c5a87ee8a08a6",
+      "api_fields": [
+        "contract_version",
+        "se_brl_schema_version",
+        "se_brl_codebook_version",
+        "overall_status",
+        "modality_id",
+        "components",
+        "assessment_result",
+        "reason_codes",
+        "limitations"
+      ],
+      "generic_callback_output_validation": false,
+      "semantic_review_schema": null
+    },
+    "representation": {
+      "learned_feature_order": [
+        "z1",
+        "z2",
+        "z3",
+        "z4",
+        "a1",
+        "a2",
+        "a3",
+        "a4"
+      ],
+      "deterministic_support_availability": "nullable rule bits, not learned z",
+      "partial_evaluation": "None/None",
+      "unavailable": "0/0",
+      "assessed_absence": "0/1",
+      "structural_match_does_not_grant_research_authority": true
+    },
+    "semantic_model": {
+      "semantic_review_runtime_declared_in_selected_interface": false
+    },
+    "reference_validation": {
+      "independent_reference_acceptance_established": false
+    },
+    "policy": {
+      "observation_author": "Vera-side automated source inspection; not Dhanwil approval",
+      "fact_scope": "selected committed modules and recorded engineering probes",
+      "dhanwil_approval": null,
+      "joint_acceptance": false
+    },
+    "source_files_utf8_lf_sha256": {
+      "backend/__init__.py": "434fdfdad1da83ac97ca1e7b4965f75f4edf9cf1b17f4fbf370e849442978ddc",
+      "backend/app/__init__.py": "fdf874f842cf0ee4221bb1f3836851b606da11234f0fd9405e6d135090b9c83d",
+      "backend/app/analyzers.py": "9152d0fb77b84c21dd4e6f31686e3ffb5a1a9cd1458116d790f7cdf5405849dc",
+      "backend/app/artifact_service.py": "40cb8de4e4a00c14d730aa9efbc53536a8b08d8f8a260be1accaef51a8dd5fa9",
+      "backend/app/config.py": "17738fa9d83fd7c1872bf5fd76c74c048468307ed79b6debc2f4c15e28bf5c88",
+      "backend/app/main.py": "082e3f9a7a331cd3375146b345b2b0211d49a16b72421bc9834a439963171f02",
+      "backend/app/repository.py": "5129290832273e29a431a30b4eb8e44b0f7f7b689bbff9c90ad046b1df009988",
+      "backend/app/schemas.py": "b3af084c202731b6e59dba033b0e8420f8233b401f3c0968615c9934081ad2cd",
+      "backend/app/sebrl_adapter.py": "2968c0ada1b525bcd3cfa9e4bf3022390066fedcebb40fbc2b49c5e920176319",
+      "backend/app/sebrl_schemas.py": "0297cbe2a34d3197888ee3c87b9cde2b0802c8c6e29cdcec7ad01eb9ababc4b2",
+      "backend/app/sebrl_service.py": "fe0c75a40d36668068b4620416fa75ed288a7461a7d7018a038b2a53e85de340",
+      "backend/app/services.py": "87f5540248ec93fb840fc17ba10743e0a6de60467f6b0063bfdd59921ac2886d",
+      "backend/tests/test_api.py": "61d7598b8baad9beef5ea7f2fa453e075b26d7591de82a20abd4c77c76db0da0",
+      "backend/tests/test_artifact_service.py": "b8b61ecac2ed6083b8ac9670b93668f591d5db160b045721c9bb24c5912ec6c3",
+      "backend/tests/test_artifact_worker_bounds.py": "f82b706912df2b8464d36ad2f07e94cad2b88edb858d81f021465fe00ce7e9cd",
+      "backend/tests/test_sebrl_contract.py": "ec5892b99669576a40132717d6a771d7218c5a2dd4123b17f0fc6049072e0dc2",
+      "backend/tests/test_sebrl_endpoint.py": "1f167473ff85064aa25b6ff9639bcb1cc71a8e4de6b65bc7ccacd14c1bfb5cf4",
+      "backend/tests/test_sebrl_pipeline.py": "1d8043d422608042014b341ebbc5b37f1e5489f4bc34e8b013c5666ebfc23f06",
+      "backend/tests/test_sebrl_service.py": "deffb8426c3400ea2df40eff2746274badde746f7e29e45e142dac7c83be9a51",
+      "ml/__init__.py": "5044da58031613d32ea89c3a3bc72e6515981ae978b7f3a89a647ed731339edf",
+      "ml/artifact_analysis.py": "89de7be3d6ded474b904314ec26b702d3094dcf3ef631bd77a4d18022fb53aae",
+      "ml/attribution.py": "c6b5bd73741e2b2e4aa7854faef14c9cb3553a7104700fc2b3c451db82f13f54",
+      "ml/behavioral_compatibility.py": "2319979f2937e42112bd94c035dde822b0078d127a76702ba7d1050a6ad21fd0",
+      "ml/branch_preparation.py": "1796fbc4c430615586c31a161017289c681baeab5eecc3086cf8c9d6118d0b53",
+      "ml/classifier_adapters.py": "f5e06934ef1a0751224daedae6f9f4d326f2a12ed2a31eb2d5e6af827cb700ba",
+      "ml/content_preparation.py": "59b7334ece8c37ad8c590a7b16a3799a37630585713c0e7f8dd27c5273181365",
+      "ml/csv_source_audit.py": "639fd668f56adb7afa1352a5ba9e8218bc2490bb9537dea2b68d4f9e49ead7a7",
+      "ml/datasets.py": "4743956d4254dfe853c0bc022ef8ec1b205552d299a73bd3279f6fdd805323cb",
+      "ml/decision.py": "8804aae5d68b782abcce595be8079e410d0a1c8a0efea64dcdef8278e81b5be5",
+      "ml/development_experiments.py": "2e5ccb3c163c4d915f123e647505b18e0787bf87fa21b043b70b60117a958ea6",
+      "ml/development_runner.py": "e8065de5737e75a572ec84ff9fd69599c8104bf78c4ca54b8f6eef20bf3dcbbd",
+      "ml/diagnostic_execution.py": "fedd42aa91b043e693957eb48ae3cc28316fc95d931627f5285b2b845c85ea45",
+      "ml/evaluation_metrics.py": "36ce8855bfb85511727d9539005fa34620a23cfe86e86c630403b13b74a20445",
+      "ml/execution_identity.py": "435d6d9c0f4680e4f3fb1744b9fbf4e91034e9f7126182de1780cb292a367502",
+      "ml/experiment_artifacts.py": "cf4ab001d56963cbff471e92c4daf2beaf24a29a5ca6e078e31a8c52a55de21f",
+      "ml/experiment_engine.py": "2c4f8d3663bb8f943ed0e1c707b98e59fe55b6b8a6fdf8188b93ad64fdc2768d",
+      "ml/experiment_inputs.py": "94d3b35a3eb20064869757676eeea7d3a6e52ae7c1868de97079d264557b9728",
+      "ml/experiment_integration.py": "aa578ffd362f1770bd6928fdbe5e2110b407effa055bfc291770bef2f5407a74",
+      "ml/feature_freeze.py": "6e8f847a1adca56f7b0a22de5e01b6d16745f1b165a80398f2fc098af7512896",
+      "ml/feature_schema.py": "a6c6c26c459502be07949dd7f565eeb17f6e26c0e1a49ca32a15544224e85050",
+      "ml/feature_storage.py": "fabbac190bfee51546c297d51fee63a736b28c90cadc96fd711f0c8914299d5c",
+      "ml/features.py": "cad75f88cc4fdec85ccbdc4d65a247c38069b1254a2e998026b3d19580d65a7d",
+      "ml/genuine_classifier_smoke.py": "3d18cb50496a5539dd61ff5f2438e3b6be2863038ed59c2ffc016434934a6960",
+      "ml/grouping.py": "55264a9a462140bab18e8152c2c717c3c38bbe437358ecfa4fad803f9ab1e44c",
+      "ml/inference_benchmark.py": "030bf3a6b4da333bfdcd5737a56509db073f807af6f977c8d54d8e369e01ef80",
+      "ml/metadata.py": "343bfe6ea9bdd037e71a07cee1dfdc5e1d9738ed20dc25536124db77b1448a3a",
+      "ml/model_persistence.py": "6caae06ef59bad3d3b70d710472daacb9c676e796332c7fddb9971332ce8612c",
+      "ml/model_selection.py": "2dfb0597cafd9739e43957e4a35010eee8207827c1d8e2e6b76ce46c288ceff2",
+      "ml/models.py": "8832cef37fe629f4f933e99ad3745e1e5037607d4df2d58b66b3e42361ccf477",
+      "ml/notebook_contracts.py": "b190471a5bd1067f0cb385699e130c32be6000d0eab7680ca03db60ec191ee0a",
+      "ml/observed_features.py": "4ac62ea2e3a0b30703ccbd00922c010c7a3198fd85720f450df04cc9486c20eb",
+      "ml/pipeline.py": "2de4fb5fe3d54f332f308f4ed879aeca1711c0375d2178e232e39a61d9bacce1",
+      "ml/preflight.py": "bf28f4957f142a633ab4eb2a05644763f3dbe84bcf0343594f54de304889a18a",
+      "ml/preparation_execution.py": "27ddab2b48948bd361f25448f8838f442711a0e07cab59a9b1d5f200ad541875",
+      "ml/preparation_integrity.py": "1c95b74584dc275d13a56619b93f25b387c1d80177e6893cbcd7d0f46236488c",
+      "ml/preprocessing.py": "56618ce593492dead9f7b1a3165522002de01553b2d8a85a7c202796708eebff",
+      "ml/prospective_allocation.py": "1423e9dad80740cea9e700c5f74ecc261ad597738b51f156978a0a3cb5d5b50d",
+      "ml/readiness.py": "c34f14bce7576bc519a5a4973993e14dca25ca60f4029b0a0aaf42bd08fb1308",
+      "ml/research_execution.py": "a6134b1a29515a15af81920f0581ce338288ca56ae9aa687d6fd62658d021aa2",
+      "ml/research_protocol.py": "ee2451144f5f65df0af34ad6b3794c856ca11e11bdca23b2d4400fb7fdb3ce44",
+      "ml/run_preflight.py": "3f5b67d24fa3656f6c4a09b291053bf63ba7ef81d0225c0d19e29d7df2051926",
+      "ml/se_brl/__init__.py": "bb6eb6a5d7021db1657fd5b1bb66cb4c2b279dc29eadd81026dda0bedb44c3e6",
+      "ml/se_brl/assessment.py": "be6c32b195b8cca57cf4bb6df3c71397abe1f6e004587e12d48f1f602124299b",
+      "ml/se_brl/codebook.py": "abfe10d4b1f926cf84e732c4a944d9f721eff0c245c811b0b7d17b7fb1478134",
+      "ml/se_brl/codebook.v0.1.0.json": "5360a30f8d8781179db3dbd3def76c6b718d74521ea82522e0df35e518dabd94",
+      "ml/se_brl/context.py": "db4fb95a902928f9bb239b1931815f191035b2672f89c7712d691db6f7fbb86f",
+      "ml/se_brl/detectors.py": "d19d7d99951379343aac55b1d4f48477437148f8d1da33bf50b7edd56232a267",
+      "ml/se_brl/extraction.py": "068b7f53afe0019bad0a6d2f3a6e5721b8f72d4310ff5cade02a01cbf99bd104",
+      "ml/se_brl/representation.py": "83ebd704d2c297d0004a10e85916843ce405b8031486b6945bc12d087e28131d",
+      "ml/se_brl/result-envelope.v0.1.0.json": "504d0e20f27f07ae294f2262e021bdad7ae39f85fde159cc2efeba9756ce288c",
+      "ml/se_brl/result_envelope.py": "6d5b58d25fae01373c19f9ad1b989a8bd1470b0d845d5abb2bf5390883aa04a7",
+      "ml/se_brl/rules.py": "83364e399cbc39b51a6a90f1ff3ebd9c6b7ebacccab8e805b83813ccbd8192bc",
+      "ml/source_acquisition.py": "b5ed65b729f99ab53296aa1b2c3cc0fd96203952d755c84dee34c8dcf4380c01",
+      "ml/source_audit.py": "f3f5917e984e5ca694f033fdc4a983c29d72de3c1efafa2a2e76aecadfcd9b23",
+      "ml/source_controls.py": "b49ebbd0c4c786bb2edfa872dafe1cb98d12582626785ecd11d6d6adf3239f30",
+      "ml/synthetic_demo.py": "b2fb87772ddff188b37d005f95443ded2f15c9f4f8658a5adc20b1fbdb17d616",
+      "ml/synthetic_readback.py": "b54437d2177150a8c872f20ab63461d0401fe926a35b6aa110cada54238e47d6",
+      "ml/synthetic_system.py": "00d13f9d4b4e26fb7c7e2b764506540d114169108496693469d6e74f8e46a1bd",
+      "ml/tests/__init__.py": "d97d0059ee277b31c3eb5708371658265f899d252726cd32e5f9fdee711caa8d",
+      "ml/tests/no_fit_guard.py": "3f6db4544121df11d5a762475684fab5747ca7965cfdc5ce3ff600735d9eac93",
+      "ml/tests/test_artifact_analysis.py": "f909b89790039257e2bc596d29f898beba2ab5cc3079b3172c44c8e64c35f46c",
+      "ml/tests/test_assessment.py": "56d386e745a1a34e44b9e3c839c0530fa3d804ac565b2e98c8a8a81501346069",
+      "ml/tests/test_behavioral_compatibility.py": "c84ba7078a543514f6cff10a0da686d47203425c395ff08f716726b7f9de8a64",
+      "ml/tests/test_behavioral_path_conformance.py": "aa56b478bb2e85a8435caa5eb6e22625dbcc8290d4f3de4017f5a2ac2171b192",
+      "ml/tests/test_branch_preparation.py": "9065d4ce598e80b722213504a6d8ef0b72fb88165cc0e02865ceaaf50c8dc416",
+      "ml/tests/test_classifier_adapters.py": "45e9fb6eaffab5711c2d9951fd84c561aab5f6ba6751d123ca7b4ae4fa1e4fa7",
+      "ml/tests/test_codebook.py": "d8f89a53c17b002ffe150b9021775ae6aa9c0ca7a725d9495abe711f0e64fa7f",
+      "ml/tests/test_content_preparation.py": "51f99262ecda4cdb06e87f910e23607e6eb80ecb16564bdba2e1ccffd7e094a5",
+      "ml/tests/test_context_detectors.py": "b3e908b96705deb961d66fe6f6f4a77dea349b41448522d040658cba3df87a44",
+      "ml/tests/test_csv_source_audit.py": "ceb5f98b1c5bb35a8bdb6cd8f2e6ae25af5bea2c61f9b06d7d963f8b6b572f8e",
+      "ml/tests/test_dataset_boundaries.py": "4ecd5d206d3e9af701ecaa2e1dfba20d86503a797487365b6f33c8a65568b162",
+      "ml/tests/test_deterministic_representation.py": "7a00e184feb419d49e6ab8fed62de3b88741eab1c99e0229ff6d251a4a4905f7",
+      "ml/tests/test_development_experiments.py": "477cf21ec9a9ec180d73833101c274fbd87408dcc6dd529982432385d3ac0428",
+      "ml/tests/test_development_runner.py": "21ab690370f109f394b7a4b38d45755a3802e97b95c549a57ab47349e4cafe2e",
+      "ml/tests/test_engineering_completion.py": "9414e8ec4aac5d174606b0beb67ff02ab2ac1d91dc267092069460a29cbbbc68",
+      "ml/tests/test_engineering_leakage.py": "d65d6b2b130c4ed46a802b9f7b80e369a2d9fa333f95fd864e2505a351cc6632",
+      "ml/tests/test_evaluation_metrics.py": "ac6ca14025b4b7b021eac78cf082ea3296a530096bc674a383ffcced03e4ae03",
+      "ml/tests/test_execution_identity.py": "640729a9bcba6b23d26d9162821a7205ca13cfd63f367a38a9ca68a3c038e8ad",
+      "ml/tests/test_existing_bundle_integration.py": "64e07e458342c4f06528f6ce5c7854ed551db438edc3c340772c60b02802e166",
+      "ml/tests/test_experiment_artifacts.py": "b5fdd658f6841eeaa944da17d2a6046f9a347abd0c346642c097ea691d62a10f",
+      "ml/tests/test_experiment_engine.py": "a2fbe7e31dbe42c0f2dd7188938d7a272772a801fa050cc3df0d461dc562fabc",
+      "ml/tests/test_experiment_inputs.py": "ea8e1a6a057156f9f0e35144d27e244ce43c29e7994d5e90e62ca13a4f33b5f8",
+      "ml/tests/test_experiment_integration.py": "18d42947180e0c61c5569acc059650bede7c3c1aca8f4b697feb3b39d2677104",
+      "ml/tests/test_feature_freeze.py": "238a303a17e0b3ea3075b42dd1985903f76ab7934c1ecb9759c96d7efd155f2c",
+      "ml/tests/test_feature_schema_readiness.py": "c230f5846fb5ec852582c80eaa487bb0308dee0c9232c77ffbd914a21c1aaf73",
+      "ml/tests/test_features_pipeline.py": "c0042477a73f7fff25896932aa59fcadc2eabd97554f0a933f712046f69e9bc2",
+      "ml/tests/test_genuine_classifier_smoke.py": "e5fe1ea916584f59b5a36e5e422f4f1733e2abd0c3bf6f431093093e6b98afa9",
+      "ml/tests/test_inference_benchmark.py": "84f4da3f00ceeec2d187bfd50561e54d79e44f1b07a6f5c116320a74d11b1481",
+      "ml/tests/test_model_persistence.py": "ca4f5f49fcf19e8e6bfb6d2100b0d42cfeabedfc95cbec5ec8a08ef0f9f155a0",
+      "ml/tests/test_model_selection.py": "bbaad29a11b069b6f289e248ca8b2ff70221bd7a5b7e9a4243a534122d828b92",
+      "ml/tests/test_notebook_contracts.py": "6508e8dc16ed84f8813281905e371e75817bc983a7883866816a9365f50bc7d2",
+      "ml/tests/test_numeric_boundaries.py": "d1f10d160ac94e8c9e3a2061999b0f4d0df9a4154f965cf30e7ee304cd05cdf1",
+      "ml/tests/test_observed_features.py": "43cd788fc4fd7b53d843e167fbceec66cdec138e2f726916e70cfb9c96861989",
+      "ml/tests/test_preflight.py": "c4ba3825c99e634a584f7a4185fc844144bd12e5b632e8360bb95ff75d476357",
+      "ml/tests/test_preparation_execution.py": "c2bb18b80825befb33326b16d9174b1ad3c822ea3578b4f93e62d5596e2c463d",
+      "ml/tests/test_preparation_integrity.py": "ca09b38b5ace21da8a7aeb734792e753a2d1601627410f5dca28a041221eae2a",
+      "ml/tests/test_preprocessing.py": "f96c9485150440dfc4240e0ff241a4410351138f7f4975a34d5f3a3bb9ccb665",
+      "ml/tests/test_prospective_allocation.py": "7611ce321bb8a78d90da0446bd36a904247351ad2aae412bf82be1e33fb443da",
+      "ml/tests/test_release_candidate.py": "2fe2f74fadb7572bf6cab36d632122bdd8109a127212388e5d9f344b5e23288c",
+      "ml/tests/test_research_protocol.py": "a179ae5a026a3bd1ab639d8d585f3213db63a70bd82d78a276d1004ee5fb78c5",
+      "ml/tests/test_result_envelope.py": "dd4bca452106ced8f5b555d1262898416a323a864d10d812b9e7f2c380a512e4",
+      "ml/tests/test_rule_extraction.py": "a13a0fd43d3588a1dd0763d677a943b198ea0d6409a344a4187059796a61e81b",
+      "ml/tests/test_source_acquisition.py": "18ac3b0ee2de8b5a91d8f2d9cbfd6dafe63b254b8efed4fc02188c726951d991",
+      "ml/tests/test_source_audit.py": "1d035b9691f3aa1e63ae4b140058b6a66347b1bd18fd9c17aa091584e407d4df",
+      "ml/tests/test_source_controls.py": "3ebfb9dd54c600922cff6c16d45acf7373a57e7828539dfaea265503d2e53cbc",
+      "ml/tests/test_source_exclusion_boundary.py": "0a313454511670c56ef9a2d9ffcf719ab46a2165d4279d50f12b31e821e14e45",
+      "ml/tests/test_synthetic_demo.py": "aaec531f3eb402fb1c2894585e829bea08dfc1f29eaffc995ac4c826e58dc279",
+      "ml/tests/test_uci_preparation.py": "9459cc86c5bbb7e81f53957adbce693c3cafbebf808c35b9f38d45fd4348160f",
+      "ml/tests/test_web_development_contract.py": "4fdfffcd3bbce74d65874ac205185f6920b88acec79a1a43f26b4cc34e21cd4f",
+      "ml/tests/test_web_source_audit.py": "16d89e8c38574c8707664a5a50a518c73cac341f38af20789f603b5b813faed5",
+      "ml/uci_preparation.py": "e949a40d49eb975bdd2e1a603094b3de0ece5d95ef9186d6aec864c0423d0c03",
+      "ml/web_source_audit.py": "54940c2b4b2f9e09409169127e41d4fbf6d7424e4bc1e328f49816980d2c78ee",
+      "tools/verification/test_portability.py": "1bc393d7ac2bb3a3d7b16ee84adc6cb1d7939178c93ad89d5a34f37da67d88c4",
+      "tools/verification/verify.py": "0aa96c01e3453d68a1cc93d9da223ded2fa24378e978ce67c83095ecea1865a7"
+    }
+  },
+  "research_release": {
+    "approved_for_E2_E3": false,
+    "approved_for_sealed_test": false,
+    "publishable_as_validated_results": false
+  },
+  "publication_projection": {
+    "private_machine_paths_removed": true,
+    "original_sha256": "2405311af5dd5399ff1c682eb799d880992e70791993688c54d954718934d1b8",
+    "facts_are_source_derived_not_owner_approval": true
+  }
+}

@@ -24,11 +24,14 @@ describe("GmailEmailSourceAdapter fixture", () => {
     document.body.innerHTML = "<main role='main'></main>";
     await expect(new GmailEmailSourceAdapter(document).extractCurrentEmail()).rejects.toThrow("Open a Gmail message");
   });
-  it("does not read body text from stale legacy authorization flags", async () => {
+  it("never reads body text even if stale callers pass legacy authorization flags", async () => {
     document.body.innerHTML = `<h2 class="hP">Formatted</h2><div data-legacy-message-id="html-1"><span email="sender@example.com" name="Sender"></span><div class="a3s"><b>Urgent</b><br>verify account</div></div>`;
-    const body = document.querySelector<HTMLElement>(".a3s")!; Object.defineProperty(body, "innerText", { get: () => { throw new Error("Body must not be read"); } });
-    const result = await new GmailEmailSourceAdapter(document, { includeBody: true, bodyAuthorized: true }).extractCurrentEmail();
+    const body = document.querySelector<HTMLElement>(".a3s")!;
+    Object.defineProperty(body, "innerText", { get() { throw new Error("Unauthorized body read"); } });
+    const legacyOptions = { includeBody: true, bodyAuthorized: true, includeLinks: false };
+    const result = await new GmailEmailSourceAdapter(document, legacyOptions).extractCurrentEmail();
     expect(result.bodyText).toBeUndefined();
+    expect(result.links).toBeUndefined();
   });
   it("deduplicates multiple links from the selected message", async () => {
     document.body.innerHTML = `<h2 class="hP">Links</h2><div data-legacy-message-id="links-1"><span email="sender@example.com" name="Sender"></span><div class="a3s"><a href="https://one.example/a">one</a><a href="https://two.example/b">two</a><a href="https://one.example/a">again</a></div></div>`;
@@ -39,5 +42,12 @@ describe("GmailEmailSourceAdapter fixture", () => {
     document.body.innerHTML = `<h2 class="hP">Thread</h2><div data-legacy-message-id="older"><span email="old@example.com" name="Old"></span><div class="a3s">old</div></div><div data-legacy-message-id="latest"><span email="new@example.com" name="New"></span><div class="a3s">new</div></div>`;
     const result = await new GmailEmailSourceAdapter(document).extractCurrentEmail();
     expect(result.messageId).toBe("latest"); expect(result.senderEmail).toBe("new@example.com");
+  });
+  it("excludes hidden and unselected messages from opt-in link extraction", async () => {
+    document.body.innerHTML = `<h2 class="hP">Thread</h2><div data-legacy-message-id="older"><span email="old@example.com" name="Old"></span><div class="a3s"><a href="https://older.example/">old</a></div></div><div data-legacy-message-id="selected"><span email="selected@example.com" name="Selected"></span><div class="a3s"><a href="https://selected.example/">selected</a></div></div><div hidden data-legacy-message-id="hidden"><span email="hidden@example.com" name="Hidden"></span><div class="a3s"><a href="https://hidden.example/">hidden</a></div></div>`;
+    const result = await new GmailEmailSourceAdapter(document, { includeLinks: true }).extractCurrentEmail();
+    expect(result.messageId).toBe("selected");
+    expect(result.links).toEqual(["https://selected.example/"]);
+    expect(result.bodyText).toBeUndefined();
   });
 });

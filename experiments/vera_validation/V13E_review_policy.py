@@ -15,7 +15,8 @@ HERE = Path(__file__).resolve().parent
 INDICATORS = tuple(rules_only('Example content.'))
 
 def _top(scores: list[dict[str, Any]]) -> list[str]:
-    return [max(('entailment','neutral','contradiction'), key=lambda k:float(s[k])) for s in scores]
+    from ml.se_brl.semantic_candidates import validate_scores
+    return [max(('entailment','neutral','contradiction'), key=lambda k:s[k]) for s in validate_scores(scores)]
 
 def assess(text: str, modality: str = 'content_bearing_email', identity_evidence=None,
            semantic=None, indicators: list[str] | None = None) -> dict[str, Any]:
@@ -39,12 +40,16 @@ def assess(text: str, modality: str = 'content_bearing_email', identity_evidence
             for span in record['evidence']:
                 assert text[span['start']:span['end']] == span['text']
         if indicator in chosen and semantic is not None and record['state']!='unavailable':
-            scores = semantic.score(text, indicator)
-            if len(scores)!=3: raise ValueError('Expected three candidate hypotheses')
+            from ml.se_brl.semantic_candidates import validate_scores
+            scores = validate_scores(semantic.score(text, indicator))
             record['nli_scores'] = scores
             top = _top(scores)
             record['nli_top_labels'] = top
-            if len(set(top))>1:
+            tied = any(sum(v == max(s.values()) for v in s.values()) > 1 for s in scores)
+            if tied:
+                record['needs_review'] = True
+                record['semantic_review'] = 'hypothesis_tie_requires_review'
+            elif len(set(top))>1:
                 record['needs_review'] = True
                 record['semantic_review'] = 'hypothesis_disagreement'
             elif top[0]=='entailment' and record['state']=='absent':

@@ -63,17 +63,14 @@ def generate_candidates(
             item["state"] = "unavailable"
             item["reason"] = "content evidence unavailable"
 
-        elif indicator in IDENTITY_DEPENDENT and not (
-            isinstance(identity_evidence, dict)
-            and identity_evidence.get("verified") is True
-        ):
+        elif indicator in IDENTITY_DEPENDENT:
             item["state"] = "unavailable"
-            item["reason"] = "independent identity evidence unavailable"
+            item["reason"] = "use canonical artifact-linked identity interface; legacy flags are not proof"
+
+        elif semantic is None:
+            item["reason"] = "explicit semantic scorer required; implicit model initialization disabled"
 
         else:
-            if semantic is None:
-                semantic = SemanticNLI()
-
             for unit in units:
                 scores = semantic.score(unit["text"], indicator)
                 if len(scores) != 3:

@@ -1,0 +1,707 @@
+{
+  "schema": "notebook-code-source-v1",
+  "notebook": "03_preprocessing.ipynb",
+  "nbformat": 4,
+  "cells": [
+    {
+      "index": 0,
+      "cell_type": "code",
+      "source": "# Research release guard (finalization 2026-11-13). No fitting/preparation authorized.\nfrom pathlib import Path as _PolicyPath\nimport sys as _policy_sys\n_policy_root = next((p for p in [_PolicyPath.cwd(), *_PolicyPath.cwd().parents]\n                     if (p / \"ml\" / \"research_policy.py\").is_file()), None)\nif _policy_root is None:\n    raise RuntimeError(\"Research policy unavailable; refusing execution\")\nif str(_policy_root) not in _policy_sys.path:\n    _policy_sys.path.insert(0, str(_policy_root))\nfrom ml.research_policy import require_stage_authorization, read_research_csv, verify_research_path\nrequire_stage_authorization(\"preprocessing\")\n"
+    },
+    {
+      "index": 1,
+      "cell_type": "markdown"
+    },
+    {
+      "index": 2,
+      "cell_type": "markdown"
+    },
+    {
+      "index": 3,
+      "cell_type": "code",
+      "source": "from pathlib import Path\nimport hashlib\n\nimport numpy as np\nimport pandas as pd\n\npd.set_option(\"display.max_columns\", None)\npd.set_option(\"display.max_rows\", 100)\npd.set_option(\"display.max_colwidth\", 100)"
+    },
+    {
+      "index": 4,
+      "cell_type": "code",
+      "source": "cwd = Path.cwd().resolve()\n\nREPO_ROOT = next(\n    (\n        p for p in [cwd, *cwd.parents]\n        if (p / \".git\").exists()\n        and (p / \"experiments\").exists()\n    ),\n    None\n)\n\nif REPO_ROOT is None:\n    raise RuntimeError(\"Could not locate repository root.\")\n\nINTERIM_DIR = REPO_ROOT / \"experiments\" / \"data\" / \"interim\"\nAUDIT_DIR = REPO_ROOT / \"experiments\" / \"results\" / \"audits\"\nCLEANING_DIR = REPO_ROOT / \"experiments\" / \"results\" / \"cleaning\"\n\nPROCESSED_DIR = REPO_ROOT / \"experiments\" / \"data\" / \"processed\"\nPREPROCESSING_RESULTS_DIR = (\n    REPO_ROOT / \"experiments\" / \"results\" / \"preprocessing\"\n)\n\nPROCESSED_DIR.mkdir(parents=True, exist_ok=True)\nPREPROCESSING_RESULTS_DIR.mkdir(parents=True, exist_ok=True)\n\nprint(\"Repository root:\", REPO_ROOT)\nprint(\"Cleaned data:\", INTERIM_DIR)\nprint(\"Audit evidence:\", AUDIT_DIR)\nprint(\"Cleaning evidence:\", CLEANING_DIR)\nprint(\"Processed output:\", PROCESSED_DIR)\nprint(\"Preprocessing results:\", PREPROCESSING_RESULTS_DIR)"
+    },
+    {
+      "index": 5,
+      "cell_type": "code",
+      "source": "print(\"Cleaned data exists:\", INTERIM_DIR.exists())\nprint(\"Audit evidence exists:\", AUDIT_DIR.exists())\nprint(\"Cleaning evidence exists:\", CLEANING_DIR.exists())\nprint(\"Processed output exists:\", PROCESSED_DIR.exists())\nprint(\n    \"Preprocessing results exist:\",\n    PREPROCESSING_RESULTS_DIR.exists()\n)"
+    },
+    {
+      "index": 6,
+      "cell_type": "markdown"
+    },
+    {
+      "index": 7,
+      "cell_type": "code",
+      "source": "DATASETS = {\n    \"CEAS-08\":\n        INTERIM_DIR / \"email\" / \"ceas_08_clean.csv\",\n\n    \"Enron\":\n        INTERIM_DIR / \"email\" / \"enron_clean.csv\",\n\n    \"Nazario\":\n        INTERIM_DIR / \"email\" / \"nazario_clean.csv\",\n\n    \"SpamAssassin\":\n        INTERIM_DIR / \"email\" / \"spamassassin_clean.csv\",\n\n    \"PhiUSIIL\":\n        INTERIM_DIR / \"webpage\" / \"phiusiil_clean.csv\",\n\n    \"UCI Phishing Websites\":\n        INTERIM_DIR / \"webpage\" / \"uci_phishing_websites_clean.csv\",\n\n    \"ISCX-URL2016 All\":\n        INTERIM_DIR / \"url\" / \"iscx_url2016_all_clean.csv\",\n\n    \"ISCX-URL2016 Phishing\":\n        INTERIM_DIR / \"url\" / \"iscx_url2016_phishing_clean.csv\",\n}\n\nfor name, path in DATASETS.items():\n    print(f\"{name:26s} {'OK' if path.exists() else 'MISSING'}\")"
+    },
+    {
+      "index": 8,
+      "cell_type": "code",
+      "source": "data = {\n    name: read_research_csv(path)\n    for name, path in DATASETS.items()\n}\n\ndataset_shapes = pd.DataFrame([\n    {\n        \"dataset\": name,\n        \"rows\": len(df),\n        \"columns\": len(df.columns)\n    }\n    for name, df in data.items()\n])\n\ndataset_shapes"
+    },
+    {
+      "index": 9,
+      "cell_type": "markdown"
+    },
+    {
+      "index": 10,
+      "cell_type": "code",
+      "source": "label_columns = {\n    \"CEAS-08\": \"label\",\n    \"Enron\": \"label\",\n    \"Nazario\": \"label\",\n    \"SpamAssassin\": \"label\",\n    \"PhiUSIIL\": \"label\",\n    \"UCI Phishing Websites\": \"Result\",\n    \"ISCX-URL2016 All\": \"URL_Type_obf_Type\",\n    \"ISCX-URL2016 Phishing\": \"URL_Type_obf_Type\",\n}\n\nnative_label_summary = []\n\nfor name, label_col in label_columns.items():\n    counts = data[name][label_col].value_counts(\n        dropna=False\n    )\n\n    for value, count in counts.items():\n        native_label_summary.append({\n            \"dataset\": name,\n            \"label_column\": label_col,\n            \"native_label\": value,\n            \"count\": int(count)\n        })\n\nnative_label_summary = pd.DataFrame(native_label_summary)\n\nnative_label_summary"
+    },
+    {
+      "index": 11,
+      "cell_type": "markdown"
+    },
+    {
+      "index": 12,
+      "cell_type": "markdown"
+    },
+    {
+      "index": 13,
+      "cell_type": "code",
+      "source": "email_label_semantics = pd.DataFrame([\n    {\n        \"dataset\": \"Nazario\",\n        \"native_positive_semantics\": \"phishing\",\n        \"phishing_positive_eligible\": True\n    },\n    {\n        \"dataset\": \"CEAS-08\",\n        \"native_positive_semantics\": \"spam\",\n        \"phishing_positive_eligible\": False\n    },\n    {\n        \"dataset\": \"Enron\",\n        \"native_positive_semantics\": \"spam\",\n        \"phishing_positive_eligible\": False\n    },\n    {\n        \"dataset\": \"SpamAssassin\",\n        \"native_positive_semantics\": \"spam\",\n        \"phishing_positive_eligible\": False\n    }\n])\n\nemail_label_semantics"
+    },
+    {
+      "index": 14,
+      "cell_type": "markdown"
+    },
+    {
+      "index": 15,
+      "cell_type": "markdown"
+    },
+    {
+      "index": 16,
+      "cell_type": "markdown"
+    },
+    {
+      "index": 17,
+      "cell_type": "markdown"
+    },
+    {
+      "index": 18,
+      "cell_type": "markdown"
+    },
+    {
+      "index": 19,
+      "cell_type": "markdown"
+    },
+    {
+      "index": 20,
+      "cell_type": "code",
+      "source": "email_binary = email_binary.copy()\n\nemail_binary[\"source_row_id\"] = (\n    email_binary\n    .groupby(\"source_dataset\")\n    .cumcount()\n)\n\nemail_binary[\"observation_id\"] = (\n    email_binary[\"source_dataset\"].astype(str)\n    + \"::\"\n    + email_binary[\"source_row_id\"].astype(str)\n)\n\nprint(\"Rows:\", len(email_binary))\nprint(\n    \"Unique observation IDs:\",\n    email_binary[\"observation_id\"].nunique()\n)\nprint(\n    \"Duplicate observation IDs:\",\n    email_binary[\"observation_id\"].duplicated().sum()\n)\n\nemail_binary[\n    [\n        \"observation_id\",\n        \"source_dataset\",\n        \"source_row_id\",\n        \"target\"\n    ]\n].head(10)"
+    },
+    {
+      "index": 21,
+      "cell_type": "code",
+      "source": "print(\"Rows:\", len(email_binary))\nprint(\"Unique observation IDs:\", email_binary[\"observation_id\"].nunique())\nprint(\"Duplicate observation IDs:\", email_binary[\"observation_id\"].duplicated().sum())"
+    },
+    {
+      "index": 22,
+      "cell_type": "markdown"
+    },
+    {
+      "index": 23,
+      "cell_type": "code",
+      "source": "import re\n\ndef normalize_text(value):\n    if pd.isna(value):\n        return \"\"\n\n    value = str(value).lower().strip()\n    value = re.sub(r\"\\s+\", \" \", value)\n\n    return value\n\n\ndef sha256_text(value):\n    return hashlib.sha256(\n        value.encode(\"utf-8\")\n    ).hexdigest()"
+    },
+    {
+      "index": 24,
+      "cell_type": "code",
+      "source": "email_grouping = email_binary.copy()\n\nemail_grouping[\"normalized_body\"] = (\n    email_grouping[\"body\"]\n    .fillna(\"\")\n    .map(normalize_text)\n)\n\nemail_grouping[\"body_hash\"] = (\n    email_grouping[\"normalized_body\"]\n    .map(sha256_text)\n)\n\nif \"sender\" in email_grouping.columns:\n    email_grouping[\"normalized_sender\"] = (\n        email_grouping[\"sender\"]\n        .fillna(\"\")\n        .map(normalize_text)\n    )\nelse:\n    email_grouping[\"normalized_sender\"] = \"\""
+    },
+    {
+      "index": 25,
+      "cell_type": "code",
+      "source": "print(\"Rows:\", len(email_grouping))\n\nprint(\n    \"Rows with non-empty sender:\",\n    (email_grouping[\"normalized_sender\"] != \"\").sum()\n)\n\nprint(\n    \"Unique non-empty senders:\",\n    email_grouping.loc[\n        email_grouping[\"normalized_sender\"] != \"\",\n        \"normalized_sender\"\n    ].nunique()\n)\n\nprint(\n    \"Unique body hashes:\",\n    email_grouping[\"body_hash\"].nunique()\n)\n\nprint(\n    \"Rows in duplicated body-hash groups:\",\n    email_grouping[\n        email_grouping[\"body_hash\"].duplicated(keep=False)\n    ].shape[0]\n)"
+    },
+    {
+      "index": 26,
+      "cell_type": "code",
+      "source": "blank_body_count = (\n    email_grouping[\"normalized_body\"] == \"\"\n).sum()\n\nduplicated_body_groups = (\n    email_grouping.loc[\n        email_grouping[\"normalized_body\"] != \"\"\n    ]\n    .groupby(\"body_hash\")\n    .size()\n    .sort_values(ascending=False)\n)\n\nprint(\"Blank normalized bodies:\", blank_body_count)\n\nprint(\n    \"Rows in duplicated NON-EMPTY body groups:\",\n    duplicated_body_groups[\n        duplicated_body_groups > 1\n    ].sum()\n)\n\nprint(\n    \"Number of duplicated NON-EMPTY body groups:\",\n    (duplicated_body_groups > 1).sum()\n)\n\nprint(\"\\nLargest duplicated body groups:\")\nprint(\n    duplicated_body_groups[\n        duplicated_body_groups > 1\n    ].head(10)\n)"
+    },
+    {
+      "index": 27,
+      "cell_type": "markdown"
+    },
+    {
+      "index": 28,
+      "cell_type": "code",
+      "source": "# Union-Find / Disjoint Set implementation\nparent = list(range(len(email_grouping)))\nrank = [0] * len(email_grouping)\n\n\ndef find(x):\n    while parent[x] != x:\n        parent[x] = parent[parent[x]]\n        x = parent[x]\n    return x\n\n\ndef union(a, b):\n    root_a = find(a)\n    root_b = find(b)\n\n    if root_a == root_b:\n        return\n\n    if rank[root_a] < rank[root_b]:\n        parent[root_a] = root_b\n\n    elif rank[root_a] > rank[root_b]:\n        parent[root_b] = root_a\n\n    else:\n        parent[root_b] = root_a\n        rank[root_a] += 1"
+    },
+    {
+      "index": 29,
+      "cell_type": "code",
+      "source": "sender_groups = (\n    email_grouping.loc[\n        email_grouping[\"normalized_sender\"] != \"\"\n    ]\n    .groupby(\"normalized_sender\")\n    .groups\n)\n\nfor indices in sender_groups.values():\n    indices = list(indices)\n\n    first = indices[0]\n\n    for idx in indices[1:]:\n        union(first, idx)"
+    },
+    {
+      "index": 30,
+      "cell_type": "code",
+      "source": "body_groups = (\n    email_grouping.loc[\n        email_grouping[\"normalized_body\"] != \"\"\n    ]\n    .groupby(\"body_hash\")\n    .groups\n)\n\nfor indices in body_groups.values():\n    indices = list(indices)\n\n    first = indices[0]\n\n    for idx in indices[1:]:\n        union(first, idx)"
+    },
+    {
+      "index": 31,
+      "cell_type": "code",
+      "source": "roots = [find(i) for i in range(len(email_grouping))]\n\nroot_to_group = {\n    root: f\"email_group_{group_number:06d}\"\n    for group_number, root in enumerate(\n        sorted(set(roots)),\n        start=1\n    )\n}\n\nemail_grouping[\"group_id\"] = [\n    root_to_group[root]\n    for root in roots\n]"
+    },
+    {
+      "index": 32,
+      "cell_type": "code",
+      "source": "group_sizes = (\n    email_grouping\n    .groupby(\"group_id\")\n    .size()\n    .sort_values(ascending=False)\n)\n\nprint(\"Rows:\", len(email_grouping))\nprint(\"Unique groups:\", email_grouping[\"group_id\"].nunique())\n\nprint(\n    \"Rows belonging to multi-row groups:\",\n    group_sizes[group_sizes > 1].sum()\n)\n\nprint(\n    \"Number of multi-row groups:\",\n    (group_sizes > 1).sum()\n)\n\nprint(\n    \"Largest group size:\",\n    group_sizes.max()\n)\n\nprint(\"\\nLargest groups:\")\nprint(group_sizes.head(10))"
+    },
+    {
+      "index": 33,
+      "cell_type": "markdown"
+    },
+    {
+      "index": 34,
+      "cell_type": "code",
+      "source": "group_integrity = (\n    email_grouping\n    .groupby(\"group_id\")\n    .agg(\n        rows=(\"observation_id\", \"size\"),\n        target_classes=(\"target\", \"nunique\"),\n        source_count=(\"source_dataset\", \"nunique\")\n    )\n    .reset_index()\n)\n\nmixed_target_groups = group_integrity[\n    group_integrity[\"target_classes\"] > 1\n]\n\nmulti_source_groups = group_integrity[\n    group_integrity[\"source_count\"] > 1\n]\n\nprint(\"Total groups:\", len(group_integrity))\n\nprint(\n    \"Mixed-target groups:\",\n    len(mixed_target_groups)\n)\n\nprint(\n    \"Rows inside mixed-target groups:\",\n    email_grouping[\n        email_grouping[\"group_id\"].isin(\n            mixed_target_groups[\"group_id\"]\n        )\n    ].shape[0]\n)\n\nprint(\n    \"Multi-source groups:\",\n    len(multi_source_groups)\n)\n\nprint(\n    \"Rows inside multi-source groups:\",\n    email_grouping[\n        email_grouping[\"group_id\"].isin(\n            multi_source_groups[\"group_id\"]\n        )\n    ].shape[0]\n)"
+    },
+    {
+      "index": 35,
+      "cell_type": "code",
+      "source": "mixed_target_summary = (\n    email_grouping[\n        email_grouping[\"group_id\"].isin(\n            mixed_target_groups[\"group_id\"]\n        )\n    ]\n    .groupby(\n        [\n            \"group_id\",\n            \"source_dataset\",\n            \"target\"\n        ]\n    )\n    .size()\n    .reset_index(name=\"rows\")\n)\n\nmixed_target_summary"
+    },
+    {
+      "index": 36,
+      "cell_type": "markdown"
+    },
+    {
+      "index": 37,
+      "cell_type": "code",
+      "source": "multi_source_summary = (\n    email_grouping[\n        email_grouping[\"group_id\"].isin(\n            multi_source_groups[\"group_id\"]\n        )\n    ]\n    .groupby(\n        [\n            \"group_id\",\n            \"source_dataset\",\n            \"target\"\n        ]\n    )\n    .size()\n    .reset_index(name=\"rows\")\n)\n\nprint(\n    \"Multi-source groups:\",\n    multi_source_summary[\"group_id\"].nunique()\n)\n\nmulti_source_summary"
+    },
+    {
+      "index": 38,
+      "cell_type": "markdown"
+    },
+    {
+      "index": 39,
+      "cell_type": "code",
+      "source": "email_binary = email_grouping.copy()\n\nprint(\"Rows:\", len(email_binary))\nprint(\"Groups:\", email_binary[\"group_id\"].nunique())\nprint(\"Targets:\", email_binary[\"target\"].value_counts().to_dict())"
+    },
+    {
+      "index": 40,
+      "cell_type": "markdown"
+    },
+    {
+      "index": 41,
+      "cell_type": "code",
+      "source": "PARTITION_RATIOS = {\n    \"development\": 0.70,\n    \"calibration\": 0.15,\n    \"test\": 0.15\n}\n\nRANDOM_SEED = 42"
+    },
+    {
+      "index": 42,
+      "cell_type": "code",
+      "source": "group_label_integrity = email_binary.groupby(\"group_id\")[\"target\"].nunique()\nmixed_label_groups = group_label_integrity[group_label_integrity > 1]\nassert mixed_label_groups.empty, (\n    f\"Found {len(mixed_label_groups)} groups with conflicting labels. \"\n    \"Resolve group-level stratification before partitioning.\"\n)\n\ngroup_table = (\n    email_binary.groupby(\"group_id\")\n    .agg(\n        rows=(\"observation_id\", \"size\"),\n        target=(\"target\", \"first\"),\n        source_dataset=(\"source_dataset\", \"first\")\n    )\n    .reset_index()\n)\nassert group_table[\"rows\"].sum() == len(email_binary)\nprint(\"Groups:\", len(group_table))\nprint(\"Rows represented:\", group_table[\"rows\"].sum())\nprint(\"Mixed-label groups:\", len(mixed_label_groups))\ngroup_table.head()"
+    },
+    {
+      "index": 43,
+      "cell_type": "code",
+      "source": "rng = np.random.default_rng(RANDOM_SEED)\n\npartition_assignments = []\n\nfor (source, target), stratum in group_table.groupby(\n    [\"source_dataset\", \"target\"]\n):\n    stratum = stratum.copy()\n\n    # Random tie-breaking before sorting large groups first\n    stratum[\"_random\"] = rng.random(len(stratum))\n\n    stratum = stratum.sort_values(\n        [\"rows\", \"_random\"],\n        ascending=[False, True]\n    )\n\n    total_rows = stratum[\"rows\"].sum()\n\n    target_rows = {\n        partition: total_rows * ratio\n        for partition, ratio in PARTITION_RATIOS.items()\n    }\n\n    assigned_rows = {\n        partition: 0\n        for partition in PARTITION_RATIOS\n    }\n\n    for _, row in stratum.iterrows():\n\n        deficits = {\n            partition: (\n                target_rows[partition]\n                - assigned_rows[partition]\n            ) / max(target_rows[partition], 1)\n            for partition in PARTITION_RATIOS\n        }\n\n        chosen_partition = max(\n            deficits,\n            key=deficits.get\n        )\n\n        partition_assignments.append({\n            \"group_id\": row[\"group_id\"],\n            \"partition\": chosen_partition\n        })\n\n        assigned_rows[chosen_partition] += row[\"rows\"]"
+    },
+    {
+      "index": 44,
+      "cell_type": "code",
+      "source": "partition_map = pd.DataFrame(partition_assignments)\n\nemail_binary = email_binary.merge(\n    partition_map,\n    on=\"group_id\",\n    how=\"left\",\n    validate=\"many_to_one\"\n)\n\nprint(\n    email_binary[\"partition\"]\n    .value_counts()\n)\n\nprint()\n\nprint(\n    email_binary[\"partition\"]\n    .value_counts(normalize=True)\n    .mul(100)\n    .round(2)\n)"
+    },
+    {
+      "index": 45,
+      "cell_type": "markdown"
+    },
+    {
+      "index": 46,
+      "cell_type": "code",
+      "source": "# 1. Every row must have exactly one partition\nprint(\"Total rows:\", len(email_binary))\nprint(\"Rows with missing partition:\", email_binary[\"partition\"].isna().sum())\n\n# 2. No group may cross partitions\ngroup_partition_counts = (\n    email_binary\n    .groupby(\"group_id\")[\"partition\"]\n    .nunique()\n)\n\nprint(\n    \"Groups appearing in multiple partitions:\",\n    (group_partition_counts > 1).sum()\n)\n\n# 3. Partition \u00d7 target distribution\npartition_target_counts = pd.crosstab(\n    email_binary[\"partition\"],\n    email_binary[\"target\"]\n)\n\nprint(\"\\nPartition \u00d7 target counts:\")\nprint(partition_target_counts)\n\n# 4. Target prevalence\npartition_target_prevalence = (\n    email_binary\n    .groupby(\"partition\")[\"target\"]\n    .mean()\n    .mul(100)\n    .round(2)\n)\n\nprint(\"\\nPhishing prevalence (%):\")\nprint(partition_target_prevalence)\n\n# 5. Source composition\npartition_source_counts = pd.crosstab(\n    email_binary[\"partition\"],\n    email_binary[\"source_dataset\"]\n)\n\nprint(\"\\nPartition \u00d7 source counts:\")\nprint(partition_source_counts)"
+    },
+    {
+      "index": 47,
+      "cell_type": "markdown"
+    },
+    {
+      "index": 48,
+      "cell_type": "markdown"
+    },
+    {
+      "index": 49,
+      "cell_type": "markdown"
+    },
+    {
+      "index": 50,
+      "cell_type": "code",
+      "source": "email_dev = (\n    email_binary[\n        email_binary[\"partition\"] == \"development\"\n    ]\n    .copy()\n    .reset_index(drop=True)\n)\n\nprint(\"Development rows:\", len(email_dev))\nprint(\"Development groups:\", email_dev[\"group_id\"].nunique())\nprint(\n    \"Development target distribution:\",\n    email_dev[\"target\"].value_counts().to_dict()\n)"
+    },
+    {
+      "index": 51,
+      "cell_type": "code",
+      "source": "dev_group_table = (\n    email_dev\n    .groupby(\"group_id\")\n    .agg(\n        rows=(\"observation_id\", \"size\"),\n        target=(\"target\", \"first\"),\n        source_dataset=(\"source_dataset\", \"first\")\n    )\n    .reset_index()\n)\n\nprint(\"Development groups:\", len(dev_group_table))\nprint(\"Rows represented:\", dev_group_table[\"rows\"].sum())"
+    },
+    {
+      "index": 52,
+      "cell_type": "code",
+      "source": "N_FOLDS = 5\nCV_RANDOM_SEED = 42\n\ncv_rng = np.random.default_rng(CV_RANDOM_SEED)\n\nfold_assignments = []\n\nfor (source, target), stratum in dev_group_table.groupby(\n    [\"source_dataset\", \"target\"]\n):\n    stratum = stratum.copy()\n\n    stratum[\"_random\"] = cv_rng.random(len(stratum))\n\n    stratum = stratum.sort_values(\n        [\"rows\", \"_random\"],\n        ascending=[False, True]\n    )\n\n    total_rows = stratum[\"rows\"].sum()\n    target_rows_per_fold = total_rows / N_FOLDS\n\n    assigned_rows = {\n        fold: 0\n        for fold in range(1, N_FOLDS + 1)\n    }\n\n    for _, row in stratum.iterrows():\n\n        chosen_fold = min(\n            assigned_rows,\n            key=assigned_rows.get\n        )\n\n        fold_assignments.append({\n            \"group_id\": row[\"group_id\"],\n            \"cv_fold\": chosen_fold\n        })\n\n        assigned_rows[chosen_fold] += row[\"rows\"]"
+    },
+    {
+      "index": 53,
+      "cell_type": "code",
+      "source": "cv_fold_map = pd.DataFrame(fold_assignments)\n\nemail_dev = email_dev.merge(\n    cv_fold_map,\n    on=\"group_id\",\n    how=\"left\",\n    validate=\"many_to_one\"\n)\n\nprint(\n    email_dev[\"cv_fold\"]\n    .value_counts()\n    .sort_index()\n)\n\nprint()\n\nprint(\n    email_dev[\"cv_fold\"]\n    .value_counts(normalize=True)\n    .sort_index()\n    .mul(100)\n    .round(2)\n)"
+    },
+    {
+      "index": 54,
+      "cell_type": "markdown"
+    },
+    {
+      "index": 55,
+      "cell_type": "code",
+      "source": "# 1. Every development row must have one fold\nprint(\"Development rows:\", len(email_dev))\nprint(\"Rows with missing fold:\", email_dev[\"cv_fold\"].isna().sum())\n\n# 2. No group may cross folds\ngroup_fold_counts = (\n    email_dev\n    .groupby(\"group_id\")[\"cv_fold\"]\n    .nunique()\n)\n\nprint(\n    \"Groups appearing in multiple folds:\",\n    (group_fold_counts > 1).sum()\n)\n\n# 3. Fold \u00d7 target counts\nfold_target_counts = pd.crosstab(\n    email_dev[\"cv_fold\"],\n    email_dev[\"target\"]\n)\n\nprint(\"\\nFold \u00d7 target counts:\")\nprint(fold_target_counts)\n\n# 4. Phishing prevalence per fold\nfold_target_prevalence = (\n    email_dev\n    .groupby(\"cv_fold\")[\"target\"]\n    .mean()\n    .mul(100)\n    .round(2)\n)\n\nprint(\"\\nPhishing prevalence (%):\")\nprint(fold_target_prevalence)\n\n# 5. Source composition per fold\nfold_source_counts = pd.crosstab(\n    email_dev[\"cv_fold\"],\n    email_dev[\"source_dataset\"]\n)\n\nprint(\"\\nFold \u00d7 source counts:\")\nprint(fold_source_counts)"
+    },
+    {
+      "index": 56,
+      "cell_type": "markdown"
+    },
+    {
+      "index": 57,
+      "cell_type": "markdown"
+    },
+    {
+      "index": 58,
+      "cell_type": "markdown"
+    },
+    {
+      "index": 59,
+      "cell_type": "code",
+      "source": "phiusiil = data[\"PhiUSIIL\"].copy()\n\nphiusiil[\"source_dataset\"] = \"PhiUSIIL\"\nphiusiil[\"source_row_id\"] = np.arange(len(phiusiil))\n\nphiusiil[\"observation_id\"] = (\n    phiusiil[\"source_dataset\"]\n    + \"::\"\n    + phiusiil[\"source_row_id\"].astype(str)\n)\n\n# Standardized target:\n# native 0 = phishing  -> target 1\n# native 1 = legitimate -> target 0\nphiusiil[\"target\"] = (\n    phiusiil[\"label\"]\n    .map({\n        0: 1,\n        1: 0\n    })\n)"
+    },
+    {
+      "index": 60,
+      "cell_type": "code",
+      "source": "print(\"Rows:\", len(phiusiil))\nprint(\"Unique observation IDs:\", phiusiil[\"observation_id\"].nunique())\nprint(\"Missing targets:\", phiusiil[\"target\"].isna().sum())\n\nprint(\"\\nNative label distribution:\")\nprint(\n    phiusiil[\"label\"]\n    .value_counts()\n    .sort_index()\n)\n\nprint(\"\\nStandardized target distribution:\")\nprint(\n    phiusiil[\"target\"]\n    .value_counts()\n    .sort_index()\n)"
+    },
+    {
+      "index": 61,
+      "cell_type": "markdown"
+    },
+    {
+      "index": 62,
+      "cell_type": "code",
+      "source": "phiusiil[\"normalized_domain\"] = (\n    phiusiil[\"Domain\"]\n    .fillna(\"\")\n    .astype(str)\n    .str.strip()\n    .str.lower()\n)\n\nprint(\n    \"Blank domains:\",\n    (phiusiil[\"normalized_domain\"] == \"\").sum()\n)\n\nprint(\n    \"Unique non-empty domains:\",\n    phiusiil.loc[\n        phiusiil[\"normalized_domain\"] != \"\",\n        \"normalized_domain\"\n    ].nunique()\n)"
+    },
+    {
+      "index": 63,
+      "cell_type": "code",
+      "source": "domain_values = sorted(\n    phiusiil[\"normalized_domain\"].unique()\n)\n\ndomain_to_group = {\n    domain: f\"phiusiil_domain_{i:06d}\"\n    for i, domain in enumerate(\n        domain_values,\n        start=1\n    )\n}\n\nphiusiil[\"group_id\"] = (\n    phiusiil[\"normalized_domain\"]\n    .map(domain_to_group)\n)"
+    },
+    {
+      "index": 64,
+      "cell_type": "code",
+      "source": "phiusiil_group_summary = (\n    phiusiil\n    .groupby(\"group_id\")\n    .agg(\n        rows=(\"observation_id\", \"size\"),\n        target_classes=(\"target\", \"nunique\")\n    )\n    .reset_index()\n)\n\nprint(\n    \"Total groups:\",\n    len(phiusiil_group_summary)\n)\n\nprint(\n    \"Multi-row groups:\",\n    (phiusiil_group_summary[\"rows\"] > 1).sum()\n)\n\nprint(\n    \"Largest group size:\",\n    phiusiil_group_summary[\"rows\"].max()\n)\n\nprint(\n    \"Mixed-target groups:\",\n    (phiusiil_group_summary[\"target_classes\"] > 1).sum()\n)"
+    },
+    {
+      "index": 65,
+      "cell_type": "markdown"
+    },
+    {
+      "index": 66,
+      "cell_type": "code",
+      "source": "phiusiil_group_table = (\n    phiusiil\n    .groupby(\"group_id\")\n    .agg(\n        rows=(\"observation_id\", \"size\"),\n        legitimate_rows=(\"target\", lambda s: int((s == 0).sum())),\n        phishing_rows=(\"target\", lambda s: int((s == 1).sum()))\n    )\n    .reset_index()\n)\n\nprint(\"Groups:\", len(phiusiil_group_table))\nprint(\"Rows represented:\", phiusiil_group_table[\"rows\"].sum())\n\nprint(\n    \"Groups containing both targets:\",\n    (\n        (phiusiil_group_table[\"legitimate_rows\"] > 0)\n        &\n        (phiusiil_group_table[\"phishing_rows\"] > 0)\n    ).sum()\n)"
+    },
+    {
+      "index": 67,
+      "cell_type": "markdown"
+    },
+    {
+      "index": 68,
+      "cell_type": "code",
+      "source": "PHIUSIIL_PARTITION_RATIOS = {\n    \"development\": 0.70,\n    \"calibration\": 0.15,\n    \"test\": 0.15\n}\n\nPHIUSIIL_RANDOM_SEED = 42"
+    },
+    {
+      "index": 69,
+      "cell_type": "code",
+      "source": "rng = np.random.default_rng(PHIUSIIL_RANDOM_SEED)\n\nphiusiil_groups = phiusiil_group_table.copy()\n\nphiusiil_groups[\"_random\"] = rng.random(\n    len(phiusiil_groups)\n)\n\n# Large and compositionally important groups first\nphiusiil_groups = phiusiil_groups.sort_values(\n    [\"rows\", \"phishing_rows\", \"legitimate_rows\", \"_random\"],\n    ascending=[False, False, False, True]\n)\n\ntotals = {\n    \"rows\": phiusiil_groups[\"rows\"].sum(),\n    \"legitimate_rows\": phiusiil_groups[\"legitimate_rows\"].sum(),\n    \"phishing_rows\": phiusiil_groups[\"phishing_rows\"].sum()\n}\n\ntargets = {\n    partition: {\n        metric: totals[metric] * ratio\n        for metric in totals\n    }\n    for partition, ratio in PHIUSIIL_PARTITION_RATIOS.items()\n}\n\nassigned = {\n    partition: {\n        \"rows\": 0,\n        \"legitimate_rows\": 0,\n        \"phishing_rows\": 0\n    }\n    for partition in PHIUSIIL_PARTITION_RATIOS\n}\n\nphiusiil_partition_assignments = []\n\nfor _, row in phiusiil_groups.iterrows():\n\n    best_partition = None\n    best_score = None\n\n    for partition in PHIUSIIL_PARTITION_RATIOS:\n\n        score = 0.0\n\n        for metric in [\n            \"rows\",\n            \"legitimate_rows\",\n            \"phishing_rows\"\n        ]:\n            projected = (\n                assigned[partition][metric]\n                + row[metric]\n            )\n\n            target_value = targets[partition][metric]\n\n            score += (\n                (projected - target_value)\n                / max(target_value, 1)\n            ) ** 2\n\n        if best_score is None or score < best_score:\n            best_score = score\n            best_partition = partition\n\n    phiusiil_partition_assignments.append({\n        \"group_id\": row[\"group_id\"],\n        \"partition\": best_partition\n    })\n\n    for metric in [\n        \"rows\",\n        \"legitimate_rows\",\n        \"phishing_rows\"\n    ]:\n        assigned[best_partition][metric] += row[metric]"
+    },
+    {
+      "index": 70,
+      "cell_type": "code",
+      "source": "phiusiil_partition_map = pd.DataFrame(\n    phiusiil_partition_assignments\n)\n\nphiusiil = phiusiil.merge(\n    phiusiil_partition_map,\n    on=\"group_id\",\n    how=\"left\",\n    validate=\"many_to_one\"\n)\n\nprint(\n    phiusiil[\"partition\"]\n    .value_counts()\n)\n\nprint()\n\nprint(\n    phiusiil[\"partition\"]\n    .value_counts(normalize=True)\n    .mul(100)\n    .round(2)\n)"
+    },
+    {
+      "index": 71,
+      "cell_type": "code",
+      "source": "rng = np.random.default_rng(PHIUSIIL_RANDOM_SEED)\n\nphiusiil_groups = phiusiil_group_table.copy()\n\nphiusiil_groups[\"_random\"] = rng.random(\n    len(phiusiil_groups)\n)\n\n# Assign larger groups first\nphiusiil_groups = phiusiil_groups.sort_values(\n    [\"rows\", \"_random\"],\n    ascending=[False, True]\n)\n\nmetrics = [\n    \"rows\",\n    \"legitimate_rows\",\n    \"phishing_rows\"\n]\n\ntotals = {\n    metric: phiusiil_groups[metric].sum()\n    for metric in metrics\n}\n\ntargets = {\n    partition: {\n        metric: totals[metric] * ratio\n        for metric in metrics\n    }\n    for partition, ratio in PHIUSIIL_PARTITION_RATIOS.items()\n}\n\nassigned = {\n    partition: {\n        metric: 0\n        for metric in metrics\n    }\n    for partition in PHIUSIIL_PARTITION_RATIOS\n}\n\nphiusiil_partition_assignments = []\n\nfor _, row in phiusiil_groups.iterrows():\n\n    partition_scores = {}\n\n    for partition in PHIUSIIL_PARTITION_RATIOS:\n\n        relative_deficits = []\n\n        for metric in metrics:\n\n            target_value = targets[partition][metric]\n\n            remaining = (\n                target_value\n                - assigned[partition][metric]\n            )\n\n            relative_deficit = (\n                remaining / max(target_value, 1)\n            )\n\n            relative_deficits.append(\n                relative_deficit\n            )\n\n        # Prefer the partition that is most under-filled\n        partition_scores[partition] = np.mean(\n            relative_deficits\n        )\n\n    chosen_partition = max(\n        partition_scores,\n        key=partition_scores.get\n    )\n\n    phiusiil_partition_assignments.append({\n        \"group_id\": row[\"group_id\"],\n        \"partition\": chosen_partition\n    })\n\n    for metric in metrics:\n        assigned[chosen_partition][metric] += row[metric]"
+    },
+    {
+      "index": 72,
+      "cell_type": "code",
+      "source": "phiusiil = data[\"PhiUSIIL\"].copy()\n\nphiusiil[\"source_dataset\"] = \"PhiUSIIL\"\nphiusiil[\"source_row_id\"] = np.arange(len(phiusiil))\n\nphiusiil[\"observation_id\"] = (\n    phiusiil[\"source_dataset\"]\n    + \"::\"\n    + phiusiil[\"source_row_id\"].astype(str)\n)\n\nphiusiil[\"target\"] = (\n    phiusiil[\"label\"]\n    .map({\n        0: 1,\n        1: 0\n    })\n)\n\nphiusiil[\"normalized_domain\"] = (\n    phiusiil[\"Domain\"]\n    .fillna(\"\")\n    .astype(str)\n    .str.strip()\n    .str.lower()\n)\n\nphiusiil[\"group_id\"] = (\n    phiusiil[\"normalized_domain\"]\n    .map(domain_to_group)\n)"
+    },
+    {
+      "index": 73,
+      "cell_type": "code",
+      "source": "phiusiil_partition_map = pd.DataFrame(\n    phiusiil_partition_assignments\n)\n\nphiusiil = phiusiil.merge(\n    phiusiil_partition_map,\n    on=\"group_id\",\n    how=\"left\",\n    validate=\"many_to_one\"\n)\n\nprint(\n    phiusiil[\"partition\"]\n    .value_counts()\n)\n\nprint()\n\nprint(\n    phiusiil[\"partition\"]\n    .value_counts(normalize=True)\n    .mul(100)\n    .round(2)\n)"
+    },
+    {
+      "index": 74,
+      "cell_type": "markdown"
+    },
+    {
+      "index": 75,
+      "cell_type": "code",
+      "source": "print(\"Total rows:\", len(phiusiil))\nprint(\n    \"Rows with missing partition:\",\n    phiusiil[\"partition\"].isna().sum()\n)\n\ngroup_partition_counts = (\n    phiusiil\n    .groupby(\"group_id\")[\"partition\"]\n    .nunique()\n)\n\nprint(\n    \"Groups appearing in multiple partitions:\",\n    (group_partition_counts > 1).sum()\n)\n\npartition_target_counts = pd.crosstab(\n    phiusiil[\"partition\"],\n    phiusiil[\"target\"]\n)\n\nprint(\"\\nPartition \u00d7 target counts:\")\nprint(partition_target_counts)\n\npartition_target_prevalence = (\n    phiusiil\n    .groupby(\"partition\")[\"target\"]\n    .mean()\n    .mul(100)\n    .round(2)\n)\n\nprint(\"\\nPhishing prevalence (%):\")\nprint(partition_target_prevalence)"
+    },
+    {
+      "index": 76,
+      "cell_type": "code",
+      "source": "mixed_phiusiil_groups = phiusiil_group_table.loc[\n    (phiusiil_group_table[\"legitimate_rows\"] > 0)\n    &\n    (phiusiil_group_table[\"phishing_rows\"] > 0),\n    \"group_id\"\n]\n\nmixed_group_partition_counts = (\n    phiusiil[\n        phiusiil[\"group_id\"].isin(\n            mixed_phiusiil_groups\n        )\n    ]\n    .groupby(\"group_id\")[\"partition\"]\n    .nunique()\n)\n\nprint(\n    \"Mixed-target groups crossing partitions:\",\n    (mixed_group_partition_counts > 1).sum()\n)"
+    },
+    {
+      "index": 77,
+      "cell_type": "code",
+      "source": "assert len(phiusiil) == 235795\nassert phiusiil[\"partition\"].isna().sum() == 0\nassert (group_partition_counts > 1).sum() == 0\nassert (mixed_group_partition_counts > 1).sum() == 0\n\nfor partition in [\n    \"development\",\n    \"calibration\",\n    \"test\"\n]:\n    assert (\n        phiusiil.loc[\n            phiusiil[\"partition\"] == partition,\n            \"target\"\n        ].nunique()\n        == 2\n    )\n\nprint(\"All PhiUSIIL partition integrity checks passed.\")"
+    },
+    {
+      "index": 78,
+      "cell_type": "markdown"
+    },
+    {
+      "index": 79,
+      "cell_type": "markdown"
+    },
+    {
+      "index": 80,
+      "cell_type": "code",
+      "source": "phiusiil_dev = (\n    phiusiil[\n        phiusiil[\"partition\"] == \"development\"\n    ]\n    .copy()\n    .reset_index(drop=True)\n)\n\nprint(\"Development rows:\", len(phiusiil_dev))\nprint(\"Development groups:\", phiusiil_dev[\"group_id\"].nunique())\nprint(\n    \"Target distribution:\",\n    phiusiil_dev[\"target\"].value_counts().to_dict()\n)"
+    },
+    {
+      "index": 81,
+      "cell_type": "code",
+      "source": "phiusiil_dev_group_table = (\n    phiusiil_dev\n    .groupby(\"group_id\")\n    .agg(\n        rows=(\"observation_id\", \"size\"),\n        legitimate_rows=(\"target\", lambda s: int((s == 0).sum())),\n        phishing_rows=(\"target\", lambda s: int((s == 1).sum()))\n    )\n    .reset_index()\n)\n\nprint(\n    \"Development groups:\",\n    len(phiusiil_dev_group_table)\n)\n\nprint(\n    \"Rows represented:\",\n    phiusiil_dev_group_table[\"rows\"].sum()\n)"
+    },
+    {
+      "index": 82,
+      "cell_type": "code",
+      "source": "PHIUSIIL_N_FOLDS = 5\nPHIUSIIL_CV_RANDOM_SEED = 42\n\ncv_rng = np.random.default_rng(\n    PHIUSIIL_CV_RANDOM_SEED\n)\n\ncv_groups = phiusiil_dev_group_table.copy()\n\ncv_groups[\"_random\"] = cv_rng.random(\n    len(cv_groups)\n)\n\ncv_groups = cv_groups.sort_values(\n    [\"rows\", \"_random\"],\n    ascending=[False, True]\n)\n\nmetrics = [\n    \"rows\",\n    \"legitimate_rows\",\n    \"phishing_rows\"\n]\n\ntotals = {\n    metric: cv_groups[metric].sum()\n    for metric in metrics\n}\n\ntargets_per_fold = {\n    fold: {\n        metric: totals[metric] / PHIUSIIL_N_FOLDS\n        for metric in metrics\n    }\n    for fold in range(1, PHIUSIIL_N_FOLDS + 1)\n}\n\nassigned = {\n    fold: {\n        metric: 0\n        for metric in metrics\n    }\n    for fold in range(1, PHIUSIIL_N_FOLDS + 1)\n}\n\nphiusiil_fold_assignments = []\n\nfor _, row in cv_groups.iterrows():\n\n    fold_scores = {}\n\n    for fold in range(1, PHIUSIIL_N_FOLDS + 1):\n\n        relative_deficits = []\n\n        for metric in metrics:\n\n            target_value = targets_per_fold[fold][metric]\n\n            remaining = (\n                target_value\n                - assigned[fold][metric]\n            )\n\n            relative_deficit = (\n                remaining\n                / max(target_value, 1)\n            )\n\n            relative_deficits.append(\n                relative_deficit\n            )\n\n        fold_scores[fold] = np.mean(\n            relative_deficits\n        )\n\n    chosen_fold = max(\n        fold_scores,\n        key=fold_scores.get\n    )\n\n    phiusiil_fold_assignments.append({\n        \"group_id\": row[\"group_id\"],\n        \"cv_fold\": chosen_fold\n    })\n\n    for metric in metrics:\n        assigned[chosen_fold][metric] += row[metric]"
+    },
+    {
+      "index": 83,
+      "cell_type": "code",
+      "source": "phiusiil_fold_map = pd.DataFrame(\n    phiusiil_fold_assignments\n)\n\nphiusiil_dev = phiusiil_dev.merge(\n    phiusiil_fold_map,\n    on=\"group_id\",\n    how=\"left\",\n    validate=\"many_to_one\"\n)\n\nprint(\n    phiusiil_dev[\"cv_fold\"]\n    .value_counts()\n    .sort_index()\n)\n\nprint()\n\nprint(\n    phiusiil_dev[\"cv_fold\"]\n    .value_counts(normalize=True)\n    .sort_index()\n    .mul(100)\n    .round(2)\n)"
+    },
+    {
+      "index": 84,
+      "cell_type": "markdown"
+    },
+    {
+      "index": 85,
+      "cell_type": "code",
+      "source": "print(\"Development rows:\", len(phiusiil_dev))\nprint(\n    \"Rows with missing fold:\",\n    phiusiil_dev[\"cv_fold\"].isna().sum()\n)\n\ngroup_fold_counts = (\n    phiusiil_dev\n    .groupby(\"group_id\")[\"cv_fold\"]\n    .nunique()\n)\n\nprint(\n    \"Groups appearing in multiple folds:\",\n    (group_fold_counts > 1).sum()\n)\n\nfold_target_counts = pd.crosstab(\n    phiusiil_dev[\"cv_fold\"],\n    phiusiil_dev[\"target\"]\n)\n\nprint(\"\\nFold \u00d7 target counts:\")\nprint(fold_target_counts)\n\nfold_target_prevalence = (\n    phiusiil_dev\n    .groupby(\"cv_fold\")[\"target\"]\n    .mean()\n    .mul(100)\n    .round(2)\n)\n\nprint(\"\\nPhishing prevalence (%):\")\nprint(fold_target_prevalence)"
+    },
+    {
+      "index": 86,
+      "cell_type": "code",
+      "source": "dev_mixed_groups = (\n    phiusiil_dev_group_table.loc[\n        (phiusiil_dev_group_table[\"legitimate_rows\"] > 0)\n        &\n        (phiusiil_dev_group_table[\"phishing_rows\"] > 0),\n        \"group_id\"\n    ]\n)\n\nmixed_group_fold_counts = (\n    phiusiil_dev[\n        phiusiil_dev[\"group_id\"].isin(\n            dev_mixed_groups\n        )\n    ]\n    .groupby(\"group_id\")[\"cv_fold\"]\n    .nunique()\n)\n\nprint(\n    \"Mixed-target groups crossing folds:\",\n    (mixed_group_fold_counts > 1).sum()\n)"
+    },
+    {
+      "index": 87,
+      "cell_type": "code",
+      "source": "assert len(phiusiil_dev) == 165089\nassert phiusiil_dev[\"cv_fold\"].isna().sum() == 0\nassert (group_fold_counts > 1).sum() == 0\nassert (mixed_group_fold_counts > 1).sum() == 0\n\nfor fold in range(1, 6):\n    assert (\n        phiusiil_dev.loc[\n            phiusiil_dev[\"cv_fold\"] == fold,\n            \"target\"\n        ].nunique()\n        == 2\n    )\n\nprint(\n    \"All PhiUSIIL grouped cross-validation \"\n    \"integrity checks passed.\"\n)"
+    },
+    {
+      "index": 88,
+      "cell_type": "markdown"
+    },
+    {
+      "index": 89,
+      "cell_type": "code",
+      "source": "uci = data[\"UCI Phishing Websites\"].copy()\n\nuci[\"source_dataset\"] = \"UCI Phishing Websites\"\nuci[\"source_row_id\"] = np.arange(len(uci))\n\nuci[\"observation_id\"] = (\n    \"UCI::\"\n    + uci[\"source_row_id\"].astype(str)\n)\n\nuci[\"target\"] = (\n    uci[\"Result\"]\n    .map({\n        -1: 1,\n         1: 0\n    })\n)\n\nprint(\"Rows:\", len(uci))\nprint(\"Unique observation IDs:\", uci[\"observation_id\"].nunique())\nprint(\"Missing targets:\", uci[\"target\"].isna().sum())\n\nprint(\"\\nNative labels:\")\nprint(uci[\"Result\"].value_counts().sort_index())\n\nprint(\"\\nStandardized targets:\")\nprint(uci[\"target\"].value_counts().sort_index())"
+    },
+    {
+      "index": 90,
+      "cell_type": "markdown"
+    },
+    {
+      "index": 91,
+      "cell_type": "code",
+      "source": "uci_predictor_columns = [\n    col\n    for col in uci.columns\n    if col not in {\n        \"Result\",\n        \"target\",\n        \"source_dataset\",\n        \"source_row_id\",\n        \"observation_id\"\n    }\n]\n\nprint(\"Predictor columns:\", len(uci_predictor_columns))"
+    },
+    {
+      "index": 92,
+      "cell_type": "code",
+      "source": "uci_feature_strings = (\n    uci[uci_predictor_columns]\n    .astype(str)\n    .agg(\"|\".join, axis=1)\n)\n\nuci[\"feature_hash\"] = (\n    uci_feature_strings\n    .map(\n        lambda x: hashlib.sha256(\n            x.encode(\"utf-8\")\n        ).hexdigest()\n    )\n)\n\nunique_hashes = sorted(\n    uci[\"feature_hash\"].unique()\n)\n\nhash_to_group = {\n    h: f\"uci_group_{i:06d}\"\n    for i, h in enumerate(\n        unique_hashes,\n        start=1\n    )\n}\n\nuci[\"group_id\"] = (\n    uci[\"feature_hash\"]\n    .map(hash_to_group)\n)"
+    },
+    {
+      "index": 93,
+      "cell_type": "code",
+      "source": "uci_group_summary = (\n    uci\n    .groupby(\"group_id\")\n    .agg(\n        rows=(\"observation_id\", \"size\"),\n        target_classes=(\"target\", \"nunique\")\n    )\n    .reset_index()\n)\n\nprint(\"Total groups:\", len(uci_group_summary))\n\nprint(\n    \"Multi-row groups:\",\n    (uci_group_summary[\"rows\"] > 1).sum()\n)\n\nprint(\n    \"Largest group size:\",\n    uci_group_summary[\"rows\"].max()\n)\n\nprint(\n    \"Mixed-target groups:\",\n    (uci_group_summary[\"target_classes\"] > 1).sum()\n)"
+    },
+    {
+      "index": 94,
+      "cell_type": "markdown"
+    },
+    {
+      "index": 95,
+      "cell_type": "markdown"
+    },
+    {
+      "index": 96,
+      "cell_type": "code",
+      "source": "uci_group_table = (\n    uci\n    .groupby(\"group_id\")\n    .agg(\n        rows=(\"observation_id\", \"size\"),\n        legitimate_rows=(\"target\", lambda s: int((s == 0).sum())),\n        phishing_rows=(\"target\", lambda s: int((s == 1).sum()))\n    )\n    .reset_index()\n)\n\nprint(\"Groups:\", len(uci_group_table))\nprint(\"Rows represented:\", uci_group_table[\"rows\"].sum())\n\nprint(\n    \"Mixed-target groups:\",\n    (\n        (uci_group_table[\"legitimate_rows\"] > 0)\n        &\n        (uci_group_table[\"phishing_rows\"] > 0)\n    ).sum()\n)"
+    },
+    {
+      "index": 97,
+      "cell_type": "code",
+      "source": "UCI_PARTITION_RATIOS = {\n    \"development\": 0.70,\n    \"calibration\": 0.15,\n    \"test\": 0.15\n}\n\nUCI_RANDOM_SEED = 42\n\nrng = np.random.default_rng(UCI_RANDOM_SEED)\n\nuci_groups = uci_group_table.copy()\n\nuci_groups[\"_random\"] = rng.random(\n    len(uci_groups)\n)\n\nuci_groups = uci_groups.sort_values(\n    [\"rows\", \"_random\"],\n    ascending=[False, True]\n)\n\nmetrics = [\n    \"rows\",\n    \"legitimate_rows\",\n    \"phishing_rows\"\n]\n\ntotals = {\n    metric: uci_groups[metric].sum()\n    for metric in metrics\n}\n\ntargets = {\n    partition: {\n        metric: totals[metric] * ratio\n        for metric in metrics\n    }\n    for partition, ratio in UCI_PARTITION_RATIOS.items()\n}\n\nassigned = {\n    partition: {\n        metric: 0\n        for metric in metrics\n    }\n    for partition in UCI_PARTITION_RATIOS\n}\n\nuci_partition_assignments = []\n\nfor _, row in uci_groups.iterrows():\n\n    partition_scores = {}\n\n    for partition in UCI_PARTITION_RATIOS:\n\n        relative_deficits = []\n\n        for metric in metrics:\n\n            target_value = targets[partition][metric]\n\n            remaining = (\n                target_value\n                - assigned[partition][metric]\n            )\n\n            relative_deficit = (\n                remaining\n                / max(target_value, 1)\n            )\n\n            relative_deficits.append(\n                relative_deficit\n            )\n\n        partition_scores[partition] = np.mean(\n            relative_deficits\n        )\n\n    chosen_partition = max(\n        partition_scores,\n        key=partition_scores.get\n    )\n\n    uci_partition_assignments.append({\n        \"group_id\": row[\"group_id\"],\n        \"partition\": chosen_partition\n    })\n\n    for metric in metrics:\n        assigned[chosen_partition][metric] += row[metric]"
+    },
+    {
+      "index": 98,
+      "cell_type": "code",
+      "source": "uci_partition_map = pd.DataFrame(\n    uci_partition_assignments\n)\n\nuci = uci.merge(\n    uci_partition_map,\n    on=\"group_id\",\n    how=\"left\",\n    validate=\"many_to_one\"\n)\n\nprint(\n    uci[\"partition\"]\n    .value_counts()\n)\n\nprint()\n\nprint(\n    uci[\"partition\"]\n    .value_counts(normalize=True)\n    .mul(100)\n    .round(2)\n)"
+    },
+    {
+      "index": 99,
+      "cell_type": "markdown"
+    },
+    {
+      "index": 100,
+      "cell_type": "code",
+      "source": "print(\"Total rows:\", len(uci))\nprint(\n    \"Rows with missing partition:\",\n    uci[\"partition\"].isna().sum()\n)\n\ngroup_partition_counts = (\n    uci\n    .groupby(\"group_id\")[\"partition\"]\n    .nunique()\n)\n\nprint(\n    \"Groups appearing in multiple partitions:\",\n    (group_partition_counts > 1).sum()\n)\n\npartition_target_counts = pd.crosstab(\n    uci[\"partition\"],\n    uci[\"target\"]\n)\n\nprint(\"\\nPartition \u00d7 target counts:\")\nprint(partition_target_counts)\n\npartition_target_prevalence = (\n    uci\n    .groupby(\"partition\")[\"target\"]\n    .mean()\n    .mul(100)\n    .round(2)\n)\n\nprint(\"\\nPhishing prevalence (%):\")\nprint(partition_target_prevalence)"
+    },
+    {
+      "index": 101,
+      "cell_type": "code",
+      "source": "uci_mixed_groups = uci_group_table.loc[\n    (uci_group_table[\"legitimate_rows\"] > 0)\n    &\n    (uci_group_table[\"phishing_rows\"] > 0),\n    \"group_id\"\n]\n\nmixed_group_partition_counts = (\n    uci[\n        uci[\"group_id\"].isin(\n            uci_mixed_groups\n        )\n    ]\n    .groupby(\"group_id\")[\"partition\"]\n    .nunique()\n)\n\nprint(\n    \"Mixed-target groups crossing partitions:\",\n    (mixed_group_partition_counts > 1).sum()\n)"
+    },
+    {
+      "index": 102,
+      "cell_type": "code",
+      "source": "assert len(uci) == 5849\nassert uci[\"partition\"].isna().sum() == 0\nassert (group_partition_counts > 1).sum() == 0\nassert (mixed_group_partition_counts > 1).sum() == 0\n\nfor partition in [\n    \"development\",\n    \"calibration\",\n    \"test\"\n]:\n    assert (\n        uci.loc[\n            uci[\"partition\"] == partition,\n            \"target\"\n        ].nunique()\n        == 2\n    )\n\nprint(\"All UCI partition integrity checks passed.\")"
+    },
+    {
+      "index": 103,
+      "cell_type": "markdown"
+    },
+    {
+      "index": 104,
+      "cell_type": "code",
+      "source": "uci_dev = (\n    uci[\n        uci[\"partition\"] == \"development\"\n    ]\n    .copy()\n    .reset_index(drop=True)\n)\n\nprint(\"Development rows:\", len(uci_dev))\nprint(\"Development groups:\", uci_dev[\"group_id\"].nunique())\nprint(\n    \"Target distribution:\",\n    uci_dev[\"target\"].value_counts().to_dict()\n)"
+    },
+    {
+      "index": 105,
+      "cell_type": "code",
+      "source": "uci_dev_group_table = (\n    uci_dev\n    .groupby(\"group_id\")\n    .agg(\n        rows=(\"observation_id\", \"size\"),\n        legitimate_rows=(\"target\", lambda s: int((s == 0).sum())),\n        phishing_rows=(\"target\", lambda s: int((s == 1).sum()))\n    )\n    .reset_index()\n)\n\nprint(\n    \"Development groups:\",\n    len(uci_dev_group_table)\n)\n\nprint(\n    \"Rows represented:\",\n    uci_dev_group_table[\"rows\"].sum()\n)"
+    },
+    {
+      "index": 106,
+      "cell_type": "code",
+      "source": "UCI_N_FOLDS = 5\nUCI_CV_RANDOM_SEED = 42\n\ncv_rng = np.random.default_rng(\n    UCI_CV_RANDOM_SEED\n)\n\ncv_groups = uci_dev_group_table.copy()\n\ncv_groups[\"_random\"] = cv_rng.random(\n    len(cv_groups)\n)\n\ncv_groups = cv_groups.sort_values(\n    [\"rows\", \"_random\"],\n    ascending=[False, True]\n)\n\nmetrics = [\n    \"rows\",\n    \"legitimate_rows\",\n    \"phishing_rows\"\n]\n\ntotals = {\n    metric: cv_groups[metric].sum()\n    for metric in metrics\n}\n\ntargets_per_fold = {\n    fold: {\n        metric: totals[metric] / UCI_N_FOLDS\n        for metric in metrics\n    }\n    for fold in range(1, UCI_N_FOLDS + 1)\n}\n\nassigned = {\n    fold: {\n        metric: 0\n        for metric in metrics\n    }\n    for fold in range(1, UCI_N_FOLDS + 1)\n}\n\nuci_fold_assignments = []\n\nfor _, row in cv_groups.iterrows():\n\n    fold_scores = {}\n\n    for fold in range(1, UCI_N_FOLDS + 1):\n\n        relative_deficits = []\n\n        for metric in metrics:\n\n            target_value = targets_per_fold[fold][metric]\n\n            remaining = (\n                target_value\n                - assigned[fold][metric]\n            )\n\n            relative_deficit = (\n                remaining / max(target_value, 1)\n            )\n\n            relative_deficits.append(\n                relative_deficit\n            )\n\n        fold_scores[fold] = np.mean(\n            relative_deficits\n        )\n\n    chosen_fold = max(\n        fold_scores,\n        key=fold_scores.get\n    )\n\n    uci_fold_assignments.append({\n        \"group_id\": row[\"group_id\"],\n        \"cv_fold\": chosen_fold\n    })\n\n    for metric in metrics:\n        assigned[chosen_fold][metric] += row[metric]"
+    },
+    {
+      "index": 107,
+      "cell_type": "code",
+      "source": "uci_fold_map = pd.DataFrame(\n    uci_fold_assignments\n)\n\nuci_dev = uci_dev.merge(\n    uci_fold_map,\n    on=\"group_id\",\n    how=\"left\",\n    validate=\"many_to_one\"\n)\n\nprint(\n    uci_dev[\"cv_fold\"]\n    .value_counts()\n    .sort_index()\n)\n\nprint()\n\nprint(\n    uci_dev[\"cv_fold\"]\n    .value_counts(normalize=True)\n    .sort_index()\n    .mul(100)\n    .round(2)\n)"
+    },
+    {
+      "index": 108,
+      "cell_type": "markdown"
+    },
+    {
+      "index": 109,
+      "cell_type": "code",
+      "source": "print(\"Development rows:\", len(uci_dev))\nprint(\n    \"Rows with missing fold:\",\n    uci_dev[\"cv_fold\"].isna().sum()\n)\n\ngroup_fold_counts = (\n    uci_dev\n    .groupby(\"group_id\")[\"cv_fold\"]\n    .nunique()\n)\n\nprint(\n    \"Groups appearing in multiple folds:\",\n    (group_fold_counts > 1).sum()\n)\n\nfold_target_counts = pd.crosstab(\n    uci_dev[\"cv_fold\"],\n    uci_dev[\"target\"]\n)\n\nprint(\"\\nFold \u00d7 target counts:\")\nprint(fold_target_counts)\n\nfold_target_prevalence = (\n    uci_dev\n    .groupby(\"cv_fold\")[\"target\"]\n    .mean()\n    .mul(100)\n    .round(2)\n)\n\nprint(\"\\nPhishing prevalence (%):\")\nprint(fold_target_prevalence)"
+    },
+    {
+      "index": 110,
+      "cell_type": "code",
+      "source": "dev_uci_mixed_groups = (\n    uci_dev_group_table.loc[\n        (uci_dev_group_table[\"legitimate_rows\"] > 0)\n        &\n        (uci_dev_group_table[\"phishing_rows\"] > 0),\n        \"group_id\"\n    ]\n)\n\nmixed_group_fold_counts = (\n    uci_dev[\n        uci_dev[\"group_id\"].isin(\n            dev_uci_mixed_groups\n        )\n    ]\n    .groupby(\"group_id\")[\"cv_fold\"]\n    .nunique()\n)\n\nprint(\n    \"Mixed-target groups crossing folds:\",\n    (mixed_group_fold_counts > 1).sum()\n)"
+    },
+    {
+      "index": 111,
+      "cell_type": "code",
+      "source": "assert len(uci_dev) == 4094\nassert uci_dev[\"cv_fold\"].isna().sum() == 0\nassert (group_fold_counts > 1).sum() == 0\nassert (mixed_group_fold_counts > 1).sum() == 0\n\nfor fold in range(1, 6):\n    assert (\n        uci_dev.loc[\n            uci_dev[\"cv_fold\"] == fold,\n            \"target\"\n        ].nunique()\n        == 2\n    )\n\nprint(\n    \"All UCI grouped cross-validation \"\n    \"integrity checks passed.\"\n)"
+    },
+    {
+      "index": 112,
+      "cell_type": "markdown"
+    },
+    {
+      "index": 113,
+      "cell_type": "code",
+      "source": "iscx = data[\"ISCX-URL2016 Phishing\"].copy()\n\niscx[\"source_dataset\"] = \"ISCX-URL2016 Phishing\"\niscx[\"source_row_id\"] = np.arange(len(iscx))\n\niscx[\"observation_id\"] = (\n    \"ISCX::\"\n    + iscx[\"source_row_id\"].astype(str)\n)\n\niscx[\"target\"] = (\n    iscx[\"URL_Type_obf_Type\"]\n    .map({\n        \"benign\": 0,\n        \"phishing\": 1\n    })\n)\n\nprint(\"Rows:\", len(iscx))\nprint(\"Unique observation IDs:\", iscx[\"observation_id\"].nunique())\nprint(\"Missing targets:\", iscx[\"target\"].isna().sum())\n\nprint(\"\\nNative labels:\")\nprint(\n    iscx[\"URL_Type_obf_Type\"]\n    .value_counts()\n)\n\nprint(\"\\nStandardized targets:\")\nprint(\n    iscx[\"target\"]\n    .value_counts()\n    .sort_index()\n)"
+    },
+    {
+      "index": 114,
+      "cell_type": "markdown"
+    },
+    {
+      "index": 115,
+      "cell_type": "code",
+      "source": "iscx_predictor_columns = [\n    col\n    for col in iscx.columns\n    if col not in {\n        \"URL_Type_obf_Type\",\n        \"target\",\n        \"source_dataset\",\n        \"source_row_id\",\n        \"observation_id\"\n    }\n]\n\nprint(\n    \"Predictor columns:\",\n    len(iscx_predictor_columns)\n)"
+    },
+    {
+      "index": 116,
+      "cell_type": "code",
+      "source": "iscx_feature_strings = (\n    iscx[iscx_predictor_columns]\n    .astype(\"string\")\n    .fillna(\"<NA>\")\n    .agg(\"|\".join, axis=1)\n)\n\niscx[\"feature_hash\"] = (\n    iscx_feature_strings\n    .map(\n        lambda x: hashlib.sha256(\n            x.encode(\"utf-8\")\n        ).hexdigest()\n    )\n)\n\nunique_hashes = sorted(\n    iscx[\"feature_hash\"].unique()\n)\n\nhash_to_group = {\n    h: f\"iscx_group_{i:06d}\"\n    for i, h in enumerate(\n        unique_hashes,\n        start=1\n    )\n}\n\niscx[\"group_id\"] = (\n    iscx[\"feature_hash\"]\n    .map(hash_to_group)\n)"
+    },
+    {
+      "index": 117,
+      "cell_type": "code",
+      "source": "iscx_group_summary = (\n    iscx\n    .groupby(\"group_id\")\n    .agg(\n        rows=(\"observation_id\", \"size\"),\n        target_classes=(\"target\", \"nunique\")\n    )\n    .reset_index()\n)\n\nprint(\n    \"Total groups:\",\n    len(iscx_group_summary)\n)\n\nprint(\n    \"Multi-row groups:\",\n    (iscx_group_summary[\"rows\"] > 1).sum()\n)\n\nprint(\n    \"Largest group size:\",\n    iscx_group_summary[\"rows\"].max()\n)\n\nprint(\n    \"Mixed-target groups:\",\n    (iscx_group_summary[\"target_classes\"] > 1).sum()\n)"
+    },
+    {
+      "index": 118,
+      "cell_type": "markdown"
+    },
+    {
+      "index": 119,
+      "cell_type": "markdown"
+    },
+    {
+      "index": 120,
+      "cell_type": "code",
+      "source": "iscx_group_table = (\n    iscx\n    .groupby(\"group_id\")\n    .agg(\n        rows=(\"observation_id\", \"size\"),\n        benign_rows=(\"target\", lambda s: int((s == 0).sum())),\n        phishing_rows=(\"target\", lambda s: int((s == 1).sum()))\n    )\n    .reset_index()\n)\n\nprint(\"Groups:\", len(iscx_group_table))\nprint(\"Rows represented:\", iscx_group_table[\"rows\"].sum())"
+    },
+    {
+      "index": 121,
+      "cell_type": "code",
+      "source": "ISCX_PARTITION_RATIOS = {\n    \"development\": 0.70,\n    \"calibration\": 0.15,\n    \"test\": 0.15\n}\n\nISCX_RANDOM_SEED = 42\n\nrng = np.random.default_rng(ISCX_RANDOM_SEED)\n\niscx_groups = iscx_group_table.copy()\n\niscx_groups[\"_random\"] = rng.random(\n    len(iscx_groups)\n)\n\niscx_groups = iscx_groups.sort_values(\n    [\"rows\", \"_random\"],\n    ascending=[False, True]\n)\n\nmetrics = [\n    \"rows\",\n    \"benign_rows\",\n    \"phishing_rows\"\n]\n\ntotals = {\n    metric: iscx_groups[metric].sum()\n    for metric in metrics\n}\n\ntargets = {\n    partition: {\n        metric: totals[metric] * ratio\n        for metric in metrics\n    }\n    for partition, ratio in ISCX_PARTITION_RATIOS.items()\n}\n\nassigned = {\n    partition: {\n        metric: 0\n        for metric in metrics\n    }\n    for partition in ISCX_PARTITION_RATIOS\n}\n\niscx_partition_assignments = []\n\nfor _, row in iscx_groups.iterrows():\n\n    partition_scores = {}\n\n    for partition in ISCX_PARTITION_RATIOS:\n\n        relative_deficits = []\n\n        for metric in metrics:\n\n            target_value = targets[partition][metric]\n\n            remaining = (\n                target_value\n                - assigned[partition][metric]\n            )\n\n            relative_deficit = (\n                remaining\n                / max(target_value, 1)\n            )\n\n            relative_deficits.append(\n                relative_deficit\n            )\n\n        partition_scores[partition] = np.mean(\n            relative_deficits\n        )\n\n    chosen_partition = max(\n        partition_scores,\n        key=partition_scores.get\n    )\n\n    iscx_partition_assignments.append({\n        \"group_id\": row[\"group_id\"],\n        \"partition\": chosen_partition\n    })\n\n    for metric in metrics:\n        assigned[chosen_partition][metric] += row[metric]"
+    },
+    {
+      "index": 122,
+      "cell_type": "code",
+      "source": "iscx_partition_map = pd.DataFrame(\n    iscx_partition_assignments\n)\n\niscx = iscx.merge(\n    iscx_partition_map,\n    on=\"group_id\",\n    how=\"left\",\n    validate=\"many_to_one\"\n)\n\nprint(\n    iscx[\"partition\"]\n    .value_counts()\n)\n\nprint()\n\nprint(\n    iscx[\"partition\"]\n    .value_counts(normalize=True)\n    .mul(100)\n    .round(2)\n)"
+    },
+    {
+      "index": 123,
+      "cell_type": "markdown"
+    },
+    {
+      "index": 124,
+      "cell_type": "code",
+      "source": "print(\"Total rows:\", len(iscx))\nprint(\n    \"Rows with missing partition:\",\n    iscx[\"partition\"].isna().sum()\n)\n\ngroup_partition_counts = (\n    iscx\n    .groupby(\"group_id\")[\"partition\"]\n    .nunique()\n)\n\nprint(\n    \"Groups appearing in multiple partitions:\",\n    (group_partition_counts > 1).sum()\n)\n\npartition_target_counts = pd.crosstab(\n    iscx[\"partition\"],\n    iscx[\"target\"]\n)\n\nprint(\"\\nPartition \u00d7 target counts:\")\nprint(partition_target_counts)\n\npartition_target_prevalence = (\n    iscx\n    .groupby(\"partition\")[\"target\"]\n    .mean()\n    .mul(100)\n    .round(2)\n)\n\nprint(\"\\nPhishing prevalence (%):\")\nprint(partition_target_prevalence)"
+    },
+    {
+      "index": 125,
+      "cell_type": "code",
+      "source": "assert len(iscx) == 14823\nassert iscx[\"partition\"].isna().sum() == 0\nassert (group_partition_counts > 1).sum() == 0\n\nfor partition in [\n    \"development\",\n    \"calibration\",\n    \"test\"\n]:\n    assert (\n        iscx.loc[\n            iscx[\"partition\"] == partition,\n            \"target\"\n        ].nunique()\n        == 2\n    )\n\nprint(\"All ISCX partition integrity checks passed.\")"
+    },
+    {
+      "index": 126,
+      "cell_type": "markdown"
+    },
+    {
+      "index": 127,
+      "cell_type": "markdown"
+    },
+    {
+      "index": 128,
+      "cell_type": "code",
+      "source": "iscx_dev = (\n    iscx[\n        iscx[\"partition\"] == \"development\"\n    ]\n    .copy()\n    .reset_index(drop=True)\n)\n\nprint(\"Development rows:\", len(iscx_dev))\nprint(\"Development groups:\", iscx_dev[\"group_id\"].nunique())\nprint(\n    \"Target distribution:\",\n    iscx_dev[\"target\"].value_counts().to_dict()\n)"
+    },
+    {
+      "index": 129,
+      "cell_type": "code",
+      "source": "iscx_dev_group_table = (\n    iscx_dev\n    .groupby(\"group_id\")\n    .agg(\n        rows=(\"observation_id\", \"size\"),\n        benign_rows=(\"target\", lambda s: int((s == 0).sum())),\n        phishing_rows=(\"target\", lambda s: int((s == 1).sum()))\n    )\n    .reset_index()\n)"
+    },
+    {
+      "index": 130,
+      "cell_type": "code",
+      "source": "ISCX_N_FOLDS = 5\nISCX_CV_RANDOM_SEED = 42\n\ncv_rng = np.random.default_rng(\n    ISCX_CV_RANDOM_SEED\n)\n\ncv_groups = iscx_dev_group_table.copy()\n\ncv_groups[\"_random\"] = cv_rng.random(\n    len(cv_groups)\n)\n\ncv_groups = cv_groups.sort_values(\n    [\"rows\", \"_random\"],\n    ascending=[False, True]\n)\n\nmetrics = [\n    \"rows\",\n    \"benign_rows\",\n    \"phishing_rows\"\n]\n\ntotals = {\n    metric: cv_groups[metric].sum()\n    for metric in metrics\n}\n\ntargets_per_fold = {\n    fold: {\n        metric: totals[metric] / ISCX_N_FOLDS\n        for metric in metrics\n    }\n    for fold in range(1, ISCX_N_FOLDS + 1)\n}\n\nassigned = {\n    fold: {\n        metric: 0\n        for metric in metrics\n    }\n    for fold in range(1, ISCX_N_FOLDS + 1)\n}\n\niscx_fold_assignments = []\n\nfor _, row in cv_groups.iterrows():\n\n    fold_scores = {}\n\n    for fold in range(1, ISCX_N_FOLDS + 1):\n\n        relative_deficits = []\n\n        for metric in metrics:\n\n            target_value = targets_per_fold[fold][metric]\n\n            remaining = (\n                target_value\n                - assigned[fold][metric]\n            )\n\n            relative_deficit = (\n                remaining / max(target_value, 1)\n            )\n\n            relative_deficits.append(\n                relative_deficit\n            )\n\n        fold_scores[fold] = np.mean(\n            relative_deficits\n        )\n\n    chosen_fold = max(\n        fold_scores,\n        key=fold_scores.get\n    )\n\n    iscx_fold_assignments.append({\n        \"group_id\": row[\"group_id\"],\n        \"cv_fold\": chosen_fold\n    })\n\n    for metric in metrics:\n        assigned[chosen_fold][metric] += row[metric]"
+    },
+    {
+      "index": 131,
+      "cell_type": "code",
+      "source": "iscx_fold_map = pd.DataFrame(\n    iscx_fold_assignments\n)\n\niscx_dev = iscx_dev.merge(\n    iscx_fold_map,\n    on=\"group_id\",\n    how=\"left\",\n    validate=\"many_to_one\"\n)\n\nprint(\n    iscx_dev[\"cv_fold\"]\n    .value_counts()\n    .sort_index()\n)\n\nprint()\n\nprint(\n    iscx_dev[\"cv_fold\"]\n    .value_counts(normalize=True)\n    .sort_index()\n    .mul(100)\n    .round(2)\n)"
+    },
+    {
+      "index": 132,
+      "cell_type": "markdown"
+    },
+    {
+      "index": 133,
+      "cell_type": "code",
+      "source": "print(\"Development rows:\", len(iscx_dev))\nprint(\n    \"Rows with missing fold:\",\n    iscx_dev[\"cv_fold\"].isna().sum()\n)\n\ngroup_fold_counts = (\n    iscx_dev\n    .groupby(\"group_id\")[\"cv_fold\"]\n    .nunique()\n)\n\nprint(\n    \"Groups appearing in multiple folds:\",\n    (group_fold_counts > 1).sum()\n)\n\nfold_target_counts = pd.crosstab(\n    iscx_dev[\"cv_fold\"],\n    iscx_dev[\"target\"]\n)\n\nprint(\"\\nFold \u00d7 target counts:\")\nprint(fold_target_counts)\n\nfold_target_prevalence = (\n    iscx_dev\n    .groupby(\"cv_fold\")[\"target\"]\n    .mean()\n    .mul(100)\n    .round(2)\n)\n\nprint(\"\\nPhishing prevalence (%):\")\nprint(fold_target_prevalence)"
+    },
+    {
+      "index": 134,
+      "cell_type": "code",
+      "source": "assert len(iscx_dev) == 10375\nassert iscx_dev[\"cv_fold\"].isna().sum() == 0\nassert (group_fold_counts > 1).sum() == 0\n\nfor fold in range(1, 6):\n    assert (\n        iscx_dev.loc[\n            iscx_dev[\"cv_fold\"] == fold,\n            \"target\"\n        ].nunique()\n        == 2\n    )\n\nprint(\n    \"All ISCX grouped cross-validation \"\n    \"integrity checks passed.\"\n)"
+    },
+    {
+      "index": 135,
+      "cell_type": "markdown"
+    },
+    {
+      "index": 136,
+      "cell_type": "markdown"
+    },
+    {
+      "index": 137,
+      "cell_type": "code",
+      "source": "preprocessing_policy = pd.DataFrame([\n    {\n        \"operation\": \"Missing-value imputation\",\n        \"learned_from_data\": True,\n        \"fit_stage\": \"Training fold / development only\",\n        \"global_fit_allowed\": False\n    },\n    {\n        \"operation\": \"Feature scaling\",\n        \"learned_from_data\": True,\n        \"fit_stage\": \"Training fold / development only\",\n        \"global_fit_allowed\": False\n    },\n    {\n        \"operation\": \"Variance-based feature removal\",\n        \"learned_from_data\": True,\n        \"fit_stage\": \"Training fold / development only\",\n        \"global_fit_allowed\": False\n    },\n    {\n        \"operation\": \"Text vocabulary / vectorizer fitting\",\n        \"learned_from_data\": True,\n        \"fit_stage\": \"Training fold / development only\",\n        \"global_fit_allowed\": False\n    },\n    {\n        \"operation\": \"Class weighting / resampling\",\n        \"learned_from_data\": True,\n        \"fit_stage\": \"Training fold only\",\n        \"global_fit_allowed\": False\n    },\n    {\n        \"operation\": \"Target mapping from documented source semantics\",\n        \"learned_from_data\": False,\n        \"fit_stage\": \"Deterministic preprocessing\",\n        \"global_fit_allowed\": True\n    },\n    {\n        \"operation\": \"Stable observation/group identifier construction\",\n        \"learned_from_data\": False,\n        \"fit_stage\": \"Deterministic preprocessing\",\n        \"global_fit_allowed\": True\n    }\n])\n\npreprocessing_policy"
+    },
+    {
+      "index": 138,
+      "cell_type": "code",
+      "source": "email_cv_map = (\n    email_dev[\n        [\"observation_id\", \"cv_fold\"]\n    ]\n    .drop_duplicates()\n)\n\nemail_binary = email_binary.drop(\n    columns=[\"cv_fold\"],\n    errors=\"ignore\"\n)\n\nemail_binary = email_binary.merge(\n    email_cv_map,\n    on=\"observation_id\",\n    how=\"left\",\n    validate=\"one_to_one\"\n)"
+    },
+    {
+      "index": 139,
+      "cell_type": "code",
+      "source": "phiusiil_cv_map = (\n    phiusiil_dev[\n        [\"observation_id\", \"cv_fold\"]\n    ]\n    .drop_duplicates()\n)\n\nphiusiil = phiusiil.drop(\n    columns=[\"cv_fold\"],\n    errors=\"ignore\"\n)\n\nphiusiil = phiusiil.merge(\n    phiusiil_cv_map,\n    on=\"observation_id\",\n    how=\"left\",\n    validate=\"one_to_one\"\n)"
+    },
+    {
+      "index": 140,
+      "cell_type": "code",
+      "source": "uci_cv_map = (\n    uci_dev[\n        [\"observation_id\", \"cv_fold\"]\n    ]\n    .drop_duplicates()\n)\n\nuci = uci.drop(\n    columns=[\"cv_fold\"],\n    errors=\"ignore\"\n)\n\nuci = uci.merge(\n    uci_cv_map,\n    on=\"observation_id\",\n    how=\"left\",\n    validate=\"one_to_one\"\n)"
+    },
+    {
+      "index": 141,
+      "cell_type": "code",
+      "source": "iscx_cv_map = (\n    iscx_dev[\n        [\"observation_id\", \"cv_fold\"]\n    ]\n    .drop_duplicates()\n)\n\niscx = iscx.drop(\n    columns=[\"cv_fold\"],\n    errors=\"ignore\"\n)\n\niscx = iscx.merge(\n    iscx_cv_map,\n    on=\"observation_id\",\n    how=\"left\",\n    validate=\"one_to_one\"\n)"
+    },
+    {
+      "index": 142,
+      "cell_type": "code",
+      "source": "for name, df in {\n    \"Email\": email_binary,\n    \"PhiUSIIL\": phiusiil,\n    \"UCI\": uci,\n    \"ISCX\": iscx\n}.items():\n\n    dev_missing = df.loc[\n        df[\"partition\"] == \"development\",\n        \"cv_fold\"\n    ].isna().sum()\n\n    nondev_with_fold = df.loc[\n        df[\"partition\"] != \"development\",\n        \"cv_fold\"\n    ].notna().sum()\n\n    print(\n        f\"{name}: \"\n        f\"development missing folds = {dev_missing}, \"\n        f\"calibration/test with folds = {nondev_with_fold}\"\n    )"
+    },
+    {
+      "index": 143,
+      "cell_type": "markdown"
+    },
+    {
+      "index": 144,
+      "cell_type": "code",
+      "source": "PREPROCESSED_DATA_DIR = PROCESSED_DIR / \"preprocessed\"\nPREPROCESSED_DATA_DIR.mkdir(parents=True, exist_ok=True)\n\nPARTITION_RESULTS_DIR = (\n    PREPROCESSING_RESULTS_DIR / \"partitions\"\n)\nPARTITION_RESULTS_DIR.mkdir(\n    parents=True,\n    exist_ok=True\n)\n\nprint(\"Preprocessed data:\", PREPROCESSED_DATA_DIR)\nprint(\"Partition results:\", PARTITION_RESULTS_DIR)"
+    },
+    {
+      "index": 145,
+      "cell_type": "markdown"
+    },
+    {
+      "index": 146,
+      "cell_type": "markdown"
+    },
+    {
+      "index": 147,
+      "cell_type": "code",
+      "source": "# Historical global policy export disabled for this controlled benchmark.\n# Preserve the original preprocessing_policy.csv unchanged.\nprint(\"Global preprocessing policy export skipped (historical artifact preserved).\")"
+    },
+    {
+      "index": 148,
+      "cell_type": "markdown"
+    },
+    {
+      "index": 149,
+      "cell_type": "markdown"
+    },
+    {
+      "index": 150,
+      "cell_type": "markdown"
+    }
+  ],
+  "code_order_sha256": "c620c96e0eb4a502e61bef68c0946bf7129404b1aae7cde99d431b000d5c930b"
+}

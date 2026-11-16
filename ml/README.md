@@ -241,3 +241,10 @@ The envelope is infrastructure, not a model or prediction. The current safe fact
 `review_required` and `failed` results fail closed. Review conditions use approved codes for unsupported modalities, missing evidence, invalid schemas, incompatible versions, or parser failure. Failed processing uses only `component_failure`, requires a failed component, and never exposes exception text. Neither lifecycle state contains a definitive classification, probability, confidence, risk tier, or intervention.
 
 Serialization returns a fresh primitive snake_case dictionary while preserving canonical component and dimension order. Raw artifacts, sensitive data, evidence locators, model attribution, and user susceptibility are excluded. The existing backend adapter revalidates this envelope for the API. The internal pipeline retains evidence separately and never adds it to that API contract. Dataset processing, validated behavioral identification, model training, calibration, risk rules, analytical persistence, and final UI integration remain deferred; the SE-BRL model is not complete.
+# Combined R22 engineering review
+
+Vera's bounded semantic review and joint email adapter coexist with Dhanwil's
+deterministic representation, experiment gates, and artifact analysis. See the
+[Phase 2 integration record](../docs/research/r22-phase2-integration.md) for exact
+source commits, overlap decisions, verification, and preserved research limits.
+Semantic candidates request review and never replace deterministic labels.

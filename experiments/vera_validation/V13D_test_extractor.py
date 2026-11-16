@@ -32,7 +32,7 @@ class ExtractorTests(unittest.TestCase):
     def test_review_flags_mock(self):
         class Fake:
             def score(self,text,indicator):
-                return [{'hypothesis':'test','entailment':.9,'neutral':.05,'contradiction':.05}]
+                return [{'hypothesis':'test','entailment':.9,'neutral':.05,'contradiction':.05}]*3
         out=extract('Please read this.',semantic=Fake())
         self.assertEqual(out['mode'],'hybrid_review_only')
         self.assertTrue(out['indicators']['urgency']['needs_review'])

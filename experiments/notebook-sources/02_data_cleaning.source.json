@@ -1,0 +1,253 @@
+{
+  "schema": "notebook-code-source-v1",
+  "notebook": "02_data_cleaning.ipynb",
+  "nbformat": 4,
+  "cells": [
+    {
+      "index": 0,
+      "cell_type": "code",
+      "source": "# Research release guard (finalization 2026-11-13). No fitting/preparation authorized.\nfrom pathlib import Path as _PolicyPath\nimport sys as _policy_sys\n_policy_root = next((p for p in [_PolicyPath.cwd(), *_PolicyPath.cwd().parents]\n                     if (p / \"ml\" / \"research_policy.py\").is_file()), None)\nif _policy_root is None:\n    raise RuntimeError(\"Research policy unavailable; refusing execution\")\nif str(_policy_root) not in _policy_sys.path:\n    _policy_sys.path.insert(0, str(_policy_root))\nfrom ml.research_policy import require_stage_authorization, read_research_csv, verify_research_path\nrequire_stage_authorization(\"preprocessing\")\n"
+    },
+    {
+      "index": 1,
+      "cell_type": "markdown"
+    },
+    {
+      "index": 2,
+      "cell_type": "markdown"
+    },
+    {
+      "index": 3,
+      "cell_type": "code",
+      "source": "\nfrom pathlib import Path\nimport sys\n\nprint(\"Python:\", sys.version)\nprint(\"Working directory:\", Path.cwd())\nprint(\"Repository exists:\", Path.cwd().exists())\n  "
+    },
+    {
+      "index": 4,
+      "cell_type": "code",
+      "source": "from pathlib import Path\n\ncwd = Path.cwd().resolve()\n\nREPO_ROOT = next(\n    (\n        p for p in [cwd, *cwd.parents]\n        if (p / \".git\").exists()\n        and (p / \"experiments\").exists()\n    ),\n    None\n)\n\nassert REPO_ROOT is not None, \"Repository root not found\"\n\nprint(\"Repository root:\", REPO_ROOT)\nprint(\"Raw datasets exist:\", (REPO_ROOT / \"experiments/datasets-raw\").exists())\nprint(\"Audit results exist:\", (REPO_ROOT / \"experiments/results/audits\").exists())\nprint(\"Interim data exists:\", (REPO_ROOT / \"experiments/data/interim\").exists())"
+    },
+    {
+      "index": 5,
+      "cell_type": "code",
+      "source": "from pathlib import Path\nimport numpy as np\nimport pandas as pd\nfrom scipy.io import arff\n\npd.set_option(\"display.max_columns\", None)\npd.set_option(\"display.max_rows\", 100)\npd.set_option(\"display.max_colwidth\", 100)"
+    },
+    {
+      "index": 6,
+      "cell_type": "code",
+      "source": "# Locate repository root\n\ncwd = Path.cwd().resolve()\n\nREPO_ROOT = next(\n    (\n        p for p in [cwd, *cwd.parents]\n        if (p / \".git\").exists()\n        and (p / \"experiments\").exists()\n    ),\n    None\n)\n\nif REPO_ROOT is None:\n    raise RuntimeError(\n        \"Could not locate repository root.\"\n    )\n\nRAW_DATA_DIR = REPO_ROOT / \"experiments\" / \"datasets-raw\"\nAUDIT_DIR = REPO_ROOT / \"experiments\" / \"results\" / \"audits\"\nINTERIM_DIR = REPO_ROOT / \"experiments\" / \"data\" / \"interim\"\n\nINTERIM_DIR.mkdir(parents=True, exist_ok=True)\n\nprint(\"Repository root:\", REPO_ROOT)\nprint(\"Raw data:\", RAW_DATA_DIR)\nprint(\"Audit results:\", AUDIT_DIR)\nprint(\"Cleaned output:\", INTERIM_DIR)"
+    },
+    {
+      "index": 7,
+      "cell_type": "code",
+      "source": "print(\"Raw data exists:\", RAW_DATA_DIR.exists())\nprint(\"Audit results exist:\", AUDIT_DIR.exists())\nprint(\"Interim output exists:\", INTERIM_DIR.exists())"
+    },
+    {
+      "index": 8,
+      "cell_type": "markdown"
+    },
+    {
+      "index": 9,
+      "cell_type": "code",
+      "source": "audit_files = {\n    \"inventory\": \"dataset_inventory.csv\",\n    \"labels\": \"label_distribution.csv\",\n    \"label_semantics\": \"verified_label_semantics.csv\",\n    \"missing\": \"missing_values.csv\",\n    \"duplicates\": \"exact_duplicates.csv\",\n    \"email_stats\": \"email_content_statistics.csv\",\n    \"email_lengths\": \"email_length_distribution.csv\",\n    \"numeric\": \"structured_numeric_audit.csv\",\n    \"uci_values\": \"uci_native_value_audit.csv\",\n    \"phiusiil_grouping\": \"phiusiil_grouping_summary.csv\",\n    \"phiusiil_labels\": \"phiusiil_domain_label_summary.csv\",\n    \"email_grouping\": \"email_grouping_summary.csv\",\n    \"sender_labels\": \"email_sender_label_summary.csv\",\n}\n\naudit_reports = {\n    name: read_research_csv(AUDIT_DIR / filename)\n    for name, filename in audit_files.items()\n}\n\nprint(\"Audit reports loaded:\", len(audit_reports))\n\nfor name, report in audit_reports.items():\n    print(f\"{name:24s} {report.shape}\")"
+    },
+    {
+      "index": 10,
+      "cell_type": "markdown"
+    },
+    {
+      "index": 11,
+      "cell_type": "code",
+      "source": "cleaning_log = []\n\ndef log_cleaning(\n    dataset,\n    issue,\n    evidence,\n    action,\n    rationale,\n    rows_before,\n    rows_after\n):\n    cleaning_log.append({\n        \"dataset\": dataset,\n        \"issue\": issue,\n        \"audit_evidence\": evidence,\n        \"action\": action,\n        \"rationale\": rationale,\n        \"rows_before\": rows_before,\n        \"rows_after\": rows_after,\n        \"rows_removed\": rows_before - rows_after\n    })\n\nprint(\"Cleaning log initialized.\")"
+    },
+    {
+      "index": 12,
+      "cell_type": "markdown"
+    },
+    {
+      "index": 13,
+      "cell_type": "code",
+      "source": "DATASETS = {\n    \"CEAS-08\": {\n        \"path\": RAW_DATA_DIR / \"email\" / \"ceas_08\" / \"CEAS_08.csv\",\n        \"format\": \"csv\"\n    },\n    \"Enron\": {\n        \"path\": RAW_DATA_DIR / \"email\" / \"enron\" / \"Enron.csv\",\n        \"format\": \"csv\"\n    },\n    \"Nazario\": {\n        \"path\": RAW_DATA_DIR / \"email\" / \"nazario\" / \"Nazario.csv\",\n        \"format\": \"csv\"\n    },\n    \"SpamAssassin\": {\n        \"path\": RAW_DATA_DIR / \"email\" / \"spamassasin\" / \"SpamAssasin.csv\",\n        \"format\": \"csv\"\n    },\n    \"PhiUSIIL\": {\n        \"path\": RAW_DATA_DIR / \"webpage\" / \"PhiUSIL\"\n                / \"PhiUSIIL_Phishing_URL_Dataset.csv\",\n        \"format\": \"csv\"\n    },\n    \"UCI Phishing Websites\": {\n        \"path\": RAW_DATA_DIR / \"webpage\" / \"uci\"\n                / \"phishing+websites\" / \"Training Dataset.arff\",\n        \"format\": \"arff\"\n    },\n    \"ISCX-URL2016 All\": {\n        \"path\": RAW_DATA_DIR / \"url\" / \"iscx-url-2016\" / \"All.csv\",\n        \"format\": \"csv\"\n    },\n    \"ISCX-URL2016 Phishing\": {\n        \"path\": RAW_DATA_DIR / \"url\" / \"iscx-url-2016\" / \"Phishing.csv\",\n        \"format\": \"csv\"\n    },\n}"
+    },
+    {
+      "index": 14,
+      "cell_type": "code",
+      "source": "def load_dataset(info):\n    if info[\"format\"] == \"csv\":\n        return read_research_csv(info[\"path\"])\n\n    if info[\"format\"] == \"arff\":\n        data, _ = arff.loadarff(verify_research_path(info[\"path\"]))\n        return pd.DataFrame(data)\n\n    raise ValueError(f\"Unsupported format: {info['format']}\")\n\n\nraw_data = {\n    name: load_dataset(info)\n    for name, info in DATASETS.items()\n}\n\nprint(\"Raw datasets loaded:\", len(raw_data))\n\nfor name, df in raw_data.items():\n    print(f\"{name:26s} {df.shape}\")"
+    },
+    {
+      "index": 15,
+      "cell_type": "markdown"
+    },
+    {
+      "index": 16,
+      "cell_type": "code",
+      "source": "baseline_shapes = pd.DataFrame([\n    {\n        \"dataset\": name,\n        \"rows\": len(df),\n        \"columns\": len(df.columns)\n    }\n    for name, df in raw_data.items()\n])\n\nbaseline_shapes"
+    },
+    {
+      "index": 17,
+      "cell_type": "code",
+      "source": "clean_data = {\n    name: df.copy(deep=True)\n    for name, df in raw_data.items()\n}\n\nprint(\"Working copies created:\", len(clean_data))"
+    },
+    {
+      "index": 18,
+      "cell_type": "markdown"
+    },
+    {
+      "index": 19,
+      "cell_type": "code",
+      "source": "duplicate_checks = []\n\nduplicate_targets = {\n    \"UCI Phishing Websites\": \"Result\",\n    \"ISCX-URL2016 All\": \"URL_Type_obf_Type\",\n    \"ISCX-URL2016 Phishing\": \"URL_Type_obf_Type\",\n}\n\nfor name, label_col in duplicate_targets.items():\n    df = clean_data[name]\n\n    feature_cols = [\n        col for col in df.columns\n        if col != label_col\n    ]\n\n    exact_duplicates = df.duplicated(keep=\"first\").sum()\n\n    feature_label_counts = (\n        df.groupby(feature_cols, dropna=False)[label_col]\n        .nunique()\n    )\n\n    conflicting_groups = (feature_label_counts > 1).sum()\n\n    duplicate_checks.append({\n        \"dataset\": name,\n        \"rows\": len(df),\n        \"exact_duplicates\": int(exact_duplicates),\n        \"conflicting_feature_groups\": int(conflicting_groups)\n    })\n\nduplicate_checks = pd.DataFrame(duplicate_checks)\n\nduplicate_checks"
+    },
+    {
+      "index": 20,
+      "cell_type": "markdown"
+    },
+    {
+      "index": 21,
+      "cell_type": "code",
+      "source": "for name in duplicate_targets:\n    df = clean_data[name]\n\n    rows_before = len(df)\n\n    clean_data[name] = (\n        df.drop_duplicates()\n        .reset_index(drop=True)\n    )\n\n    rows_after = len(clean_data[name])\n\n    log_cleaning(\n        dataset=name,\n        issue=\"Exact duplicate rows\",\n        evidence=\"exact_duplicates.csv and predictor-label conflict check\",\n        action=\"Removed complete duplicate rows only\",\n        rationale=(\n            \"Exact copies provide no additional unique information. \"\n            \"Predictor-level duplicates with different labels were preserved.\"\n        ),\n        rows_before=rows_before,\n        rows_after=rows_after\n    )\n\n    print(\n        f\"{name}: {rows_before:,} -> {rows_after:,} \"\n        f\"({rows_before - rows_after:,} removed)\"\n    )"
+    },
+    {
+      "index": 22,
+      "cell_type": "code",
+      "source": "pd.DataFrame(cleaning_log)"
+    },
+    {
+      "index": 23,
+      "cell_type": "markdown"
+    },
+    {
+      "index": 24,
+      "cell_type": "code",
+      "source": "email_datasets = [\n    \"CEAS-08\",\n    \"Enron\",\n    \"Nazario\",\n    \"SpamAssassin\"\n]\n\nfor name in email_datasets:\n    df = clean_data[name]\n\n    text_cols = [\n        col for col in [\"subject\", \"body\"]\n        if col in df.columns\n    ]\n\n    missing_before = int(df[text_cols].isna().sum().sum())\n\n    df[text_cols] = df[text_cols].fillna(\"\")\n\n    missing_after = int(df[text_cols].isna().sum().sum())\n\n    print(\n        f\"{name}: {missing_before} -> \"\n        f\"{missing_after} missing text values\"\n    )"
+    },
+    {
+      "index": 25,
+      "cell_type": "markdown"
+    },
+    {
+      "index": 26,
+      "cell_type": "code",
+      "source": "text_missing_counts = {\n    \"CEAS-08\": 28,\n    \"Enron\": 198,\n    \"Nazario\": 4,\n    \"SpamAssassin\": 17\n}\n\nfor name, affected in text_missing_counts.items():\n    cleaning_log.append({\n        \"dataset\": name,\n        \"issue\": \"Missing email text\",\n        \"audit_evidence\": \"missing_values.csv and email content audit\",\n        \"action\": \"Replaced missing subject/body values with empty strings\",\n        \"rationale\": (\n            \"No email had both subject and body absent, so usable records \"\n            \"were preserved without statistical imputation.\"\n        ),\n        \"rows_before\": len(clean_data[name]),\n        \"rows_after\": len(clean_data[name]),\n        \"rows_removed\": 0,\n        \"values_modified\": affected\n    })\n\npd.DataFrame(cleaning_log)"
+    },
+    {
+      "index": 27,
+      "cell_type": "markdown"
+    },
+    {
+      "index": 28,
+      "cell_type": "code",
+      "source": "for name in [\n    \"ISCX-URL2016 All\",\n    \"ISCX-URL2016 Phishing\"\n]:\n    df = clean_data[name]\n\n    numeric_cols = df.select_dtypes(include=np.number).columns\n\n    missing_count = int(df[numeric_cols].isna().sum().sum())\n\n    inf_count = int(\n        np.isinf(df[numeric_cols].to_numpy(dtype=float)).sum()\n    )\n\n    print(\n        f\"{name}: \"\n        f\"{missing_count:,} missing values, \"\n        f\"{inf_count:,} infinite values\"\n    )"
+    },
+    {
+      "index": 29,
+      "cell_type": "markdown"
+    },
+    {
+      "index": 30,
+      "cell_type": "code",
+      "source": "for name in [\n    \"ISCX-URL2016 All\",\n    \"ISCX-URL2016 Phishing\"\n]:\n    df = clean_data[name]\n\n    numeric_cols = df.select_dtypes(include=np.number).columns\n\n    inf_before = int(\n        np.isinf(df[numeric_cols].to_numpy(dtype=float)).sum()\n    )\n\n    clean_data[name][numeric_cols] = (\n        df[numeric_cols].replace([np.inf, -np.inf], np.nan)\n    )\n\n    inf_after = int(\n        np.isinf(\n            clean_data[name][numeric_cols].to_numpy(dtype=float)\n        ).sum()\n    )\n\n    missing_after = int(\n        clean_data[name][numeric_cols].isna().sum().sum()\n    )\n\n    print(\n        f\"{name}: {inf_before} -> {inf_after} infinite values; \"\n        f\"{missing_after:,} missing values after standardization\"\n    )"
+    },
+    {
+      "index": 31,
+      "cell_type": "code",
+      "source": "iscx_inf_counts = {\n    \"ISCX-URL2016 All\": 10,\n    \"ISCX-URL2016 Phishing\": 9\n}\n\nfor name, affected in iscx_inf_counts.items():\n    cleaning_log.append({\n        \"dataset\": name,\n        \"issue\": \"Infinite numeric values\",\n        \"audit_evidence\": \"structured_numeric_audit.csv and post-deduplication check\",\n        \"action\": \"Converted positive and negative infinity to NaN\",\n        \"rationale\": (\n            \"Non-finite values cannot be used directly by downstream models. \"\n            \"They were standardized as missing values without performing \"\n            \"statistical imputation.\"\n        ),\n        \"rows_before\": len(clean_data[name]),\n        \"rows_after\": len(clean_data[name]),\n        \"rows_removed\": 0,\n        \"values_modified\": affected\n    })\n\npd.DataFrame(cleaning_log)"
+    },
+    {
+      "index": 32,
+      "cell_type": "markdown"
+    },
+    {
+      "index": 33,
+      "cell_type": "code",
+      "source": "uci = clean_data[\"UCI Phishing Websites\"]\n\nfor col in uci.columns:\n    uci[col] = uci[col].apply(\n        lambda x: int(x.decode()) if isinstance(x, bytes) else int(x)\n    )\n\nprint(\"Data types:\")\nprint(uci.dtypes.value_counts())\n\nprint(\"\\nResult values:\")\nprint(sorted(uci[\"Result\"].unique()))"
+    },
+    {
+      "index": 34,
+      "cell_type": "code",
+      "source": "cleaning_log.append({\n    \"dataset\": \"UCI Phishing Websites\",\n    \"issue\": \"ARFF byte-string representation\",\n    \"audit_evidence\": \"uci_native_value_audit.csv\",\n    \"action\": \"Converted byte-string values to integers\",\n    \"rationale\": (\n        \"The ARFF loader represented native values as byte strings. \"\n        \"Conversion to integers standardizes their representation without \"\n        \"changing feature or label semantics.\"\n    ),\n    \"rows_before\": len(clean_data[\"UCI Phishing Websites\"]),\n    \"rows_after\": len(clean_data[\"UCI Phishing Websites\"]),\n    \"rows_removed\": 0,\n    \"values_modified\": len(clean_data[\"UCI Phishing Websites\"]) * 31\n})\n\npd.DataFrame(cleaning_log)"
+    },
+    {
+      "index": 35,
+      "cell_type": "markdown"
+    },
+    {
+      "index": 36,
+      "cell_type": "code",
+      "source": "extreme_email_summary = []\n\nfor name in email_datasets:\n    df = clean_data[name]\n\n    body_length = df[\"body\"].astype(str).str.len()\n\n    extreme_email_summary.append({\n        \"dataset\": name,\n        \"max_body_length\": int(body_length.max()),\n        \"over_100k\": int((body_length > 100_000).sum()),\n        \"over_1m\": int((body_length > 1_000_000).sum())\n    })\n\npd.DataFrame(extreme_email_summary)"
+    },
+    {
+      "index": 37,
+      "cell_type": "markdown"
+    },
+    {
+      "index": 38,
+      "cell_type": "code",
+      "source": "for row in extreme_email_summary:\n    name = row[\"dataset\"]\n\n    cleaning_log.append({\n        \"dataset\": name,\n        \"issue\": \"Extreme email body length\",\n        \"audit_evidence\": \"email_length_distribution.csv and structural length review\",\n        \"action\": \"Retained extreme-length observations\",\n        \"rationale\": (\n            \"Length alone does not establish corruption. No objective \"\n            \"cleaning criterion justified removing these source records.\"\n        ),\n        \"rows_before\": len(clean_data[name]),\n        \"rows_after\": len(clean_data[name]),\n        \"rows_removed\": 0,\n        \"values_modified\": 0\n    })\n\npd.DataFrame(cleaning_log).tail(4)"
+    },
+    {
+      "index": 39,
+      "cell_type": "markdown"
+    },
+    {
+      "index": 40,
+      "cell_type": "code",
+      "source": "label_semantics = audit_reports[\"label_semantics\"].copy()\n\nlabel_semantics"
+    },
+    {
+      "index": 41,
+      "cell_type": "code",
+      "source": "for name, df in clean_data.items():\n    if name in [\"CEAS-08\", \"Enron\", \"Nazario\", \"SpamAssassin\"]:\n        label_col = \"label\"\n    elif name == \"PhiUSIIL\":\n        label_col = \"label\"\n    elif name == \"UCI Phishing Websites\":\n        label_col = \"Result\"\n    elif name in [\"ISCX-URL2016 All\", \"ISCX-URL2016 Phishing\"]:\n        label_col = \"URL_Type_obf_Type\"\n    else:\n        continue\n\n    print(f\"\\n{name}\")\n    print(df[label_col].value_counts(dropna=False))"
+    },
+    {
+      "index": 42,
+      "cell_type": "markdown"
+    },
+    {
+      "index": 43,
+      "cell_type": "code",
+      "source": "for name in clean_data:\n    cleaning_log.append({\n        \"dataset\": name,\n        \"issue\": \"Native label semantics\",\n        \"audit_evidence\": \"label_distribution.csv and verified_label_semantics.csv\",\n        \"action\": \"Preserved native labels without harmonization\",\n        \"rationale\": (\n            \"Cleaning must not introduce unsupported class mappings. \"\n            \"Spam and phishing are not assumed to be equivalent, and \"\n            \"experimental target construction is deferred to a later stage.\"\n        ),\n        \"rows_before\": len(clean_data[name]),\n        \"rows_after\": len(clean_data[name]),\n        \"rows_removed\": 0,\n        \"values_modified\": 0\n    })\n\npd.DataFrame(cleaning_log).tail(8)"
+    },
+    {
+      "index": 44,
+      "cell_type": "markdown"
+    },
+    {
+      "index": 45,
+      "cell_type": "code",
+      "source": "validation_results = []\n\n# 1. Exact duplicates\nfor name in [\n    \"UCI Phishing Websites\",\n    \"ISCX-URL2016 All\",\n    \"ISCX-URL2016 Phishing\"\n]:\n    remaining = int(clean_data[name].duplicated().sum())\n\n    validation_results.append({\n        \"dataset\": name,\n        \"check\": \"No complete duplicate rows\",\n        \"passed\": remaining == 0,\n        \"details\": f\"{remaining} duplicates remaining\"\n    })\n\n\n# 2. Missing email text\nfor name in email_datasets:\n    text_cols = [\n        col for col in [\"subject\", \"body\"]\n        if col in clean_data[name].columns\n    ]\n\n    remaining = int(\n        clean_data[name][text_cols].isna().sum().sum()\n    )\n\n    validation_results.append({\n        \"dataset\": name,\n        \"check\": \"No missing subject/body values\",\n        \"passed\": remaining == 0,\n        \"details\": f\"{remaining} missing text values\"\n    })\n\n\n# 3. ISCX infinite values\nfor name in [\n    \"ISCX-URL2016 All\",\n    \"ISCX-URL2016 Phishing\"\n]:\n    numeric_cols = clean_data[name].select_dtypes(\n        include=np.number\n    ).columns\n\n    remaining = int(\n        np.isinf(\n            clean_data[name][numeric_cols].to_numpy(dtype=float)\n        ).sum()\n    )\n\n    validation_results.append({\n        \"dataset\": name,\n        \"check\": \"No infinite numeric values\",\n        \"passed\": remaining == 0,\n        \"details\": f\"{remaining} infinite values\"\n    })\n\n\n# 4. UCI representation\nuci = clean_data[\"UCI Phishing Websites\"]\n\nuci_all_integer = all(\n    pd.api.types.is_integer_dtype(uci[col])\n    for col in uci.columns\n)\n\nvalidation_results.append({\n    \"dataset\": \"UCI Phishing Websites\",\n    \"check\": \"UCI values converted to integer representation\",\n    \"passed\": uci_all_integer,\n    \"details\": f\"{len(uci.columns)} columns checked\"\n})\n\n\n# 5. Non-empty datasets\nfor name, df in clean_data.items():\n    validation_results.append({\n        \"dataset\": name,\n        \"check\": \"Dataset contains observations\",\n        \"passed\": len(df) > 0,\n        \"details\": f\"{len(df):,} rows\"\n    })\n\n\nvalidation_results = pd.DataFrame(validation_results)\n\nvalidation_results"
+    },
+    {
+      "index": 46,
+      "cell_type": "code",
+      "source": "failed_checks = validation_results[\n    ~validation_results[\"passed\"]\n]\n\nif len(failed_checks) == 0:\n    print(\n        f\"All {len(validation_results)} \"\n        \"post-cleaning validation checks passed.\"\n    )\nelse:\n    print(\"Validation failures detected:\")\n    display(failed_checks)"
+    },
+    {
+      "index": 47,
+      "cell_type": "markdown"
+    },
+    {
+      "index": 48,
+      "cell_type": "code",
+      "source": "CLEANING_RESULTS_DIR = REPO_ROOT / \"experiments\" / \"results\" / \"cleaning\"\n\nEMAIL_OUT = INTERIM_DIR / \"email\"\nWEBPAGE_OUT = INTERIM_DIR / \"webpage\"\nURL_OUT = INTERIM_DIR / \"url\"\n\nfor directory in [\n    CLEANING_RESULTS_DIR,\n    EMAIL_OUT,\n    WEBPAGE_OUT,\n    URL_OUT\n]:\n    directory.mkdir(parents=True, exist_ok=True)\n\nprint(\"Output directories ready.\")"
+    },
+    {
+      "index": 49,
+      "cell_type": "code",
+      "source": "output_files = {\n    \"CEAS-08\":\n        EMAIL_OUT / \"ceas_08_clean.csv\",\n\n    \"Enron\":\n        EMAIL_OUT / \"enron_clean.csv\",\n\n    \"Nazario\":\n        EMAIL_OUT / \"nazario_clean.csv\",\n\n    \"SpamAssassin\":\n        EMAIL_OUT / \"spamassassin_clean.csv\",\n\n    \"PhiUSIIL\":\n        WEBPAGE_OUT / \"phiusiil_clean.csv\",\n\n    \"UCI Phishing Websites\":\n        WEBPAGE_OUT / \"uci_phishing_websites_clean.csv\",\n\n    \"ISCX-URL2016 All\":\n        URL_OUT / \"iscx_url2016_all_clean.csv\",\n\n    \"ISCX-URL2016 Phishing\":\n        URL_OUT / \"iscx_url2016_phishing_clean.csv\",\n}\n\nfor name, path in output_files.items():\n    clean_data[name].to_csv(path, index=False)\n    print(f\"Exported {name}: {path.name}\")"
+    },
+    {
+      "index": 50,
+      "cell_type": "code",
+      "source": "cleaning_log_df = pd.DataFrame(cleaning_log)\n\ncleaning_log_df.to_csv(\n    CLEANING_RESULTS_DIR / \"cleaning_log.csv\",\n    index=False\n)\n\nvalidation_results.to_csv(\n    CLEANING_RESULTS_DIR / \"validation_results.csv\",\n    index=False\n)\n\nprint(\"Cleaning log exported.\")\nprint(\"Validation results exported.\")"
+    },
+    {
+      "index": 51,
+      "cell_type": "code",
+      "source": "print(\"Cleaned datasets:\")\n\nfor name, path in output_files.items():\n    print(\n        f\"{name:26s} \"\n        f\"{'OK' if path.exists() else 'MISSING'}\"\n    )\n\nprint(\"\\nCleaning documentation:\")\n\nfor filename in [\n    \"cleaning_log.csv\",\n    \"validation_results.csv\"\n]:\n    path = CLEANING_RESULTS_DIR / filename\n\n    print(\n        f\"{filename:26s} \"\n        f\"{'OK' if path.exists() else 'MISSING'}\"\n    )"
+    },
+    {
+      "index": 52,
+      "cell_type": "markdown"
+    }
+  ],
+  "code_order_sha256": "d4b25eb2285b65551f8231a5a2e4321381f84a171779bf59fb4558961609c4e6"
+}

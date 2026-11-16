@@ -1,0 +1,357 @@
+{
+  "schema_version": "1.0.0",
+  "policy_id": "deterministic_labels_semantic_review_v1",
+  "policy_version": "1.0.0",
+  "codebook_version": "0.1.0",
+  "artifact_id": "synthetic:contract-v1",
+  "source_id": "synthetic-only",
+  "modality": "content_bearing_email",
+  "artifact_sha256": "583eb7cbf93a6eff60cdf4ed409c569f5fb2adbd1ae724ea79c876b4ac1bed83",
+  "ruleset_version": "0.2.0",
+  "semantic_contract": {
+    "model": "cross-encoder/nli-MiniLM2-L6-H768",
+    "tokenizer": "cross-encoder/nli-MiniLM2-L6-H768",
+    "revision": "b95119ce93d3e065de6214e38cd4a97b0f2f2c6d",
+    "hypotheses_sha256": "e4ccfdbb799d064c13ccccedf50be1a49818e910b9e9c0f9b3557b7da1ecfb2d",
+    "max_tokens": 512,
+    "oversized_evidence_policy": "abstain_without_truncation",
+    "confidence_calibrated": false,
+    "scorer_provenance": "explicit_injection_not_independently_authenticated"
+  },
+  "provenance_metadata": {
+    "source_provenance_sha256": "c41e11d9b62c21329cb50da9bdcfe348e1e2afe6cb3d3f3e57a0590321b139a1",
+    "detector_reference_ids": [],
+    "independent_identity_truth_authenticated": false,
+    "source_custody_authenticated": false
+  },
+  "preprocessing_contract": {
+    "version": "0.2.0",
+    "source_utf8_lf_sha256": "56618ce593492dead9f7b1a3165522002de01553b2d8a85a7c202796708eebff"
+  },
+  "dimension_order": [
+    "pressure_threat_cues",
+    "lure_attention_cues",
+    "trust_identity_manipulation",
+    "requested_action_consequence"
+  ],
+  "availability_mask": [
+    1,
+    1,
+    1,
+    1
+  ],
+  "indicators": [
+    {
+      "indicator_id": "urgency",
+      "dimension_id": "pressure_threat_cues",
+      "deterministic_state": "supported",
+      "evaluation_status": "rule_evaluated",
+      "evidence": [
+        {
+          "span": {
+            "field": "subject",
+            "start": 0,
+            "end": 7,
+            "text": "Act now",
+            "location": "subject"
+          },
+          "supporting_spans": [],
+          "rule_id": "pressure.immediate_action",
+          "reference_id": null,
+          "provenance": "rule-based"
+        }
+      ],
+      "candidate_state": "abstained",
+      "semantic_status": "not_requested",
+      "semantic_candidates": [],
+      "failure_codes": [],
+      "needs_review": false,
+      "review_reasons": [],
+      "constraints": {
+        "modality_before": true,
+        "identity_before": true,
+        "context_before": true,
+        "spans_before_and_after": true,
+        "scores_after": true,
+        "label_preservation_after": true
+      }
+    },
+    {
+      "indicator_id": "fear_threat",
+      "dimension_id": "pressure_threat_cues",
+      "deterministic_state": "absent",
+      "evaluation_status": "rule_evaluated",
+      "evidence": [],
+      "candidate_state": "abstained",
+      "semantic_status": "not_requested",
+      "semantic_candidates": [],
+      "failure_codes": [],
+      "needs_review": false,
+      "review_reasons": [],
+      "constraints": {
+        "modality_before": true,
+        "identity_before": true,
+        "context_before": true,
+        "spans_before_and_after": true,
+        "scores_after": true,
+        "label_preservation_after": true
+      }
+    },
+    {
+      "indicator_id": "scarcity",
+      "dimension_id": "pressure_threat_cues",
+      "deterministic_state": "absent",
+      "evaluation_status": "rule_evaluated",
+      "evidence": [],
+      "candidate_state": "abstained",
+      "semantic_status": "not_requested",
+      "semantic_candidates": [],
+      "failure_codes": [],
+      "needs_review": false,
+      "review_reasons": [],
+      "constraints": {
+        "modality_before": true,
+        "identity_before": true,
+        "context_before": true,
+        "spans_before_and_after": true,
+        "scores_after": true,
+        "label_preservation_after": true
+      }
+    },
+    {
+      "indicator_id": "curiosity",
+      "dimension_id": "lure_attention_cues",
+      "deterministic_state": "absent",
+      "evaluation_status": "rule_evaluated",
+      "evidence": [],
+      "candidate_state": "abstained",
+      "semantic_status": "not_requested",
+      "semantic_candidates": [],
+      "failure_codes": [],
+      "needs_review": false,
+      "review_reasons": [],
+      "constraints": {
+        "modality_before": true,
+        "identity_before": true,
+        "context_before": true,
+        "spans_before_and_after": true,
+        "scores_after": true,
+        "label_preservation_after": true
+      }
+    },
+    {
+      "indicator_id": "reward_lure",
+      "dimension_id": "lure_attention_cues",
+      "deterministic_state": "absent",
+      "evaluation_status": "rule_evaluated",
+      "evidence": [],
+      "candidate_state": "abstained",
+      "semantic_status": "not_requested",
+      "semantic_candidates": [],
+      "failure_codes": [],
+      "needs_review": false,
+      "review_reasons": [],
+      "constraints": {
+        "modality_before": true,
+        "identity_before": true,
+        "context_before": true,
+        "spans_before_and_after": true,
+        "scores_after": true,
+        "label_preservation_after": true
+      }
+    },
+    {
+      "indicator_id": "authority",
+      "dimension_id": "trust_identity_manipulation",
+      "deterministic_state": null,
+      "evaluation_status": "not_evaluated",
+      "evidence": [],
+      "candidate_state": "abstained",
+      "semantic_status": "not_requested",
+      "semantic_candidates": [],
+      "failure_codes": [],
+      "needs_review": true,
+      "review_reasons": [
+        "deterministic_not_evaluated"
+      ],
+      "constraints": {
+        "modality_before": true,
+        "identity_before": true,
+        "context_before": true,
+        "spans_before_and_after": true,
+        "scores_after": true,
+        "label_preservation_after": true
+      }
+    },
+    {
+      "indicator_id": "impersonation",
+      "dimension_id": "trust_identity_manipulation",
+      "deterministic_state": null,
+      "evaluation_status": "not_evaluated",
+      "evidence": [],
+      "candidate_state": "unavailable",
+      "semantic_status": "unavailable",
+      "semantic_candidates": [],
+      "failure_codes": [],
+      "needs_review": true,
+      "review_reasons": [
+        "deterministic_not_evaluated"
+      ],
+      "constraints": {
+        "modality_before": true,
+        "identity_before": false,
+        "context_before": true,
+        "spans_before_and_after": true,
+        "scores_after": true,
+        "label_preservation_after": true
+      }
+    },
+    {
+      "indicator_id": "brand_exploitation",
+      "dimension_id": "trust_identity_manipulation",
+      "deterministic_state": null,
+      "evaluation_status": "not_evaluated",
+      "evidence": [],
+      "candidate_state": "unavailable",
+      "semantic_status": "unavailable",
+      "semantic_candidates": [],
+      "failure_codes": [],
+      "needs_review": true,
+      "review_reasons": [
+        "deterministic_not_evaluated"
+      ],
+      "constraints": {
+        "modality_before": true,
+        "identity_before": false,
+        "context_before": true,
+        "spans_before_and_after": true,
+        "scores_after": true,
+        "label_preservation_after": true
+      }
+    },
+    {
+      "indicator_id": "confidentiality_isolation",
+      "dimension_id": "trust_identity_manipulation",
+      "deterministic_state": "absent",
+      "evaluation_status": "rule_evaluated",
+      "evidence": [],
+      "candidate_state": "abstained",
+      "semantic_status": "not_requested",
+      "semantic_candidates": [],
+      "failure_codes": [],
+      "needs_review": false,
+      "review_reasons": [],
+      "constraints": {
+        "modality_before": true,
+        "identity_before": true,
+        "context_before": true,
+        "spans_before_and_after": true,
+        "scores_after": true,
+        "label_preservation_after": true
+      }
+    },
+    {
+      "indicator_id": "call_to_action",
+      "dimension_id": "requested_action_consequence",
+      "deterministic_state": "supported",
+      "evaluation_status": "rule_evaluated",
+      "evidence": [
+        {
+          "span": {
+            "field": "subject",
+            "start": 9,
+            "end": 29,
+            "text": "Submit your password",
+            "location": "subject"
+          },
+          "supporting_spans": [],
+          "rule_id": "action.interact",
+          "reference_id": null,
+          "provenance": "rule-based"
+        }
+      ],
+      "candidate_state": "abstained",
+      "semantic_status": "not_requested",
+      "semantic_candidates": [],
+      "failure_codes": [],
+      "needs_review": false,
+      "review_reasons": [],
+      "constraints": {
+        "modality_before": true,
+        "identity_before": true,
+        "context_before": true,
+        "spans_before_and_after": true,
+        "scores_after": true,
+        "label_preservation_after": true
+      }
+    },
+    {
+      "indicator_id": "credential_sensitive_data_request",
+      "dimension_id": "requested_action_consequence",
+      "deterministic_state": "supported",
+      "evaluation_status": "rule_evaluated",
+      "evidence": [
+        {
+          "span": {
+            "field": "subject",
+            "start": 9,
+            "end": 29,
+            "text": "Submit your password",
+            "location": "subject"
+          },
+          "supporting_spans": [],
+          "rule_id": "action.disclose_sensitive",
+          "reference_id": null,
+          "provenance": "rule-based"
+        }
+      ],
+      "candidate_state": "abstained",
+      "semantic_status": "not_requested",
+      "semantic_candidates": [],
+      "failure_codes": [],
+      "needs_review": false,
+      "review_reasons": [],
+      "constraints": {
+        "modality_before": true,
+        "identity_before": true,
+        "context_before": true,
+        "spans_before_and_after": true,
+        "scores_after": true,
+        "label_preservation_after": true
+      }
+    },
+    {
+      "indicator_id": "financial_action_request",
+      "dimension_id": "requested_action_consequence",
+      "deterministic_state": "absent",
+      "evaluation_status": "rule_evaluated",
+      "evidence": [],
+      "candidate_state": "abstained",
+      "semantic_status": "not_requested",
+      "semantic_candidates": [],
+      "failure_codes": [],
+      "needs_review": false,
+      "review_reasons": [],
+      "constraints": {
+        "modality_before": true,
+        "identity_before": true,
+        "context_before": true,
+        "spans_before_and_after": true,
+        "scores_after": true,
+        "label_preservation_after": true
+      }
+    }
+  ],
+  "semantic_changes_labels": false,
+  "learned_values": [
+    null,
+    null,
+    null,
+    null
+  ],
+  "research_release": {
+    "approved_for_E2_E3": false,
+    "approved_for_sealed_test": false,
+    "publishable_as_validated_results": false
+  }
+}

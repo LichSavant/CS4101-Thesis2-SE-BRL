@@ -32,9 +32,9 @@ def segments(text):
 
 
 def decision_labels(scores):
+    from ml.se_brl.semantic_candidates import validate_scores
     labels = ("entailment", "neutral", "contradiction")
-    if len(scores) != 3:
-        raise ValueError("Expected three frozen hypotheses")
+    scores = validate_scores(scores)
 
     result = []
     for score in scores:
@@ -43,6 +43,8 @@ def decision_labels(scores):
             raise ValueError("Invalid NLI scores")
         if abs(sum(values) - 1) > 0.001:
             raise ValueError("Invalid NLI normalization")
+        if values.count(max(values)) != 1:
+            raise ValueError("Ambiguous tied NLI distribution requires review, not an autonomous vote")
         result.append(labels[values.index(max(values))])
     return result
 
@@ -86,17 +88,14 @@ def infer(text, modality="content_bearing_email",
             record["state"] = "unavailable"
             record["reason"] = "required textual evidence unavailable"
 
-        elif indicator in ("impersonation", "brand_exploitation") and not (
-            isinstance(identity_evidence, dict)
-            and identity_evidence.get("verified") is True
-        ):
+        elif indicator in ("impersonation", "brand_exploitation"):
             record["state"] = "unavailable"
-            record["reason"] = "verified identity evidence missing"
+            record["reason"] = "use canonical artifact-linked identity interface; legacy flags are not proof"
+
+        elif semantic is None:
+            record["reason"] = "explicit semantic scorer required; implicit model initialization disabled"
 
         else:
-            if semantic is None:
-                semantic = SemanticNLI()
-
             candidates = []
             for part in parts:
                 scores = semantic.score(part["text"], indicator)
