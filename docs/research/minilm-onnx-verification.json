@@ -1,0 +1,662 @@
+{
+  "source_revision": "b95119ce93d3e065de6214e38cd4a97b0f2f2c6d",
+  "source_repository": "cross-encoder/nli-MiniLM2-L6-H768",
+  "source_files": {
+    "config.json": {
+      "size": 875,
+      "sha256": "8b0e41caff7567c0f53e6983f35591c3dec59507c9173ab125c5823394fb57f3",
+      "git_blob_sha1": "f3d2c8b047a34c20737866987ba16ea6114c7b53"
+    },
+    "merges.txt": {
+      "size": 456356,
+      "sha256": "fe36cab26d4f4421ed725e10a2e9ddb7f799449c603a96e7f29b5a3c82a95862",
+      "git_blob_sha1": "6636bda4a1fd7a63653dffb22683b8162c8de956"
+    },
+    "model.safetensors": {
+      "size": 328499560,
+      "sha256": "ec9c5b6a08b60d7a01b465c7ed44b496244dfd1bed3274c95875a74cea89ab35",
+      "git_blob_sha1": "9b20a8e8854aef4e3edf456c990ceea27e397f03"
+    },
+    "special_tokens_map.json": {
+      "size": 239,
+      "sha256": "378eb3bf733eb16e65792d7e3fda5b8a4631387ca04d2015199c4d4f22ae554d",
+      "git_blob_sha1": "2ea7ad0e45a9d1d1591782ba7e29a703d0758831"
+    },
+    "tokenizer.json": {
+      "size": 1356048,
+      "sha256": "82139106e603ee4e1d5bc99d056ccbed5a92bc24848b1b5a7137c26e00d0dbf6",
+      "git_blob_sha1": "8df0092a08e1d459f60ec541e08cd35a16362bfe"
+    },
+    "tokenizer_config.json": {
+      "size": 330,
+      "sha256": "e06f5c3c435fc0255b08b5574cd574eec685390f60c85b27f83d785eb8ecaaa1",
+      "git_blob_sha1": "6c26b0317aae78dbce2c8f06dbf846c6e9dd4145"
+    },
+    "vocab.json": {
+      "size": 798293,
+      "sha256": "ed19656ea1707df69134c4af35c8ceda2cc9860bf2c3495026153a133670ab5e",
+      "git_blob_sha1": "4ebe4bb3f3114daf2e4cc349f24873a1175a35d7"
+    }
+  },
+  "hypotheses_sha256": "e4ccfdbb799d064c13ccccedf50be1a49818e910b9e9c0f9b3557b7da1ecfb2d",
+  "tolerances": {
+    "logits_atol": 0.0001,
+    "logits_rtol": 0.001,
+    "probabilities_max_absolute_error": 0.0001,
+    "token_ids_and_attention_masks": "exact",
+    "nli_decisions_and_review_outcomes": "exact; zero discrepancies"
+  },
+  "host": {
+    "python": "3.12.10",
+    "platform": "Windows-11-10.0.26200-SP0",
+    "processor": "AMD64 Family 25 Model 124 Stepping 0, AuthenticAMD",
+    "threads": 2,
+    "interop_threads": 1
+  },
+  "versions": {
+    "certifi": "2026.10.23",
+    "charset-normalizer": "3.5.2",
+    "colorama": "0.4.6",
+    "coloredlogs": "15.0.1",
+    "filelock": "4.2.4",
+    "flatbuffers": "24.12.23",
+    "fsspec": "2026.9.0",
+    "huggingface_hub": "0.36.2",
+    "humanfriendly": "10.0",
+    "idna": "3.20",
+    "iniconfig": "2.3.1",
+    "Jinja2": "3.1.6",
+    "MarkupSafe": "3.0.3",
+    "mpmath": "1.3.0",
+    "networkx": "3.7",
+    "numpy": "2.2.6",
+    "onnx": "1.17.0",
+    "onnxruntime": "1.20.1",
+    "packaging": "26.3",
+    "pip": "25.0.1",
+    "pluggy": "1.7.0",
+    "protobuf": "5.29.3",
+    "Pygments": "2.21.0",
+    "pyreadline3": "3.5.4",
+    "pytest": "8.4.2",
+    "PyYAML": "6.0.3",
+    "regex": "2026.11.15",
+    "requests": "2.34.2",
+    "safetensors": "0.8.0",
+    "setuptools": "78.1.0",
+    "sympy": "1.13.1",
+    "tokenizers": "0.21.4",
+    "torch": "2.6.0+cpu",
+    "tqdm": "4.70.1",
+    "transformers": "4.49.0",
+    "typing_extensions": "4.16.0",
+    "urllib3": "2.8.0"
+  },
+  "verification_kind": "synthetic_engineering_only",
+  "network_denied": true,
+  "research_inputs_permitted": false,
+  "training_or_calibration": false,
+  "scientific_release": false,
+  "verifier_sha256": "53da5cfa9732754a6f0248e9d24275522ac77e100f5bf6c3778cc103888e3a65",
+  "status": "PASS",
+  "base_commit": "b86ab98",
+  "branch": "research/transformer-validation",
+  "artifact_path": ".venv-transformer/onnx-tooling/minilm-fp32.onnx",
+  "input_contract": {
+    "input_ids": "int64 [3, sequence]",
+    "attention_mask": "int64 [3, sequence]",
+    "max_tokens": 512,
+    "oversize": "abstain without truncation",
+    "output": "float32 logits [3,3]",
+    "id2label": {
+      "0": "contradiction",
+      "1": "entailment",
+      "2": "neutral"
+    }
+  },
+  "installation": {
+    "status": "PASS",
+    "trusted_https_package_sources": {
+      "jinja2": {
+        "version": "3.1.6",
+        "url": "https://download.pytorch.org/whl/jinja2-3.1.6-py3-none-any.whl",
+        "sha256": "85ece4451f492d0c13c5dd7c13a64681a86afae63a5f347908daf103ce6d2f67"
+      },
+      "markupsafe": {
+        "version": "3.0.3",
+        "url": "https://download.pytorch.org/whl/markupsafe-3.0.3-cp312-cp312-win_amd64.whl",
+        "sha256": "26a5784ded40c9e318cfc2bdb30fe164bdb8665ded9cd64d500a34fb42067b1c"
+      },
+      "pyyaml": {
+        "version": "6.0.3",
+        "url": "https://files.pythonhosted.org/packages/86/bf/899e81e4cce32febab4fb42bb97dcdf66bc135272882d1987881a4b519e9/pyyaml-6.0.3-cp312-cp312-win_amd64.whl",
+        "sha256": "5fcd34e47f6e0b794d17de1b4ff496c00986e1c83f7ab2fb8fcfe9616ff7477b"
+      },
+      "pygments": {
+        "version": "2.21.0",
+        "url": "https://files.pythonhosted.org/packages/71/46/17f022dd3e953bf20a04a028a21ec746d942f8d2af30fa0f124fa0e6a684/pygments-2.21.0-py3-none-any.whl",
+        "sha256": "2363c69b61c4a97c838da3b130dcd6468f4848992b21a82f2a63ec34377137d9"
+      },
+      "certifi": {
+        "version": "2026.10.23",
+        "url": "https://files.pythonhosted.org/packages/32/d1/a3652fe2c19134d0d15922177821d863cbd7e842d53a21bbe7e8e3a1b5ac/certifi-2026.10.23-py3-none-any.whl",
+        "sha256": "e9b54de76e530bb6cf0ccd036787103acb58fd42ba930ea8bf948ddbaa2f61d1"
+      },
+      "charset-normalizer": {
+        "version": "3.5.2",
+        "url": "https://files.pythonhosted.org/packages/eb/e6/e6e083884cbcfd49c64865af05027fe7011be7b2d9179524f099a1b611f3/charset_normalizer-3.5.2-cp312-cp312-win_amd64.whl",
+        "sha256": "780fbe7cab297b81dad9fb8dc5eb003c0468ffb0d9e5f65068c53a34661a96bc"
+      },
+      "colorama": {
+        "version": "0.4.6",
+        "url": "https://download.pytorch.org/whl/colorama-0.4.6-py2.py3-none-any.whl",
+        "sha256": "4f1d9991f5acc0ca119f9d443620b77f9d6b33703e51011c16baf57afb285fc6"
+      },
+      "filelock": {
+        "version": "4.2.4",
+        "url": "https://files.pythonhosted.org/packages/e0/1b/5e74289a1878e666bb4b65fe5805a04cafcac2aa5f519ef1ead67ef91c56/filelock-4.2.4-py3-none-any.whl",
+        "sha256": "301241438c57936ef93f4243a94f2559022268bfcf9b375a9a72eb0f8db8358e"
+      },
+      "fsspec": {
+        "version": "2026.9.0",
+        "url": "https://files.pythonhosted.org/packages/6c/c0/a98505f18594f1bce828bb159cec0fcf9860562f1a2c85913409fc8f3d9e/fsspec-2026.9.0-py3-none-any.whl",
+        "sha256": "8dd6e646e99ea382bd85f97a45e6b526a442d79423a7dc673f1e2756d05fcb5f"
+      },
+      "huggingface-hub": {
+        "version": "0.36.2",
+        "url": "https://files.pythonhosted.org/packages/a8/af/48ac8483240de756d2438c380746e7130d1c6f75802ef22f3c6d49982787/huggingface_hub-0.36.2-py3-none-any.whl",
+        "sha256": "48f0c8eac16145dfce371e9d2d7772854a4f591bcb56c9cf548accf531d54270"
+      },
+      "idna": {
+        "version": "3.20",
+        "url": "https://files.pythonhosted.org/packages/58/a2/bb081bab032533a855d44de1d56f8e8426114ff1ba5d1f07a438a0a654f8/idna-3.20-py3-none-any.whl",
+        "sha256": "ab7ae7122974553370f0bdb919e1a960b2cd1bc1ef0276416d896db81c14582c"
+      },
+      "iniconfig": {
+        "version": "2.3.1",
+        "url": "https://files.pythonhosted.org/packages/56/43/4ca9e49d27a1fcf6bece6f6aec0ea46bb9112489b93d4b688fb415457bdb/iniconfig-2.3.1-py3-none-any.whl",
+        "sha256": "9121e2c1fdb355232495be3194c8dfe87ccc2d5dee45947b78e68f499790d7a7"
+      },
+      "mpmath": {
+        "version": "1.3.0",
+        "url": "https://files.pythonhosted.org/packages/43/e3/7d92a15f894aa0c9c4b49b8ee9ac9850d6e63b03c9c32c0367a13ae62209/mpmath-1.3.0-py3-none-any.whl",
+        "sha256": "a0b2b9fe80bbcd81a6647ff13108738cfb482d481d826cc0e02f5b35e5c88d2c"
+      },
+      "networkx": {
+        "version": "3.7",
+        "url": "https://files.pythonhosted.org/packages/7e/cd/fe58041e9011f307c490e3e17dd48cc516448f7c698a3f2d9d9d65d7e6a8/networkx-3.7-py3-none-any.whl",
+        "sha256": "e3fd2c13a7814cee3746340d8d7f8598a67f16a58bf47fb7f8793fab6efca1b0"
+      },
+      "numpy": {
+        "version": "2.2.6",
+        "url": "https://files.pythonhosted.org/packages/36/fa/8c9210162ca1b88529ab76b41ba02d433fd54fecaf6feb70ef9f124683f1/numpy-2.2.6-cp312-cp312-win_amd64.whl",
+        "sha256": "c1f9540be57940698ed329904db803cf7a402f3fc200bfe599334c9bd84a40b2"
+      },
+      "packaging": {
+        "version": "26.3",
+        "url": "https://files.pythonhosted.org/packages/63/34/ba1c580383c9eada3711951fef0795c80b829a078d72188184bcab9dd527/packaging-26.3-py3-none-any.whl",
+        "sha256": "d7193f7c8e4e93f444fde0262bf90af30e16fa0ad0ad44cb553c87339b23cd1c"
+      },
+      "pluggy": {
+        "version": "1.7.0",
+        "url": "https://files.pythonhosted.org/packages/40/9e/2b38731e0fc536806f16490e1a12d7f0dc2a1235aa8cc07bcc75416a7daa/pluggy-1.7.0-py3-none-any.whl",
+        "sha256": "7dd7b0d8832ba3cb632c306926ded123429211b83641b35dc5c41ad2d34f9bec"
+      },
+      "pytest": {
+        "version": "8.4.2",
+        "url": "https://files.pythonhosted.org/packages/a8/a4/20da314d277121d6534b3a980b29035dcd51e6744bd79075a6ce8fa4eb8d/pytest-8.4.2-py3-none-any.whl",
+        "sha256": "872f880de3fc3a5bdc88a11b39c9710c3497a547cfa9320bc3c5e62fbf272e79"
+      },
+      "regex": {
+        "version": "2026.11.15",
+        "url": "https://files.pythonhosted.org/packages/04/46/1b55fb0c0b004a9ea84374e902d6ed093a7d09fec6000df1f8dad2814786/regex-2026.11.15-cp312-cp312-win_amd64.whl",
+        "sha256": "3b896ba13443de0048e7adc18632ea04a163641a77e977a010cc178f45b2352c"
+      },
+      "requests": {
+        "version": "2.34.2",
+        "url": "https://files.pythonhosted.org/packages/a0/f4/c67b0b3f1b9245e8d266f0f112c500d50e5b4e83cb6f3b71b6528104182a/requests-2.34.2-py3-none-any.whl",
+        "sha256": "2a0d60c172f83ac6ab31e4554906c0f3b3588d37b5cb939b1c061f4907e278e0"
+      },
+      "safetensors": {
+        "version": "0.8.0",
+        "url": "https://files.pythonhosted.org/packages/1b/6d/3fba214c1e5e0f69991677ec3bc17023f0421776975e1de0c682dca475e2/safetensors-0.8.0-cp310-abi3-win_amd64.whl",
+        "sha256": "096ec1a98435df7beb08853bb5aa9081a84f23d0adc67ed1a0a10550f608373f"
+      },
+      "setuptools": {
+        "version": "78.1.0",
+        "url": "https://download.pytorch.org/whl/setuptools-78.1.0-py3-none-any.whl",
+        "sha256": "3e386e96793c8702ae83d17b853fb93d3e09ef82ec62722e61da5cd22376dcd8"
+      },
+      "sympy": {
+        "version": "1.13.1",
+        "url": "https://files.pythonhosted.org/packages/b2/fe/81695a1aa331a842b582453b605175f419fe8540355886031328089d840a/sympy-1.13.1-py3-none-any.whl",
+        "sha256": "db36cdc64bf61b9b24578b6f7bab1ecdd2452cf008f34faa33776680c26d66f8"
+      },
+      "tokenizers": {
+        "version": "0.21.4",
+        "url": "https://files.pythonhosted.org/packages/41/f2/fd673d979185f5dcbac4be7d09461cbb99751554ffb6718d0013af8604cb/tokenizers-0.21.4-cp39-abi3-win_amd64.whl",
+        "sha256": "475d807a5c3eb72c59ad9b5fcdb254f6e17f53dfcbb9903233b0dfa9c943b597"
+      },
+      "torch": {
+        "version": "2.6.0+cpu",
+        "url": "https://download-r2.pytorch.org/whl/cpu/torch-2.6.0%2Bcpu-cp312-cp312-win_amd64.whl",
+        "sha256": "4027d982eb2781c93825ab9527f17fbbb12dbabf422298e4b954be60016f87d8"
+      },
+      "tqdm": {
+        "version": "4.70.1",
+        "url": "https://files.pythonhosted.org/packages/a7/03/921a3d3c75785aca9ebfbfcabfbc3a1be12e2ab5265deb026d55a5a3f83e/tqdm-4.70.1-py3-none-any.whl",
+        "sha256": "c293e525e6fef9c20e8728fd4612df02a0aa31bb5fe91ecd93e123b1b7bffa73"
+      },
+      "transformers": {
+        "version": "4.49.0",
+        "url": "https://files.pythonhosted.org/packages/20/37/1f29af63e9c30156a3ed6ebc2754077016577c094f31de7b2631e5d379eb/transformers-4.49.0-py3-none-any.whl",
+        "sha256": "6b4fded1c5fee04d384b1014495b4235a2b53c87503d7d592423c06128cbbe03"
+      },
+      "typing-extensions": {
+        "version": "4.16.0",
+        "url": "https://files.pythonhosted.org/packages/49/d3/b8441a820a491ddfc024b0b0cf0393375b75ea13866d9c66727e54c2fc80/typing_extensions-4.16.0-py3-none-any.whl",
+        "sha256": "481caa481374e813c1b176ada14e97f1f67a4539ce9cfeb3f350d78d6370c2e8"
+      },
+      "urllib3": {
+        "version": "2.8.0",
+        "url": "https://files.pythonhosted.org/packages/92/9d/c4e665119135114480843e7ab388fa94d8480650450e6f8e26b70d323a4c/urllib3-2.8.0-py3-none-any.whl",
+        "sha256": "0cf3cae568d36aa9576b28dfb35f11328f1cb974ca7647d9475ebb86c75ac6e3"
+      },
+      "onnx": {
+        "version": "1.17.0",
+        "url": "https://files.pythonhosted.org/packages/35/55/c4d11bee1fdb0c4bd84b4e3562ff811a19b63266816870ae1f95567aa6e1/onnx-1.17.0-cp312-cp312-win_amd64.whl",
+        "sha256": "659b8232d627a5460d74fd3c96947ae83db6d03f035ac633e20cd69cfa029227"
+      },
+      "onnxruntime": {
+        "version": "1.20.1",
+        "url": "https://files.pythonhosted.org/packages/dd/80/76979e0b744307d488c79e41051117634b956612cc731f1028eb17ee7294/onnxruntime-1.20.1-cp312-cp312-win_amd64.whl",
+        "sha256": "19c2d843eb074f385e8bbb753a40df780511061a63f9def1b216bf53860223fb"
+      },
+      "protobuf": {
+        "version": "5.29.3",
+        "url": "https://files.pythonhosted.org/packages/61/fa/aae8e10512b83de633f2646506a6d835b151edf4b30d18d73afd01447253/protobuf-5.29.3-cp310-abi3-win_amd64.whl",
+        "sha256": "a4fa6f80816a9a0678429e84973f2f98cbc218cca434abe8db2ad0bffc98503a"
+      },
+      "flatbuffers": {
+        "version": "24.12.23",
+        "url": "https://files.pythonhosted.org/packages/fb/b4/31c461eef98b96b8ab736d97274548eaf2b2e349bf09e4de3902f7d53084/flatbuffers-24.12.23-py2.py3-none-any.whl",
+        "sha256": "c418e0d48890f4142b92fd3e343e73a48f194e1f80075ddcc5793779b3585444"
+      },
+      "coloredlogs": {
+        "version": "15.0.1",
+        "url": "https://files.pythonhosted.org/packages/a7/06/3d6badcf13db419e25b07041d9c7b4a2c331d3f4e7134445ec5df57714cd/coloredlogs-15.0.1-py2.py3-none-any.whl",
+        "sha256": "612ee75c546f53e92e70049c9dbfcc18c935a2b9a53b66085ce9ef6a6e5c0934"
+      },
+      "humanfriendly": {
+        "version": "10.0",
+        "url": "https://files.pythonhosted.org/packages/f0/0f/310fb31e39e2d734ccaa2c0fb981ee41f7bd5056ce9bc29b2248bd569169/humanfriendly-10.0-py2.py3-none-any.whl",
+        "sha256": "1697e1a8a8f550fd43c2865cd84542fc175a61dcb779b6fee18cf6b6ccba1477"
+      },
+      "pyreadline3": {
+        "version": "3.5.4",
+        "url": "https://files.pythonhosted.org/packages/5a/dc/491b7661614ab97483abf2056be1deee4dc2490ecbf7bff9ab5cdbac86e1/pyreadline3-3.5.4-py3-none-any.whl",
+        "sha256": "eaf8e6cc3c49bcccf145fc6067ba8643d1df34d604a1ec0eccbf7a18e6d3fae6"
+      }
+    },
+    "installed_versions": {
+      "certifi": "2026.10.23",
+      "charset-normalizer": "3.5.2",
+      "colorama": "0.4.6",
+      "coloredlogs": "15.0.1",
+      "filelock": "4.2.4",
+      "flatbuffers": "24.12.23",
+      "fsspec": "2026.9.0",
+      "huggingface_hub": "0.36.2",
+      "humanfriendly": "10.0",
+      "idna": "3.20",
+      "iniconfig": "2.3.1",
+      "Jinja2": "3.1.6",
+      "MarkupSafe": "3.0.3",
+      "mpmath": "1.3.0",
+      "networkx": "3.7",
+      "numpy": "2.2.6",
+      "onnx": "1.17.0",
+      "onnxruntime": "1.20.1",
+      "packaging": "26.3",
+      "pip": "25.0.1",
+      "pluggy": "1.7.0",
+      "protobuf": "5.29.3",
+      "Pygments": "2.21.0",
+      "pyreadline3": "3.5.4",
+      "pytest": "8.4.2",
+      "PyYAML": "6.0.3",
+      "regex": "2026.11.15",
+      "requests": "2.34.2",
+      "safetensors": "0.8.0",
+      "setuptools": "78.1.0",
+      "sympy": "1.13.1",
+      "tokenizers": "0.21.4",
+      "torch": "2.6.0+cpu",
+      "tqdm": "4.70.1",
+      "transformers": "4.49.0",
+      "typing_extensions": "4.16.0",
+      "urllib3": "2.8.0"
+    },
+    "installed_RECORD_hashes_verified": 24830,
+    "mismatches": [],
+    "canonical_environment_modified": false
+  },
+  "reproduction": {
+    "installation": "Use Windows extended-path Python executable inside .venv-transformer/onnx-tooling and pip install -r tools/verification/requirements-onnx.txt; no separate exporter package required.",
+    "commands": [
+      [
+        ".venv-transformer/onnx-tooling/Scripts/python",
+        "-B",
+        "scripts/verify_minilm_onnx.py",
+        "export"
+      ],
+      [
+        ".venv-transformer/onnx-tooling/Scripts/python",
+        "-B",
+        "scripts/verify_minilm_onnx.py",
+        "compare"
+      ],
+      [
+        ".venv-transformer/onnx-tooling/Scripts/python",
+        "-B",
+        "scripts/verify_minilm_onnx.py",
+        "benchmark",
+        "--backend",
+        "torch"
+      ],
+      [
+        ".venv-transformer/onnx-tooling/Scripts/python",
+        "-B",
+        "scripts/verify_minilm_onnx.py",
+        "benchmark",
+        "--backend",
+        "onnx"
+      ]
+    ],
+    "prerequisites": [
+      "Existing integrity-verified seven-file local snapshot at the recorded pinned revision; no model download command is used.",
+      "Create a fresh isolated venv at .venv-transformer/onnx-tooling."
+    ],
+    "create_venv_command": [
+      "python",
+      "-m",
+      "venv",
+      ".venv-transformer/onnx-tooling"
+    ],
+    "preflight_command": [
+      ".venv-transformer/onnx-tooling/Scripts/python",
+      "-B",
+      "-c",
+      "import json; from scripts.verify_minilm_onnx import TOOL,TOL; (TOOL/'preflight.json').write_text(json.dumps({'tolerances_declared_before_any_comparison':TOL}),encoding='utf-8')"
+    ]
+  },
+  "canonical_environment_and_scientific_contracts_unchanged": true,
+  "limitations": [
+    "Synthetic engineering equivalence only; not scientific validity or behavioral accuracy.",
+    "CPU only; no browser integration or quantization.",
+    "Benchmarks use 36 short synthetic scorer calls per backend, three hypothesis pairs per call, one excluded warm-up, two threads, sequential fresh processes.",
+    "Loading excludes dependency imports and follows integrity hashing; OS cache may be warm.",
+    "Memory is whole-process Windows peak resident/committed usage including identical imported dependencies.",
+    "Resource-budget case replays already compared real scores to exercise the unchanged 64-unit/512-call controller limits."
+  ],
+  "export": {
+    "status": "PASS",
+    "export_seconds": 2.578400500002317,
+    "onnx_sha256": "e30e5283a933a7424cd95f45450159979241771dcef999832c2626b480705596",
+    "onnx_bytes": 328641531,
+    "operators": {
+      "Constant": 201,
+      "Shape": 60,
+      "Gather": 56,
+      "Unsqueeze": 56,
+      "Slice": 7,
+      "Concat": 26,
+      "Reshape": 26,
+      "ConstantOfShape": 2,
+      "Mul": 27,
+      "Equal": 3,
+      "Where": 3,
+      "Expand": 2,
+      "Not": 1,
+      "Cast": 17,
+      "CumSum": 1,
+      "Add": 63,
+      "LayerNormalization": 13,
+      "Sub": 1,
+      "MatMul": 48,
+      "Transpose": 24,
+      "Sqrt": 18,
+      "Div": 12,
+      "Softmax": 6,
+      "Erf": 6,
+      "Gemm": 2,
+      "Tanh": 1
+    },
+    "opset": 17,
+    "exporter": "torch.onnx.export(dynamo=False)",
+    "model_training": false,
+    "denied_optional_loopback_probes": [
+      "socket.bind"
+    ],
+    "command": [
+      ".venv-transformer/onnx-tooling/Scripts/python",
+      "-B",
+      "scripts/verify_minilm_onnx.py",
+      "export"
+    ]
+  },
+  "comparison": {
+    "frozen_fixture_sha256": "fdfd8d41dda9ee430ce42d6e358aea5a35adc6ba04c4968c75cc807cc708fd1e",
+    "fixture_source_sha256": "e574fb783b3ea69e8f22216a9a5cb0a5d8284c763860817a5a74735b21570b54",
+    "status": "PASS",
+    "failures": {},
+    "cases": [
+      {
+        "name": "urgency",
+        "equal": true
+      },
+      {
+        "name": "fear_threat",
+        "equal": true
+      },
+      {
+        "name": "scarcity",
+        "equal": true
+      },
+      {
+        "name": "curiosity",
+        "equal": true
+      },
+      {
+        "name": "reward_lure",
+        "equal": true
+      },
+      {
+        "name": "authority",
+        "equal": true
+      },
+      {
+        "name": "impersonation",
+        "equal": true
+      },
+      {
+        "name": "brand_exploitation",
+        "equal": true
+      },
+      {
+        "name": "confidentiality_isolation",
+        "equal": true
+      },
+      {
+        "name": "call_to_action",
+        "equal": true
+      },
+      {
+        "name": "credential_sensitive_data_request",
+        "equal": true
+      },
+      {
+        "name": "financial_action_request",
+        "equal": true
+      },
+      {
+        "name": "negation",
+        "equal": true
+      },
+      {
+        "name": "quotation",
+        "equal": true
+      },
+      {
+        "name": "hypothetical",
+        "equal": true
+      },
+      {
+        "name": "unicode",
+        "equal": true
+      },
+      {
+        "name": "identity_unavailable",
+        "equal": true
+      },
+      {
+        "name": "missing_url",
+        "equal": true
+      },
+      {
+        "name": "missing_technical",
+        "equal": true
+      },
+      {
+        "name": "missing_email",
+        "equal": true
+      },
+      {
+        "name": "exact_512_tokens",
+        "equal": true
+      },
+      {
+        "name": "513_tokens_abstain",
+        "equal": true
+      },
+      {
+        "name": "64_unit_512_call_budget_real_score_replay",
+        "equal": true
+      },
+      {
+        "name": "malformed_scores_evidence_promotion_and_export_rejected",
+        "equal": true
+      }
+    ],
+    "cases_passed": 24,
+    "cases_failed": 0,
+    "real_review_calls_per_backend": 312,
+    "exact_token_mask_comparisons": 313,
+    "exact_nli_decision_comparisons": 313,
+    "onnx_sha256": "e30e5283a933a7424cd95f45450159979241771dcef999832c2626b480705596",
+    "deviations": {
+      "logits": {
+        "max_absolute": 7.867813110351562e-06,
+        "mean_absolute": 1.4328559808351066e-06,
+        "values": 2817
+      },
+      "probabilities": {
+        "max_absolute": 2.7418136596679688e-06,
+        "mean_absolute": 2.3717915058733725e-07,
+        "values": 2817
+      }
+    },
+    "deterministic_authority_preserved": true,
+    "research_gates_closed": true,
+    "fixture_boundary_sha256": "aac518ce439a155bae3b228c7c3911cecc51e5f7817269a725db3faf86bffb34",
+    "denied_optional_loopback_probes": [
+      "socket.bind"
+    ],
+    "command": [
+      ".venv-transformer/onnx-tooling/Scripts/python",
+      "-B",
+      "scripts/verify_minilm_onnx.py",
+      "compare"
+    ]
+  },
+  "torch_benchmark": {
+    "status": "PASS",
+    "backend": "torch",
+    "load_seconds_excluding_imports": 0.4466129000065848,
+    "file_cache": "may be warm; integrity hashing precedes load",
+    "samples": 36,
+    "scorer_latency_seconds": {
+      "median": 0.05597444999148138,
+      "p95": 0.07791779999388382,
+      "mean": 0.05856215000191393
+    },
+    "memory_before_load_bytes": {
+      "PeakWorkingSetSize": 320258048,
+      "WorkingSetSize": 301559808,
+      "PeakPagefileUsage": 673193984,
+      "PrivateUsage": 651825152
+    },
+    "memory_peak_and_final_bytes": {
+      "PeakWorkingSetSize": 519061504,
+      "WorkingSetSize": 519061504,
+      "PeakPagefileUsage": 1430274048,
+      "PrivateUsage": 1039495168
+    },
+    "memory_scope": "whole fresh process including identical dependency imports; native allocations included",
+    "onnx_sha256": "e30e5283a933a7424cd95f45450159979241771dcef999832c2626b480705596",
+    "onnx_bytes": 328641531,
+    "canonical_weight_bytes": 328499560,
+    "benchmark_fixture_sha256": "ba61f8974a193054d8e395650f27daec1b9abf8a4e5db45d8f4c26bd6bae1a4a",
+    "denied_optional_loopback_probes": [
+      "socket.bind"
+    ],
+    "command": [
+      ".venv-transformer/onnx-tooling/Scripts/python",
+      "-B",
+      "scripts/verify_minilm_onnx.py",
+      "benchmark",
+      "--backend",
+      "torch"
+    ]
+  },
+  "onnx_benchmark": {
+    "status": "PASS",
+    "backend": "onnx",
+    "load_seconds_excluding_imports": 0.4642226999858394,
+    "file_cache": "may be warm; integrity hashing precedes load",
+    "samples": 36,
+    "scorer_latency_seconds": {
+      "median": 0.030810299998847768,
+      "p95": 0.03627109999069944,
+      "mean": 0.03153121111002596
+    },
+    "memory_before_load_bytes": {
+      "PeakWorkingSetSize": 320323584,
+      "WorkingSetSize": 302379008,
+      "PeakPagefileUsage": 673366016,
+      "PrivateUsage": 652713984
+    },
+    "memory_peak_and_final_bytes": {
+      "PeakWorkingSetSize": 837017600,
+      "WorkingSetSize": 837017600,
+      "PeakPagefileUsage": 1526784000,
+      "PrivateUsage": 1526775808
+    },
+    "memory_scope": "whole fresh process including identical dependency imports; native allocations included",
+    "onnx_sha256": "e30e5283a933a7424cd95f45450159979241771dcef999832c2626b480705596",
+    "onnx_bytes": 328641531,
+    "canonical_weight_bytes": 328499560,
+    "benchmark_fixture_sha256": "ba61f8974a193054d8e395650f27daec1b9abf8a4e5db45d8f4c26bd6bae1a4a",
+    "denied_optional_loopback_probes": [
+      "socket.bind"
+    ],
+    "command": [
+      ".venv-transformer/onnx-tooling/Scripts/python",
+      "-B",
+      "scripts/verify_minilm_onnx.py",
+      "benchmark",
+      "--backend",
+      "onnx"
+    ]
+  }
+}
