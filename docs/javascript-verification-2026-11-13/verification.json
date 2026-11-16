@@ -1,0 +1,95 @@
+{
+  "installation": {
+    "command": "npm_config_cache=/private/tmp/sebrl-js-verification-npm-cache npm ci",
+    "initial_restricted_attempt": {
+      "exit_code": 1,
+      "reason": "Registry DNS ENOTFOUND; npm exited with Exit handler never called"
+    },
+    "network_enabled_retry": {
+      "exit_code": 0,
+      "packages_added": 193,
+      "packages_audited": 197
+    },
+    "package_json_or_lockfile_modified": false
+  },
+  "configured_tests": {
+    "command": "npm test",
+    "exit_code": 0,
+    "gmail_extension": {
+      "files_passed": 6,
+      "tests_passed": 21,
+      "failed": 0,
+      "skipped": 0,
+      "duration_seconds": 2.85
+    },
+    "web_dashboard": {
+      "files_passed": 1,
+      "tests_passed": 8,
+      "failed": 0,
+      "skipped": 0,
+      "duration_seconds": 2.09
+    },
+    "total_passed": 29
+  },
+  "typecheck": {
+    "command": "npm run typecheck",
+    "exit_code": 0,
+    "workspaces": [
+      "gmail-extension",
+      "web-dashboard"
+    ]
+  },
+  "production_build": {
+    "command": "npm run build",
+    "exit_code": 0,
+    "outputs": [
+      "apps/gmail-extension/dist/",
+      "apps/web-dashboard/dist/"
+    ],
+    "vite_version": "6.4.3"
+  },
+  "privacy_fixtures": {
+    "command": "node scripts/verify_gmail_privacy.cjs node_modules/typescript/lib/typescript.js",
+    "exit_code": 0,
+    "passed": 7,
+    "typescript_version": "5.9.3",
+    "real_Gmail_accessed": false
+  },
+  "excluded_source_regression": {
+    "command": "PYTHONDONTWRITEBYTECODE=1 PYTEST_DISABLE_PLUGIN_AUTOLOAD=1 .venv/bin/python -B -m pytest ml/tests/test_finalization_policy.py -q -p no:cacheprovider --basetemp=/private/tmp/sebrl-javascript-exclusion",
+    "exit_code": 0,
+    "passed": 95,
+    "failed": 0,
+    "skipped": 0,
+    "duration_seconds": 0.15
+  },
+  "research_preflight": {
+    "command": "PYTHONDONTWRITEBYTECODE=1 .venv/bin/python -B -m ml.finalization --root . --output docs/javascript-verification-2026-11-13/preflight.json",
+    "exit_code": 0,
+    "registered_artifacts_verified": 28,
+    "phiusiil_records_reconciled": 235795,
+    "native_field_mismatches": 0,
+    "label_mapping_mismatches": 0,
+    "scientific_acceptance_granted": false
+  },
+  "dependency_audit": {
+    "command": "npm_config_cache=/private/tmp/sebrl-js-verification-npm-cache npm audit --json",
+    "exit_code": 1,
+    "reason": "Existing locked dependency advisories; no dependency updates authorized",
+    "moderate": 3,
+    "high": 4,
+    "critical": 2,
+    "total": 9,
+    "details": "npm-audit.json"
+  },
+  "source_repairs": [],
+  "not_executed": [
+    "research notebooks",
+    "real-model inference",
+    "fitting",
+    "calibration",
+    "experiments",
+    "npm audit fix",
+    "Git commits or pushes"
+  ]
+}

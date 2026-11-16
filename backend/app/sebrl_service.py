@@ -38,7 +38,7 @@ _BOUNDARY_EXCEPTIONS = (
 )
 
 _SAFE_LIMITATION_BY_REASON = {
-    "validated_model_not_integrated": "A validated behavioral model is not integrated.",
+    "validated_model_not_integrated": "A validated phishing classifier is not integrated in this legacy status endpoint.",
     "calibrator_not_integrated": "A validated calibrator is not integrated.",
     "risk_rules_not_frozen": "Frozen decision rules are not available.",
     "unsupported_modality": "The modality is unsupported for this operation.",

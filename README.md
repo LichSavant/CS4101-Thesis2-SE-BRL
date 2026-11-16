@@ -177,3 +177,10 @@ Additional documentation:
 - [Gmail integration](docs/gmail-integration.md)
 - [SE-BRL foundation](ml/README.md)
 - [SE-BRL pre-training pipeline](docs/se-brl-pretraining.md)
+# R22 integration review
+
+The combined Vera/Dhanwil engineering integration is documented in
+[Phase 2 integration](docs/research/r22-phase2-integration.md). This is an
+email-only offline joint adapter with deterministic label authority and closed
+scientific gates. Historical review packets retain their original scope and
+approval status; integrating source does not grant scientific acceptance.

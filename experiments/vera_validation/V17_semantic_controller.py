@@ -39,10 +39,7 @@ def infer(text, modality="content_bearing_email", semantic=None):
             eligibility = assess(text, indicator)
             candidates = eligibility["evidence"]
 
-            if eligibility["eligibility"] == "eligible" and candidates:
-                if semantic is None:
-                    semantic = SemanticNLI()
-
+            if eligibility["eligibility"] == "eligible" and candidates and semantic is not None:
                 for candidate in candidates:
                     scores = semantic.score(
                         candidate["text"], indicator
@@ -61,6 +58,8 @@ def infer(text, modality="content_bearing_email", semantic=None):
                     record["reason"] = (
                         "provisional contextual and semantic support"
                     )
+            elif eligibility["eligibility"] == "eligible" and candidates:
+                record["reason"] = "explicit semantic scorer required; implicit model initialization disabled"
 
         for span in record["evidence"]:
             assert text[span["start"]:span["end"]] == span["text"]

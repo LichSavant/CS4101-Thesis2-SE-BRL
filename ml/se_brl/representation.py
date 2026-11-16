@@ -1,4 +1,4 @@
-"""Pre-training BRL representation: rule evidence is never a learned z value."""
+"""Deterministic BRL features; deprecated z placeholders remain read-only legacy data."""
 
 from dataclasses import dataclass
 from typing import Literal
@@ -53,7 +53,33 @@ class BrlRepresentation:
 
     @property
     def slots(self) -> tuple[None | int, ...]:
+        """Historical layout only; never used by the deterministic feature builder."""
         return self.z_values + self.extraction.assessment.availability_mask
+
+    @property
+    def deterministic_names(self) -> tuple[str, ...]:
+        order = load_codebook()["vector_ordering"]["dimension_order"]
+        return tuple(f"{d}_supported" for d in order) + tuple(f"{d}_available" for d in order)
+
+    @property
+    def deterministic_slots(self) -> tuple[int | None, ...]:
+        """Four support values then four availability values, proposal Table 4.13.
+
+        An unevaluated indicator is not assessed absence. Until the partial-
+        evaluation policy is accepted, an affected dimension has None/None and
+        cannot enter a numeric model. Wholly unavailable dimensions retain 0/0.
+        This changes no detector, language rule or availability resolver.
+        """
+        support, availability = [], []
+        for dimension in self.extraction.assessment.dimension_results:
+            indicators = [i for i in self.extraction.indicators if i.dimension_id == dimension.dimension_id]
+            if dimension.evidence_state == "unavailable":
+                support.append(0); availability.append(0)
+            elif any(i.evaluation_status != "rule_evaluated" for i in indicators):
+                support.append(None); availability.append(None)
+            else:
+                support.append(int(dimension.evidence_state == "supported")); availability.append(1)
+        return tuple(support + availability)
 
     @property
     def unevaluated_indicators(self) -> tuple[str, ...]:

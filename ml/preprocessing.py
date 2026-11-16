@@ -152,6 +152,46 @@ class _PageParser(HTMLParser):
         self.links: list[tuple[str, str, int, int]] = []
         self.node_count = 0
 
+    def parse_html_declaration(self, i: int) -> int:
+        """Allow only HTML5 DOCTYPE and ordinary comments at token boundaries.
+
+        ASCII HTML whitespace and case variations are supported. Legacy
+        PUBLIC/SYSTEM doctypes, internal subsets, SGML marked sections and
+        bogus declarations are deliberately unsupported. Do not scan the full
+        document: HTMLParser keeps attributes, comments and script data opaque.
+        The application feeds one complete bounded document, not chunks.
+        """
+        if self.rawdata.startswith("<!--", i):
+            return self.parse_comment(i)
+        end = self.rawdata.find(">", i + 2)
+        if end == -1:
+            raise ArtifactParserError("Incomplete HTML declaration")
+        declaration = self.rawdata[i + 2:end]
+        if re.fullmatch(r"DOCTYPE[ \t\n\r\f]+html[ \t\n\r\f]*", declaration,
+                        flags=re.IGNORECASE | re.ASCII) is None:
+            raise ArtifactParserError("Unsupported HTML declaration")
+        self.handle_decl(declaration)
+        return end + 1
+
+    def parse_comment(self, i: int, report: int = 1) -> int:
+        end = super().parse_comment(i, report)
+        if end == -1:
+            raise ArtifactParserError("Incomplete HTML comment")
+        return end
+
+    def unknown_decl(self, data: str) -> None:
+        raise ArtifactParserError("Unsupported HTML declaration")
+
+    def handle_decl(self, decl: str) -> None:
+        # Validated by parse_html_declaration; declarations provide no evidence.
+        pass
+
+    def parse_pi(self, i: int) -> int:
+        raise ArtifactParserError("Unsupported HTML processing instruction")
+
+    def handle_pi(self, data: str) -> None:
+        raise ArtifactParserError("Unsupported HTML processing instruction")
+
     def source_offset(self) -> int:
         line, column = self.getpos()
         return self.line_starts[line - 1] + column

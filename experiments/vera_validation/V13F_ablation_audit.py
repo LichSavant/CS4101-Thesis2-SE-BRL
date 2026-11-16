@@ -15,7 +15,8 @@ HERE = Path(__file__).resolve().parent
 CODEBOOK_INDICATORS = set(rules_only('Test message.'))
 
 def candidate_top_labels(scores):
-    return [max(('entailment','neutral','contradiction'), key=lambda k:float(s[k])) for s in scores]
+    from V15_autonomous_inference import decision_labels
+    return decision_labels(scores)
 
 def summarize_semantic(scores):
     """Not a label predictor: report candidate vote and raw-score range only."""
@@ -27,6 +28,8 @@ def summarize_semantic(scores):
             'entailment_spread':max(float(s['entailment']) for s in scores)-min(float(s['entailment']) for s in scores)}
 
 def load_cases(path, kind, limit=None):
+    from ml.research_policy import require_stage_authorization
+    require_stage_authorization('validation')
     with path.open(newline='', encoding='utf-8') as stream:
         rows = list(csv.DictReader(stream))
     if kind=='v10':
@@ -79,12 +82,14 @@ def run(kind, semantic=None, limit=None, input_path=None):
         'results':results}
 
 def main():
+    from ml.research_policy import require_stage_authorization
     p=argparse.ArgumentParser(description=__doc__)
     p.add_argument('--dataset',choices=['v10','v11'],required=True)
     p.add_argument('--cpu-nli',action='store_true')
     p.add_argument('--max-cases',type=int,default=3,help='Default 3 for a low-cost smoke test; 0 means all')
     p.add_argument('--output',type=Path,required=True,help='Fresh .json file inside experiments/vera_validation')
     args=p.parse_args()
+    require_stage_authorization('validation')
     if args.max_cases < 0: p.error('--max-cases cannot be negative')
     destination=args.output.resolve()
     if destination.parent != HERE.resolve() or destination.suffix!='.json':

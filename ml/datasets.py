@@ -9,6 +9,7 @@ from ml.grouping import GroupIdentifier, validate_groups
 from ml.metadata import freeze_json, require_text
 from ml.preprocessing import PreparedArtifact, detect_modality, preprocess
 from ml.se_brl.codebook import load_codebook
+from ml.research_policy import reject_excluded
 
 
 class PhishingLabel(Enum):
@@ -83,6 +84,8 @@ class DatasetRecord:
     def __post_init__(self) -> None:
         require_text(self.record_id)
         require_text(self.source_dataset)
+        reject_excluded((self.record_id, self.source_dataset, self.source_record_id,
+                         self.provenance, self.source_metadata))
         if self.source_record_id is not None:
             require_text(self.source_record_id)
         if self.phishing_label is not None and not isinstance(self.phishing_label, SourcePhishingLabel):

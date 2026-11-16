@@ -48,10 +48,10 @@ def infer(text, modality="content_bearing_email",
         elif constraint["eligibility"] != "eligible":
             record["reason"] = "insufficient indicator-specific evidence"
 
-        else:
-            if semantic is None:
-                semantic = SemanticNLI()
+        elif semantic is None:
+            record["reason"] = "explicit semantic scorer required; implicit model initialization disabled"
 
+        else:
             candidates = []
             for part in segments(text):
                 scores = semantic.score(part["text"], indicator)

@@ -1,0 +1,1290 @@
+{
+  "schema_version": "r22-source-manifest-1.0.0",
+  "repository": "https://github.com/LichSavant/-SE-BRL-Research-Review.git",
+  "commit": "ae20372db6014d4f83153c03ccc2cd92f445ca8c",
+  "tree_git_sha1": "05250baec2c62b8be3d481b7038ba3e4dce8ca66",
+  "observed_main_equals_commit": true,
+  "git_checkout_head_verified": true,
+  "git_worktree_clean": true,
+  "selection": "complete_selected_source_only_sparse_checkout",
+  "source_files": {
+    ".gitattributes": {
+      "sha256": "56ca88e5a75c2a45faf51f7b3db4e07ff33d5fdef0b80ac806f8bcc39ca265eb",
+      "git_blob_sha1": "d9b9ae795030ed81b082fd36a5f33edc1fd3190a",
+      "bytes": 285
+    },
+    ".gitignore": {
+      "sha256": "2e31b25c13d404a9626067113f3d213905f8009e65e2377981d10cf4113facee",
+      "git_blob_sha1": "249c64e54706a21022d791f2c81ca02589202289",
+      "bytes": 433
+    },
+    "AGENTS.md": {
+      "sha256": "ac2ae0c0f02b4de08172e8642a34f5c29c21984178587e4c27bfdccf17cf4e04",
+      "git_blob_sha1": "09c9064021557ac1bee30e11dc99dee01692f79e",
+      "bytes": 4918
+    },
+    "README.md": {
+      "sha256": "3fdbde1dd77e6cf80ec25e17b0ad5f779b8005779354110d0d5690ac6e0cbd1d",
+      "git_blob_sha1": "606520069ed98b865d4e5b82d8f7cc6e9ae567b5",
+      "bytes": 6835
+    },
+    "backend/__init__.py": {
+      "sha256": "8faa60f81888512e35fa753dc819bd94597469a85d420f2804a07a594b1795f3",
+      "git_blob_sha1": "b8bc4a4911b9d666a2329512efcf1ffa75369409",
+      "bytes": 24
+    },
+    "backend/app/__init__.py": {
+      "sha256": "7c1db932729a915e3b08f8cc944276e586f6c794fb2ad1d1511aeaa580c8b3ca",
+      "git_blob_sha1": "5aa57947acd081d6101b95c616f221bb534d5443",
+      "bytes": 41
+    },
+    "backend/app/analyzers.py": {
+      "sha256": "6cc969df33184169d795788cfd8151c0146af820411f963a13622780d11a50d3",
+      "git_blob_sha1": "6b92b33d4d463c76129c3e0bed318906824950d3",
+      "bytes": 4793
+    },
+    "backend/app/artifact_service.py": {
+      "sha256": "40cb8de4e4a00c14d730aa9efbc53536a8b08d8f8a260be1accaef51a8dd5fa9",
+      "git_blob_sha1": "835dce49462336c24161d32306bb6d64acac5f0e",
+      "bytes": 8804
+    },
+    "backend/app/config.py": {
+      "sha256": "7ff084986da5751b7c415bd4a0ebd7ad5767c894792463fae25810a1b2fcc2d1",
+      "git_blob_sha1": "aa78ca6707f4a2ea01eea0ad9913b8c5a27b62f5",
+      "bytes": 1593
+    },
+    "backend/app/main.py": {
+      "sha256": "527b7a45234f6e62f803fc6107e7ef533d6e9e7eabb6d96d086453176684df25",
+      "git_blob_sha1": "97a46d5702b36742ba2d46633bd86481528188a1",
+      "bytes": 3909
+    },
+    "backend/app/repository.py": {
+      "sha256": "893d5cefd97f751f9b9d75adf081d6b09146633f4156af24dbec0b230ae53ca1",
+      "git_blob_sha1": "8e5ae8b81b03c624bb3bb49c349fb7106f032171",
+      "bytes": 11343
+    },
+    "backend/app/schemas.py": {
+      "sha256": "2551521691d5ad3cae021e0ddd6b25320b9a47c2f1a57fb3f846f48b80737d99",
+      "git_blob_sha1": "8d31aa84cc5a21696d7d47b5108f3c20de6e0376",
+      "bytes": 4066
+    },
+    "backend/app/sebrl_adapter.py": {
+      "sha256": "ffb73b957d68f5a656d6b17bbbce10833da96304d4467ed80ea93a412bcf92b6",
+      "git_blob_sha1": "e9c959dfefdb002ef138abf9e1dcc6e4727874a1",
+      "bytes": 1265
+    },
+    "backend/app/sebrl_schemas.py": {
+      "sha256": "5b888515a582262c271c05245372340084817bf9c148efb721e6954f940a0908",
+      "git_blob_sha1": "986d450e17766a68b106194259f0a1a04de9412d",
+      "bytes": 12160
+    },
+    "backend/app/sebrl_service.py": {
+      "sha256": "98778da63ad4f892533d4ce459905bb7d945ecec36505bfcd2a32eea85fbd0d1",
+      "git_blob_sha1": "c661f09854a234d6cd92abaf683aed3a5a9512d3",
+      "bytes": 7220
+    },
+    "backend/app/services.py": {
+      "sha256": "707e51a76b60438816b5960dbfa7aa85e21f9cf43f72b96a832b482db9c50a2c",
+      "git_blob_sha1": "e723b25cfe4b249a599aa0e3f0bc16075f5c31b5",
+      "bytes": 1312
+    },
+    "backend/requirements-dev.txt": {
+      "sha256": "0dadbbf1deedd79436f3fd70956826a06d4012b67736bd909c2af89cf44e45dd",
+      "git_blob_sha1": "fae4fa9643922ae4352fec912ada0eb7cd28036c",
+      "bytes": 57
+    },
+    "backend/requirements.txt": {
+      "sha256": "2c21161619cfcc9eadb9cd7824008217a8e6b72c63faa053939447c7e8984e75",
+      "git_blob_sha1": "658750f3cf17cf066832f6cbfe9dca16ca03af2b",
+      "bytes": 107
+    },
+    "backend/tests/test_api.py": {
+      "sha256": "961f6bf866e57b8b3f37a85d48a628aedfeab71964bb95f0df6e1a366ae703ca",
+      "git_blob_sha1": "2805a80db5100dff3de3782c06791d9710d96cc4",
+      "bytes": 7149
+    },
+    "backend/tests/test_artifact_service.py": {
+      "sha256": "b8b61ecac2ed6083b8ac9670b93668f591d5db160b045721c9bb24c5912ec6c3",
+      "git_blob_sha1": "0801bb6ae2076b4a982a534081180e3e1309e1ac",
+      "bytes": 4988
+    },
+    "backend/tests/test_artifact_worker_bounds.py": {
+      "sha256": "f82b706912df2b8464d36ad2f07e94cad2b88edb858d81f021465fe00ce7e9cd",
+      "git_blob_sha1": "3d1756797208bef0bd75987fe75dcafde825f8e7",
+      "bytes": 3109
+    },
+    "backend/tests/test_sebrl_contract.py": {
+      "sha256": "aa9e960675d2dcbb1f6650f9659fa807d912b0dceaa78f2daf3f155e8ef06191",
+      "git_blob_sha1": "df410eeb86b060318a0cde4d4e021fa1d3e0bc01",
+      "bytes": 16960
+    },
+    "backend/tests/test_sebrl_endpoint.py": {
+      "sha256": "29890c9643256e26814126204f7ffd50d0c8fa0feb72e3cf6ff8458594c912b1",
+      "git_blob_sha1": "9c0a4cf6a1381cfd7f8fed8de9826a4175d85e61",
+      "bytes": 4211
+    },
+    "backend/tests/test_sebrl_pipeline.py": {
+      "sha256": "973c6aed5db8ce42707bd2f372b72ef70b57d6f2e1f47eebd5a72bbbf3ba62e3",
+      "git_blob_sha1": "32c9488bf7fffffe6e7581986c45ce6cbb2f5fda",
+      "bytes": 786
+    },
+    "backend/tests/test_sebrl_service.py": {
+      "sha256": "601e713b113944ba7bba6398812582875d00cedaa1bef16a95c511335f7286d9",
+      "git_blob_sha1": "dc268b3b0172f8c6942485aef102083354f08c86",
+      "bytes": 18176
+    },
+    "docs/engineering-completion-2026-11-16.md": {
+      "sha256": "ad8da348213f8b3145bab54b061b9b4aa041f8343e746985116d894ad24823f9",
+      "git_blob_sha1": "c545d56442bcb5d71b337c16cff79f99d5ebebe4",
+      "bytes": 3369
+    },
+    "docs/research/adapter_integration_specification.md": {
+      "sha256": "be45476efa2fc1f6674b98cc750d8d70660bd2d74b4e12dc3dca9a7ba3031656",
+      "git_blob_sha1": "a46c832501fd917df592586779795879ff39216e",
+      "bytes": 6742
+    },
+    "ml/__init__.py": {
+      "sha256": "f971a899c6bf1f7f268632950807dda14efc9248bd6e884a8399e624a0143b9e",
+      "git_blob_sha1": "ad9edffe47840fb1cbfe35fc0aa033ec6b66e2a5",
+      "bytes": 72
+    },
+    "ml/artifact_analysis.py": {
+      "sha256": "89de7be3d6ded474b904314ec26b702d3094dcf3ef631bd77a4d18022fb53aae",
+      "git_blob_sha1": "322b3e49827d2d911a9fc1d5aec5ab35bb350b7a",
+      "bytes": 19592
+    },
+    "ml/attribution.py": {
+      "sha256": "c6b5bd73741e2b2e4aa7854faef14c9cb3553a7104700fc2b3c451db82f13f54",
+      "git_blob_sha1": "9855797870027242a8327054f87c9da5019c823f",
+      "bytes": 4102
+    },
+    "ml/behavioral_compatibility.py": {
+      "sha256": "2319979f2937e42112bd94c035dde822b0078d127a76702ba7d1050a6ad21fd0",
+      "git_blob_sha1": "b29cfe8d424b29be71a26d6cc003697b894afa25",
+      "bytes": 4670
+    },
+    "ml/branch_preparation.py": {
+      "sha256": "1796fbc4c430615586c31a161017289c681baeab5eecc3086cf8c9d6118d0b53",
+      "git_blob_sha1": "c941285c6addfc611d3d17c72f05578ca56d5ffc",
+      "bytes": 10505
+    },
+    "ml/classifier_adapters.py": {
+      "sha256": "f5e06934ef1a0751224daedae6f9f4d326f2a12ed2a31eb2d5e6af827cb700ba",
+      "git_blob_sha1": "f40b87040463704cbe695e45bd891b9bd96c0b00",
+      "bytes": 17549
+    },
+    "ml/content_preparation.py": {
+      "sha256": "59b7334ece8c37ad8c590a7b16a3799a37630585713c0e7f8dd27c5273181365",
+      "git_blob_sha1": "eabb6d2c4ff441d2237bed4fb9281714025ac458",
+      "bytes": 8525
+    },
+    "ml/csv_source_audit.py": {
+      "sha256": "639fd668f56adb7afa1352a5ba9e8218bc2490bb9537dea2b68d4f9e49ead7a7",
+      "git_blob_sha1": "ac8364d38bd151b8adcc3e89ce61f01807e5af96",
+      "bytes": 7475
+    },
+    "ml/datasets.py": {
+      "sha256": "c6d2a82c691cf290bdc1cf4a937912bdeb4551e360ca89fab5675427c573fe4c",
+      "git_blob_sha1": "1e13ef5ec19af87493ca424fe2954aac21a3a05e",
+      "bytes": 5481
+    },
+    "ml/decision.py": {
+      "sha256": "8804aae5d68b782abcce595be8079e410d0a1c8a0efea64dcdef8278e81b5be5",
+      "git_blob_sha1": "37fdc8a1c6cbdf73db2a32e90bcd3257dc989861",
+      "bytes": 5576
+    },
+    "ml/development_experiments.py": {
+      "sha256": "2e5ccb3c163c4d915f123e647505b18e0787bf87fa21b043b70b60117a958ea6",
+      "git_blob_sha1": "b5e85cdc9760b76155658c7837cc59a48fa54e53",
+      "bytes": 18877
+    },
+    "ml/development_runner.py": {
+      "sha256": "e8065de5737e75a572ec84ff9fd69599c8104bf78c4ca54b8f6eef20bf3dcbbd",
+      "git_blob_sha1": "c3bb894b4138a82cc7e7f0f4d709569d7d7dd621",
+      "bytes": 22823
+    },
+    "ml/diagnostic_execution.py": {
+      "sha256": "fedd42aa91b043e693957eb48ae3cc28316fc95d931627f5285b2b845c85ea45",
+      "git_blob_sha1": "f02067082dda2e7c89c2eb96b6b1a3d67b4c386f",
+      "bytes": 1811
+    },
+    "ml/evaluation_metrics.py": {
+      "sha256": "36ce8855bfb85511727d9539005fa34620a23cfe86e86c630403b13b74a20445",
+      "git_blob_sha1": "584fcb6134b472f6ce6964310247d941796cb9ea",
+      "bytes": 8337
+    },
+    "ml/execution_identity.py": {
+      "sha256": "435d6d9c0f4680e4f3fb1744b9fbf4e91034e9f7126182de1780cb292a367502",
+      "git_blob_sha1": "fa7fe67804d996281f61cb9dea22d2399ecccd60",
+      "bytes": 4901
+    },
+    "ml/experiment_artifacts.py": {
+      "sha256": "cf4ab001d56963cbff471e92c4daf2beaf24a29a5ca6e078e31a8c52a55de21f",
+      "git_blob_sha1": "aa52d9ec97c63251d5da13ca5a2f594a31489853",
+      "bytes": 9429
+    },
+    "ml/experiment_engine.py": {
+      "sha256": "2c4f8d3663bb8f943ed0e1c707b98e59fe55b6b8a6fdf8188b93ad64fdc2768d",
+      "git_blob_sha1": "18a7a56b008ac660ffc67cf0a07c7c429ba48cb2",
+      "bytes": 23190
+    },
+    "ml/experiment_inputs.py": {
+      "sha256": "94d3b35a3eb20064869757676eeea7d3a6e52ae7c1868de97079d264557b9728",
+      "git_blob_sha1": "744ab53c896540257f0ca986cc27fc6717b450c5",
+      "bytes": 15988
+    },
+    "ml/experiment_integration.py": {
+      "sha256": "aa578ffd362f1770bd6928fdbe5e2110b407effa055bfc291770bef2f5407a74",
+      "git_blob_sha1": "cd011c2f3a10c1af40f20be61dea7ad3a7427874",
+      "bytes": 4877
+    },
+    "ml/feature_freeze.py": {
+      "sha256": "6e8f847a1adca56f7b0a22de5e01b6d16745f1b165a80398f2fc098af7512896",
+      "git_blob_sha1": "0214237484378216db9cea6445d57d7bdb22e160",
+      "bytes": 4719
+    },
+    "ml/feature_schema.py": {
+      "sha256": "7b5c36655e492901898b64b2c5a5c2f455f3819279b0a24e0b49426b25f217de",
+      "git_blob_sha1": "924e37ebe2bf6b4778a857ff191e21dfe92eae9d",
+      "bytes": 2045
+    },
+    "ml/feature_storage.py": {
+      "sha256": "9294868d832d187b459b3c196447de7b698a9da6970523ac33ce872ac2bcc3aa",
+      "git_blob_sha1": "d76e673d71f71d07e4f1f81440a5e59eb5b6212b",
+      "bytes": 3937
+    },
+    "ml/features.py": {
+      "sha256": "484d779be067633a1ec2fb2acab86643cd198f4d587b15e786d8e729917febe3",
+      "git_blob_sha1": "9b9e01e92a36f32fb5351dfd8702aa28bc421d7b",
+      "bytes": 13682
+    },
+    "ml/genuine_classifier_smoke.py": {
+      "sha256": "3d18cb50496a5539dd61ff5f2438e3b6be2863038ed59c2ffc016434934a6960",
+      "git_blob_sha1": "57892d1bacdf5076893a1f553c03fcf879b18187",
+      "bytes": 8821
+    },
+    "ml/grouping.py": {
+      "sha256": "ae783e916347d396a533915a8b52cc02163c3e32ee8db0ed798173199aa4a836",
+      "git_blob_sha1": "2d56b85a3c25be9aeba2fc29e99496bf694fde02",
+      "bytes": 3507
+    },
+    "ml/inference_benchmark.py": {
+      "sha256": "030bf3a6b4da333bfdcd5737a56509db073f807af6f977c8d54d8e369e01ef80",
+      "git_blob_sha1": "b9d22a99d96e7a47cd3fcc109c6e3a709a8f8951",
+      "bytes": 8148
+    },
+    "ml/metadata.py": {
+      "sha256": "09040b8f3a6425aabd0bdf26f5e0219d8b0be7f8a5e9060d4a900eb36e2b8463",
+      "git_blob_sha1": "be31b7a79ac5e16c675448f4b0bfded6cdbe2365",
+      "bytes": 1648
+    },
+    "ml/model_persistence.py": {
+      "sha256": "6caae06ef59bad3d3b70d710472daacb9c676e796332c7fddb9971332ce8612c",
+      "git_blob_sha1": "75ccfab286605f609e3e457e963be55d4dc83145",
+      "bytes": 11658
+    },
+    "ml/model_selection.py": {
+      "sha256": "2dfb0597cafd9739e43957e4a35010eee8207827c1d8e2e6b76ce46c288ceff2",
+      "git_blob_sha1": "0c2bbb30f2f53bb3cb2b45c6b72a1e90553d9e83",
+      "bytes": 15936
+    },
+    "ml/models.py": {
+      "sha256": "7c1be7772b88b0627bbfb5d39079aabe16a1b337851ff66dae78280c02d2529a",
+      "git_blob_sha1": "90d242fef7668bf5c249db3f9e84a32b7e89e989",
+      "bytes": 3298
+    },
+    "ml/notebook_contracts.py": {
+      "sha256": "b190471a5bd1067f0cb385699e130c32be6000d0eab7680ca03db60ec191ee0a",
+      "git_blob_sha1": "55fb92ecade4ab6de7b962a44bfe7eacce8b62ca",
+      "bytes": 13035
+    },
+    "ml/observed_features.py": {
+      "sha256": "4ac62ea2e3a0b30703ccbd00922c010c7a3198fd85720f450df04cc9486c20eb",
+      "git_blob_sha1": "0dad5f1996095999474382592cca141d6dcb48cf",
+      "bytes": 7024
+    },
+    "ml/pipeline.py": {
+      "sha256": "995cefbd6b376721f83fb7c1e5b55bde315f2084ab8781248c6db5d07eafe8ef",
+      "git_blob_sha1": "9f933be100edee2a0ca4bfa3f6dbba694b3c0f2f",
+      "bytes": 4676
+    },
+    "ml/preflight.py": {
+      "sha256": "bf28f4957f142a633ab4eb2a05644763f3dbe84bcf0343594f54de304889a18a",
+      "git_blob_sha1": "6c42f3750bcecd97cddbeb66c54ea6550baa5c44",
+      "bytes": 25007
+    },
+    "ml/preparation_execution.py": {
+      "sha256": "27ddab2b48948bd361f25448f8838f442711a0e07cab59a9b1d5f200ad541875",
+      "git_blob_sha1": "cdec6a86bf80d9adf44c8049f58baa7fb7ab8656",
+      "bytes": 12671
+    },
+    "ml/preparation_integrity.py": {
+      "sha256": "1c95b74584dc275d13a56619b93f25b387c1d80177e6893cbcd7d0f46236488c",
+      "git_blob_sha1": "384db4b26db837eee1b8044e8fe80e6d39f28887",
+      "bytes": 4735
+    },
+    "ml/preprocessing.py": {
+      "sha256": "5ba0a5b69b21b6845ddc39843b6d2e1d855536046dc9a9c394256155a6c0cfd6",
+      "git_blob_sha1": "93942cb9b07a8fca2cc876589a13e3f6eec9dad3",
+      "bytes": 16330
+    },
+    "ml/prospective_allocation.py": {
+      "sha256": "1423e9dad80740cea9e700c5f74ecc261ad597738b51f156978a0a3cb5d5b50d",
+      "git_blob_sha1": "a6a7aec2038cd3980ea794e954356568fa095db3",
+      "bytes": 17062
+    },
+    "ml/readiness.py": {
+      "sha256": "77a544cb2059361ab35a63ccf12dd8e09acd0c6cc239fdf19fbf1ca913748a27",
+      "git_blob_sha1": "bc817ecc29dcc8594cfc99b71565dac60c4d4748",
+      "bytes": 4467
+    },
+    "ml/research_execution.py": {
+      "sha256": "a6134b1a29515a15af81920f0581ce338288ca56ae9aa687d6fd62658d021aa2",
+      "git_blob_sha1": "4b5b24c00a1c142dd256e02600b6ac188515542c",
+      "bytes": 11310
+    },
+    "ml/research_protocol.py": {
+      "sha256": "ee2451144f5f65df0af34ad6b3794c856ca11e11bdca23b2d4400fb7fdb3ce44",
+      "git_blob_sha1": "851c3d9b26dc73fc9f4be9658064a7de21277331",
+      "bytes": 26032
+    },
+    "ml/run_preflight.py": {
+      "sha256": "3f5b67d24fa3656f6c4a09b291053bf63ba7ef81d0225c0d19e29d7df2051926",
+      "git_blob_sha1": "c0eed1624cf66c1fbd7a01d7261401d9efcf8708",
+      "bytes": 7799
+    },
+    "ml/se_brl/__init__.py": {
+      "sha256": "fa66105a5913eb775559eb7d0648ab5b8591357809a1d3ed46fb2a1ef0531e9b",
+      "git_blob_sha1": "3913f68533be384389b753bd4eec7c2fa888b60b",
+      "bytes": 1148
+    },
+    "ml/se_brl/assessment.py": {
+      "sha256": "e9a3574709fcf0ca0429a630911c9ed2d69f1f30892f605274cf293d4090db93",
+      "git_blob_sha1": "2334b69111b3da8554fe6ae29ea3d1c7fa51a152",
+      "bytes": 9853
+    },
+    "ml/se_brl/codebook.py": {
+      "sha256": "df22964c35d53ab89e06f8e8d6d6876cd1768459c98a50b1755eac33f81641e7",
+      "git_blob_sha1": "900aea8e8e0c709d7c386d6c757fe66f2c6337f1",
+      "bytes": 17479
+    },
+    "ml/se_brl/codebook.v0.1.0.json": {
+      "sha256": "36ad77a3f06a962003f8383b4390f2410f93cd7f38eeee3f4d30cad20d839021",
+      "git_blob_sha1": "2d71bec2491490e53ddc06c61812423b5abf72fd",
+      "bytes": 7038
+    },
+    "ml/se_brl/context.py": {
+      "sha256": "c4b848d538610f896dc511ddbde09f9fc44e7b3465a82f09f016acc9059288d5",
+      "git_blob_sha1": "c2a53bc169a4d6ae37e7d6691683acf5ce11dc51",
+      "bytes": 3468
+    },
+    "ml/se_brl/detectors.py": {
+      "sha256": "a04526be2108151a267a64ca1dbbef8308dfb8afc7b1a344701b8049c2dfbfd2",
+      "git_blob_sha1": "2f7b2f3cbb369a6a6ca0af0f1454a18043a98dcc",
+      "bytes": 10166
+    },
+    "ml/se_brl/extraction.py": {
+      "sha256": "9e104ca3e7c3de0d6eaf2ea32e074a8b6f2aa2f413393412c3a90cc89ea21616",
+      "git_blob_sha1": "a8e2f16f44742800c5032c63c292ec77d86613c3",
+      "bytes": 7719
+    },
+    "ml/se_brl/representation.py": {
+      "sha256": "e6b1e8157c8ad5c0fe4b15b1f139fb00389fbb9dc5e8ec61539267ec06f925c4",
+      "git_blob_sha1": "24096b0f1057f16b93dd7362438c4eee915ba5fa",
+      "bytes": 5126
+    },
+    "ml/se_brl/result-envelope.v0.1.0.json": {
+      "sha256": "2ffb720c9306a7c5c5147c0e54b763d5447a4376634a197056f71f4b15c5a63a",
+      "git_blob_sha1": "26a1f681dad51bef0be428c3702a4e0cc175bac0",
+      "bytes": 1354
+    },
+    "ml/se_brl/result_envelope.py": {
+      "sha256": "c8bee8d6758a57479439ab20e7753a57e782930b074353d85436622f5596353b",
+      "git_blob_sha1": "39e7cd630ad632d7fda6e319a6c55fa499678275",
+      "bytes": 25147
+    },
+    "ml/se_brl/rules.py": {
+      "sha256": "9b50b0b9439aac4b8d1113755e5bbde6759ed3e3cf59f43855a4d01d052aff71",
+      "git_blob_sha1": "2e2d8d4fac1bc54d4daa3e195a104823c1e608f5",
+      "bytes": 2383
+    },
+    "ml/source_acquisition.py": {
+      "sha256": "b5ed65b729f99ab53296aa1b2c3cc0fd96203952d755c84dee34c8dcf4380c01",
+      "git_blob_sha1": "553cfc26ff57c037f47ecfc940e9683a9e31f9d5",
+      "bytes": 8268
+    },
+    "ml/source_audit.py": {
+      "sha256": "f3f5917e984e5ca694f033fdc4a983c29d72de3c1efafa2a2e76aecadfcd9b23",
+      "git_blob_sha1": "43d6cc729f03086bbc362a1343c31423bd446798",
+      "bytes": 9231
+    },
+    "ml/source_controls.py": {
+      "sha256": "b49ebbd0c4c786bb2edfa872dafe1cb98d12582626785ecd11d6d6adf3239f30",
+      "git_blob_sha1": "8b276ff6bca4676c7327cc398263b4ad5931e54b",
+      "bytes": 16005
+    },
+    "ml/synthetic_demo.py": {
+      "sha256": "b2fb87772ddff188b37d005f95443ded2f15c9f4f8658a5adc20b1fbdb17d616",
+      "git_blob_sha1": "9dd0f047e9e3e7c46252948fa0f7fff26fe835bd",
+      "bytes": 5328
+    },
+    "ml/synthetic_readback.py": {
+      "sha256": "b54437d2177150a8c872f20ab63461d0401fe926a35b6aa110cada54238e47d6",
+      "git_blob_sha1": "ed8016c9b46295c242b99645a34aaa76cf39d8ae",
+      "bytes": 4916
+    },
+    "ml/synthetic_system.py": {
+      "sha256": "00d13f9d4b4e26fb7c7e2b764506540d114169108496693469d6e74f8e46a1bd",
+      "git_blob_sha1": "767ca93aef69377475a76c0ccbb4bf0d4936e28d",
+      "bytes": 6032
+    },
+    "ml/tests/__init__.py": {
+      "sha256": "6cea866ed715af0bdd8e9e48eab8d5a9c67250d22c47255e3fe7cc3bcfed01dc",
+      "git_blob_sha1": "45d07cbc58816f1a2e17fe219009a7bd692e60c5",
+      "bytes": 66
+    },
+    "ml/tests/no_fit_guard.py": {
+      "sha256": "3f6db4544121df11d5a762475684fab5747ca7965cfdc5ce3ff600735d9eac93",
+      "git_blob_sha1": "ec5b2089ca1db934451db1ed2267c10a901d6eb2",
+      "bytes": 2427
+    },
+    "ml/tests/test_artifact_analysis.py": {
+      "sha256": "f909b89790039257e2bc596d29f898beba2ab5cc3079b3172c44c8e64c35f46c",
+      "git_blob_sha1": "0da916443da03bafd6e92621dd392933d4bd3dd7",
+      "bytes": 9517
+    },
+    "ml/tests/test_assessment.py": {
+      "sha256": "cc131c71d2553475dc44394cce6bf4835a010dbbc6d9e2402be958e345555776",
+      "git_blob_sha1": "5425857a994f10e0735122d7a21e8f473bcb81b3",
+      "bytes": 13412
+    },
+    "ml/tests/test_behavioral_compatibility.py": {
+      "sha256": "c84ba7078a543514f6cff10a0da686d47203425c395ff08f716726b7f9de8a64",
+      "git_blob_sha1": "1264475400e3a876ee7a48e87cc63a346e49e4f2",
+      "bytes": 4493
+    },
+    "ml/tests/test_behavioral_path_conformance.py": {
+      "sha256": "aa56b478bb2e85a8435caa5eb6e22625dbcc8290d4f3de4017f5a2ac2171b192",
+      "git_blob_sha1": "06f7228fc47b8e21753c5006f69c4ff1808f134e",
+      "bytes": 4129
+    },
+    "ml/tests/test_branch_preparation.py": {
+      "sha256": "9065d4ce598e80b722213504a6d8ef0b72fb88165cc0e02865ceaaf50c8dc416",
+      "git_blob_sha1": "ffc5b420efafea500bf4b30bf12df2a44475c8d4",
+      "bytes": 15322
+    },
+    "ml/tests/test_classifier_adapters.py": {
+      "sha256": "45e9fb6eaffab5711c2d9951fd84c561aab5f6ba6751d123ca7b4ae4fa1e4fa7",
+      "git_blob_sha1": "a3c5c622977f0766aa0de4f282822fc708f93bc2",
+      "bytes": 13394
+    },
+    "ml/tests/test_codebook.py": {
+      "sha256": "56c901da1afc7d0074737b88e60f0affcf8b9c7fd3d5fc62ca4d00e578b133e1",
+      "git_blob_sha1": "3a96015876451ba60fa72301f532c064c4b59e54",
+      "bytes": 12373
+    },
+    "ml/tests/test_content_preparation.py": {
+      "sha256": "51f99262ecda4cdb06e87f910e23607e6eb80ecb16564bdba2e1ccffd7e094a5",
+      "git_blob_sha1": "6fe0ec3d2670c256c54e998dd6d85f40ee34ca9f",
+      "bytes": 4455
+    },
+    "ml/tests/test_context_detectors.py": {
+      "sha256": "54f5ad17654147837b442fbe2c190eecd923fbfd0fc562b1dbd0b21a07c0fe82",
+      "git_blob_sha1": "eae8799fc9fdda9f24e2d1cab89e88be3e8a82ef",
+      "bytes": 8106
+    },
+    "ml/tests/test_csv_source_audit.py": {
+      "sha256": "ceb5f98b1c5bb35a8bdb6cd8f2e6ae25af5bea2c61f9b06d7d963f8b6b572f8e",
+      "git_blob_sha1": "61328e46dc975971034104d4bed630530088c461",
+      "bytes": 2748
+    },
+    "ml/tests/test_dataset_boundaries.py": {
+      "sha256": "e4adf90fd3ef5bb2ea62d4d0c8ba8926b78ef440664b679388022da275ddb79b",
+      "git_blob_sha1": "f9ee282d0c75bf12167407e223db8e7a20fd8695",
+      "bytes": 4565
+    },
+    "ml/tests/test_deterministic_representation.py": {
+      "sha256": "7a00e184feb419d49e6ab8fed62de3b88741eab1c99e0229ff6d251a4a4905f7",
+      "git_blob_sha1": "26e264a5045c10d5a89458ffc84479baa29abcd8",
+      "bytes": 2892
+    },
+    "ml/tests/test_development_experiments.py": {
+      "sha256": "477cf21ec9a9ec180d73833101c274fbd87408dcc6dd529982432385d3ac0428",
+      "git_blob_sha1": "a8a9cc175487a13bc20c2040985eead4e1d7e52e",
+      "bytes": 21251
+    },
+    "ml/tests/test_development_runner.py": {
+      "sha256": "21ab690370f109f394b7a4b38d45755a3802e97b95c549a57ab47349e4cafe2e",
+      "git_blob_sha1": "caf9bbfb83ee156199a540a7d33b80d6edc29349",
+      "bytes": 14525
+    },
+    "ml/tests/test_engineering_completion.py": {
+      "sha256": "9414e8ec4aac5d174606b0beb67ff02ab2ac1d91dc267092069460a29cbbbc68",
+      "git_blob_sha1": "f430ba59c55b3da67191261a19cd6f8d56d2daa7",
+      "bytes": 20914
+    },
+    "ml/tests/test_engineering_leakage.py": {
+      "sha256": "d65d6b2b130c4ed46a802b9f7b80e369a2d9fa333f95fd864e2505a351cc6632",
+      "git_blob_sha1": "9f5d86ed9b8465d7cca919cec9443dd18f9167aa",
+      "bytes": 1300
+    },
+    "ml/tests/test_evaluation_metrics.py": {
+      "sha256": "ac6ca14025b4b7b021eac78cf082ea3296a530096bc674a383ffcced03e4ae03",
+      "git_blob_sha1": "050014e6c87354fcfc85193cc22f0f4855438b14",
+      "bytes": 6060
+    },
+    "ml/tests/test_execution_identity.py": {
+      "sha256": "640729a9bcba6b23d26d9162821a7205ca13cfd63f367a38a9ca68a3c038e8ad",
+      "git_blob_sha1": "4222028711e01fcc8f52c239d7d8faa150535605",
+      "bytes": 2594
+    },
+    "ml/tests/test_existing_bundle_integration.py": {
+      "sha256": "64e07e458342c4f06528f6ce5c7854ed551db438edc3c340772c60b02802e166",
+      "git_blob_sha1": "0a961bacd83b7a5c444146043b4cc0b4dfa4be53",
+      "bytes": 8384
+    },
+    "ml/tests/test_experiment_artifacts.py": {
+      "sha256": "b5fdd658f6841eeaa944da17d2a6046f9a347abd0c346642c097ea691d62a10f",
+      "git_blob_sha1": "954cfbc6805cf1eaaab22f9473206085c6bf73b6",
+      "bytes": 3035
+    },
+    "ml/tests/test_experiment_engine.py": {
+      "sha256": "a2fbe7e31dbe42c0f2dd7188938d7a272772a801fa050cc3df0d461dc562fabc",
+      "git_blob_sha1": "f139d110eb7ad0024f8d074dbf67450d26181308",
+      "bytes": 7264
+    },
+    "ml/tests/test_experiment_inputs.py": {
+      "sha256": "ea8e1a6a057156f9f0e35144d27e244ce43c29e7994d5e90e62ca13a4f33b5f8",
+      "git_blob_sha1": "36fc4303d2822b92e0d81978fda7fba2ef3a4f7b",
+      "bytes": 11224
+    },
+    "ml/tests/test_experiment_integration.py": {
+      "sha256": "18d42947180e0c61c5569acc059650bede7c3c1aca8f4b697feb3b39d2677104",
+      "git_blob_sha1": "a805e01225f1a24aa5b02b52a8237d5c2c28ab9f",
+      "bytes": 13276
+    },
+    "ml/tests/test_feature_freeze.py": {
+      "sha256": "238a303a17e0b3ea3075b42dd1985903f76ab7934c1ecb9759c96d7efd155f2c",
+      "git_blob_sha1": "d73a4eefc0fa61c39873cd94b0e171e4937b931d",
+      "bytes": 2504
+    },
+    "ml/tests/test_feature_schema_readiness.py": {
+      "sha256": "dcc75af3a56835083d0717472541ee60d31139ecf962ca317eeeb41347c57f4b",
+      "git_blob_sha1": "40ff5df874cad36522e2ca66627d110c3a2282aa",
+      "bytes": 6609
+    },
+    "ml/tests/test_features_pipeline.py": {
+      "sha256": "a2d542fc7dd9b65259ae0c877c6e46aca93535a73d795ba5d99b9e3048fe9e44",
+      "git_blob_sha1": "32fd26b6300f01a0deed672d5ba4c6aad7fb9b4c",
+      "bytes": 8800
+    },
+    "ml/tests/test_genuine_classifier_smoke.py": {
+      "sha256": "e5fe1ea916584f59b5a36e5e422f4f1733e2abd0c3bf6f431093093e6b98afa9",
+      "git_blob_sha1": "65647df1c33e2fba32eccd3f0276b0815fa49990",
+      "bytes": 3938
+    },
+    "ml/tests/test_inference_benchmark.py": {
+      "sha256": "84f4da3f00ceeec2d187bfd50561e54d79e44f1b07a6f5c116320a74d11b1481",
+      "git_blob_sha1": "aabc75b93be239a2f2dada2859fa1944720a6095",
+      "bytes": 2881
+    },
+    "ml/tests/test_model_persistence.py": {
+      "sha256": "ca4f5f49fcf19e8e6bfb6d2100b0d42cfeabedfc95cbec5ec8a08ef0f9f155a0",
+      "git_blob_sha1": "56e181ed23e3e3737e4955f606e509efd0e0c3e4",
+      "bytes": 6962
+    },
+    "ml/tests/test_model_selection.py": {
+      "sha256": "bbaad29a11b069b6f289e248ca8b2ff70221bd7a5b7e9a4243a534122d828b92",
+      "git_blob_sha1": "f9dc5e705ed1f41dec8749bf9843927eda46a2f0",
+      "bytes": 7732
+    },
+    "ml/tests/test_notebook_contracts.py": {
+      "sha256": "6508e8dc16ed84f8813281905e371e75817bc983a7883866816a9365f50bc7d2",
+      "git_blob_sha1": "6847cf2b8f59fff593d1cf6ced8c15ac417953e8",
+      "bytes": 11625
+    },
+    "ml/tests/test_numeric_boundaries.py": {
+      "sha256": "d1f10d160ac94e8c9e3a2061999b0f4d0df9a4154f965cf30e7ee304cd05cdf1",
+      "git_blob_sha1": "68b1ee996701dac96777f400603088ea6d8eca74",
+      "bytes": 1252
+    },
+    "ml/tests/test_observed_features.py": {
+      "sha256": "43cd788fc4fd7b53d843e167fbceec66cdec138e2f726916e70cfb9c96861989",
+      "git_blob_sha1": "19c2f44f440171c19ade24194a8e4224e2bfffcb",
+      "bytes": 3778
+    },
+    "ml/tests/test_preflight.py": {
+      "sha256": "c4ba3825c99e634a584f7a4185fc844144bd12e5b632e8360bb95ff75d476357",
+      "git_blob_sha1": "e9c33bff3776382a7426127f66683cc06e49fb25",
+      "bytes": 10412
+    },
+    "ml/tests/test_preparation_execution.py": {
+      "sha256": "c2bb18b80825befb33326b16d9174b1ad3c822ea3578b4f93e62d5596e2c463d",
+      "git_blob_sha1": "98cd973fd13a614c858c4554221268b37f1770f0",
+      "bytes": 8436
+    },
+    "ml/tests/test_preparation_integrity.py": {
+      "sha256": "ca09b38b5ace21da8a7aeb734792e753a2d1601627410f5dca28a041221eae2a",
+      "git_blob_sha1": "6e0d8db505ea17827b6d400b2442004365110ff3",
+      "bytes": 3322
+    },
+    "ml/tests/test_preprocessing.py": {
+      "sha256": "a33fc74320b7ee1804c52c6126782dfceca18167abf55ed69e93d3cc7a82fa1e",
+      "git_blob_sha1": "0096e21d75c26d71c719798f6f9bcf3de7bd98fb",
+      "bytes": 7306
+    },
+    "ml/tests/test_prospective_allocation.py": {
+      "sha256": "7611ce321bb8a78d90da0446bd36a904247351ad2aae412bf82be1e33fb443da",
+      "git_blob_sha1": "70c3df395be677a6aeab94cf4336ba5455d4507b",
+      "bytes": 5855
+    },
+    "ml/tests/test_release_candidate.py": {
+      "sha256": "2fe2f74fadb7572bf6cab36d632122bdd8109a127212388e5d9f344b5e23288c",
+      "git_blob_sha1": "d405a21aed9bbc90c553464c1ffa48c583c83b2f",
+      "bytes": 10229
+    },
+    "ml/tests/test_research_protocol.py": {
+      "sha256": "a179ae5a026a3bd1ab639d8d585f3213db63a70bd82d78a276d1004ee5fb78c5",
+      "git_blob_sha1": "5db35874dcd1a9a1fed6ccb6222d0370082b8ec8",
+      "bytes": 12820
+    },
+    "ml/tests/test_result_envelope.py": {
+      "sha256": "6c4f92280426a8a30a625d23d9ad9d45698c6d6b1cf8981bc69b3514e6d37a93",
+      "git_blob_sha1": "5ae1f1398dc4513282d19f9b321ddef2afb115c3",
+      "bytes": 20404
+    },
+    "ml/tests/test_rule_extraction.py": {
+      "sha256": "75b04074b3cc3a816924266f4b4f1c0637681f99cc60fa31f7794935eb2de01f",
+      "git_blob_sha1": "f795102c8b87b1c045aa5f01b414c700672081ea",
+      "bytes": 4594
+    },
+    "ml/tests/test_source_acquisition.py": {
+      "sha256": "18ac3b0ee2de8b5a91d8f2d9cbfd6dafe63b254b8efed4fc02188c726951d991",
+      "git_blob_sha1": "e94bf430a9f1934816eb48e616c0fbde45296da8",
+      "bytes": 3993
+    },
+    "ml/tests/test_source_audit.py": {
+      "sha256": "1d035b9691f3aa1e63ae4b140058b6a66347b1bd18fd9c17aa091584e407d4df",
+      "git_blob_sha1": "788a775775f2be657f0af137a8fa47de2e879074",
+      "bytes": 4461
+    },
+    "ml/tests/test_source_controls.py": {
+      "sha256": "3ebfb9dd54c600922cff6c16d45acf7373a57e7828539dfaea265503d2e53cbc",
+      "git_blob_sha1": "7eb6913be1260826314530ee80f215272500b534",
+      "bytes": 4275
+    },
+    "ml/tests/test_source_exclusion_boundary.py": {
+      "sha256": "0a313454511670c56ef9a2d9ffcf719ab46a2165d4279d50f12b31e821e14e45",
+      "git_blob_sha1": "7d52a79a61e6d767fe508af38a6a2305d14fa9c1",
+      "bytes": 1848
+    },
+    "ml/tests/test_synthetic_demo.py": {
+      "sha256": "aaec531f3eb402fb1c2894585e829bea08dfc1f29eaffc995ac4c826e58dc279",
+      "git_blob_sha1": "525b7d2758de7a49e736a8b1f79c61ef058c8e47",
+      "bytes": 768
+    },
+    "ml/tests/test_uci_preparation.py": {
+      "sha256": "9459cc86c5bbb7e81f53957adbce693c3cafbebf808c35b9f38d45fd4348160f",
+      "git_blob_sha1": "7a1887f741250d30f6eaf427b20a23c76cd7b48a",
+      "bytes": 18308
+    },
+    "ml/tests/test_web_development_contract.py": {
+      "sha256": "4fdfffcd3bbce74d65874ac205185f6920b88acec79a1a43f26b4cc34e21cd4f",
+      "git_blob_sha1": "b0cccbeaa79db2050151fa6a232b165a6b427fad",
+      "bytes": 4962
+    },
+    "ml/tests/test_web_source_audit.py": {
+      "sha256": "16d89e8c38574c8707664a5a50a518c73cac341f38af20789f603b5b813faed5",
+      "git_blob_sha1": "6d81b0bd73146977064a7486c168f78f10b047d8",
+      "bytes": 3751
+    },
+    "ml/uci_preparation.py": {
+      "sha256": "e949a40d49eb975bdd2e1a603094b3de0ece5d95ef9186d6aec864c0423d0c03",
+      "git_blob_sha1": "28f8c42fc8fa72b2589e24d465bb104ad764698a",
+      "bytes": 7614
+    },
+    "ml/web_source_audit.py": {
+      "sha256": "54940c2b4b2f9e09409169127e41d4fbf6d7424e4bc1e328f49816980d2c78ee",
+      "git_blob_sha1": "eab91ca96cfd791d499609403b621c224c8ad6c7",
+      "bytes": 10289
+    },
+    "packages/shared/src/artifact.ts": {
+      "sha256": "26a9f5960bc1f1bd0cd835ccffcf58d8aa085b243ed9fd480f7eeb2847954bfb",
+      "git_blob_sha1": "b8cf1dbb95394907648e51ea265a9651cc5f2240",
+      "bytes": 6025
+    },
+    "packages/shared/src/index.ts": {
+      "sha256": "f237146513fee591e6622783ed41e98278953eba6864bb13d6ab6899321acc87",
+      "git_blob_sha1": "70eab3cf730afb2fba3fc38f9f544d91683a7681",
+      "bytes": 3405
+    },
+    "tools/verification/test_portability.py": {
+      "sha256": "1bc393d7ac2bb3a3d7b16ee84adc6cb1d7939178c93ad89d5a34f37da67d88c4",
+      "git_blob_sha1": "d153f51aa7f7d2aa775cf03b198b9997e7c525f3",
+      "bytes": 1409
+    },
+    "tools/verification/verify.py": {
+      "sha256": "0aa96c01e3453d68a1cc93d9da223ded2fa24378e978ce67c83095ecea1865a7",
+      "git_blob_sha1": "014bad301b85343f36004081d10346b067b55798",
+      "bytes": 11337
+    }
+  },
+  "omitted_files": [
+    {
+      "path": "apps/gmail-extension/.env.example",
+      "git_blob_sha1": "72276de9a1527b1851e5f4f21e70e44bc1267846",
+      "reason": "Outside the bounded source-only R22 profile; deliberately not materialized or executed."
+    },
+    {
+      "path": "apps/gmail-extension/package.json",
+      "git_blob_sha1": "050c2f4a79b8c9d13ef21dc96d8c47edd10e2b7c",
+      "reason": "Outside the bounded source-only R22 profile; deliberately not materialized or executed."
+    },
+    {
+      "path": "apps/gmail-extension/popup.html",
+      "git_blob_sha1": "664777152735458611ea6b257510810760578e6b",
+      "reason": "Outside the bounded source-only R22 profile; deliberately not materialized or executed."
+    },
+    {
+      "path": "apps/gmail-extension/public/manifest.json",
+      "git_blob_sha1": "d0a1b0dc704e6bf2b7b341581254b192a138731e",
+      "reason": "Outside the bounded source-only R22 profile; deliberately not materialized or executed."
+    },
+    {
+      "path": "apps/gmail-extension/src/adapters/emailSourceAdapter.ts",
+      "git_blob_sha1": "7820f6f84ddcd506e49f7060e20981f9d95f982b",
+      "reason": "Outside the bounded source-only R22 profile; deliberately not materialized or executed."
+    },
+    {
+      "path": "apps/gmail-extension/src/adapters/gmailEmailSourceAdapter.test.ts",
+      "git_blob_sha1": "a3f92d989b65e673930252e71bdc482fa3ea5a70",
+      "reason": "Outside the bounded source-only R22 profile; deliberately not materialized or executed."
+    },
+    {
+      "path": "apps/gmail-extension/src/adapters/gmailEmailSourceAdapter.ts",
+      "git_blob_sha1": "c6281cec75e4a68c9b8479d37b6e28cf9857d24f",
+      "reason": "Outside the bounded source-only R22 profile; deliberately not materialized or executed."
+    },
+    {
+      "path": "apps/gmail-extension/src/adapters/gmailParsing.ts",
+      "git_blob_sha1": "808bb3998cc5ab2bbe28fb3f3e1e203099697ae7",
+      "reason": "Outside the bounded source-only R22 profile; deliberately not materialized or executed."
+    },
+    {
+      "path": "apps/gmail-extension/src/adapters/gmailSelectors.ts",
+      "git_blob_sha1": "39ced9687ea80686848f96e5e5526a19992edb65",
+      "reason": "Outside the bounded source-only R22 profile; deliberately not materialized or executed."
+    },
+    {
+      "path": "apps/gmail-extension/src/adapters/mockEmailSourceAdapter.ts",
+      "git_blob_sha1": "b6c32e96a57a46d183d0a7ad369d3d9c24e38aaa",
+      "reason": "Outside the bounded source-only R22 profile; deliberately not materialized or executed."
+    },
+    {
+      "path": "apps/gmail-extension/src/background.ts",
+      "git_blob_sha1": "f2d84713a456694d02bbe7f76c3d9ca7e949205f",
+      "reason": "Outside the bounded source-only R22 profile; deliberately not materialized or executed."
+    },
+    {
+      "path": "apps/gmail-extension/src/content.ts",
+      "git_blob_sha1": "5a381f12c1dbdabdfdbb6d62a52176bc88877158",
+      "reason": "Outside the bounded source-only R22 profile; deliberately not materialized or executed."
+    },
+    {
+      "path": "apps/gmail-extension/src/contentPrivacy.test.ts",
+      "git_blob_sha1": "17cc3a1aa9a10efdce4d785e6802c2ded3d6bf3e",
+      "reason": "Outside the bounded source-only R22 profile; deliberately not materialized or executed."
+    },
+    {
+      "path": "apps/gmail-extension/src/fixtures/gmail-open-message.html",
+      "git_blob_sha1": "31f1e431f85140965c25460c9a6730ac3537dc34",
+      "reason": "Outside the bounded source-only R22 profile; deliberately not materialized or executed."
+    },
+    {
+      "path": "apps/gmail-extension/src/messages.ts",
+      "git_blob_sha1": "a53b4871abc8d1c9caac609b4de9dc4762ed56bf",
+      "reason": "Outside the bounded source-only R22 profile; deliberately not materialized or executed."
+    },
+    {
+      "path": "apps/gmail-extension/src/popup.css",
+      "git_blob_sha1": "591da2ae24ca3f2c76ca1f32e1be47322ce7a0e6",
+      "reason": "Outside the bounded source-only R22 profile; deliberately not materialized or executed."
+    },
+    {
+      "path": "apps/gmail-extension/src/popup.test.tsx",
+      "git_blob_sha1": "65a4a01b0908ca17e1f872968b76d22be18e1320",
+      "reason": "Outside the bounded source-only R22 profile; deliberately not materialized or executed."
+    },
+    {
+      "path": "apps/gmail-extension/src/popup.tsx",
+      "git_blob_sha1": "aeea77c3d4247b1bbd3d79fe97bc7d8f92d6e65d",
+      "reason": "Outside the bounded source-only R22 profile; deliberately not materialized or executed."
+    },
+    {
+      "path": "apps/gmail-extension/src/services/api.ts",
+      "git_blob_sha1": "d6a2078fe505eb1e5a62cc49bec871550930b95c",
+      "reason": "Outside the bounded source-only R22 profile; deliberately not materialized or executed."
+    },
+    {
+      "path": "apps/gmail-extension/src/services/apiPrivacy.test.ts",
+      "git_blob_sha1": "8f9923614e9d84cd662aa0d54b5156fd2dc41a77",
+      "reason": "Outside the bounded source-only R22 profile; deliberately not materialized or executed."
+    },
+    {
+      "path": "apps/gmail-extension/src/services/artifactApi.test.ts",
+      "git_blob_sha1": "ca01f565055ec1a10c936be5d27e7ed79170a3ca",
+      "reason": "Outside the bounded source-only R22 profile; deliberately not materialized or executed."
+    },
+    {
+      "path": "apps/gmail-extension/src/services/autoTrackingGuard.test.ts",
+      "git_blob_sha1": "f5232d22034f900fe8fc0a22d4cc6be4f9557bd0",
+      "reason": "Outside the bounded source-only R22 profile; deliberately not materialized or executed."
+    },
+    {
+      "path": "apps/gmail-extension/src/services/autoTrackingGuard.ts",
+      "git_blob_sha1": "2fef72fe828dffc6e41c5903252164fd1e35d670",
+      "reason": "Outside the bounded source-only R22 profile; deliberately not materialized or executed."
+    },
+    {
+      "path": "apps/gmail-extension/src/services/gmailScanButton.test.ts",
+      "git_blob_sha1": "0c64c881db554be59a6bfdd2d21540cb70a61e5a",
+      "reason": "Outside the bounded source-only R22 profile; deliberately not materialized or executed."
+    },
+    {
+      "path": "apps/gmail-extension/src/services/gmailScanButton.ts",
+      "git_blob_sha1": "106224ed4e521cb133f23ff08c11b2936c515460",
+      "reason": "Outside the bounded source-only R22 profile; deliberately not materialized or executed."
+    },
+    {
+      "path": "apps/gmail-extension/src/services/settings.test.ts",
+      "git_blob_sha1": "b937285f3aad72f588862390a72827e253cf0486",
+      "reason": "Outside the bounded source-only R22 profile; deliberately not materialized or executed."
+    },
+    {
+      "path": "apps/gmail-extension/src/services/settings.ts",
+      "git_blob_sha1": "4f938586281d436dba820380babac60b18c8d664",
+      "reason": "Outside the bounded source-only R22 profile; deliberately not materialized or executed."
+    },
+    {
+      "path": "apps/gmail-extension/src/test-setup.ts",
+      "git_blob_sha1": "d8d03aea1b5774f2023c9967269ff6b002343036",
+      "reason": "Outside the bounded source-only R22 profile; deliberately not materialized or executed."
+    },
+    {
+      "path": "apps/gmail-extension/tsconfig.json",
+      "git_blob_sha1": "b434db5abcddef506d5a4e0ad1171393dd06c0ef",
+      "reason": "Outside the bounded source-only R22 profile; deliberately not materialized or executed."
+    },
+    {
+      "path": "apps/gmail-extension/vite.config.ts",
+      "git_blob_sha1": "0e07bdc7b2db069627dc7717a469dbbdb349d37b",
+      "reason": "Outside the bounded source-only R22 profile; deliberately not materialized or executed."
+    },
+    {
+      "path": "apps/gmail-extension/vite.content.config.ts",
+      "git_blob_sha1": "443606838b6f4aa30392d3d810c6aba28efdb718",
+      "reason": "Outside the bounded source-only R22 profile; deliberately not materialized or executed."
+    },
+    {
+      "path": "apps/web-dashboard/.env.example",
+      "git_blob_sha1": "72276de9a1527b1851e5f4f21e70e44bc1267846",
+      "reason": "Outside the bounded source-only R22 profile; deliberately not materialized or executed."
+    },
+    {
+      "path": "apps/web-dashboard/index.html",
+      "git_blob_sha1": "351ca7fb6fcd3514fa0996d1fcab3e1d0791bd8a",
+      "reason": "Outside the bounded source-only R22 profile; deliberately not materialized or executed."
+    },
+    {
+      "path": "apps/web-dashboard/package.json",
+      "git_blob_sha1": "734a387d0f30519d8fb9418bc708996baf77e717",
+      "reason": "Outside the bounded source-only R22 profile; deliberately not materialized or executed."
+    },
+    {
+      "path": "apps/web-dashboard/src/App.test.tsx",
+      "git_blob_sha1": "5e82d7f91ba6092eccdab7e8f38b8fb5005bad84",
+      "reason": "Outside the bounded source-only R22 profile; deliberately not materialized or executed."
+    },
+    {
+      "path": "apps/web-dashboard/src/App.tsx",
+      "git_blob_sha1": "98a0672d2ab67f3bccf8d696fbde6e63cf312fd7",
+      "reason": "Outside the bounded source-only R22 profile; deliberately not materialized or executed."
+    },
+    {
+      "path": "apps/web-dashboard/src/ArtifactWorkbench.test.tsx",
+      "git_blob_sha1": "d068daf91e901e726451ab5e36714e2243cfc7c1",
+      "reason": "Outside the bounded source-only R22 profile; deliberately not materialized or executed."
+    },
+    {
+      "path": "apps/web-dashboard/src/ArtifactWorkbench.tsx",
+      "git_blob_sha1": "65165fe5b87908ab57208069c5b3cae3c9ef7595",
+      "reason": "Outside the bounded source-only R22 profile; deliberately not materialized or executed."
+    },
+    {
+      "path": "apps/web-dashboard/src/api.ts",
+      "git_blob_sha1": "0e43d8bc44909d3f575f436410d4c720946bbda3",
+      "reason": "Outside the bounded source-only R22 profile; deliberately not materialized or executed."
+    },
+    {
+      "path": "apps/web-dashboard/src/main.tsx",
+      "git_blob_sha1": "d84b0bb1fe8084f7b27370f51b9c25adcdbc6662",
+      "reason": "Outside the bounded source-only R22 profile; deliberately not materialized or executed."
+    },
+    {
+      "path": "apps/web-dashboard/src/styles.css",
+      "git_blob_sha1": "7f5cd9ec483d91f86b5ca8df0d9033915c9e0adc",
+      "reason": "Outside the bounded source-only R22 profile; deliberately not materialized or executed."
+    },
+    {
+      "path": "apps/web-dashboard/src/test-setup.ts",
+      "git_blob_sha1": "d8d03aea1b5774f2023c9967269ff6b002343036",
+      "reason": "Outside the bounded source-only R22 profile; deliberately not materialized or executed."
+    },
+    {
+      "path": "apps/web-dashboard/src/vite-env.d.ts",
+      "git_blob_sha1": "7d0ff9efa9d6b0fd823a2f371308a9f92c7771c1",
+      "reason": "Outside the bounded source-only R22 profile; deliberately not materialized or executed."
+    },
+    {
+      "path": "apps/web-dashboard/tsconfig.json",
+      "git_blob_sha1": "b2ab3518047cbf0151158ea87150548a276ad3ca",
+      "reason": "Outside the bounded source-only R22 profile; deliberately not materialized or executed."
+    },
+    {
+      "path": "apps/web-dashboard/vite.config.ts",
+      "git_blob_sha1": "6a5abe02d1f1832a06a2cc23c338cbde0399384b",
+      "reason": "Outside the bounded source-only R22 profile; deliberately not materialized or executed."
+    },
+    {
+      "path": "backend/.env.example",
+      "git_blob_sha1": "90735ea4c5d196ece3e35eb44022999c346ca101",
+      "reason": "Outside the bounded source-only R22 profile; deliberately not materialized or executed."
+    },
+    {
+      "path": "database/README.md",
+      "git_blob_sha1": "27ce44305d2e2eea11c6940ab9cbb29284023f01",
+      "reason": "Outside the bounded source-only R22 profile; deliberately not materialized or executed."
+    },
+    {
+      "path": "database/migrations/001_email_open_vertical_slice.sql",
+      "git_blob_sha1": "e5daf53fac40e522f505f88d42db1a378460b4a0",
+      "reason": "Outside the bounded source-only R22 profile; deliberately not materialized or executed."
+    },
+    {
+      "path": "database/migrations/002_email_scans.sql",
+      "git_blob_sha1": "c97354f92a538c128a95488cb8616942d07645f9",
+      "reason": "Outside the bounded source-only R22 profile; deliberately not materialized or executed."
+    },
+    {
+      "path": "database/schema.sql",
+      "git_blob_sha1": "10d294273657b13ddc167f426fcb727c96a7e572",
+      "reason": "Outside the bounded source-only R22 profile; deliberately not materialized or executed."
+    },
+    {
+      "path": "docs/architecture.md",
+      "git_blob_sha1": "b5a10450586c184107c13782259eba5860fc459f",
+      "reason": "Outside the bounded source-only R22 profile; deliberately not materialized or executed."
+    },
+    {
+      "path": "docs/gmail-integration.md",
+      "git_blob_sha1": "20e8d07601a0b8b8ea33dc0370ef08a850721b8b",
+      "reason": "Outside the bounded source-only R22 profile; deliberately not materialized or executed."
+    },
+    {
+      "path": "docs/privacy-and-permissions.md",
+      "git_blob_sha1": "21ef27f37fe10a22ec3577626ebd67cce62204df",
+      "reason": "Outside the bounded source-only R22 profile; deliberately not materialized or executed."
+    },
+    {
+      "path": "docs/research/2026-11-01_controlled_d9_continuation.md",
+      "git_blob_sha1": "9ffc29c4a1b6d0efb36b46951663101d4973b676",
+      "reason": "Outside the bounded source-only R22 profile; deliberately not materialized or executed."
+    },
+    {
+      "path": "docs/research/2026-11-01_notebook04_branch_isolation.md",
+      "git_blob_sha1": "6d5d1815034bb7b62e5f178e028354275a18fdc5",
+      "reason": "Outside the bounded source-only R22 profile; deliberately not materialized or executed."
+    },
+    {
+      "path": "docs/research/2026-11-01_uci_metadata_readiness.md",
+      "git_blob_sha1": "faa8f9da77e9bba08272c602355ee77fafb9ade6",
+      "reason": "Outside the bounded source-only R22 profile; deliberately not materialized or executed."
+    },
+    {
+      "path": "docs/research/2026-11-01_uci_scientific_acceptance_packet.md",
+      "git_blob_sha1": "cfce2b572cca1535326691b84d73063942b14f5c",
+      "reason": "Outside the bounded source-only R22 profile; deliberately not materialized or executed."
+    },
+    {
+      "path": "docs/research/2026-11-01_uci_supplied_assignment_preparation.md",
+      "git_blob_sha1": "16103e2982791f1629d01b6d7664a076da1cfb16",
+      "reason": "Outside the bounded source-only R22 profile; deliberately not materialized or executed."
+    },
+    {
+      "path": "docs/research/2026-11-04_master_completion/README.md",
+      "git_blob_sha1": "ac04e3cc4dfdc8a4fd4e37fcec3043480802afe6",
+      "reason": "Outside the bounded source-only R22 profile; deliberately not materialized or executed."
+    },
+    {
+      "path": "docs/research/2026-11-04_master_completion/dataset_evidence.md",
+      "git_blob_sha1": "52e782c5a1b3853914bcbd0539e1b47a6a4fb1f3",
+      "reason": "Outside the bounded source-only R22 profile; deliberately not materialized or executed."
+    },
+    {
+      "path": "docs/research/2026-11-04_master_completion/experiment_readiness.md",
+      "git_blob_sha1": "ab8b405d6c689450b3053ec3f9acf7788d90a4d1",
+      "reason": "Outside the bounded source-only R22 profile; deliberately not materialized or executed."
+    },
+    {
+      "path": "docs/research/2026-11-04_master_completion/progress.md",
+      "git_blob_sha1": "07475354c868a6d3c905dcc3a6cda30b45c5305e",
+      "reason": "Outside the bounded source-only R22 profile; deliberately not materialized or executed."
+    },
+    {
+      "path": "docs/research/2026-11-04_master_completion/protocol_reconciliation.md",
+      "git_blob_sha1": "d83a025b373a97671af5e193893f0c7c49922092",
+      "reason": "Outside the bounded source-only R22 profile; deliberately not materialized or executed."
+    },
+    {
+      "path": "docs/research/2026-11-04_master_completion/transformer_amendment_proposal.md",
+      "git_blob_sha1": "af449bf35ddd79e34444efff801b44469155c780",
+      "reason": "Outside the bounded source-only R22 profile; deliberately not materialized or executed."
+    },
+    {
+      "path": "docs/research/2026-11-05_deterministic_completion/README.md",
+      "git_blob_sha1": "896188d59a9c9133e7b1e3c104c4f8f21caf36a6",
+      "reason": "Outside the bounded source-only R22 profile; deliberately not materialized or executed."
+    },
+    {
+      "path": "docs/research/2026-11-05_email_acceptance/README.md",
+      "git_blob_sha1": "10fb9fb7ea761d28589aa36af7a87b88cc70a3b0",
+      "reason": "Outside the bounded source-only R22 profile; deliberately not materialized or executed."
+    },
+    {
+      "path": "docs/research/2026-11-05_email_lineage/README.md",
+      "git_blob_sha1": "9e22733bad2550893d9e64948edfe602f2025c9c",
+      "reason": "Outside the bounded source-only R22 profile; deliberately not materialized or executed."
+    },
+    {
+      "path": "docs/research/2026-11-05_email_lineage/assignment_compatibility.md",
+      "git_blob_sha1": "277af36ac52b6d6b8595b3fa5eab9203f3e3369f",
+      "reason": "Outside the bounded source-only R22 profile; deliberately not materialized or executed."
+    },
+    {
+      "path": "docs/research/2026-11-05_email_lineage/next_acceptance_gate.md",
+      "git_blob_sha1": "7a441343835fd5883f07fc508773db4e48b3c10e",
+      "reason": "Outside the bounded source-only R22 profile; deliberately not materialized or executed."
+    },
+    {
+      "path": "docs/research/2026-11-05_email_lineage/unresolved_identity_cases.md",
+      "git_blob_sha1": "542cd2df4dfb1cd8629598f19a545704f798bf89",
+      "reason": "Outside the bounded source-only R22 profile; deliberately not materialized or executed."
+    },
+    {
+      "path": "docs/research/2026-11-05_scientific_unblocking/README.md",
+      "git_blob_sha1": "7cca5f0243f258fcc13e3a1e37e3561a0b67fb1b",
+      "reason": "Outside the bounded source-only R22 profile; deliberately not materialized or executed."
+    },
+    {
+      "path": "docs/research/2026-11-05_scientific_unblocking/acceptance_register.md",
+      "git_blob_sha1": "db57b564262ea6c9ff157c045e0513b9e97d1d7a",
+      "reason": "Outside the bounded source-only R22 profile; deliberately not materialized or executed."
+    },
+    {
+      "path": "docs/research/2026-11-05_scientific_unblocking/deterministic_codebook_audit.md",
+      "git_blob_sha1": "eba35e1cbc92b3b32d37c8d90238a8b225947dbd",
+      "reason": "Outside the bounded source-only R22 profile; deliberately not materialized or executed."
+    },
+    {
+      "path": "docs/research/2026-11-05_scientific_unblocking/experiment_settings_decisions.md",
+      "git_blob_sha1": "582ce068012ca48db67637c516042ba80b498622",
+      "reason": "Outside the bounded source-only R22 profile; deliberately not materialized or executed."
+    },
+    {
+      "path": "docs/research/2026-11-05_scientific_unblocking/lineage_recovery.md",
+      "git_blob_sha1": "671ba67d83c70bf54ae921e3d4f8c2860de5f7a1",
+      "reason": "Outside the bounded source-only R22 profile; deliberately not materialized or executed."
+    },
+    {
+      "path": "docs/research/2026-11-05_scientific_unblocking/next_actions.md",
+      "git_blob_sha1": "3d51cb676e522e69b793be2dc139249cc1835f7e",
+      "reason": "Outside the bounded source-only R22 profile; deliberately not materialized or executed."
+    },
+    {
+      "path": "docs/research/2026-11-05_scientific_unblocking/predictor_freeze_candidate.md",
+      "git_blob_sha1": "9bf6f9dff173811d87672b79767e12f988e780e4",
+      "reason": "Outside the bounded source-only R22 profile; deliberately not materialized or executed."
+    },
+    {
+      "path": "docs/research/2026-11-05_scientific_unblocking/real_data_preflight.md",
+      "git_blob_sha1": "d3918da251f64e16349c2004bf2aed4d9d6f9469",
+      "reason": "Outside the bounded source-only R22 profile; deliberately not materialized or executed."
+    },
+    {
+      "path": "docs/research/2026-11-05_scientific_unblocking/replacement_protocol.md",
+      "git_blob_sha1": "07d830a850cfa4d21dbd737bb5a6b2ecd91d9553",
+      "reason": "Outside the bounded source-only R22 profile; deliberately not materialized or executed."
+    },
+    {
+      "path": "docs/research/2026-11-09_deterministic_finalization/README.md",
+      "git_blob_sha1": "7d16c512afd422b4bb3d6e45adde6fd8324c9f4b",
+      "reason": "Outside the bounded source-only R22 profile; deliberately not materialized or executed."
+    },
+    {
+      "path": "docs/research/2026-11-09_deterministic_finalization/approval_packet.md",
+      "git_blob_sha1": "9fc8fa4e9096ad64db16fbf80927f187807a4490",
+      "reason": "Outside the bounded source-only R22 profile; deliberately not materialized or executed."
+    },
+    {
+      "path": "docs/research/2026-11-09_deterministic_finalization/email_protocol.md",
+      "git_blob_sha1": "f8eca14e4d95f10fbf86fff70aa34a2b2c78d48a",
+      "reason": "Outside the bounded source-only R22 profile; deliberately not materialized or executed."
+    },
+    {
+      "path": "docs/research/2026-11-09_deterministic_finalization/engineering_completion.md",
+      "git_blob_sha1": "d5035e0352b1bb19d4bf2c79bbc2833982f53bb4",
+      "reason": "Outside the bounded source-only R22 profile; deliberately not materialized or executed."
+    },
+    {
+      "path": "docs/research/2026-11-09_deterministic_finalization/experiment_config.md",
+      "git_blob_sha1": "81a7e3b848432c669cfc477b51c506802904f2c7",
+      "reason": "Outside the bounded source-only R22 profile; deliberately not materialized or executed."
+    },
+    {
+      "path": "docs/research/2026-11-09_deterministic_finalization/feature_freeze.md",
+      "git_blob_sha1": "92d5d8ea0b9f35ef82a82bfc9b74c80384faf5ea",
+      "reason": "Outside the bounded source-only R22 profile; deliberately not materialized or executed."
+    },
+    {
+      "path": "docs/research/2026-11-09_deterministic_finalization/final_handoff.md",
+      "git_blob_sha1": "b444b80088ca3b96beb10bcdb5159117a507549d",
+      "reason": "Outside the bounded source-only R22 profile; deliberately not materialized or executed."
+    },
+    {
+      "path": "docs/research/2026-11-09_deterministic_finalization/manuscript_evidence.md",
+      "git_blob_sha1": "04c595e3674408966db844cb38116885192d5f6c",
+      "reason": "Outside the bounded source-only R22 profile; deliberately not materialized or executed."
+    },
+    {
+      "path": "docs/research/2026-11-09_deterministic_finalization/preflight_resolution.md",
+      "git_blob_sha1": "2a1dc3293698b36041b1eca1429a355ded4a7fff",
+      "reason": "Outside the bounded source-only R22 profile; deliberately not materialized or executed."
+    },
+    {
+      "path": "docs/research/2026-11-09_deterministic_finalization/research_execution.md",
+      "git_blob_sha1": "ffabe5adae4c49e03b647c67869e0e34745029c9",
+      "reason": "Outside the bounded source-only R22 profile; deliberately not materialized or executed."
+    },
+    {
+      "path": "docs/research/d9_development_preparation.md",
+      "git_blob_sha1": "c14e32a2427fe54687a8f3d284d08fdcc42fdfa0",
+      "reason": "Outside the bounded source-only R22 profile; deliberately not materialized or executed."
+    },
+    {
+      "path": "docs/research/experiment_protocol_decisions.md",
+      "git_blob_sha1": "5951c07b83f1516ed04a682520c4bac59b719ff6",
+      "reason": "Outside the bounded source-only R22 profile; deliberately not materialized or executed."
+    },
+    {
+      "path": "docs/research/experiment_protocol_reconciliation.md",
+      "git_blob_sha1": "5b234ab51e260aecbe5a2fe72a6fc8c73f783dde",
+      "reason": "Outside the bounded source-only R22 profile; deliberately not materialized or executed."
+    },
+    {
+      "path": "docs/research/notebook_03_04_repair.md",
+      "git_blob_sha1": "5a69949844e73bca7437750556f7100932193d8d",
+      "reason": "Outside the bounded source-only R22 profile; deliberately not materialized or executed."
+    },
+    {
+      "path": "docs/research/pipeline_preparation.md",
+      "git_blob_sha1": "09342c1cdc6f62e3816b07e7b375fd2d1375e6c1",
+      "reason": "Outside the bounded source-only R22 profile; deliberately not materialized or executed."
+    },
+    {
+      "path": "docs/se-brl-pretraining.md",
+      "git_blob_sha1": "1bd41fab6cbfacc712e54247ce1ebbfd6388d538",
+      "reason": "Outside the bounded source-only R22 profile; deliberately not materialized or executed."
+    },
+    {
+      "path": "experiments/notebooks/04_feature_extraction.ipynb",
+      "git_blob_sha1": "156b0abd663b4a163d0650054cb92d533c4b1343",
+      "reason": "Outside the bounded source-only R22 profile; deliberately not materialized or executed."
+    },
+    {
+      "path": "experiments/notebooks/05_development_preparation.ipynb",
+      "git_blob_sha1": "5585c63cd0bfac3466494e6cbdba80d727713aff",
+      "reason": "Outside the bounded source-only R22 profile; deliberately not materialized or executed."
+    },
+    {
+      "path": "ml/README.md",
+      "git_blob_sha1": "aa573bdfb92a8b01a18b802523b92b2761212345",
+      "reason": "Outside the bounded source-only R22 profile; deliberately not materialized or executed."
+    },
+    {
+      "path": "ml/feature_freeze_candidate.v0.1.0.json",
+      "git_blob_sha1": "e70ac8171a24ec107980442f07f7b1f0415280cc",
+      "reason": "Outside the bounded source-only R22 profile; deliberately not materialized or executed."
+    },
+    {
+      "path": "ml/requirements-classifiers-synthetic.txt",
+      "git_blob_sha1": "393e3390b03c0ccc4bcf134f546791d7ff254924",
+      "reason": "Outside the bounded source-only R22 profile; deliberately not materialized or executed."
+    },
+    {
+      "path": "ml/requirements-grouping.txt",
+      "git_blob_sha1": "5d8412c5ef0f21dbafd9db5845f173c59de032fc",
+      "reason": "Outside the bounded source-only R22 profile; deliberately not materialized or executed."
+    },
+    {
+      "path": "ml/requirements-persistence-synthetic.txt",
+      "git_blob_sha1": "4d55a5c9edbf60e837ddfd4c008c2fb4b7fbf245",
+      "reason": "Outside the bounded source-only R22 profile; deliberately not materialized or executed."
+    },
+    {
+      "path": "ml/research_settings_candidate.v0.1.0.json",
+      "git_blob_sha1": "6a312bbbd0b12009b5fe478e0328b46c0bd6a8b8",
+      "reason": "Outside the bounded source-only R22 profile; deliberately not materialized or executed."
+    },
+    {
+      "path": "package-lock.json",
+      "git_blob_sha1": "adae826f6cbabf84324cfffb221626c3f827d0d2",
+      "reason": "Outside the bounded source-only R22 profile; deliberately not materialized or executed."
+    },
+    {
+      "path": "package.json",
+      "git_blob_sha1": "d4d4d97956280ec8cc7ae01037c24fbac21e5df9",
+      "reason": "Outside the bounded source-only R22 profile; deliberately not materialized or executed."
+    },
+    {
+      "path": "packages/shared/package.json",
+      "git_blob_sha1": "4e599cca695f7108c0667d3ced3603aa29ae5786",
+      "reason": "Outside the bounded source-only R22 profile; deliberately not materialized or executed."
+    },
+    {
+      "path": "tools/verification/README.md",
+      "git_blob_sha1": "e2bf3de204bf87b884128ad34cbedca9c712c33d",
+      "reason": "Outside the bounded source-only R22 profile; deliberately not materialized or executed."
+    },
+    {
+      "path": "tools/verification/known-wheel-hashes.json",
+      "git_blob_sha1": "464d1c117b804fa8ec1542513a77f199c08d342b",
+      "reason": "Outside the bounded source-only R22 profile; deliberately not materialized or executed."
+    },
+    {
+      "path": "tools/verification/requirements.txt",
+      "git_blob_sha1": "9adebc0de75692fe5f555316402818d67f6b2979",
+      "reason": "Outside the bounded source-only R22 profile; deliberately not materialized or executed."
+    },
+    {
+      "path": "tools/verification/selection.json",
+      "git_blob_sha1": "d477932fd818a7aa94510507fdfdfee1c9f4fe97",
+      "reason": "Outside the bounded source-only R22 profile; deliberately not materialized or executed."
+    }
+  ],
+  "selection_counts": {
+    "selected": 144,
+    "omitted": 110,
+    "tracked_blobs": 254
+  },
+  "owner_approval": null
+}

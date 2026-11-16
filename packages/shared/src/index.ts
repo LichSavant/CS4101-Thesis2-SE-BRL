@@ -1,3 +1,4 @@
+export * from "./artifact";
 export type RiskLevel = "low" | "medium" | "high";
 export type ScoreSource = "mock-rule-based";
 export type AnalysisRiskLevel = "low" | "moderate" | "high" | "critical";

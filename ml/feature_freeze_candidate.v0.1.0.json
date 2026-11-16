@@ -1,0 +1,195 @@
+{
+  "version": "email-predictor-candidate-0.1.0",
+  "status": "Pending",
+  "scope": "Email candidate only",
+  "codebook_sha256": "36ad77a3f06a962003f8383b4390f2410f93cd7f38eeee3f4d30cad20d839021",
+  "indicators": [
+    {
+      "id": "urgency",
+      "dimension": "pressure_threat_cues",
+      "definition_reference": "ml/se_brl/codebook.v0.1.0.json#pressure_threat_cues/urgency",
+      "code_reference": "ml/se_brl/extraction.py; ml/se_brl/rules.py; conditional evidence resolver",
+      "test_reference": "ml/tests/test_rule_extraction.py; ml/tests/test_feature_freeze.py (schema only)",
+      "decision_status": "Pending"
+    },
+    {
+      "id": "fear_threat",
+      "dimension": "pressure_threat_cues",
+      "definition_reference": "ml/se_brl/codebook.v0.1.0.json#pressure_threat_cues/fear_threat",
+      "code_reference": "ml/se_brl/extraction.py; ml/se_brl/rules.py; conditional evidence resolver",
+      "test_reference": "ml/tests/test_rule_extraction.py; ml/tests/test_feature_freeze.py (schema only)",
+      "decision_status": "Pending"
+    },
+    {
+      "id": "scarcity",
+      "dimension": "pressure_threat_cues",
+      "definition_reference": "ml/se_brl/codebook.v0.1.0.json#pressure_threat_cues/scarcity",
+      "code_reference": "ml/se_brl/extraction.py; ml/se_brl/rules.py; conditional evidence resolver",
+      "test_reference": "ml/tests/test_rule_extraction.py; ml/tests/test_feature_freeze.py (schema only)",
+      "decision_status": "Pending"
+    },
+    {
+      "id": "curiosity",
+      "dimension": "lure_attention_cues",
+      "definition_reference": "ml/se_brl/codebook.v0.1.0.json#lure_attention_cues/curiosity",
+      "code_reference": "ml/se_brl/extraction.py; ml/se_brl/rules.py; conditional evidence resolver",
+      "test_reference": "ml/tests/test_rule_extraction.py; ml/tests/test_feature_freeze.py (schema only)",
+      "decision_status": "Pending"
+    },
+    {
+      "id": "reward_lure",
+      "dimension": "lure_attention_cues",
+      "definition_reference": "ml/se_brl/codebook.v0.1.0.json#lure_attention_cues/reward_lure",
+      "code_reference": "ml/se_brl/extraction.py; ml/se_brl/rules.py; conditional evidence resolver",
+      "test_reference": "ml/tests/test_rule_extraction.py; ml/tests/test_feature_freeze.py (schema only)",
+      "decision_status": "Pending"
+    },
+    {
+      "id": "authority",
+      "dimension": "trust_identity_manipulation",
+      "definition_reference": "ml/se_brl/codebook.v0.1.0.json#trust_identity_manipulation/authority",
+      "code_reference": "ml/se_brl/extraction.py; ml/se_brl/rules.py; conditional evidence resolver",
+      "test_reference": "ml/tests/test_rule_extraction.py; ml/tests/test_feature_freeze.py (schema only)",
+      "decision_status": "Pending"
+    },
+    {
+      "id": "impersonation",
+      "dimension": "trust_identity_manipulation",
+      "definition_reference": "ml/se_brl/codebook.v0.1.0.json#trust_identity_manipulation/impersonation",
+      "code_reference": "ml/se_brl/extraction.py; ml/se_brl/rules.py; conditional evidence resolver",
+      "test_reference": "ml/tests/test_rule_extraction.py; ml/tests/test_feature_freeze.py (schema only)",
+      "decision_status": "Pending"
+    },
+    {
+      "id": "brand_exploitation",
+      "dimension": "trust_identity_manipulation",
+      "definition_reference": "ml/se_brl/codebook.v0.1.0.json#trust_identity_manipulation/brand_exploitation",
+      "code_reference": "ml/se_brl/extraction.py; ml/se_brl/rules.py; conditional evidence resolver",
+      "test_reference": "ml/tests/test_rule_extraction.py; ml/tests/test_feature_freeze.py (schema only)",
+      "decision_status": "Pending"
+    },
+    {
+      "id": "confidentiality_isolation",
+      "dimension": "trust_identity_manipulation",
+      "definition_reference": "ml/se_brl/codebook.v0.1.0.json#trust_identity_manipulation/confidentiality_isolation",
+      "code_reference": "ml/se_brl/extraction.py; ml/se_brl/rules.py; conditional evidence resolver",
+      "test_reference": "ml/tests/test_rule_extraction.py; ml/tests/test_feature_freeze.py (schema only)",
+      "decision_status": "Pending"
+    },
+    {
+      "id": "call_to_action",
+      "dimension": "requested_action_consequence",
+      "definition_reference": "ml/se_brl/codebook.v0.1.0.json#requested_action_consequence/call_to_action",
+      "code_reference": "ml/se_brl/extraction.py; ml/se_brl/rules.py; conditional evidence resolver",
+      "test_reference": "ml/tests/test_rule_extraction.py; ml/tests/test_feature_freeze.py (schema only)",
+      "decision_status": "Pending"
+    },
+    {
+      "id": "credential_sensitive_data_request",
+      "dimension": "requested_action_consequence",
+      "definition_reference": "ml/se_brl/codebook.v0.1.0.json#requested_action_consequence/credential_sensitive_data_request",
+      "code_reference": "ml/se_brl/extraction.py; ml/se_brl/rules.py; conditional evidence resolver",
+      "test_reference": "ml/tests/test_rule_extraction.py; ml/tests/test_feature_freeze.py (schema only)",
+      "decision_status": "Pending"
+    },
+    {
+      "id": "financial_action_request",
+      "dimension": "requested_action_consequence",
+      "definition_reference": "ml/se_brl/codebook.v0.1.0.json#requested_action_consequence/financial_action_request",
+      "code_reference": "ml/se_brl/extraction.py; ml/se_brl/rules.py; conditional evidence resolver",
+      "test_reference": "ml/tests/test_rule_extraction.py; ml/tests/test_feature_freeze.py (schema only)",
+      "decision_status": "Pending"
+    }
+  ],
+  "E1": [
+    {
+      "name": "model_text",
+      "kind": "text",
+      "missing": "reject",
+      "derivation": "Candidate observed subject/body model view; ml/preprocessing.py::normalize_text; original evidence retained separately"
+    },
+    {
+      "name": "conventional:text_char_count",
+      "kind": "numeric",
+      "missing": "reject",
+      "derivation": "len(exact normalized model_text); ml/features.py::structural_features"
+    },
+    {
+      "name": "conventional:text_word_count",
+      "kind": "numeric",
+      "missing": "reject",
+      "derivation": "len(exact normalized model_text.split()); ml/features.py::structural_features"
+    }
+  ],
+  "E2": [
+    {
+      "name": "pressure_threat_cues_supported",
+      "kind": "binary_integer",
+      "missing": "reject",
+      "encoding": "support_available_pairs:11_supported,01_absent,00_unavailable"
+    },
+    {
+      "name": "lure_attention_cues_supported",
+      "kind": "binary_integer",
+      "missing": "reject",
+      "encoding": "support_available_pairs:11_supported,01_absent,00_unavailable"
+    },
+    {
+      "name": "trust_identity_manipulation_supported",
+      "kind": "binary_integer",
+      "missing": "reject",
+      "encoding": "support_available_pairs:11_supported,01_absent,00_unavailable"
+    },
+    {
+      "name": "requested_action_consequence_supported",
+      "kind": "binary_integer",
+      "missing": "reject",
+      "encoding": "support_available_pairs:11_supported,01_absent,00_unavailable"
+    },
+    {
+      "name": "pressure_threat_cues_available",
+      "kind": "binary_integer",
+      "missing": "reject",
+      "encoding": "support_available_pairs:11_supported,01_absent,00_unavailable"
+    },
+    {
+      "name": "lure_attention_cues_available",
+      "kind": "binary_integer",
+      "missing": "reject",
+      "encoding": "support_available_pairs:11_supported,01_absent,00_unavailable"
+    },
+    {
+      "name": "trust_identity_manipulation_available",
+      "kind": "binary_integer",
+      "missing": "reject",
+      "encoding": "support_available_pairs:11_supported,01_absent,00_unavailable"
+    },
+    {
+      "name": "requested_action_consequence_available",
+      "kind": "binary_integer",
+      "missing": "reject",
+      "encoding": "support_available_pairs:11_supported,01_absent,00_unavailable"
+    }
+  ],
+  "E3": [
+    "model_text",
+    "conventional:text_char_count",
+    "conventional:text_word_count",
+    "pressure_threat_cues_supported",
+    "lure_attention_cues_supported",
+    "trust_identity_manipulation_supported",
+    "requested_action_consequence_supported",
+    "pressure_threat_cues_available",
+    "lure_attention_cues_available",
+    "trust_identity_manipulation_available",
+    "requested_action_consequence_available"
+  ],
+  "pending": [
+    "Core E1 scope versus complete Table 4.7 conventional baseline",
+    "Twelve operational rules and runtime/Notebook 04 divergence",
+    "Language eligibility and unknown-language handling",
+    "Original-field evidence locator and conditional identity/link opportunities",
+    "Partial dimension availability aggregation and verified absence",
+    "Model-view derivation, dtype, missing-text policy and fold-local TF-IDF settings"
+  ]
+}

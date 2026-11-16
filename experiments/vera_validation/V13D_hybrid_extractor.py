@@ -1,5 +1,5 @@
 """Experimental SE-BRL prototype. Not a production detector or validated ground truth.
-CPU-only, no model downloads unless --semantic is explicitly requested.
+Explicit model construction is CPU-only, pinned and local-only; no downloads.
 """
 from __future__ import annotations
 import argparse
@@ -81,19 +81,22 @@ def rules_only(text,modality='content_bearing_email',identity_evidence=None):
 
 class SemanticNLI:
     def __init__(self,config=CONFIG):
-        from transformers import AutoTokenizer,AutoModelForSequenceClassification
-        import torch
-        self.torch=torch
-        self.cfg=json.loads(Path(config).read_text())
-        self.model=AutoModelForSequenceClassification.from_pretrained(self.cfg['model']).to('cpu').eval()
-        self.tokenizer=AutoTokenizer.from_pretrained(self.cfg['model'])
-        self.indices={str(v).lower():int(k) for k,v in self.model.config.id2label.items()}
-        if not {'entailment','neutral','contradiction'}<=self.indices.keys():raise ValueError('Unexpected NLI labels')
+        # Explicit legacy construction now uses the canonical pinned, local-only
+        # loader. Decision policies and the deterministic rules are unchanged.
+        from ml.se_brl.semantic_candidates import PinnedLocalNliScorer, SemanticInferenceUnavailable, semantic_configuration
+        spec, _ = semantic_configuration()
+        try:
+            payload=Path(config).read_bytes()
+            self.cfg=json.loads(payload)
+        except (OSError,ValueError,TypeError):
+            raise SemanticInferenceUnavailable('Legacy semantic configuration unavailable') from None
+        if hashlib.sha256(payload).hexdigest() != spec['hypotheses_sha256']:
+            raise SemanticInferenceUnavailable('Legacy hypotheses differ from the pinned semantic contract')
+        self._scorer=PinnedLocalNliScorer()
+        self.torch,self.model,self.tokenizer,self.indices=(self._scorer.torch,self._scorer.model,self._scorer.tokenizer,self._scorer.indices)
     def score(self,text,indicator):
-        h=self.cfg['hypotheses'][indicator]
-        inputs=self.tokenizer([text]*len(h),h,padding=True,truncation=True,max_length=512,return_tensors='pt')
-        with self.torch.inference_mode():p=self.torch.softmax(self.model(**inputs).logits,dim=-1).cpu().tolist()
-        return [{'hypothesis':x,**{k:round(float(y[self.indices[k]]),6) for k in ('entailment','neutral','contradiction')}} for x,y in zip(h,p)]
+        return [{'hypothesis':hypothesis,**{k:round(value,6) for k,value in score.items()}}
+                for hypothesis,score in zip(self.cfg['hypotheses'][indicator],self._scorer.score(text,indicator),strict=True)]
 
 
 def extract(text,modality='content_bearing_email',identity_evidence=None,semantic=None):
@@ -101,11 +104,13 @@ def extract(text,modality='content_bearing_email',identity_evidence=None,semanti
     if semantic is None:return {'indicators':labels,'mode':'rules_only'}
     for indicator,result in labels.items():
         if result['state']=='unavailable':continue
-        scores=semantic.score(text,indicator)
+        from ml.se_brl.semantic_candidates import validate_scores
+        scores=validate_scores(semantic.score(text,indicator))
         result['nli_scores']=scores
         # No calibrated fusion policy exists. Preserve rules decision and surface conflicts.
         top=[max(('entailment','neutral','contradiction'),key=lambda k:s[k]) for s in scores]
-        if len(set(top))>1 or ('entailment' in top and result['state']=='absent'):
+        tied=any(sum(v==max(s.values()) for v in s.values())>1 for s in scores)
+        if tied or len(set(top))>1 or ('entailment' in top and result['state']=='absent'):
             result['needs_review']=True
             result['reason']+='; NLI disagreement or candidate support without grounded rule evidence'
     return {'indicators':labels,'mode':'hybrid_review_only','semantic_contributes_to_review_flags':True}

@@ -21,7 +21,7 @@ async function extractCurrent() {
 }
 
 async function extractForScan() {
-  return new GmailEmailSourceAdapter(document, { includeLinks: true, includeBody: true, bodyAuthorized: true }).extractCurrentEmail();
+  return extractCurrent();
 }
 
 function addStyles(): void {
@@ -46,7 +46,7 @@ function riskLabel(result: ExtensionResult): { label: string; css: string } {
 }
 
 function renderResult(result: ExtensionResult): void {
-  const popup = showPopup("Email Security Analysis", "Analysis complete."); const risk = riskLabel(result);
+  const popup = showPopup("Email Security Analysis", "Rule-based metadata analysis complete."); const risk = riskLabel(result);
   popup.append(element("div", `${risk.label} · ${result.analysis.emailRiskScore}/100`, `sentinel-score ${risk.css}`));
   popup.append(element("small", `Source: ${result.analysis.scoreSource}. This assessment indicates risk; it does not guarantee safety.`));
   const behaviors = result.analysis.detectedBehaviors.slice(0, 4);
@@ -54,7 +54,7 @@ function renderResult(result: ExtensionResult): void {
   const technical = result.analysis.detectedBehaviors.filter((item) => ["sender_domain_mismatch", "suspicious_url"].includes(item.type));
   if (technical.length) { popup.append(element("h3", "Technical indicators")); technical.forEach((item) => popup.append(element("p", item.evidence))); }
   popup.append(element("h3", "Recommended action"), element("p", result.analysis.recommendation));
-  const details = element("details"), summary = element("summary", "How was this analyzed?"); details.append(summary, element("p", "The system examines the email’s language, sender information, links, and social-engineering behaviors. These indicators are converted into measurable features and processed to generate the final risk assessment."), element("div", "Email Content → Behavioral and Technical Analysis → Classification → Risk Score and Explanation", "sentinel-flow")); popup.append(details);
+  const details = element("details"), summary = element("summary", "How was this analyzed?"); details.append(summary, element("p", "This prototype applies rules to the subject and sender metadata, plus links only when enabled in settings. It does not collect message bodies or provide a validated ML prediction."), element("div", "Selected metadata → Rule-based indicators → Prototype score and explanation", "sentinel-flow")); popup.append(details);
   const actions = element("div", undefined, "sentinel-actions"); const view = element("button", "View Full Analysis"), report = element("button", "Report as Suspicious"), close = element("button", "Close");
   view.onclick = async () => { view.disabled = true; await chrome.runtime.sendMessage({ type: "RECORD_SCAN_FEEDBACK", feedback: { scanId: result.analysis.scanId, messageId: result.analysis.messageId, action: "view_full_analysis", createdAt: new Date().toISOString() } } satisfies RuntimeMessage); await chrome.runtime.sendMessage({ type: "OPEN_SCAN_DASHBOARD", scanId: result.analysis.scanId } satisfies RuntimeMessage); };
   report.onclick = async () => { report.disabled = true; const response = await chrome.runtime.sendMessage({ type: "RECORD_SCAN_FEEDBACK", feedback: { scanId: result.analysis.scanId, messageId: result.analysis.messageId, action: "reported_suspicious", createdAt: new Date().toISOString() } } satisfies RuntimeMessage); report.textContent = response?.ok ? "Reported" : "Report failed — retry"; report.disabled = Boolean(response?.ok); };
@@ -63,10 +63,9 @@ function renderResult(result: ExtensionResult): void {
 
 async function scan(button: HTMLButtonElement): Promise<void> {
   if (scanning) return; scanning = true; button.disabled = true; button.lastChild!.textContent = "Scanning…";
-  showPopup("Email Security Analysis", "Scanning this email for phishing and social-engineering indicators…");
+  showPopup("Email Security Analysis", "Checking selected message metadata with prototype rules…");
   try {
     const email = await extractForScan();
-    if (!email.bodyText?.trim()) throw new EmailSourceUnavailableError("This message has no readable text content to analyze.");
     const response = await Promise.race([chrome.runtime.sendMessage({ type: "PROCESS_EMAIL", email } satisfies RuntimeMessage), new Promise<never>((_, reject) => window.setTimeout(() => reject(new Error("The scan timed out. Please try again.")), 20_000))]);
     if (!response?.ok) throw new Error(response?.error ?? "Analysis unavailable."); renderResult(response.result as ExtensionResult);
   } catch (error) { const popup = showPopup("Email Security Analysis", error instanceof Error ? error.message : "The scan could not be completed."); popup.setAttribute("role", "alert"); }
@@ -74,7 +73,8 @@ async function scan(button: HTMLButtonElement): Promise<void> {
 }
 
 async function injectScanButton(): Promise<void> {
-  let email; try { email = await extractForScan(); } catch { document.getElementById(UI.button)?.remove(); return; }
+  // Button discovery needs metadata only and must not extract opt-in links.
+  let email; try { email = await new GmailEmailSourceAdapter(document).extractCurrentEmail(); } catch { document.getElementById(UI.button)?.remove(); return; }
   if (activeMessageId !== email.messageId) { activeMessageId = email.messageId; document.getElementById(UI.popup)?.remove(); scanning = false; }
   const actionArea = GMAIL_SELECTORS.messageActions.map((selector) => document.querySelector<HTMLElement>(selector)).find(Boolean); if (!actionArea) return;
   const forward = GMAIL_SELECTORS.forwardButtons.map((selector) => actionArea.querySelector<HTMLElement>(selector)).find(Boolean);
@@ -106,7 +106,7 @@ async function considerAutomaticTracking(): Promise<void> {
   }
 }
 
-const observeTarget = document.querySelector("main, [role='main']") ?? document.body;
+const observeTarget = document.querySelector(GMAIL_SELECTORS.observationRoot) ?? document.body;
 const observer = new MutationObserver(() => {
   window.clearTimeout(debounceTimer);
   debounceTimer = window.setTimeout(() => { void considerAutomaticTracking(); void injectScanButton(); }, 600);

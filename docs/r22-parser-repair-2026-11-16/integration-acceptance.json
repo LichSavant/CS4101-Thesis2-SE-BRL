@@ -1,0 +1,116 @@
+{
+  "artifact_version": "r22-publication-acceptance-1.0.0",
+  "contract_version": "r22-joint-email-0.1.1-proposed",
+  "counterpart_commit": "ae20372db6014d4f83153c03ccc2cd92f445ca8c",
+  "vera_commit_binding": "The enclosing published Git commit; resolve via git rev-parse HEAD. Full post-push SHA is in the external final audit reports to avoid a self-referential commit.",
+  "status": "READY_FOR_HUMAN_R22_APPROVAL",
+  "R22": "BLOCKED",
+  "approval_records": {
+    "vera": null,
+    "dhanwil": null
+  },
+  "joint_acceptance": false,
+  "research_release": false,
+  "bound_artifact_sha256": {
+    "README.md": "5b8532951718da97d6d88424c4bfb7984dd103d5715cdb40c22d7a14bc176953",
+    "agreed-integration-contract.md": "a9f8aff2c036844c63bd1d6743865aa72abd23f9fb7e7bb03d66913a047ddf0b",
+    "commit-source-verification.json": "fe6772da634631190fe313b6ac5ff612b4b258c1862445d20fd30dd091198930",
+    "counterpart-runtime.json": "32b8465bb873d8a055dc8ab948c05a156a76bb14b7833187a80f4a2c7aa68bc7",
+    "counterpart-source-manifest.json": "a42ef2053d7f6e973765f137739261fb97941dd106450efc74dfcbf0cfe2b994",
+    "historical-evidence-reuse.public.json": "0098806cd33fe6009c123f94f6e0d0b3526de994ff3de8d0970404dd27db2004",
+    "indicator-audit.public.json": "862babcdd06c12ae15d8be07a40d0c047c444d9181af9e8e8bdae479d2f3be3a",
+    "javascript-verification.public.json": "f0138336468bf56a03239fe2c2f25c915d596a854e97c2ec201593a86dc27a45",
+    "joint-regression.public.xml": "ba5e97fd348124667da49061c9a9db573ce9fecf9177f6faf29f3c5ae960b6e2",
+    "joint-verification.public.json": "0f941d07f5d2a5bae12f345cb103e3692f7ae412f3eeb282df684b0e1d11f04b",
+    "owned-regression.public.xml": "a86bff1529567b05fa89a34ad0bb52c008343e214dc92e55575e99377791247c",
+    "owned-verification.public.json": "2d8e1893223926f504380e759d8b9e20dc102f6ecf97c74a72de5f1bbf6beff0",
+    "parser-regression.public.xml": "5b20dd74a4cf2dabb433ebe6fe84f1cdf3c9923fd5097bce739aff8158714eca",
+    "parser-verification.public.json": "7de887842830ec0be16d747cee44a6d34954ade92d8cfcba3382d8500b5265ee",
+    "preprocessing-regression.public.xml": "3395ad10eff83858c53916f423db43c5d933b38dfbfffcb427ced6147c8337eb",
+    "preprocessing-verification.public.json": "3a9c6d07c2dc10ff060dbf5fade5432c36944f799551a24950c894b4b13aac43",
+    "requirements-audit.public.json": "d45e2368d71af929f4fe807380540c5623738eb1855d518fa31f298141d6031b",
+    "requirements.json": "a30442f1263773f1952ec23951919be912328100ca9541bdfdcb5dbb32cf9f78",
+    "source-comparison.json": "d9591d976e561092055e827976648d91ad82c7c8b3f9ea24b3344265a77f0524",
+    "upstream-identity.json": "280393d1bc292c204a3fd4f987c324cb92e3ddd38a10b44c1e63862fdde87994",
+    "vera-runtime-manifest.json": "212a81e5221c1867c9a0a4008a2b31120ee735b60095c6fe2f0e93c1aff7f3cd",
+    "vera-runtime-manifest.previous.json": "a34a4cdb741583afaec27f982bb7ebd21bd4d601745e712e48eb1dc17aa83f77",
+    "whole-runtime-comparison.json": "3d7b84b193cd81fd7f0162b4004b980f2ef5bd06799c1d7db3d6c34ded970e16"
+  },
+  "fresh_runs": {
+    "joint": {
+      "verification_sha256": "0f941d07f5d2a5bae12f345cb103e3692f7ae412f3eeb282df684b0e1d11f04b",
+      "junit_sha256": "ba5e97fd348124667da49061c9a9db573ce9fecf9177f6faf29f3c5ae960b6e2",
+      "counts": {
+        "tests": 50,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0,
+        "passed": 50
+      }
+    },
+    "parser": {
+      "verification_sha256": "7de887842830ec0be16d747cee44a6d34954ade92d8cfcba3382d8500b5265ee",
+      "junit_sha256": "5b20dd74a4cf2dabb433ebe6fe84f1cdf3c9923fd5097bce739aff8158714eca",
+      "counts": {
+        "tests": 34,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0,
+        "passed": 34
+      }
+    },
+    "preprocessing": {
+      "verification_sha256": "3a9c6d07c2dc10ff060dbf5fade5432c36944f799551a24950c894b4b13aac43",
+      "junit_sha256": "3395ad10eff83858c53916f423db43c5d933b38dfbfffcb427ced6147c8337eb",
+      "counts": {
+        "tests": 52,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      }
+    },
+    "owned": {
+      "verification_sha256": "2d8e1893223926f504380e759d8b9e20dc102f6ecf97c74a72de5f1bbf6beff0",
+      "junit_sha256": "a86bff1529567b05fa89a34ad0bb52c008343e214dc92e55575e99377791247c",
+      "counts": {
+        "tests": 1067,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0,
+        "passed": 1067
+      }
+    }
+  },
+  "reused_evidence": {
+    "records": {
+      "integration-acceptance.json": "d838f97ac664c707de3cbe74165cc5e181242d4e40337e56a1d3a939b9175de3",
+      "agreed-integration-contract.md": "a9f8aff2c036844c63bd1d6743865aa72abd23f9fb7e7bb03d66913a047ddf0b",
+      "vera-runtime-manifest.json": "a34a4cdb741583afaec27f982bb7ebd21bd4d601745e712e48eb1dc17aa83f77",
+      "counterpart-source-manifest.json": "a42ef2053d7f6e973765f137739261fb97941dd106450efc74dfcbf0cfe2b994",
+      "counterpart-verification.json": "2cd01868e7926f8fbb6ddda924b9cfe4dd29ec88a47bb24d6af933be59eb5184",
+      "safeguards-verification.json": "ef559cd554e75a8ba8e62507cc5f6248ecaa3959c1a1250642dfac64b0f713c4"
+    },
+    "scope": "Verified saved native 420 counterpart and 145 safeguard results; not freshly executed in this publication phase. Current 85-file owned runtime and all 144 selected peer source hashes match these records. Original packet retained locally, byte-identical.",
+    "new_counterpart_checkout_selected_source_files": 144
+  },
+  "original_immutable_local_packet_sha256": "d838f97ac664c707de3cbe74165cc5e181242d4e40337e56a1d3a939b9175de3",
+  "raw_records_published": false,
+  "privacy_projection": "Source/module hashes and case outcomes retained. Machine paths, hostname and sensitive logs are excluded; public projections are not claimed byte-identical to private raw records.",
+  "known_parser_blocker": "Resolved on selected peer commit; native 3.12.16 original regression and new parser cases pass.",
+  "open_R22_technical_conflicts": [],
+  "whole_runtime_comparison": "INCOMPATIBLE; this remains a bounded email mapping, not schema or semantic equality.",
+  "separate_production_issues": [
+    "Nine npm advisories: 2 critical, 4 high, 3 moderate. No dependency repair or production clearance claimed.",
+    "Legacy product domain suffix heuristics are distinct from the typed R22 identity detector and retain known limitations."
+  ],
+  "required_owner_approval_bindings": [
+    "Dhanwil exact commit",
+    "Vera enclosing exact published commit",
+    "Vera runtime-manifest SHA-256",
+    "contract SHA-256",
+    "this public packet SHA-256",
+    "verified original immutable local packet SHA-256 if relied on",
+    "reproduced evidence and explicit email-only scope",
+    "deterministic authority, semantic review-only boundary, consent and closed scientific gates"
+  ]
+}

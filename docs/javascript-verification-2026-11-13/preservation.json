@@ -1,0 +1,24 @@
+{
+  "baseline_existing_files_checked": 376,
+  "existing_files_changed": [],
+  "protected_research_files_checked": 190,
+  "protected_research_files_changed": [],
+  "package_manifests_and_lockfiles_unchanged": true,
+  "manifest_files": [
+    "package-lock.json",
+    "package.json",
+    "packages/shared/package.json",
+    "apps/gmail-extension/package.json",
+    "apps/web-dashboard/package.json"
+  ],
+  "generated_compiler_caches_restored_to_pre_run_bytes": [
+    "apps/gmail-extension/tsconfig.tsbuildinfo"
+  ],
+  "production_outputs": [
+    "apps/gmail-extension/dist/",
+    "apps/web-dashboard/dist/"
+  ],
+  "dependencies_installed": "node_modules/ (ignored)",
+  "scientific_release_flags_unchanged": true,
+  "notebooks_or_models_executed": false
+}

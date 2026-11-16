@@ -100,3 +100,54 @@ def test_invalid_html_parser_token_and_oversized_input():
     with pytest.raises(ArtifactValidationError):
         preprocess({"kind": "webpage", "html": '<a href="https://[bad">Click</a>',
                     "link_extraction_authorized": True})
+
+
+@pytest.mark.parametrize("html", [
+    "<![bogus]>", "<![BOGUS]>", "<![CDATA[text]]>", "<![if IE]>",
+    "<!ENTITY secret 'value'>", "<!entity secret 'value'>", "<!>",
+    "<!DOCTYPE svg>", "<!DOCTYPEhtml>", "<! DOCTYPE html>",
+    '<!DOCTYPE html SYSTEM "legacy.dtd">',
+    '<!DOCTYPE html PUBLIC "legacy" "legacy.dtd">',
+    '<!DOCTYPE html SYSTEM "about:legacy-compat">',
+    "<!DOCTYPE html [<!ENTITY secret 'value'>]>",
+    "<!DOCTYPE html []>", "<!DOCTYPE html", "<![bogus", "<!", "<!--secret",
+    "<?secret?>", "<?secret",
+])
+def test_strict_declarations_reject_safely(html):
+    with pytest.raises(ArtifactParserError) as caught:
+        preprocess(dict(kind="webpage", html=html))
+    assert type(caught.value) is ArtifactParserError
+    assert str(caught.value) == "Static HTML parsing failed"
+    assert html not in str(caught.value)
+
+
+@pytest.mark.parametrize("doctype", [
+    "<!DOCTYPE html>", "<!doctype HTML>", "<!DoCtYpE hTmL>",
+    "<!DOCTYPE\t\nhtml >", "<!DOCTYPE\r\fhtml\t>",
+])
+def test_supported_doctype_preserves_page_evidence_and_links(doctype):
+    html = (doctype + '\n<!-- <![bogus]> -->'
+            '<div title="<![bogus]>"><p>A &amp; B &#33;</p>'
+            '<script>const s = "<![bogus]>";</script>'
+            '<a href="/help">Help</a></div>')
+    raw = dict(kind="webpage", html=html, page_url="https://example.test/page")
+    result = preprocess(raw)
+    assert result.model_text == "a & b ! help"
+    assert result.urls == ("https://example.test/page",)
+    for segment in result.segments:
+        assert html[segment.start:segment.end] == segment.text
+    authorized = preprocess(dict(raw, link_extraction_authorized=True))
+    assert authorized.urls == ("https://example.test/help", "https://example.test/page")
+    link = authorized.link_evidence[0]
+    assert html[link.start:link.end] == '<a href="/help">'
+
+
+def test_declaration_like_literal_text_is_ordinary_content():
+    result = preprocess(dict(kind="webpage", html='<p>&lt;!DOCTYPE html&gt; 2 < 3</p>'))
+    assert result.model_text == "<!doctype html> 2 < 3"
+
+
+def test_dom_node_limit_still_applies():
+    from ml.preprocessing import MAX_DOM_NODES
+    with pytest.raises(ArtifactParserError):
+        preprocess(dict(kind="webpage", html="<br>" * (MAX_DOM_NODES + 1)))

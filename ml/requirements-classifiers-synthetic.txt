@@ -1,0 +1,8 @@
+# Proposed isolated Python 3.12 CPU verification environment; not a research freeze.
+# Installation requires user approval. Existing application .venv stays unchanged.
+numpy==2.2.6
+scipy==1.15.3
+scikit-learn==1.6.1
+xgboost==2.1.4
+joblib==1.5.1
+threadpoolctl==3.6.0

@@ -8,6 +8,7 @@ from .schemas import AnalyzeEmailRequest, AnalyzeEmailResponse, EmailOpenRequest
 from .sebrl_schemas import SebrlResultEnvelopeResponse
 from .sebrl_service import SebrlAnalysisService, SebrlServiceError
 from .services import EmailInteractionService
+from .artifact_service import ArtifactAnalysisService, ArtifactBodyLimit, artifact_router
 
 settings = get_settings()
 repository = TrackedEmailRepository(settings.database_url)
@@ -16,6 +17,9 @@ analyzer = RuleBasedAnalyzer()
 sebrl_analysis_service = SebrlAnalysisService()
 
 app = FastAPI(title="Phishing Defense API", version="0.2.0")
+artifact_analysis_service = ArtifactAnalysisService(settings)
+app.include_router(artifact_router(artifact_analysis_service))
+app.add_middleware(ArtifactBodyLimit, max_bytes=settings.artifact_payload_max_bytes)
 app.add_middleware(
     CORSMiddleware,
     allow_origins=settings.cors_origins,

@@ -97,6 +97,10 @@ class EvidenceAwareDetector(Protocol):
 
 
 def _locate(artifact: PreparedArtifact, span: TextEvidence) -> tuple[TextEvidence, int, int]:
+    if (not isinstance(span, TextEvidence) or type(span.field) is not str or type(span.location) is not str
+            or type(span.text) is not str or type(span.start) is not int or type(span.end) is not int
+            or type(span.quoted) is not bool):
+        raise ValueError("Independent evidence span requires strict source fields, integer offsets and a Boolean quote flag")
     for segment in artifact.segments:
         if (segment.field == span.field and segment.location == span.location
                 and segment.start <= span.start < span.end <= segment.end

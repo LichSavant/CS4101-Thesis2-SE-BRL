@@ -1,0 +1,58 @@
+{
+  "schema_version": "1.0.0",
+  "status": "proposed_engineering_adapter_not_research_approval",
+  "request_fields": [
+    "artifact_id",
+    "body_collection_authorized",
+    "codebook_version",
+    "fields",
+    "language",
+    "link_extraction_authorized",
+    "modality",
+    "schema_version",
+    "source_id",
+    "source_reference",
+    "study_purpose"
+  ],
+  "codebook_version": "0.1.0",
+  "preprocessing_contract": {
+    "version": "0.2.0",
+    "source_utf8_lf_sha256": "56618ce593492dead9f7b1a3165522002de01553b2d8a85a7c202796708eebff"
+  },
+  "indicator_order": [
+    "urgency",
+    "fear_threat",
+    "scarcity",
+    "curiosity",
+    "reward_lure",
+    "authority",
+    "impersonation",
+    "brand_exploitation",
+    "confidentiality_isolation",
+    "call_to_action",
+    "credential_sensitive_data_request",
+    "financial_action_request"
+  ],
+  "dimension_order": [
+    "pressure_threat_cues",
+    "lure_attention_cues",
+    "trust_identity_manipulation",
+    "requested_action_consequence"
+  ],
+  "state_policy": "deterministic observations preserved; NLI candidates abstained or unavailable",
+  "offset_units": "half-open Python Unicode character indices in the named original field",
+  "predictor_export": "blocked; output is evidence/review bookkeeping, not an E2/E3 feature vector",
+  "forbidden_predictor_inputs": [
+    "target",
+    "source_label",
+    "native_label",
+    "partition",
+    "cv_fold",
+    "group_id",
+    "provenance"
+  ],
+  "collection_policy": "explicit body authorization plus study purpose; extracted links opt-in",
+  "external_commit_verified": "6a41d94d4e4f88c77c08bf7ea20a6ca59d192136",
+  "external_checkout_execution_verified": false,
+  "scientific_release": false
+}

@@ -1,0 +1,118 @@
+{
+  "defined_before_master3_scoring": true,
+  "requirement_denominator": 22,
+  "requirements": [
+    {
+      "id": "R01",
+      "name": "Preservation",
+      "acceptance": "Baseline source snapshot and exact file inventory; no deletion or forbidden repository/history change."
+    },
+    {
+      "id": "R02",
+      "name": "Policy authority",
+      "acceptance": "Deterministic observations preserved; no semantic override or autonomous scientific promotion."
+    },
+    {
+      "id": "R03",
+      "name": "Twelve indicators",
+      "acceptance": "All canonical indicators have executable positive/negative, conditional evidence and context acceptance cases."
+    },
+    {
+      "id": "R04",
+      "name": "Context",
+      "acceptance": "Quotation, warnings, education, hypotheticals and negation cannot authorize unsupported semantic assertions."
+    },
+    {
+      "id": "R05",
+      "name": "Identity",
+      "acceptance": "Independent-reference declarations must be typed, source-linked and assessable; flags alone rejected."
+    },
+    {
+      "id": "R06",
+      "name": "Missingness",
+      "acceptance": "Missing content, unsupported modality, absent, abstained and unavailable remain distinct."
+    },
+    {
+      "id": "R07",
+      "name": "NLI score contract",
+      "acceptance": "Strict finite normalized three-label scores, logit/token shapes and ties handled."
+    },
+    {
+      "id": "R08",
+      "name": "NLI resources",
+      "acceptance": "Pinned local-only explicit initialization; dependency/model failures sanitized without default predictions."
+    },
+    {
+      "id": "R09",
+      "name": "Reproducibility",
+      "acceptance": "Codebook/model/hypothesis/preprocessing/policy versions and fingerprints bind source contracts."
+    },
+    {
+      "id": "R10",
+      "name": "Evidence-only input",
+      "acceptance": "Explicit consent, language, opaque IDs, bounded source fields and predictor bookkeeping isolation."
+    },
+    {
+      "id": "R11",
+      "name": "Output validation",
+      "acceptance": "Malformed, duplicated, forged, inconsistent or unapproved review documents fail closed."
+    },
+    {
+      "id": "R12",
+      "name": "Compatibility safeguards",
+      "acceptance": "Executable runtime contract comparison rejects equal-version source/ordering/semantics mismatches and missing declarations."
+    },
+    {
+      "id": "R13",
+      "name": "Reference import",
+      "acceptance": "Immutable artifact-bound declared-human response validation; no generated judgments or authenticity claims."
+    },
+    {
+      "id": "R14",
+      "name": "Adjudication",
+      "acceptance": "Separate immutable adjudication, strict provenance and binding; no source-response mutation or automatic voting."
+    },
+    {
+      "id": "R15",
+      "name": "Evaluation utilities",
+      "acceptance": "Bounded synthetic arithmetic, valid uncertainty interfaces and explicit denominators; no research accuracy evaluation."
+    },
+    {
+      "id": "R16",
+      "name": "Reference separation",
+      "acceptance": "Exact supplied record/group separation and immutable evaluation plans; sealed-test execution closed."
+    },
+    {
+      "id": "R17",
+      "name": "Exclusion and admission",
+      "acceptance": "Excluded sources rejected at owned boundaries; approvals remain empty and all research stages closed."
+    },
+    {
+      "id": "R18",
+      "name": "Source evidence",
+      "acceptance": "All accepted locators match original Unicode fields and eligible source units; no corruption or fabricated support."
+    },
+    {
+      "id": "R19",
+      "name": "No-fit verification",
+      "acceptance": "All permitted owned tests/static checks run with explicit restrictions, actual counters, and individual exclusion accounting."
+    },
+    {
+      "id": "R20",
+      "name": "Handoff",
+      "acceptance": "Current source-only version comparison, exact changes, traceability, reproducible commands and classified blockers recorded."
+    },
+    {
+      "id": "R21",
+      "name": "Notebook source verification",
+      "acceptance": "Verify all five actual notebook guards against an output-free source snapshot without opening protected retained outputs."
+    },
+    {
+      "id": "R22",
+      "name": "External integration acceptance",
+      "acceptance": "Obtain a current counterpart runtime declaration and agreed acceptance evidence tied to an authoritative commit; do not infer integration from local fixtures."
+    }
+  ],
+  "scoring": "Complete only with reproducible passing evidence. Partial/blocked requirements remain in the denominator. Scientific validation is assessed separately; no percentage inferred from test pass count.",
+  "existing_seven_exclusions": "Six fitting cases remain prohibited; output-retaining notebooks are absent from this isolated snapshot."
+}

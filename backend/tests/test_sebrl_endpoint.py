@@ -17,7 +17,7 @@ EXPECTED_REASON_CODES = (
     "risk_rules_not_frozen",
 )
 EXPECTED_LIMITATIONS = (
-    "A validated behavioral model is not integrated.",
+    "A validated phishing classifier is not integrated in this legacy status endpoint.",
     "A validated calibrator is not integrated.",
     "Frozen decision rules are not available.",
 )

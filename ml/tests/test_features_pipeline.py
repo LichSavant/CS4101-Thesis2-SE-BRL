@@ -10,6 +10,7 @@ from ml.models import CandidateAlgorithm, ModelUnavailableError, prepare_trainin
 from ml.pipeline import ComponentExecutionError, PretrainingPipeline
 from ml.preprocessing import ArtifactParserError, preprocess
 from ml.se_brl import serialize_result_envelope
+from ml.se_brl.extraction import RuleEngine
 
 
 def prepared(subject):
@@ -80,9 +81,12 @@ def test_pipeline_prepares_all_configs_and_never_fits_or_predicts():
     e1, e2, e3 = result.features
     assert e1.block.missing_components == ("word_tfidf_not_fitted", "char_tfidf_not_fitted")
     assert len(e2.block.values) == 8
-    assert all(e2.block.values[f"se_brl:z{i}"] is None for i in range(1, 5))
+    assert not any("z1" in name for name in e2.block.values)
+    assert e2.block.values["pressure_threat_cues_supported"] == 1
+    assert e2.block.values["trust_identity_manipulation_available"] == 0
     assert dict(e3.block.values) == dict(e1.block.values) | dict(e2.block.values)
-    for config in FeatureConfiguration:
+    assert result.model_input(FeatureConfiguration.E2).block.require_numeric()
+    for config in (FeatureConfiguration.E1, FeatureConfiguration.E3):
         with pytest.raises(FeatureUnavailableError):
             result.model_input(config)
     wire = serialize_result_envelope(result.envelope)
@@ -90,7 +94,7 @@ def test_pipeline_prepares_all_configs_and_never_fits_or_predicts():
     assert "probability" not in wire and "classification" not in wire
 
 
-def test_fitted_e1_reaches_missing_model_boundary_e2_e3_stay_blocked():
+def test_all_ready_deterministic_configs_reach_missing_classifier_boundary():
     conventional = ConventionalFeatureBuilder()
     conventional.fit({"fixture": prepared("Hello")}, SplitManifest("fixture", ("fixture",)))
     pipeline = PretrainingPipeline(conventional)
@@ -100,8 +104,8 @@ def test_fitted_e1_reaches_missing_model_boundary_e2_e3_stay_blocked():
     with pytest.raises(ModelUnavailableError):
         pipeline.model.predict(features)
     for config in (FeatureConfiguration.E2, FeatureConfiguration.E3):
-        with pytest.raises(FeatureUnavailableError):
-            result.model_input(config)
+        with pytest.raises(ModelUnavailableError):
+            pipeline.model.predict(result.model_input(config))
     assert {candidate.value for candidate in CandidateAlgorithm} == {"logistic_regression", "linear_svm", "random_forest", "xgboost"}
 
 
@@ -161,5 +165,7 @@ def test_training_boundary_validates_splits_labels_and_feature_readiness():
         prepare_training_input({"test": bundles[0]}, {"test": "synthetic-label"}, manifest)
     with pytest.raises(ValueError):
         prepare_training_input({"train": bundles[0]}, {}, manifest)
+    incomplete = PretrainingPipeline(ConventionalFeatureBuilder(include_tfidf=False), RuleEngine(rules=())).run(
+        {"kind": "email", "subject": "Hello"}).features[1]
     with pytest.raises(FeatureUnavailableError):
-        prepare_training_input({"train": bundles[1]}, {"train": "synthetic-label"}, manifest)
+        prepare_training_input({"train": incomplete}, {"train": "synthetic-label"}, manifest)

@@ -2,6 +2,7 @@ import { AlertTriangle, CheckCircle2, MailSearch, RefreshCw, Search, ShieldAlert
 import { useCallback, useEffect, useMemo, useState } from "react";
 import { normalizeBehaviorLabel, riskCategoryFromScore, riskCategoryLabel, type DetectedBehavior, type EmailScanRecord, type RiskCategory } from "@phishing-defense/shared";
 import { getEmailScan, getEmailScans } from "./api";
+import { ArtifactWorkbench } from "./ArtifactWorkbench";
 
 type RiskGroup = RiskCategory;
 
@@ -33,6 +34,7 @@ export function App() {
   return <main>
     <header><div className="brand"><ShieldAlert size={24}/> Sentinel</div><span className="prototype">Rule-based prototype</span></header>
     <section className="hero"><div><p className="eyebrow">SECURITY ANALYSIS</p><h1>Email Security Analysis</h1><p>Behavioral and technical analysis of scanned email messages</p></div><button onClick={() => void load()} disabled={state === "loading"}><RefreshCw size={16}/> Refresh</button></section>
+    <ArtifactWorkbench/>
     <section className="metrics" aria-label="Scan summary">
       <Metric icon={<MailSearch/>} label="Emails Scanned" value={scans.length}/><Metric icon={<ShieldAlert/>} label="High-Risk Emails" value={counts.high} tone="high"/><Metric icon={<AlertTriangle/>} label="Suspicious Emails" value={counts.suspicious} tone="suspicious"/><Metric icon={<CheckCircle2/>} label="Low-Risk Emails" value={counts.low} tone="low"/>
     </section>
@@ -46,10 +48,10 @@ export function App() {
       </section>
       <section className="panel info-card"><h2>Behavioral Representation Layer</h2><p>The Behavioral Representation Layer converts social-engineering tactics found in the message into structured indicators. These behavioral indicators may be combined with conventional email and URL features to support the final classification and explanation.</p></section>
       <section className="panel recent"><div className="panel-title"><div><h2>Recent scans</h2><p>Newest completed analyses appear first.</p></div><div className="controls"><label className="search"><Search size={15}/><span className="sr-only">Search scans</span><input value={query} onChange={event => setQuery(event.target.value)} placeholder="Search subject or sender"/></label><label><span className="sr-only">Filter risk level</span><select value={filter} onChange={event => setFilter(event.target.value as typeof filter)}><option value="all">All risk levels</option><option value="high">High Risk</option><option value="suspicious">Suspicious</option><option value="low">Low Risk</option></select></label></div></div>
-        {visible.length === 0 ? <div className="filtered-empty">No scans match the current search and filter.</div> : <ScanTable scans={visible} onSelect={setSelected}/>} 
+        {visible.length === 0 ? <div className="filtered-empty">No scans match the current search and filter.</div> : <ScanTable scans={visible} onSelect={setSelected}/>}
       </section>
     </>}
-    {selected && <ScanDetails scan={selected} onClose={() => setSelected(null)}/>} 
+    {selected && <ScanDetails scan={selected} onClose={() => setSelected(null)}/>}
     {detailError && <div className="modal-backdrop"><section className="details detail-error" role="alert"><h2>Full analysis unavailable</h2><p>{detailError}</p><button onClick={() => setDetailError("")}>Close</button></section></div>}
   </main>;
 }

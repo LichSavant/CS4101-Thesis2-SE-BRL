@@ -256,7 +256,6 @@ class ExperimentFeatureBuilder:
 
     def __init__(self, configuration: FeatureConfiguration) -> None:
         self.configuration = FeatureConfiguration(configuration)
-        self.slots = load_codebook()["vector_ordering"]["future_structure"]
 
     def build(self, conventional: FeatureBlock, brl: BrlRepresentation) -> FeatureBundle:
         parts = []
@@ -265,9 +264,10 @@ class ExperimentFeatureBuilder:
             parts.append(conventional.values)
             missing.extend(conventional.missing_components)
         if self.configuration in {FeatureConfiguration.E2, FeatureConfiguration.E3}:
-            slots = self.slots
-            parts.append({f"se_brl:{name}": value for name, value in zip(slots, brl.slots, strict=True)})
-            missing.append("learned_behavioral_values_not_available")
+            values = brl.deterministic_slots
+            parts.append(dict(zip(brl.deterministic_names, values, strict=True)))
+            if any(value is None for value in values):
+                missing.append("behavioral_evaluation_incomplete")
         values = parts[0] if len(parts) == 1 else CombinedFeatureValues(tuple(parts))
         schema = FeatureSchema(conventional.preprocessing_version,
                                conventional.configuration_json if self.configuration != FeatureConfiguration.E2 else None,

@@ -1,0 +1,20 @@
+{
+  "status": "INCOMPATIBLE",
+  "declaration_compatible": false,
+  "counterpart_commit": "ae20372db6014d4f83153c03ccc2cd92f445ca8c",
+  "mismatches": [
+    "contract:preprocessing",
+    "contract:admission",
+    "contract:taxonomy",
+    "contract:input",
+    "contract:output",
+    "contract:representation",
+    "contract:semantic_model",
+    "contract:reference_validation",
+    "contract:policy",
+    "contract:source_files_utf8_lf_sha256"
+  ],
+  "checkout_independently_verified": false,
+  "integration_accepted": false,
+  "research_release": false
+}

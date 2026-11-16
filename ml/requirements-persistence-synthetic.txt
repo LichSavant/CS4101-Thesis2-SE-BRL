@@ -1,0 +1,6 @@
+# Additional packages proposed for isolated synthetic persistence verification.
+# Reuse the approved classifier packages and existing packaging==26.3.
+# Installation needs explicit user permission; do not modify application .venv.
+skops==0.13.0
+prettytable==3.16.0
+wcwidth==0.2.13

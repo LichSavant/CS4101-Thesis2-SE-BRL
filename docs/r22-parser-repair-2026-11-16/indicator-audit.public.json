@@ -1,0 +1,448 @@
+{
+  "canonical_indicator_count": 12,
+  "regex_rule_count": 9,
+  "typed_reference_port_count": 3,
+  "indicators": [
+    {
+      "id": "urgency",
+      "name": "Urgency",
+      "dimension": "pressure_threat_cues",
+      "implementation": "ml/se_brl/rules.py:21",
+      "deterministic_evidence": "pressure.immediate_action",
+      "pattern": "\\b(?:act now|(?:click|reply|respond|verify|pay|submit)\\b.{0,40}?\\b(?:immediately|right now))\\b",
+      "semantic_support": "Optional 3-hypothesis/3-label NLI diagnostics in semantic_review.review_record; candidates remain abstained; cannot change deterministic labels.",
+      "context": "ContextIndex quote/reply/negation/training/warning guards plus original source spans. Bounded English heuristics, not validated semantic generalization.",
+      "modalities": [
+        "content_bearing_email",
+        "content_bearing_webpage"
+      ],
+      "unavailable_modalities": [
+        "standalone_url",
+        "engineered_technical_record"
+      ],
+      "missingness": "Missing required content or conditional evidence => unavailable. Missing independent trust adjudication => not_evaluated; partial values stay None, not negative.",
+      "constraints": "Original typed Unicode locators; explicit body purpose/consent; link opt-in; no target/partition predictors; references are caller declarations.",
+      "tests": [
+        "ml/tests/test_rule_extraction.py::test_each_rule_family_has_exact_evidence[urgency-Act now!]",
+        "ml/tests/test_semantic_review.py::test_each_indicator_executes_grounded_functionality_without_neural_override[entailment-content_bearing_email-urgency]",
+        "ml/tests/test_semantic_review.py::test_each_indicator_executes_grounded_functionality_without_neural_override[entailment-content_bearing_webpage-urgency]",
+        "ml/tests/test_semantic_review.py::test_each_indicator_executes_grounded_functionality_without_neural_override[neutral-content_bearing_email-urgency]",
+        "ml/tests/test_semantic_review.py::test_each_indicator_executes_grounded_functionality_without_neural_override[neutral-content_bearing_webpage-urgency]",
+        "ml/tests/test_semantic_review.py::test_each_indicator_executes_grounded_functionality_without_neural_override[contradiction-content_bearing_email-urgency]",
+        "ml/tests/test_semantic_review.py::test_each_indicator_executes_grounded_functionality_without_neural_override[contradiction-content_bearing_webpage-urgency]",
+        "ml/tests/test_semantic_review.py::test_each_indicator_has_an_assessable_negative_or_explicit_unavailable[urgency]",
+        "ml/tests/test_semantic_review.py::test_every_indicator_excludes_contextual_counterexamples_before_semantic_scoring[The poster says \"{}\"-urgency]",
+        "ml/tests/test_semantic_review.py::test_every_indicator_excludes_contextual_counterexamples_before_semantic_scoring[Security training: {}-urgency]",
+        "ml/tests/test_semantic_review.py::test_every_indicator_excludes_contextual_counterexamples_before_semantic_scoring[Hypothetical: {}-urgency]",
+        "ml/tests/test_semantic_review.py::test_every_indicator_excludes_contextual_counterexamples_before_semantic_scoring[It is not true: {}-urgency]"
+      ],
+      "validation_status": "Synthetic software conformance passed; no scientific/psychological or real-model inference validation.",
+      "authorization": "Offline engineering review only. No production or E2/E3 authorization. Experimental semantic-first controllers are separate and not accepted by R22."
+    },
+    {
+      "id": "fear_threat",
+      "name": "Fear or Threat",
+      "dimension": "pressure_threat_cues",
+      "implementation": "ml/se_brl/rules.py:23",
+      "deterministic_evidence": "pressure.adverse_consequence",
+      "pattern": "\\b(?:your (?:account|access) will be (?:suspended|terminated|locked)|you will (?:lose access|face penalties))\\b",
+      "semantic_support": "Optional 3-hypothesis/3-label NLI diagnostics in semantic_review.review_record; candidates remain abstained; cannot change deterministic labels.",
+      "context": "ContextIndex quote/reply/negation/training/warning guards plus original source spans. Bounded English heuristics, not validated semantic generalization.",
+      "modalities": [
+        "content_bearing_email",
+        "content_bearing_webpage"
+      ],
+      "unavailable_modalities": [
+        "standalone_url",
+        "engineered_technical_record"
+      ],
+      "missingness": "Missing required content or conditional evidence => unavailable. Missing independent trust adjudication => not_evaluated; partial values stay None, not negative.",
+      "constraints": "Original typed Unicode locators; explicit body purpose/consent; link opt-in; no target/partition predictors; references are caller declarations.",
+      "tests": [
+        "ml/tests/test_rule_extraction.py::test_each_rule_family_has_exact_evidence[fear_threat-Your account will be suspended.]",
+        "ml/tests/test_semantic_review.py::test_each_indicator_executes_grounded_functionality_without_neural_override[entailment-content_bearing_email-fear_threat]",
+        "ml/tests/test_semantic_review.py::test_each_indicator_executes_grounded_functionality_without_neural_override[entailment-content_bearing_webpage-fear_threat]",
+        "ml/tests/test_semantic_review.py::test_each_indicator_executes_grounded_functionality_without_neural_override[neutral-content_bearing_email-fear_threat]",
+        "ml/tests/test_semantic_review.py::test_each_indicator_executes_grounded_functionality_without_neural_override[neutral-content_bearing_webpage-fear_threat]",
+        "ml/tests/test_semantic_review.py::test_each_indicator_executes_grounded_functionality_without_neural_override[contradiction-content_bearing_email-fear_threat]",
+        "ml/tests/test_semantic_review.py::test_each_indicator_executes_grounded_functionality_without_neural_override[contradiction-content_bearing_webpage-fear_threat]",
+        "ml/tests/test_semantic_review.py::test_each_indicator_has_an_assessable_negative_or_explicit_unavailable[fear_threat]",
+        "ml/tests/test_semantic_review.py::test_every_indicator_excludes_contextual_counterexamples_before_semantic_scoring[The poster says \"{}\"-fear_threat]",
+        "ml/tests/test_semantic_review.py::test_every_indicator_excludes_contextual_counterexamples_before_semantic_scoring[Security training: {}-fear_threat]",
+        "ml/tests/test_semantic_review.py::test_every_indicator_excludes_contextual_counterexamples_before_semantic_scoring[Hypothetical: {}-fear_threat]",
+        "ml/tests/test_semantic_review.py::test_every_indicator_excludes_contextual_counterexamples_before_semantic_scoring[It is not true: {}-fear_threat]"
+      ],
+      "validation_status": "Synthetic software conformance passed; no scientific/psychological or real-model inference validation.",
+      "authorization": "Offline engineering review only. No production or E2/E3 authorization. Experimental semantic-first controllers are separate and not accepted by R22."
+    },
+    {
+      "id": "scarcity",
+      "name": "Scarcity",
+      "dimension": "pressure_threat_cues",
+      "implementation": "ml/se_brl/rules.py:25",
+      "deterministic_evidence": "pressure.limited_action",
+      "pattern": "\\b(?:act|claim|buy|order)\\b.{0,60}?\\b(?:before (?:it|they) (?:expires?|runs? out)|only \\d+ (?:left|remaining)|limited time)\\b",
+      "semantic_support": "Optional 3-hypothesis/3-label NLI diagnostics in semantic_review.review_record; candidates remain abstained; cannot change deterministic labels.",
+      "context": "ContextIndex quote/reply/negation/training/warning guards plus original source spans. Bounded English heuristics, not validated semantic generalization.",
+      "modalities": [
+        "content_bearing_email",
+        "content_bearing_webpage"
+      ],
+      "unavailable_modalities": [
+        "standalone_url",
+        "engineered_technical_record"
+      ],
+      "missingness": "Missing required content or conditional evidence => unavailable. Missing independent trust adjudication => not_evaluated; partial values stay None, not negative.",
+      "constraints": "Original typed Unicode locators; explicit body purpose/consent; link opt-in; no target/partition predictors; references are caller declarations.",
+      "tests": [
+        "ml/tests/test_rule_extraction.py::test_each_rule_family_has_exact_evidence[scarcity-Claim yours before it expires.]",
+        "ml/tests/test_semantic_review.py::test_each_indicator_executes_grounded_functionality_without_neural_override[entailment-content_bearing_email-scarcity]",
+        "ml/tests/test_semantic_review.py::test_each_indicator_executes_grounded_functionality_without_neural_override[entailment-content_bearing_webpage-scarcity]",
+        "ml/tests/test_semantic_review.py::test_each_indicator_executes_grounded_functionality_without_neural_override[neutral-content_bearing_email-scarcity]",
+        "ml/tests/test_semantic_review.py::test_each_indicator_executes_grounded_functionality_without_neural_override[neutral-content_bearing_webpage-scarcity]",
+        "ml/tests/test_semantic_review.py::test_each_indicator_executes_grounded_functionality_without_neural_override[contradiction-content_bearing_email-scarcity]",
+        "ml/tests/test_semantic_review.py::test_each_indicator_executes_grounded_functionality_without_neural_override[contradiction-content_bearing_webpage-scarcity]",
+        "ml/tests/test_semantic_review.py::test_each_indicator_has_an_assessable_negative_or_explicit_unavailable[scarcity]",
+        "ml/tests/test_semantic_review.py::test_every_indicator_excludes_contextual_counterexamples_before_semantic_scoring[The poster says \"{}\"-scarcity]",
+        "ml/tests/test_semantic_review.py::test_every_indicator_excludes_contextual_counterexamples_before_semantic_scoring[Security training: {}-scarcity]",
+        "ml/tests/test_semantic_review.py::test_every_indicator_excludes_contextual_counterexamples_before_semantic_scoring[Hypothetical: {}-scarcity]",
+        "ml/tests/test_semantic_review.py::test_every_indicator_excludes_contextual_counterexamples_before_semantic_scoring[It is not true: {}-scarcity]"
+      ],
+      "validation_status": "Synthetic software conformance passed; no scientific/psychological or real-model inference validation.",
+      "authorization": "Offline engineering review only. No production or E2/E3 authorization. Experimental semantic-first controllers are separate and not accepted by R22."
+    },
+    {
+      "id": "curiosity",
+      "name": "Curiosity",
+      "dimension": "lure_attention_cues",
+      "implementation": "ml/se_brl/rules.py:27",
+      "deterministic_evidence": "lure.information_gap",
+      "pattern": "\\b(?:click|open)\\b.{0,40}?\\b(?:find out|see who|discover (?:who|what)|reveal)\\b",
+      "semantic_support": "Optional 3-hypothesis/3-label NLI diagnostics in semantic_review.review_record; candidates remain abstained; cannot change deterministic labels.",
+      "context": "ContextIndex quote/reply/negation/training/warning guards plus original source spans. Bounded English heuristics, not validated semantic generalization.",
+      "modalities": [
+        "content_bearing_email",
+        "content_bearing_webpage"
+      ],
+      "unavailable_modalities": [
+        "standalone_url",
+        "engineered_technical_record"
+      ],
+      "missingness": "Missing required content or conditional evidence => unavailable. Missing independent trust adjudication => not_evaluated; partial values stay None, not negative.",
+      "constraints": "Original typed Unicode locators; explicit body purpose/consent; link opt-in; no target/partition predictors; references are caller declarations.",
+      "tests": [
+        "ml/tests/test_rule_extraction.py::test_each_rule_family_has_exact_evidence[curiosity-Click here to find out.]",
+        "ml/tests/test_semantic_review.py::test_each_indicator_executes_grounded_functionality_without_neural_override[entailment-content_bearing_email-curiosity]",
+        "ml/tests/test_semantic_review.py::test_each_indicator_executes_grounded_functionality_without_neural_override[entailment-content_bearing_webpage-curiosity]",
+        "ml/tests/test_semantic_review.py::test_each_indicator_executes_grounded_functionality_without_neural_override[neutral-content_bearing_email-curiosity]",
+        "ml/tests/test_semantic_review.py::test_each_indicator_executes_grounded_functionality_without_neural_override[neutral-content_bearing_webpage-curiosity]",
+        "ml/tests/test_semantic_review.py::test_each_indicator_executes_grounded_functionality_without_neural_override[contradiction-content_bearing_email-curiosity]",
+        "ml/tests/test_semantic_review.py::test_each_indicator_executes_grounded_functionality_without_neural_override[contradiction-content_bearing_webpage-curiosity]",
+        "ml/tests/test_semantic_review.py::test_each_indicator_has_an_assessable_negative_or_explicit_unavailable[curiosity]",
+        "ml/tests/test_semantic_review.py::test_every_indicator_excludes_contextual_counterexamples_before_semantic_scoring[The poster says \"{}\"-curiosity]",
+        "ml/tests/test_semantic_review.py::test_every_indicator_excludes_contextual_counterexamples_before_semantic_scoring[Security training: {}-curiosity]",
+        "ml/tests/test_semantic_review.py::test_every_indicator_excludes_contextual_counterexamples_before_semantic_scoring[Hypothetical: {}-curiosity]",
+        "ml/tests/test_semantic_review.py::test_every_indicator_excludes_contextual_counterexamples_before_semantic_scoring[It is not true: {}-curiosity]"
+      ],
+      "validation_status": "Synthetic software conformance passed; no scientific/psychological or real-model inference validation.",
+      "authorization": "Offline engineering review only. No production or E2/E3 authorization. Experimental semantic-first controllers are separate and not accepted by R22."
+    },
+    {
+      "id": "reward_lure",
+      "name": "Reward or Lure",
+      "dimension": "lure_attention_cues",
+      "implementation": "ml/se_brl/rules.py:29",
+      "deterministic_evidence": "lure.claim_benefit",
+      "pattern": "\\b(?:click|reply|claim)\\b.{0,45}?\\b(?:your|a) (?:prize|reward|free gift|refund)\\b",
+      "semantic_support": "Optional 3-hypothesis/3-label NLI diagnostics in semantic_review.review_record; candidates remain abstained; cannot change deterministic labels.",
+      "context": "ContextIndex quote/reply/negation/training/warning guards plus original source spans. Bounded English heuristics, not validated semantic generalization.",
+      "modalities": [
+        "content_bearing_email",
+        "content_bearing_webpage"
+      ],
+      "unavailable_modalities": [
+        "standalone_url",
+        "engineered_technical_record"
+      ],
+      "missingness": "Missing required content or conditional evidence => unavailable. Missing independent trust adjudication => not_evaluated; partial values stay None, not negative.",
+      "constraints": "Original typed Unicode locators; explicit body purpose/consent; link opt-in; no target/partition predictors; references are caller declarations.",
+      "tests": [
+        "ml/tests/test_rule_extraction.py::test_each_rule_family_has_exact_evidence[reward_lure-Click here to claim your prize.]",
+        "ml/tests/test_semantic_review.py::test_each_indicator_executes_grounded_functionality_without_neural_override[entailment-content_bearing_email-reward_lure]",
+        "ml/tests/test_semantic_review.py::test_each_indicator_executes_grounded_functionality_without_neural_override[entailment-content_bearing_webpage-reward_lure]",
+        "ml/tests/test_semantic_review.py::test_each_indicator_executes_grounded_functionality_without_neural_override[neutral-content_bearing_email-reward_lure]",
+        "ml/tests/test_semantic_review.py::test_each_indicator_executes_grounded_functionality_without_neural_override[neutral-content_bearing_webpage-reward_lure]",
+        "ml/tests/test_semantic_review.py::test_each_indicator_executes_grounded_functionality_without_neural_override[contradiction-content_bearing_email-reward_lure]",
+        "ml/tests/test_semantic_review.py::test_each_indicator_executes_grounded_functionality_without_neural_override[contradiction-content_bearing_webpage-reward_lure]",
+        "ml/tests/test_semantic_review.py::test_each_indicator_has_an_assessable_negative_or_explicit_unavailable[reward_lure]",
+        "ml/tests/test_semantic_review.py::test_every_indicator_excludes_contextual_counterexamples_before_semantic_scoring[The poster says \"{}\"-reward_lure]",
+        "ml/tests/test_semantic_review.py::test_every_indicator_excludes_contextual_counterexamples_before_semantic_scoring[Security training: {}-reward_lure]",
+        "ml/tests/test_semantic_review.py::test_every_indicator_excludes_contextual_counterexamples_before_semantic_scoring[Hypothetical: {}-reward_lure]",
+        "ml/tests/test_semantic_review.py::test_every_indicator_excludes_contextual_counterexamples_before_semantic_scoring[It is not true: {}-reward_lure]"
+      ],
+      "validation_status": "Synthetic software conformance passed; no scientific/psychological or real-model inference validation.",
+      "authorization": "Offline engineering review only. No production or E2/E3 authorization. Experimental semantic-first controllers are separate and not accepted by R22."
+    },
+    {
+      "id": "authority",
+      "name": "Authority",
+      "dimension": "trust_identity_manipulation",
+      "implementation": "ml/se_brl/detectors.py:ConservativeTrustDetector.detect",
+      "deterministic_evidence": "Role and same-sentence directive plus typed AuthorityReview authorization=contradicted; role alone never proves illegitimate authority.",
+      "pattern": null,
+      "semantic_support": "Optional 3-hypothesis/3-label NLI diagnostics in semantic_review.review_record; candidates remain abstained; cannot change deterministic labels.",
+      "context": "ContextIndex quote/reply/negation/training/warning guards plus original source spans. Bounded English heuristics, not validated semantic generalization.",
+      "modalities": [
+        "content_bearing_email",
+        "content_bearing_webpage"
+      ],
+      "unavailable_modalities": [
+        "standalone_url",
+        "engineered_technical_record"
+      ],
+      "missingness": "Missing required content or conditional evidence => unavailable. Missing independent trust adjudication => not_evaluated; partial values stay None, not negative.",
+      "constraints": "Original typed Unicode locators; explicit body purpose/consent; link opt-in; no target/partition predictors; references are caller declarations.",
+      "tests": [
+        "ml/tests/test_context_detectors.py::test_authority_role_alone_and_unreviewed_directive_do_not_assert_manipulation",
+        "ml/tests/test_context_detectors.py::test_authority_independent_review[authorized-absent]",
+        "ml/tests/test_context_detectors.py::test_authority_independent_review[contradicted-supported]",
+        "ml/tests/test_context_detectors.py::test_authority_independent_review[unknown-None]",
+        "ml/tests/test_context_detectors.py::test_missing_conditional_evidence_does_not_leak_authority_observations",
+        "ml/tests/test_semantic_review.py::test_each_indicator_executes_grounded_functionality_without_neural_override[entailment-content_bearing_email-authority]",
+        "ml/tests/test_semantic_review.py::test_each_indicator_executes_grounded_functionality_without_neural_override[entailment-content_bearing_webpage-authority]",
+        "ml/tests/test_semantic_review.py::test_each_indicator_executes_grounded_functionality_without_neural_override[neutral-content_bearing_email-authority]",
+        "ml/tests/test_semantic_review.py::test_each_indicator_executes_grounded_functionality_without_neural_override[neutral-content_bearing_webpage-authority]",
+        "ml/tests/test_semantic_review.py::test_each_indicator_executes_grounded_functionality_without_neural_override[contradiction-content_bearing_email-authority]",
+        "ml/tests/test_semantic_review.py::test_each_indicator_executes_grounded_functionality_without_neural_override[contradiction-content_bearing_webpage-authority]",
+        "ml/tests/test_semantic_review.py::test_each_indicator_has_an_assessable_negative_or_explicit_unavailable[authority]",
+        "ml/tests/test_semantic_review.py::test_every_indicator_excludes_contextual_counterexamples_before_semantic_scoring[The poster says \"{}\"-authority]",
+        "ml/tests/test_semantic_review.py::test_every_indicator_excludes_contextual_counterexamples_before_semantic_scoring[Security training: {}-authority]",
+        "ml/tests/test_semantic_review.py::test_every_indicator_excludes_contextual_counterexamples_before_semantic_scoring[Hypothetical: {}-authority]",
+        "ml/tests/test_semantic_review.py::test_every_indicator_excludes_contextual_counterexamples_before_semantic_scoring[It is not true: {}-authority]"
+      ],
+      "validation_status": "Synthetic software conformance passed; no scientific/psychological or real-model inference validation.",
+      "authorization": "Offline engineering review only. No production or E2/E3 authorization. Experimental semantic-first controllers are separate and not accepted by R22."
+    },
+    {
+      "id": "impersonation",
+      "name": "Impersonation",
+      "dimension": "trust_identity_manipulation",
+      "implementation": "ml/se_brl/detectors.py:ConservativeTrustDetector.detect",
+      "deterministic_evidence": "Explicit entity claim plus typed independently declared reference/delegation audit and conflicting exact domain membership; validates linkage, not reference truth.",
+      "pattern": null,
+      "semantic_support": "Optional 3-hypothesis/3-label NLI diagnostics in semantic_review.review_record; candidates remain abstained; cannot change deterministic labels.",
+      "context": "ContextIndex quote/reply/negation/training/warning guards plus original source spans. Bounded English heuristics, not validated semantic generalization.",
+      "modalities": [
+        "content_bearing_email",
+        "content_bearing_webpage"
+      ],
+      "unavailable_modalities": [
+        "standalone_url",
+        "engineered_technical_record"
+      ],
+      "missingness": "Missing required content or conditional evidence => unavailable. Missing independent trust adjudication => not_evaluated; partial values stay None, not negative.",
+      "constraints": "Original typed Unicode locators; explicit body purpose/consent; link opt-in; no target/partition predictors; references are caller declarations.",
+      "tests": [
+        "ml/tests/test_context_detectors.py::test_explicit_claim_with_independent_domain_conflict[impersonation]",
+        "ml/tests/test_semantic_review.py::test_each_indicator_executes_grounded_functionality_without_neural_override[entailment-content_bearing_email-impersonation]",
+        "ml/tests/test_semantic_review.py::test_each_indicator_executes_grounded_functionality_without_neural_override[entailment-content_bearing_webpage-impersonation]",
+        "ml/tests/test_semantic_review.py::test_each_indicator_executes_grounded_functionality_without_neural_override[neutral-content_bearing_email-impersonation]",
+        "ml/tests/test_semantic_review.py::test_each_indicator_executes_grounded_functionality_without_neural_override[neutral-content_bearing_webpage-impersonation]",
+        "ml/tests/test_semantic_review.py::test_each_indicator_executes_grounded_functionality_without_neural_override[contradiction-content_bearing_email-impersonation]",
+        "ml/tests/test_semantic_review.py::test_each_indicator_executes_grounded_functionality_without_neural_override[contradiction-content_bearing_webpage-impersonation]",
+        "ml/tests/test_semantic_review.py::test_each_indicator_has_an_assessable_negative_or_explicit_unavailable[impersonation]",
+        "ml/tests/test_semantic_review.py::test_every_indicator_excludes_contextual_counterexamples_before_semantic_scoring[The poster says \"{}\"-impersonation]",
+        "ml/tests/test_semantic_review.py::test_every_indicator_excludes_contextual_counterexamples_before_semantic_scoring[Security training: {}-impersonation]",
+        "ml/tests/test_semantic_review.py::test_every_indicator_excludes_contextual_counterexamples_before_semantic_scoring[Hypothetical: {}-impersonation]",
+        "ml/tests/test_semantic_review.py::test_every_indicator_excludes_contextual_counterexamples_before_semantic_scoring[It is not true: {}-impersonation]"
+      ],
+      "validation_status": "Synthetic software conformance passed; no scientific/psychological or real-model inference validation.",
+      "authorization": "Offline engineering review only. No production or E2/E3 authorization. Experimental semantic-first controllers are separate and not accepted by R22."
+    },
+    {
+      "id": "brand_exploitation",
+      "name": "Brand Exploitation",
+      "dimension": "trust_identity_manipulation",
+      "implementation": "ml/se_brl/detectors.py:ConservativeTrustDetector.detect",
+      "deterministic_evidence": "Explicit audited entity/brand claim plus domain conflict; mention alone never proves deceptive use.",
+      "pattern": null,
+      "semantic_support": "Optional 3-hypothesis/3-label NLI diagnostics in semantic_review.review_record; candidates remain abstained; cannot change deterministic labels.",
+      "context": "ContextIndex quote/reply/negation/training/warning guards plus original source spans. Bounded English heuristics, not validated semantic generalization.",
+      "modalities": [
+        "content_bearing_email",
+        "content_bearing_webpage"
+      ],
+      "unavailable_modalities": [
+        "standalone_url",
+        "engineered_technical_record"
+      ],
+      "missingness": "Missing required content or conditional evidence => unavailable. Missing independent trust adjudication => not_evaluated; partial values stay None, not negative.",
+      "constraints": "Original typed Unicode locators; explicit body purpose/consent; link opt-in; no target/partition predictors; references are caller declarations.",
+      "tests": [
+        "ml/tests/test_context_detectors.py::test_explicit_claim_with_independent_domain_conflict[brand_exploitation]",
+        "ml/tests/test_semantic_review.py::test_each_indicator_executes_grounded_functionality_without_neural_override[entailment-content_bearing_email-brand_exploitation]",
+        "ml/tests/test_semantic_review.py::test_each_indicator_executes_grounded_functionality_without_neural_override[entailment-content_bearing_webpage-brand_exploitation]",
+        "ml/tests/test_semantic_review.py::test_each_indicator_executes_grounded_functionality_without_neural_override[neutral-content_bearing_email-brand_exploitation]",
+        "ml/tests/test_semantic_review.py::test_each_indicator_executes_grounded_functionality_without_neural_override[neutral-content_bearing_webpage-brand_exploitation]",
+        "ml/tests/test_semantic_review.py::test_each_indicator_executes_grounded_functionality_without_neural_override[contradiction-content_bearing_email-brand_exploitation]",
+        "ml/tests/test_semantic_review.py::test_each_indicator_executes_grounded_functionality_without_neural_override[contradiction-content_bearing_webpage-brand_exploitation]",
+        "ml/tests/test_semantic_review.py::test_each_indicator_has_an_assessable_negative_or_explicit_unavailable[brand_exploitation]",
+        "ml/tests/test_semantic_review.py::test_every_indicator_excludes_contextual_counterexamples_before_semantic_scoring[The poster says \"{}\"-brand_exploitation]",
+        "ml/tests/test_semantic_review.py::test_every_indicator_excludes_contextual_counterexamples_before_semantic_scoring[Security training: {}-brand_exploitation]",
+        "ml/tests/test_semantic_review.py::test_every_indicator_excludes_contextual_counterexamples_before_semantic_scoring[Hypothetical: {}-brand_exploitation]",
+        "ml/tests/test_semantic_review.py::test_every_indicator_excludes_contextual_counterexamples_before_semantic_scoring[It is not true: {}-brand_exploitation]"
+      ],
+      "validation_status": "Synthetic software conformance passed; no scientific/psychological or real-model inference validation.",
+      "authorization": "Offline engineering review only. No production or E2/E3 authorization. Experimental semantic-first controllers are separate and not accepted by R22."
+    },
+    {
+      "id": "confidentiality_isolation",
+      "name": "Confidentiality or Isolation",
+      "dimension": "trust_identity_manipulation",
+      "implementation": "ml/se_brl/rules.py:31",
+      "deterministic_evidence": "trust.prevent_verification",
+      "pattern": "\\b(?:do not|don't|never) (?:tell|contact|consult) (?:anyone|your (?:bank|manager|IT department))\\b",
+      "semantic_support": "Optional 3-hypothesis/3-label NLI diagnostics in semantic_review.review_record; candidates remain abstained; cannot change deterministic labels.",
+      "context": "ContextIndex quote/reply/negation/training/warning guards plus original source spans. Bounded English heuristics, not validated semantic generalization.",
+      "modalities": [
+        "content_bearing_email",
+        "content_bearing_webpage"
+      ],
+      "unavailable_modalities": [
+        "standalone_url",
+        "engineered_technical_record"
+      ],
+      "missingness": "Missing required content or conditional evidence => unavailable. Missing independent trust adjudication => not_evaluated; partial values stay None, not negative.",
+      "constraints": "Original typed Unicode locators; explicit body purpose/consent; link opt-in; no target/partition predictors; references are caller declarations.",
+      "tests": [
+        "ml/tests/test_rule_extraction.py::test_each_rule_family_has_exact_evidence[confidentiality_isolation-Do not contact your bank.]",
+        "ml/tests/test_semantic_review.py::test_each_indicator_executes_grounded_functionality_without_neural_override[entailment-content_bearing_email-confidentiality_isolation]",
+        "ml/tests/test_semantic_review.py::test_each_indicator_executes_grounded_functionality_without_neural_override[entailment-content_bearing_webpage-confidentiality_isolation]",
+        "ml/tests/test_semantic_review.py::test_each_indicator_executes_grounded_functionality_without_neural_override[neutral-content_bearing_email-confidentiality_isolation]",
+        "ml/tests/test_semantic_review.py::test_each_indicator_executes_grounded_functionality_without_neural_override[neutral-content_bearing_webpage-confidentiality_isolation]",
+        "ml/tests/test_semantic_review.py::test_each_indicator_executes_grounded_functionality_without_neural_override[contradiction-content_bearing_email-confidentiality_isolation]",
+        "ml/tests/test_semantic_review.py::test_each_indicator_executes_grounded_functionality_without_neural_override[contradiction-content_bearing_webpage-confidentiality_isolation]",
+        "ml/tests/test_semantic_review.py::test_each_indicator_has_an_assessable_negative_or_explicit_unavailable[confidentiality_isolation]",
+        "ml/tests/test_semantic_review.py::test_every_indicator_excludes_contextual_counterexamples_before_semantic_scoring[The poster says \"{}\"-confidentiality_isolation]",
+        "ml/tests/test_semantic_review.py::test_every_indicator_excludes_contextual_counterexamples_before_semantic_scoring[Security training: {}-confidentiality_isolation]",
+        "ml/tests/test_semantic_review.py::test_every_indicator_excludes_contextual_counterexamples_before_semantic_scoring[Hypothetical: {}-confidentiality_isolation]",
+        "ml/tests/test_semantic_review.py::test_every_indicator_excludes_contextual_counterexamples_before_semantic_scoring[It is not true: {}-confidentiality_isolation]"
+      ],
+      "validation_status": "Synthetic software conformance passed; no scientific/psychological or real-model inference validation.",
+      "authorization": "Offline engineering review only. No production or E2/E3 authorization. Experimental semantic-first controllers are separate and not accepted by R22."
+    },
+    {
+      "id": "call_to_action",
+      "name": "Call-to-Action",
+      "dimension": "requested_action_consequence",
+      "implementation": "ml/se_brl/rules.py:34",
+      "deterministic_evidence": "action.interact",
+      "pattern": "\\b(?:click (?:here|the link|this link)|(?:visit|open) (?:this|the) (?:website|link)|download (?:the|this) (?:file|attachment)|reply (?:to this|with)|submit (?:your|the) (?:details|password|information))\\b",
+      "semantic_support": "Optional 3-hypothesis/3-label NLI diagnostics in semantic_review.review_record; candidates remain abstained; cannot change deterministic labels.",
+      "context": "ContextIndex quote/reply/negation/training/warning guards plus original source spans. Bounded English heuristics, not validated semantic generalization.",
+      "modalities": [
+        "content_bearing_email",
+        "content_bearing_webpage"
+      ],
+      "unavailable_modalities": [
+        "standalone_url",
+        "engineered_technical_record"
+      ],
+      "missingness": "Missing required content or conditional evidence => unavailable. Missing independent trust adjudication => not_evaluated; partial values stay None, not negative.",
+      "constraints": "Original typed Unicode locators; explicit body purpose/consent; link opt-in; no target/partition predictors; references are caller declarations.",
+      "tests": [
+        "ml/tests/test_rule_extraction.py::test_each_rule_family_has_exact_evidence[call_to_action-Click here.]",
+        "ml/tests/test_semantic_review.py::test_each_indicator_executes_grounded_functionality_without_neural_override[entailment-content_bearing_email-call_to_action]",
+        "ml/tests/test_semantic_review.py::test_each_indicator_executes_grounded_functionality_without_neural_override[entailment-content_bearing_webpage-call_to_action]",
+        "ml/tests/test_semantic_review.py::test_each_indicator_executes_grounded_functionality_without_neural_override[neutral-content_bearing_email-call_to_action]",
+        "ml/tests/test_semantic_review.py::test_each_indicator_executes_grounded_functionality_without_neural_override[neutral-content_bearing_webpage-call_to_action]",
+        "ml/tests/test_semantic_review.py::test_each_indicator_executes_grounded_functionality_without_neural_override[contradiction-content_bearing_email-call_to_action]",
+        "ml/tests/test_semantic_review.py::test_each_indicator_executes_grounded_functionality_without_neural_override[contradiction-content_bearing_webpage-call_to_action]",
+        "ml/tests/test_semantic_review.py::test_each_indicator_has_an_assessable_negative_or_explicit_unavailable[call_to_action]",
+        "ml/tests/test_semantic_review.py::test_every_indicator_excludes_contextual_counterexamples_before_semantic_scoring[The poster says \"{}\"-call_to_action]",
+        "ml/tests/test_semantic_review.py::test_every_indicator_excludes_contextual_counterexamples_before_semantic_scoring[Security training: {}-call_to_action]",
+        "ml/tests/test_semantic_review.py::test_every_indicator_excludes_contextual_counterexamples_before_semantic_scoring[Hypothetical: {}-call_to_action]",
+        "ml/tests/test_semantic_review.py::test_every_indicator_excludes_contextual_counterexamples_before_semantic_scoring[It is not true: {}-call_to_action]"
+      ],
+      "validation_status": "Synthetic software conformance passed; no scientific/psychological or real-model inference validation.",
+      "authorization": "Offline engineering review only. No production or E2/E3 authorization. Experimental semantic-first controllers are separate and not accepted by R22."
+    },
+    {
+      "id": "credential_sensitive_data_request",
+      "name": "Credential or Sensitive-Data Request",
+      "dimension": "requested_action_consequence",
+      "implementation": "ml/se_brl/rules.py:36",
+      "deterministic_evidence": "action.disclose_sensitive",
+      "pattern": "\\b(?:send|share|provide|submit|enter|confirm)\\s+(?:(?:us|me)\\s+)?(?:your|the)\\s+(?:password|login credentials|verification code|credit card number|social security number)\\b",
+      "semantic_support": "Optional 3-hypothesis/3-label NLI diagnostics in semantic_review.review_record; candidates remain abstained; cannot change deterministic labels.",
+      "context": "ContextIndex quote/reply/negation/training/warning guards plus original source spans. Bounded English heuristics, not validated semantic generalization.",
+      "modalities": [
+        "content_bearing_email",
+        "content_bearing_webpage"
+      ],
+      "unavailable_modalities": [
+        "standalone_url",
+        "engineered_technical_record"
+      ],
+      "missingness": "Missing required content or conditional evidence => unavailable. Missing independent trust adjudication => not_evaluated; partial values stay None, not negative.",
+      "constraints": "Original typed Unicode locators; explicit body purpose/consent; link opt-in; no target/partition predictors; references are caller declarations.",
+      "tests": [
+        "ml/tests/test_rule_extraction.py::test_each_rule_family_has_exact_evidence[credential_sensitive_data_request-Please share your password.]",
+        "ml/tests/test_semantic_review.py::test_each_indicator_executes_grounded_functionality_without_neural_override[entailment-content_bearing_email-credential_sensitive_data_request]",
+        "ml/tests/test_semantic_review.py::test_each_indicator_executes_grounded_functionality_without_neural_override[entailment-content_bearing_webpage-credential_sensitive_data_request]",
+        "ml/tests/test_semantic_review.py::test_each_indicator_executes_grounded_functionality_without_neural_override[neutral-content_bearing_email-credential_sensitive_data_request]",
+        "ml/tests/test_semantic_review.py::test_each_indicator_executes_grounded_functionality_without_neural_override[neutral-content_bearing_webpage-credential_sensitive_data_request]",
+        "ml/tests/test_semantic_review.py::test_each_indicator_executes_grounded_functionality_without_neural_override[contradiction-content_bearing_email-credential_sensitive_data_request]",
+        "ml/tests/test_semantic_review.py::test_each_indicator_executes_grounded_functionality_without_neural_override[contradiction-content_bearing_webpage-credential_sensitive_data_request]",
+        "ml/tests/test_semantic_review.py::test_each_indicator_has_an_assessable_negative_or_explicit_unavailable[credential_sensitive_data_request]",
+        "ml/tests/test_semantic_review.py::test_every_indicator_excludes_contextual_counterexamples_before_semantic_scoring[The poster says \"{}\"-credential_sensitive_data_request]",
+        "ml/tests/test_semantic_review.py::test_every_indicator_excludes_contextual_counterexamples_before_semantic_scoring[Security training: {}-credential_sensitive_data_request]",
+        "ml/tests/test_semantic_review.py::test_every_indicator_excludes_contextual_counterexamples_before_semantic_scoring[Hypothetical: {}-credential_sensitive_data_request]",
+        "ml/tests/test_semantic_review.py::test_every_indicator_excludes_contextual_counterexamples_before_semantic_scoring[It is not true: {}-credential_sensitive_data_request]"
+      ],
+      "validation_status": "Synthetic software conformance passed; no scientific/psychological or real-model inference validation.",
+      "authorization": "Offline engineering review only. No production or E2/E3 authorization. Experimental semantic-first controllers are separate and not accepted by R22."
+    },
+    {
+      "id": "financial_action_request",
+      "name": "Financial-Action Request",
+      "dimension": "requested_action_consequence",
+      "implementation": "ml/se_brl/rules.py:38",
+      "deterministic_evidence": "action.transfer_money",
+      "pattern": "\\b(?:transfer (?:the |your )?(?:funds|money)|send (?:us |me )?(?:money|payment)|pay (?:the|this) (?:fee|invoice)|purchase (?:a |the )?gift cards?|update your bank account)\\b",
+      "semantic_support": "Optional 3-hypothesis/3-label NLI diagnostics in semantic_review.review_record; candidates remain abstained; cannot change deterministic labels.",
+      "context": "ContextIndex quote/reply/negation/training/warning guards plus original source spans. Bounded English heuristics, not validated semantic generalization.",
+      "modalities": [
+        "content_bearing_email",
+        "content_bearing_webpage"
+      ],
+      "unavailable_modalities": [
+        "standalone_url",
+        "engineered_technical_record"
+      ],
+      "missingness": "Missing required content or conditional evidence => unavailable. Missing independent trust adjudication => not_evaluated; partial values stay None, not negative.",
+      "constraints": "Original typed Unicode locators; explicit body purpose/consent; link opt-in; no target/partition predictors; references are caller declarations.",
+      "tests": [
+        "ml/tests/test_rule_extraction.py::test_each_rule_family_has_exact_evidence[financial_action_request-Transfer the funds.]",
+        "ml/tests/test_semantic_review.py::test_each_indicator_executes_grounded_functionality_without_neural_override[entailment-content_bearing_email-financial_action_request]",
+        "ml/tests/test_semantic_review.py::test_each_indicator_executes_grounded_functionality_without_neural_override[entailment-content_bearing_webpage-financial_action_request]",
+        "ml/tests/test_semantic_review.py::test_each_indicator_executes_grounded_functionality_without_neural_override[neutral-content_bearing_email-financial_action_request]",
+        "ml/tests/test_semantic_review.py::test_each_indicator_executes_grounded_functionality_without_neural_override[neutral-content_bearing_webpage-financial_action_request]",
+        "ml/tests/test_semantic_review.py::test_each_indicator_executes_grounded_functionality_without_neural_override[contradiction-content_bearing_email-financial_action_request]",
+        "ml/tests/test_semantic_review.py::test_each_indicator_executes_grounded_functionality_without_neural_override[contradiction-content_bearing_webpage-financial_action_request]",
+        "ml/tests/test_semantic_review.py::test_each_indicator_has_an_assessable_negative_or_explicit_unavailable[financial_action_request]",
+        "ml/tests/test_semantic_review.py::test_every_indicator_excludes_contextual_counterexamples_before_semantic_scoring[The poster says \"{}\"-financial_action_request]",
+        "ml/tests/test_semantic_review.py::test_every_indicator_excludes_contextual_counterexamples_before_semantic_scoring[Security training: {}-financial_action_request]",
+        "ml/tests/test_semantic_review.py::test_every_indicator_excludes_contextual_counterexamples_before_semantic_scoring[Hypothetical: {}-financial_action_request]",
+        "ml/tests/test_semantic_review.py::test_every_indicator_excludes_contextual_counterexamples_before_semantic_scoring[It is not true: {}-financial_action_request]"
+      ],
+      "validation_status": "Synthetic software conformance passed; no scientific/psychological or real-model inference validation.",
+      "authorization": "Offline engineering review only. No production or E2/E3 authorization. Experimental semantic-first controllers are separate and not accepted by R22."
+    }
+  ],
+  "review_policy_id": "deterministic_labels_semantic_review_v1",
+  "review_policy_version": "1.0.0",
+  "codebook_version": "0.1.0",
+  "schema_version": "1.0.0",
+  "joint_contract_version": "r22-joint-email-0.1.1-proposed"
+}

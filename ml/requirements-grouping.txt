@@ -1,0 +1,3 @@
+# Optional paper Table 4.4 MinHash implementation. Install in task-owned storage,
+# reusing the separately pinned NumPy/SciPy environment. No research approval.
+datasketch==1.6.5

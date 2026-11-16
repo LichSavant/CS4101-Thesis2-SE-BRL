@@ -5,6 +5,8 @@ export const GMAIL_SELECTORS = {
   subject: ["h2.hP", "[data-thread-perm-id] h2", "h2"],
   messageIdAttributes: ["data-legacy-message-id", "data-message-id"]
   ,messageBody: [".a3s"]
+  ,messageLinks: ".a3s a[href]"
+  ,observationRoot: "main, [role='main']"
   ,messageActions: ["[role='main'] .amn", ".amn", ".gA.gt.acV", ".gA.gt"]
   ,replyButtons: ["[role='button'][aria-label^='Reply']", ".amn > .ams"]
   ,forwardButtons: ["[role='button'][aria-label^='Forward']", ".amn > .ams:last-child"]

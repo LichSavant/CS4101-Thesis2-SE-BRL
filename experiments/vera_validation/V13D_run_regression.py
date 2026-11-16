@@ -10,6 +10,8 @@ def prediction(message,indicator):
     return rules_only(message)[indicator]['state']
 
 def run():
+    from ml.research_policy import require_stage_authorization
+    require_stage_authorization('validation')
     v10=[];v11=[]
     with (HERE/'lexical_shortcut_challenges.csv').open(newline='') as f:
         for r in csv.DictReader(f):

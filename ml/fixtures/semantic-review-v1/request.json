@@ -1,0 +1,16 @@
+{
+  "schema_version": "1.0.0",
+  "codebook_version": "0.1.0",
+  "artifact_id": "synthetic:contract-v1",
+  "source_id": "synthetic-only",
+  "source_reference": "synthetic-contract-fixture-not-a-dataset",
+  "modality": "content_bearing_email",
+  "language": "en",
+  "fields": {
+    "subject": "Act now. Submit your password.",
+    "sender": "sender@example.test"
+  },
+  "body_collection_authorized": false,
+  "link_extraction_authorized": false,
+  "study_purpose": ""
+}

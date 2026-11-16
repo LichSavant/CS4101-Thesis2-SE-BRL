@@ -1,0 +1,98 @@
+{
+  "counterpart_commit": "ae20372db6014d4f83153c03ccc2cd92f445ca8c",
+  "static_comparison": [
+    {
+      "path": "ml/preprocessing.py",
+      "vera_sha256": "98c5b85862dce063ca207807df4976b02eaaaf3d7cb547f3a95c143d4daee124",
+      "counterpart_sha256": "5ba0a5b69b21b6845ddc39843b6d2e1d855536046dc9a9c394256155a6c0cfd6",
+      "ast_equal": false,
+      "vera_only_functions": [
+        "_PageParser.parse_bogus_comment"
+      ],
+      "counterpart_only_functions": [
+        "_PageParser.handle_decl",
+        "_PageParser.handle_pi",
+        "_PageParser.parse_comment",
+        "_PageParser.parse_html_declaration",
+        "_PageParser.parse_pi"
+      ],
+      "changed_functions": [
+        "_PageParser.unknown_decl"
+      ]
+    },
+    {
+      "path": "ml/se_brl/context.py",
+      "vera_sha256": "db4fb95a902928f9bb239b1931815f191035b2672f89c7712d691db6f7fbb86f",
+      "counterpart_sha256": "c4b848d538610f896dc511ddbde09f9fc44e7b3465a82f09f016acc9059288d5",
+      "ast_equal": true,
+      "vera_only_functions": [],
+      "counterpart_only_functions": [],
+      "changed_functions": []
+    },
+    {
+      "path": "ml/se_brl/extraction.py",
+      "vera_sha256": "8f53b75ea42cf5d8a53a169b9cd7963601320abb262a6955b6d77b0479a7d989",
+      "counterpart_sha256": "9e104ca3e7c3de0d6eaf2ea32e074a8b6f2aa2f413393412c3a90cc89ea21616",
+      "ast_equal": false,
+      "vera_only_functions": [],
+      "counterpart_only_functions": [
+        "unavailable_technical_extraction"
+      ],
+      "changed_functions": []
+    },
+    {
+      "path": "ml/se_brl/detectors.py",
+      "vera_sha256": "330f39c2dafb148f13ca10501f6cfbe73c396e73da1b4b692068c2cf456f2352",
+      "counterpart_sha256": "a04526be2108151a267a64ca1dbbef8308dfb8afc7b1a344701b8049c2dfbfd2",
+      "ast_equal": false,
+      "vera_only_functions": [],
+      "counterpart_only_functions": [],
+      "changed_functions": [
+        "_locate"
+      ]
+    },
+    {
+      "path": "ml/se_brl/rules.py",
+      "vera_sha256": "83364e399cbc39b51a6a90f1ff3ebd9c6b7ebacccab8e805b83813ccbd8192bc",
+      "counterpart_sha256": "9b50b0b9439aac4b8d1113755e5bbde6759ed3e3cf59f43855a4d01d052aff71",
+      "ast_equal": true,
+      "vera_only_functions": [],
+      "counterpart_only_functions": [],
+      "changed_functions": []
+    },
+    {
+      "path": "ml/se_brl/representation.py",
+      "vera_sha256": "477be0a722265681d3e45849f1c220bc18cc8b015a59a41ced4e9614ff54855e",
+      "counterpart_sha256": "e6b1e8157c8ad5c0fe4b15b1f139fb00389fbb9dc5e8ec61539267ec06f925c4",
+      "ast_equal": false,
+      "vera_only_functions": [],
+      "counterpart_only_functions": [
+        "BrlRepresentation.deterministic_names",
+        "BrlRepresentation.deterministic_slots"
+      ],
+      "changed_functions": [
+        "BrlRepresentation.slots"
+      ]
+    },
+    {
+      "path": "backend/app/sebrl_adapter.py",
+      "vera_sha256": "2968c0ada1b525bcd3cfa9e4bf3022390066fedcebb40fbc2b49c5e920176319",
+      "counterpart_sha256": "ffb73b957d68f5a656d6b17bbbce10833da96304d4467ed80ea93a412bcf92b6",
+      "ast_equal": true,
+      "vera_only_functions": [],
+      "counterpart_only_functions": [],
+      "changed_functions": []
+    },
+    {
+      "path": "backend/app/sebrl_schemas.py",
+      "vera_sha256": "0297cbe2a34d3197888ee3c87b9cde2b0802c8c6e29cdcec7ad01eb9ababc4b2",
+      "counterpart_sha256": "5b888515a582262c271c05245372340084817bf9c148efb721e6954f940a0908",
+      "ast_equal": true,
+      "vera_only_functions": [],
+      "counterpart_only_functions": [],
+      "changed_functions": []
+    }
+  ],
+  "whole_runtime_equivalence_claimed": false,
+  "artifact_model_api_executed": false
+}

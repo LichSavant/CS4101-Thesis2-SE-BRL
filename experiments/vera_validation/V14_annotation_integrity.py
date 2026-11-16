@@ -2,12 +2,14 @@
 from pathlib import Path
 import hashlib
 import json
-import pandas as pd
 
 ROOT = Path(__file__).resolve().parent
 CODEBOOK = ROOT.parents[1] / "ml/se_brl/codebook.v0.1.0.json"
 
 def inspect():
+    from ml.research_policy import require_stage_authorization
+    require_stage_authorization('validation')
+    import pandas as pd
     codebook = json.loads(CODEBOOK.read_text(encoding="utf-8"))
     indicators = [
         item["id"]

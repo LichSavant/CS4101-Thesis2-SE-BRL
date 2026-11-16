@@ -1,4 +1,7 @@
-"""Future classifier/trainer ports. No estimator, training run, or artifact exists.
+"""Legacy runtime classifier/trainer ports; no validated model is integrated.
+
+Genuine offline fold adapters live in ml.classifier_adapters. Their synthetic
+verification does not supply this runtime with a validated research model.
 
 Classifier labels or decision margins are not calibrated phishing probabilities.
 Calibration and decisions remain separate downstream research components.
