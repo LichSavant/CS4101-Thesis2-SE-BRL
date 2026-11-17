@@ -17,6 +17,7 @@ const UI = { button: SCAN_BUTTON_ID, popup: "sentinel-scan-popup", style: "senti
 
 async function extractCurrent() {
   const settings = await loadSettings();
+  if (settings.processingMode !== "legacy" && (await chrome.storage.local.get("localConsent")).localConsent !== true) throw new EmailSourceUnavailableError("Authorize local analysis in the extension workspace first.");
   return new GmailEmailSourceAdapter(document, { includeLinks: settings.includeLinks }).extractCurrentEmail();
 }
 
@@ -67,12 +68,16 @@ async function scan(button: HTMLButtonElement): Promise<void> {
   try {
     const email = await extractForScan();
     const response = await Promise.race([chrome.runtime.sendMessage({ type: "PROCESS_EMAIL", email } satisfies RuntimeMessage), new Promise<never>((_, reject) => window.setTimeout(() => reject(new Error("The scan timed out. Please try again.")), 20_000))]);
-    if (!response?.ok) throw new Error(response?.error ?? "Analysis unavailable."); renderResult(response.result as ExtensionResult);
+    if (!response?.ok) throw new Error(response?.error ?? "Analysis unavailable.");
+    if (response.local) { showPopup("Local protection", "Selected metadata sent only to the extension's local workspace. No tracking, feedback or backend request was sent."); return; }
+    renderResult(response.result as ExtensionResult);
   } catch (error) { const popup = showPopup("Email Security Analysis", error instanceof Error ? error.message : "The scan could not be completed."); popup.setAttribute("role", "alert"); }
   finally { scanning = false; button.disabled = false; button.lastChild!.textContent = "Scan"; }
 }
 
 async function injectScanButton(): Promise<void> {
+  const settings = await loadSettings();
+  if (settings.processingMode !== "legacy" && (await chrome.storage.local.get("localConsent")).localConsent !== true) { document.getElementById(UI.button)?.remove(); document.getElementById(UI.popup)?.remove(); return; }
   // Button discovery needs metadata only and must not extract opt-in links.
   let email; try { email = await new GmailEmailSourceAdapter(document).extractCurrentEmail(); } catch { document.getElementById(UI.button)?.remove(); return; }
   if (activeMessageId !== email.messageId) { activeMessageId = email.messageId; document.getElementById(UI.popup)?.remove(); scanning = false; }
@@ -96,7 +101,7 @@ chrome.runtime.onMessage.addListener((message: RuntimeMessage, _sender, sendResp
 
 async function considerAutomaticTracking(): Promise<void> {
   const settings = await loadSettings();
-  if (!settings.automaticTracking || settings.sourceMode !== "gmail") return;
+  if (settings.processingMode !== "legacy" || !settings.automaticTracking || settings.sourceMode !== "gmail") return;
   try {
     const email = await extractCurrent();
     if (!trackingGuard.shouldTrack(email.messageId)) return;
@@ -112,6 +117,8 @@ const observer = new MutationObserver(() => {
   debounceTimer = window.setTimeout(() => { void considerAutomaticTracking(); void injectScanButton(); }, 600);
 });
 observer.observe(observeTarget, { childList: true, subtree: true });
-window.addEventListener("pagehide", () => { observer.disconnect(); window.clearTimeout(debounceTimer); }, { once: true });
+const onSettingsChange = () => { void injectScanButton(); };
+chrome.storage.onChanged?.addListener(onSettingsChange);
+window.addEventListener("pagehide", () => { observer.disconnect(); window.clearTimeout(debounceTimer); chrome.storage.onChanged?.removeListener(onSettingsChange); }, { once: true });
 void considerAutomaticTracking();
 addStyles(); void injectScanButton();

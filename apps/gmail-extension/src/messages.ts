@@ -1,6 +1,7 @@
 import type { EmailScanRecord, EmailSourceMetadata, ScanFeedbackRequest, TrackedEmail } from "@phishing-defense/shared";
 export interface ExtensionResult { trackedEmail: TrackedEmail; analysis: EmailScanRecord; }
 export type RuntimeMessage =
+  | { type: "OPEN_LOCAL" }
   | { type: "PROCESS_EMAIL"; email: EmailSourceMetadata }
   | { type: "PING_CONTENT_SCRIPT" }
   | { type: "GET_CURRENT_EMAIL" }

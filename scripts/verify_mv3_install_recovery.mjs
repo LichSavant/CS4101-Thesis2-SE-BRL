@@ -1,0 +1,25 @@
+import fs from 'node:fs';import path from 'node:path';import {createRequire} from 'node:module';
+const root=process.cwd(),require=createRequire(import.meta.url),{chromium}=require(path.join(root,'.venv-transformer/browser-harness/tools/playwright-core'));
+const output=path.join(root,'.venv-transformer/mv3-verification');fs.mkdirSync(output,{recursive:true});process.env.TEMP=process.env.TMP=process.env.TMPDIR=output;
+const tests=[],report={status:'FAIL',tests};let context;
+const check=(name,value)=>{tests.push({name,pass:!!value});if(!value)throw Error(name);};
+try{
+ context=await chromium.launchPersistentContext(path.join(output,'recovery-'+Date.now()),{executablePath:'C:/Program Files/Google/Chrome/Application/chrome.exe',headless:true,chromiumSandbox:true,ignoreDefaultArgs:['--disable-extensions'],args:['--enable-automation','--enable-unsafe-extension-debugging','--disable-background-networking','--disable-sync','--no-first-run']});
+ const cdp=await context.browser().newBrowserCDPSession();const {id}=await cdp.send('Extensions.loadUnpacked',{path:path.join(root,'apps/gmail-extension/dist')});
+ await context.route('**/*',route=>route.request().url().startsWith('chrome-extension://')?route.continue():route.abort());
+ const page=await context.newPage();await page.goto(`chrome-extension://${id}/local/local.html`);await page.waitForFunction(()=>document.querySelector('#model-status').textContent.includes('No model'));
+ await page.locator('#install-consent').check();await page.locator('#model-file').setInputFiles(path.join(root,'.venv-transformer/onnx-tooling/minilm-fp32.onnx'));
+ const interrupted=await page.evaluate(async()=>{const {call,unload}=await import('./client.mjs');const pending=call('install',{file:document.querySelector('#model-file').files[0],approved:true}).then(()=>false,()=>true);setTimeout(()=>unload(),5);return pending;});check('interrupted installation terminates safely',interrupted);
+ const status=await page.evaluate(async()=>{const {call}=await import('./client.mjs');return call('status');});check('no partial activation after interrupted import',!status.installed);
+ await page.locator('#install').click();await page.waitForFunction(()=>document.querySelector('#status').textContent.includes('Verified model installed'),null,{timeout:60000});
+ const wrong=await page.evaluate(async()=>{const {call}=await import('./client.mjs');try{await call('install',{file:new File([new Uint8Array(328641531)],'corrupt.onnx'),approved:true});return false;}catch{return(await call('status')).installed;}});check('same-size wrong SHA rejected; prior installation intact',wrong);
+ await page.locator('#model-file').setInputFiles(path.join(root,'.venv-transformer/onnx-tooling/minilm-fp32.onnx'));
+ const quota=await page.evaluate(async()=>{const {installModel,modelStatus}=await import('./store.mjs');const saved=navigator.storage.estimate.bind(navigator.storage);navigator.storage.estimate=async()=>({quota:1,usage:0});let result=false;try{await installModel(document.querySelector('#model-file').files[0],true);}catch(e){result=e.message.includes('quota');}finally{navigator.storage.estimate=saved;}return result&&(await modelStatus()).installed;});check('simulated quota exhaustion handled without losing model',quota);
+ await page.locator('#remove').click();await page.waitForFunction(()=>document.querySelector('#model-status').textContent.includes('No model'));
+ check('explicit removal',true);await page.locator('#install').click();await page.waitForFunction(()=>document.querySelector('#status').textContent.includes('Verified model installed'),null,{timeout:60000});check('explicit reinstallation',true);
+ await page.locator('#consent').check();await page.locator('#ai').check();await context.setOffline(true);
+ const stopped=await page.evaluate(async()=>{const {call,unload}=await import('./client.mjs');const request={schema_version:'1.0.0',codebook_version:'0.1.0',artifact_id:'synthetic',source_id:'synthetic',source_reference:'synthetic',modality:'content_bearing_email',language:'en',fields:{subject:'Act now.'},body_collection_authorized:false,link_extraction_authorized:false,study_purpose:''};const p=call('analyze',{request,consent:true}).then(()=>false,()=>true);setTimeout(()=>unload(),20);return p;});check('active cold inference interruption discards result',stopped);
+ await page.locator('#language').selectOption('en');await page.locator('#mock').click();await page.waitForFunction(()=>document.querySelector('#status').textContent.includes('Local analysis complete'),null,{timeout:90000});check('offline cold worker recovery performs real inference',(await page.locator('#result').innerText()).includes('Model-generated'));
+ const storage=await page.evaluate(()=>chrome.storage.local.get(null));check('no interrupted artifact persistence',!('lastResult'in storage));
+ report.status='PASS';
+}catch(e){report.error=String(e);console.error(e);}finally{await context?.close();fs.writeFileSync(path.join(output,'recovery-result.json'),JSON.stringify(report,null,2)+'\n');console.log(JSON.stringify(report));if(report.status!=='PASS')process.exitCode=1;}

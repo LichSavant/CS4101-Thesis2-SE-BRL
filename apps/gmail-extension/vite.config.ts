@@ -5,12 +5,12 @@ import react from "@vitejs/plugin-react";
 
 const rootDirectory = fileURLToPath(new URL(".", import.meta.url));
 
-export default defineConfig({
+export default defineConfig(({ mode }) => ({
   plugins: [react()],
   test: { environment: "jsdom", setupFiles: "./src/test-setup.ts" },
   build: {
     outDir: "dist",
-    emptyOutDir: true,
+    emptyOutDir: mode !== "development",
     rollupOptions: {
       input: {
         popup: resolve(rootDirectory, "popup.html"),
@@ -19,4 +19,4 @@ export default defineConfig({
       output: { entryFileNames: (chunk) => chunk.name === "background" ? "background.js" : "assets/[name]-[hash].js" }
     }
   }
-});
+}));

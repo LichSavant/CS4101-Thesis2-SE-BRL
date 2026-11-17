@@ -8,3 +8,6 @@ ml/se_brl/codebook.v0.1.0.json -text whitespace=blank-at-eol,blank-at-eof,space-
 
 # Preserve approved NLI hypothesis bytes used by the model lock.
 experiments/vera_validation/V13_nli_hypotheses_v0.1.0.json text eol=lf
+
+# Browser packaging checks these canonical port files against approved SHA-256.
+tools/verification/js-review/*.mjs text eol=lf
