@@ -1,7 +1,7 @@
 import {reviewRecord,recordFromRequest,SemanticInferenceUnavailable} from './review/review.mjs';
 import {readVerifiedModel} from './store.mjs';
-let session=null,tokenizer=null,ort=null,initializing=null,trace=[],sessionCount=0,lastLoad={};
-export async function unloadModel(){if(session)await session.release();session=null;tokenizer=null;ort=null;trace=[];}
+let session=null,tokenizer=null,ort=null,initializing=null,sessionCount=0,lastLoad={};
+export async function unloadModel(){if(session)await session.release();session=null;tokenizer=null;ort=null;}
 async function initialize(){
   if(session)return;if(initializing)return initializing;
   initializing=(async()=>{
@@ -29,7 +29,7 @@ export async function inferEvidence(text,indicator){
 }
 export async function analyzeRecord(record,context,{ai=false,consent=false,diagnostics=false,progress=()=>{}}={}){
   if(consent!==true)throw Error('Explicit local analysis consent required');
-  const start=performance.now();trace=[];let initMs=0,warning=null,initFailed=false,requests=0,cacheHits=0,tokenizationMs=0,tensorPreparationMs=0,inferenceMs=0;
+  const start=performance.now(),trace=[];let initMs=0,warning=null,initFailed=false,requests=0,cacheHits=0,tokenizationMs=0,tensorPreparationMs=0,inferenceMs=0;
   // Symbolic validation/extraction always precedes optional model initialization.
   const baseline=await reviewRecord(record,{detectorContext:context});const symbolicPassMs=performance.now()-start;
   const cache=new Map();let forwards=0;
@@ -39,7 +39,7 @@ export async function analyzeRecord(record,context,{ai=false,consent=false,diagn
     if(!session){progress({stage:'Verifying and loading local AI'});const t=performance.now();try{await initialize();}catch{initFailed=true;warning='Local AI unavailable. Deterministic evidence is preserved; semantic review abstains. Reinstall or free resources.';throw new SemanticInferenceUnavailable();}finally{initMs+=performance.now()-t;}}
     const key=JSON.stringify([text,indicator]);if(cache.has(key)){cacheHits++;const c=cache.get(key);if(c.oversized)throw new SemanticInferenceUnavailable();return c.scores;}
     const item=await inferEvidence(text,indicator);if(!item.oversized){forwards++;progress({stage:'Local semantic review',hypothesisEvaluations:forwards*3});}tokenizationMs+=item.tokenizationMs??0;tensorPreparationMs+=item.tensorPreparationMs??0;inferenceMs+=item.ms??0;
-    cache.set(key,item);if(diagnostics)trace.push(item);if(item.oversized)throw new SemanticInferenceUnavailable();return item.scores;
+    cache.set(key,{oversized:item.oversized,scores:item.scores});if(diagnostics)trace.push(item);if(item.oversized)throw new SemanticInferenceUnavailable();return item.scores;
   }};
   const report=ai?await reviewRecord(record,{detectorContext:context,scorer}):baseline;
   const milliseconds=performance.now()-start;
