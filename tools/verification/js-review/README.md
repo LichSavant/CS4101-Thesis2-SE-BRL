@@ -1,18 +1,11 @@
-# Experimental JavaScript review port — incomplete
+# Isolated JavaScript review compatibility implementation
 
-Not approved for extension integration. Canonical Python remains authoritative.
-The current differential suite deliberately exits nonzero: two accepted canonical
-inputs are explicitly rejected, rather than approximated, by the draft port:
-
-- Authorized HTML link extraction (`html_link_extraction_not_yet_ported`).
-- RFC5322 sender comments (`unsupported_mailbox_syntax`).
-
-The other 185 complete reports agree exactly, including all 12 indicators,
-canonical email/webpage regression templates, score failures, context and identity
-gates, code-point evidence offsets, deterministic labels, and resource budgets.
-All 24 frozen cases are reused. Token-boundary guards replay previously verified
-scores and unavailable states; this suite does not execute a tokenizer or model.
-Passing frozen cases is not full canonical compatibility or scientific validation.
+Phase 7B passes the original 187 reports plus targeted synthetic regressions:
+371 complete reports, 93 HTML preprocessing cases, and 102 strict mailbox parser
+cases agree exactly with the immutable CPython 3.12.10 oracle. All 24 frozen cases,
+13 independently mutated report rejections, six consent/adapter cases and Unicode
+offset conversions also pass. Compatibility is bounded by these synthetic cases;
+this is not scientific validation or approval for extension integration.
 
 Run with existing local assets; no installation or download:
 
@@ -21,28 +14,37 @@ Run with existing local assets; no installation or download:
 .venv-transformer/Scripts/python.exe -B scripts/verify_js_review.py
 ```
 
-The second command generates Python oracle reports afresh from synthetic inputs,
-then compares complete JavaScript reports, score-call counts, 13 independently
-mutated invalid reports, six consent/adapter cases, and Unicode offset conversions.
-Golden reports are held only in the test host, never supplied to `reviewRecord`.
-The existing frozen native-score bundle must match its provenance hash. No model
-loading, research dataset access, Python runtime in JavaScript, network requests,
-persistence or extension imports occur in the runtime module.
+The runner generates Python oracle reports afresh, then compares complete JS
+reports and scorer-call counts. Golden reports remain in the test host and are
+never passed into `reviewRecord`. Model/tokenizer boundary cases replay the
+previously verified native scores and oversized-input states; this task does not
+load a model or claim new tokenizer/WASM inference verification.
 
-`contracts.mjs` contains static rule patterns, codebook, pinned model metadata,
-standard-library entity/casefold tables and source hashes. It contains no golden
-labels or review outcomes. Generation never edits canonical files. Runtime
-footprint is `review.mjs` plus `contracts.mjs`; no third-party runtime dependencies.
+`review.mjs`, `contracts.mjs`, `mailbox.mjs` and `python-url.mjs` form the browser-safe
+runtime, with no third-party dependency, Python interpreter, network, storage or
+extension imports. Static contracts contain patterns, codebook, pinned model
+metadata, entity/casefold tables and source hashes, never inferred labels.
+Canonical sources, hypotheses, thresholds, model weights and research gates are
+unchanged. All semantic evidence remains candidate-only; deterministic labels
+are authoritative, learned values remain null, and predictor export is blocked.
 
-`result.json` and the full differential bundle remain in ignored
-`.venv-transformer/js-review/`. Timing is Node module initialization and complete
-review/validation processing, independent of ONNX. Whole-process RSS includes
-fixtures and oracle reports; it is not browser incremental memory. Browser/MV3
-benchmarks are deferred because compatibility failed. No arbitrary-input parity
-claim is made for the draft HTML scanner, mailbox parser, JSON/URL edge semantics
-or incomplete input-validation coverage.
+HTML links require explicit authorization. Only visible start-tag href/action/src
+attributes are collected, in canonical attribute-priority order. The implementation
+retains original enclosing-tag code-point offsets, source spelling, relative-URL
+joining, entity decoding, duplicate ordering, quota checks and URL validation.
+URLs are never fetched. Text URL scanning and quoted/hidden content follow the
+existing Python rules rather than imposing a new extraction policy.
 
-Next work is exact source-preserving HTML/link and mailbox compatibility, then
-broader preprocessing rejection/acceptance differential coverage. Keep the gate
-failing until every accepted canonical case agrees; do not skip boundary cases,
-weaken rules, rewrite Python, or connect this draft to production.
+The mailbox parser translates CPython's strict pre-validation, address-list state
+machine and post-validation. Tests cover nested/escaped comments, quoted names
+and local parts, folding, obsolete routes/groups, multiple addresses and malformed
+syntax. Invalid parsing yields the same empty pair, never invented identity proof.
+Identity evidence still requires independently supplied audited references.
+See `PYTHON-NOTICE.txt` for the source license and translation attribution.
+
+The full oracle bundle and result stay in ignored `.venv-transformer/js-review/`.
+Results include fixture, runtime, stdlib and tool hashes. A compact committed
+summary is in `docs/research/js-review-parity.json`. Timing covers Node module
+initialization and complete review plus validation, independently of ONNX. Whole
+verifier RSS includes fixtures and golden reports; it is not incremental browser
+memory. Browser/MV3 integration and resource verification remain separate work.

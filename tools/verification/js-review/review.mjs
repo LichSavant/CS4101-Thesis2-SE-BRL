@@ -1,5 +1,7 @@
 // Experimental browser-compatible port. No model, network, persistence or release authority.
 import C from './contracts.mjs';
+import {parseAddress} from './mailbox.mjs';
+import {joinURL,splitHTTP} from './python-url.mjs';
 export class ReviewContractError extends Error {}
 export class SemanticInferenceUnavailable extends Error {}
 const fail = code => { throw new ReviewContractError(code); };
@@ -90,8 +92,8 @@ const textValue = x => {
 function urlValue(x) {
   textValue(x);
   try {
-    const u = new URL(x);
-    if (!/^https?:\/\//iu.test(x) || !u.hostname || u.username || u.password || has('\\s', x) || /[\x00-\x1f]/u.test(x)) fail('invalid_url');
+    splitHTTP(x);
+    if (has('\\s', x) || /[\x00-\x1f]/u.test(x)) fail('invalid_url');
     return x;
   } catch { fail('invalid_url'); }
 }
@@ -108,8 +110,8 @@ function emailSegments(field, text) {
 }
 // Source-spelling HTML scanner. No DOM, script execution or normalized offsets.
 // Unsupported token forms fail explicitly; differential coverage is mandatory.
-function htmlSegments(html) {
-  const segments = [], structures = [], stack = [];
+function htmlSegments(html,collectLinks) {
+  const segments = [], structures = [], links = [], stack = [];
   let i = 0, nodes = 0;
   const voids = new Set('area base br col embed hr img input link meta param source track wbr'.split(' '));
   const hiddenTags = new Set('script style template noscript textarea'.split(' '));
@@ -124,7 +126,7 @@ function htmlSegments(html) {
   while (i < html.length) {
     if (['script', 'style'].includes(stack.at(-1)?.tag)) {
       const re = new RegExp(`</${stack.at(-1).tag}\\s*>`, 'giu'); re.lastIndex = i;
-      const m = re.exec(html); if (!m) { i = html.length; break; } i = m.index;
+      const m = re.exec(html); if (!m) fail('static_html_parsing_failed'); i = m.index;
     }
     if (html.startsWith('<!--', i)) {
       const m = /--\s*>/gu; m.lastIndex = i + 4; const end = m.exec(html);
@@ -138,30 +140,52 @@ function htmlSegments(html) {
     if (html.startsWith('<?', i)) fail('static_html_parsing_failed');
     if (/^<\/[a-zA-Z]/u.test(html.slice(i))) {
       const m = /^<\/([a-zA-Z][^\t\n\r\f />]*)\s*>/u.exec(html.slice(i));
-      if (!m) fail('unsupported_html_end_tag');
+      if (!m) {
+        const tolerant=/^<\/([a-zA-Z][^\t\n\r\f />\x00]*)[^>]*>/u.exec(html.slice(i));
+        if(!tolerant){data(i,html.length);i=html.length;continue;}
+        const index=stack.findLastIndex(n=>n.tag===tolerant[1].toLowerCase());if(index>=0)stack.splice(index);
+        i+=tolerant[0].length;continue;
+      }
       const tag = m[1].toLowerCase(), index = stack.findLastIndex(n => n.tag === tag);
       if (index >= 0) stack.splice(index); i += m[0].length; continue;
     }
     if (/^<[a-zA-Z]/u.test(html.slice(i))) {
       const m = /^<([a-zA-Z][^\t\n\r\f />]*)(?:[^>"']|"[^"]*"|'[^']*')*>/u.exec(html.slice(i));
-      if (!m) fail('unsupported_html_start_tag');
+      if (!m) {
+        // HTMLParser.close() emits incomplete ordinary tags as original text;
+        // declarations/comments remain strict failures handled above.
+        let end=html.indexOf('>',i+1);end=end<0?html.indexOf('<',i+1):end+1;
+        if(end<0)end=i+1;data(i,end);i=end;continue;
+      }
       nodes++; if (nodes > 20000 || stack.length >= 128) fail('html_structure_budget');
-      const tag = m[1].toLowerCase(), attrs = {};
-      const rest = m[0].slice(1 + m[1].length, -1).replace(/\/$/u, '');
-      const attribute = /([^\s=/>]+)(?:\s*=\s*(?:"([^"]*)"|'([^']*)'|([^\s>]*)))?/gu;
-      for (const a of rest.matchAll(attribute)) attrs[a[1].toLowerCase()] = a[2] === undefined && a[3] === undefined && a[4] === undefined ? null : unescapeHTML(a[2] ?? a[3] ?? a[4]);
+      const tagMatch=new RegExp(pyRegex('([a-zA-Z][^\\t\\n\\r\\f />\\x00]*)(?:\\s|/(?!>))*',false).source,'yu');
+      tagMatch.lastIndex=i+1;const tagResult=tagMatch.exec(html);let k=tagMatch.lastIndex;
+      const tag=tagResult[1].toLowerCase(),attrs={},entries=[];
+      const attribute=new RegExp(pyRegex(`((?<=['"\\s/])[^\\s/>][^\\s/=>]*)(\\s*=+\\s*('[^']*'|"[^"]*"|(?!['"])[^>\\s]*))?(?:\\s|/(?!>))*`,false).source,'yu');
+      while(k<i+m[0].length){
+        attribute.lastIndex=k;const a=attribute.exec(html);if(!a)break;
+        let value=a[2]===undefined?null:a[3];
+        if(value&&((value.startsWith('"')&&value.endsWith('"'))||(value.startsWith("'")&&value.endsWith("'"))))value=value.slice(1,-1);
+        if(value)value=unescapeHTML(value);
+        entries.push([a[1].toLowerCase(),value]);attrs[a[1].toLowerCase()]=value;k=attribute.lastIndex;
+      }
+      if(!['>','/>'].includes(trim(html.slice(k,i+m[0].length)))){data(i,i+m[0].length);i+=m[0].length;nodes--;continue;}
       const style = (attrs.style ?? '').replace(new RegExp(`${WS}+`, 'gu'), '').toLowerCase();
       const hidden = stack.some(n => n.hidden) || hiddenTags.has(tag) || 'hidden' in attrs || attrs['aria-hidden'] === 'true' || style.includes('display:none') || style.includes('visibility:hidden') || tag === 'input' && (attrs.type ?? '').toLowerCase() === 'hidden';
       const quoted = stack.some(n => n.quoted) || tag === 'blockquote';
       const location = `${tag}[${nodes}]`;
-      if (!hidden) structures.push({tag, location:[...stack.map(n => n.location), location].join('/'), start:utf16ToCodePoint(html, i), end:utf16ToCodePoint(html, i + m[0].length)});
+      if (!hidden) {
+        const locator=[...stack.map(n=>n.location),location].join('/'),start=utf16ToCodePoint(html,i),end=utf16ToCodePoint(html,i+m[0].length);
+        structures.push({tag,location:locator,start,end,attributes:entries.filter(([key,value])=>['type','method'].includes(key)&&value!==null)});
+        if(collectLinks)for(const key of ['href','action','src'])if(attrs[key])links.push({value:attrs[key],location:locator+'/@'+key,start,end});
+      }
       if (!voids.has(tag) && !/\/>$/u.test(m[0])) stack.push({tag, location, hidden, quoted});
       i += m[0].length; continue;
     }
     let end = html.indexOf('<', i + 1); if (end < 0) end = html.length;
     data(i, end); i = end;
   }
-  return {segments, structures};
+  return {segments, structures, links};
 }
 const kinds = {email:'content_bearing_email', webpage:'content_bearing_webpage', url:'standalone_url', technical:'engineered_technical_record'};
 export function preprocess(raw) {
@@ -171,31 +195,41 @@ export function preprocess(raw) {
   for (const flag of ['body_collection_authorized','link_extraction_authorized']) if (flag in raw && typeof raw[flag] !== 'boolean') fail('boolean_consent_required');
   if ('urls' in raw && (!Array.isArray(raw.urls) || raw.urls.length > 500)) fail('invalid_url_collection');
   if (raw.urls?.length && raw.link_extraction_authorized !== true) fail('link_consent_required');
-  (raw.urls ?? []).forEach(urlValue);
-  let segments = [], structures = [];
+  const collected=(raw.urls??[]).map(urlValue);
+  const link_evidence=collected.map((url,index)=>({url,original_text:url,field:`urls[${index}]`,location:`urls[${index}]`,start:0,end:codePointLength(url),locator_kind:'exact_text'}));
+  let segments = [], structures = [], headers=[];
   if (raw.kind === 'email') {
     if ('body' in raw && (raw.body_collection_authorized !== true || !trim(textValue(raw.study_purpose ?? '')))) fail('body_consent_required');
     for (const field of ['subject','body']) if (field in raw) segments.push(...emailSegments(field, textValue(raw[field])));
     for (const field of ['sender','reply_to']) if (field in raw) textValue(raw[field]);
     if ('headers' in raw && (!obj(raw.headers) || Object.keys(raw.headers).some(k => !['date','message-id','in-reply-to','references','content-type'].includes(k.toLowerCase())))) fail('invalid_headers');
     Object.values(raw.headers ?? {}).forEach(textValue);
+    headers=Object.entries(raw.headers??{}).map(([key,value])=>[key.toLowerCase(),value]).sort((a,b)=>a[0]<b[0]?-1:a[0]>b[0]?1:a[1]<b[1]?-1:a[1]>b[1]?1:0);
   } else if (raw.kind === 'webpage') {
     if ('html' in raw && 'visible_text' in raw) fail('duplicate_content_views');
     for (const field of ['title','visible_text']) if (field in raw) segments.push(segment(field, 0, textValue(raw[field])));
     if ('html' in raw) {
-      // URL joining and malformed HTML corner cases require their own exact port.
-      if (raw.link_extraction_authorized) fail('html_link_extraction_not_yet_ported');
-      const parsed = htmlSegments(textValue(raw.html)); segments.push(...parsed.segments); structures = parsed.structures;
+      const parsed = htmlSegments(textValue(raw.html),raw.link_extraction_authorized===true); segments.push(...parsed.segments); structures = parsed.structures;
+      if(raw.link_extraction_authorized){
+        const base='page_url'in raw?urlValue(raw.page_url):'';
+        for(const link of parsed.links){
+          let resolved;try{resolved=joinURL(base,link.value);}catch{fail('invalid_html_link');}
+          if(/^https?:\/\//iu.test(resolved)){
+            collected.push(urlValue(resolved));link_evidence.push({url:resolved,original_text:link.value,field:'html',location:link.location,start:link.start,end:link.end,locator_kind:'enclosing_tag'});
+          }
+        }
+      }
     }
-    if ('page_url' in raw) urlValue(raw.page_url);
-  } else if (raw.kind === 'url') urlValue(raw.url);
+    if ('page_url' in raw){const url=urlValue(raw.page_url);collected.push(url);link_evidence.push({url,original_text:url,field:'page_url',location:'page_url',start:0,end:codePointLength(url),locator_kind:'exact_text'});}
+  } else if (raw.kind === 'url') {const url=urlValue(raw.url);collected.push(url);link_evidence.push({url,original_text:url,field:'url',location:'url',start:0,end:codePointLength(url),locator_kind:'exact_text'});}
   if (raw.link_extraction_authorized) for (const s of segments) {
-    for (const m of matches('https?://[^\\s<>"\']+', s.text)) urlValue(m.text.replace(/[.,;!?\)\]]+$/u, ''));
+    for (const m of matches('https?://[^\\s<>"\']+', s.text)){const url=urlValue(m.text.replace(/[.,;!?\)\]]+$/u, ''));collected.push(url);link_evidence.push({url,original_text:url,field:s.field,location:s.location,start:s.start+m.start,end:s.start+m.start+codePointLength(url),locator_kind:'exact_text'});}
   }
+  if(collected.length>500)fail('too_many_urls');
   const model_text = normalize(segments.filter(s => !s.quoted).map(s => s.text).join('\n'));
-  return {segments, structures, modality_id:kinds[raw.kind], required_content_available:!!model_text,
+  return {segments, structures, model_text,urls:[...new Set(collected)],headers,supplied_fields:Object.keys(raw).sort(),link_extraction_authorized:raw.link_extraction_authorized===true,link_evidence,preprocessing_version:'0.2.0',modality_id:kinds[raw.kind], required_content_available:!!model_text,
     conditional_evidence_available:!!(raw.sender && trim(raw.sender)) || !!structures.length,
-    sender:raw.sender ?? null, reply_to:raw.reply_to ?? null, page_url:raw.page_url ?? null};
+    sender:raw.sender ?? null, reply_to:raw.reply_to ?? null};
 }
 class ContextIndex {
   constructor(artifact) {
@@ -254,15 +288,12 @@ function identityFields(a) {
   const fields = [];
   for (const field of ['sender','reply_to']) if (a[field]) {
     const value = a[field];
-    // Deliberately reject complex RFC5322 syntax until exact parseaddr parity is established.
-    const m = /^(?:[^<>]*<([^<>]+)>|([^<>\s]+))$/u.exec(value);
-    if (!m) fail('unsupported_mailbox_syntax');
-    const address = m[1] ?? m[2], domain = address.split('@').at(-1).toLowerCase();
+    const address=parseAddress(value)[1], domain = address.split('@').at(-1).toLowerCase();
     if (address.split('@').length === 2 && domainOK(domain)) fields.push([domain,segment(field,0,value)]);
   }
-  if (a.page_url) {
-    const host = new URL(a.page_url).hostname;
-    if (domainOK(host)) fields.push([host,segment('page_url',0,a.page_url)]);
+  for(const link of a.link_evidence)if(link.field==='page_url'){
+    const host=splitHTTP(link.url).hostname;
+    if(domainOK(host))fields.push([host,segment('page_url',link.start,link.original_text,link.location)]);
   }
   return fields;
 }

@@ -18,6 +18,8 @@ from ml.se_brl.semantic_review import review_record, validate_review, predictor_
 from ml.se_brl.semantic_candidates import SemanticInferenceUnavailable
 from ml.se_brl.detectors import DetectorContext
 from ml.se_brl.review_adapter import record_from_request
+from ml.preprocessing import preprocess
+from email.utils import parseaddr
 from ml.tests.test_semantic_review import EXAMPLES, source, Scorer
 from freeze_js_review_contracts import generate, OUT as CONTRACT
 
@@ -90,6 +92,73 @@ def main():
         ("boundary:rfc5322_comment", {"kind":"email", "subject":"Act now.", "sender":"sender@other.example (Synthetic)"}, "content_bearing_email")):
         fields=tuple(k for k in raw if k not in {"kind","link_extraction_authorized"})
         cases.append(serialize(name, DatasetRecord("synthetic:boundary", "synthetic", modality, raw, fields, None, {"reference":"synthetic"}), None))
+    assert len(cases)==187
+    mailbox_values=["", "sender@other.example (Synthetic)", "sender@official.example (Outer (Inner) comment)",
+        r"sender@other.example (Escaped \(parenthesis\))", r"sender@other.example (Escaped \) close)",
+        '"Name (literal)" <sender@other.example>', r'"Quoted \"name\"" <sender@official.example>',
+        'Name (outside) <sender@other.example> (tail)', '(before) sender (middle) @ other.example (after)',
+        'sender@other.example (unclosed', 'sender@other.example close)', 'sender@other.example (a))(',
+        '"sender"@official.example', '"sender@extra"@other.example', '"a\\b"@other.example',
+        'sender@other.example, second@official.example', 'Group: sender@other.example;',
+        'Group:sender@other.example,second@official.example;', '<@a.example,@b.example:sender@other.example>',
+        'sender@other.example@official.example', 'sender@[127.0.0.1]', 'sender@[IPv6:::1]',
+        'sender@other.example\r\n (folded)', 'sender(comment)@other.example',
+        'sender@other(comment).example', 'sender@other.example <fake@official.example>',
+        '"unterminated <sender@other.example>', '<sender@other.example', 'sender@other.example>',
+        'first last', 'Name <sender@other.example> garbage', '🧪 (Nested (名)) <sender@other.example>']
+    # Deterministic synthetic grammar combinations, not model/data-derived input.
+    for local in ('sender','"sender"','"a b"','"a\\\\b"'):
+        for comment in ('',' (one)',' (one (two (three)))',r' (a\)b)',r' (a\\b)', ' (broken'):
+            for domain in ('other.example','official.example','other.example@official.example'):
+                mailbox_values.append(local+'@'+domain+comment)
+    mailbox_values=list(dict.fromkeys(mailbox_values))
+    for i,value in enumerate(mailbox_values):
+        record,context=source("Act now. Submit your password.")
+        record=replace(record,artifact_input={**json_value(record.artifact_input),"sender":value})
+        cases.append(serialize(f"mailbox:{i}",record,context))
+    html_raw=[]
+    htmls=[
+        '🧪<a HREF="/help" action="../pay" src="//cdn.example/file">Act now.</a>',
+        '<a href="/first" href="/last" src="/image">Click here.</a>',
+        '<a href="https://EXAMPLE.test:443/a/../b?q=é&amp;x=1#f">Act now.</a>',
+        '<form method="post" action="?next=1"><input type="image" src="/p"><a href="#part">Act now.</a></form>',
+        '<script src="/secret">Act now.</script><div hidden><a href="/hidden">X</a></div><a href="/ok">Click here.</a>',
+        '<blockquote><a href="/quoted">Act now.</a></blockquote><img src="/pic"/>',
+        '<a href=../help>Act now.</a><a href="mailto:a@example.test">Mail</a><a href="javascript:alert(1)">Ignored</a>',
+        '<a href="">Empty</a><a href>None</a><a href="https://[bad">Invalid</a>',
+        '<a href=="/help">Act now.</a>', '<a / href="/help">Act now.</a>',
+        '<div><a href="/help">Act now.</div></a>',
+        '<a href="/a>b" title="X>Y">Act now.</a>', '<a href="/help"',
+        '<!DOCTYPE html><a href="/help">A &amp; B &#33;</a>',
+        '<!-- <![bogus]> --><p>Act now.</p>', '<![CDATA[Act now.]]>', '<?secret?>',
+        '<a href="https://u:p@example.test">Act now.</a>',
+        '<a href="/a b">Act now.</a>', '<a href="/a\\b">Act now.</a>',
+        '<a href="/help">https://example.test/help.</a>', '<a href="https://example.test/help">https://example.test/help</a>',
+        '<a href="/help" method="get" METHOD="post">Act now.</a>',
+        '<a\u0085href="/help">Act now.</a>', '<a\u00a0href="/help">Act now.</a>',
+        '<a\ufeffhref="/help">Act now.</a>', '<script>Unclosed', '</a',
+    ]
+    for html in htmls:
+        for authorized in (False,True):
+            html_raw.append({"kind":"webpage","html":html,"page_url":"https://example.test/a/page;params?old=1#f","link_extraction_authorized":authorized})
+    for href in ('/root','../help','../../help','./','..','?new=2','#x','//Other.example/help','HTTP://Other.example/a','https:path','http:path','a//b','a/./b','a/../b','a%2Fb','/a;;b',':bad'):
+        for base in ('https://example.test/a/page;params?old=1#f',''):
+            html_raw.append({"kind":"webpage","html":'<a href="'+href+'">🧪 Act now.</a>',"link_extraction_authorized":True,**({"page_url":base} if base else {})})
+    html_raw.extend([
+        {"kind":"webpage","html":'<a href="/x">Act now.</a>',"urls":["https://example.test/x"],"page_url":"https://example.test/base","link_extraction_authorized":True},
+        {"kind":"webpage","html":'<a href="/x">X</a>'*501,"page_url":"https://example.test/base","link_extraction_authorized":True},
+        {"kind":"webpage","html":'<div>'*129,"link_extraction_authorized":True},
+    ])
+    preprocessing=[]
+    from dataclasses import asdict
+    for i,raw in enumerate(html_raw):
+        try:value=asdict(preprocess(raw));ok=True
+        except ValueError:value=None;ok=False
+        preprocessing.append({"name":f"html:{i}","raw":raw,"ok":ok,"expected":value})
+        if ok:
+            fields=tuple(k for k in raw if k not in {"kind","link_extraction_authorized"})
+            record=DatasetRecord("synthetic:html","synthetic","content_bearing_webpage",raw,fields,None,{"reference":"synthetic-only"})
+            cases.append(serialize(f"html-report:{i}",record,None))
     lookup = {bridge.key(r["text"], r["indicator"]):r for r in reference["requests"]}
 
     def scorer(case):
@@ -147,7 +216,13 @@ def main():
         try: value=json_value(record_from_request(r).artifact_input); ok=True
         except ValueError: value=None;ok=False
         requests.append({"request":r,"ok":ok,"artifact":value})
-    bundle={"cases":cases,"expected":expected,"requests":reference["requests"],"payload":payload,"mutations":mutations,"rejected":rejected,"adapter":requests}
+    import inspect, email.utils, email._parseaddr, urllib.parse, html.parser
+    provenance={"python":sys.version,"base_commit":"ff3bf8c","frozen_fixture_sha256":payload["frozen_fixture_sha256"],
+        "frozen_reference_sha256":preparation["reference_sha256"],
+        "stdlib_source_sha256":{m.__name__:hashlib.sha256(Path(inspect.getsourcefile(m)).read_bytes()).hexdigest()
+                                for m in (email.utils,email._parseaddr,urllib.parse,html.parser)}}
+    bundle={"cases":cases,"expected":expected,"requests":reference["requests"],"payload":payload,"mutations":mutations,"rejected":rejected,"adapter":requests,"provenance":provenance,
+            "mailbox":[{"value":v,"expected":parseaddr(v)} for v in mailbox_values],"preprocessing":preprocessing}
     input_path=OUT/"differential.json";input_path.write_text(json.dumps(bundle,ensure_ascii=True),encoding="utf-8")
     result=subprocess.run(["node",str(ROOT/"tools/verification/js-review/test.mjs"),str(input_path)],cwd=ROOT,check=False)
     sys.exit(result.returncode)

@@ -1,4 +1,5 @@
-import {reviewRecord,validateReview,predictorValues,recordFromRequest,SemanticInferenceUnavailable,utf16ToCodePoint,codePointToUtf16} from './review.mjs';
+import {reviewRecord,validateReview,predictorValues,recordFromRequest,preprocess,SemanticInferenceUnavailable,utf16ToCodePoint,codePointToUtf16} from './review.mjs';
+import {parseAddress} from './mailbox.mjs';
 const equal=(a,b)=>JSON.stringify(sort(a))===JSON.stringify(sort(b));
 const sort=x=>Array.isArray(x)?x.map(sort):x&&typeof x==='object'?Object.fromEntries(Object.keys(x).sort().map(k=>[k,sort(x[k])])):x;
 export function makeScorer(mode,requests) {
@@ -30,6 +31,16 @@ function firstDiff(a,b,path='') {
 }
 export async function run(bundle) {
   const failures=[],reports=[],times=[];let passed=0;
+  let mailboxPassed=0,preprocessingPassed=0;
+  for(const [i,c]of bundle.mailbox.entries()){
+    const value=parseAddress(c.value),diff=firstDiff(c.expected,value);
+    if(diff)failures.push({name:'mailbox-direct:'+i,...diff});else mailboxPassed++;
+  }
+  for(const c of bundle.preprocessing){
+    let ok=false,value=null;try{value=preprocess(c.raw);ok=true;}catch{}
+    const diff=firstDiff({ok:c.ok,value:c.expected},{ok,value});
+    if(diff)failures.push({name:c.name,...diff});else preprocessingPassed++;
+  }
   for(let i=0;i<bundle.cases.length;i++){
     const c=bundle.cases[i],s=makeScorer(c.mode,bundle.requests),start=performance.now();
     try{
@@ -68,5 +79,5 @@ export async function run(bundle) {
   if(reports[budgetIndex]&&equal(reports[budgetIndex],bundle.expected[budgetIndex].report))frozenGuards++;
   if(validationPassed===bundle.mutations.length&&exportBlocked)frozenGuards++;
   const sorted=[...times].sort((a,b)=>a-b);
-  return {status:failures.length?'FAIL':'PASS',differential:{passed,failed:bundle.cases.length-passed,total:bundle.cases.length},frozen_24:{passed:reports.slice(0,20).filter((r,i)=>equal(r,bundle.expected[i].report)).length+frozenGuards,total:24},validation_rejections:validationPassed,adapter_cases:adapterPassed,unicode_roundtrips:offsetChecks,failures,timing_ms:{median:sorted[Math.floor(sorted.length/2)],p95:sorted[Math.ceil(sorted.length*.95)-1],total:times.reduce((a,b)=>a+b,0)},reports};
+  return {status:failures.length?'FAIL':'PASS',original_187:{passed:reports.slice(0,187).filter((r,i)=>equal(r,bundle.expected[i].report)).length,total:187},differential:{passed,failed:bundle.cases.length-passed,total:bundle.cases.length},mailbox:{passed:mailboxPassed,total:bundle.mailbox.length},html_preprocessing:{passed:preprocessingPassed,total:bundle.preprocessing.length},frozen_24:{passed:reports.slice(0,20).filter((r,i)=>equal(r,bundle.expected[i].report)).length+frozenGuards,total:24},validation_rejections:validationPassed,adapter_cases:adapterPassed,unicode_roundtrips:offsetChecks,failures,timing_ms:{median:sorted[Math.floor(sorted.length/2)],p95:sorted[Math.ceil(sorted.length*.95)-1],total:times.reduce((a,b)=>a+b,0)},reports};
 }
