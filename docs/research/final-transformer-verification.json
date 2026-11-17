@@ -1,0 +1,96 @@
+{
+  "status": "PASS",
+  "base_commit": "9cf4d7c",
+  "scope": "synthetic engineering only; no scientific or public-release approval",
+  "changes": [
+    "Recover worker-construction failure without stuck busy lock",
+    "Ignore delayed events from terminated workers; fail closed on message decoding errors",
+    "Keep diagnostic trace per-analysis only; cache scores and oversized state without token/text/logit duplication"
+  ],
+  "tests": {
+    "extension_unit_passed": 37,
+    "canonical_python_passed": 440,
+    "loaded_mv3_passed": 74,
+    "loaded_acquisition_privacy_passed": 13,
+    "loaded_install_recovery_passed": 10,
+    "total_passed": 574,
+    "failed": 0,
+    "skipped": 0,
+    "targeted_client_regressions_included": 6,
+    "build_typecheck": "PASS"
+  },
+  "fresh_oracle": "32 synthetic cases; 159 actual pinned PyTorch forwards",
+  "live_cases": 32,
+  "browser_forwards": 499,
+  "numerical_drift": {
+    "maximumLogit": 1.0013580322265625e-05,
+    "maximumProbability": 2.6602270477016354e-06
+  },
+  "inference_ms": {
+    "count": 499,
+    "median": 61.480000019073486,
+    "p95": 74.9099999666214
+  },
+  "before_after": {
+    "comparison": "Retained baseline versus fresh run; independent system conditions, no causal speedup or RAM improvement claimed",
+    "before_warm_email_webpage_ms": [
+      1446.535000026226,
+      2301.310000002384
+    ],
+    "after_warm_email_webpage_ms": [
+      1529.9399999976158,
+      2440.610000014305
+    ],
+    "before_incremental_cold_ready_bytes": 1432432640,
+    "after_incremental_cold_ready_bytes": 1437597696,
+    "before_incremental_warm_ready_bytes": 1142530048,
+    "after_incremental_warm_ready_bytes": 1147285504,
+    "after_peak_sum_upper_bound_bytes": 1567657984
+  },
+  "cache_representation_proxy": {
+    "scope": "Serialized unique fresh-oracle requests versus retained score/oversized fields; not a process heap measurement; excludes unchanged cache keys",
+    "before_bytes": 478766,
+    "after_bytes": 56373,
+    "unique_requests": 172
+  },
+  "privacy": {
+    "live_outbound_requests": [],
+    "packaged_assets_only": true,
+    "no_new_permissions": true,
+    "no_remote_fallback": true,
+    "no_content_persistence": true,
+    "new_packages_or_models_downloaded": false
+  },
+  "artifact_provenance": {
+    "repository": "cross-encoder/nli-MiniLM2-L6-H768",
+    "revision": "b95119ce93d3e065de6214e38cd4a97b0f2f2c6d",
+    "weights_sha256": "ec9c5b6a08b60d7a01b465c7ed44b496244dfd1bed3274c95875a74cea89ab35",
+    "onnx_sha256": "e30e5283a933a7424cd95f45450159979241771dcef999832c2626b480705596",
+    "hypotheses_sha256": "e4ccfdbb799d064c13ccccedf50be1a49818e910b9e9c0f9b3557b7da1ecfb2d"
+  },
+  "source_sha256": {
+    "apps/gmail-extension/local/client.mjs": "a81432989b508014c2bad507b43d61a7971642133a8a4a21eb9062cd3c12c85e",
+    "apps/gmail-extension/local/engine.mjs": "0fdd5c1da86066af321fe8024c6d320af5e526571174c0a574d98f2dd80d7d45",
+    "apps/gmail-extension/src/services/localClient.test.js": "9df57a2fc3a2dbe5a0653d37ac0c767dddad952ec14326485e0dc4e1e5ababb4"
+  },
+  "verification_asset_sha256": {
+    ".venv-transformer/phase8/sprint-after.json": "88ed87890443d9eb2ba333c6731459090b8c49811028ec0780d4846b3eb99da0",
+    ".venv-transformer/mv3-verification/result.json": "73ff0c450bb38237614c8c917b748c9a5cce37fff586f282711098c029f1de4e",
+    ".venv-transformer/mv3-verification/acquisition-result.json": "f0305400e6370b0a1ca0ce4f0125b682d749fa4dea814208e1dae72e60cd53f0",
+    ".venv-transformer/mv3-verification/recovery-result.json": "4a8973c38a9fc111b71eef5474bed44f9d77ae697e207c092195e2a19585b005",
+    ".venv-transformer/onnx-tooling/browser-js-live/preparation.json": "e6ba2cb30fd34f0b64a39d96c83083ef2d66604e505eb6496cc3b31a51608538"
+  },
+  "release_blockers": [
+    "Exact model redistribution rights/notices unresolved: pinned model card unavailable locally and web retrieval unsuccessful; no weights distributed",
+    "Chrome Web Store review/privacy disclosures/permission justification remain; no public deployment",
+    "High RAM and limited hardware/mock-Gmail coverage; cannot claim universally lightweight or real-layout compatibility"
+  ],
+  "policy_sources": [
+    "https://developer.chrome.com/docs/webstore/program-policies/mv3-requirements",
+    "https://developer.chrome.com/docs/webstore/program-policies/user-data-faq"
+  ],
+  "notes": [
+    "An initial restricted-process profiler was interrupted before results; fresh profile ran with authorized access",
+    "Existing unrelated submission-sprint documentation preserved and excluded from commit"
+  ]
+}

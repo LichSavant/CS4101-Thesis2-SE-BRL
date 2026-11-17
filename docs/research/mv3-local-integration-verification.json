@@ -1,0 +1,667 @@
+{
+  "status": "PASS",
+  "scope": "Implemented and verified unpacked development MV3; synthetic engineering only; no deployment or scientific accuracy claim",
+  "base_commit": "de07bd9",
+  "result_classification": {
+    "mv3_local_inference": "implemented and verified",
+    "model_installation_local_file_only": "implemented and verified",
+    "privacy_offline_boundary": "implemented and verified",
+    "genuine_canonical_parity": "implemented and verified",
+    "gmail_selected_metadata": "implemented and verified with synthetic DOM only",
+    "webpage_authorized_activeTab": "implemented and verified",
+    "url_modality": "implemented and verified",
+    "public_model_distribution_and_CWS_review": "not implemented"
+  },
+  "tests": {
+    "extension_unit_passed": 31,
+    "canonical_python_passed": 282,
+    "loaded_mv3_checks_passed": 93,
+    "failed": 0,
+    "skipped": 0,
+    "canonical_live_cases": 32,
+    "frozen_live_cases": 24,
+    "independent_live_cases": 8,
+    "measured_parity_forwards": 499
+  },
+  "numerical_deviation": {
+    "maximumLogit": 1.0013580322265625e-05,
+    "maximumProbability": 2.6602270477016354e-06
+  },
+  "inference_ms": {
+    "count": 499,
+    "median": 232.60000002384186,
+    "p95": 279.30000001192093
+  },
+  "benchmarks": {
+    "extension_install_startup_ms": 11.3108000000002,
+    "cold_model_load_hash_and_session_ms": 1320.199999988079,
+    "cold_complete_artifact_ms": 7176.299999952316,
+    "warm_artifact_median_ms": 5480.699999988079,
+    "warm_artifact_p95_ms": 8015.399999976158,
+    "warm_artifact_scope": "mixed synthetic cases, including context-blocked/unavailable cases; per-artifact cache; no cross-artifact content cache",
+    "extension_packaged_bytes": 13148665,
+    "cached_model_payload_bytes": 328641531,
+    "browser_baseline_resident_bytes": 404238336,
+    "model_ready_resident_bytes": 1783451648,
+    "incremental_resident_bytes": 1379213312,
+    "memory_observations": [
+      {
+        "stage": "browser-extension-disabled",
+        "residentBytes": 404238336,
+        "peakSumUpperBoundBytes": 408260608
+      },
+      {
+        "stage": "installed-ai-before-session",
+        "residentBytes": 529145856,
+        "peakSumUpperBoundBytes": 1533947904
+      },
+      {
+        "stage": "cold-model-ready",
+        "residentBytes": 1783451648,
+        "peakSumUpperBoundBytes": 2223824896
+      },
+      {
+        "stage": "after-live-suite",
+        "residentBytes": 1467273216,
+        "peakSumUpperBoundBytes": 2227236864
+      }
+    ],
+    "memory_scope": "Own Chrome process RSS snapshots; peak sums are upper bounds, not exact simultaneous total peaks"
+  },
+  "privacy": {
+    "outbound_analysis_requests": 0,
+    "outbound_acquisition_requests": 0,
+    "model_downloads": 0,
+    "new_package_downloads": 0,
+    "body_collection": "disabled for Gmail",
+    "persisted_artifacts": false,
+    "persistent_storage": "settings/consent flags plus verified model data only",
+    "fallback_to_backend": false,
+    "browser_security": "sandbox/CSP retained; unpacked debug interface enabled only in isolated test profile"
+  },
+  "loaded_checks": [
+    {
+      "name": "sandbox and browser security retained",
+      "pass": true
+    },
+    {
+      "name": "unpacked MV3 loaded",
+      "pass": true
+    },
+    {
+      "name": "no content/model initialization before consent",
+      "pass": true
+    },
+    {
+      "name": "analysis denied without stored consent",
+      "pass": true
+    },
+    {
+      "name": "basic protection and explanation UI",
+      "pass": true
+    },
+    {
+      "name": "installation requires approval",
+      "pass": true
+    },
+    {
+      "name": "approved atomic model installation",
+      "pass": true
+    },
+    {
+      "name": "live parity:urgency",
+      "pass": true,
+      "metrics": {
+        "milliseconds": 7176.299999952316,
+        "initMs": 1320.199999988079,
+        "forwards": 24,
+        "sessionCount": 1
+      }
+    },
+    {
+      "name": "single model session:urgency",
+      "pass": true
+    },
+    {
+      "name": "live parity:fear_threat",
+      "pass": true,
+      "metrics": {
+        "milliseconds": 6026,
+        "initMs": 0,
+        "forwards": 24,
+        "sessionCount": 1
+      }
+    },
+    {
+      "name": "single model session:fear_threat",
+      "pass": true
+    },
+    {
+      "name": "live parity:scarcity",
+      "pass": true,
+      "metrics": {
+        "milliseconds": 5904.199999988079,
+        "initMs": 0,
+        "forwards": 24,
+        "sessionCount": 1
+      }
+    },
+    {
+      "name": "single model session:scarcity",
+      "pass": true
+    },
+    {
+      "name": "live parity:curiosity",
+      "pass": true,
+      "metrics": {
+        "milliseconds": 6008.199999988079,
+        "initMs": 0,
+        "forwards": 24,
+        "sessionCount": 1
+      }
+    },
+    {
+      "name": "single model session:curiosity",
+      "pass": true
+    },
+    {
+      "name": "live parity:reward_lure",
+      "pass": true,
+      "metrics": {
+        "milliseconds": 5514.900000035763,
+        "initMs": 0,
+        "forwards": 24,
+        "sessionCount": 1
+      }
+    },
+    {
+      "name": "single model session:reward_lure",
+      "pass": true
+    },
+    {
+      "name": "live parity:authority",
+      "pass": true,
+      "metrics": {
+        "milliseconds": 5964.699999988079,
+        "initMs": 0,
+        "forwards": 24,
+        "sessionCount": 1
+      }
+    },
+    {
+      "name": "single model session:authority",
+      "pass": true
+    },
+    {
+      "name": "live parity:impersonation",
+      "pass": true,
+      "metrics": {
+        "milliseconds": 5480.699999988079,
+        "initMs": 0,
+        "forwards": 24,
+        "sessionCount": 1
+      }
+    },
+    {
+      "name": "single model session:impersonation",
+      "pass": true
+    },
+    {
+      "name": "live parity:brand_exploitation",
+      "pass": true,
+      "metrics": {
+        "milliseconds": 5534.100000023842,
+        "initMs": 0,
+        "forwards": 24,
+        "sessionCount": 1
+      }
+    },
+    {
+      "name": "single model session:brand_exploitation",
+      "pass": true
+    },
+    {
+      "name": "live parity:confidentiality_isolation",
+      "pass": true,
+      "metrics": {
+        "milliseconds": 494,
+        "initMs": 0,
+        "forwards": 2,
+        "sessionCount": 1
+      }
+    },
+    {
+      "name": "single model session:confidentiality_isolation",
+      "pass": true
+    },
+    {
+      "name": "live parity:call_to_action",
+      "pass": true,
+      "metrics": {
+        "milliseconds": 5382.100000023842,
+        "initMs": 0,
+        "forwards": 24,
+        "sessionCount": 1
+      }
+    },
+    {
+      "name": "single model session:call_to_action",
+      "pass": true
+    },
+    {
+      "name": "live parity:credential_sensitive_data_request",
+      "pass": true,
+      "metrics": {
+        "milliseconds": 5664,
+        "initMs": 0,
+        "forwards": 24,
+        "sessionCount": 1
+      }
+    },
+    {
+      "name": "single model session:credential_sensitive_data_request",
+      "pass": true
+    },
+    {
+      "name": "live parity:financial_action_request",
+      "pass": true,
+      "metrics": {
+        "milliseconds": 5738.300000011921,
+        "initMs": 0,
+        "forwards": 24,
+        "sessionCount": 1
+      }
+    },
+    {
+      "name": "single model session:financial_action_request",
+      "pass": true
+    },
+    {
+      "name": "live parity:negation",
+      "pass": true,
+      "metrics": {
+        "milliseconds": 502.80000001192093,
+        "initMs": 0,
+        "forwards": 2,
+        "sessionCount": 1
+      }
+    },
+    {
+      "name": "single model session:negation",
+      "pass": true
+    },
+    {
+      "name": "live parity:quotation",
+      "pass": true,
+      "metrics": {
+        "milliseconds": 3.300000011920929,
+        "initMs": 0,
+        "forwards": 0,
+        "sessionCount": 1
+      }
+    },
+    {
+      "name": "single model session:quotation",
+      "pass": true
+    },
+    {
+      "name": "live parity:hypothetical",
+      "pass": true,
+      "metrics": {
+        "milliseconds": 2.100000023841858,
+        "initMs": 0,
+        "forwards": 0,
+        "sessionCount": 1
+      }
+    },
+    {
+      "name": "single model session:hypothetical",
+      "pass": true
+    },
+    {
+      "name": "live parity:unicode",
+      "pass": true,
+      "metrics": {
+        "milliseconds": 6615.899999976158,
+        "initMs": 0,
+        "forwards": 24,
+        "sessionCount": 1
+      }
+    },
+    {
+      "name": "single model session:unicode",
+      "pass": true
+    },
+    {
+      "name": "live parity:identity_unavailable",
+      "pass": true,
+      "metrics": {
+        "milliseconds": 4425.300000011921,
+        "initMs": 0,
+        "forwards": 20,
+        "sessionCount": 1
+      }
+    },
+    {
+      "name": "single model session:identity_unavailable",
+      "pass": true
+    },
+    {
+      "name": "live parity:missing_url",
+      "pass": true,
+      "metrics": {
+        "milliseconds": 1.699999988079071,
+        "initMs": 0,
+        "forwards": 0,
+        "sessionCount": 1
+      }
+    },
+    {
+      "name": "single model session:missing_url",
+      "pass": true
+    },
+    {
+      "name": "live parity:missing_technical",
+      "pass": true,
+      "metrics": {
+        "milliseconds": 0.699999988079071,
+        "initMs": 0,
+        "forwards": 0,
+        "sessionCount": 1
+      }
+    },
+    {
+      "name": "single model session:missing_technical",
+      "pass": true
+    },
+    {
+      "name": "live parity:missing_email",
+      "pass": true,
+      "metrics": {
+        "milliseconds": 0.699999988079071,
+        "initMs": 0,
+        "forwards": 0,
+        "sessionCount": 1
+      }
+    },
+    {
+      "name": "single model session:missing_email",
+      "pass": true
+    },
+    {
+      "name": "live parity:edge:html_authorized_unicode",
+      "pass": true,
+      "metrics": {
+        "milliseconds": 7396.5,
+        "initMs": 0,
+        "forwards": 36,
+        "sessionCount": 1
+      }
+    },
+    {
+      "name": "single model session:edge:html_authorized_unicode",
+      "pass": true
+    },
+    {
+      "name": "live parity:edge:nested_comment",
+      "pass": true,
+      "metrics": {
+        "milliseconds": 8015.399999976158,
+        "initMs": 0,
+        "forwards": 36,
+        "sessionCount": 1
+      }
+    },
+    {
+      "name": "single model session:edge:nested_comment",
+      "pass": true
+    },
+    {
+      "name": "live parity:edge:quoted_name",
+      "pass": true,
+      "metrics": {
+        "milliseconds": 8032.100000023842,
+        "initMs": 0,
+        "forwards": 36,
+        "sessionCount": 1
+      }
+    },
+    {
+      "name": "single model session:edge:quoted_name",
+      "pass": true
+    },
+    {
+      "name": "live parity:edge:malformed_header",
+      "pass": true,
+      "metrics": {
+        "milliseconds": 6794.599999964237,
+        "initMs": 0,
+        "forwards": 30,
+        "sessionCount": 1
+      }
+    },
+    {
+      "name": "single model session:edge:malformed_header",
+      "pass": true
+    },
+    {
+      "name": "live parity:edge:double_negation_question",
+      "pass": true,
+      "metrics": {
+        "milliseconds": 2.300000011920929,
+        "initMs": 0,
+        "forwards": 0,
+        "sessionCount": 1
+      }
+    },
+    {
+      "name": "single model session:edge:double_negation_question",
+      "pass": true
+    },
+    {
+      "name": "live parity:edge:oversized_review",
+      "pass": true,
+      "metrics": {
+        "milliseconds": 3104.399999976158,
+        "initMs": 0,
+        "forwards": 12,
+        "sessionCount": 1
+      }
+    },
+    {
+      "name": "single model session:edge:oversized_review",
+      "pass": true
+    },
+    {
+      "name": "live parity:edge:quoted_body",
+      "pass": true,
+      "metrics": {
+        "milliseconds": 1.899999976158142,
+        "initMs": 0,
+        "forwards": 0,
+        "sessionCount": 1
+      }
+    },
+    {
+      "name": "single model session:edge:quoted_body",
+      "pass": true
+    },
+    {
+      "name": "live parity:edge:unaudited_identity",
+      "pass": true,
+      "metrics": {
+        "milliseconds": 4620.300000011921,
+        "initMs": 0,
+        "forwards": 20,
+        "sessionCount": 1
+      }
+    },
+    {
+      "name": "single model session:edge:unaudited_identity",
+      "pass": true
+    },
+    {
+      "name": "512-token real inference",
+      "pass": true
+    },
+    {
+      "name": "513-token abstention",
+      "pass": true
+    },
+    {
+      "name": "64-unit/512-call resource budget",
+      "pass": true
+    },
+    {
+      "name": "malformed report/promotion/export rejection",
+      "pass": true
+    },
+    {
+      "name": "tracking/feedback/dashboard network boundary",
+      "pass": true
+    },
+    {
+      "name": "no artifact/report/body persistence",
+      "pass": true
+    },
+    {
+      "name": "consent revocation stops worker and analysis",
+      "pass": true
+    },
+    {
+      "name": "worker interruption/restart/offline recovery",
+      "pass": true
+    },
+    {
+      "name": "corrupt cache fails closed and is removed",
+      "pass": true
+    },
+    {
+      "name": "AI disabled preserves basic protection",
+      "pass": true
+    },
+    {
+      "name": "zero outbound analysis requests",
+      "pass": true
+    }
+  ],
+  "acquisition_checks": [
+    {
+      "name": "second workspace cannot acquire a second model worker",
+      "pass": true
+    },
+    {
+      "name": "malformed semantic scores abstain without label promotion",
+      "pass": true
+    },
+    {
+      "name": "Gmail selected metadata only",
+      "pass": true
+    },
+    {
+      "name": "authorized activeTab webpage capture excludes forms/editable/input",
+      "pass": true
+    },
+    {
+      "name": "URL modality has twelve unavailable content indicators",
+      "pass": true
+    },
+    {
+      "name": "activeTab revocation fails closed",
+      "pass": true
+    },
+    {
+      "name": "failed new capture clears prior artifact evidence",
+      "pass": true
+    },
+    {
+      "name": "local-page CSP blocks backend and eval",
+      "pass": true
+    },
+    {
+      "name": "no Gmail acquisition without consent",
+      "pass": true
+    },
+    {
+      "name": "zero unauthorized outbound content requests",
+      "pass": true
+    }
+  ],
+  "recovery_checks": [
+    {
+      "name": "interrupted installation terminates safely",
+      "pass": true
+    },
+    {
+      "name": "no partial activation after interrupted import",
+      "pass": true
+    },
+    {
+      "name": "same-size wrong SHA rejected; prior installation intact",
+      "pass": true
+    },
+    {
+      "name": "simulated quota exhaustion handled without losing model",
+      "pass": true
+    },
+    {
+      "name": "explicit removal",
+      "pass": true
+    },
+    {
+      "name": "explicit reinstallation",
+      "pass": true
+    },
+    {
+      "name": "active cold inference interruption discards result",
+      "pass": true
+    },
+    {
+      "name": "offline cold worker recovery performs real inference",
+      "pass": true
+    },
+    {
+      "name": "no interrupted artifact persistence",
+      "pass": true
+    }
+  ],
+  "model_manifest": {
+    "repository": "cross-encoder/nli-MiniLM2-L6-H768",
+    "revision": "b95119ce93d3e065de6214e38cd4a97b0f2f2c6d",
+    "weights_sha256": "ec9c5b6a08b60d7a01b465c7ed44b496244dfd1bed3274c95875a74cea89ab35",
+    "onnx_sha256": "e30e5283a933a7424cd95f45450159979241771dcef999832c2626b480705596",
+    "hypotheses_sha256": "e4ccfdbb799d064c13ccccedf50be1a49818e910b9e9c0f9b3557b7da1ecfb2d"
+  },
+  "verification_provenance": {
+    "oracle_sha256": "530099e1a6ef02a63fc8319b21004e3aee8591e2ece09a2f0b1f1bd894a65c5c",
+    "current_asset_manifest_sha256": "29bd149a92afb19f25f9ed55a09f25bce9024128d7ec31d4f2cc65ca17d618f8",
+    "live_runtime_files_unchanged_after_full_parity_run": true,
+    "final_ui_changes_verified_by_acquisition_and_recovery": true,
+    "source_sha256": {
+      "apps/gmail-extension/local/client.mjs": "49dabd0deecda9d7629833b64c19f8516222e1cef68d8ba1691adce496893c73",
+      "apps/gmail-extension/local/engine.mjs": "7f082e18c4770563e4607350d16e7cbc7433699126a1736a6a67e14e5dd14863",
+      "apps/gmail-extension/local/page.mjs": "abca1cad8d310c0a1e97a21470229f34ca01261d77b8de2ad6307981f62f504e",
+      "apps/gmail-extension/local/store.mjs": "d8e49aed464fa4cf96010c7fd48ece8e9632d3a74445adfd8940152ddc3bf066",
+      "apps/gmail-extension/local/worker.mjs": "935120b552a18af3cba30edd7267ee7fb9b86f5b39c4cbdb1c09e31e797ac128"
+    },
+    "verifier_sha256": {
+      "scripts/verify_loaded_mv3.mjs": "04fb849df2523d976ed9ce72762c334991a4f1432a8c2ff8928256eae9fc80db",
+      "scripts/verify_mv3_acquisition.mjs": "0c52bbf093422faa15b3d4d729020ed37af2068b4e970e9ceb8746035cf416c0",
+      "scripts/verify_mv3_install_recovery.mjs": "d251a10a36adc7b7137722eb5fca7536a6da0abe7d216a5c40bd36a3504f9d49",
+      "scripts/package_local_extension.mjs": "2c18d0594b4ed0665307656f18fecadaac8fa7477549f977359e94fcdb8e73bc"
+    },
+    "raw_result_sha256": {
+      "result.json": "7687df87f15d034b0dcf773c8699c69ad6d74eae29d3d0880488c8427506f4f8",
+      "acquisition-result.json": "2eb21437a5c321746631fd00671e27f5790f9b846c28a0a74f246bf2a722b9fc",
+      "recovery-result.json": "c9924e63838401caa80da3b8120bb2a1ba1a8d50312baf2b1929e28ba5f034d2"
+    }
+  },
+  "limitations": [
+    "Heavy FP32 model remains; no lightweight claim. Installer supports explicit local-file import only; no public ONNX distribution endpoint or automatic download.",
+    "Gmail testing used synthetic selected-message DOM only, no real user emails; bodies remain disabled.",
+    "Temporary webpage grants require the extension action on the source tab; forms/editable fields excluded.",
+    "Quota exhaustion was simulated; interrupted imports, bad hashes, corruption, removal/reinstall and worker recovery used real local operations.",
+    "No Chrome Web Store review/publication or production deployment; distribution/legal release review remains separate.",
+    "Canonical scientific gates, model revision, hypotheses, rules, label authority and excluded/sealed data safeguards unchanged."
+  ]
+}

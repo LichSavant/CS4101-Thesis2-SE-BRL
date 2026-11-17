@@ -1,0 +1,20 @@
+import fs from 'node:fs';
+import path from 'node:path';
+import {performance} from 'node:perf_hooks';
+import {createHash} from 'node:crypto';
+const start=performance.now();
+const {run}=await import('./suite.mjs');
+const init=performance.now()-start;
+const bundle=JSON.parse(fs.readFileSync(process.argv[2],'utf8'));
+const result=await run(bundle);
+delete result.reports;
+result.initialization_ms=init;
+result.node=process.version;
+result.memory={rss:process.memoryUsage().rss,heap_used:process.memoryUsage().heapUsed,max_rss_bytes:process.resourceUsage().maxRSS*1024,scope:'whole Node verifier including golden fixtures; not isolated review allocation'};
+result.package_bytes=['review.mjs','contracts.mjs','mailbox.mjs','python-url.mjs'].reduce((n,p)=>n+fs.statSync(new URL(p,import.meta.url)).size,0);
+result.scope='Synthetic score replay and canonical Python report oracle; no inference, scientific release or extension integration';
+result.provenance={...bundle.provenance,input_sha256:createHash('sha256').update(fs.readFileSync(process.argv[2])).digest('hex'),
+  source_sha256:Object.fromEntries(['review.mjs','contracts.mjs','mailbox.mjs','python-url.mjs','suite.mjs','test.mjs'].map(p=>[p,createHash('sha256').update(fs.readFileSync(new URL(p,import.meta.url))).digest('hex')]))};
+fs.writeFileSync(path.join(path.dirname(process.argv[2]),'result.json'),JSON.stringify(result,null,2)+'\n');
+console.log(JSON.stringify({...result,provenance:'recorded in result.json',failures:result.failures.slice(0,5)},null,2));
+process.exitCode=result.status==='PASS'?0:1;

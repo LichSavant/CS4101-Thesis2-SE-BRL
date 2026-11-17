@@ -1,0 +1,9 @@
+# Isolated FP32 compatibility tools; canonical environment remains unchanged.
+-r requirements-transformer.txt
+onnx==1.17.0
+onnxruntime==1.20.1
+protobuf==5.29.3
+flatbuffers==24.12.23
+coloredlogs==15.0.1
+humanfriendly==10.0
+pyreadline3==3.5.4

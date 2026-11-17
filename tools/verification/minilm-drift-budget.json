@@ -1,0 +1,18 @@
+{
+  "scope": "Deployment engineering on frozen synthetic inputs only",
+  "max_candidate_variants": 3,
+  "stop_on_first_exact_parity": true,
+  "diagnostic_inputs_max": 3,
+  "diagnostic_selection": "Highest FP32 top score among changed hypotheses, largest probability drift, then largest Unicode-case drift; deduplicate identical text/indicator pairs",
+  "diagnostic_margin_bin": 0.05,
+  "diagnostic_high_top_score_bin": 0.8,
+  "bins_are_not_decision_thresholds": true,
+  "candidate_1": "All 36 linear MatMuls; per-channel signed INT8 with reduce_range=true to isolate documented U8S8 saturation risk",
+  "candidate_2": "Same range-reduced quantization, retaining in FP32 the two encoder blocks ranked highest by normalized local error on at most three frozen diagnostic inputs",
+  "candidate_3": "Quantize only the single linear MatMul ranked lowest in normalized local error, with every other node FP32",
+  "ranking": "Maximum RMS(local ideal quantized output minus FP32 output) / RMS(FP32 output) across diagnostic inputs; block score is maximum node score; deterministic name tie-break",
+  "acceptance": "Exact token/mask, NLI maxima/tie, review outcome, evidence, abstention, deterministic-label and gate parity on the unchanged full 24-case suite against both FP32 baselines",
+  "numerical_drift": "Descriptive only; no relaxed numerical decision thresholds",
+  "failure_action": "Stop after three candidates; retain canonical FP32 ONNX; preserve failed candidates as experimental",
+  "canonical_changes": false
+}

@@ -1,3 +1,4 @@
+// Legacy transport tests explicitly authorize the legacy mode.
 import { afterEach, expect, it, vi } from "vitest";
 import type { EmailSourceMetadata } from "@phishing-defense/shared";
 import { processEmail } from "./api";
@@ -30,3 +31,5 @@ it("defaults link transmission off even when caller supplies links", async () =>
   await processEmail("http://127.0.0.1:8000", email);
   expect(JSON.parse(fetch.mock.calls[1][1].body as string).links).toEqual([]);
 });
+
+vi.mock("./settings", () => ({ loadSettings: async () => ({ processingMode: "legacy" }) }));

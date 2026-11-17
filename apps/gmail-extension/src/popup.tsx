@@ -28,6 +28,7 @@ export function Popup() {
   }, []);
 
   async function onAnalyze() {
+    if (settings.processingMode !== "legacy") { await chrome.runtime.sendMessage({ type: "OPEN_LOCAL" }); return; }
     analysisStarted.current = true;
     setArtifact(null); setArtifactError("");
     setState("loading"); setMessage(""); setNotice("");
@@ -44,6 +45,7 @@ export function Popup() {
   async function updateSettings(next: ExtensionSettings) { analysisStarted.current=true; setArtifact(null); setResult(null); setArtifactError(""); setState("idle"); setSettings(next); await saveSettings(next); }
 
   async function onArtifact() {
+    if (settings.processingMode !== "legacy") return;
     analysisStarted.current = true;
     setArtifact(null); setResult(null); setArtifactError(""); setArtifactBusy(true);
     try {
@@ -56,6 +58,8 @@ export function Popup() {
 
   return <main>
     <header><div className="mark">S</div><div><span className="eyebrow">EMAIL RISK ANALYSIS</span><h1>Sentinel prototype</h1></div></header>
+    <label>Processing mode<select aria-label="Processing mode" value={settings.processingMode ?? "local"} onChange={e => void updateSettings({ ...settings, processingMode: e.target.value as "local" | "legacy", automaticTracking: false })}><option value="local">Local only (no uploads)</option><option value="legacy">Legacy research backend (uploads metadata)</option></select></label>
+    {settings.processingMode !== "legacy" ? <section><h2>Local protection</h2><p>Basic rules work offline. Optional MiniLM runs only on this device after explicit consent and verified model installation. It cannot override rule labels.</p><button onClick={() => void chrome.runtime.sendMessage({ type: "OPEN_LOCAL" })}>Open Local protection</button></section> : <>
     <fieldset className="controls" disabled={artifactBusy || state === "loading"} style={{border:0,padding:0,margin:0}}>
       <label>Email source<select aria-label="Email source" value={settings.sourceMode} onChange={(event) => void updateSettings({ ...settings, sourceMode: event.target.value as "mock" | "gmail" })}><option value="mock">Mock demo</option><option value="gmail">Current Gmail message</option></select></label>
       <label>Backend URL<input aria-label="Backend URL" value={settings.backendUrl} onChange={(event) => setSettings({ ...settings, backendUrl: event.target.value })} /></label>
@@ -76,6 +80,7 @@ export function Popup() {
     {(state === "offline" || state === "error") && <div role="alert" className="alert"><strong>{state === "offline" ? "Backend offline" : "Analysis unavailable"}</strong><p>{message}</p></div>}
     {result && state === "success" && <ResultCard result={result} onReport={() => setNotice("Use Gmail’s More menu → Report phishing. Sentinel has not sent a report or message content.")} />}
     {notice && <p className="notice" role="status">{notice}</p>}
+    </>}
     <details><summary>Privacy notice</summary><p>Sentinel reads only the selected message’s identifier, sender, domain, subject, and timestamp. Links are optional. Bodies, attachments, credentials, tokens, contacts, and unrelated inbox messages are excluded.</p></details>
   </main>;
 }

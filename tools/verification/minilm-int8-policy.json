@@ -1,0 +1,20 @@
+{
+  "scope": "Synthetic engineering compatibility only; no scientific release or accuracy claim",
+  "decision_acceptance": "Zero changes versus BOTH PyTorch FP32 and ONNX FP32 in NLI maxima/ties, review flags/reasons, abstention and unavailable states",
+  "contract_acceptance": "Exact token IDs/masks, evidence/offsets, deterministic labels, modality/identity gates, budgets and closed research gates",
+  "numerical_acceptance": "Finite logits and valid normalized probabilities required. Logit/probability drift is descriptive; no FP32 numerical tolerances are applied to INT8 and no numerical equivalence is claimed",
+  "justification": "INT8 is lossy. Exact decisions test compatibility with the unchanged review controller; arbitrary relaxed probability thresholds would not establish that compatibility",
+  "failure_action": "Retain the single candidate as experimental; report every disagreement; do not tune rules, thresholds or quantization settings to force parity",
+  "quantization": {
+    "method": "onnxruntime.quantization.quantize_dynamic",
+    "op_types_to_quantize": ["MatMul"],
+    "nodes": "Explicit allowlist: existing MatMul nodes with a constant FLOAT rank-2 weight as input B",
+    "per_channel": true,
+    "reduce_range": false,
+    "weight_type": "QInt8",
+    "use_external_data_format": false,
+    "extra_options": {"MatMulConstBOnly": true, "WeightSymmetric": true, "ActivationSymmetric": false},
+    "embeddings": "Unchanged FP32; Gather excluded",
+    "other_operators": "Excluded; dynamic attention MatMuls and classifier Gemm nodes remain unquantized"
+  }
+}

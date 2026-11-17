@@ -1,0 +1,51 @@
+{
+  "verification_kind": "synthetic_engineering_only",
+  "pytest_exit_code": 0,
+  "blocked_operations": [],
+  "network_and_real_dependency_tripwires": true,
+  "research_inputs_and_notebooks_prohibited": true,
+  "real_model_inference": false,
+  "actual_data_fitting": false,
+  "independent_human_validation": false,
+  "test_counts": {
+    "tests": 681,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0,
+    "passed": 681
+  },
+  "test_suites": [
+    "ml/tests/test_semantic_candidates.py",
+    "ml/tests/test_semantic_model_failures.py",
+    "ml/tests/test_semantic_review.py",
+    "ml/tests/test_review_adapter.py",
+    "ml/tests/test_legacy_semantic_boundaries.py",
+    "ml/tests/test_context_detectors.py",
+    "ml/tests/test_runtime_compatibility.py",
+    "ml/tests/test_finalization_policy.py",
+    "ml/tests/test_finalization_preflight.py",
+    "ml/tests/test_master3_regressions.py",
+    "experiments/vera_validation/V13D_test_extractor.py",
+    "experiments/vera_validation/V13E_test_policy.py",
+    "experiments/vera_validation/V15_test_autonomous_inference.py",
+    "experiments/vera_validation/V16_test_controller.py",
+    "experiments/vera_validation/V16_test_evidence_constraints.py",
+    "experiments/vera_validation/V17_test_contextual_constraints.py",
+    "experiments/vera_validation/V17_test_semantic_controller.py",
+    "experiments/vera_validation/V20_test_integrity_gate.py",
+    "experiments/vera_validation/V21_test_semantic_candidates.py"
+  ],
+  "runtime": {
+    "python": "3.12.10",
+    "numpy": "2.2.6",
+    "torch": "2.6.0+cpu",
+    "transformers": "4.49.0",
+    "pytest": "8.4.2",
+    "native_imports_verified": true,
+    "pip_check": "passed"
+  },
+  "pinned_model_available": false,
+  "offline_loader_result": "Pinned local model is unavailable",
+  "hypotheses_sha256": "e4ccfdbb799d064c13ccccedf50be1a49818e910b9e9c0f9b3557b7da1ecfb2d",
+  "scope": "Synthetic engineering verification only; no scientific release, model training or dataset access."
+}

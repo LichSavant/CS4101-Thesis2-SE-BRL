@@ -1,0 +1,14 @@
+{
+  "repository": "cross-encoder/nli-MiniLM2-L6-H768",
+  "revision": "b95119ce93d3e065de6214e38cd4a97b0f2f2c6d",
+  "metadata_source": "https://huggingface.co/api/models/cross-encoder/nli-MiniLM2-L6-H768/revision/b95119ce93d3e065de6214e38cd4a97b0f2f2c6d?blobs=true",
+  "files": {
+    "config.json": {"size": 875, "git_blob_sha1": "f3d2c8b047a34c20737866987ba16ea6114c7b53"},
+    "merges.txt": {"size": 456356, "git_blob_sha1": "6636bda4a1fd7a63653dffb22683b8162c8de956"},
+    "model.safetensors": {"size": 328499560, "sha256": "ec9c5b6a08b60d7a01b465c7ed44b496244dfd1bed3274c95875a74cea89ab35"},
+    "special_tokens_map.json": {"size": 239, "git_blob_sha1": "2ea7ad0e45a9d1d1591782ba7e29a703d0758831"},
+    "tokenizer.json": {"size": 1356048, "git_blob_sha1": "8df0092a08e1d459f60ec541e08cd35a16362bfe"},
+    "tokenizer_config.json": {"size": 330, "git_blob_sha1": "6c26b0317aae78dbce2c8f06dbf846c6e9dd4145"},
+    "vocab.json": {"size": 798293, "git_blob_sha1": "4ebe4bb3f3114daf2e4cc349f24873a1175a35d7"}
+  }
+}

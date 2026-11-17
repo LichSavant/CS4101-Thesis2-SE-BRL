@@ -1,0 +1,673 @@
+{
+  "status": "PASS",
+  "scope": "Frozen synthetic engineering compatibility only; no behavioral accuracy or scientific release claim",
+  "base_commit": "b53a92d",
+  "branch": "research/transformer-validation",
+  "source_model": {
+    "repository": "cross-encoder/nli-MiniLM2-L6-H768",
+    "revision": "b95119ce93d3e065de6214e38cd4a97b0f2f2c6d",
+    "weights_sha256": "ec9c5b6a08b60d7a01b465c7ed44b496244dfd1bed3274c95875a74cea89ab35",
+    "onnx_sha256": "e30e5283a933a7424cd95f45450159979241771dcef999832c2626b480705596",
+    "hypotheses_sha256": "e4ccfdbb799d064c13ccccedf50be1a49818e910b9e9c0f9b3557b7da1ecfb2d"
+  },
+  "browser": "157.0.8103.51",
+  "playwright_core": "1.62.1",
+  "node_version": "24.19.0",
+  "native_reference_python": "3.12.10",
+  "pyodide_python": "3.12.7",
+  "pyodide_role": "Experimental compatibility bridge only; not a production extension dependency decision",
+  "runtime_versions": {
+    "onnxruntime_web": "1.20.1",
+    "tokenizers": "0.2.0",
+    "pyodide": "0.27.7"
+  },
+  "runtime_cpu_wasm_threads": 1,
+  "cross_origin_isolated": true,
+  "tolerances_unchanged": {
+    "logits_atol": 0.0001,
+    "logits_rtol": 0.001,
+    "probabilities_max_absolute_error": 0.0001,
+    "token_ids_and_attention_masks": "exact",
+    "nli_decisions_and_review_outcomes": "exact; zero discrepancies"
+  },
+  "frozen_fixture_sha256": "fdfd8d41dda9ee430ce42d6e358aea5a35adc6ba04c4968c75cc807cc708fd1e",
+  "cases_passed": 24,
+  "cases_failed": 0,
+  "cases": [
+    {
+      "name": "urgency",
+      "pass": true,
+      "canonical_outcome_sha256": "acfeb1bc9bf8ffc8e53e5b2f283c244e2b3997d1ffbde7004865056f5da3a6d0",
+      "browser_outcome_sha256": "acfeb1bc9bf8ffc8e53e5b2f283c244e2b3997d1ffbde7004865056f5da3a6d0"
+    },
+    {
+      "name": "fear_threat",
+      "pass": true,
+      "canonical_outcome_sha256": "d927bcda012fac018a678082ba1e786e39bd135748116eda723497d9d1b85be7",
+      "browser_outcome_sha256": "d927bcda012fac018a678082ba1e786e39bd135748116eda723497d9d1b85be7"
+    },
+    {
+      "name": "scarcity",
+      "pass": true,
+      "canonical_outcome_sha256": "46742a674feb3fec6ae9e9a9dbd87f83481e4fd06a0e461736c68aedbca84d87",
+      "browser_outcome_sha256": "46742a674feb3fec6ae9e9a9dbd87f83481e4fd06a0e461736c68aedbca84d87"
+    },
+    {
+      "name": "curiosity",
+      "pass": true,
+      "canonical_outcome_sha256": "3b4a803efadfcd08c208ab82807080dd60484dd1a7d0ba37d251e1564df29179",
+      "browser_outcome_sha256": "3b4a803efadfcd08c208ab82807080dd60484dd1a7d0ba37d251e1564df29179"
+    },
+    {
+      "name": "reward_lure",
+      "pass": true,
+      "canonical_outcome_sha256": "ef4c9dede6dcf595fe5c6d75902f0d18103503f4c0fe75962d5362e5b24534a6",
+      "browser_outcome_sha256": "ef4c9dede6dcf595fe5c6d75902f0d18103503f4c0fe75962d5362e5b24534a6"
+    },
+    {
+      "name": "authority",
+      "pass": true,
+      "canonical_outcome_sha256": "73a1da84a8d9da82af6bcd8212c71dc7ae0bcf6653c6156d368cc08b625ce784",
+      "browser_outcome_sha256": "73a1da84a8d9da82af6bcd8212c71dc7ae0bcf6653c6156d368cc08b625ce784"
+    },
+    {
+      "name": "impersonation",
+      "pass": true,
+      "canonical_outcome_sha256": "d65f7db49345619682f1064ef09891d822a8e678fd51e44a3357f6b2d36c7bf3",
+      "browser_outcome_sha256": "d65f7db49345619682f1064ef09891d822a8e678fd51e44a3357f6b2d36c7bf3"
+    },
+    {
+      "name": "brand_exploitation",
+      "pass": true,
+      "canonical_outcome_sha256": "d65f7db49345619682f1064ef09891d822a8e678fd51e44a3357f6b2d36c7bf3",
+      "browser_outcome_sha256": "d65f7db49345619682f1064ef09891d822a8e678fd51e44a3357f6b2d36c7bf3"
+    },
+    {
+      "name": "confidentiality_isolation",
+      "pass": true,
+      "canonical_outcome_sha256": "c656324d155006ecc7568397a83d1641bbb902ad7fed870b9dd002259c186082",
+      "browser_outcome_sha256": "c656324d155006ecc7568397a83d1641bbb902ad7fed870b9dd002259c186082"
+    },
+    {
+      "name": "call_to_action",
+      "pass": true,
+      "canonical_outcome_sha256": "6727957c666e690d409d384df49ffad701211bd2aa6459e5489db69139bbecef",
+      "browser_outcome_sha256": "6727957c666e690d409d384df49ffad701211bd2aa6459e5489db69139bbecef"
+    },
+    {
+      "name": "credential_sensitive_data_request",
+      "pass": true,
+      "canonical_outcome_sha256": "1802f55e44517effad2847f74e1dcde308339a18df943bc4c90f97baac1bcd30",
+      "browser_outcome_sha256": "1802f55e44517effad2847f74e1dcde308339a18df943bc4c90f97baac1bcd30"
+    },
+    {
+      "name": "financial_action_request",
+      "pass": true,
+      "canonical_outcome_sha256": "d53b26a6d81211347213a2a1170fcd462a6c75c3ae56c13607606e5b84f0061a",
+      "browser_outcome_sha256": "d53b26a6d81211347213a2a1170fcd462a6c75c3ae56c13607606e5b84f0061a"
+    },
+    {
+      "name": "negation",
+      "pass": true,
+      "canonical_outcome_sha256": "f5bd31a6ecf9b4aa84ee2b821427c8a36a06901763a6dccc80f5a0f553d003b1",
+      "browser_outcome_sha256": "f5bd31a6ecf9b4aa84ee2b821427c8a36a06901763a6dccc80f5a0f553d003b1"
+    },
+    {
+      "name": "quotation",
+      "pass": true,
+      "canonical_outcome_sha256": "2563dd6154aa122a071ddfc1c040a2933ef7d399375d3f0ef0345e75f9ba503d",
+      "browser_outcome_sha256": "2563dd6154aa122a071ddfc1c040a2933ef7d399375d3f0ef0345e75f9ba503d"
+    },
+    {
+      "name": "hypothetical",
+      "pass": true,
+      "canonical_outcome_sha256": "8cb52efc675026688b5ab8ed8a7e919ffaf52db4ee04305381c27d5f85c92023",
+      "browser_outcome_sha256": "8cb52efc675026688b5ab8ed8a7e919ffaf52db4ee04305381c27d5f85c92023"
+    },
+    {
+      "name": "unicode",
+      "pass": true,
+      "canonical_outcome_sha256": "ab1962b4bf5eaf40aa1a0f0f1cb15d18daf472554450fcd46030669fec46d704",
+      "browser_outcome_sha256": "ab1962b4bf5eaf40aa1a0f0f1cb15d18daf472554450fcd46030669fec46d704"
+    },
+    {
+      "name": "identity_unavailable",
+      "pass": true,
+      "canonical_outcome_sha256": "e3a2643b1db53d4fc85a15a9bf82fc1ca4c8891759a66cce76ec326356b6e3d4",
+      "browser_outcome_sha256": "e3a2643b1db53d4fc85a15a9bf82fc1ca4c8891759a66cce76ec326356b6e3d4"
+    },
+    {
+      "name": "missing_url",
+      "pass": true,
+      "canonical_outcome_sha256": "8c72316e7e35b018135848541d1d13ca90378278e50888af88c937282f78f1ab",
+      "browser_outcome_sha256": "8c72316e7e35b018135848541d1d13ca90378278e50888af88c937282f78f1ab"
+    },
+    {
+      "name": "missing_technical",
+      "pass": true,
+      "canonical_outcome_sha256": "91398346124f69e27ff043595524912277e6dcfa3e318c501e9dd5b7a993d6d9",
+      "browser_outcome_sha256": "91398346124f69e27ff043595524912277e6dcfa3e318c501e9dd5b7a993d6d9"
+    },
+    {
+      "name": "missing_email",
+      "pass": true,
+      "canonical_outcome_sha256": "2e5f16651aa72af5f872172b7e4fd23f9047502616674f8326590e47c5da961c",
+      "browser_outcome_sha256": "2e5f16651aa72af5f872172b7e4fd23f9047502616674f8326590e47c5da961c"
+    },
+    {
+      "name": "exact_512_tokens",
+      "pass": true,
+      "canonical_outcome_sha256": "3faf165f23c53cffd1cd721e84821ec76a9bcde1906881b0e984a210cbf543ff",
+      "browser_outcome_sha256": "3faf165f23c53cffd1cd721e84821ec76a9bcde1906881b0e984a210cbf543ff"
+    },
+    {
+      "name": "513_tokens_abstain",
+      "pass": true,
+      "canonical_outcome_sha256": "c2355e3c60b56626127c667c98b78707fdb70249dff886c20e7b6c555eeef661",
+      "browser_outcome_sha256": "c2355e3c60b56626127c667c98b78707fdb70249dff886c20e7b6c555eeef661"
+    },
+    {
+      "name": "64_unit_512_call_budget_replay",
+      "pass": true,
+      "canonical_outcome_sha256": "0b884c122894f05ff0c079d2474b826f3f5ef73ccc2ecf736aa62ce31da0ff7f",
+      "browser_outcome_sha256": "0b884c122894f05ff0c079d2474b826f3f5ef73ccc2ecf736aa62ce31da0ff7f"
+    },
+    {
+      "name": "malformed_inputs_and_export_gate",
+      "pass": true,
+      "canonical_outcome_sha256": "4435a3979a68478baa634328d540ffb50dafd7978bbb9fda3578214acd492788",
+      "browser_outcome_sha256": "4435a3979a68478baa634328d540ffb50dafd7978bbb9fda3578214acd492788"
+    }
+  ],
+  "comparisons": {
+    "tokenMatches": 148,
+    "decisionMatches": 441,
+    "logitDeviation": {
+      "maxAbsolute": 1.0013580322265625e-05,
+      "meanAbsolute": 1.4084979796040176e-06,
+      "count": 1323
+    },
+    "probabilityDeviation": {
+      "maxAbsolute": 2.6602270477016354e-06,
+      "meanAbsolute": 2.3167838973307845e-07,
+      "count": 1323
+    },
+    "errors": []
+  },
+  "token_checks": [
+    {
+      "lifecycle": false,
+      "pass": true,
+      "requests": 148,
+      "firstMismatch": null
+    },
+    {
+      "lifecycle": true,
+      "pass": true,
+      "requests": 148,
+      "firstMismatch": null
+    }
+  ],
+  "unique_nli_forwards": 147,
+  "distinct_tokenization_requests": 148,
+  "resource_budget_test": "Unchanged 64-unit/512-call controller replay using actual browser model scores; not 512 extra forwards.",
+  "request_discovery": "Unchanged Python rules discover eligible units using neutral placeholders, discarded before final reports. Every final report uses actual WASM outputs. Native expected results are never supplied to the worker.",
+  "canonical_rules_source_hashes": {
+    "bridge.py": "e9fa271c8626e8a0378c95bdcc00148397b632e9d97a9ba4fbf3a4a1e5beaf17",
+    "experiments/vera_validation/V13_nli_hypotheses_v0.1.0.json": "e4ccfdbb799d064c13ccccedf50be1a49818e910b9e9c0f9b3557b7da1ecfb2d",
+    "ml/__init__.py": "5044da58031613d32ea89c3a3bc72e6515981ae978b7f3a89a647ed731339edf",
+    "ml/annotation_validation.py": "b63f74dc258ceb9bda18c64200068c5c0434cc1e49032a93e9151343a23733ef",
+    "ml/datasets.py": "22fe1b4e20c42aa51764497673a66f5cbb113b1f4c2331b6d6cd46e3c54f8cb8",
+    "ml/feature_schema.py": "a6c6c26c459502be07949dd7f565eeb17f6e26c0e1a49ca32a15544224e85050",
+    "ml/feature_storage.py": "fabbac190bfee51546c297d51fee63a736b28c90cadc96fd711f0c8914299d5c",
+    "ml/features.py": "cad75f88cc4fdec85ccbdc4d65a247c38069b1254a2e998026b3d19580d65a7d",
+    "ml/grouping.py": "55264a9a462140bab18e8152c2c717c3c38bbe437358ecfa4fad803f9ab1e44c",
+    "ml/metadata.py": "343bfe6ea9bdd037e71a07cee1dfdc5e1d9738ed20dc25536124db77b1448a3a",
+    "ml/preprocessing.py": "56618ce593492dead9f7b1a3165522002de01553b2d8a85a7c202796708eebff",
+    "ml/research-inputs.v1.json": "87c0d379e2de2825933e10f5074822ef72271c1d898caaf113ed7f73acce7d02",
+    "ml/research_policy.py": "1ebcb5ea14146ef301a5328586352f46a36cdbfaa8b86a0636470480fd827ea2",
+    "ml/se_brl/__init__.py": "bb6eb6a5d7021db1657fd5b1bb66cb4c2b279dc29eadd81026dda0bedb44c3e6",
+    "ml/se_brl/assessment.py": "be6c32b195b8cca57cf4bb6df3c71397abe1f6e004587e12d48f1f602124299b",
+    "ml/se_brl/codebook.py": "abfe10d4b1f926cf84e732c4a944d9f721eff0c245c811b0b7d17b7fb1478134",
+    "ml/se_brl/codebook.v0.1.0.json": "36ad77a3f06a962003f8383b4390f2410f93cd7f38eeee3f4d30cad20d839021",
+    "ml/se_brl/context.py": "db4fb95a902928f9bb239b1931815f191035b2672f89c7712d691db6f7fbb86f",
+    "ml/se_brl/detectors.py": "330f39c2dafb148f13ca10501f6cfbe73c396e73da1b4b692068c2cf456f2352",
+    "ml/se_brl/extraction.py": "068b7f53afe0019bad0a6d2f3a6e5721b8f72d4310ff5cade02a01cbf99bd104",
+    "ml/se_brl/representation.py": "83ebd704d2c297d0004a10e85916843ce405b8031486b6945bc12d087e28131d",
+    "ml/se_brl/representation_contract.py": "2901320d54e27b3668e1100ab5bba493093b747bf06332b01b8ff1699671640e",
+    "ml/se_brl/result-envelope.v0.1.0.json": "2ffb720c9306a7c5c5147c0e54b763d5447a4376634a197056f71f4b15c5a63a",
+    "ml/se_brl/result_envelope.py": "6d5b58d25fae01373c19f9ad1b989a8bd1470b0d845d5abb2bf5390883aa04a7",
+    "ml/se_brl/rules.py": "83364e399cbc39b51a6a90f1ff3ebd9c6b7ebacccab8e805b83813ccbd8192bc",
+    "ml/se_brl/semantic-model.v1.json": "8df00c4c4d5958f7dfc8f1efd7d588a5b91aa76c923bd0d5ea2528fe556271be",
+    "ml/se_brl/semantic_candidates.py": "b38573962980dd4b99b47688083d172c250271502b0a66046f9afd2b67b195c3",
+    "ml/se_brl/semantic_review.py": "1411f43f4068e442dd0ca51be991bf725a11c7e48c6dce5e7da77ba83a193ad6"
+  },
+  "source_tool_hashes": {
+    "scripts/acquire_browser_verification_assets.py": "790fed5b4fb0dc65069a7472e700f5815bc374bc2e357026ff3c0087943a6c03",
+    "scripts/prepare_browser_minilm_reference.py": "031e8b97e52230dc56efac147da2d7dd575e350eb7f9168ca387e1142efb30bc",
+    "tools/verification/browser-fp32/bridge.py": "e9fa271c8626e8a0378c95bdcc00148397b632e9d97a9ba4fbf3a4a1e5beaf17",
+    "tools/verification/browser-fp32/worker.js": "50a3db53b5e4b26fecab2afd840d9295dc4c33c3a901a70c88a6683982583b30",
+    "tools/verification/browser-fp32/run.mjs": "58f50f48d03e67833a570baf9709770a1adf9314c57591e2ceb3d4e1038c1851",
+    "tools/verification/browser-fp32/packages.v1.json": "2a4d13c6d3fd7c4a7a01f7a8f47adb93070536add4e38e2498cb1424c3c07d38"
+  },
+  "provenance": {
+    "modelSha256": "e30e5283a933a7424cd95f45450159979241771dcef999832c2626b480705596",
+    "frozenFixtureSha256": "fdfd8d41dda9ee430ce42d6e358aea5a35adc6ba04c4968c75cc807cc708fd1e",
+    "referenceSha256": "9510515c0ea41b38dfad8a1c3ac2893db1b8a243d96e775919c2accd0a03ff55",
+    "runnerSha256": "58f50f48d03e67833a570baf9709770a1adf9314c57591e2ceb3d4e1038c1851",
+    "workerSha256": "50a3db53b5e4b26fecab2afd840d9295dc4c33c3a901a70c88a6683982583b30",
+    "automationAssetHashes": {
+      "bin/install_media_pack.ps1": "bc20f049badf021e3a53bdb4156603caa5ef482c9a9a251f927605e676a44171",
+      "bin/install_webkit_wsl.ps1": "bc61beda37a808eef27d39ce684baa792f6d17737a25a432b1a84d3b591ab815",
+      "bin/reinstall_chrome_beta_linux.sh": "dc8c22b9dde76583cece2857575b88094299615f3136a3c598149710c45dee3a",
+      "bin/reinstall_chrome_beta_mac.sh": "a92eaeb4ebcf5633a4e9c981481e14c80764fc81b6fcbc0565398e50ff319433",
+      "bin/reinstall_chrome_beta_win.ps1": "b6d9e44742feafb98d5edc56fa20042949973cf30d141a1c5b4fb384096967c5",
+      "bin/reinstall_chrome_stable_linux.sh": "dc72ab3567a4ce43bd8353d4ecf41f1d9c03e870169367cd3ed9043aabf67dd1",
+      "bin/reinstall_chrome_stable_mac.sh": "bb43a96c192a6cc81524ade0264686fff7809c019a89f7db0a9849635879c3be",
+      "bin/reinstall_chrome_stable_win.ps1": "3d96c4e2f4ebbb3fad44cf3ba58d9cf90af1c9fb3073e3b27d45a74cf005515b",
+      "bin/reinstall_msedge_beta_linux.sh": "10b26f35dbc2000b94edf1172d803a29c5873a4eb8d523afbc687997b642767e",
+      "bin/reinstall_msedge_beta_mac.sh": "0036d738bc90d686100d81f328ba0003bf07863f5500b792c8da391d149750fa",
+      "bin/reinstall_msedge_beta_win.ps1": "b173c378a59f0cc38033cee702de1f44f09276c9b2270d1a650ebe66ee312433",
+      "bin/reinstall_msedge_dev_linux.sh": "00e4947e7a4f8339c6db09c87976d808583c07f9179e4aa7694d88614b82fe95",
+      "bin/reinstall_msedge_dev_mac.sh": "6f899e3b311f742c24ca37ff9e32298e8290514ffc14bf588cc51556a29da4c0",
+      "bin/reinstall_msedge_dev_win.ps1": "46f7f98c81cb0abe687d7f4a5afea9b897a38d2a6dd6f6662fbd847f7a22bd51",
+      "bin/reinstall_msedge_stable_linux.sh": "ec0a31a5f09c565e108473a1850895a4458ab00c713ac1de3aa2001912e4668f",
+      "bin/reinstall_msedge_stable_mac.sh": "3af1e893527ff2257aa2dbc3b259a053b92f45c3eadb13e38eba46e87902655d",
+      "bin/reinstall_msedge_stable_win.ps1": "40bb5fcbfcebbbe2ce43c6e736e7c5deefc5be03b6e9c6914423c06ec1f591be",
+      "browsers.json": "f306eed529599b1eaf2f8a85db9de2b23e1a3fe36c2b66434b7c9434fb627a99",
+      "cli.js": "f1c4075aef116c766092250d7f37b3249a7cee6465d953207fc38c8f6145becd",
+      "index.d.ts": "7a8ec10b0834eb7183e4bfcd929838ac77583828e343211bb73676d1e47f6f01",
+      "index.js": "a58fb2cec4293e7dcf73c58a179898a4f3986666451a19da4e731fa3af63265b",
+      "index.mjs": "3d36e2132d3c8b62397d23f0bb4177336aaee503203ae2a2c90fbeb5bf3317dd",
+      "lib/bootstrap.js": "4637f4dbfef9cfc01baeb5f5d2cb63fa0901522c96915ea2227290558d27123e",
+      "lib/coreBundle.js": "9393fa79e1c67c74edc26b610d65a4f7ed73d345a762465cc88340a33a2454ac",
+      "lib/entry/cliDaemon.js": "062f256fb29a7bf91793a014b9c3f1f9cf2dc6b12e40a8a2ebba88a630ae16a0",
+      "lib/entry/dashboardApp.js": "209962c6eaeef11629f226d6a2ab33ec7a2480754242b6e19590a9e6eb71d126",
+      "lib/entry/mcp.js": "cc87dc0020cb41caebbf04f50e42bc7835b033a6d80e9c3f0a3d0b3dbdf341c7",
+      "lib/entry/oopBrowserDownload.js": "87567cdbd67dd2f50bb232d47d3784701ece7c81e39c0287bb7d1b466b68cf06",
+      "lib/package.js": "9f938e1d44a0dd231b1660ca62f7dae964859b79cbdc370b8542c5d375ca3c05",
+      "lib/server/chromium/appIcon.png": "6ba994f05c5cf18e22d9b6bef9898fbdec6ad4d4d77f5187d0609cb42d72d01e",
+      "lib/server/electron/loader.js": "8f4f2c20933e7bef2bbed9a1b455278ad1461aa919b0386f360aee5b2580149d",
+      "lib/serverRegistry.js": "e9db9d4eaa8c3690f700ea3047af7b0b6e0b16937a969589678c51db92272ae9",
+      "lib/serverRegistry.js.LICENSE": "5cf540fe55a2ba9bcf0eb76e739b454faa8581e2f1a0f777602ef0855534302e",
+      "lib/tools/cli-client/channelSessions.js": "6b9c613e87340f48ad7182addd7495a8ff3fbe55feb1bbd0ce04f59f1552e126",
+      "lib/tools/cli-client/cli.js": "dfde8e9dfde30c4b3914eb25ba1c5a8524ec64651d866171d75cd7b41a827180",
+      "lib/tools/cli-client/help.json": "d63f1c7e006b1bdfbe656e6bea2b4dca9e1b6c17f8c806fdaca656fef71d234d",
+      "lib/tools/cli-client/minimist.js": "1d200627373a367e0097f1abeaaa4d67cde2c33f2e5efca5cb55222c7667adc3",
+      "lib/tools/cli-client/output.js": "2eace914547a487b2aa1dc34af787fe92168f0b7b3dde24f2b127e817cc9b2b4",
+      "lib/tools/cli-client/program.js": "4a3ece6f75a707e6af71c1dde8650080e7819421594f251b9397e2e45e89cbb8",
+      "lib/tools/cli-client/registry.js": "c11d278e05542808ba37bdb032018eccf9dc78377f8025bd74fa906ae009ca30",
+      "lib/tools/cli-client/session.js": "716e87fc77251129adf8c66374cccc6788f76a02b4b33692c7e63a01a659cb5c",
+      "lib/tools/dashboard/appIcon.png": "38037bcf18c7f9b950da2e1a2d8800d38fb27637ccda293d38368a3704b67f18",
+      "lib/tools/skills/playwright-cli/references/element-attributes.md": "bf19aa4671e0a50a0fefa9c790f39124e803060eefe395042b723c29fcb7faa2",
+      "lib/tools/skills/playwright-cli/references/playwright-tests.md": "c5b0719fef2cfdff50bd744051b2f9afc119775db4b48e9b2882c1cf3886797c",
+      "lib/tools/skills/playwright-cli/references/request-mocking.md": "54e801c9663fc2b6d68ceb058cb1c360724c2499f42acc7852a68e83e5b5f37c",
+      "lib/tools/skills/playwright-cli/references/running-code.md": "d95c539a5990b71d02d8bdf1d9414df16191eb6cff95b0063820518b7a13dcb2",
+      "lib/tools/skills/playwright-cli/references/session-management.md": "cd3e261b8763bf952f1e371b876cb78d054379afec85482f9250633e1b7e6c44",
+      "lib/tools/skills/playwright-cli/references/storage-state.md": "9ac47f9ae4a1aedcd2077f8ac9ab1ba6bee1962cb83ff51adcd36fb6d83b5ec6",
+      "lib/tools/skills/playwright-cli/references/test-generation.md": "12f54cfa718d9e559bad918120a4ca4f11c933167713d1b9c5f99872eddaf749",
+      "lib/tools/skills/playwright-cli/references/tracing.md": "792e0ac7705e56ac48df84c0f5400221ce86107897c671590a64a4ea6a82508e",
+      "lib/tools/skills/playwright-cli/references/video-recording.md": "8555ab5400df0d90e66318aacc0a8a4418fbf872e7463824d55d5c41615abd83",
+      "lib/tools/skills/playwright-cli/SKILL.md": "29c0b669a524d42b51934d7db9144c1c07a566d0549ae6fb6ccd810e5a3cf61b",
+      "lib/tools/skills/playwright-component-testing/references/gallery-spec.md": "0ca25dde6112eb379f56eb618585b64dc2dfd13c2f7f956ac7eabbd76a68912b",
+      "lib/tools/skills/playwright-component-testing/references/migration.md": "0afda2e933235ad5c538c914e75c2469c160cd3be7650bd4ec86bef9efae8d63",
+      "lib/tools/skills/playwright-component-testing/references/react.md": "2a9661c3bff8d12064d50aa71c4e0fe120bcf6e9f243f2506a1ad90b0edf2f90",
+      "lib/tools/skills/playwright-component-testing/references/vue.md": "5a01334a5521d6728f7d0e87751efb0723d6a7e3f715f994fdf96b88853966c1",
+      "lib/tools/skills/playwright-component-testing/SKILL.md": "77bc6f8d1de57ac8f8996ae860c1cfc446f18f48e78cc643b43389e5a97d5c66",
+      "lib/tools/skills/playwright-trace/SKILL.md": "df85506bfa8a445c961efa1ac244cca733667b717711bcc99c1f93994c29d5dc",
+      "lib/tools/utils/extension.js": "ed1a56cb9a6b4643a6a1dea604c541a4e3a4be8d8971edcfe53c7dc9cceefe98",
+      "lib/tools/utils/socketConnection.js": "973c2bea70a1f1445f4673f99e9fa351e50a2ec9fd93d7381b2c41bb4de764dd",
+      "lib/utilsBundle.js": "580f571bf063e2256b51b3946a035bc452fc0e22808d5547b198baea39923a32",
+      "lib/utilsBundle.js.LICENSE": "57945338cba4878e373646733528017fbe3db1503ec2b431fd30d2a390c70c33",
+      "lib/vite/dashboard/assets/codicon-DCmgc-ay.ttf": "0f1d5219934e96e83b8db162d60b4d8c09b5de1e7d38031cbafe4a3c0f2889c9",
+      "lib/vite/dashboard/assets/firefox-1bWoP6pv.svg": "3f3742d1e78c0db6c2d3531250f70c30675ee5310de32fa89befaf738c54efd0",
+      "lib/vite/dashboard/assets/firefox-beta-k3eOH_eK.svg": "7eab5ffdc25903ba33a7202f7fffa1999f119c7be45a39e9e703c118904f917a",
+      "lib/vite/dashboard/assets/firefox-nightly-Cp5nfeDT.svg": "f311c074b0fa999fcd6b73441301fb54ee87a48ff3bf05f318647928110476da",
+      "lib/vite/dashboard/assets/index-CyWAfh-p.js": "33abc7596e49d241e5b397141073e73bb2fb7eec9880bb1e0e2e6d0f673a150e",
+      "lib/vite/dashboard/assets/index-DhC616m4.css": "b4adaf3c09a3a3a4d17d0268255113d0bbacd2045cfab47ed69a78e0b9bdbd78",
+      "lib/vite/dashboard/assets/safari-na3_-uQk.svg": "80fd72ca5eb8545f1981277b31f4f92951d469d4efebd078e4086b676fe517dc",
+      "lib/vite/dashboard/index.html": "3c127919b93d9a2a621ec5aa5be8565680edc6e961e62d028914549d22bcb218",
+      "lib/vite/dashboard/playwright-logo.svg": "511524a1c145819303a18fb71870a4307c3e740f9e9722f7686a2b42b0995b6c",
+      "lib/vite/htmlReport/index.html": "ce7c098020a0eb9ce10edd416245ea6da50dfeaab18dfd0a2176979d22643be6",
+      "lib/vite/htmlReport/report.css": "afa5c8f204098c79eb093e9354d82488a2ccaa771b45453cd4d1e9a075779cb8",
+      "lib/vite/htmlReport/report.js": "f0941744b2ef35b91eafb3d6099f5d4acb342ddbb3000ff293b6e3abf80d29ac",
+      "lib/vite/recorder/assets/codeMirrorModule--QdMvsKi.css": "20be824a82832b62cc04642d31da3c609fd280b23f1cdcb1e622c4f40aac5ab8",
+      "lib/vite/recorder/assets/codeMirrorModule-CwYYHbcZ.js": "b673acf747a1667bbd90b96d9de583d69905b0bd78a196b2a7979a573f5171fd",
+      "lib/vite/recorder/assets/codicon-DCmgc-ay.ttf": "0f1d5219934e96e83b8db162d60b4d8c09b5de1e7d38031cbafe4a3c0f2889c9",
+      "lib/vite/recorder/assets/index-DYjdXIbE.js": "f3c0288840bedb5739649f7fe938a30f57469d46d6ca1e56ee885a0860b98df9",
+      "lib/vite/recorder/assets/index-l_lX622x.css": "01eecbef954379cb99bf36502849ff6e503887bd8a131a5d02dd5d8c23b6106f",
+      "lib/vite/recorder/index.html": "d8a974540383c01c031dd7f317d4276675ecc562747986e6d70234751127e891",
+      "lib/vite/recorder/playwright-logo.svg": "6b0a4367bdeab10995bc239278f04c68c10e48adbec15e799e01909a0d66dcb9",
+      "lib/vite/traceViewer/assets/codeMirrorModule-rXmQmLUY.js": "bb0f7c41f9889e4195c2504878e38061288881f426498434c9955479828f7e66",
+      "lib/vite/traceViewer/assets/defaultSettingsView-B-dXF5JN.js": "2ce8be133fe21a4abd7d8330d9b443092dc2ce28826f191442c14989f9d55b15",
+      "lib/vite/traceViewer/assets/urlMatch-L3liM589.js": "1bc6321e32d11c31a452bc75896f0b344e6153321854d9f1658818be7f845c16",
+      "lib/vite/traceViewer/assets/xtermModule-BuZfJS5v.js": "17584c22ad7d49f3c3c9e07e8b2655203cd33e60c1cb527356eabfda6a59c830",
+      "lib/vite/traceViewer/codeMirrorModule.-QdMvsKi.css": "20be824a82832b62cc04642d31da3c609fd280b23f1cdcb1e622c4f40aac5ab8",
+      "lib/vite/traceViewer/codicon.DCmgc-ay.ttf": "0f1d5219934e96e83b8db162d60b4d8c09b5de1e7d38031cbafe4a3c0f2889c9",
+      "lib/vite/traceViewer/defaultSettingsView.BLFoOugd.css": "72241b3112ab609ca0e06195e85e02cb373799217cd5f24a07d61d9273c4ad3e",
+      "lib/vite/traceViewer/index.B_TqY17P.css": "08a212fcacae1866f44f065654afcc4c7d03409c68c74b3315c5bda17a0ca003",
+      "lib/vite/traceViewer/index.html": "e2218af9284b6e1c2ec3b547320857778a323fd1473d90620153e967223c5721",
+      "lib/vite/traceViewer/index.KZ4wOW1K.js": "53e2227532161670bc601e241a7a9af00ac54826a9dd2ef9c15b8c1f77e92e63",
+      "lib/vite/traceViewer/manifest.webmanifest": "d8540500603a32a39fe7e5a0375dc0f9ebafd11118e06a846db7efc608223ab9",
+      "lib/vite/traceViewer/playwright-logo.svg": "6b0a4367bdeab10995bc239278f04c68c10e48adbec15e799e01909a0d66dcb9",
+      "lib/vite/traceViewer/snapshot.B_Jk1wbt.js": "d4d09e05451d107d8e1a6bbd041405fe518b9fd2833890e4ebaaad83b7f554f5",
+      "lib/vite/traceViewer/snapshot.html": "c608c8899c95c5a74d3f556e20146c3d852b9df85ae2854c659a7cc773c9b727",
+      "lib/vite/traceViewer/sw.bundle.js": "cfd6662a71914516efe90a5a6f3da2bbe5db6e442939b868ca465f765d33723f",
+      "lib/vite/traceViewer/uiMode.C7UW1sC9.css": "c194e703ad4697e31c5e9b8d1e4f75f201a1fbe9940620fa6319dfa5543707b4",
+      "lib/vite/traceViewer/uiMode.Dzuouizj.js": "a584f96f0797144552430d7a04f7e3b84b1baaa0b781a664b1512339ec1c760b",
+      "lib/vite/traceViewer/uiMode.html": "32b260f173708fe088834efe8eff0f9d92af0c7e2e6c987cd8e197f0a066742f",
+      "lib/vite/traceViewer/xtermModule.kHJ-D0s7.css": "0dd60056134e6a2994a86b59a1e9789b9f04e92924da109aef8c923acaf08ce5",
+      "lib/webp_codec.LICENSE": "995c7ee35aceb7666829b7a501ca89c0864e12b493c1174b155774ab1e03d831",
+      "lib/webp_codec.wasm": "164cd9583a3e4d081f767d3b41ff0a730443dc7535fcc5caff83561463384b79",
+      "lib/xdg-open": "7d759d54f0d4ce1beeb34ee62c587985b5042374e8de237b0dcb8cd47aa698cf",
+      "LICENSE": "45873d00a0dd243596deb4aa23b2493b3d1f0671921bf2538ea431d7380220eb",
+      "NOTICE": "6d602191187b35b9b01d2cffa01c8469c2c8d9de8a96f1bf868e0f264f51c81d",
+      "package.json": "07c47543631fef9508760365dee9fbe958c562093ec8d122543949ed231f233f",
+      "README.md": "d16ff7f8e38fa1fc954f695ad551cdc118d9c9bdd5f3d83203901f4c317d7d7e",
+      "ThirdPartyNotices.txt": "a549d329bad8806fe279f0ecae0fc0270dec7e7c2dc8ec10f90e394f7c32b144",
+      "types/protocol.d.ts": "b836eed98b79fabb54f1df73252a0ce178b8df4a89794251ade2fa0c5e52b678",
+      "types/structs.d.ts": "c9b9179b7291c8562eb0fb781219ddbdcf36149ebd7bd355e5b4a553d6b60b81",
+      "types/types.d.ts": "6c688250f2b7061cec3a17ab8797671137b653f8c4e81a6df3190cb112a7579a"
+    },
+    "browserExecutableSha256": "5b835c10836045119334d9524e62437110e00e1bd20612c9072a0ae155f94a17",
+    "packagePinsSha256": "2a4d13c6d3fd7c4a7a01f7a8f47adb93070536add4e38e2498cb1424c3c07d38",
+    "sourceHashes": {
+      "bridge.py": "e9fa271c8626e8a0378c95bdcc00148397b632e9d97a9ba4fbf3a4a1e5beaf17",
+      "experiments/vera_validation/V13_nli_hypotheses_v0.1.0.json": "e4ccfdbb799d064c13ccccedf50be1a49818e910b9e9c0f9b3557b7da1ecfb2d",
+      "ml/__init__.py": "5044da58031613d32ea89c3a3bc72e6515981ae978b7f3a89a647ed731339edf",
+      "ml/annotation_validation.py": "b63f74dc258ceb9bda18c64200068c5c0434cc1e49032a93e9151343a23733ef",
+      "ml/datasets.py": "22fe1b4e20c42aa51764497673a66f5cbb113b1f4c2331b6d6cd46e3c54f8cb8",
+      "ml/feature_schema.py": "a6c6c26c459502be07949dd7f565eeb17f6e26c0e1a49ca32a15544224e85050",
+      "ml/feature_storage.py": "fabbac190bfee51546c297d51fee63a736b28c90cadc96fd711f0c8914299d5c",
+      "ml/features.py": "cad75f88cc4fdec85ccbdc4d65a247c38069b1254a2e998026b3d19580d65a7d",
+      "ml/grouping.py": "55264a9a462140bab18e8152c2c717c3c38bbe437358ecfa4fad803f9ab1e44c",
+      "ml/metadata.py": "343bfe6ea9bdd037e71a07cee1dfdc5e1d9738ed20dc25536124db77b1448a3a",
+      "ml/preprocessing.py": "56618ce593492dead9f7b1a3165522002de01553b2d8a85a7c202796708eebff",
+      "ml/research-inputs.v1.json": "87c0d379e2de2825933e10f5074822ef72271c1d898caaf113ed7f73acce7d02",
+      "ml/research_policy.py": "1ebcb5ea14146ef301a5328586352f46a36cdbfaa8b86a0636470480fd827ea2",
+      "ml/se_brl/__init__.py": "bb6eb6a5d7021db1657fd5b1bb66cb4c2b279dc29eadd81026dda0bedb44c3e6",
+      "ml/se_brl/assessment.py": "be6c32b195b8cca57cf4bb6df3c71397abe1f6e004587e12d48f1f602124299b",
+      "ml/se_brl/codebook.py": "abfe10d4b1f926cf84e732c4a944d9f721eff0c245c811b0b7d17b7fb1478134",
+      "ml/se_brl/codebook.v0.1.0.json": "36ad77a3f06a962003f8383b4390f2410f93cd7f38eeee3f4d30cad20d839021",
+      "ml/se_brl/context.py": "db4fb95a902928f9bb239b1931815f191035b2672f89c7712d691db6f7fbb86f",
+      "ml/se_brl/detectors.py": "330f39c2dafb148f13ca10501f6cfbe73c396e73da1b4b692068c2cf456f2352",
+      "ml/se_brl/extraction.py": "068b7f53afe0019bad0a6d2f3a6e5721b8f72d4310ff5cade02a01cbf99bd104",
+      "ml/se_brl/representation.py": "83ebd704d2c297d0004a10e85916843ce405b8031486b6945bc12d087e28131d",
+      "ml/se_brl/representation_contract.py": "2901320d54e27b3668e1100ab5bba493093b747bf06332b01b8ff1699671640e",
+      "ml/se_brl/result-envelope.v0.1.0.json": "2ffb720c9306a7c5c5147c0e54b763d5447a4376634a197056f71f4b15c5a63a",
+      "ml/se_brl/result_envelope.py": "6d5b58d25fae01373c19f9ad1b989a8bd1470b0d845d5abb2bf5390883aa04a7",
+      "ml/se_brl/rules.py": "83364e399cbc39b51a6a90f1ff3ebd9c6b7ebacccab8e805b83813ccbd8192bc",
+      "ml/se_brl/semantic-model.v1.json": "8df00c4c4d5958f7dfc8f1efd7d588a5b91aa76c923bd0d5ea2528fe556271be",
+      "ml/se_brl/semantic_candidates.py": "b38573962980dd4b99b47688083d172c250271502b0a66046f9afd2b67b195c3",
+      "ml/se_brl/semantic_review.py": "1411f43f4068e442dd0ca51be991bf725a11c7e48c6dce5e7da77ba83a193ad6"
+    },
+    "tolerances": {
+      "logits_atol": 0.0001,
+      "logits_rtol": 0.001,
+      "probabilities_max_absolute_error": 0.0001,
+      "token_ids_and_attention_masks": "exact",
+      "nli_decisions_and_review_outcomes": "exact; zero discrepancies"
+    },
+    "packageIntegrityRecord": "21d10f560d4a7ac7cad1e00e492a1003c9819f5586c7bdd608d3255d7121fa81"
+  },
+  "native_reference_provenance": {
+    "reference_sha256": "9510515c0ea41b38dfad8a1c3ac2893db1b8a243d96e775919c2accd0a03ff55",
+    "preparation_script_sha256": "031e8b97e52230dc56efac147da2d7dd575e350eb7f9168ca387e1142efb30bc",
+    "source_package_hashes": {
+      "bridge.py": "e9fa271c8626e8a0378c95bdcc00148397b632e9d97a9ba4fbf3a4a1e5beaf17",
+      "experiments/vera_validation/V13_nli_hypotheses_v0.1.0.json": "e4ccfdbb799d064c13ccccedf50be1a49818e910b9e9c0f9b3557b7da1ecfb2d",
+      "ml/__init__.py": "5044da58031613d32ea89c3a3bc72e6515981ae978b7f3a89a647ed731339edf",
+      "ml/annotation_validation.py": "b63f74dc258ceb9bda18c64200068c5c0434cc1e49032a93e9151343a23733ef",
+      "ml/datasets.py": "22fe1b4e20c42aa51764497673a66f5cbb113b1f4c2331b6d6cd46e3c54f8cb8",
+      "ml/feature_schema.py": "a6c6c26c459502be07949dd7f565eeb17f6e26c0e1a49ca32a15544224e85050",
+      "ml/feature_storage.py": "fabbac190bfee51546c297d51fee63a736b28c90cadc96fd711f0c8914299d5c",
+      "ml/features.py": "cad75f88cc4fdec85ccbdc4d65a247c38069b1254a2e998026b3d19580d65a7d",
+      "ml/grouping.py": "55264a9a462140bab18e8152c2c717c3c38bbe437358ecfa4fad803f9ab1e44c",
+      "ml/metadata.py": "343bfe6ea9bdd037e71a07cee1dfdc5e1d9738ed20dc25536124db77b1448a3a",
+      "ml/preprocessing.py": "56618ce593492dead9f7b1a3165522002de01553b2d8a85a7c202796708eebff",
+      "ml/research-inputs.v1.json": "87c0d379e2de2825933e10f5074822ef72271c1d898caaf113ed7f73acce7d02",
+      "ml/research_policy.py": "1ebcb5ea14146ef301a5328586352f46a36cdbfaa8b86a0636470480fd827ea2",
+      "ml/se_brl/__init__.py": "bb6eb6a5d7021db1657fd5b1bb66cb4c2b279dc29eadd81026dda0bedb44c3e6",
+      "ml/se_brl/assessment.py": "be6c32b195b8cca57cf4bb6df3c71397abe1f6e004587e12d48f1f602124299b",
+      "ml/se_brl/codebook.py": "abfe10d4b1f926cf84e732c4a944d9f721eff0c245c811b0b7d17b7fb1478134",
+      "ml/se_brl/codebook.v0.1.0.json": "36ad77a3f06a962003f8383b4390f2410f93cd7f38eeee3f4d30cad20d839021",
+      "ml/se_brl/context.py": "db4fb95a902928f9bb239b1931815f191035b2672f89c7712d691db6f7fbb86f",
+      "ml/se_brl/detectors.py": "330f39c2dafb148f13ca10501f6cfbe73c396e73da1b4b692068c2cf456f2352",
+      "ml/se_brl/extraction.py": "068b7f53afe0019bad0a6d2f3a6e5721b8f72d4310ff5cade02a01cbf99bd104",
+      "ml/se_brl/representation.py": "83ebd704d2c297d0004a10e85916843ce405b8031486b6945bc12d087e28131d",
+      "ml/se_brl/representation_contract.py": "2901320d54e27b3668e1100ab5bba493093b747bf06332b01b8ff1699671640e",
+      "ml/se_brl/result-envelope.v0.1.0.json": "2ffb720c9306a7c5c5147c0e54b763d5447a4376634a197056f71f4b15c5a63a",
+      "ml/se_brl/result_envelope.py": "6d5b58d25fae01373c19f9ad1b989a8bd1470b0d845d5abb2bf5390883aa04a7",
+      "ml/se_brl/rules.py": "83364e399cbc39b51a6a90f1ff3ebd9c6b7ebacccab8e805b83813ccbd8192bc",
+      "ml/se_brl/semantic-model.v1.json": "8df00c4c4d5958f7dfc8f1efd7d588a5b91aa76c923bd0d5ea2528fe556271be",
+      "ml/se_brl/semantic_candidates.py": "b38573962980dd4b99b47688083d172c250271502b0a66046f9afd2b67b195c3",
+      "ml/se_brl/semantic_review.py": "1411f43f4068e442dd0ca51be991bf725a11c7e48c6dce5e7da77ba83a193ad6"
+    }
+  },
+  "packages": [
+    {
+      "name": "onnxruntime-web",
+      "version": "1.20.1",
+      "url": "https://registry.npmjs.org/onnxruntime-web/-/onnxruntime-web-1.20.1.tgz",
+      "integrity": "sha512-TePF6XVpLL1rWVMIl5Y9ACBQcyCNFThZON/jgElNd9Txb73CIEGlklhYR3UEr1cp5r0rbGI6nDwwrs79g7WjoA==",
+      "archive_sha256": "0a38facf0672dfaaeaf352e8a9f44533732b60b4af93b9dd507fe7c2d2be437b",
+      "archive_bytes": 20439316,
+      "verified_files": 375
+    },
+    {
+      "name": "@huggingface/tokenizers",
+      "version": "0.2.0",
+      "url": "https://registry.npmjs.org/@huggingface/tokenizers/-/tokenizers-0.2.0.tgz",
+      "integrity": "sha512-LidMHe1FpcSYH4vcSjXooda34pC0M8m1gmDOv7SQi6Iv+ib1zX7J3sHBCC9/3FPCkn2k1b55FneVqMRxrr99pg==",
+      "archive_sha256": "2800014c83b8186b2e4210c20672f1fb65a12cef85d7e95e0f2003e022611b4a",
+      "archive_bytes": 87011,
+      "verified_files": 80
+    },
+    {
+      "name": "pyodide",
+      "version": "0.27.7",
+      "url": "https://registry.npmjs.org/pyodide/-/pyodide-0.27.7.tgz",
+      "integrity": "sha512-RUSVJlhQdfWfgO9hVHCiXoG+nVZQRS5D9FzgpLJ/VcgGBLSAKoPL8kTiOikxbHQm1kRISeWUBdulEgO26qpSRA==",
+      "archive_sha256": "89d5d952675eb08e11286e52c7238f1248ce71726e896db9703e73bef23dc343",
+      "archive_bytes": 5898824,
+      "verified_files": 13
+    }
+  ],
+  "loaded_executable_assets": {
+    "/packages/ort/dist/ort-wasm-simd-threaded.wasm": {
+      "bytes": 11246032,
+      "sha256": "207d02be4591c156b0a98f024f3d58005b5b04c92274d759fb390338c63559ea"
+    },
+    "/packages/ort/dist/ort.wasm.min.mjs": {
+      "bytes": 48904,
+      "sha256": "f53ed4792e758e7232f779d479eb8931b97ff3ab2e3b9a33ee00d1251ffdaad6"
+    },
+    "/packages/ort/dist/ort-wasm-simd-threaded.mjs": {
+      "bytes": 24618,
+      "sha256": "745eb7c0ce6f18a6aa521971b2877babc7ffb27eecb58ab3bc6e5ef4692672e8"
+    },
+    "/packages/tokenizers/dist/tokenizers.mjs": {
+      "bytes": 98937,
+      "sha256": "1c4a848f86156201c033d6cd08c4cf81ae1088552acec3367f31ef086edf5af0"
+    },
+    "/packages/pyodide/pyodide.js": {
+      "bytes": 14913,
+      "sha256": "b4cb23a53aba19c221659b9fb40a2f18281d685691dc06647fb0afd0681baf98"
+    },
+    "/packages/pyodide/python_stdlib.zip": {
+      "bytes": 2360737,
+      "sha256": "16611534726e5d8ac2bd8f926410b2dcb8d6f49aa24913463533b457a2115c16"
+    },
+    "/packages/pyodide/pyodide-lock.json": {
+      "bytes": 112205,
+      "sha256": "9c45b916001a750f4102fc287494f3eab215909c7535c626a20db80fd6333e2c"
+    },
+    "/packages/pyodide/pyodide.asm.js": {
+      "bytes": 1255688,
+      "sha256": "6b4c90de5b7172873f04f21884d0e9d2274e305fe32116558fe3e4fbe3618d51"
+    },
+    "/packages/pyodide/pyodide.asm.wasm": {
+      "bytes": 10105545,
+      "sha256": "a50dd1843f805a0b7c45b61037ee0d7b26dfe85efe0e18ef95a34ad24e401f5f"
+    }
+  },
+  "storage": {
+    "modelBytes": 328641531,
+    "packageBytes": {
+      "onnxruntime-web": 96005696,
+      "@huggingface/tokenizers": 360962,
+      "pyodide": 14125709
+    },
+    "usedPackageBytes": {
+      "ort": 11319554,
+      "tokenizers": 98937,
+      "pyodide": 13849088
+    }
+  },
+  "timings_ms": {
+    "startupMilliseconds": 1166.9300000071526,
+    "bridgeMilliseconds": 1132.9950000047684,
+    "sourceLoadMilliseconds": 466.0799999833107,
+    "tokenizerMilliseconds": 92.3400000333786,
+    "modelFetchMilliseconds": 974.9499999880791,
+    "modelHashMilliseconds": 240.25,
+    "modelInitializationMilliseconds": 646.4250000119209,
+    "reviewMilliseconds": 880.6599999666214,
+    "analysisMilliseconds": 29921.115000009537
+  },
+  "inference_latency_ms": {
+    "count": 147,
+    "median": 163.97500002384186,
+    "p95": 219.00499999523163,
+    "mean": 197.47285714279226,
+    "scope": "actual WASM session.run for three pairs; tokenization excluded; includes boundary-length case"
+  },
+  "memory": {
+    "observations": [
+      {
+        "stage": "empty-browser-before-worker",
+        "residentBytes": 407760896,
+        "peakWorkingSetUpperBoundBytes": 410976256,
+        "privateBytes": 214298624
+      },
+      {
+        "stage": "bridge-only-before-model",
+        "residentBytes": 577601536,
+        "peakWorkingSetUpperBoundBytes": 608473088,
+        "privateBytes": 372015104
+      },
+      {
+        "stage": "model-ready-before-analysis",
+        "residentBytes": 1787252736,
+        "peakWorkingSetUpperBoundBytes": 1846411264,
+        "privateBytes": 1593999360
+      },
+      {
+        "stage": "analysis-complete-worker-alive",
+        "residentBytes": 1472823296,
+        "peakWorkingSetUpperBoundBytes": 1886285824,
+        "privateBytes": 1271541760
+      }
+    ],
+    "scope": "Only process IDs returned by the isolated Chrome instance; summed live working sets are snapshots. Sum of per-process lifetime peak working sets is an upper bound, not a simultaneous aggregate peak.",
+    "observed_max_resident_bytes": 1787252736,
+    "sum_of_process_peak_upper_bound_bytes": 1886285824,
+    "pyodide_linear_heap_before_bytes": 20971520,
+    "pyodide_linear_heap_after_review_bytes": 30212096,
+    "bridge_tokenizer_phase_resident_increment_bytes": 169840640,
+    "bridge_phase_caveat": "Includes Python framework, worker and JS tokenizer overhead; not all attributable solely to Pyodide. Linear heap size excludes its other resident/code allocations.",
+    "user_agent_api_observations": [
+      {
+        "heap": {
+          "usedJSHeapSize": 767609,
+          "totalJSHeapSize": 2097489,
+          "scope": "page JS heap only, not worker/native peak"
+        },
+        "userAgentMemory": null,
+        "scope": "post-analysis agent memory snapshot; not a proven peak"
+      }
+    ]
+  },
+  "network_privacy": {
+    "analysis_browser_offline": true,
+    "local_requests_during_analysis": [],
+    "external_request_events": [],
+    "unexpected_policy_violations": [],
+    "unexpected_console_errors": [],
+    "browser_sandbox_enabled": true,
+    "csp": "default-src 'self'; script-src 'self' 'wasm-unsafe-eval'; worker-src 'self'; connect-src 'self'; object-src 'none'; base-uri 'none'",
+    "negative_network_probe": {
+      "ok": true,
+      "stage": "security-probe",
+      "rejected": true,
+      "policyViolations": [
+        {
+          "directive": "connect-src",
+          "blocked": "https://example.invalid/sebrl-denied-probe"
+        }
+      ]
+    },
+    "server": "Loopback-only allowlisted GET assets; no content-upload endpoints",
+    "privacy_scope": "Harness page and dedicated workers; Chrome background networking disabled. Offline mode enforced before analysis; initialization and restart use local loopback assets with external requests blocked."
+  },
+  "worker_lifecycle": {
+    "pass": true,
+    "freshWorkerInitialized": true,
+    "firstRequestComparison": {
+      "tokenMatches": 1,
+      "decisionMatches": 3,
+      "logitDeviation": {
+        "maxAbsolute": 1.430511474609375e-06,
+        "meanAbsolute": 8.67992639541626e-07,
+        "count": 9
+      },
+      "probabilityDeviation": {
+        "maxAbsolute": 1.0134166461561733e-07,
+        "meanAbsolute": 4.2298855728610684e-08,
+        "count": 9
+      },
+      "errors": []
+    },
+    "bridgeMilliseconds": 1046.5799999833107,
+    "modelInitializationMilliseconds": 606.7050000429153,
+    "previousWorkerTerminated": true,
+    "reusedAnalysisScores": false,
+    "policyViolations": [],
+    "browserOfflineDuringAnalysis": true
+  },
+  "canonical_artifacts_and_scientific_contracts_unchanged": true,
+  "production_extension_changed": false,
+  "research_datasets_accessed": false,
+  "training_or_calibration": false,
+  "model_downloads": false,
+  "limitations": [
+    "Exact compatibility is demonstrated only for the frozen 24 synthetic cases, not general semantic accuracy.",
+    "Pyodide CPython 3.12.7 differs from native reference CPython 3.12.10; no Python runtime version was emulated.",
+    "Memory snapshots cover observed live isolated Chrome processes; per-process peak sum is not a simultaneous aggregate peak.",
+    "Latency is WASM session.run for three pairs with one thread, excluding tokenization and including one 512-token boundary input. It is not a matched comparison with earlier two-thread native benchmarks.",
+    "Browser worker startup/bridge/runtime overhead remains substantial, and the unchanged FP32 model is 328.64 MB.",
+    "Pyodide is an experimental verification bridge; no production architecture or extension deployment is approved.",
+    "This is a strict-CSP loopback page/dedicated-worker harness, not a loaded MV3 extension; offscreen/service-worker integration and production permissions were not exercised."
+  ],
+  "remaining_blockers": [
+    "No blocker for this bounded compatibility result.",
+    "A lightweight production architecture still needs a separate decision about the Python bridge, model footprint, installation/caching and resource limits.",
+    "Actual MV3 extension integration, installation/caching and lifecycle policy require separate verification; the production extension is unchanged."
+  ],
+  "commands": [
+    [
+      ".venv-transformer/onnx-tooling/Scripts/python",
+      "-B",
+      "scripts/acquire_browser_verification_assets.py"
+    ],
+    [
+      ".venv-transformer/onnx-tooling/Scripts/python",
+      "-B",
+      "scripts/prepare_browser_minilm_reference.py"
+    ],
+    [
+      "node",
+      "tools/verification/browser-fp32/run.mjs"
+    ]
+  ]
+}

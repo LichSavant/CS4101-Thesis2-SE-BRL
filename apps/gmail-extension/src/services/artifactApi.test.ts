@@ -1,3 +1,4 @@
+// Legacy transport tests explicitly authorize the legacy mode.
 import { afterEach, expect, it, vi } from "vitest";
 import type { EmailSourceMetadata } from "@phishing-defense/shared";
 import { analyzeSelectedArtifact } from "./api";
@@ -26,3 +27,5 @@ it("forwards known empty links only with explicit link opt-in", async () => {
   await expect(analyzeSelectedArtifact("http://127.0.0.1:8000", email, "en", true)).rejects.toThrow();
   expect(JSON.parse(fetch.mock.calls[0][1].body as string).artifact).toEqual({ kind: "email", subject: "Synthetic", urls: [], link_extraction_authorized: true });
 });
+
+vi.mock("./settings", () => ({ loadSettings: async () => ({ processingMode: "legacy" }) }));

@@ -1,15 +1,20 @@
 import type { AnalyzeEmailRequest, EmailOpenRequest, EmailScanRecord, EmailSourceMetadata, ScanFeedbackRequest, TrackedEmail } from "@phishing-defense/shared";
 import { artifactSchemaVersion, readArtifactDecision, type ArtifactDecision } from "@phishing-defense/shared";
 import type { ExtensionResult } from "../messages";
+import { loadSettings } from "./settings";
 
 export class ApiError extends Error { constructor(message: string, readonly offline = false) { super(message); } }
 
 async function request<T>(baseUrl: string, path: string, body: unknown): Promise<T> {
+  if ((await loadSettings()).processingMode !== "legacy") throw new ApiError("Local-only mode blocks backend requests.");
+  const controller = new AbortController();
+  const revoked = (changes: Record<string, chrome.storage.StorageChange>) => { if (changes.processingMode && changes.processingMode.newValue !== "legacy") controller.abort(); };
+  if (typeof chrome !== "undefined") chrome.storage?.onChanged?.addListener(revoked);
   const normalizedBaseUrl = baseUrl.trim().replace(/\/$/, "");
   if (!/^https?:\/\//.test(normalizedBaseUrl)) throw new ApiError("The backend URL must start with http:// or https://.");
   try {
     const response = await fetch(`${normalizedBaseUrl}${path}`, {
-      method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify(body)
+      method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify(body), signal: controller.signal
     });
     if (!response.ok) {
       const payload = await response.json().catch(() => null) as { detail?: string | Array<{ msg?: string }> } | null;
@@ -20,7 +25,7 @@ async function request<T>(baseUrl: string, path: string, body: unknown): Promise
   } catch (error) {
     if (error instanceof ApiError) throw error;
     throw new ApiError("Cannot reach the backend. Start FastAPI and check the backend URL.", true);
-  }
+  } finally { if (typeof chrome !== "undefined") chrome.storage?.onChanged?.removeListener(revoked); }
 }
 
 export async function recordScanFeedback(baseUrl: string, feedback: ScanFeedbackRequest): Promise<void> {

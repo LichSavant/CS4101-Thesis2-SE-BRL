@@ -1,0 +1,80 @@
+{
+  "status": "PASS",
+  "original_187": {
+    "passed": 187,
+    "total": 187
+  },
+  "differential": {
+    "passed": 371,
+    "failed": 0,
+    "total": 371
+  },
+  "mailbox": {
+    "passed": 102,
+    "total": 102
+  },
+  "html_preprocessing": {
+    "passed": 93,
+    "total": 93
+  },
+  "frozen_24": {
+    "passed": 24,
+    "total": 24
+  },
+  "validation_rejections": 13,
+  "adapter_cases": 6,
+  "unicode_roundtrips": 17,
+  "failures": [],
+  "timing_ms": {
+    "median": 2.3331000000000017,
+    "p95": 4.441899999999805,
+    "total": 1160.1174999999976
+  },
+  "initialization_ms": 6.3141,
+  "node": "v24.19.0",
+  "memory": {
+    "rss": 136790016,
+    "heap_used": 57030616,
+    "max_rss_bytes": 136802304,
+    "scope": "whole Node verifier including golden fixtures; not isolated review allocation"
+  },
+  "package_bytes": 112577,
+  "scope": "Synthetic score replay and canonical Python report oracle; no inference, scientific release or extension integration",
+  "provenance": {
+    "python": "3.12.10 (tags/v3.12.10:0cc8128, Apr  8 2025, 12:21:36) [MSC v.1943 64 bit (AMD64)]",
+    "base_commit": "ff3bf8c",
+    "frozen_fixture_sha256": "fdfd8d41dda9ee430ce42d6e358aea5a35adc6ba04c4968c75cc807cc708fd1e",
+    "frozen_reference_sha256": "9510515c0ea41b38dfad8a1c3ac2893db1b8a243d96e775919c2accd0a03ff55",
+    "stdlib_source_sha256": {
+      "email.utils": "1f9b11216bc579bb7442505ed4d56af150931fa7bb1cd6c586c8f23fa9602dd6",
+      "email._parseaddr": "4960c31f0039780f316149a3773367a3aeec3bb17d360776334d9b9e688da908",
+      "urllib.parse": "8e1026b2de5fb7ef9265bf512b6ba11923c3a8bfa48a8b2158475c07c255e1a1",
+      "html.parser": "ed37c8ded84afef74dfd671f8a20911f58b379bef8f577739c05dbfa99115017"
+    },
+    "input_sha256": "4909436ddf9fecef444ff0e853aee8040186fd89d11d55d394c931ffd0f35b1e",
+    "source_sha256": {
+      "review.mjs": "7961f2549d80656050a29db362384ae0e7e4b8171a31154307bf6e143a4516a8",
+      "contracts.mjs": "4a350fda377155290025f5c7e75c9915f6c6de5270a6dd51b741bc7db1cadd4d",
+      "mailbox.mjs": "1858ab0f07e95b15e0287b85eac4e1cffef64ad7c789c19bcd0ad0b76f19e098",
+      "python-url.mjs": "20730260284169a83b72ffffb8a393a75959a5dc69d4612fe9484721dd04f517",
+      "suite.mjs": "832f2ede6b4d22b799c2377a6b119219792cedfe62f4e24a60e6a914f1f02cf5",
+      "test.mjs": "b8c0acce33ee6eac367676770b623643560dca6364f52bb6f3e2d6cbb6f57425"
+    },
+    "verification_scripts_sha256": {
+      "scripts/verify_js_review.py": "89b6b343c70f819f3a0e2698801c0c27c9bd43718db1012855493131a855f145",
+      "scripts/freeze_js_review_contracts.py": "31d8cc905489d49b41d7472d96b4f41db7c1edf797b40feb979f279bee24b329"
+    }
+  },
+  "phase": "7B",
+  "canonical_regressions": {
+    "passed": 282,
+    "failed": 0,
+    "command": ".venv-transformer/Scripts/python.exe -B -m pytest ml/tests/test_semantic_review.py ml/tests/test_context_detectors.py ml/tests/test_rule_extraction.py ml/tests/test_review_adapter.py ml/tests/test_preprocessing.py -q"
+  },
+  "limitations": [
+    "Synthetic compatibility only; not universal parser equivalence or scientific validation.",
+    "Frozen NLI scores and token-boundary states are replayed; no new model or tokenizer execution.",
+    "Node timings and whole verifier memory are not browser incremental resource measurements.",
+    "No production extension integration or deployment."
+  ]
+}

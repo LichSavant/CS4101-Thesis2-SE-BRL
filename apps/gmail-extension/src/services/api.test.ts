@@ -1,3 +1,4 @@
+// Legacy transport tests explicitly authorize the legacy mode.
 import { afterEach, expect, it, vi } from "vitest";
 import type { EmailSourceMetadata } from "@phishing-defense/shared";
 import { processEmail } from "./api";
@@ -42,3 +43,5 @@ it("preserves mock mode with body-disabled requests", async () => {
   expect(payloads[1].bodyCollectionAuthorized).toBe(false);
   expect(payloads.every(payload => !("bodyText" in payload))).toBe(true);
 });
+
+vi.mock("./settings", () => ({ loadSettings: async () => ({ processingMode: "legacy" }) }));

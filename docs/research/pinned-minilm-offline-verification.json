@@ -1,0 +1,496 @@
+{
+  "status": "PASS",
+  "verification_kind": "offline_real_model_synthetic_engineering_only",
+  "repository": "cross-encoder/nli-MiniLM2-L6-H768",
+  "revision": "b95119ce93d3e065de6214e38cd4a97b0f2f2c6d",
+  "files": {
+    "config.json": {
+      "size": 875,
+      "sha256": "8b0e41caff7567c0f53e6983f35591c3dec59507c9173ab125c5823394fb57f3",
+      "git_blob_sha1": "f3d2c8b047a34c20737866987ba16ea6114c7b53"
+    },
+    "merges.txt": {
+      "size": 456356,
+      "sha256": "fe36cab26d4f4421ed725e10a2e9ddb7f799449c603a96e7f29b5a3c82a95862",
+      "git_blob_sha1": "6636bda4a1fd7a63653dffb22683b8162c8de956"
+    },
+    "model.safetensors": {
+      "size": 328499560,
+      "sha256": "ec9c5b6a08b60d7a01b465c7ed44b496244dfd1bed3274c95875a74cea89ab35",
+      "git_blob_sha1": "9b20a8e8854aef4e3edf456c990ceea27e397f03"
+    },
+    "special_tokens_map.json": {
+      "size": 239,
+      "sha256": "378eb3bf733eb16e65792d7e3fda5b8a4631387ca04d2015199c4d4f22ae554d",
+      "git_blob_sha1": "2ea7ad0e45a9d1d1591782ba7e29a703d0758831"
+    },
+    "tokenizer.json": {
+      "size": 1356048,
+      "sha256": "82139106e603ee4e1d5bc99d056ccbed5a92bc24848b1b5a7137c26e00d0dbf6",
+      "git_blob_sha1": "8df0092a08e1d459f60ec541e08cd35a16362bfe"
+    },
+    "tokenizer_config.json": {
+      "size": 330,
+      "sha256": "e06f5c3c435fc0255b08b5574cd574eec685390f60c85b27f83d785eb8ecaaa1",
+      "git_blob_sha1": "6c26b0317aae78dbce2c8f06dbf846c6e9dd4145"
+    },
+    "vocab.json": {
+      "size": 798293,
+      "sha256": "ed19656ea1707df69134c4af35c8ceda2cc9860bf2c3495026153a133670ab5e",
+      "git_blob_sha1": "4ebe4bb3f3114daf2e4cc349f24873a1175a35d7"
+    }
+  },
+  "integrity_verified_before_loading": true,
+  "snapshot_bytes": 331111701,
+  "cache_file_bytes_including_metadata": 331111701,
+  "runtime": {
+    "python": "3.12.10",
+    "platform": "Windows-11-10.0.26200-SP0",
+    "processor": "AMD64 Family 25 Model 124 Stepping 0, AuthenticAMD",
+    "logical_cpus": 12,
+    "torch_threads": 2,
+    "torch_interop_threads": 1,
+    "torch": "2.6.0+cpu",
+    "transformers": "4.49.0",
+    "device": "cpu"
+  },
+  "load_seconds_excluding_imports": 2.9723447999567725,
+  "load_measurement": "After integrity hashing; OS file cache may be warm; imports excluded",
+  "memory_measurement": "Whole-process Windows counters including native tensors; not model-only memory",
+  "memory_before_load_bytes": {
+    "PeakWorkingSetSize": 203067392,
+    "WorkingSetSize": 203067392,
+    "PeakPagefileUsage": 558780416,
+    "PrivateUsage": 558772224
+  },
+  "memory_after_tests_bytes": {
+    "PeakWorkingSetSize": 511397888,
+    "WorkingSetSize": 511397888,
+    "PeakPagefileUsage": 1413533696,
+    "PrivateUsage": 1041547264
+  },
+  "scorer_calls": 312,
+  "scorer_latency_seconds_three_hypothesis_pairs": {
+    "first": 0.14978049998171628,
+    "mean": 0.07531228461504305,
+    "median": 0.07519009997486137,
+    "p95": 0.09496129996841773,
+    "min": 0.045235599973239005,
+    "max": 0.14978049998171628,
+    "total": 23.49743279989343
+  },
+  "cases_passed": 20,
+  "cases": [
+    {
+      "name": "urgency",
+      "seconds": 1.843426300038118,
+      "candidate_count": 24,
+      "target": "urgency",
+      "target_deterministic_state": "supported",
+      "target_review_reasons": [
+        "semantic_rule_disagreement"
+      ],
+      "target_nli_labels": [
+        [
+          "neutral",
+          "neutral",
+          "neutral"
+        ],
+        [
+          "neutral",
+          "neutral",
+          "neutral"
+        ]
+      ]
+    },
+    {
+      "name": "fear_threat",
+      "seconds": 1.8464401999954134,
+      "candidate_count": 24,
+      "target": "fear_threat",
+      "target_deterministic_state": "supported",
+      "target_review_reasons": [
+        "hypothesis_disagreement",
+        "semantic_rule_disagreement"
+      ],
+      "target_nli_labels": [
+        [
+          "neutral",
+          "neutral",
+          "neutral"
+        ],
+        [
+          "entailment",
+          "entailment",
+          "neutral"
+        ]
+      ]
+    },
+    {
+      "name": "scarcity",
+      "seconds": 1.818695000023581,
+      "candidate_count": 24,
+      "target": "scarcity",
+      "target_deterministic_state": "supported",
+      "target_review_reasons": [
+        "hypothesis_disagreement",
+        "semantic_rule_disagreement"
+      ],
+      "target_nli_labels": [
+        [
+          "neutral",
+          "neutral",
+          "neutral"
+        ],
+        [
+          "neutral",
+          "contradiction",
+          "entailment"
+        ]
+      ]
+    },
+    {
+      "name": "curiosity",
+      "seconds": 1.9282696999725886,
+      "candidate_count": 24,
+      "target": "curiosity",
+      "target_deterministic_state": "supported",
+      "target_review_reasons": [
+        "hypothesis_disagreement"
+      ],
+      "target_nli_labels": [
+        [
+          "contradiction",
+          "neutral",
+          "neutral"
+        ],
+        [
+          "contradiction",
+          "neutral",
+          "neutral"
+        ]
+      ]
+    },
+    {
+      "name": "reward_lure",
+      "seconds": 1.844279499957338,
+      "candidate_count": 24,
+      "target": "reward_lure",
+      "target_deterministic_state": "supported",
+      "target_review_reasons": [
+        "hypothesis_disagreement",
+        "semantic_rule_disagreement"
+      ],
+      "target_nli_labels": [
+        [
+          "neutral",
+          "neutral",
+          "neutral"
+        ],
+        [
+          "entailment",
+          "neutral",
+          "neutral"
+        ]
+      ]
+    },
+    {
+      "name": "authority",
+      "seconds": 1.9986458999919705,
+      "candidate_count": 24,
+      "target": "authority",
+      "target_deterministic_state": "supported",
+      "target_review_reasons": [
+        "hypothesis_disagreement"
+      ],
+      "target_nli_labels": [
+        [
+          "entailment",
+          "neutral",
+          "entailment"
+        ],
+        [
+          "entailment",
+          "neutral",
+          "entailment"
+        ]
+      ]
+    },
+    {
+      "name": "impersonation",
+      "seconds": 1.72403750004014,
+      "candidate_count": 24,
+      "target": "impersonation",
+      "target_deterministic_state": "supported",
+      "target_review_reasons": [
+        "hypothesis_disagreement",
+        "semantic_rule_disagreement"
+      ],
+      "target_nli_labels": [
+        [
+          "entailment",
+          "entailment",
+          "neutral"
+        ],
+        [
+          "neutral",
+          "neutral",
+          "neutral"
+        ]
+      ]
+    },
+    {
+      "name": "brand_exploitation",
+      "seconds": 1.8514982999768108,
+      "candidate_count": 24,
+      "target": "brand_exploitation",
+      "target_deterministic_state": "supported",
+      "target_review_reasons": [
+        "semantic_rule_disagreement"
+      ],
+      "target_nli_labels": [
+        [
+          "neutral",
+          "neutral",
+          "neutral"
+        ],
+        [
+          "neutral",
+          "neutral",
+          "neutral"
+        ]
+      ]
+    },
+    {
+      "name": "confidentiality_isolation",
+      "seconds": 0.18233119999058545,
+      "candidate_count": 2,
+      "target": "confidentiality_isolation",
+      "target_deterministic_state": "supported",
+      "target_review_reasons": [
+        "hypothesis_disagreement"
+      ],
+      "target_nli_labels": [
+        [
+          "contradiction",
+          "contradiction",
+          "neutral"
+        ],
+        [
+          "entailment",
+          "neutral",
+          "neutral"
+        ]
+      ]
+    },
+    {
+      "name": "call_to_action",
+      "seconds": 1.6142182999756187,
+      "candidate_count": 24,
+      "target": "call_to_action",
+      "target_deterministic_state": "supported",
+      "target_review_reasons": [
+        "semantic_rule_disagreement"
+      ],
+      "target_nli_labels": [
+        [
+          "neutral",
+          "neutral",
+          "neutral"
+        ],
+        [
+          "neutral",
+          "neutral",
+          "neutral"
+        ]
+      ]
+    },
+    {
+      "name": "credential_sensitive_data_request",
+      "seconds": 1.9335079000447877,
+      "candidate_count": 24,
+      "target": "credential_sensitive_data_request",
+      "target_deterministic_state": "supported",
+      "target_review_reasons": [
+        "hypothesis_disagreement",
+        "semantic_rule_disagreement"
+      ],
+      "target_nli_labels": [
+        [
+          "neutral",
+          "neutral",
+          "neutral"
+        ],
+        [
+          "neutral",
+          "entailment",
+          "neutral"
+        ]
+      ]
+    },
+    {
+      "name": "financial_action_request",
+      "seconds": 1.9103439999744296,
+      "candidate_count": 24,
+      "target": "financial_action_request",
+      "target_deterministic_state": "supported",
+      "target_review_reasons": [
+        "semantic_rule_disagreement"
+      ],
+      "target_nli_labels": [
+        [
+          "neutral",
+          "neutral",
+          "neutral"
+        ],
+        [
+          "entailment",
+          "entailment",
+          "entailment"
+        ]
+      ]
+    },
+    {
+      "name": "negation",
+      "seconds": 0.17966000002343208,
+      "candidate_count": 2,
+      "target": null,
+      "target_deterministic_state": null,
+      "target_review_reasons": [],
+      "target_nli_labels": []
+    },
+    {
+      "name": "quotation",
+      "seconds": 0.02165960002457723,
+      "candidate_count": 0,
+      "target": null,
+      "target_deterministic_state": null,
+      "target_review_reasons": [],
+      "target_nli_labels": []
+    },
+    {
+      "name": "hypothetical",
+      "seconds": 0.019999499956611544,
+      "candidate_count": 0,
+      "target": null,
+      "target_deterministic_state": null,
+      "target_review_reasons": [],
+      "target_nli_labels": []
+    },
+    {
+      "name": "identity_unavailable",
+      "seconds": 1.4931926000281237,
+      "candidate_count": 20,
+      "target": null,
+      "target_deterministic_state": null,
+      "target_review_reasons": [],
+      "target_nli_labels": []
+    },
+    {
+      "name": "unavailable_url",
+      "seconds": 0.018048500001896173,
+      "candidate_count": 0,
+      "target": null,
+      "target_deterministic_state": null,
+      "target_review_reasons": [],
+      "target_nli_labels": []
+    },
+    {
+      "name": "unavailable_technical",
+      "seconds": 0.018950400000903755,
+      "candidate_count": 0,
+      "target": null,
+      "target_deterministic_state": null,
+      "target_review_reasons": [],
+      "target_nli_labels": []
+    },
+    {
+      "name": "unavailable_email",
+      "seconds": 0.02041230001486838,
+      "candidate_count": 0,
+      "target": null,
+      "target_deterministic_state": null,
+      "target_review_reasons": [],
+      "target_nli_labels": []
+    },
+    {
+      "name": "evidence_tamper_baseline",
+      "seconds": 1.709713999996893,
+      "candidate_count": 24,
+      "target": null,
+      "target_deterministic_state": null,
+      "target_review_reasons": [],
+      "target_nli_labels": []
+    }
+  ],
+  "review_reasons": {
+    "semantic_rule_disagreement": 33,
+    "hypothesis_disagreement": 79,
+    "deterministic_not_evaluated": 20,
+    "context_requires_review": 46
+  },
+  "network_blocked_by_process_audit": true,
+  "blocked_operations": [
+    {
+      "event": "socket.bind",
+      "caller": [
+        "<frozen importlib._bootstrap_external>:exec_module",
+        "<frozen importlib._bootstrap>:_call_with_frames_removed",
+        "connection.py:<module>",
+        "connection.py:_has_ipv6"
+      ]
+    }
+  ],
+  "expected_denied_ipv6_probes": 1,
+  "unexpected_blocked_operations": [],
+  "evidence_tamper_rejected": true,
+  "oversized_evidence_abstained": true,
+  "deterministic_labels_and_evidence_unchanged": true,
+  "research_gates_closed": true,
+  "predictor_export_blocked": true,
+  "datasets_accessed": false,
+  "training_performed": false,
+  "semantic_accuracy_validated": false,
+  "hypotheses_sha256": "e4ccfdbb799d064c13ccccedf50be1a49818e910b9e9c0f9b3557b7da1ecfb2d",
+  "regression_suite": {
+    "verification_kind": "synthetic_engineering_only",
+    "pytest_exit_code": 0,
+    "test_counts": {
+      "tests": 681,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "passed": 681
+    },
+    "blocked_operations": [],
+    "research_inputs_and_notebooks_prohibited": true,
+    "actual_data_fitting": false,
+    "real_model_inference": false,
+    "suites": [
+      "ml/tests/test_semantic_candidates.py",
+      "ml/tests/test_semantic_model_failures.py",
+      "ml/tests/test_semantic_review.py",
+      "ml/tests/test_review_adapter.py",
+      "ml/tests/test_legacy_semantic_boundaries.py",
+      "ml/tests/test_context_detectors.py",
+      "ml/tests/test_runtime_compatibility.py",
+      "ml/tests/test_finalization_policy.py",
+      "ml/tests/test_finalization_preflight.py",
+      "ml/tests/test_master3_regressions.py",
+      "experiments/vera_validation/V13D_test_extractor.py",
+      "experiments/vera_validation/V13E_test_policy.py",
+      "experiments/vera_validation/V15_test_autonomous_inference.py",
+      "experiments/vera_validation/V16_test_controller.py",
+      "experiments/vera_validation/V16_test_evidence_constraints.py",
+      "experiments/vera_validation/V17_test_contextual_constraints.py",
+      "experiments/vera_validation/V17_test_semantic_controller.py",
+      "experiments/vera_validation/V20_test_integrity_gate.py",
+      "experiments/vera_validation/V21_test_semantic_candidates.py"
+    ]
+  },
+  "configuration_integrity": {
+    "approved_model_lock_unchanged": true,
+    "hypotheses_unchanged": true,
+    "architecture_and_research_safeguards_unchanged": true
+  }
+}

@@ -18,7 +18,7 @@ describe("extension popup", () => {
         recommendation: "Verify the sender before clicking links.", modelVersion: null
       }) }));
     render(<Popup />);
-    fireEvent.click(screen.getByRole("button", { name: "Analyze Test Email" }));
+    fireEvent.click(await screen.findByRole("button", { name: "Analyze Test Email" }));
     expect(await screen.findByTestId("visit-count")).toHaveTextContent("3");
     expect(screen.getByText(/not a trained ML prediction/)).toBeInTheDocument();
   });
@@ -26,7 +26,7 @@ describe("extension popup", () => {
   it("shows an understandable API failure", async () => {
     vi.stubGlobal("fetch", vi.fn().mockRejectedValue(new TypeError("network")));
     render(<Popup />);
-    fireEvent.click(screen.getByRole("button", { name: "Analyze Test Email" }));
+    fireEvent.click(await screen.findByRole("button", { name: "Analyze Test Email" }));
     expect(await screen.findByRole("alert")).toHaveTextContent("Backend offline");
     expect(screen.getByRole("alert")).toHaveTextContent("Start FastAPI");
   });
@@ -40,8 +40,10 @@ describe("extension popup", () => {
       }
     });
     render(<Popup />);
-    fireEvent.change(screen.getByLabelText("Email source"), { target: { value: "gmail" } });
+    fireEvent.change(await screen.findByLabelText("Email source"), { target: { value: "gmail" } });
     fireEvent.click(screen.getByRole("button", { name: "Analyze Current Email" }));
     expect(await screen.findByRole("alert")).toHaveTextContent("Sentinel could not load on this Gmail tab. Reload Gmail and try again.");
   });
 });
+
+vi.mock("./services/settings", () => ({ loadSettings: async () => ({ backendUrl: "http://127.0.0.1:8000", sourceMode: "mock", includeLinks: false, automaticTracking: false, processingMode: "legacy" }), saveSettings: async () => {} }));

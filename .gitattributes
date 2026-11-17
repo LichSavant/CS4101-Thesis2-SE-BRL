@@ -5,3 +5,9 @@ experiments/datasets-raw/**/*.arff filter=lfs diff=lfs merge=lfs -text
 
 # Preserve the exact approved bytes bound by the feature-freeze candidate.
 ml/se_brl/codebook.v0.1.0.json -text whitespace=blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol
+
+# Preserve approved NLI hypothesis bytes used by the model lock.
+experiments/vera_validation/V13_nli_hypotheses_v0.1.0.json text eol=lf
+
+# Browser packaging checks these canonical port files against approved SHA-256.
+tools/verification/js-review/*.mjs text eol=lf

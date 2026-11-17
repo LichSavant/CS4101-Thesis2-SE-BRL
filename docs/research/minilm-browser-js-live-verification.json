@@ -1,0 +1,306 @@
+{
+  "comparison": {
+    "tokenMatches": 172,
+    "decisionMatches": 477,
+    "logitDeviation": {
+      "maxAbsolute": 1.0013580322265625e-05,
+      "meanAbsolute": 1.4011364151638425e-06,
+      "count": 1431
+    },
+    "probabilityDeviation": {
+      "maxAbsolute": 2.6602270477016354e-06,
+      "meanAbsolute": 2.2419815575716904e-07,
+      "count": 1431
+    },
+    "errors": []
+  },
+  "preprocessingParity": true,
+  "consentParity": true,
+  "pyodideFree": true,
+  "browser": "157.0.8103.51",
+  "csp": "default-src 'self'; script-src 'self' 'wasm-unsafe-eval'; worker-src 'self'; connect-src 'self'; object-src 'none'; base-uri 'none'",
+  "browserSandboxEnabled": true,
+  "browserOfflineDuringAnalysis": true,
+  "wasmThreads": 1,
+  "ortVersion": "1.20.1",
+  "scorerCalls": 1032,
+  "coldInitializationMilliseconds": 2976.8349999785423,
+  "coldWallMilliseconds": 3422.360000014305,
+  "modelFetchMilliseconds": 1448.8849999904633,
+  "modelHashMilliseconds": 312.55000001192093,
+  "modelInitializationMilliseconds": 1046.3700000047684,
+  "reviewInitializationMilliseconds": 16.025000035762787,
+  "tokenizerMilliseconds": 88.61000001430511,
+  "tokenizationMilliseconds": 115.66999995708466,
+  "analysisMilliseconds": 47887.25499999523,
+  "firstInferenceMilliseconds": 276.4000000357628,
+  "warmInferenceMilliseconds": {
+    "count": 158,
+    "median": 254.13499999046326,
+    "p95": 326.289999961853
+  },
+  "completeCaseLatencyMilliseconds": {
+    "count": 28,
+    "median": 250.25499999523163,
+    "p95": 3901.1349999904633
+  },
+  "latencyMilliseconds": {
+    "count": 159,
+    "median": 254.13499999046326,
+    "p95": 326.289999961853,
+    "mean": 297.7394339592202,
+    "scope": "actual WASM session.run for three pairs; tokenization excluded; includes boundary-length case"
+  },
+  "incrementalReadyResidentBytes": 1281179648,
+  "assetStorage": {
+    "modelBytes": 328641531,
+    "packageBytes": {
+      "onnxruntime-web": 96005696,
+      "@huggingface/tokenizers": 360962
+    },
+    "usedPackageBytes": {
+      "ort": 11319554,
+      "tokenizers": 98937
+    },
+    "reviewRuntimeBytes": 112577,
+    "tokenizerConfigBytes": 1357253,
+    "loadedAssetsBytes": 341529852
+  },
+  "reviewCases": [
+    {
+      "name": "urgency",
+      "pass": true
+    },
+    {
+      "name": "fear_threat",
+      "pass": true
+    },
+    {
+      "name": "scarcity",
+      "pass": true
+    },
+    {
+      "name": "curiosity",
+      "pass": true
+    },
+    {
+      "name": "reward_lure",
+      "pass": true
+    },
+    {
+      "name": "authority",
+      "pass": true
+    },
+    {
+      "name": "impersonation",
+      "pass": true
+    },
+    {
+      "name": "brand_exploitation",
+      "pass": true
+    },
+    {
+      "name": "confidentiality_isolation",
+      "pass": true
+    },
+    {
+      "name": "call_to_action",
+      "pass": true
+    },
+    {
+      "name": "credential_sensitive_data_request",
+      "pass": true
+    },
+    {
+      "name": "financial_action_request",
+      "pass": true
+    },
+    {
+      "name": "negation",
+      "pass": true
+    },
+    {
+      "name": "quotation",
+      "pass": true
+    },
+    {
+      "name": "hypothetical",
+      "pass": true
+    },
+    {
+      "name": "unicode",
+      "pass": true
+    },
+    {
+      "name": "identity_unavailable",
+      "pass": true
+    },
+    {
+      "name": "missing_url",
+      "pass": true
+    },
+    {
+      "name": "missing_technical",
+      "pass": true
+    },
+    {
+      "name": "missing_email",
+      "pass": true
+    },
+    {
+      "name": "edge:html_authorized_unicode",
+      "pass": true
+    },
+    {
+      "name": "edge:nested_comment",
+      "pass": true
+    },
+    {
+      "name": "edge:quoted_name",
+      "pass": true
+    },
+    {
+      "name": "edge:malformed_header",
+      "pass": true
+    },
+    {
+      "name": "edge:double_negation_question",
+      "pass": true
+    },
+    {
+      "name": "edge:oversized_review",
+      "pass": true
+    },
+    {
+      "name": "edge:quoted_body",
+      "pass": true
+    },
+    {
+      "name": "edge:unaudited_identity",
+      "pass": true
+    },
+    {
+      "name": "exact_512_tokens",
+      "pass": true
+    },
+    {
+      "name": "513_tokens_abstain",
+      "pass": true
+    },
+    {
+      "name": "64_unit_512_call_budget_replay",
+      "pass": true
+    },
+    {
+      "name": "malformed_inputs_and_export_gate",
+      "pass": true
+    }
+  ],
+  "status": "PASS",
+  "scope": "Live synthetic engineering compatibility; no research release or production integration",
+  "base_commit": "2601030",
+  "cases_passed": 32,
+  "cases_failed": 0,
+  "frozen_cases_passed": 24,
+  "independent_cases_passed": 8,
+  "actual_browser_forwards": 159,
+  "actual_canonical_pytorch_forwards": 159,
+  "network": {
+    "external_requests": [],
+    "requests_during_analysis": [],
+    "csp_violations": [],
+    "no_content_uploads": true
+  },
+  "memory": {
+    "observations": [
+      {
+        "stage": "empty-browser-before-worker",
+        "residentBytes": 414740480,
+        "peakWorkingSetUpperBoundBytes": 418148352,
+        "privateBytes": 220545024
+      },
+      {
+        "stage": "js-tokenizer-before-model",
+        "residentBytes": 470614016,
+        "peakWorkingSetUpperBoundBytes": 476045312,
+        "privateBytes": 266735616
+      },
+      {
+        "stage": "model-ready-before-analysis",
+        "residentBytes": 1695920128,
+        "peakWorkingSetUpperBoundBytes": 1751015424,
+        "privateBytes": 1495601152
+      },
+      {
+        "stage": "analysis-complete-worker-alive",
+        "residentBytes": 1418670080,
+        "peakWorkingSetUpperBoundBytes": 1799401472,
+        "privateBytes": 1206980608
+      }
+    ],
+    "scope": "Only process IDs returned by the isolated Chrome instance; summed live working sets are snapshots. Sum of per-process lifetime peak working sets is an upper bound, not a simultaneous aggregate peak."
+  },
+  "source_model": {
+    "repository": "cross-encoder/nli-MiniLM2-L6-H768",
+    "revision": "b95119ce93d3e065de6214e38cd4a97b0f2f2c6d",
+    "weights_sha256": "ec9c5b6a08b60d7a01b465c7ed44b496244dfd1bed3274c95875a74cea89ab35",
+    "onnx_sha256": "e30e5283a933a7424cd95f45450159979241771dcef999832c2626b480705596",
+    "hypotheses_sha256": "e4ccfdbb799d064c13ccccedf50be1a49818e910b9e9c0f9b3557b7da1ecfb2d"
+  },
+  "provenance": {
+    "modelSha256": "e30e5283a933a7424cd95f45450159979241771dcef999832c2626b480705596",
+    "frozenFixtureSha256": "fdfd8d41dda9ee430ce42d6e358aea5a35adc6ba04c4968c75cc807cc708fd1e",
+    "referenceSha256": "530099e1a6ef02a63fc8319b21004e3aee8591e2ece09a2f0b1f1bd894a65c5c",
+    "runnerSha256": "97dd638716445a51492b37dc33ca72a1e040f1ce0cbce51df49debae04d5c64d",
+    "workerSha256": "28a87485f2a33711e6b1f8ecb82909f490eb0b97f834018479cf2c8edd74b8b4",
+    "browserExecutableSha256": "5b835c10836045119334d9524e62437110e00e1bd20612c9072a0ae155f94a17",
+    "packagePinsSha256": "2a4d13c6d3fd7c4a7a01f7a8f47adb93070536add4e38e2498cb1424c3c07d38",
+    "sourceHashes": {
+      "review.mjs": "7961f2549d80656050a29db362384ae0e7e4b8171a31154307bf6e143a4516a8",
+      "contracts.mjs": "4a350fda377155290025f5c7e75c9915f6c6de5270a6dd51b741bc7db1cadd4d",
+      "mailbox.mjs": "1858ab0f07e95b15e0287b85eac4e1cffef64ad7c789c19bcd0ad0b76f19e098",
+      "python-url.mjs": "20730260284169a83b72ffffb8a393a75959a5dc69d4612fe9484721dd04f517",
+      "suite.mjs": "832f2ede6b4d22b799c2377a6b119219792cedfe62f4e24a60e6a914f1f02cf5",
+      "test.mjs": "b8c0acce33ee6eac367676770b623643560dca6364f52bb6f3e2d6cbb6f57425"
+    },
+    "phase6RecordSha256": "c47f3ab60dd7f3a34db71b9d4dff8c348c1fabc2afbc4288c20896143b596aff",
+    "phase7BRecordSha256": "9460f001ac4dedb58fedd14eb3b839e9850f9b76a707621ebd8ac6341f0ca360",
+    "preparationSha256": "87a08ab2ca5f9ac665fb30bb73c5089dcdfb47f303c8d850da96f20fa7692c70",
+    "tolerances": {
+      "logits_atol": 0.0001,
+      "logits_rtol": 0.001,
+      "probabilities_max_absolute_error": 0.0001,
+      "token_ids_and_attention_masks": "exact",
+      "nli_decisions_and_review_outcomes": "exact; zero discrepancies"
+    },
+    "packageIntegrityRecord": "21d10f560d4a7ac7cad1e00e492a1003c9819f5586c7bdd608d3255d7121fa81"
+  },
+  "oracle_script_sha256": "81adc57e4335016c07d9817fd2d9eb80e3bffbae362b1e62cc2ba715d2c014e4",
+  "raw_browser_report_sha256": "94af808aef9338b88d2ee98f78166ae7406643891c7cd451704fdfcba428db5c",
+  "all_request_paths": [
+    "/",
+    "/worker.js",
+    "/review/review.mjs",
+    "/review/contracts.mjs",
+    "/review/mailbox.mjs",
+    "/review/python-url.mjs",
+    "/packages/tokenizers/dist/tokenizers.mjs",
+    "/packages/ort/dist/ort.wasm.min.mjs",
+    "/data/input.json",
+    "/assets/tokenizer.json",
+    "/assets/tokenizer_config.json",
+    "/assets/config.json",
+    "/model.onnx",
+    "/packages/ort/dist/ort-wasm-simd-threaded.mjs",
+    "/packages/ort/dist/ort-wasm-simd-threaded.wasm"
+  ],
+  "limitations": [
+    "Only frozen and independent synthetic engineering cases; no scientific validity claim.",
+    "Exact review structure/decision parity; probability matrices compared separately within existing FP32 tolerances.",
+    "Scores memoized only within this live run, never supplied from the oracle. Malformed-score injection only in negative guard.",
+    "Warm inference excludes first forward and cache hits. Complete-case latencies mix cached, context-blocked and unavailable cases.",
+    "Cold initialization subtracts explicit host memory-observation pauses; cold wall time also recorded.",
+    "Memory is observed process RSS; summed process lifetime peaks are upper bounds, not a proven simultaneous aggregate peak.",
+    "Strict-CSP loopback browser harness, not loaded MV3. FP32 remains storage- and memory-heavy."
+  ]
+}
