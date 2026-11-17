@@ -1,0 +1,17 @@
+import fs from 'node:fs';
+import path from 'node:path';
+import {performance} from 'node:perf_hooks';
+const start=performance.now();
+const {run}=await import('./suite.mjs');
+const init=performance.now()-start;
+const bundle=JSON.parse(fs.readFileSync(process.argv[2],'utf8'));
+const result=await run(bundle);
+delete result.reports;
+result.initialization_ms=init;
+result.node=process.version;
+result.memory={rss:process.memoryUsage().rss,heap_used:process.memoryUsage().heapUsed,max_rss_bytes:process.resourceUsage().maxRSS*1024,scope:'whole Node verifier including golden fixtures; not isolated review allocation'};
+result.package_bytes=fs.statSync(new URL('./review.mjs',import.meta.url)).size+fs.statSync(new URL('./contracts.mjs',import.meta.url)).size;
+result.scope='Synthetic score replay and canonical Python report oracle; no inference, scientific release or extension integration';
+fs.writeFileSync(path.join(path.dirname(process.argv[2]),'result.json'),JSON.stringify(result,null,2)+'\n');
+console.log(JSON.stringify({...result,failures:result.failures.slice(0,5)},null,2));
+process.exitCode=result.status==='PASS'?0:1;
