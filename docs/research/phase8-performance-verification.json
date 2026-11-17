@@ -1,0 +1,623 @@
+{
+  "status": "PASS",
+  "base_commit": "e6bae36",
+  "scope": "Loaded MV3 synthetic engineering compatibility and measured performance; not scientific validity or production approval",
+  "hardware": {
+    "cpu": "AMD Ryzen 7 7445HS w/ Radeon 740M Graphics     ",
+    "logicalCpus": 12,
+    "availableCpus": 12,
+    "totalMemory": 16396115968
+  },
+  "before": {
+    "per_modality": {
+      "email": {
+        "warm_median_ms": 3786.199999988079,
+        "warm_samples_ms": [
+          3749.100000023842,
+          3786.199999988079,
+          3798.899999976158
+        ],
+        "forwards_per_artifact": 24,
+        "hypothesis_evaluations_per_artifact": 72
+      },
+      "webpage": {
+        "warm_median_ms": 5653.399999976158,
+        "warm_samples_ms": [
+          5671.699999988079,
+          5633,
+          5653.399999976158
+        ],
+        "forwards_per_artifact": 36,
+        "hypothesis_evaluations_per_artifact": 108
+      },
+      "url": {
+        "warm_median_ms": 0.5,
+        "warm_samples_ms": [
+          0.5,
+          0.800000011920929,
+          0.40000003576278687
+        ],
+        "forwards_per_artifact": 0,
+        "hypothesis_evaluations_per_artifact": 0
+      }
+    },
+    "matched_inference_mean_ms": 156.75166666706403,
+    "cold_email": {
+      "kind": "email",
+      "iteration": 0,
+      "milliseconds": 5693.699999988079,
+      "initMs": 1486.300000011921,
+      "forwards": 24,
+      "sessionCount": 1,
+      "requests": 24,
+      "cacheHits": 0,
+      "hypothesisEvaluations": 72,
+      "symbolicPassMs": 26.399999976158142,
+      "tokenizationMs": 11.299999833106995,
+      "tensorPreparationMs": 1.9000000357627869,
+      "inferenceMs": 4137.700000107288,
+      "reviewAndConstraintsMs": 30.100000023841858,
+      "sessionLoad": {
+        "storageReadMs": 3.199999988079071,
+        "modelReadMs": 113.60000002384186,
+        "hashMs": 304.89999997615814,
+        "runtimeAndTokenizerMs": 140.39999997615814,
+        "sessionCreateMs": 923.8999999761581
+      },
+      "threads": 1,
+      "isolated": false,
+      "hardwareConcurrency": 12,
+      "workerRoundTripMs": 5710.800000011921,
+      "messagingMs": 5.500000059604645,
+      "preferenceReadMs": 1.0999999642372131
+    },
+    "warm_email_profile": {
+      "kind": "email",
+      "iteration": 1,
+      "milliseconds": 3749.100000023842,
+      "initMs": 0,
+      "forwards": 24,
+      "sessionCount": 1,
+      "requests": 24,
+      "cacheHits": 0,
+      "hypothesisEvaluations": 72,
+      "symbolicPassMs": 2.5,
+      "tokenizationMs": 3.9999998807907104,
+      "tensorPreparationMs": 1.0000001192092896,
+      "inferenceMs": 3736.2999998927116,
+      "reviewAndConstraintsMs": 5.3000001311302185,
+      "sessionLoad": null,
+      "threads": 1,
+      "isolated": false,
+      "hardwareConcurrency": 12,
+      "workerRoundTripMs": 3749.5,
+      "messagingMs": 0.19999998807907104,
+      "preferenceReadMs": 0.40000003576278687
+    },
+    "budget": {
+      "milliseconds": 2559.100000023842,
+      "initMs": 0,
+      "forwards": 16,
+      "sessionCount": 1,
+      "requests": 512,
+      "cacheHits": 496,
+      "hypothesisEvaluations": 48,
+      "symbolicPassMs": 46,
+      "tokenizationMs": 2.500000298023224,
+      "tensorPreparationMs": 0.2999999523162842,
+      "inferenceMs": 2439.199999988079,
+      "reviewAndConstraintsMs": 71.09999978542328,
+      "sessionLoad": null,
+      "threads": 1,
+      "isolated": false,
+      "hardwareConcurrency": 12,
+      "workerRoundTripMs": 2561,
+      "messagingMs": 1.7999999523162842,
+      "preferenceReadMs": 0.40000003576278687
+    },
+    "ui_render_ms": 0.5,
+    "install_ms": 1002.3235000000002,
+    "extension_load_ms": 6.039200000000164,
+    "memory_observations": [
+      {
+        "stage": "empty-browser",
+        "residentBytes": 404414464,
+        "peakSumUpperBoundBytes": 407379968
+      },
+      {
+        "stage": "installed-no-session",
+        "residentBytes": 1172783104,
+        "peakSumUpperBoundBytes": 1525325824
+      },
+      {
+        "stage": "cold-ready",
+        "residentBytes": 1788891136,
+        "peakSumUpperBoundBytes": 2226192384
+      },
+      {
+        "stage": "warm-ready",
+        "residentBytes": 1470836736,
+        "peakSumUpperBoundBytes": 2229018624
+      }
+    ],
+    "incremental_cold_ready_resident_bytes": 1384476672,
+    "incremental_warm_ready_resident_bytes": 1066422272,
+    "observed_process_peak_sum_upper_bound_bytes": 2229018624
+  },
+  "two_thread_candidate": {
+    "per_modality": {
+      "email": {
+        "warm_median_ms": 2022.8899999856949,
+        "warm_samples_ms": [
+          2022.8899999856949,
+          1992.9150000214577,
+          2024.9900000095367
+        ],
+        "forwards_per_artifact": 24,
+        "hypothesis_evaluations_per_artifact": 72
+      },
+      "webpage": {
+        "warm_median_ms": 3065.475000023842,
+        "warm_samples_ms": [
+          3065.475000023842,
+          3036.925000011921,
+          3082.6150000095367
+        ],
+        "forwards_per_artifact": 36,
+        "hypothesis_evaluations_per_artifact": 108
+      },
+      "url": {
+        "warm_median_ms": 0.5799999833106995,
+        "warm_samples_ms": [
+          0.5300000309944153,
+          0.7350000143051147,
+          0.5799999833106995
+        ],
+        "forwards_per_artifact": 0,
+        "hypothesis_evaluations_per_artifact": 0
+      }
+    },
+    "matched_inference_mean_ms": 84.14630555378066,
+    "cold_email": {
+      "kind": "email",
+      "iteration": 0,
+      "milliseconds": 3095.764999985695,
+      "initMs": 907.5949999690056,
+      "forwards": 24,
+      "sessionCount": 1,
+      "requests": 24,
+      "cacheHits": 0,
+      "hypothesisEvaluations": 72,
+      "symbolicPassMs": 25.139999985694885,
+      "tokenizationMs": 8.515000104904175,
+      "tensorPreparationMs": 0.7899999618530273,
+      "inferenceMs": 2124.310000002384,
+      "reviewAndConstraintsMs": 29.414999961853027,
+      "sessionLoad": {
+        "storageReadMs": 3.4199999570846558,
+        "modelReadMs": 81.79999995231628,
+        "hashMs": 201.36000001430511,
+        "runtimeAndTokenizerMs": 78.375,
+        "sessionCreateMs": 542.410000026226
+      },
+      "threads": 2,
+      "isolated": true,
+      "hardwareConcurrency": 12,
+      "workerRoundTripMs": 3112.1949999928474,
+      "messagingMs": 5.159999966621399,
+      "preferenceReadMs": 0.8700000047683716
+    },
+    "warm_email_profile": {
+      "kind": "email",
+      "iteration": 1,
+      "milliseconds": 2022.8899999856949,
+      "initMs": 0,
+      "forwards": 24,
+      "sessionCount": 1,
+      "requests": 24,
+      "cacheHits": 0,
+      "hypothesisEvaluations": 72,
+      "symbolicPassMs": 1.3100000023841858,
+      "tokenizationMs": 4.549999833106995,
+      "tensorPreparationMs": 0.4899998903274536,
+      "inferenceMs": 2010.655000090599,
+      "reviewAndConstraintsMs": 5.885000169277191,
+      "sessionLoad": null,
+      "threads": 2,
+      "isolated": true,
+      "hardwareConcurrency": 12,
+      "workerRoundTripMs": 2023.2649999856949,
+      "messagingMs": 0.25999999046325684,
+      "preferenceReadMs": 0.3049999475479126
+    },
+    "budget": {
+      "milliseconds": 1446.585000038147,
+      "initMs": 0,
+      "forwards": 16,
+      "sessionCount": 1,
+      "requests": 512,
+      "cacheHits": 496,
+      "hypothesisEvaluations": 48,
+      "symbolicPassMs": 47.74500000476837,
+      "tokenizationMs": 2.3749998807907104,
+      "tensorPreparationMs": 0.270000159740448,
+      "inferenceMs": 1324.7350000143051,
+      "reviewAndConstraintsMs": 71.45999997854233,
+      "sessionLoad": null,
+      "threads": 2,
+      "isolated": true,
+      "hardwareConcurrency": 12,
+      "workerRoundTripMs": 1448.324999988079,
+      "messagingMs": 1.659999966621399,
+      "preferenceReadMs": 0.39499998092651367
+    },
+    "ui_render_ms": 0.39499998092651367,
+    "install_ms": 600.6434999999999,
+    "extension_load_ms": 6.404400000000123,
+    "memory_observations": [
+      {
+        "stage": "empty-browser",
+        "residentBytes": 403259392,
+        "peakSumUpperBoundBytes": 406454272
+      },
+      {
+        "stage": "installed-no-session",
+        "residentBytes": 883527680,
+        "peakSumUpperBoundBytes": 1215184896
+      },
+      {
+        "stage": "cold-ready",
+        "residentBytes": 1834545152,
+        "peakSumUpperBoundBytes": 1953955840
+      },
+      {
+        "stage": "warm-ready",
+        "residentBytes": 1546293248,
+        "peakSumUpperBoundBytes": 1954422784
+      }
+    ],
+    "incremental_cold_ready_resident_bytes": 1431285760,
+    "incremental_warm_ready_resident_bytes": 1143033856,
+    "observed_process_peak_sum_upper_bound_bytes": 1954422784
+  },
+  "after": {
+    "per_modality": {
+      "email": {
+        "warm_median_ms": 1446.535000026226,
+        "warm_samples_ms": [
+          1435.4150000214577,
+          1446.535000026226,
+          1450.5150000452995
+        ],
+        "forwards_per_artifact": 24,
+        "hypothesis_evaluations_per_artifact": 72
+      },
+      "webpage": {
+        "warm_median_ms": 2301.310000002384,
+        "warm_samples_ms": [
+          2330.289999961853,
+          2301.310000002384,
+          2284
+        ],
+        "forwards_per_artifact": 36,
+        "hypothesis_evaluations_per_artifact": 108
+      },
+      "url": {
+        "warm_median_ms": 0.7450000047683716,
+        "warm_samples_ms": [
+          0.7299999594688416,
+          0.7950000166893005,
+          0.7450000047683716
+        ],
+        "forwards_per_artifact": 0,
+        "hypothesis_evaluations_per_artifact": 0
+      }
+    },
+    "matched_inference_mean_ms": 61.98799999952316,
+    "cold_email": {
+      "kind": "email",
+      "iteration": 0,
+      "milliseconds": 2533.1449999809265,
+      "initMs": 940.0600000023842,
+      "forwards": 24,
+      "sessionCount": 1,
+      "requests": 24,
+      "cacheHits": 0,
+      "hypothesisEvaluations": 72,
+      "symbolicPassMs": 24.810000002384186,
+      "tokenizationMs": 10.089999914169312,
+      "tensorPreparationMs": 0.8400000333786011,
+      "inferenceMs": 1520.9799999594688,
+      "reviewAndConstraintsMs": 36.36500006914139,
+      "sessionLoad": {
+        "storageReadMs": 3.1600000262260437,
+        "modelReadMs": 88.05500000715256,
+        "hashMs": 198.07499998807907,
+        "runtimeAndTokenizerMs": 82.57499998807907,
+        "sessionCreateMs": 567.9950000047684
+      },
+      "threads": 4,
+      "isolated": true,
+      "hardwareConcurrency": 12,
+      "workerRoundTripMs": 2548.1749999523163,
+      "messagingMs": 4.829999923706055,
+      "preferenceReadMs": 1.0199999809265137
+    },
+    "warm_email_profile": {
+      "kind": "email",
+      "iteration": 1,
+      "milliseconds": 1435.4150000214577,
+      "initMs": 0,
+      "forwards": 24,
+      "sessionCount": 1,
+      "requests": 24,
+      "cacheHits": 0,
+      "hypothesisEvaluations": 72,
+      "symbolicPassMs": 1.2100000381469727,
+      "tokenizationMs": 4.335000097751617,
+      "tensorPreparationMs": 0.5200000405311584,
+      "inferenceMs": 1422.7850000858307,
+      "reviewAndConstraintsMs": 6.564999759197235,
+      "sessionLoad": null,
+      "threads": 4,
+      "isolated": true,
+      "hardwareConcurrency": 12,
+      "workerRoundTripMs": 1435.824999988079,
+      "messagingMs": 0.29500001668930054,
+      "preferenceReadMs": 0.3149999976158142
+    },
+    "budget": {
+      "milliseconds": 1128.5550000071526,
+      "initMs": 0,
+      "forwards": 16,
+      "sessionCount": 1,
+      "requests": 512,
+      "cacheHits": 496,
+      "hypothesisEvaluations": 48,
+      "symbolicPassMs": 47.30500000715256,
+      "tokenizationMs": 2.880000054836273,
+      "tensorPreparationMs": 0.3749999403953552,
+      "inferenceMs": 996.3400000929832,
+      "reviewAndConstraintsMs": 81.65499991178513,
+      "sessionLoad": null,
+      "threads": 4,
+      "isolated": true,
+      "hardwareConcurrency": 12,
+      "workerRoundTripMs": 1130.375,
+      "messagingMs": 1.715000033378601,
+      "preferenceReadMs": 0.3450000286102295
+    },
+    "ui_render_ms": 0.5099999904632568,
+    "install_ms": 610.4039,
+    "extension_load_ms": 5.55359999999996,
+    "memory_observations": [
+      {
+        "stage": "empty-browser",
+        "residentBytes": 405737472,
+        "peakSumUpperBoundBytes": 409440256
+      },
+      {
+        "stage": "installed-no-session",
+        "residentBytes": 881192960,
+        "peakSumUpperBoundBytes": 1213304832
+      },
+      {
+        "stage": "cold-ready",
+        "residentBytes": 1838170112,
+        "peakSumUpperBoundBytes": 1958580224
+      },
+      {
+        "stage": "warm-ready",
+        "residentBytes": 1548267520,
+        "peakSumUpperBoundBytes": 1958985728
+      }
+    ],
+    "incremental_cold_ready_resident_bytes": 1432432640,
+    "incremental_warm_ready_resident_bytes": 1142530048,
+    "observed_process_peak_sum_upper_bound_bytes": 1958985728
+  },
+  "bottleneck_findings": [
+    "Pinned ONNX batch dimension is exactly 3; no batching/export changes performed.",
+    "Warm email needs 24 unique three-hypothesis forwards; webpage needs 36. No mandatory calls or hypotheses removed.",
+    "Inference dominates warm latency. Tokenization/review/messaging/rendering are minor measured costs.",
+    "Existing per-artifact cache preserves 512 logical calls while reusing 496 repeated scores in the budget case.",
+    "CPU threading improves latency; removal of an immutable Blob copy reduces installation/observed peak memory. Steady resident model memory increases slightly."
+  ],
+  "optimizations": [
+    "Stricter COOP/COEP enables four packaged CPU/WASM threads on capable hardware; two/one fallback, one model session.",
+    "Verified immutable File/Blob stored directly, avoiding another 328 MB Blob allocation. Stored bytes still rehashed before each session.",
+    "Lazy full-report serialization; actual progress stages and clear data-free model errors.",
+    "Generation-safe cancellation across preference reads, capture, model work and UI updates."
+  ],
+  "parity": {
+    "status": "PASS",
+    "live_cases": 32,
+    "frozen_cases": 24,
+    "independent_cases": 8,
+    "measured_live_forwards": 499,
+    "numerical_deviation": {
+      "maximumLogit": 1.0013580322265625e-05,
+      "maximumProbability": 2.6602270477016354e-06
+    },
+    "inference_median_p95_ms": {
+      "count": 499,
+      "median": 65.02499997615814,
+      "p95": 77.82499998807907
+    },
+    "unchanged_tolerances": {
+      "logits_atol": 0.0001,
+      "logits_rtol": 0.001,
+      "probabilities_max_abs": 0.0001
+    },
+    "oracle_sha256": "530099e1a6ef02a63fc8319b21004e3aee8591e2ece09a2f0b1f1bd894a65c5c"
+  },
+  "privacy": {
+    "outbound_analysis_requests": 0,
+    "outbound_acquisition_requests": 0,
+    "new_downloads": 0,
+    "CSP_and_permissions": "CSP unchanged; no new permissions; stricter COOP/COEP",
+    "body_access": "Gmail bodies remain disabled",
+    "persistent_content_storage": false,
+    "legacy_API_fallback": false
+  },
+  "checks": {
+    "extension_unit_passed": 34,
+    "canonical_python_passed": 282,
+    "loaded_browser_passed": 97,
+    "failed": 0,
+    "skipped": 0,
+    "build_and_typecheck": "PASS",
+    "acquisition": [
+      {
+        "name": "second workspace cannot acquire a second model worker",
+        "pass": true
+      },
+      {
+        "name": "malformed semantic scores abstain without label promotion",
+        "pass": true
+      },
+      {
+        "name": "Gmail selected metadata only",
+        "pass": true
+      },
+      {
+        "name": "full report serialization is lazy",
+        "pass": true
+      },
+      {
+        "name": "full review details remain available",
+        "pass": true
+      },
+      {
+        "name": "authorized activeTab webpage capture excludes forms/editable/input",
+        "pass": true
+      },
+      {
+        "name": "clear cancels delayed acquisition without stale evidence",
+        "pass": true
+      },
+      {
+        "name": "URL modality has twelve unavailable content indicators",
+        "pass": true
+      },
+      {
+        "name": "activeTab revocation fails closed",
+        "pass": true
+      },
+      {
+        "name": "failed new capture clears prior artifact evidence",
+        "pass": true
+      },
+      {
+        "name": "local-page CSP blocks backend and eval",
+        "pass": true
+      },
+      {
+        "name": "no Gmail acquisition without consent",
+        "pass": true
+      },
+      {
+        "name": "zero unauthorized outbound content requests",
+        "pass": true
+      }
+    ],
+    "recovery": [
+      {
+        "name": "interrupted installation terminates safely",
+        "pass": true
+      },
+      {
+        "name": "no partial activation after interrupted import",
+        "pass": true
+      },
+      {
+        "name": "real import progress stages are visible",
+        "pass": true
+      },
+      {
+        "name": "same-size wrong SHA has a clear error and preserves prior installation",
+        "pass": true
+      },
+      {
+        "name": "simulated quota exhaustion handled without losing model",
+        "pass": true
+      },
+      {
+        "name": "explicit removal",
+        "pass": true
+      },
+      {
+        "name": "explicit reinstallation",
+        "pass": true
+      },
+      {
+        "name": "active cold inference interruption discards result",
+        "pass": true
+      },
+      {
+        "name": "offline cold worker recovery performs real inference",
+        "pass": true
+      },
+      {
+        "name": "no interrupted artifact persistence",
+        "pass": true
+      }
+    ]
+  },
+  "storage": {
+    "model_bytes": 328641531,
+    "extension_packaged_bytes": 13155288
+  },
+  "profiling_boundaries": [
+    "Symbolic pass includes canonical extraction, report construction and validation; immutable canonical source was not instrumented.",
+    "Review/constraint timing is non-inference remainder, including repeated symbolic validation, postprocessing and control overhead.",
+    "Warm modality medians use three runs after first per-modality run; equal input, model, provider and artifact boundaries.",
+    "Matched mean inference compares the same 180 actual warm forwards per profile, not the historically slower mixed-suite run.",
+    "Memory uses same-browser empty baseline subtraction; process lifetime peak sums are upper bounds, not exact simultaneous aggregate peaks.",
+    "No production forced-GC, altered graph, quantization, cross-artifact content cache, training or calibration."
+  ],
+  "limitations": [
+    "RAM is still high: throughput improvement is not a lightweight claim. Targets apply to measured hardware only.",
+    "Fixed 3-pair model prevents larger batching without a different derived artifact; preserved exact approved ONNX.",
+    "Public model hosting/acquisition requires approval; local-file import remains the working path.",
+    "Web Store review, distribution rights/disclosures, supported hardware matrix and separately authorized real-layout Gmail testing remain."
+  ],
+  "provenance": {
+    "profile_sha256": {
+      "baseline": "a4a8b4ad8b4d87a48f583f609659a7703e680f34fdbce092266305523928aac7",
+      "two-thread": "cd5df97db1c7adeb2c98051076777fd8c76da0fc5cd304832a79f3ee6801eaaa",
+      "four-thread": "b01faa5ff2a2bf4d7aa1a69b07d983c8deed51d52018d65d0a5fd4f95ae6e05f"
+    },
+    "browser_result_sha256": {
+      "result.json": "3eca62e5c2bab9432346d1e34995ee602d2511748adf750bd97c9630709077dc",
+      "acquisition-result.json": "f0305400e6370b0a1ca0ce4f0125b682d749fa4dea814208e1dae72e60cd53f0",
+      "recovery-result.json": "4a8973c38a9fc111b71eef5474bed44f9d77ae697e207c092195e2a19585b005"
+    },
+    "profile_script_sha256": "a013422bdb37485c0db261ba7af827340480da81b4bdcb3aee8d30a70e52e435",
+    "current_asset_manifest_sha256": "790dc759d85b80fdf30eae0d73304791b97a1824aa0ee2c196e3cbaa35891192",
+    "live_engine_hash_matches_final_build": true,
+    "UI_only_followups_verified_in_acquisition_and_recovery": true,
+    "model_manifest": {
+      "repository": "cross-encoder/nli-MiniLM2-L6-H768",
+      "revision": "b95119ce93d3e065de6214e38cd4a97b0f2f2c6d",
+      "weights_sha256": "ec9c5b6a08b60d7a01b465c7ed44b496244dfd1bed3274c95875a74cea89ab35",
+      "onnx_sha256": "e30e5283a933a7424cd95f45450159979241771dcef999832c2626b480705596",
+      "hypotheses_sha256": "e4ccfdbb799d064c13ccccedf50be1a49818e910b9e9c0f9b3557b7da1ecfb2d"
+    }
+  },
+  "historical_same_suite_comparison": {
+    "before_warm_artifact_median_ms": 5480.699999988079,
+    "after_warm_artifact_median_ms": 1528.8550000190735,
+    "before_inference_median_p95_ms": {
+      "count": 499,
+      "median": 232.60000002384186,
+      "p95": 279.30000001192093
+    },
+    "after_inference_median_p95_ms": {
+      "count": 499,
+      "median": 65.02499997615814,
+      "p95": 77.82499998807907
+    },
+    "scope": "Same canonical case suite across phases; system conditions may differ. Matched fresh profiles, not this historical comparison, selected the thread setting."
+  }
+}

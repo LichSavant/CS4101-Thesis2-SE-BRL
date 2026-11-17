@@ -10,6 +10,21 @@ are bounded to one operation; each artifact's memoized scores are discarded afte
 its operation. Canonical 64-unit / 512-call budgets and 512-token abstention stay
 unchanged. A failed model never falls back to FastAPI or becomes negative evidence.
 
+Phase 8 uses stricter COOP/COEP isolation and a bounded CPU/WASM thread pool (four
+on the measured capable hardware; two/one on smaller or non-isolated devices).
+The pinned ONNX graph has a fixed three-pair batch size; it is not rewritten or
+rebatch-exported. Profiling reports exact stage boundaries: the symbolic pass
+includes canonical report construction/validation; the remaining review time
+includes constraint validation and postprocessing. No scientific source is
+instrumented or modified. Installation now stores the verified immutable File/Blob
+directly, avoiding another full-model Blob copy; cached bytes are still rehashed
+before every session. Complete reports are serialized for display only on demand.
+
+Progress shows actual installation stages and completed hypothesis evaluations,
+not invented download percentages. Cancellation invalidates both pending worker
+requests and delayed acquisitions, so old operations cannot repaint a cleared or
+newer artifact. Timings are local, ephemeral diagnostics, never analytics.
+
 `scripting` is the sole added permission: it is used only after an explicit click,
 under the existing temporary `activeTab` grant, to capture a selected ordinary
 webpage. Forms, inputs, editable areas and scripts are excluded. Gmail continues
