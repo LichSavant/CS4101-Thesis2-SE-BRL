@@ -1,5 +1,10 @@
 # SE-BRL reconciliation — local integration review
 
+**Follow-up status:** targeted assessment cleared normal publication of the
+source-only reconciliation branch. The original publication hold described
+below is superseded by the follow-up assessment at the end of this report.
+Main merge still requires final researcher approval.
+
 Research: **SE-BRL: A Transformer-Augmented, Modality-Aware Neuro-Symbolic
 Architecture for Constraint-Governed Social Engineering Behavior Inference and
 Explainable Phishing Detection**. Researchers: Dhanwil Nick M. Alcover and Vera
@@ -134,3 +139,66 @@ nested evaluation settings, and obtain applicable exact-run scientific admission
 Then perform one authorized baseline evaluation before proposing improvements.
 AP/F1 0.80 minimum and 0.90 stretch remain aspirational objectives. No uncontrolled
 optimization or reserved-test tuning is authorized by consolidation.
+
+## Follow-up: targeted LFS publication assessment
+
+The canonical remote was fetched again and remains at
+`ee7976ef04aa6060b0c7a5e18e5a6529e0af695e`. GitHub repository metadata confirms
+public visibility and authenticated push access. No visibility or access settings
+were changed.
+
+Canonical main already references 19 LFS paths representing 15 unique objects.
+Eight email paths represent four shared objects: each raw file below has the same
+object as its cleaned-path counterpart. All eight pointers already exist in
+canonical remote history.
+
+| Raw email path under `experiments/datasets-raw/email/` | Corresponding path under `experiments/data/interim/email/` |
+|---|---|
+| `ceas_08/CEAS_08.csv` | `ceas_08_clean.csv` |
+| `enron/Enron.csv` | `enron_clean.csv` |
+| `nazario/Nazario.csv` | `nazario_clean.csv` |
+| `spamassasin/SpamAssasin.csv` | `spamassassin_clean.csv` |
+
+GitHub's anonymous LFS download-batch metadata API confirmed all 15 objects,
+including all four email objects, available from the existing remote. Only
+existence metadata was requested; no email data or signed download URLs were
+printed, retained or followed. This establishes inherited public availability,
+not permission to redistribute personal information.
+
+The two implementation/report commits introduced 216 new Git blobs, zero new
+LFS pointer blobs and no restricted-path, credential-pattern or JSON row/payload
+candidates in the targeted scan. The newly added CSV tables were already reviewed
+as aggregate metrics or source manifests, not record-level data. Dataset pointers
+are deleted from the candidate tip. `git lfs push --dry-run origin
+reconciliation/canonical-20261125` selected zero uploads. A normal branch push
+therefore adds source/configuration, aggregate historical evidence and provenance;
+it does not upload additional restricted LFS content. The additional follow-up
+commit changes only this report and is inspected before publication.
+
+The publisher's live metadata for [Zenodo record 8339691](https://zenodo.org/records/8339691)
+identifies open access and CC BY 4.0. Existing attribution/provenance is retained.
+That dataset license does not establish subject consent, complete historical
+custody, or institutional permission for individual email contents. Those matters
+remain a separate inherited-exposure review. Publication clearance here applies
+only to the non-sensitive reconciliation changes expressly authorized by the
+researcher; it does not grant dataset redistribution or scientific-fitting authority.
+
+Least disruptive inherited-exposure response: the owner should review custody,
+privacy and third-party rights and decide whether historical public availability
+requires restriction or removal. Changing visibility/access, removing remote LFS
+objects or coordinated history cleanup requires separate approval; none occurred.
+No history rewrite or new source-only orphan repository is necessary for this push.
+
+Continuity check: original E2 baseline, all five frozen matched matrices, nested
+engine, admission records, extension/Transformer implementation, dashboard,
+historical aggregate results and Chapter 5 notebook are present directly in the
+canonical workspace. Chapter 5 retains 16 figure files. Local restricted data
+remain ignored and intact. Vera's accessible contributions remain preserved;
+unpublished work on her original device remains inaccessible and is not certified.
+Scientific fitting remains false. Existing regressions were not repeated because
+this follow-up changes documentation only.
+
+Recommendation: publish the reconciliation branch normally, verify its remote
+SHA, then review the final compare diff and obtain one main-merge approval.
+Until that approval, the canonical workspace stays on the synchronized integration
+branch. Preserve ignored research inputs when subsequently updating main.
