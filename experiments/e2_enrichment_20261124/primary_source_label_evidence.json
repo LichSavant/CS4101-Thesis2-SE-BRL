@@ -1,0 +1,38 @@
+{
+  "source": {
+    "title": "Why Phishing Emails Escape Detection: A Closer Look at the Failure Points",
+    "authors": [
+      "Champa",
+      "Rabbi",
+      "Zibran"
+    ],
+    "year": 2024,
+    "doi": "10.1109/ISDFS60797.2024.10527344",
+    "evidence_location": "Section II-C and Table I"
+  },
+  "published_class_counts": {
+    "Enron": {
+      "legitimate": 15791,
+      "scam": 13976
+    },
+    "SpamAssassin": {
+      "legitimate": 4091,
+      "scam": 1718
+    },
+    "Nazario": {
+      "legitimate": 0,
+      "phishing": 1565
+    },
+    "CEAS-08": {
+      "legitimate": 17312,
+      "scam": 21842
+    }
+  },
+  "snapshot_fingerprint_matches": 4,
+  "class_count_matches": 4,
+  "nazario_phishing_only_confirmed": true,
+  "numeric_mapping_status": "strongly_corroborated_by_counts",
+  "record_level_validation": false,
+  "scientific_acceptance": "PENDING",
+  "research_fitting_authorized": false
+}

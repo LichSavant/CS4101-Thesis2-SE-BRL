@@ -1,0 +1,951 @@
+{
+  "date": "2026-11-05",
+  "timezone": "Asia/Manila",
+  "category": "READ-ONLY METADATA AUDIT; NOT SCIENTIFIC APPROVAL",
+  "proposal": {
+    "path": "Thesis_Proposal_Documents/Alcover & Orbello_Approved Document Proposal.pdf",
+    "sha256": "283338c5535c5553e35266f5083a6380e014637e63d42161c659238e257ad1fe",
+    "relevant_pdf_pages": [
+      57,
+      58,
+      59,
+      60,
+      63,
+      64,
+      65,
+      66,
+      67,
+      68,
+      69,
+      70
+    ],
+    "ceas_role": "default auxiliary; alternative role requires frozen audit support; no such acceptance located"
+  },
+  "analysis": {
+    "scope": "metadata-only aggregate scenario analysis; no assignment files created or changed",
+    "assignment_path": "experiments/results/preprocessing/partitions/email_partition_manifest.csv",
+    "sha256": "38c87c522da47fea6f8f584c2e487af73d89502e9db3130f6298006829241ae4",
+    "historical": {
+      "rows": 38759,
+      "unique_ids": 38759,
+      "duplicate_ids": 0,
+      "duplicate_assignment_rows": 0,
+      "sources": {
+        "CEAS-08": {
+          "rows": 17312,
+          "groups": 3796,
+          "targets": {
+            "0": 17312
+          },
+          "id_namespace_matches": true,
+          "id_min": 0,
+          "id_max": 17311,
+          "ids_contiguous_zero_based": true
+        },
+        "Enron": {
+          "rows": 15791,
+          "groups": 15472,
+          "targets": {
+            "0": 15791
+          },
+          "id_namespace_matches": true,
+          "id_min": 0,
+          "id_max": 15790,
+          "ids_contiguous_zero_based": true
+        },
+        "Nazario": {
+          "rows": 1565,
+          "groups": 1409,
+          "targets": {
+            "1": 1565
+          },
+          "id_namespace_matches": true,
+          "id_min": 0,
+          "id_max": 1564,
+          "ids_contiguous_zero_based": true
+        },
+        "SpamAssassin": {
+          "rows": 4091,
+          "groups": 924,
+          "targets": {
+            "0": 4091
+          },
+          "id_namespace_matches": true,
+          "id_min": 0,
+          "id_max": 4090,
+          "ids_contiguous_zero_based": true
+        }
+      },
+      "groups": 21601,
+      "groups_crossing_partitions": 0,
+      "development_groups_crossing_folds": 0,
+      "groups_with_multiple_sources": 0,
+      "mixed_target_groups": 0,
+      "multirow_groups": 2729,
+      "rows_in_multirow_groups": 19887,
+      "largest_group_rows": 462,
+      "partitions": {
+        "development": {
+          "Nazario": 1095,
+          "CEAS-08": 12118,
+          "Enron": 11053,
+          "SpamAssassin": 2863
+        },
+        "test": {
+          "Nazario": 235,
+          "CEAS-08": 2597,
+          "Enron": 2369,
+          "SpamAssassin": 614
+        },
+        "calibration": {
+          "Nazario": 235,
+          "CEAS-08": 2597,
+          "Enron": 2369,
+          "SpamAssassin": 614
+        }
+      },
+      "partition_targets": {
+        "development": {
+          "0": 26034,
+          "1": 1095
+        },
+        "test": {
+          "0": 5580,
+          "1": 235
+        },
+        "calibration": {
+          "0": 5580,
+          "1": 235
+        }
+      },
+      "development_folds": {
+        "1.0": {
+          "Nazario": 219,
+          "CEAS-08": 2424,
+          "Enron": 2211,
+          "SpamAssassin": 573
+        },
+        "2.0": {
+          "Nazario": 219,
+          "CEAS-08": 2424,
+          "Enron": 2211,
+          "SpamAssassin": 573
+        },
+        "3.0": {
+          "Nazario": 219,
+          "CEAS-08": 2424,
+          "Enron": 2211,
+          "SpamAssassin": 573
+        },
+        "4.0": {
+          "Nazario": 219,
+          "CEAS-08": 2423,
+          "Enron": 2210,
+          "SpamAssassin": 572
+        },
+        "5.0": {
+          "Nazario": 219,
+          "CEAS-08": 2423,
+          "Enron": 2210,
+          "SpamAssassin": 572
+        }
+      },
+      "fold_targets": {
+        "4.0": {
+          "0": 5205,
+          "1": 219
+        },
+        "2.0": {
+          "0": 5208,
+          "1": 219
+        },
+        "3.0": {
+          "0": 5208,
+          "1": 219
+        },
+        "5.0": {
+          "0": 5205,
+          "1": 219
+        },
+        "1.0": {
+          "0": 5208,
+          "1": 219
+        }
+      },
+      "invalid_development_folds": 0,
+      "reserved_nonnull_folds": 0,
+      "positive_count": 1565,
+      "positive_percent": 4.037771872339327,
+      "id_universe_sha256": "65de9189cd5dee587c38933cfa5d30c8ef29d43a5635b7bdc32b83363eb443e1"
+    },
+    "ceas_only": {
+      "rows": 17312,
+      "unique_ids": 17312,
+      "duplicate_ids": 0,
+      "duplicate_assignment_rows": 0,
+      "sources": {
+        "CEAS-08": {
+          "rows": 17312,
+          "groups": 3796,
+          "targets": {
+            "0": 17312
+          },
+          "id_namespace_matches": true,
+          "id_min": 0,
+          "id_max": 17311,
+          "ids_contiguous_zero_based": true
+        }
+      },
+      "groups": 3796,
+      "groups_crossing_partitions": 0,
+      "development_groups_crossing_folds": 0,
+      "groups_with_multiple_sources": 0,
+      "mixed_target_groups": 0,
+      "multirow_groups": 1940,
+      "rows_in_multirow_groups": 15456,
+      "largest_group_rows": 462,
+      "partitions": {
+        "test": {
+          "CEAS-08": 2597
+        },
+        "development": {
+          "CEAS-08": 12118
+        },
+        "calibration": {
+          "CEAS-08": 2597
+        }
+      },
+      "partition_targets": {
+        "test": {
+          "0": 2597
+        },
+        "development": {
+          "0": 12118
+        },
+        "calibration": {
+          "0": 2597
+        }
+      },
+      "development_folds": {
+        "1.0": {
+          "CEAS-08": 2424
+        },
+        "2.0": {
+          "CEAS-08": 2424
+        },
+        "3.0": {
+          "CEAS-08": 2424
+        },
+        "4.0": {
+          "CEAS-08": 2423
+        },
+        "5.0": {
+          "CEAS-08": 2423
+        }
+      },
+      "fold_targets": {
+        "1.0": {
+          "0": 2424
+        },
+        "5.0": {
+          "0": 2423
+        },
+        "3.0": {
+          "0": 2424
+        },
+        "2.0": {
+          "0": 2424
+        },
+        "4.0": {
+          "0": 2423
+        }
+      },
+      "invalid_development_folds": 0,
+      "reserved_nonnull_folds": 0,
+      "positive_count": 0,
+      "positive_percent": 0,
+      "id_universe_sha256": "9cbce0ae788537e8f71ba2e4ce28852782dfa7aa07d1fcc3e0a69a1847e51e5d"
+    },
+    "non_ceas_projection": {
+      "rows": 21447,
+      "unique_ids": 21447,
+      "duplicate_ids": 0,
+      "duplicate_assignment_rows": 0,
+      "sources": {
+        "Enron": {
+          "rows": 15791,
+          "groups": 15472,
+          "targets": {
+            "0": 15791
+          },
+          "id_namespace_matches": true,
+          "id_min": 0,
+          "id_max": 15790,
+          "ids_contiguous_zero_based": true
+        },
+        "Nazario": {
+          "rows": 1565,
+          "groups": 1409,
+          "targets": {
+            "1": 1565
+          },
+          "id_namespace_matches": true,
+          "id_min": 0,
+          "id_max": 1564,
+          "ids_contiguous_zero_based": true
+        },
+        "SpamAssassin": {
+          "rows": 4091,
+          "groups": 924,
+          "targets": {
+            "0": 4091
+          },
+          "id_namespace_matches": true,
+          "id_min": 0,
+          "id_max": 4090,
+          "ids_contiguous_zero_based": true
+        }
+      },
+      "groups": 17805,
+      "groups_crossing_partitions": 0,
+      "development_groups_crossing_folds": 0,
+      "groups_with_multiple_sources": 0,
+      "mixed_target_groups": 0,
+      "multirow_groups": 789,
+      "rows_in_multirow_groups": 4431,
+      "largest_group_rows": 109,
+      "partitions": {
+        "development": {
+          "Nazario": 1095,
+          "Enron": 11053,
+          "SpamAssassin": 2863
+        },
+        "test": {
+          "Nazario": 235,
+          "Enron": 2369,
+          "SpamAssassin": 614
+        },
+        "calibration": {
+          "Nazario": 235,
+          "Enron": 2369,
+          "SpamAssassin": 614
+        }
+      },
+      "partition_targets": {
+        "development": {
+          "0": 13916,
+          "1": 1095
+        },
+        "test": {
+          "0": 2983,
+          "1": 235
+        },
+        "calibration": {
+          "0": 2983,
+          "1": 235
+        }
+      },
+      "development_folds": {
+        "1.0": {
+          "Nazario": 219,
+          "Enron": 2211,
+          "SpamAssassin": 573
+        },
+        "2.0": {
+          "Nazario": 219,
+          "Enron": 2211,
+          "SpamAssassin": 573
+        },
+        "3.0": {
+          "Nazario": 219,
+          "Enron": 2211,
+          "SpamAssassin": 573
+        },
+        "4.0": {
+          "Nazario": 219,
+          "Enron": 2210,
+          "SpamAssassin": 572
+        },
+        "5.0": {
+          "Nazario": 219,
+          "Enron": 2210,
+          "SpamAssassin": 572
+        }
+      },
+      "fold_targets": {
+        "4.0": {
+          "0": 2782,
+          "1": 219
+        },
+        "2.0": {
+          "0": 2784,
+          "1": 219
+        },
+        "3.0": {
+          "0": 2784,
+          "1": 219
+        },
+        "5.0": {
+          "0": 2782,
+          "1": 219
+        },
+        "1.0": {
+          "0": 2784,
+          "1": 219
+        }
+      },
+      "invalid_development_folds": 0,
+      "reserved_nonnull_folds": 0,
+      "positive_count": 1565,
+      "positive_percent": 7.297057863570663,
+      "id_universe_sha256": "67d67885c915cae0f21c0bc61910bf546b863974680fa80cb119129c64daaa18"
+    },
+    "ceas_retained_shared_groups": 0,
+    "projection_limits": "Not a newly audited population or approved split. No raw text/native source rows inspected. Legacy IDs require crosswalk to current clean-position IDs."
+  },
+  "additional_integrity_checks": {
+    "blank_id_or_group_rows": 0,
+    "unexpected_sources": 0,
+    "five_fold_training_validation_checks": [
+      {
+        "scenario": "historical",
+        "fold": 1,
+        "training_rows": 21702,
+        "validation_rows": 5427,
+        "training_targets": {
+          "0": 20826,
+          "1": 876
+        },
+        "validation_targets": {
+          "0": 5208,
+          "1": 219
+        },
+        "group_overlap": 0
+      },
+      {
+        "scenario": "non_ceas_projection",
+        "fold": 1,
+        "training_rows": 12008,
+        "validation_rows": 3003,
+        "training_targets": {
+          "0": 11132,
+          "1": 876
+        },
+        "validation_targets": {
+          "0": 2784,
+          "1": 219
+        },
+        "group_overlap": 0
+      },
+      {
+        "scenario": "historical",
+        "fold": 2,
+        "training_rows": 21702,
+        "validation_rows": 5427,
+        "training_targets": {
+          "0": 20826,
+          "1": 876
+        },
+        "validation_targets": {
+          "0": 5208,
+          "1": 219
+        },
+        "group_overlap": 0
+      },
+      {
+        "scenario": "non_ceas_projection",
+        "fold": 2,
+        "training_rows": 12008,
+        "validation_rows": 3003,
+        "training_targets": {
+          "0": 11132,
+          "1": 876
+        },
+        "validation_targets": {
+          "0": 2784,
+          "1": 219
+        },
+        "group_overlap": 0
+      },
+      {
+        "scenario": "historical",
+        "fold": 3,
+        "training_rows": 21702,
+        "validation_rows": 5427,
+        "training_targets": {
+          "0": 20826,
+          "1": 876
+        },
+        "validation_targets": {
+          "0": 5208,
+          "1": 219
+        },
+        "group_overlap": 0
+      },
+      {
+        "scenario": "non_ceas_projection",
+        "fold": 3,
+        "training_rows": 12008,
+        "validation_rows": 3003,
+        "training_targets": {
+          "0": 11132,
+          "1": 876
+        },
+        "validation_targets": {
+          "0": 2784,
+          "1": 219
+        },
+        "group_overlap": 0
+      },
+      {
+        "scenario": "historical",
+        "fold": 4,
+        "training_rows": 21705,
+        "validation_rows": 5424,
+        "training_targets": {
+          "0": 20829,
+          "1": 876
+        },
+        "validation_targets": {
+          "0": 5205,
+          "1": 219
+        },
+        "group_overlap": 0
+      },
+      {
+        "scenario": "non_ceas_projection",
+        "fold": 4,
+        "training_rows": 12010,
+        "validation_rows": 3001,
+        "training_targets": {
+          "0": 11134,
+          "1": 876
+        },
+        "validation_targets": {
+          "0": 2782,
+          "1": 219
+        },
+        "group_overlap": 0
+      },
+      {
+        "scenario": "historical",
+        "fold": 5,
+        "training_rows": 21705,
+        "validation_rows": 5424,
+        "training_targets": {
+          "0": 20829,
+          "1": 876
+        },
+        "validation_targets": {
+          "0": 5205,
+          "1": 219
+        },
+        "group_overlap": 0
+      },
+      {
+        "scenario": "non_ceas_projection",
+        "fold": 5,
+        "training_rows": 12010,
+        "validation_rows": 3001,
+        "training_targets": {
+          "0": 11134,
+          "1": 876
+        },
+        "validation_targets": {
+          "0": 2782,
+          "1": 219
+        },
+        "group_overlap": 0
+      }
+    ]
+  },
+  "source_register": [
+    {
+      "source": "CEAS-08",
+      "source_access_date": null,
+      "license_evidence": null,
+      "source_snapshot_id": null,
+      "payloads": [
+        {
+          "path": "experiments/datasets-raw/email/ceas_08/CEAS_08.csv",
+          "sha256": "22375e7d5f5a8229dbe987914ee9b3705656c590038662a7df6054629b376074",
+          "matches_fresh_payload_hash": true,
+          "matches_tracked_lfs_oid": true
+        },
+        {
+          "path": "experiments/data/interim/email/ceas_08_clean.csv",
+          "sha256": "22375e7d5f5a8229dbe987914ee9b3705656c590038662a7df6054629b376074",
+          "matches_fresh_payload_hash": true,
+          "matches_tracked_lfs_oid": true
+        }
+      ],
+      "raw_clean_byte_identical": true
+    },
+    {
+      "source": "Enron",
+      "source_access_date": null,
+      "license_evidence": null,
+      "source_snapshot_id": null,
+      "payloads": [
+        {
+          "path": "experiments/datasets-raw/email/enron/Enron.csv",
+          "sha256": "11f28a5bdd3603f1829681ab6b55071b5f9af781b4e6694e39216b2996a96883",
+          "matches_fresh_payload_hash": true,
+          "matches_tracked_lfs_oid": true
+        },
+        {
+          "path": "experiments/data/interim/email/enron_clean.csv",
+          "sha256": "11f28a5bdd3603f1829681ab6b55071b5f9af781b4e6694e39216b2996a96883",
+          "matches_fresh_payload_hash": true,
+          "matches_tracked_lfs_oid": true
+        }
+      ],
+      "raw_clean_byte_identical": true
+    },
+    {
+      "source": "Nazario",
+      "source_access_date": null,
+      "license_evidence": null,
+      "source_snapshot_id": null,
+      "payloads": [
+        {
+          "path": "experiments/datasets-raw/email/nazario/Nazario.csv",
+          "sha256": "b8fbc4158fbdfaff1ed98584c43d72e283c6352d7ade4d457d34c1d79488d184",
+          "matches_fresh_payload_hash": true,
+          "matches_tracked_lfs_oid": true
+        },
+        {
+          "path": "experiments/data/interim/email/nazario_clean.csv",
+          "sha256": "b8fbc4158fbdfaff1ed98584c43d72e283c6352d7ade4d457d34c1d79488d184",
+          "matches_fresh_payload_hash": true,
+          "matches_tracked_lfs_oid": true
+        }
+      ],
+      "raw_clean_byte_identical": true
+    },
+    {
+      "source": "SpamAssassin",
+      "source_access_date": null,
+      "license_evidence": null,
+      "source_snapshot_id": null,
+      "payloads": [
+        {
+          "path": "experiments/datasets-raw/email/spamassasin/SpamAssasin.csv",
+          "sha256": "3bfe8f8abff89f69a98456be50413c2fcb20a476141116dd84ee1507b980c00e",
+          "matches_fresh_payload_hash": true,
+          "matches_tracked_lfs_oid": true
+        },
+        {
+          "path": "experiments/data/interim/email/spamassassin_clean.csv",
+          "sha256": "3bfe8f8abff89f69a98456be50413c2fcb20a476141116dd84ee1507b980c00e",
+          "matches_fresh_payload_hash": true,
+          "matches_tracked_lfs_oid": true
+        }
+      ],
+      "raw_clean_byte_identical": true
+    }
+  ],
+  "historical_aggregate_evidence": {
+    "dataset_inventory": [
+      {
+        "dataset": "CEAS-08",
+        "modality": "email",
+        "file_name": "CEAS_08.csv",
+        "format": "csv",
+        "rows": "39154",
+        "columns": "7",
+        "size_mb": "64.76",
+        "sha256": "22375e7d5f5a8229dbe987914ee9b3705656c590038662a7df6054629b376074"
+      },
+      {
+        "dataset": "Enron",
+        "modality": "email",
+        "file_name": "Enron.csv",
+        "format": "csv",
+        "rows": "29767",
+        "columns": "3",
+        "size_mb": "42.76",
+        "sha256": "11f28a5bdd3603f1829681ab6b55071b5f9af781b4e6694e39216b2996a96883"
+      },
+      {
+        "dataset": "Nazario",
+        "modality": "email",
+        "file_name": "Nazario.csv",
+        "format": "csv",
+        "rows": "1565",
+        "columns": "7",
+        "size_mb": "7.45",
+        "sha256": "b8fbc4158fbdfaff1ed98584c43d72e283c6352d7ade4d457d34c1d79488d184"
+      },
+      {
+        "dataset": "SpamAssassin",
+        "modality": "email",
+        "file_name": "SpamAssasin.csv",
+        "format": "csv",
+        "rows": "5809",
+        "columns": "7",
+        "size_mb": "14.19",
+        "sha256": "3bfe8f8abff89f69a98456be50413c2fcb20a476141116dd84ee1507b980c00e"
+      }
+    ],
+    "exact_duplicates": [
+      {
+        "dataset": "CEAS-08",
+        "rows": "39154",
+        "exact_duplicate_rows": "0",
+        "duplicate_percent": "0.0"
+      },
+      {
+        "dataset": "Enron",
+        "rows": "29767",
+        "exact_duplicate_rows": "0",
+        "duplicate_percent": "0.0"
+      },
+      {
+        "dataset": "Nazario",
+        "rows": "1565",
+        "exact_duplicate_rows": "0",
+        "duplicate_percent": "0.0"
+      },
+      {
+        "dataset": "SpamAssassin",
+        "rows": "5809",
+        "exact_duplicate_rows": "0",
+        "duplicate_percent": "0.0"
+      }
+    ],
+    "label_distribution": [
+      {
+        "dataset": "CEAS-08",
+        "label_column": "label",
+        "native_label": "1",
+        "count": "21842",
+        "percent": "55.78"
+      },
+      {
+        "dataset": "CEAS-08",
+        "label_column": "label",
+        "native_label": "0",
+        "count": "17312",
+        "percent": "44.22"
+      },
+      {
+        "dataset": "Enron",
+        "label_column": "label",
+        "native_label": "0",
+        "count": "15791",
+        "percent": "53.05"
+      },
+      {
+        "dataset": "Enron",
+        "label_column": "label",
+        "native_label": "1",
+        "count": "13976",
+        "percent": "46.95"
+      },
+      {
+        "dataset": "Nazario",
+        "label_column": "label",
+        "native_label": "1",
+        "count": "1565",
+        "percent": "100.0"
+      },
+      {
+        "dataset": "SpamAssassin",
+        "label_column": "label",
+        "native_label": "0",
+        "count": "4091",
+        "percent": "70.43"
+      },
+      {
+        "dataset": "SpamAssassin",
+        "label_column": "label",
+        "native_label": "1",
+        "count": "1718",
+        "percent": "29.57"
+      }
+    ],
+    "verified_label_semantics": [
+      {
+        "dataset": "CEAS-08",
+        "native_label": "0 / 1",
+        "verified_meaning": "pending provenance verification",
+        "status": "do not map yet"
+      },
+      {
+        "dataset": "Enron",
+        "native_label": "0 / 1",
+        "verified_meaning": "pending provenance verification",
+        "status": "do not map yet"
+      },
+      {
+        "dataset": "Nazario",
+        "native_label": "1",
+        "verified_meaning": "pending provenance verification",
+        "status": "do not map yet"
+      },
+      {
+        "dataset": "SpamAssassin",
+        "native_label": "0 / 1",
+        "verified_meaning": "pending provenance verification",
+        "status": "do not map yet"
+      }
+    ],
+    "cleaning_log": [
+      {
+        "dataset": "CEAS-08",
+        "issue": "Missing email text",
+        "audit_evidence": "missing_values.csv and email content audit",
+        "action": "Replaced missing subject/body values with empty strings",
+        "rationale": "No email had both subject and body absent, so usable records were preserved without statistical imputation.",
+        "rows_before": "39154",
+        "rows_after": "39154",
+        "rows_removed": "0",
+        "values_modified": "28.0"
+      },
+      {
+        "dataset": "Enron",
+        "issue": "Missing email text",
+        "audit_evidence": "missing_values.csv and email content audit",
+        "action": "Replaced missing subject/body values with empty strings",
+        "rationale": "No email had both subject and body absent, so usable records were preserved without statistical imputation.",
+        "rows_before": "29767",
+        "rows_after": "29767",
+        "rows_removed": "0",
+        "values_modified": "198.0"
+      },
+      {
+        "dataset": "Nazario",
+        "issue": "Missing email text",
+        "audit_evidence": "missing_values.csv and email content audit",
+        "action": "Replaced missing subject/body values with empty strings",
+        "rationale": "No email had both subject and body absent, so usable records were preserved without statistical imputation.",
+        "rows_before": "1565",
+        "rows_after": "1565",
+        "rows_removed": "0",
+        "values_modified": "4.0"
+      },
+      {
+        "dataset": "SpamAssassin",
+        "issue": "Missing email text",
+        "audit_evidence": "missing_values.csv and email content audit",
+        "action": "Replaced missing subject/body values with empty strings",
+        "rationale": "No email had both subject and body absent, so usable records were preserved without statistical imputation.",
+        "rows_before": "5809",
+        "rows_after": "5809",
+        "rows_removed": "0",
+        "values_modified": "17.0"
+      },
+      {
+        "dataset": "CEAS-08",
+        "issue": "Extreme email body length",
+        "audit_evidence": "email_length_distribution.csv and structural length review",
+        "action": "Retained extreme-length observations",
+        "rationale": "Length alone does not establish corruption. No objective cleaning criterion justified removing these source records.",
+        "rows_before": "39154",
+        "rows_after": "39154",
+        "rows_removed": "0",
+        "values_modified": "0.0"
+      },
+      {
+        "dataset": "Enron",
+        "issue": "Extreme email body length",
+        "audit_evidence": "email_length_distribution.csv and structural length review",
+        "action": "Retained extreme-length observations",
+        "rationale": "Length alone does not establish corruption. No objective cleaning criterion justified removing these source records.",
+        "rows_before": "29767",
+        "rows_after": "29767",
+        "rows_removed": "0",
+        "values_modified": "0.0"
+      },
+      {
+        "dataset": "Nazario",
+        "issue": "Extreme email body length",
+        "audit_evidence": "email_length_distribution.csv and structural length review",
+        "action": "Retained extreme-length observations",
+        "rationale": "Length alone does not establish corruption. No objective cleaning criterion justified removing these source records.",
+        "rows_before": "1565",
+        "rows_after": "1565",
+        "rows_removed": "0",
+        "values_modified": "0.0"
+      },
+      {
+        "dataset": "SpamAssassin",
+        "issue": "Extreme email body length",
+        "audit_evidence": "email_length_distribution.csv and structural length review",
+        "action": "Retained extreme-length observations",
+        "rationale": "Length alone does not establish corruption. No objective cleaning criterion justified removing these source records.",
+        "rows_before": "5809",
+        "rows_after": "5809",
+        "rows_removed": "0",
+        "values_modified": "0.0"
+      },
+      {
+        "dataset": "CEAS-08",
+        "issue": "Native label semantics",
+        "audit_evidence": "label_distribution.csv and verified_label_semantics.csv",
+        "action": "Preserved native labels without harmonization",
+        "rationale": "Cleaning must not introduce unsupported class mappings. Spam and phishing are not assumed to be equivalent, and experimental target construction is deferred to a later stage.",
+        "rows_before": "39154",
+        "rows_after": "39154",
+        "rows_removed": "0",
+        "values_modified": "0.0"
+      },
+      {
+        "dataset": "Enron",
+        "issue": "Native label semantics",
+        "audit_evidence": "label_distribution.csv and verified_label_semantics.csv",
+        "action": "Preserved native labels without harmonization",
+        "rationale": "Cleaning must not introduce unsupported class mappings. Spam and phishing are not assumed to be equivalent, and experimental target construction is deferred to a later stage.",
+        "rows_before": "29767",
+        "rows_after": "29767",
+        "rows_removed": "0",
+        "values_modified": "0.0"
+      },
+      {
+        "dataset": "Nazario",
+        "issue": "Native label semantics",
+        "audit_evidence": "label_distribution.csv and verified_label_semantics.csv",
+        "action": "Preserved native labels without harmonization",
+        "rationale": "Cleaning must not introduce unsupported class mappings. Spam and phishing are not assumed to be equivalent, and experimental target construction is deferred to a later stage.",
+        "rows_before": "1565",
+        "rows_after": "1565",
+        "rows_removed": "0",
+        "values_modified": "0.0"
+      },
+      {
+        "dataset": "SpamAssassin",
+        "issue": "Native label semantics",
+        "audit_evidence": "label_distribution.csv and verified_label_semantics.csv",
+        "action": "Preserved native labels without harmonization",
+        "rationale": "Cleaning must not introduce unsupported class mappings. Spam and phishing are not assumed to be equivalent, and experimental target construction is deferred to a later stage.",
+        "rows_before": "5809",
+        "rows_after": "5809",
+        "rows_removed": "0",
+        "values_modified": "0.0"
+      }
+    ]
+  },
+  "checks": {
+    "no_notebook_execution": true,
+    "no_preparation_or_training": true,
+    "no_assignment_export": true,
+    "no_holdout_predictions_or_outcome_values_parsed": true,
+    "raw_email_csv_rows_parsed": false,
+    "payload_reads": "opaque SHA-256 only"
+  },
+  "id_hash_convention": "SHA-256 of UTF-8 newline-joined sorted observation_id strings, no trailing newline; metadata-only.",
+  "id_compatibility": {
+    "historical": "1a45c53 N03 cells 15/19: filter native-0 rows first, then per-source cumcount",
+    "current": "ml/notebook_contracts.py build_email_population: enumerate cleaned source before filtering",
+    "finding": "Different semantics verified; actual row conflicts not inspected; explicit crosswalk required",
+    "shared_validator": "capture_population allows unique legacy observation_id independently of verified source_row_id; no renaming required if convention accepted"
+  },
+  "options": {
+    "A": "Pending; no automatic selection",
+    "B": "Pending; no amendment adopted",
+    "C": "Pending; native ham/spam not relabeled phishing"
+  },
+  "research_execution_authorized": false,
+  "source_evidence_limit": "Saved aggregate audit counts are historical; fresh source checks cover bytes/LFS identity, not row eligibility or source class truth."
+}

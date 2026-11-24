@@ -147,9 +147,11 @@ class FoldClassifier:
             raise InputContractError("configuration_branch_mismatch")
         self.dictionary, self.model, self.preprocessing, self.configuration = dictionary, model, preprocessing, configuration
         conventional = tuple(c.name for c in dictionary.conventional)
-        self.expected = conventional if configuration in {"E1", "U1"} else behavioral_columns() if configuration == "E2" else conventional + behavioral_columns()
+        behavior_fields = behavioral_columns()
+        self._behavioral_fields = frozenset(behavior_fields)
+        self.expected = conventional if configuration in {"E1", "U1"} else behavior_fields if configuration == "E2" else conventional + behavior_fields
         self.kinds = {c.name: c.kind for c in dictionary.conventional}
-        self.kinds.update({c: "numeric" for c in behavioral_columns()})
+        self.kinds.update({c: "numeric" for c in behavior_fields})
         self.pipeline = None
         self._attempted = False
         self._record = None
@@ -167,14 +169,14 @@ class FoldClassifier:
                     if type(value) is not str or not value.strip():
                         raise InputContractError("missing_or_invalid_text_predictor")
                 elif value is None:
-                    if name in behavioral_columns() or self.preprocessing.numeric_missing == "reject":
+                    if name in self._behavioral_fields or self.preprocessing.numeric_missing == "reject":
                         raise InputContractError("missing_numeric_predictor")
                     value = float("nan")
                 else:
                     if type(value) not in (int, float):
                         raise InputContractError("invalid_numeric_predictor")
                     _positive(abs(value), zero=True)
-                    if name in behavioral_columns() and value not in (0, 1):
+                    if name in self._behavioral_fields and value not in (0, 1):
                         raise InputContractError("binary_behavioral_value_required")
                 values.append(value)
             clean.append(values)

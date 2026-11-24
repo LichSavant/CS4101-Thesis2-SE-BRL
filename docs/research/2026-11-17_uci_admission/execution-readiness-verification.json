@@ -1,0 +1,76 @@
+{
+  "baseline_commit": "d6cbcd25aa53b87f407705ca0aaec95e002543c1",
+  "branch": "research/scientific-validation-20261117",
+  "scope": "release documentation/header and non-data-dependent execution readiness",
+  "actual_research_records_processed": 0,
+  "archive_header_bytes_returned": 1145,
+  "source_members_hashed_or_read": {
+    "complete_archive": "opaque SHA-256",
+    "feature_document": "complete documentation bytes and DOCX XML",
+    "Training Dataset.arff": "header only through @data newline; no source rows requested",
+    "old_arff": "directory metadata only"
+  },
+  "actual_lineage_attrition_or_group_receipts_created": false,
+  "genuine_development_scope_authorized": false,
+  "whole_admission_conditions_passed": 0,
+  "scientific_experiments_executed": 0,
+  "fitting_attempts": 0,
+  "fitting_executions": 0,
+  "defects_repaired": 1,
+  "defect": "Processing scope checked only after all rows were parsed; now validate counts before decoding and stop before interpreting an extra record",
+  "release_comparison_command": [
+    "python",
+    "-B",
+    "-c",
+    "from ml.uci_archive_verification import verify_archive; import json; print(json.dumps(verify_archive('experiments/source-snapshots/uci-327-20261117/phishing-websites.zip'),indent=2))"
+  ],
+  "focused_tests": {
+    "command": [
+      "C:\\Users\\Dhanwil\\AppData\\Local\\Temp\\sebrl-submission-20261117\\venv\\Scripts\\python.exe",
+      "-B",
+      "-m",
+      "pytest",
+      "-p",
+      "ml.tests.no_fit_guard",
+      "-p",
+      "no:cacheprovider",
+      "-q",
+      "--basetemp",
+      ".q/b",
+      "ml/tests/test_uci_archive_verification.py",
+      "ml/tests/test_uci_reconstruction.py",
+      "ml/tests/test_uci_lineage.py"
+    ],
+    "exit_code": 0,
+    "passed": 41,
+    "failed": 0,
+    "skipped": 0,
+    "fitting_attempts": 0,
+    "fitting_executions": 0
+  },
+  "environment": {
+    "PYTHONDONTWRITEBYTECODE": "1",
+    "PYTEST_DISABLE_PLUGIN_AUTOLOAD": "1",
+    "OMP_NUM_THREADS": "1",
+    "OPENBLAS_NUM_THREADS": "1",
+    "DATABASE_URL": "sqlite:///:memory:",
+    "TEMP": "<workspace>/.q",
+    "TMP": "<workspace>/.q"
+  },
+  "non_test_checks": {
+    "source_compilation": "PASS",
+    "machine_admission_consistency": "PASS"
+  },
+  "artifact_sha256": {
+    "ml/uci_archive_verification.py": "d713cafa7c20c758547f36b69f630aae21a50d7b888f2657a80f63a16f5d137a",
+    "ml/uci_reconstruction.py": "01820c3c27c7e9c34d0dff83d36cfbc8b1574cc6f2d9901af9c0250d8c959eb9",
+    "ml/tests/test_uci_archive_verification.py": "9b37b07e43bb8ffc775a2c5bdee7c7e2bbcc5c3a1ab121aefbbcec9183f311a0",
+    "ml/tests/test_uci_reconstruction.py": "47468382493e177d5844873fc9601e97f12b9b4b397a8395df5c12880d0b6bc2",
+    "docs/research/2026-11-17_uci_admission/DOSSIER.md": "c399573ed3e8b43c71ead9660fdf8e64f1119f11ec8c786d7acb0a2223a9cfb3",
+    "docs/research/2026-11-17_uci_admission/admission-status.json": "f0df24975de09ffb4e48dce19da472832891495ddcf190693c5e0d7d6124a665",
+    "docs/research/2026-11-17_uci_admission/release-comparison.json": "9ad0aa91606773512da56699b9bcc550be5e6c844e4d7022ea03955e74a15f7e",
+    "docs/research/2026-11-17_uci_admission/execution-authorization-analysis.json": "371c2e309ceec2962a9b2c3f5d15f9b81ba5f746972f859d767954a1abe63eef",
+    "docs/research/2026-11-17_uci_admission/execution-authorization-request.md": "b81b46a36b5faa7f23b307c1249f20ba987c8789e6bacab8e9a14555b8d166b5",
+    "docs/research/2026-11-17_uci_admission/execution-readiness-focused.txt": "57cdd55e80f3487b2665e465fd5b8c54151f6b40e176231c0140f57077419263"
+  }
+}

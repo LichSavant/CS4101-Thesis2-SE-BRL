@@ -1,0 +1,13 @@
+test_cross_role_group_rejected (tools.test_scientific_validation_snapshot.MetadataTests.test_cross_role_group_rejected) ... ok
+test_duplicate_id_and_fold_crossing_rejected (tools.test_scientific_validation_snapshot.MetadataTests.test_duplicate_id_and_fold_crossing_rejected) ... ok
+test_integrity_never_implies_admission (tools.test_scientific_validation_snapshot.MetadataTests.test_integrity_never_implies_admission) ... ok
+test_lfs_pointer_not_treated_as_metadata (tools.test_scientific_validation_snapshot.MetadataTests.test_lfs_pointer_not_treated_as_metadata) ... ok
+test_malformed_row_rejected (tools.test_scientific_validation_snapshot.MetadataTests.test_malformed_row_rejected) ... ok
+test_reserved_fold_rejected (tools.test_scientific_validation_snapshot.MetadataTests.test_reserved_fold_rejected) ... ok
+test_single_class_fold_rejected_even_with_two_classes_overall (tools.test_scientific_validation_snapshot.MetadataTests.test_single_class_fold_rejected_even_with_two_classes_overall) ... ok
+test_source_target_confounding_reported (tools.test_scientific_validation_snapshot.MetadataTests.test_source_target_confounding_reported) ... ok
+
+----------------------------------------------------------------------
+Ran 8 tests in 0.001s
+
+OK

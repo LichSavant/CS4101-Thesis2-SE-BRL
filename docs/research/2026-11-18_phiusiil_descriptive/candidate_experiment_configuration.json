@@ -1,0 +1,4187 @@
+{
+  "allocation_candidate": {
+    "development_folds": 5,
+    "executed": false,
+    "fractions": [
+      0.7,
+      0.15,
+      0.15
+    ],
+    "maximum_fraction_error": 0.05,
+    "seed": 42
+  },
+  "baseline_implementations": "Existing ml/classifier_adapters.py and ml/experiment_engine.py; implementation availability is not approved scientific execution",
+  "candidate_selection_policy_not_accepted": {
+    "calibration_order": [
+      "brier_score",
+      "ece"
+    ],
+    "confidence": 0.95,
+    "configuration": "U1",
+    "delta_pr": 0.01,
+    "efficiency_order": [
+      "p95_batch_ms",
+      "throughput_artifacts_per_second",
+      "measured_memory_bytes_max",
+      "serialized_model_bytes"
+    ],
+    "families": [
+      "logistic_regression",
+      "linear_svm",
+      "random_forest",
+      "xgboost"
+    ],
+    "hard_limits": {
+      "maximum_memory_bytes": null,
+      "maximum_p95_ms": null,
+      "minimum_precision": null,
+      "minimum_recall": null
+    },
+    "memory_evidence": "unavailable_allowed_without_limit",
+    "protocol_reference": "research:candidate-phiusiil-exploratory-design-20261118-not-authorization",
+    "resamples": 2000,
+    "seed": 42
+  },
+  "comparison_policy": "Same accepted observations, groups, outer/inner folds and scoring; no behavioral E2/E3 views",
+  "dataset": "PhiUSIIL",
+  "dictionary": {
+    "attribution": "Implementation under user-reported joint direction; not independent acceptance",
+    "claim_scope": "exploratory previously-exposed U1 URL-structure subset only",
+    "conventional": [
+      {
+        "kind": "numeric",
+        "name": "URLLength"
+      },
+      {
+        "kind": "numeric",
+        "name": "DomainLength"
+      },
+      {
+        "kind": "numeric",
+        "name": "IsDomainIP"
+      },
+      {
+        "kind": "numeric",
+        "name": "TLDLength"
+      },
+      {
+        "kind": "numeric",
+        "name": "NoOfSubDomain"
+      },
+      {
+        "kind": "numeric",
+        "name": "HasObfuscation"
+      },
+      {
+        "kind": "numeric",
+        "name": "NoOfObfuscatedChar"
+      },
+      {
+        "kind": "numeric",
+        "name": "NoOfLettersInURL"
+      },
+      {
+        "kind": "numeric",
+        "name": "NoOfDegitsInURL"
+      },
+      {
+        "kind": "numeric",
+        "name": "IsHTTPS"
+      }
+    ],
+    "dataset": "PhiUSIIL",
+    "decision_register_sha256": "2d4148e8851a4863016147e14589d9002747446a531a4df095c341441e8db346",
+    "encoding": "source numeric scalars; no learned transforms; later scaling training-fold-only",
+    "feature_dictionary_reference": "docs/research/2026-11-18_technical_admission/PHIUSIIL_DECISION_REGISTER.md#ordered-numeric-fields",
+    "missingness": "reject_missing_nonfinite_nonintegral; no imputation",
+    "protocol_reference": "docs/research/2026-11-18_technical_admission/PHIUSIIL_DECISION_REGISTER.md"
+  },
+  "evaluation_metrics": [
+    "precision",
+    "recall",
+    "f1",
+    "balanced_accuracy",
+    "confusion_matrix",
+    "specificity",
+    "mcc",
+    "average_precision",
+    "roc_auc",
+    "brier_score",
+    "ece"
+  ],
+  "grids_source": "ml/research_settings_candidate.v0.1.0.json, status Pending; full recommended grids retained, not silently reduced",
+  "metric_schema": "Existing ml/evaluation_metrics.py and ml/experiment_artifacts.py; pooled nested OOF AP, confusion matrix [[TN,FP],[FN,TP]], positive target 1; fixed threshold 0.5 after training-only sigmoid calibration",
+  "model_fits": 0,
+  "plans": [
+    {
+      "candidate_budget_not_approved": {
+        "max_base_fits": 665,
+        "max_calibration_fits": 5,
+        "max_seconds": 86400,
+        "max_training_rows": 165089,
+        "threads": 1
+      },
+      "candidate_count": 8,
+      "family": "logistic_regression",
+      "fit_estimate_if_authorized": {
+        "base_fits": 665,
+        "calibration_fits": 5
+      },
+      "launch_after_exact_run_acceptance_only": "python -B -m ml.research_execution --root . --input-run-id phiusiil-u1-logistic-regression-candidate-v1 --authorization-sha256 <independently-trusted-fitting-receipt-sha256> --purpose fit --execute",
+      "runner_specification": {
+        "calibration": {
+          "clip_epsilon": 1e-06,
+          "parameters": {
+            "C": 1000000.0,
+            "class_weight": null,
+            "fit_intercept": true,
+            "max_iter": 2000,
+            "penalty": "l2",
+            "solver": "lbfgs",
+            "tol": 1e-06
+          },
+          "seed": 42,
+          "transform": "logit_probability"
+        },
+        "calibration_edges": [
+          0.0,
+          0.1,
+          0.2,
+          0.3,
+          0.4,
+          0.5,
+          0.6,
+          0.7,
+          0.8,
+          0.9,
+          1.0
+        ],
+        "candidates": [
+          {
+            "family": "logistic_regression",
+            "id": "logistic_regression-000",
+            "parameters": {
+              "C": 0.01,
+              "class_weight": null,
+              "fit_intercept": true,
+              "max_iter": 2000,
+              "penalty": "l2",
+              "solver": "liblinear",
+              "tol": 0.0001
+            },
+            "preprocessing": {
+              "numeric_missing": "reject",
+              "numeric_scaling": "standard",
+              "text_parameters": null
+            },
+            "seed": 42
+          },
+          {
+            "family": "logistic_regression",
+            "id": "logistic_regression-001",
+            "parameters": {
+              "C": 0.01,
+              "class_weight": "balanced",
+              "fit_intercept": true,
+              "max_iter": 2000,
+              "penalty": "l2",
+              "solver": "liblinear",
+              "tol": 0.0001
+            },
+            "preprocessing": {
+              "numeric_missing": "reject",
+              "numeric_scaling": "standard",
+              "text_parameters": null
+            },
+            "seed": 42
+          },
+          {
+            "family": "logistic_regression",
+            "id": "logistic_regression-002",
+            "parameters": {
+              "C": 0.1,
+              "class_weight": null,
+              "fit_intercept": true,
+              "max_iter": 2000,
+              "penalty": "l2",
+              "solver": "liblinear",
+              "tol": 0.0001
+            },
+            "preprocessing": {
+              "numeric_missing": "reject",
+              "numeric_scaling": "standard",
+              "text_parameters": null
+            },
+            "seed": 42
+          },
+          {
+            "family": "logistic_regression",
+            "id": "logistic_regression-003",
+            "parameters": {
+              "C": 0.1,
+              "class_weight": "balanced",
+              "fit_intercept": true,
+              "max_iter": 2000,
+              "penalty": "l2",
+              "solver": "liblinear",
+              "tol": 0.0001
+            },
+            "preprocessing": {
+              "numeric_missing": "reject",
+              "numeric_scaling": "standard",
+              "text_parameters": null
+            },
+            "seed": 42
+          },
+          {
+            "family": "logistic_regression",
+            "id": "logistic_regression-004",
+            "parameters": {
+              "C": 1.0,
+              "class_weight": null,
+              "fit_intercept": true,
+              "max_iter": 2000,
+              "penalty": "l2",
+              "solver": "liblinear",
+              "tol": 0.0001
+            },
+            "preprocessing": {
+              "numeric_missing": "reject",
+              "numeric_scaling": "standard",
+              "text_parameters": null
+            },
+            "seed": 42
+          },
+          {
+            "family": "logistic_regression",
+            "id": "logistic_regression-005",
+            "parameters": {
+              "C": 1.0,
+              "class_weight": "balanced",
+              "fit_intercept": true,
+              "max_iter": 2000,
+              "penalty": "l2",
+              "solver": "liblinear",
+              "tol": 0.0001
+            },
+            "preprocessing": {
+              "numeric_missing": "reject",
+              "numeric_scaling": "standard",
+              "text_parameters": null
+            },
+            "seed": 42
+          },
+          {
+            "family": "logistic_regression",
+            "id": "logistic_regression-006",
+            "parameters": {
+              "C": 10.0,
+              "class_weight": null,
+              "fit_intercept": true,
+              "max_iter": 2000,
+              "penalty": "l2",
+              "solver": "liblinear",
+              "tol": 0.0001
+            },
+            "preprocessing": {
+              "numeric_missing": "reject",
+              "numeric_scaling": "standard",
+              "text_parameters": null
+            },
+            "seed": 42
+          },
+          {
+            "family": "logistic_regression",
+            "id": "logistic_regression-007",
+            "parameters": {
+              "C": 10.0,
+              "class_weight": "balanced",
+              "fit_intercept": true,
+              "max_iter": 2000,
+              "penalty": "l2",
+              "solver": "liblinear",
+              "tol": 0.0001
+            },
+            "preprocessing": {
+              "numeric_missing": "reject",
+              "numeric_scaling": "standard",
+              "text_parameters": null
+            },
+            "seed": 42
+          }
+        ],
+        "configurations": [
+          "U1"
+        ],
+        "omitted_features": [],
+        "protocol_reference": "research:candidate-phiusiil-exploratory-design-20261118-not-authorization",
+        "threshold": {
+          "mode": "fixed",
+          "value": 0.5
+        }
+      }
+    },
+    {
+      "candidate_budget_not_approved": {
+        "max_base_fits": 665,
+        "max_calibration_fits": 5,
+        "max_seconds": 86400,
+        "max_training_rows": 165089,
+        "threads": 1
+      },
+      "candidate_count": 8,
+      "family": "linear_svm",
+      "fit_estimate_if_authorized": {
+        "base_fits": 665,
+        "calibration_fits": 5
+      },
+      "launch_after_exact_run_acceptance_only": "python -B -m ml.research_execution --root . --input-run-id phiusiil-u1-linear-svm-candidate-v1 --authorization-sha256 <independently-trusted-fitting-receipt-sha256> --purpose fit --execute",
+      "runner_specification": {
+        "calibration": {
+          "clip_epsilon": 1e-06,
+          "parameters": {
+            "C": 1000000.0,
+            "class_weight": null,
+            "fit_intercept": true,
+            "max_iter": 2000,
+            "penalty": "l2",
+            "solver": "lbfgs",
+            "tol": 1e-06
+          },
+          "seed": 42,
+          "transform": "identity"
+        },
+        "calibration_edges": [
+          0.0,
+          0.1,
+          0.2,
+          0.3,
+          0.4,
+          0.5,
+          0.6,
+          0.7,
+          0.8,
+          0.9,
+          1.0
+        ],
+        "candidates": [
+          {
+            "family": "linear_svm",
+            "id": "linear_svm-000",
+            "parameters": {
+              "C": 0.01,
+              "class_weight": null,
+              "dual": false,
+              "fit_intercept": true,
+              "loss": "squared_hinge",
+              "max_iter": 2000,
+              "penalty": "l2",
+              "tol": 0.0001
+            },
+            "preprocessing": {
+              "numeric_missing": "reject",
+              "numeric_scaling": "standard",
+              "text_parameters": null
+            },
+            "seed": 42
+          },
+          {
+            "family": "linear_svm",
+            "id": "linear_svm-001",
+            "parameters": {
+              "C": 0.01,
+              "class_weight": "balanced",
+              "dual": false,
+              "fit_intercept": true,
+              "loss": "squared_hinge",
+              "max_iter": 2000,
+              "penalty": "l2",
+              "tol": 0.0001
+            },
+            "preprocessing": {
+              "numeric_missing": "reject",
+              "numeric_scaling": "standard",
+              "text_parameters": null
+            },
+            "seed": 42
+          },
+          {
+            "family": "linear_svm",
+            "id": "linear_svm-002",
+            "parameters": {
+              "C": 0.1,
+              "class_weight": null,
+              "dual": false,
+              "fit_intercept": true,
+              "loss": "squared_hinge",
+              "max_iter": 2000,
+              "penalty": "l2",
+              "tol": 0.0001
+            },
+            "preprocessing": {
+              "numeric_missing": "reject",
+              "numeric_scaling": "standard",
+              "text_parameters": null
+            },
+            "seed": 42
+          },
+          {
+            "family": "linear_svm",
+            "id": "linear_svm-003",
+            "parameters": {
+              "C": 0.1,
+              "class_weight": "balanced",
+              "dual": false,
+              "fit_intercept": true,
+              "loss": "squared_hinge",
+              "max_iter": 2000,
+              "penalty": "l2",
+              "tol": 0.0001
+            },
+            "preprocessing": {
+              "numeric_missing": "reject",
+              "numeric_scaling": "standard",
+              "text_parameters": null
+            },
+            "seed": 42
+          },
+          {
+            "family": "linear_svm",
+            "id": "linear_svm-004",
+            "parameters": {
+              "C": 1.0,
+              "class_weight": null,
+              "dual": false,
+              "fit_intercept": true,
+              "loss": "squared_hinge",
+              "max_iter": 2000,
+              "penalty": "l2",
+              "tol": 0.0001
+            },
+            "preprocessing": {
+              "numeric_missing": "reject",
+              "numeric_scaling": "standard",
+              "text_parameters": null
+            },
+            "seed": 42
+          },
+          {
+            "family": "linear_svm",
+            "id": "linear_svm-005",
+            "parameters": {
+              "C": 1.0,
+              "class_weight": "balanced",
+              "dual": false,
+              "fit_intercept": true,
+              "loss": "squared_hinge",
+              "max_iter": 2000,
+              "penalty": "l2",
+              "tol": 0.0001
+            },
+            "preprocessing": {
+              "numeric_missing": "reject",
+              "numeric_scaling": "standard",
+              "text_parameters": null
+            },
+            "seed": 42
+          },
+          {
+            "family": "linear_svm",
+            "id": "linear_svm-006",
+            "parameters": {
+              "C": 10.0,
+              "class_weight": null,
+              "dual": false,
+              "fit_intercept": true,
+              "loss": "squared_hinge",
+              "max_iter": 2000,
+              "penalty": "l2",
+              "tol": 0.0001
+            },
+            "preprocessing": {
+              "numeric_missing": "reject",
+              "numeric_scaling": "standard",
+              "text_parameters": null
+            },
+            "seed": 42
+          },
+          {
+            "family": "linear_svm",
+            "id": "linear_svm-007",
+            "parameters": {
+              "C": 10.0,
+              "class_weight": "balanced",
+              "dual": false,
+              "fit_intercept": true,
+              "loss": "squared_hinge",
+              "max_iter": 2000,
+              "penalty": "l2",
+              "tol": 0.0001
+            },
+            "preprocessing": {
+              "numeric_missing": "reject",
+              "numeric_scaling": "standard",
+              "text_parameters": null
+            },
+            "seed": 42
+          }
+        ],
+        "configurations": [
+          "U1"
+        ],
+        "omitted_features": [],
+        "protocol_reference": "research:candidate-phiusiil-exploratory-design-20261118-not-authorization",
+        "threshold": {
+          "mode": "fixed",
+          "value": 0.5
+        }
+      }
+    },
+    {
+      "candidate_budget_not_approved": {
+        "max_base_fits": 5785,
+        "max_calibration_fits": 5,
+        "max_seconds": 86400,
+        "max_training_rows": 165089,
+        "threads": 1
+      },
+      "candidate_count": 72,
+      "family": "random_forest",
+      "fit_estimate_if_authorized": {
+        "base_fits": 5785,
+        "calibration_fits": 5
+      },
+      "launch_after_exact_run_acceptance_only": "python -B -m ml.research_execution --root . --input-run-id phiusiil-u1-random-forest-candidate-v1 --authorization-sha256 <independently-trusted-fitting-receipt-sha256> --purpose fit --execute",
+      "runner_specification": {
+        "calibration": {
+          "clip_epsilon": 1e-06,
+          "parameters": {
+            "C": 1000000.0,
+            "class_weight": null,
+            "fit_intercept": true,
+            "max_iter": 2000,
+            "penalty": "l2",
+            "solver": "lbfgs",
+            "tol": 1e-06
+          },
+          "seed": 42,
+          "transform": "logit_probability"
+        },
+        "calibration_edges": [
+          0.0,
+          0.1,
+          0.2,
+          0.3,
+          0.4,
+          0.5,
+          0.6,
+          0.7,
+          0.8,
+          0.9,
+          1.0
+        ],
+        "candidates": [
+          {
+            "family": "random_forest",
+            "id": "random_forest-000",
+            "parameters": {
+              "bootstrap": true,
+              "class_weight": "balanced",
+              "criterion": "gini",
+              "max_depth": null,
+              "max_features": "sqrt",
+              "min_samples_leaf": 1,
+              "n_estimators": 300,
+              "n_jobs": 1
+            },
+            "preprocessing": {
+              "numeric_missing": "reject",
+              "numeric_scaling": "none",
+              "text_parameters": null
+            },
+            "seed": 42
+          },
+          {
+            "family": "random_forest",
+            "id": "random_forest-001",
+            "parameters": {
+              "bootstrap": true,
+              "class_weight": "balanced_subsample",
+              "criterion": "gini",
+              "max_depth": null,
+              "max_features": "sqrt",
+              "min_samples_leaf": 1,
+              "n_estimators": 300,
+              "n_jobs": 1
+            },
+            "preprocessing": {
+              "numeric_missing": "reject",
+              "numeric_scaling": "none",
+              "text_parameters": null
+            },
+            "seed": 42
+          },
+          {
+            "family": "random_forest",
+            "id": "random_forest-002",
+            "parameters": {
+              "bootstrap": true,
+              "class_weight": "balanced",
+              "criterion": "gini",
+              "max_depth": null,
+              "max_features": 0.5,
+              "min_samples_leaf": 1,
+              "n_estimators": 300,
+              "n_jobs": 1
+            },
+            "preprocessing": {
+              "numeric_missing": "reject",
+              "numeric_scaling": "none",
+              "text_parameters": null
+            },
+            "seed": 42
+          },
+          {
+            "family": "random_forest",
+            "id": "random_forest-003",
+            "parameters": {
+              "bootstrap": true,
+              "class_weight": "balanced_subsample",
+              "criterion": "gini",
+              "max_depth": null,
+              "max_features": 0.5,
+              "min_samples_leaf": 1,
+              "n_estimators": 300,
+              "n_jobs": 1
+            },
+            "preprocessing": {
+              "numeric_missing": "reject",
+              "numeric_scaling": "none",
+              "text_parameters": null
+            },
+            "seed": 42
+          },
+          {
+            "family": "random_forest",
+            "id": "random_forest-004",
+            "parameters": {
+              "bootstrap": true,
+              "class_weight": "balanced",
+              "criterion": "gini",
+              "max_depth": null,
+              "max_features": "sqrt",
+              "min_samples_leaf": 3,
+              "n_estimators": 300,
+              "n_jobs": 1
+            },
+            "preprocessing": {
+              "numeric_missing": "reject",
+              "numeric_scaling": "none",
+              "text_parameters": null
+            },
+            "seed": 42
+          },
+          {
+            "family": "random_forest",
+            "id": "random_forest-005",
+            "parameters": {
+              "bootstrap": true,
+              "class_weight": "balanced_subsample",
+              "criterion": "gini",
+              "max_depth": null,
+              "max_features": "sqrt",
+              "min_samples_leaf": 3,
+              "n_estimators": 300,
+              "n_jobs": 1
+            },
+            "preprocessing": {
+              "numeric_missing": "reject",
+              "numeric_scaling": "none",
+              "text_parameters": null
+            },
+            "seed": 42
+          },
+          {
+            "family": "random_forest",
+            "id": "random_forest-006",
+            "parameters": {
+              "bootstrap": true,
+              "class_weight": "balanced",
+              "criterion": "gini",
+              "max_depth": null,
+              "max_features": 0.5,
+              "min_samples_leaf": 3,
+              "n_estimators": 300,
+              "n_jobs": 1
+            },
+            "preprocessing": {
+              "numeric_missing": "reject",
+              "numeric_scaling": "none",
+              "text_parameters": null
+            },
+            "seed": 42
+          },
+          {
+            "family": "random_forest",
+            "id": "random_forest-007",
+            "parameters": {
+              "bootstrap": true,
+              "class_weight": "balanced_subsample",
+              "criterion": "gini",
+              "max_depth": null,
+              "max_features": 0.5,
+              "min_samples_leaf": 3,
+              "n_estimators": 300,
+              "n_jobs": 1
+            },
+            "preprocessing": {
+              "numeric_missing": "reject",
+              "numeric_scaling": "none",
+              "text_parameters": null
+            },
+            "seed": 42
+          },
+          {
+            "family": "random_forest",
+            "id": "random_forest-008",
+            "parameters": {
+              "bootstrap": true,
+              "class_weight": "balanced",
+              "criterion": "gini",
+              "max_depth": null,
+              "max_features": "sqrt",
+              "min_samples_leaf": 5,
+              "n_estimators": 300,
+              "n_jobs": 1
+            },
+            "preprocessing": {
+              "numeric_missing": "reject",
+              "numeric_scaling": "none",
+              "text_parameters": null
+            },
+            "seed": 42
+          },
+          {
+            "family": "random_forest",
+            "id": "random_forest-009",
+            "parameters": {
+              "bootstrap": true,
+              "class_weight": "balanced_subsample",
+              "criterion": "gini",
+              "max_depth": null,
+              "max_features": "sqrt",
+              "min_samples_leaf": 5,
+              "n_estimators": 300,
+              "n_jobs": 1
+            },
+            "preprocessing": {
+              "numeric_missing": "reject",
+              "numeric_scaling": "none",
+              "text_parameters": null
+            },
+            "seed": 42
+          },
+          {
+            "family": "random_forest",
+            "id": "random_forest-010",
+            "parameters": {
+              "bootstrap": true,
+              "class_weight": "balanced",
+              "criterion": "gini",
+              "max_depth": null,
+              "max_features": 0.5,
+              "min_samples_leaf": 5,
+              "n_estimators": 300,
+              "n_jobs": 1
+            },
+            "preprocessing": {
+              "numeric_missing": "reject",
+              "numeric_scaling": "none",
+              "text_parameters": null
+            },
+            "seed": 42
+          },
+          {
+            "family": "random_forest",
+            "id": "random_forest-011",
+            "parameters": {
+              "bootstrap": true,
+              "class_weight": "balanced_subsample",
+              "criterion": "gini",
+              "max_depth": null,
+              "max_features": 0.5,
+              "min_samples_leaf": 5,
+              "n_estimators": 300,
+              "n_jobs": 1
+            },
+            "preprocessing": {
+              "numeric_missing": "reject",
+              "numeric_scaling": "none",
+              "text_parameters": null
+            },
+            "seed": 42
+          },
+          {
+            "family": "random_forest",
+            "id": "random_forest-012",
+            "parameters": {
+              "bootstrap": true,
+              "class_weight": "balanced",
+              "criterion": "gini",
+              "max_depth": 20,
+              "max_features": "sqrt",
+              "min_samples_leaf": 1,
+              "n_estimators": 300,
+              "n_jobs": 1
+            },
+            "preprocessing": {
+              "numeric_missing": "reject",
+              "numeric_scaling": "none",
+              "text_parameters": null
+            },
+            "seed": 42
+          },
+          {
+            "family": "random_forest",
+            "id": "random_forest-013",
+            "parameters": {
+              "bootstrap": true,
+              "class_weight": "balanced_subsample",
+              "criterion": "gini",
+              "max_depth": 20,
+              "max_features": "sqrt",
+              "min_samples_leaf": 1,
+              "n_estimators": 300,
+              "n_jobs": 1
+            },
+            "preprocessing": {
+              "numeric_missing": "reject",
+              "numeric_scaling": "none",
+              "text_parameters": null
+            },
+            "seed": 42
+          },
+          {
+            "family": "random_forest",
+            "id": "random_forest-014",
+            "parameters": {
+              "bootstrap": true,
+              "class_weight": "balanced",
+              "criterion": "gini",
+              "max_depth": 20,
+              "max_features": 0.5,
+              "min_samples_leaf": 1,
+              "n_estimators": 300,
+              "n_jobs": 1
+            },
+            "preprocessing": {
+              "numeric_missing": "reject",
+              "numeric_scaling": "none",
+              "text_parameters": null
+            },
+            "seed": 42
+          },
+          {
+            "family": "random_forest",
+            "id": "random_forest-015",
+            "parameters": {
+              "bootstrap": true,
+              "class_weight": "balanced_subsample",
+              "criterion": "gini",
+              "max_depth": 20,
+              "max_features": 0.5,
+              "min_samples_leaf": 1,
+              "n_estimators": 300,
+              "n_jobs": 1
+            },
+            "preprocessing": {
+              "numeric_missing": "reject",
+              "numeric_scaling": "none",
+              "text_parameters": null
+            },
+            "seed": 42
+          },
+          {
+            "family": "random_forest",
+            "id": "random_forest-016",
+            "parameters": {
+              "bootstrap": true,
+              "class_weight": "balanced",
+              "criterion": "gini",
+              "max_depth": 20,
+              "max_features": "sqrt",
+              "min_samples_leaf": 3,
+              "n_estimators": 300,
+              "n_jobs": 1
+            },
+            "preprocessing": {
+              "numeric_missing": "reject",
+              "numeric_scaling": "none",
+              "text_parameters": null
+            },
+            "seed": 42
+          },
+          {
+            "family": "random_forest",
+            "id": "random_forest-017",
+            "parameters": {
+              "bootstrap": true,
+              "class_weight": "balanced_subsample",
+              "criterion": "gini",
+              "max_depth": 20,
+              "max_features": "sqrt",
+              "min_samples_leaf": 3,
+              "n_estimators": 300,
+              "n_jobs": 1
+            },
+            "preprocessing": {
+              "numeric_missing": "reject",
+              "numeric_scaling": "none",
+              "text_parameters": null
+            },
+            "seed": 42
+          },
+          {
+            "family": "random_forest",
+            "id": "random_forest-018",
+            "parameters": {
+              "bootstrap": true,
+              "class_weight": "balanced",
+              "criterion": "gini",
+              "max_depth": 20,
+              "max_features": 0.5,
+              "min_samples_leaf": 3,
+              "n_estimators": 300,
+              "n_jobs": 1
+            },
+            "preprocessing": {
+              "numeric_missing": "reject",
+              "numeric_scaling": "none",
+              "text_parameters": null
+            },
+            "seed": 42
+          },
+          {
+            "family": "random_forest",
+            "id": "random_forest-019",
+            "parameters": {
+              "bootstrap": true,
+              "class_weight": "balanced_subsample",
+              "criterion": "gini",
+              "max_depth": 20,
+              "max_features": 0.5,
+              "min_samples_leaf": 3,
+              "n_estimators": 300,
+              "n_jobs": 1
+            },
+            "preprocessing": {
+              "numeric_missing": "reject",
+              "numeric_scaling": "none",
+              "text_parameters": null
+            },
+            "seed": 42
+          },
+          {
+            "family": "random_forest",
+            "id": "random_forest-020",
+            "parameters": {
+              "bootstrap": true,
+              "class_weight": "balanced",
+              "criterion": "gini",
+              "max_depth": 20,
+              "max_features": "sqrt",
+              "min_samples_leaf": 5,
+              "n_estimators": 300,
+              "n_jobs": 1
+            },
+            "preprocessing": {
+              "numeric_missing": "reject",
+              "numeric_scaling": "none",
+              "text_parameters": null
+            },
+            "seed": 42
+          },
+          {
+            "family": "random_forest",
+            "id": "random_forest-021",
+            "parameters": {
+              "bootstrap": true,
+              "class_weight": "balanced_subsample",
+              "criterion": "gini",
+              "max_depth": 20,
+              "max_features": "sqrt",
+              "min_samples_leaf": 5,
+              "n_estimators": 300,
+              "n_jobs": 1
+            },
+            "preprocessing": {
+              "numeric_missing": "reject",
+              "numeric_scaling": "none",
+              "text_parameters": null
+            },
+            "seed": 42
+          },
+          {
+            "family": "random_forest",
+            "id": "random_forest-022",
+            "parameters": {
+              "bootstrap": true,
+              "class_weight": "balanced",
+              "criterion": "gini",
+              "max_depth": 20,
+              "max_features": 0.5,
+              "min_samples_leaf": 5,
+              "n_estimators": 300,
+              "n_jobs": 1
+            },
+            "preprocessing": {
+              "numeric_missing": "reject",
+              "numeric_scaling": "none",
+              "text_parameters": null
+            },
+            "seed": 42
+          },
+          {
+            "family": "random_forest",
+            "id": "random_forest-023",
+            "parameters": {
+              "bootstrap": true,
+              "class_weight": "balanced_subsample",
+              "criterion": "gini",
+              "max_depth": 20,
+              "max_features": 0.5,
+              "min_samples_leaf": 5,
+              "n_estimators": 300,
+              "n_jobs": 1
+            },
+            "preprocessing": {
+              "numeric_missing": "reject",
+              "numeric_scaling": "none",
+              "text_parameters": null
+            },
+            "seed": 42
+          },
+          {
+            "family": "random_forest",
+            "id": "random_forest-024",
+            "parameters": {
+              "bootstrap": true,
+              "class_weight": "balanced",
+              "criterion": "gini",
+              "max_depth": 40,
+              "max_features": "sqrt",
+              "min_samples_leaf": 1,
+              "n_estimators": 300,
+              "n_jobs": 1
+            },
+            "preprocessing": {
+              "numeric_missing": "reject",
+              "numeric_scaling": "none",
+              "text_parameters": null
+            },
+            "seed": 42
+          },
+          {
+            "family": "random_forest",
+            "id": "random_forest-025",
+            "parameters": {
+              "bootstrap": true,
+              "class_weight": "balanced_subsample",
+              "criterion": "gini",
+              "max_depth": 40,
+              "max_features": "sqrt",
+              "min_samples_leaf": 1,
+              "n_estimators": 300,
+              "n_jobs": 1
+            },
+            "preprocessing": {
+              "numeric_missing": "reject",
+              "numeric_scaling": "none",
+              "text_parameters": null
+            },
+            "seed": 42
+          },
+          {
+            "family": "random_forest",
+            "id": "random_forest-026",
+            "parameters": {
+              "bootstrap": true,
+              "class_weight": "balanced",
+              "criterion": "gini",
+              "max_depth": 40,
+              "max_features": 0.5,
+              "min_samples_leaf": 1,
+              "n_estimators": 300,
+              "n_jobs": 1
+            },
+            "preprocessing": {
+              "numeric_missing": "reject",
+              "numeric_scaling": "none",
+              "text_parameters": null
+            },
+            "seed": 42
+          },
+          {
+            "family": "random_forest",
+            "id": "random_forest-027",
+            "parameters": {
+              "bootstrap": true,
+              "class_weight": "balanced_subsample",
+              "criterion": "gini",
+              "max_depth": 40,
+              "max_features": 0.5,
+              "min_samples_leaf": 1,
+              "n_estimators": 300,
+              "n_jobs": 1
+            },
+            "preprocessing": {
+              "numeric_missing": "reject",
+              "numeric_scaling": "none",
+              "text_parameters": null
+            },
+            "seed": 42
+          },
+          {
+            "family": "random_forest",
+            "id": "random_forest-028",
+            "parameters": {
+              "bootstrap": true,
+              "class_weight": "balanced",
+              "criterion": "gini",
+              "max_depth": 40,
+              "max_features": "sqrt",
+              "min_samples_leaf": 3,
+              "n_estimators": 300,
+              "n_jobs": 1
+            },
+            "preprocessing": {
+              "numeric_missing": "reject",
+              "numeric_scaling": "none",
+              "text_parameters": null
+            },
+            "seed": 42
+          },
+          {
+            "family": "random_forest",
+            "id": "random_forest-029",
+            "parameters": {
+              "bootstrap": true,
+              "class_weight": "balanced_subsample",
+              "criterion": "gini",
+              "max_depth": 40,
+              "max_features": "sqrt",
+              "min_samples_leaf": 3,
+              "n_estimators": 300,
+              "n_jobs": 1
+            },
+            "preprocessing": {
+              "numeric_missing": "reject",
+              "numeric_scaling": "none",
+              "text_parameters": null
+            },
+            "seed": 42
+          },
+          {
+            "family": "random_forest",
+            "id": "random_forest-030",
+            "parameters": {
+              "bootstrap": true,
+              "class_weight": "balanced",
+              "criterion": "gini",
+              "max_depth": 40,
+              "max_features": 0.5,
+              "min_samples_leaf": 3,
+              "n_estimators": 300,
+              "n_jobs": 1
+            },
+            "preprocessing": {
+              "numeric_missing": "reject",
+              "numeric_scaling": "none",
+              "text_parameters": null
+            },
+            "seed": 42
+          },
+          {
+            "family": "random_forest",
+            "id": "random_forest-031",
+            "parameters": {
+              "bootstrap": true,
+              "class_weight": "balanced_subsample",
+              "criterion": "gini",
+              "max_depth": 40,
+              "max_features": 0.5,
+              "min_samples_leaf": 3,
+              "n_estimators": 300,
+              "n_jobs": 1
+            },
+            "preprocessing": {
+              "numeric_missing": "reject",
+              "numeric_scaling": "none",
+              "text_parameters": null
+            },
+            "seed": 42
+          },
+          {
+            "family": "random_forest",
+            "id": "random_forest-032",
+            "parameters": {
+              "bootstrap": true,
+              "class_weight": "balanced",
+              "criterion": "gini",
+              "max_depth": 40,
+              "max_features": "sqrt",
+              "min_samples_leaf": 5,
+              "n_estimators": 300,
+              "n_jobs": 1
+            },
+            "preprocessing": {
+              "numeric_missing": "reject",
+              "numeric_scaling": "none",
+              "text_parameters": null
+            },
+            "seed": 42
+          },
+          {
+            "family": "random_forest",
+            "id": "random_forest-033",
+            "parameters": {
+              "bootstrap": true,
+              "class_weight": "balanced_subsample",
+              "criterion": "gini",
+              "max_depth": 40,
+              "max_features": "sqrt",
+              "min_samples_leaf": 5,
+              "n_estimators": 300,
+              "n_jobs": 1
+            },
+            "preprocessing": {
+              "numeric_missing": "reject",
+              "numeric_scaling": "none",
+              "text_parameters": null
+            },
+            "seed": 42
+          },
+          {
+            "family": "random_forest",
+            "id": "random_forest-034",
+            "parameters": {
+              "bootstrap": true,
+              "class_weight": "balanced",
+              "criterion": "gini",
+              "max_depth": 40,
+              "max_features": 0.5,
+              "min_samples_leaf": 5,
+              "n_estimators": 300,
+              "n_jobs": 1
+            },
+            "preprocessing": {
+              "numeric_missing": "reject",
+              "numeric_scaling": "none",
+              "text_parameters": null
+            },
+            "seed": 42
+          },
+          {
+            "family": "random_forest",
+            "id": "random_forest-035",
+            "parameters": {
+              "bootstrap": true,
+              "class_weight": "balanced_subsample",
+              "criterion": "gini",
+              "max_depth": 40,
+              "max_features": 0.5,
+              "min_samples_leaf": 5,
+              "n_estimators": 300,
+              "n_jobs": 1
+            },
+            "preprocessing": {
+              "numeric_missing": "reject",
+              "numeric_scaling": "none",
+              "text_parameters": null
+            },
+            "seed": 42
+          },
+          {
+            "family": "random_forest",
+            "id": "random_forest-036",
+            "parameters": {
+              "bootstrap": true,
+              "class_weight": "balanced",
+              "criterion": "gini",
+              "max_depth": null,
+              "max_features": "sqrt",
+              "min_samples_leaf": 1,
+              "n_estimators": 600,
+              "n_jobs": 1
+            },
+            "preprocessing": {
+              "numeric_missing": "reject",
+              "numeric_scaling": "none",
+              "text_parameters": null
+            },
+            "seed": 42
+          },
+          {
+            "family": "random_forest",
+            "id": "random_forest-037",
+            "parameters": {
+              "bootstrap": true,
+              "class_weight": "balanced_subsample",
+              "criterion": "gini",
+              "max_depth": null,
+              "max_features": "sqrt",
+              "min_samples_leaf": 1,
+              "n_estimators": 600,
+              "n_jobs": 1
+            },
+            "preprocessing": {
+              "numeric_missing": "reject",
+              "numeric_scaling": "none",
+              "text_parameters": null
+            },
+            "seed": 42
+          },
+          {
+            "family": "random_forest",
+            "id": "random_forest-038",
+            "parameters": {
+              "bootstrap": true,
+              "class_weight": "balanced",
+              "criterion": "gini",
+              "max_depth": null,
+              "max_features": 0.5,
+              "min_samples_leaf": 1,
+              "n_estimators": 600,
+              "n_jobs": 1
+            },
+            "preprocessing": {
+              "numeric_missing": "reject",
+              "numeric_scaling": "none",
+              "text_parameters": null
+            },
+            "seed": 42
+          },
+          {
+            "family": "random_forest",
+            "id": "random_forest-039",
+            "parameters": {
+              "bootstrap": true,
+              "class_weight": "balanced_subsample",
+              "criterion": "gini",
+              "max_depth": null,
+              "max_features": 0.5,
+              "min_samples_leaf": 1,
+              "n_estimators": 600,
+              "n_jobs": 1
+            },
+            "preprocessing": {
+              "numeric_missing": "reject",
+              "numeric_scaling": "none",
+              "text_parameters": null
+            },
+            "seed": 42
+          },
+          {
+            "family": "random_forest",
+            "id": "random_forest-040",
+            "parameters": {
+              "bootstrap": true,
+              "class_weight": "balanced",
+              "criterion": "gini",
+              "max_depth": null,
+              "max_features": "sqrt",
+              "min_samples_leaf": 3,
+              "n_estimators": 600,
+              "n_jobs": 1
+            },
+            "preprocessing": {
+              "numeric_missing": "reject",
+              "numeric_scaling": "none",
+              "text_parameters": null
+            },
+            "seed": 42
+          },
+          {
+            "family": "random_forest",
+            "id": "random_forest-041",
+            "parameters": {
+              "bootstrap": true,
+              "class_weight": "balanced_subsample",
+              "criterion": "gini",
+              "max_depth": null,
+              "max_features": "sqrt",
+              "min_samples_leaf": 3,
+              "n_estimators": 600,
+              "n_jobs": 1
+            },
+            "preprocessing": {
+              "numeric_missing": "reject",
+              "numeric_scaling": "none",
+              "text_parameters": null
+            },
+            "seed": 42
+          },
+          {
+            "family": "random_forest",
+            "id": "random_forest-042",
+            "parameters": {
+              "bootstrap": true,
+              "class_weight": "balanced",
+              "criterion": "gini",
+              "max_depth": null,
+              "max_features": 0.5,
+              "min_samples_leaf": 3,
+              "n_estimators": 600,
+              "n_jobs": 1
+            },
+            "preprocessing": {
+              "numeric_missing": "reject",
+              "numeric_scaling": "none",
+              "text_parameters": null
+            },
+            "seed": 42
+          },
+          {
+            "family": "random_forest",
+            "id": "random_forest-043",
+            "parameters": {
+              "bootstrap": true,
+              "class_weight": "balanced_subsample",
+              "criterion": "gini",
+              "max_depth": null,
+              "max_features": 0.5,
+              "min_samples_leaf": 3,
+              "n_estimators": 600,
+              "n_jobs": 1
+            },
+            "preprocessing": {
+              "numeric_missing": "reject",
+              "numeric_scaling": "none",
+              "text_parameters": null
+            },
+            "seed": 42
+          },
+          {
+            "family": "random_forest",
+            "id": "random_forest-044",
+            "parameters": {
+              "bootstrap": true,
+              "class_weight": "balanced",
+              "criterion": "gini",
+              "max_depth": null,
+              "max_features": "sqrt",
+              "min_samples_leaf": 5,
+              "n_estimators": 600,
+              "n_jobs": 1
+            },
+            "preprocessing": {
+              "numeric_missing": "reject",
+              "numeric_scaling": "none",
+              "text_parameters": null
+            },
+            "seed": 42
+          },
+          {
+            "family": "random_forest",
+            "id": "random_forest-045",
+            "parameters": {
+              "bootstrap": true,
+              "class_weight": "balanced_subsample",
+              "criterion": "gini",
+              "max_depth": null,
+              "max_features": "sqrt",
+              "min_samples_leaf": 5,
+              "n_estimators": 600,
+              "n_jobs": 1
+            },
+            "preprocessing": {
+              "numeric_missing": "reject",
+              "numeric_scaling": "none",
+              "text_parameters": null
+            },
+            "seed": 42
+          },
+          {
+            "family": "random_forest",
+            "id": "random_forest-046",
+            "parameters": {
+              "bootstrap": true,
+              "class_weight": "balanced",
+              "criterion": "gini",
+              "max_depth": null,
+              "max_features": 0.5,
+              "min_samples_leaf": 5,
+              "n_estimators": 600,
+              "n_jobs": 1
+            },
+            "preprocessing": {
+              "numeric_missing": "reject",
+              "numeric_scaling": "none",
+              "text_parameters": null
+            },
+            "seed": 42
+          },
+          {
+            "family": "random_forest",
+            "id": "random_forest-047",
+            "parameters": {
+              "bootstrap": true,
+              "class_weight": "balanced_subsample",
+              "criterion": "gini",
+              "max_depth": null,
+              "max_features": 0.5,
+              "min_samples_leaf": 5,
+              "n_estimators": 600,
+              "n_jobs": 1
+            },
+            "preprocessing": {
+              "numeric_missing": "reject",
+              "numeric_scaling": "none",
+              "text_parameters": null
+            },
+            "seed": 42
+          },
+          {
+            "family": "random_forest",
+            "id": "random_forest-048",
+            "parameters": {
+              "bootstrap": true,
+              "class_weight": "balanced",
+              "criterion": "gini",
+              "max_depth": 20,
+              "max_features": "sqrt",
+              "min_samples_leaf": 1,
+              "n_estimators": 600,
+              "n_jobs": 1
+            },
+            "preprocessing": {
+              "numeric_missing": "reject",
+              "numeric_scaling": "none",
+              "text_parameters": null
+            },
+            "seed": 42
+          },
+          {
+            "family": "random_forest",
+            "id": "random_forest-049",
+            "parameters": {
+              "bootstrap": true,
+              "class_weight": "balanced_subsample",
+              "criterion": "gini",
+              "max_depth": 20,
+              "max_features": "sqrt",
+              "min_samples_leaf": 1,
+              "n_estimators": 600,
+              "n_jobs": 1
+            },
+            "preprocessing": {
+              "numeric_missing": "reject",
+              "numeric_scaling": "none",
+              "text_parameters": null
+            },
+            "seed": 42
+          },
+          {
+            "family": "random_forest",
+            "id": "random_forest-050",
+            "parameters": {
+              "bootstrap": true,
+              "class_weight": "balanced",
+              "criterion": "gini",
+              "max_depth": 20,
+              "max_features": 0.5,
+              "min_samples_leaf": 1,
+              "n_estimators": 600,
+              "n_jobs": 1
+            },
+            "preprocessing": {
+              "numeric_missing": "reject",
+              "numeric_scaling": "none",
+              "text_parameters": null
+            },
+            "seed": 42
+          },
+          {
+            "family": "random_forest",
+            "id": "random_forest-051",
+            "parameters": {
+              "bootstrap": true,
+              "class_weight": "balanced_subsample",
+              "criterion": "gini",
+              "max_depth": 20,
+              "max_features": 0.5,
+              "min_samples_leaf": 1,
+              "n_estimators": 600,
+              "n_jobs": 1
+            },
+            "preprocessing": {
+              "numeric_missing": "reject",
+              "numeric_scaling": "none",
+              "text_parameters": null
+            },
+            "seed": 42
+          },
+          {
+            "family": "random_forest",
+            "id": "random_forest-052",
+            "parameters": {
+              "bootstrap": true,
+              "class_weight": "balanced",
+              "criterion": "gini",
+              "max_depth": 20,
+              "max_features": "sqrt",
+              "min_samples_leaf": 3,
+              "n_estimators": 600,
+              "n_jobs": 1
+            },
+            "preprocessing": {
+              "numeric_missing": "reject",
+              "numeric_scaling": "none",
+              "text_parameters": null
+            },
+            "seed": 42
+          },
+          {
+            "family": "random_forest",
+            "id": "random_forest-053",
+            "parameters": {
+              "bootstrap": true,
+              "class_weight": "balanced_subsample",
+              "criterion": "gini",
+              "max_depth": 20,
+              "max_features": "sqrt",
+              "min_samples_leaf": 3,
+              "n_estimators": 600,
+              "n_jobs": 1
+            },
+            "preprocessing": {
+              "numeric_missing": "reject",
+              "numeric_scaling": "none",
+              "text_parameters": null
+            },
+            "seed": 42
+          },
+          {
+            "family": "random_forest",
+            "id": "random_forest-054",
+            "parameters": {
+              "bootstrap": true,
+              "class_weight": "balanced",
+              "criterion": "gini",
+              "max_depth": 20,
+              "max_features": 0.5,
+              "min_samples_leaf": 3,
+              "n_estimators": 600,
+              "n_jobs": 1
+            },
+            "preprocessing": {
+              "numeric_missing": "reject",
+              "numeric_scaling": "none",
+              "text_parameters": null
+            },
+            "seed": 42
+          },
+          {
+            "family": "random_forest",
+            "id": "random_forest-055",
+            "parameters": {
+              "bootstrap": true,
+              "class_weight": "balanced_subsample",
+              "criterion": "gini",
+              "max_depth": 20,
+              "max_features": 0.5,
+              "min_samples_leaf": 3,
+              "n_estimators": 600,
+              "n_jobs": 1
+            },
+            "preprocessing": {
+              "numeric_missing": "reject",
+              "numeric_scaling": "none",
+              "text_parameters": null
+            },
+            "seed": 42
+          },
+          {
+            "family": "random_forest",
+            "id": "random_forest-056",
+            "parameters": {
+              "bootstrap": true,
+              "class_weight": "balanced",
+              "criterion": "gini",
+              "max_depth": 20,
+              "max_features": "sqrt",
+              "min_samples_leaf": 5,
+              "n_estimators": 600,
+              "n_jobs": 1
+            },
+            "preprocessing": {
+              "numeric_missing": "reject",
+              "numeric_scaling": "none",
+              "text_parameters": null
+            },
+            "seed": 42
+          },
+          {
+            "family": "random_forest",
+            "id": "random_forest-057",
+            "parameters": {
+              "bootstrap": true,
+              "class_weight": "balanced_subsample",
+              "criterion": "gini",
+              "max_depth": 20,
+              "max_features": "sqrt",
+              "min_samples_leaf": 5,
+              "n_estimators": 600,
+              "n_jobs": 1
+            },
+            "preprocessing": {
+              "numeric_missing": "reject",
+              "numeric_scaling": "none",
+              "text_parameters": null
+            },
+            "seed": 42
+          },
+          {
+            "family": "random_forest",
+            "id": "random_forest-058",
+            "parameters": {
+              "bootstrap": true,
+              "class_weight": "balanced",
+              "criterion": "gini",
+              "max_depth": 20,
+              "max_features": 0.5,
+              "min_samples_leaf": 5,
+              "n_estimators": 600,
+              "n_jobs": 1
+            },
+            "preprocessing": {
+              "numeric_missing": "reject",
+              "numeric_scaling": "none",
+              "text_parameters": null
+            },
+            "seed": 42
+          },
+          {
+            "family": "random_forest",
+            "id": "random_forest-059",
+            "parameters": {
+              "bootstrap": true,
+              "class_weight": "balanced_subsample",
+              "criterion": "gini",
+              "max_depth": 20,
+              "max_features": 0.5,
+              "min_samples_leaf": 5,
+              "n_estimators": 600,
+              "n_jobs": 1
+            },
+            "preprocessing": {
+              "numeric_missing": "reject",
+              "numeric_scaling": "none",
+              "text_parameters": null
+            },
+            "seed": 42
+          },
+          {
+            "family": "random_forest",
+            "id": "random_forest-060",
+            "parameters": {
+              "bootstrap": true,
+              "class_weight": "balanced",
+              "criterion": "gini",
+              "max_depth": 40,
+              "max_features": "sqrt",
+              "min_samples_leaf": 1,
+              "n_estimators": 600,
+              "n_jobs": 1
+            },
+            "preprocessing": {
+              "numeric_missing": "reject",
+              "numeric_scaling": "none",
+              "text_parameters": null
+            },
+            "seed": 42
+          },
+          {
+            "family": "random_forest",
+            "id": "random_forest-061",
+            "parameters": {
+              "bootstrap": true,
+              "class_weight": "balanced_subsample",
+              "criterion": "gini",
+              "max_depth": 40,
+              "max_features": "sqrt",
+              "min_samples_leaf": 1,
+              "n_estimators": 600,
+              "n_jobs": 1
+            },
+            "preprocessing": {
+              "numeric_missing": "reject",
+              "numeric_scaling": "none",
+              "text_parameters": null
+            },
+            "seed": 42
+          },
+          {
+            "family": "random_forest",
+            "id": "random_forest-062",
+            "parameters": {
+              "bootstrap": true,
+              "class_weight": "balanced",
+              "criterion": "gini",
+              "max_depth": 40,
+              "max_features": 0.5,
+              "min_samples_leaf": 1,
+              "n_estimators": 600,
+              "n_jobs": 1
+            },
+            "preprocessing": {
+              "numeric_missing": "reject",
+              "numeric_scaling": "none",
+              "text_parameters": null
+            },
+            "seed": 42
+          },
+          {
+            "family": "random_forest",
+            "id": "random_forest-063",
+            "parameters": {
+              "bootstrap": true,
+              "class_weight": "balanced_subsample",
+              "criterion": "gini",
+              "max_depth": 40,
+              "max_features": 0.5,
+              "min_samples_leaf": 1,
+              "n_estimators": 600,
+              "n_jobs": 1
+            },
+            "preprocessing": {
+              "numeric_missing": "reject",
+              "numeric_scaling": "none",
+              "text_parameters": null
+            },
+            "seed": 42
+          },
+          {
+            "family": "random_forest",
+            "id": "random_forest-064",
+            "parameters": {
+              "bootstrap": true,
+              "class_weight": "balanced",
+              "criterion": "gini",
+              "max_depth": 40,
+              "max_features": "sqrt",
+              "min_samples_leaf": 3,
+              "n_estimators": 600,
+              "n_jobs": 1
+            },
+            "preprocessing": {
+              "numeric_missing": "reject",
+              "numeric_scaling": "none",
+              "text_parameters": null
+            },
+            "seed": 42
+          },
+          {
+            "family": "random_forest",
+            "id": "random_forest-065",
+            "parameters": {
+              "bootstrap": true,
+              "class_weight": "balanced_subsample",
+              "criterion": "gini",
+              "max_depth": 40,
+              "max_features": "sqrt",
+              "min_samples_leaf": 3,
+              "n_estimators": 600,
+              "n_jobs": 1
+            },
+            "preprocessing": {
+              "numeric_missing": "reject",
+              "numeric_scaling": "none",
+              "text_parameters": null
+            },
+            "seed": 42
+          },
+          {
+            "family": "random_forest",
+            "id": "random_forest-066",
+            "parameters": {
+              "bootstrap": true,
+              "class_weight": "balanced",
+              "criterion": "gini",
+              "max_depth": 40,
+              "max_features": 0.5,
+              "min_samples_leaf": 3,
+              "n_estimators": 600,
+              "n_jobs": 1
+            },
+            "preprocessing": {
+              "numeric_missing": "reject",
+              "numeric_scaling": "none",
+              "text_parameters": null
+            },
+            "seed": 42
+          },
+          {
+            "family": "random_forest",
+            "id": "random_forest-067",
+            "parameters": {
+              "bootstrap": true,
+              "class_weight": "balanced_subsample",
+              "criterion": "gini",
+              "max_depth": 40,
+              "max_features": 0.5,
+              "min_samples_leaf": 3,
+              "n_estimators": 600,
+              "n_jobs": 1
+            },
+            "preprocessing": {
+              "numeric_missing": "reject",
+              "numeric_scaling": "none",
+              "text_parameters": null
+            },
+            "seed": 42
+          },
+          {
+            "family": "random_forest",
+            "id": "random_forest-068",
+            "parameters": {
+              "bootstrap": true,
+              "class_weight": "balanced",
+              "criterion": "gini",
+              "max_depth": 40,
+              "max_features": "sqrt",
+              "min_samples_leaf": 5,
+              "n_estimators": 600,
+              "n_jobs": 1
+            },
+            "preprocessing": {
+              "numeric_missing": "reject",
+              "numeric_scaling": "none",
+              "text_parameters": null
+            },
+            "seed": 42
+          },
+          {
+            "family": "random_forest",
+            "id": "random_forest-069",
+            "parameters": {
+              "bootstrap": true,
+              "class_weight": "balanced_subsample",
+              "criterion": "gini",
+              "max_depth": 40,
+              "max_features": "sqrt",
+              "min_samples_leaf": 5,
+              "n_estimators": 600,
+              "n_jobs": 1
+            },
+            "preprocessing": {
+              "numeric_missing": "reject",
+              "numeric_scaling": "none",
+              "text_parameters": null
+            },
+            "seed": 42
+          },
+          {
+            "family": "random_forest",
+            "id": "random_forest-070",
+            "parameters": {
+              "bootstrap": true,
+              "class_weight": "balanced",
+              "criterion": "gini",
+              "max_depth": 40,
+              "max_features": 0.5,
+              "min_samples_leaf": 5,
+              "n_estimators": 600,
+              "n_jobs": 1
+            },
+            "preprocessing": {
+              "numeric_missing": "reject",
+              "numeric_scaling": "none",
+              "text_parameters": null
+            },
+            "seed": 42
+          },
+          {
+            "family": "random_forest",
+            "id": "random_forest-071",
+            "parameters": {
+              "bootstrap": true,
+              "class_weight": "balanced_subsample",
+              "criterion": "gini",
+              "max_depth": 40,
+              "max_features": 0.5,
+              "min_samples_leaf": 5,
+              "n_estimators": 600,
+              "n_jobs": 1
+            },
+            "preprocessing": {
+              "numeric_missing": "reject",
+              "numeric_scaling": "none",
+              "text_parameters": null
+            },
+            "seed": 42
+          }
+        ],
+        "configurations": [
+          "U1"
+        ],
+        "omitted_features": [],
+        "protocol_reference": "research:candidate-phiusiil-exploratory-design-20261118-not-authorization",
+        "threshold": {
+          "mode": "fixed",
+          "value": 0.5
+        }
+      }
+    },
+    {
+      "candidate_budget_not_approved": {
+        "max_base_fits": 5145,
+        "max_calibration_fits": 5,
+        "max_seconds": 86400,
+        "max_training_rows": 165089,
+        "threads": 1
+      },
+      "candidate_count": 64,
+      "family": "xgboost",
+      "fit_estimate_if_authorized": {
+        "base_fits": 5145,
+        "calibration_fits": 5
+      },
+      "launch_after_exact_run_acceptance_only": "python -B -m ml.research_execution --root . --input-run-id phiusiil-u1-xgboost-candidate-v1 --authorization-sha256 <independently-trusted-fitting-receipt-sha256> --purpose fit --execute",
+      "runner_specification": {
+        "calibration": {
+          "clip_epsilon": 1e-06,
+          "parameters": {
+            "C": 1000000.0,
+            "class_weight": null,
+            "fit_intercept": true,
+            "max_iter": 2000,
+            "penalty": "l2",
+            "solver": "lbfgs",
+            "tol": 1e-06
+          },
+          "seed": 42,
+          "transform": "logit_probability"
+        },
+        "calibration_edges": [
+          0.0,
+          0.1,
+          0.2,
+          0.3,
+          0.4,
+          0.5,
+          0.6,
+          0.7,
+          0.8,
+          0.9,
+          1.0
+        ],
+        "candidates": [
+          {
+            "family": "xgboost",
+            "id": "xgboost-000",
+            "parameters": {
+              "booster": "gbtree",
+              "colsample_bytree": 0.8,
+              "device": "cpu",
+              "eval_metric": "logloss",
+              "learning_rate": 0.03,
+              "max_depth": 3,
+              "min_child_weight": 1,
+              "n_estimators": 500,
+              "n_jobs": 1,
+              "objective": "binary:logistic",
+              "reg_lambda": 1,
+              "scale_pos_weight": "fold_ratio",
+              "subsample": 0.8,
+              "tree_method": "hist"
+            },
+            "preprocessing": {
+              "numeric_missing": "reject",
+              "numeric_scaling": "none",
+              "text_parameters": null
+            },
+            "seed": 42
+          },
+          {
+            "family": "xgboost",
+            "id": "xgboost-001",
+            "parameters": {
+              "booster": "gbtree",
+              "colsample_bytree": 0.8,
+              "device": "cpu",
+              "eval_metric": "logloss",
+              "learning_rate": 0.03,
+              "max_depth": 3,
+              "min_child_weight": 1,
+              "n_estimators": 500,
+              "n_jobs": 1,
+              "objective": "binary:logistic",
+              "reg_lambda": 5,
+              "scale_pos_weight": "fold_ratio",
+              "subsample": 0.8,
+              "tree_method": "hist"
+            },
+            "preprocessing": {
+              "numeric_missing": "reject",
+              "numeric_scaling": "none",
+              "text_parameters": null
+            },
+            "seed": 42
+          },
+          {
+            "family": "xgboost",
+            "id": "xgboost-002",
+            "parameters": {
+              "booster": "gbtree",
+              "colsample_bytree": 0.8,
+              "device": "cpu",
+              "eval_metric": "logloss",
+              "learning_rate": 0.03,
+              "max_depth": 3,
+              "min_child_weight": 5,
+              "n_estimators": 500,
+              "n_jobs": 1,
+              "objective": "binary:logistic",
+              "reg_lambda": 1,
+              "scale_pos_weight": "fold_ratio",
+              "subsample": 0.8,
+              "tree_method": "hist"
+            },
+            "preprocessing": {
+              "numeric_missing": "reject",
+              "numeric_scaling": "none",
+              "text_parameters": null
+            },
+            "seed": 42
+          },
+          {
+            "family": "xgboost",
+            "id": "xgboost-003",
+            "parameters": {
+              "booster": "gbtree",
+              "colsample_bytree": 0.8,
+              "device": "cpu",
+              "eval_metric": "logloss",
+              "learning_rate": 0.03,
+              "max_depth": 3,
+              "min_child_weight": 5,
+              "n_estimators": 500,
+              "n_jobs": 1,
+              "objective": "binary:logistic",
+              "reg_lambda": 5,
+              "scale_pos_weight": "fold_ratio",
+              "subsample": 0.8,
+              "tree_method": "hist"
+            },
+            "preprocessing": {
+              "numeric_missing": "reject",
+              "numeric_scaling": "none",
+              "text_parameters": null
+            },
+            "seed": 42
+          },
+          {
+            "family": "xgboost",
+            "id": "xgboost-004",
+            "parameters": {
+              "booster": "gbtree",
+              "colsample_bytree": 1.0,
+              "device": "cpu",
+              "eval_metric": "logloss",
+              "learning_rate": 0.03,
+              "max_depth": 3,
+              "min_child_weight": 1,
+              "n_estimators": 500,
+              "n_jobs": 1,
+              "objective": "binary:logistic",
+              "reg_lambda": 1,
+              "scale_pos_weight": "fold_ratio",
+              "subsample": 0.8,
+              "tree_method": "hist"
+            },
+            "preprocessing": {
+              "numeric_missing": "reject",
+              "numeric_scaling": "none",
+              "text_parameters": null
+            },
+            "seed": 42
+          },
+          {
+            "family": "xgboost",
+            "id": "xgboost-005",
+            "parameters": {
+              "booster": "gbtree",
+              "colsample_bytree": 1.0,
+              "device": "cpu",
+              "eval_metric": "logloss",
+              "learning_rate": 0.03,
+              "max_depth": 3,
+              "min_child_weight": 1,
+              "n_estimators": 500,
+              "n_jobs": 1,
+              "objective": "binary:logistic",
+              "reg_lambda": 5,
+              "scale_pos_weight": "fold_ratio",
+              "subsample": 0.8,
+              "tree_method": "hist"
+            },
+            "preprocessing": {
+              "numeric_missing": "reject",
+              "numeric_scaling": "none",
+              "text_parameters": null
+            },
+            "seed": 42
+          },
+          {
+            "family": "xgboost",
+            "id": "xgboost-006",
+            "parameters": {
+              "booster": "gbtree",
+              "colsample_bytree": 1.0,
+              "device": "cpu",
+              "eval_metric": "logloss",
+              "learning_rate": 0.03,
+              "max_depth": 3,
+              "min_child_weight": 5,
+              "n_estimators": 500,
+              "n_jobs": 1,
+              "objective": "binary:logistic",
+              "reg_lambda": 1,
+              "scale_pos_weight": "fold_ratio",
+              "subsample": 0.8,
+              "tree_method": "hist"
+            },
+            "preprocessing": {
+              "numeric_missing": "reject",
+              "numeric_scaling": "none",
+              "text_parameters": null
+            },
+            "seed": 42
+          },
+          {
+            "family": "xgboost",
+            "id": "xgboost-007",
+            "parameters": {
+              "booster": "gbtree",
+              "colsample_bytree": 1.0,
+              "device": "cpu",
+              "eval_metric": "logloss",
+              "learning_rate": 0.03,
+              "max_depth": 3,
+              "min_child_weight": 5,
+              "n_estimators": 500,
+              "n_jobs": 1,
+              "objective": "binary:logistic",
+              "reg_lambda": 5,
+              "scale_pos_weight": "fold_ratio",
+              "subsample": 0.8,
+              "tree_method": "hist"
+            },
+            "preprocessing": {
+              "numeric_missing": "reject",
+              "numeric_scaling": "none",
+              "text_parameters": null
+            },
+            "seed": 42
+          },
+          {
+            "family": "xgboost",
+            "id": "xgboost-008",
+            "parameters": {
+              "booster": "gbtree",
+              "colsample_bytree": 0.8,
+              "device": "cpu",
+              "eval_metric": "logloss",
+              "learning_rate": 0.03,
+              "max_depth": 3,
+              "min_child_weight": 1,
+              "n_estimators": 500,
+              "n_jobs": 1,
+              "objective": "binary:logistic",
+              "reg_lambda": 1,
+              "scale_pos_weight": "fold_ratio",
+              "subsample": 1.0,
+              "tree_method": "hist"
+            },
+            "preprocessing": {
+              "numeric_missing": "reject",
+              "numeric_scaling": "none",
+              "text_parameters": null
+            },
+            "seed": 42
+          },
+          {
+            "family": "xgboost",
+            "id": "xgboost-009",
+            "parameters": {
+              "booster": "gbtree",
+              "colsample_bytree": 0.8,
+              "device": "cpu",
+              "eval_metric": "logloss",
+              "learning_rate": 0.03,
+              "max_depth": 3,
+              "min_child_weight": 1,
+              "n_estimators": 500,
+              "n_jobs": 1,
+              "objective": "binary:logistic",
+              "reg_lambda": 5,
+              "scale_pos_weight": "fold_ratio",
+              "subsample": 1.0,
+              "tree_method": "hist"
+            },
+            "preprocessing": {
+              "numeric_missing": "reject",
+              "numeric_scaling": "none",
+              "text_parameters": null
+            },
+            "seed": 42
+          },
+          {
+            "family": "xgboost",
+            "id": "xgboost-010",
+            "parameters": {
+              "booster": "gbtree",
+              "colsample_bytree": 0.8,
+              "device": "cpu",
+              "eval_metric": "logloss",
+              "learning_rate": 0.03,
+              "max_depth": 3,
+              "min_child_weight": 5,
+              "n_estimators": 500,
+              "n_jobs": 1,
+              "objective": "binary:logistic",
+              "reg_lambda": 1,
+              "scale_pos_weight": "fold_ratio",
+              "subsample": 1.0,
+              "tree_method": "hist"
+            },
+            "preprocessing": {
+              "numeric_missing": "reject",
+              "numeric_scaling": "none",
+              "text_parameters": null
+            },
+            "seed": 42
+          },
+          {
+            "family": "xgboost",
+            "id": "xgboost-011",
+            "parameters": {
+              "booster": "gbtree",
+              "colsample_bytree": 0.8,
+              "device": "cpu",
+              "eval_metric": "logloss",
+              "learning_rate": 0.03,
+              "max_depth": 3,
+              "min_child_weight": 5,
+              "n_estimators": 500,
+              "n_jobs": 1,
+              "objective": "binary:logistic",
+              "reg_lambda": 5,
+              "scale_pos_weight": "fold_ratio",
+              "subsample": 1.0,
+              "tree_method": "hist"
+            },
+            "preprocessing": {
+              "numeric_missing": "reject",
+              "numeric_scaling": "none",
+              "text_parameters": null
+            },
+            "seed": 42
+          },
+          {
+            "family": "xgboost",
+            "id": "xgboost-012",
+            "parameters": {
+              "booster": "gbtree",
+              "colsample_bytree": 1.0,
+              "device": "cpu",
+              "eval_metric": "logloss",
+              "learning_rate": 0.03,
+              "max_depth": 3,
+              "min_child_weight": 1,
+              "n_estimators": 500,
+              "n_jobs": 1,
+              "objective": "binary:logistic",
+              "reg_lambda": 1,
+              "scale_pos_weight": "fold_ratio",
+              "subsample": 1.0,
+              "tree_method": "hist"
+            },
+            "preprocessing": {
+              "numeric_missing": "reject",
+              "numeric_scaling": "none",
+              "text_parameters": null
+            },
+            "seed": 42
+          },
+          {
+            "family": "xgboost",
+            "id": "xgboost-013",
+            "parameters": {
+              "booster": "gbtree",
+              "colsample_bytree": 1.0,
+              "device": "cpu",
+              "eval_metric": "logloss",
+              "learning_rate": 0.03,
+              "max_depth": 3,
+              "min_child_weight": 1,
+              "n_estimators": 500,
+              "n_jobs": 1,
+              "objective": "binary:logistic",
+              "reg_lambda": 5,
+              "scale_pos_weight": "fold_ratio",
+              "subsample": 1.0,
+              "tree_method": "hist"
+            },
+            "preprocessing": {
+              "numeric_missing": "reject",
+              "numeric_scaling": "none",
+              "text_parameters": null
+            },
+            "seed": 42
+          },
+          {
+            "family": "xgboost",
+            "id": "xgboost-014",
+            "parameters": {
+              "booster": "gbtree",
+              "colsample_bytree": 1.0,
+              "device": "cpu",
+              "eval_metric": "logloss",
+              "learning_rate": 0.03,
+              "max_depth": 3,
+              "min_child_weight": 5,
+              "n_estimators": 500,
+              "n_jobs": 1,
+              "objective": "binary:logistic",
+              "reg_lambda": 1,
+              "scale_pos_weight": "fold_ratio",
+              "subsample": 1.0,
+              "tree_method": "hist"
+            },
+            "preprocessing": {
+              "numeric_missing": "reject",
+              "numeric_scaling": "none",
+              "text_parameters": null
+            },
+            "seed": 42
+          },
+          {
+            "family": "xgboost",
+            "id": "xgboost-015",
+            "parameters": {
+              "booster": "gbtree",
+              "colsample_bytree": 1.0,
+              "device": "cpu",
+              "eval_metric": "logloss",
+              "learning_rate": 0.03,
+              "max_depth": 3,
+              "min_child_weight": 5,
+              "n_estimators": 500,
+              "n_jobs": 1,
+              "objective": "binary:logistic",
+              "reg_lambda": 5,
+              "scale_pos_weight": "fold_ratio",
+              "subsample": 1.0,
+              "tree_method": "hist"
+            },
+            "preprocessing": {
+              "numeric_missing": "reject",
+              "numeric_scaling": "none",
+              "text_parameters": null
+            },
+            "seed": 42
+          },
+          {
+            "family": "xgboost",
+            "id": "xgboost-016",
+            "parameters": {
+              "booster": "gbtree",
+              "colsample_bytree": 0.8,
+              "device": "cpu",
+              "eval_metric": "logloss",
+              "learning_rate": 0.1,
+              "max_depth": 3,
+              "min_child_weight": 1,
+              "n_estimators": 500,
+              "n_jobs": 1,
+              "objective": "binary:logistic",
+              "reg_lambda": 1,
+              "scale_pos_weight": "fold_ratio",
+              "subsample": 0.8,
+              "tree_method": "hist"
+            },
+            "preprocessing": {
+              "numeric_missing": "reject",
+              "numeric_scaling": "none",
+              "text_parameters": null
+            },
+            "seed": 42
+          },
+          {
+            "family": "xgboost",
+            "id": "xgboost-017",
+            "parameters": {
+              "booster": "gbtree",
+              "colsample_bytree": 0.8,
+              "device": "cpu",
+              "eval_metric": "logloss",
+              "learning_rate": 0.1,
+              "max_depth": 3,
+              "min_child_weight": 1,
+              "n_estimators": 500,
+              "n_jobs": 1,
+              "objective": "binary:logistic",
+              "reg_lambda": 5,
+              "scale_pos_weight": "fold_ratio",
+              "subsample": 0.8,
+              "tree_method": "hist"
+            },
+            "preprocessing": {
+              "numeric_missing": "reject",
+              "numeric_scaling": "none",
+              "text_parameters": null
+            },
+            "seed": 42
+          },
+          {
+            "family": "xgboost",
+            "id": "xgboost-018",
+            "parameters": {
+              "booster": "gbtree",
+              "colsample_bytree": 0.8,
+              "device": "cpu",
+              "eval_metric": "logloss",
+              "learning_rate": 0.1,
+              "max_depth": 3,
+              "min_child_weight": 5,
+              "n_estimators": 500,
+              "n_jobs": 1,
+              "objective": "binary:logistic",
+              "reg_lambda": 1,
+              "scale_pos_weight": "fold_ratio",
+              "subsample": 0.8,
+              "tree_method": "hist"
+            },
+            "preprocessing": {
+              "numeric_missing": "reject",
+              "numeric_scaling": "none",
+              "text_parameters": null
+            },
+            "seed": 42
+          },
+          {
+            "family": "xgboost",
+            "id": "xgboost-019",
+            "parameters": {
+              "booster": "gbtree",
+              "colsample_bytree": 0.8,
+              "device": "cpu",
+              "eval_metric": "logloss",
+              "learning_rate": 0.1,
+              "max_depth": 3,
+              "min_child_weight": 5,
+              "n_estimators": 500,
+              "n_jobs": 1,
+              "objective": "binary:logistic",
+              "reg_lambda": 5,
+              "scale_pos_weight": "fold_ratio",
+              "subsample": 0.8,
+              "tree_method": "hist"
+            },
+            "preprocessing": {
+              "numeric_missing": "reject",
+              "numeric_scaling": "none",
+              "text_parameters": null
+            },
+            "seed": 42
+          },
+          {
+            "family": "xgboost",
+            "id": "xgboost-020",
+            "parameters": {
+              "booster": "gbtree",
+              "colsample_bytree": 1.0,
+              "device": "cpu",
+              "eval_metric": "logloss",
+              "learning_rate": 0.1,
+              "max_depth": 3,
+              "min_child_weight": 1,
+              "n_estimators": 500,
+              "n_jobs": 1,
+              "objective": "binary:logistic",
+              "reg_lambda": 1,
+              "scale_pos_weight": "fold_ratio",
+              "subsample": 0.8,
+              "tree_method": "hist"
+            },
+            "preprocessing": {
+              "numeric_missing": "reject",
+              "numeric_scaling": "none",
+              "text_parameters": null
+            },
+            "seed": 42
+          },
+          {
+            "family": "xgboost",
+            "id": "xgboost-021",
+            "parameters": {
+              "booster": "gbtree",
+              "colsample_bytree": 1.0,
+              "device": "cpu",
+              "eval_metric": "logloss",
+              "learning_rate": 0.1,
+              "max_depth": 3,
+              "min_child_weight": 1,
+              "n_estimators": 500,
+              "n_jobs": 1,
+              "objective": "binary:logistic",
+              "reg_lambda": 5,
+              "scale_pos_weight": "fold_ratio",
+              "subsample": 0.8,
+              "tree_method": "hist"
+            },
+            "preprocessing": {
+              "numeric_missing": "reject",
+              "numeric_scaling": "none",
+              "text_parameters": null
+            },
+            "seed": 42
+          },
+          {
+            "family": "xgboost",
+            "id": "xgboost-022",
+            "parameters": {
+              "booster": "gbtree",
+              "colsample_bytree": 1.0,
+              "device": "cpu",
+              "eval_metric": "logloss",
+              "learning_rate": 0.1,
+              "max_depth": 3,
+              "min_child_weight": 5,
+              "n_estimators": 500,
+              "n_jobs": 1,
+              "objective": "binary:logistic",
+              "reg_lambda": 1,
+              "scale_pos_weight": "fold_ratio",
+              "subsample": 0.8,
+              "tree_method": "hist"
+            },
+            "preprocessing": {
+              "numeric_missing": "reject",
+              "numeric_scaling": "none",
+              "text_parameters": null
+            },
+            "seed": 42
+          },
+          {
+            "family": "xgboost",
+            "id": "xgboost-023",
+            "parameters": {
+              "booster": "gbtree",
+              "colsample_bytree": 1.0,
+              "device": "cpu",
+              "eval_metric": "logloss",
+              "learning_rate": 0.1,
+              "max_depth": 3,
+              "min_child_weight": 5,
+              "n_estimators": 500,
+              "n_jobs": 1,
+              "objective": "binary:logistic",
+              "reg_lambda": 5,
+              "scale_pos_weight": "fold_ratio",
+              "subsample": 0.8,
+              "tree_method": "hist"
+            },
+            "preprocessing": {
+              "numeric_missing": "reject",
+              "numeric_scaling": "none",
+              "text_parameters": null
+            },
+            "seed": 42
+          },
+          {
+            "family": "xgboost",
+            "id": "xgboost-024",
+            "parameters": {
+              "booster": "gbtree",
+              "colsample_bytree": 0.8,
+              "device": "cpu",
+              "eval_metric": "logloss",
+              "learning_rate": 0.1,
+              "max_depth": 3,
+              "min_child_weight": 1,
+              "n_estimators": 500,
+              "n_jobs": 1,
+              "objective": "binary:logistic",
+              "reg_lambda": 1,
+              "scale_pos_weight": "fold_ratio",
+              "subsample": 1.0,
+              "tree_method": "hist"
+            },
+            "preprocessing": {
+              "numeric_missing": "reject",
+              "numeric_scaling": "none",
+              "text_parameters": null
+            },
+            "seed": 42
+          },
+          {
+            "family": "xgboost",
+            "id": "xgboost-025",
+            "parameters": {
+              "booster": "gbtree",
+              "colsample_bytree": 0.8,
+              "device": "cpu",
+              "eval_metric": "logloss",
+              "learning_rate": 0.1,
+              "max_depth": 3,
+              "min_child_weight": 1,
+              "n_estimators": 500,
+              "n_jobs": 1,
+              "objective": "binary:logistic",
+              "reg_lambda": 5,
+              "scale_pos_weight": "fold_ratio",
+              "subsample": 1.0,
+              "tree_method": "hist"
+            },
+            "preprocessing": {
+              "numeric_missing": "reject",
+              "numeric_scaling": "none",
+              "text_parameters": null
+            },
+            "seed": 42
+          },
+          {
+            "family": "xgboost",
+            "id": "xgboost-026",
+            "parameters": {
+              "booster": "gbtree",
+              "colsample_bytree": 0.8,
+              "device": "cpu",
+              "eval_metric": "logloss",
+              "learning_rate": 0.1,
+              "max_depth": 3,
+              "min_child_weight": 5,
+              "n_estimators": 500,
+              "n_jobs": 1,
+              "objective": "binary:logistic",
+              "reg_lambda": 1,
+              "scale_pos_weight": "fold_ratio",
+              "subsample": 1.0,
+              "tree_method": "hist"
+            },
+            "preprocessing": {
+              "numeric_missing": "reject",
+              "numeric_scaling": "none",
+              "text_parameters": null
+            },
+            "seed": 42
+          },
+          {
+            "family": "xgboost",
+            "id": "xgboost-027",
+            "parameters": {
+              "booster": "gbtree",
+              "colsample_bytree": 0.8,
+              "device": "cpu",
+              "eval_metric": "logloss",
+              "learning_rate": 0.1,
+              "max_depth": 3,
+              "min_child_weight": 5,
+              "n_estimators": 500,
+              "n_jobs": 1,
+              "objective": "binary:logistic",
+              "reg_lambda": 5,
+              "scale_pos_weight": "fold_ratio",
+              "subsample": 1.0,
+              "tree_method": "hist"
+            },
+            "preprocessing": {
+              "numeric_missing": "reject",
+              "numeric_scaling": "none",
+              "text_parameters": null
+            },
+            "seed": 42
+          },
+          {
+            "family": "xgboost",
+            "id": "xgboost-028",
+            "parameters": {
+              "booster": "gbtree",
+              "colsample_bytree": 1.0,
+              "device": "cpu",
+              "eval_metric": "logloss",
+              "learning_rate": 0.1,
+              "max_depth": 3,
+              "min_child_weight": 1,
+              "n_estimators": 500,
+              "n_jobs": 1,
+              "objective": "binary:logistic",
+              "reg_lambda": 1,
+              "scale_pos_weight": "fold_ratio",
+              "subsample": 1.0,
+              "tree_method": "hist"
+            },
+            "preprocessing": {
+              "numeric_missing": "reject",
+              "numeric_scaling": "none",
+              "text_parameters": null
+            },
+            "seed": 42
+          },
+          {
+            "family": "xgboost",
+            "id": "xgboost-029",
+            "parameters": {
+              "booster": "gbtree",
+              "colsample_bytree": 1.0,
+              "device": "cpu",
+              "eval_metric": "logloss",
+              "learning_rate": 0.1,
+              "max_depth": 3,
+              "min_child_weight": 1,
+              "n_estimators": 500,
+              "n_jobs": 1,
+              "objective": "binary:logistic",
+              "reg_lambda": 5,
+              "scale_pos_weight": "fold_ratio",
+              "subsample": 1.0,
+              "tree_method": "hist"
+            },
+            "preprocessing": {
+              "numeric_missing": "reject",
+              "numeric_scaling": "none",
+              "text_parameters": null
+            },
+            "seed": 42
+          },
+          {
+            "family": "xgboost",
+            "id": "xgboost-030",
+            "parameters": {
+              "booster": "gbtree",
+              "colsample_bytree": 1.0,
+              "device": "cpu",
+              "eval_metric": "logloss",
+              "learning_rate": 0.1,
+              "max_depth": 3,
+              "min_child_weight": 5,
+              "n_estimators": 500,
+              "n_jobs": 1,
+              "objective": "binary:logistic",
+              "reg_lambda": 1,
+              "scale_pos_weight": "fold_ratio",
+              "subsample": 1.0,
+              "tree_method": "hist"
+            },
+            "preprocessing": {
+              "numeric_missing": "reject",
+              "numeric_scaling": "none",
+              "text_parameters": null
+            },
+            "seed": 42
+          },
+          {
+            "family": "xgboost",
+            "id": "xgboost-031",
+            "parameters": {
+              "booster": "gbtree",
+              "colsample_bytree": 1.0,
+              "device": "cpu",
+              "eval_metric": "logloss",
+              "learning_rate": 0.1,
+              "max_depth": 3,
+              "min_child_weight": 5,
+              "n_estimators": 500,
+              "n_jobs": 1,
+              "objective": "binary:logistic",
+              "reg_lambda": 5,
+              "scale_pos_weight": "fold_ratio",
+              "subsample": 1.0,
+              "tree_method": "hist"
+            },
+            "preprocessing": {
+              "numeric_missing": "reject",
+              "numeric_scaling": "none",
+              "text_parameters": null
+            },
+            "seed": 42
+          },
+          {
+            "family": "xgboost",
+            "id": "xgboost-032",
+            "parameters": {
+              "booster": "gbtree",
+              "colsample_bytree": 0.8,
+              "device": "cpu",
+              "eval_metric": "logloss",
+              "learning_rate": 0.03,
+              "max_depth": 6,
+              "min_child_weight": 1,
+              "n_estimators": 500,
+              "n_jobs": 1,
+              "objective": "binary:logistic",
+              "reg_lambda": 1,
+              "scale_pos_weight": "fold_ratio",
+              "subsample": 0.8,
+              "tree_method": "hist"
+            },
+            "preprocessing": {
+              "numeric_missing": "reject",
+              "numeric_scaling": "none",
+              "text_parameters": null
+            },
+            "seed": 42
+          },
+          {
+            "family": "xgboost",
+            "id": "xgboost-033",
+            "parameters": {
+              "booster": "gbtree",
+              "colsample_bytree": 0.8,
+              "device": "cpu",
+              "eval_metric": "logloss",
+              "learning_rate": 0.03,
+              "max_depth": 6,
+              "min_child_weight": 1,
+              "n_estimators": 500,
+              "n_jobs": 1,
+              "objective": "binary:logistic",
+              "reg_lambda": 5,
+              "scale_pos_weight": "fold_ratio",
+              "subsample": 0.8,
+              "tree_method": "hist"
+            },
+            "preprocessing": {
+              "numeric_missing": "reject",
+              "numeric_scaling": "none",
+              "text_parameters": null
+            },
+            "seed": 42
+          },
+          {
+            "family": "xgboost",
+            "id": "xgboost-034",
+            "parameters": {
+              "booster": "gbtree",
+              "colsample_bytree": 0.8,
+              "device": "cpu",
+              "eval_metric": "logloss",
+              "learning_rate": 0.03,
+              "max_depth": 6,
+              "min_child_weight": 5,
+              "n_estimators": 500,
+              "n_jobs": 1,
+              "objective": "binary:logistic",
+              "reg_lambda": 1,
+              "scale_pos_weight": "fold_ratio",
+              "subsample": 0.8,
+              "tree_method": "hist"
+            },
+            "preprocessing": {
+              "numeric_missing": "reject",
+              "numeric_scaling": "none",
+              "text_parameters": null
+            },
+            "seed": 42
+          },
+          {
+            "family": "xgboost",
+            "id": "xgboost-035",
+            "parameters": {
+              "booster": "gbtree",
+              "colsample_bytree": 0.8,
+              "device": "cpu",
+              "eval_metric": "logloss",
+              "learning_rate": 0.03,
+              "max_depth": 6,
+              "min_child_weight": 5,
+              "n_estimators": 500,
+              "n_jobs": 1,
+              "objective": "binary:logistic",
+              "reg_lambda": 5,
+              "scale_pos_weight": "fold_ratio",
+              "subsample": 0.8,
+              "tree_method": "hist"
+            },
+            "preprocessing": {
+              "numeric_missing": "reject",
+              "numeric_scaling": "none",
+              "text_parameters": null
+            },
+            "seed": 42
+          },
+          {
+            "family": "xgboost",
+            "id": "xgboost-036",
+            "parameters": {
+              "booster": "gbtree",
+              "colsample_bytree": 1.0,
+              "device": "cpu",
+              "eval_metric": "logloss",
+              "learning_rate": 0.03,
+              "max_depth": 6,
+              "min_child_weight": 1,
+              "n_estimators": 500,
+              "n_jobs": 1,
+              "objective": "binary:logistic",
+              "reg_lambda": 1,
+              "scale_pos_weight": "fold_ratio",
+              "subsample": 0.8,
+              "tree_method": "hist"
+            },
+            "preprocessing": {
+              "numeric_missing": "reject",
+              "numeric_scaling": "none",
+              "text_parameters": null
+            },
+            "seed": 42
+          },
+          {
+            "family": "xgboost",
+            "id": "xgboost-037",
+            "parameters": {
+              "booster": "gbtree",
+              "colsample_bytree": 1.0,
+              "device": "cpu",
+              "eval_metric": "logloss",
+              "learning_rate": 0.03,
+              "max_depth": 6,
+              "min_child_weight": 1,
+              "n_estimators": 500,
+              "n_jobs": 1,
+              "objective": "binary:logistic",
+              "reg_lambda": 5,
+              "scale_pos_weight": "fold_ratio",
+              "subsample": 0.8,
+              "tree_method": "hist"
+            },
+            "preprocessing": {
+              "numeric_missing": "reject",
+              "numeric_scaling": "none",
+              "text_parameters": null
+            },
+            "seed": 42
+          },
+          {
+            "family": "xgboost",
+            "id": "xgboost-038",
+            "parameters": {
+              "booster": "gbtree",
+              "colsample_bytree": 1.0,
+              "device": "cpu",
+              "eval_metric": "logloss",
+              "learning_rate": 0.03,
+              "max_depth": 6,
+              "min_child_weight": 5,
+              "n_estimators": 500,
+              "n_jobs": 1,
+              "objective": "binary:logistic",
+              "reg_lambda": 1,
+              "scale_pos_weight": "fold_ratio",
+              "subsample": 0.8,
+              "tree_method": "hist"
+            },
+            "preprocessing": {
+              "numeric_missing": "reject",
+              "numeric_scaling": "none",
+              "text_parameters": null
+            },
+            "seed": 42
+          },
+          {
+            "family": "xgboost",
+            "id": "xgboost-039",
+            "parameters": {
+              "booster": "gbtree",
+              "colsample_bytree": 1.0,
+              "device": "cpu",
+              "eval_metric": "logloss",
+              "learning_rate": 0.03,
+              "max_depth": 6,
+              "min_child_weight": 5,
+              "n_estimators": 500,
+              "n_jobs": 1,
+              "objective": "binary:logistic",
+              "reg_lambda": 5,
+              "scale_pos_weight": "fold_ratio",
+              "subsample": 0.8,
+              "tree_method": "hist"
+            },
+            "preprocessing": {
+              "numeric_missing": "reject",
+              "numeric_scaling": "none",
+              "text_parameters": null
+            },
+            "seed": 42
+          },
+          {
+            "family": "xgboost",
+            "id": "xgboost-040",
+            "parameters": {
+              "booster": "gbtree",
+              "colsample_bytree": 0.8,
+              "device": "cpu",
+              "eval_metric": "logloss",
+              "learning_rate": 0.03,
+              "max_depth": 6,
+              "min_child_weight": 1,
+              "n_estimators": 500,
+              "n_jobs": 1,
+              "objective": "binary:logistic",
+              "reg_lambda": 1,
+              "scale_pos_weight": "fold_ratio",
+              "subsample": 1.0,
+              "tree_method": "hist"
+            },
+            "preprocessing": {
+              "numeric_missing": "reject",
+              "numeric_scaling": "none",
+              "text_parameters": null
+            },
+            "seed": 42
+          },
+          {
+            "family": "xgboost",
+            "id": "xgboost-041",
+            "parameters": {
+              "booster": "gbtree",
+              "colsample_bytree": 0.8,
+              "device": "cpu",
+              "eval_metric": "logloss",
+              "learning_rate": 0.03,
+              "max_depth": 6,
+              "min_child_weight": 1,
+              "n_estimators": 500,
+              "n_jobs": 1,
+              "objective": "binary:logistic",
+              "reg_lambda": 5,
+              "scale_pos_weight": "fold_ratio",
+              "subsample": 1.0,
+              "tree_method": "hist"
+            },
+            "preprocessing": {
+              "numeric_missing": "reject",
+              "numeric_scaling": "none",
+              "text_parameters": null
+            },
+            "seed": 42
+          },
+          {
+            "family": "xgboost",
+            "id": "xgboost-042",
+            "parameters": {
+              "booster": "gbtree",
+              "colsample_bytree": 0.8,
+              "device": "cpu",
+              "eval_metric": "logloss",
+              "learning_rate": 0.03,
+              "max_depth": 6,
+              "min_child_weight": 5,
+              "n_estimators": 500,
+              "n_jobs": 1,
+              "objective": "binary:logistic",
+              "reg_lambda": 1,
+              "scale_pos_weight": "fold_ratio",
+              "subsample": 1.0,
+              "tree_method": "hist"
+            },
+            "preprocessing": {
+              "numeric_missing": "reject",
+              "numeric_scaling": "none",
+              "text_parameters": null
+            },
+            "seed": 42
+          },
+          {
+            "family": "xgboost",
+            "id": "xgboost-043",
+            "parameters": {
+              "booster": "gbtree",
+              "colsample_bytree": 0.8,
+              "device": "cpu",
+              "eval_metric": "logloss",
+              "learning_rate": 0.03,
+              "max_depth": 6,
+              "min_child_weight": 5,
+              "n_estimators": 500,
+              "n_jobs": 1,
+              "objective": "binary:logistic",
+              "reg_lambda": 5,
+              "scale_pos_weight": "fold_ratio",
+              "subsample": 1.0,
+              "tree_method": "hist"
+            },
+            "preprocessing": {
+              "numeric_missing": "reject",
+              "numeric_scaling": "none",
+              "text_parameters": null
+            },
+            "seed": 42
+          },
+          {
+            "family": "xgboost",
+            "id": "xgboost-044",
+            "parameters": {
+              "booster": "gbtree",
+              "colsample_bytree": 1.0,
+              "device": "cpu",
+              "eval_metric": "logloss",
+              "learning_rate": 0.03,
+              "max_depth": 6,
+              "min_child_weight": 1,
+              "n_estimators": 500,
+              "n_jobs": 1,
+              "objective": "binary:logistic",
+              "reg_lambda": 1,
+              "scale_pos_weight": "fold_ratio",
+              "subsample": 1.0,
+              "tree_method": "hist"
+            },
+            "preprocessing": {
+              "numeric_missing": "reject",
+              "numeric_scaling": "none",
+              "text_parameters": null
+            },
+            "seed": 42
+          },
+          {
+            "family": "xgboost",
+            "id": "xgboost-045",
+            "parameters": {
+              "booster": "gbtree",
+              "colsample_bytree": 1.0,
+              "device": "cpu",
+              "eval_metric": "logloss",
+              "learning_rate": 0.03,
+              "max_depth": 6,
+              "min_child_weight": 1,
+              "n_estimators": 500,
+              "n_jobs": 1,
+              "objective": "binary:logistic",
+              "reg_lambda": 5,
+              "scale_pos_weight": "fold_ratio",
+              "subsample": 1.0,
+              "tree_method": "hist"
+            },
+            "preprocessing": {
+              "numeric_missing": "reject",
+              "numeric_scaling": "none",
+              "text_parameters": null
+            },
+            "seed": 42
+          },
+          {
+            "family": "xgboost",
+            "id": "xgboost-046",
+            "parameters": {
+              "booster": "gbtree",
+              "colsample_bytree": 1.0,
+              "device": "cpu",
+              "eval_metric": "logloss",
+              "learning_rate": 0.03,
+              "max_depth": 6,
+              "min_child_weight": 5,
+              "n_estimators": 500,
+              "n_jobs": 1,
+              "objective": "binary:logistic",
+              "reg_lambda": 1,
+              "scale_pos_weight": "fold_ratio",
+              "subsample": 1.0,
+              "tree_method": "hist"
+            },
+            "preprocessing": {
+              "numeric_missing": "reject",
+              "numeric_scaling": "none",
+              "text_parameters": null
+            },
+            "seed": 42
+          },
+          {
+            "family": "xgboost",
+            "id": "xgboost-047",
+            "parameters": {
+              "booster": "gbtree",
+              "colsample_bytree": 1.0,
+              "device": "cpu",
+              "eval_metric": "logloss",
+              "learning_rate": 0.03,
+              "max_depth": 6,
+              "min_child_weight": 5,
+              "n_estimators": 500,
+              "n_jobs": 1,
+              "objective": "binary:logistic",
+              "reg_lambda": 5,
+              "scale_pos_weight": "fold_ratio",
+              "subsample": 1.0,
+              "tree_method": "hist"
+            },
+            "preprocessing": {
+              "numeric_missing": "reject",
+              "numeric_scaling": "none",
+              "text_parameters": null
+            },
+            "seed": 42
+          },
+          {
+            "family": "xgboost",
+            "id": "xgboost-048",
+            "parameters": {
+              "booster": "gbtree",
+              "colsample_bytree": 0.8,
+              "device": "cpu",
+              "eval_metric": "logloss",
+              "learning_rate": 0.1,
+              "max_depth": 6,
+              "min_child_weight": 1,
+              "n_estimators": 500,
+              "n_jobs": 1,
+              "objective": "binary:logistic",
+              "reg_lambda": 1,
+              "scale_pos_weight": "fold_ratio",
+              "subsample": 0.8,
+              "tree_method": "hist"
+            },
+            "preprocessing": {
+              "numeric_missing": "reject",
+              "numeric_scaling": "none",
+              "text_parameters": null
+            },
+            "seed": 42
+          },
+          {
+            "family": "xgboost",
+            "id": "xgboost-049",
+            "parameters": {
+              "booster": "gbtree",
+              "colsample_bytree": 0.8,
+              "device": "cpu",
+              "eval_metric": "logloss",
+              "learning_rate": 0.1,
+              "max_depth": 6,
+              "min_child_weight": 1,
+              "n_estimators": 500,
+              "n_jobs": 1,
+              "objective": "binary:logistic",
+              "reg_lambda": 5,
+              "scale_pos_weight": "fold_ratio",
+              "subsample": 0.8,
+              "tree_method": "hist"
+            },
+            "preprocessing": {
+              "numeric_missing": "reject",
+              "numeric_scaling": "none",
+              "text_parameters": null
+            },
+            "seed": 42
+          },
+          {
+            "family": "xgboost",
+            "id": "xgboost-050",
+            "parameters": {
+              "booster": "gbtree",
+              "colsample_bytree": 0.8,
+              "device": "cpu",
+              "eval_metric": "logloss",
+              "learning_rate": 0.1,
+              "max_depth": 6,
+              "min_child_weight": 5,
+              "n_estimators": 500,
+              "n_jobs": 1,
+              "objective": "binary:logistic",
+              "reg_lambda": 1,
+              "scale_pos_weight": "fold_ratio",
+              "subsample": 0.8,
+              "tree_method": "hist"
+            },
+            "preprocessing": {
+              "numeric_missing": "reject",
+              "numeric_scaling": "none",
+              "text_parameters": null
+            },
+            "seed": 42
+          },
+          {
+            "family": "xgboost",
+            "id": "xgboost-051",
+            "parameters": {
+              "booster": "gbtree",
+              "colsample_bytree": 0.8,
+              "device": "cpu",
+              "eval_metric": "logloss",
+              "learning_rate": 0.1,
+              "max_depth": 6,
+              "min_child_weight": 5,
+              "n_estimators": 500,
+              "n_jobs": 1,
+              "objective": "binary:logistic",
+              "reg_lambda": 5,
+              "scale_pos_weight": "fold_ratio",
+              "subsample": 0.8,
+              "tree_method": "hist"
+            },
+            "preprocessing": {
+              "numeric_missing": "reject",
+              "numeric_scaling": "none",
+              "text_parameters": null
+            },
+            "seed": 42
+          },
+          {
+            "family": "xgboost",
+            "id": "xgboost-052",
+            "parameters": {
+              "booster": "gbtree",
+              "colsample_bytree": 1.0,
+              "device": "cpu",
+              "eval_metric": "logloss",
+              "learning_rate": 0.1,
+              "max_depth": 6,
+              "min_child_weight": 1,
+              "n_estimators": 500,
+              "n_jobs": 1,
+              "objective": "binary:logistic",
+              "reg_lambda": 1,
+              "scale_pos_weight": "fold_ratio",
+              "subsample": 0.8,
+              "tree_method": "hist"
+            },
+            "preprocessing": {
+              "numeric_missing": "reject",
+              "numeric_scaling": "none",
+              "text_parameters": null
+            },
+            "seed": 42
+          },
+          {
+            "family": "xgboost",
+            "id": "xgboost-053",
+            "parameters": {
+              "booster": "gbtree",
+              "colsample_bytree": 1.0,
+              "device": "cpu",
+              "eval_metric": "logloss",
+              "learning_rate": 0.1,
+              "max_depth": 6,
+              "min_child_weight": 1,
+              "n_estimators": 500,
+              "n_jobs": 1,
+              "objective": "binary:logistic",
+              "reg_lambda": 5,
+              "scale_pos_weight": "fold_ratio",
+              "subsample": 0.8,
+              "tree_method": "hist"
+            },
+            "preprocessing": {
+              "numeric_missing": "reject",
+              "numeric_scaling": "none",
+              "text_parameters": null
+            },
+            "seed": 42
+          },
+          {
+            "family": "xgboost",
+            "id": "xgboost-054",
+            "parameters": {
+              "booster": "gbtree",
+              "colsample_bytree": 1.0,
+              "device": "cpu",
+              "eval_metric": "logloss",
+              "learning_rate": 0.1,
+              "max_depth": 6,
+              "min_child_weight": 5,
+              "n_estimators": 500,
+              "n_jobs": 1,
+              "objective": "binary:logistic",
+              "reg_lambda": 1,
+              "scale_pos_weight": "fold_ratio",
+              "subsample": 0.8,
+              "tree_method": "hist"
+            },
+            "preprocessing": {
+              "numeric_missing": "reject",
+              "numeric_scaling": "none",
+              "text_parameters": null
+            },
+            "seed": 42
+          },
+          {
+            "family": "xgboost",
+            "id": "xgboost-055",
+            "parameters": {
+              "booster": "gbtree",
+              "colsample_bytree": 1.0,
+              "device": "cpu",
+              "eval_metric": "logloss",
+              "learning_rate": 0.1,
+              "max_depth": 6,
+              "min_child_weight": 5,
+              "n_estimators": 500,
+              "n_jobs": 1,
+              "objective": "binary:logistic",
+              "reg_lambda": 5,
+              "scale_pos_weight": "fold_ratio",
+              "subsample": 0.8,
+              "tree_method": "hist"
+            },
+            "preprocessing": {
+              "numeric_missing": "reject",
+              "numeric_scaling": "none",
+              "text_parameters": null
+            },
+            "seed": 42
+          },
+          {
+            "family": "xgboost",
+            "id": "xgboost-056",
+            "parameters": {
+              "booster": "gbtree",
+              "colsample_bytree": 0.8,
+              "device": "cpu",
+              "eval_metric": "logloss",
+              "learning_rate": 0.1,
+              "max_depth": 6,
+              "min_child_weight": 1,
+              "n_estimators": 500,
+              "n_jobs": 1,
+              "objective": "binary:logistic",
+              "reg_lambda": 1,
+              "scale_pos_weight": "fold_ratio",
+              "subsample": 1.0,
+              "tree_method": "hist"
+            },
+            "preprocessing": {
+              "numeric_missing": "reject",
+              "numeric_scaling": "none",
+              "text_parameters": null
+            },
+            "seed": 42
+          },
+          {
+            "family": "xgboost",
+            "id": "xgboost-057",
+            "parameters": {
+              "booster": "gbtree",
+              "colsample_bytree": 0.8,
+              "device": "cpu",
+              "eval_metric": "logloss",
+              "learning_rate": 0.1,
+              "max_depth": 6,
+              "min_child_weight": 1,
+              "n_estimators": 500,
+              "n_jobs": 1,
+              "objective": "binary:logistic",
+              "reg_lambda": 5,
+              "scale_pos_weight": "fold_ratio",
+              "subsample": 1.0,
+              "tree_method": "hist"
+            },
+            "preprocessing": {
+              "numeric_missing": "reject",
+              "numeric_scaling": "none",
+              "text_parameters": null
+            },
+            "seed": 42
+          },
+          {
+            "family": "xgboost",
+            "id": "xgboost-058",
+            "parameters": {
+              "booster": "gbtree",
+              "colsample_bytree": 0.8,
+              "device": "cpu",
+              "eval_metric": "logloss",
+              "learning_rate": 0.1,
+              "max_depth": 6,
+              "min_child_weight": 5,
+              "n_estimators": 500,
+              "n_jobs": 1,
+              "objective": "binary:logistic",
+              "reg_lambda": 1,
+              "scale_pos_weight": "fold_ratio",
+              "subsample": 1.0,
+              "tree_method": "hist"
+            },
+            "preprocessing": {
+              "numeric_missing": "reject",
+              "numeric_scaling": "none",
+              "text_parameters": null
+            },
+            "seed": 42
+          },
+          {
+            "family": "xgboost",
+            "id": "xgboost-059",
+            "parameters": {
+              "booster": "gbtree",
+              "colsample_bytree": 0.8,
+              "device": "cpu",
+              "eval_metric": "logloss",
+              "learning_rate": 0.1,
+              "max_depth": 6,
+              "min_child_weight": 5,
+              "n_estimators": 500,
+              "n_jobs": 1,
+              "objective": "binary:logistic",
+              "reg_lambda": 5,
+              "scale_pos_weight": "fold_ratio",
+              "subsample": 1.0,
+              "tree_method": "hist"
+            },
+            "preprocessing": {
+              "numeric_missing": "reject",
+              "numeric_scaling": "none",
+              "text_parameters": null
+            },
+            "seed": 42
+          },
+          {
+            "family": "xgboost",
+            "id": "xgboost-060",
+            "parameters": {
+              "booster": "gbtree",
+              "colsample_bytree": 1.0,
+              "device": "cpu",
+              "eval_metric": "logloss",
+              "learning_rate": 0.1,
+              "max_depth": 6,
+              "min_child_weight": 1,
+              "n_estimators": 500,
+              "n_jobs": 1,
+              "objective": "binary:logistic",
+              "reg_lambda": 1,
+              "scale_pos_weight": "fold_ratio",
+              "subsample": 1.0,
+              "tree_method": "hist"
+            },
+            "preprocessing": {
+              "numeric_missing": "reject",
+              "numeric_scaling": "none",
+              "text_parameters": null
+            },
+            "seed": 42
+          },
+          {
+            "family": "xgboost",
+            "id": "xgboost-061",
+            "parameters": {
+              "booster": "gbtree",
+              "colsample_bytree": 1.0,
+              "device": "cpu",
+              "eval_metric": "logloss",
+              "learning_rate": 0.1,
+              "max_depth": 6,
+              "min_child_weight": 1,
+              "n_estimators": 500,
+              "n_jobs": 1,
+              "objective": "binary:logistic",
+              "reg_lambda": 5,
+              "scale_pos_weight": "fold_ratio",
+              "subsample": 1.0,
+              "tree_method": "hist"
+            },
+            "preprocessing": {
+              "numeric_missing": "reject",
+              "numeric_scaling": "none",
+              "text_parameters": null
+            },
+            "seed": 42
+          },
+          {
+            "family": "xgboost",
+            "id": "xgboost-062",
+            "parameters": {
+              "booster": "gbtree",
+              "colsample_bytree": 1.0,
+              "device": "cpu",
+              "eval_metric": "logloss",
+              "learning_rate": 0.1,
+              "max_depth": 6,
+              "min_child_weight": 5,
+              "n_estimators": 500,
+              "n_jobs": 1,
+              "objective": "binary:logistic",
+              "reg_lambda": 1,
+              "scale_pos_weight": "fold_ratio",
+              "subsample": 1.0,
+              "tree_method": "hist"
+            },
+            "preprocessing": {
+              "numeric_missing": "reject",
+              "numeric_scaling": "none",
+              "text_parameters": null
+            },
+            "seed": 42
+          },
+          {
+            "family": "xgboost",
+            "id": "xgboost-063",
+            "parameters": {
+              "booster": "gbtree",
+              "colsample_bytree": 1.0,
+              "device": "cpu",
+              "eval_metric": "logloss",
+              "learning_rate": 0.1,
+              "max_depth": 6,
+              "min_child_weight": 5,
+              "n_estimators": 500,
+              "n_jobs": 1,
+              "objective": "binary:logistic",
+              "reg_lambda": 5,
+              "scale_pos_weight": "fold_ratio",
+              "subsample": 1.0,
+              "tree_method": "hist"
+            },
+            "preprocessing": {
+              "numeric_missing": "reject",
+              "numeric_scaling": "none",
+              "text_parameters": null
+            },
+            "seed": 42
+          }
+        ],
+        "configurations": [
+          "U1"
+        ],
+        "omitted_features": [],
+        "protocol_reference": "research:candidate-phiusiil-exploratory-design-20261118-not-authorization",
+        "threshold": {
+          "mode": "fixed",
+          "value": 0.5
+        }
+      }
+    }
+  ],
+  "population": "165089 former-development observations; new internal development subset size pending C allocation",
+  "predictive_results": null,
+  "prerequisites": [
+    "Accepted C allocation and trusted receipt digest",
+    "New-split D-feature rebinding/admission and exact accepted code/environment/input manifests",
+    "Per-family and ablation exact acceptance.json, independently trusted digest, frozen settings and budgets"
+  ],
+  "scientific_settings_accepted": false,
+  "selection_limitations": "delta_pr=0.01 is an unaccepted recommendation; None hard limits explicitly restrict this candidate to exploratory comparisons, with no deployment/SRS compliance claim. Budgets are proposals, not measured feasibility.",
+  "status": "CANDIDATE - NOT FITTING AUTHORIZATION",
+  "technical_ablations": [
+    {
+      "fit_estimate_if_authorized": {
+        "base_fits": 665,
+        "calibration_fits": 5
+      },
+      "launch_after_separate_ablation_acceptance_only": "python -B -m ml.research_execution --root . --input-run-id phiusiil-u1-omit-obfuscation-candidate-v1 --authorization-sha256 <independently-trusted-ablation-receipt-sha256> --purpose ablation --execute",
+      "name": "omit_obfuscation",
+      "rationale": "Test incremental technical signal of this fixed feature block on identical observations/folds; no behavioral interpretation",
+      "runner_specification": {
+        "calibration": {
+          "clip_epsilon": 1e-06,
+          "parameters": {
+            "C": 1000000.0,
+            "class_weight": null,
+            "fit_intercept": true,
+            "max_iter": 2000,
+            "penalty": "l2",
+            "solver": "lbfgs",
+            "tol": 1e-06
+          },
+          "seed": 42,
+          "transform": "logit_probability"
+        },
+        "calibration_edges": [
+          0.0,
+          0.1,
+          0.2,
+          0.3,
+          0.4,
+          0.5,
+          0.6,
+          0.7,
+          0.8,
+          0.9,
+          1.0
+        ],
+        "candidates": [
+          {
+            "family": "logistic_regression",
+            "id": "logistic_regression-000",
+            "parameters": {
+              "C": 0.01,
+              "class_weight": null,
+              "fit_intercept": true,
+              "max_iter": 2000,
+              "penalty": "l2",
+              "solver": "liblinear",
+              "tol": 0.0001
+            },
+            "preprocessing": {
+              "numeric_missing": "reject",
+              "numeric_scaling": "standard",
+              "text_parameters": null
+            },
+            "seed": 42
+          },
+          {
+            "family": "logistic_regression",
+            "id": "logistic_regression-001",
+            "parameters": {
+              "C": 0.01,
+              "class_weight": "balanced",
+              "fit_intercept": true,
+              "max_iter": 2000,
+              "penalty": "l2",
+              "solver": "liblinear",
+              "tol": 0.0001
+            },
+            "preprocessing": {
+              "numeric_missing": "reject",
+              "numeric_scaling": "standard",
+              "text_parameters": null
+            },
+            "seed": 42
+          },
+          {
+            "family": "logistic_regression",
+            "id": "logistic_regression-002",
+            "parameters": {
+              "C": 0.1,
+              "class_weight": null,
+              "fit_intercept": true,
+              "max_iter": 2000,
+              "penalty": "l2",
+              "solver": "liblinear",
+              "tol": 0.0001
+            },
+            "preprocessing": {
+              "numeric_missing": "reject",
+              "numeric_scaling": "standard",
+              "text_parameters": null
+            },
+            "seed": 42
+          },
+          {
+            "family": "logistic_regression",
+            "id": "logistic_regression-003",
+            "parameters": {
+              "C": 0.1,
+              "class_weight": "balanced",
+              "fit_intercept": true,
+              "max_iter": 2000,
+              "penalty": "l2",
+              "solver": "liblinear",
+              "tol": 0.0001
+            },
+            "preprocessing": {
+              "numeric_missing": "reject",
+              "numeric_scaling": "standard",
+              "text_parameters": null
+            },
+            "seed": 42
+          },
+          {
+            "family": "logistic_regression",
+            "id": "logistic_regression-004",
+            "parameters": {
+              "C": 1.0,
+              "class_weight": null,
+              "fit_intercept": true,
+              "max_iter": 2000,
+              "penalty": "l2",
+              "solver": "liblinear",
+              "tol": 0.0001
+            },
+            "preprocessing": {
+              "numeric_missing": "reject",
+              "numeric_scaling": "standard",
+              "text_parameters": null
+            },
+            "seed": 42
+          },
+          {
+            "family": "logistic_regression",
+            "id": "logistic_regression-005",
+            "parameters": {
+              "C": 1.0,
+              "class_weight": "balanced",
+              "fit_intercept": true,
+              "max_iter": 2000,
+              "penalty": "l2",
+              "solver": "liblinear",
+              "tol": 0.0001
+            },
+            "preprocessing": {
+              "numeric_missing": "reject",
+              "numeric_scaling": "standard",
+              "text_parameters": null
+            },
+            "seed": 42
+          },
+          {
+            "family": "logistic_regression",
+            "id": "logistic_regression-006",
+            "parameters": {
+              "C": 10.0,
+              "class_weight": null,
+              "fit_intercept": true,
+              "max_iter": 2000,
+              "penalty": "l2",
+              "solver": "liblinear",
+              "tol": 0.0001
+            },
+            "preprocessing": {
+              "numeric_missing": "reject",
+              "numeric_scaling": "standard",
+              "text_parameters": null
+            },
+            "seed": 42
+          },
+          {
+            "family": "logistic_regression",
+            "id": "logistic_regression-007",
+            "parameters": {
+              "C": 10.0,
+              "class_weight": "balanced",
+              "fit_intercept": true,
+              "max_iter": 2000,
+              "penalty": "l2",
+              "solver": "liblinear",
+              "tol": 0.0001
+            },
+            "preprocessing": {
+              "numeric_missing": "reject",
+              "numeric_scaling": "standard",
+              "text_parameters": null
+            },
+            "seed": 42
+          }
+        ],
+        "configurations": [
+          "U1"
+        ],
+        "omitted_features": [
+          "HasObfuscation",
+          "NoOfObfuscatedChar"
+        ],
+        "protocol_reference": "research:candidate-phiusiil-exploratory-design-20261118-not-authorization",
+        "threshold": {
+          "mode": "fixed",
+          "value": 0.5
+        }
+      }
+    },
+    {
+      "fit_estimate_if_authorized": {
+        "base_fits": 665,
+        "calibration_fits": 5
+      },
+      "launch_after_separate_ablation_acceptance_only": "python -B -m ml.research_execution --root . --input-run-id phiusiil-u1-omit-host-structure-candidate-v1 --authorization-sha256 <independently-trusted-ablation-receipt-sha256> --purpose ablation --execute",
+      "name": "omit_host_structure",
+      "rationale": "Test incremental technical signal of this fixed feature block on identical observations/folds; no behavioral interpretation",
+      "runner_specification": {
+        "calibration": {
+          "clip_epsilon": 1e-06,
+          "parameters": {
+            "C": 1000000.0,
+            "class_weight": null,
+            "fit_intercept": true,
+            "max_iter": 2000,
+            "penalty": "l2",
+            "solver": "lbfgs",
+            "tol": 1e-06
+          },
+          "seed": 42,
+          "transform": "logit_probability"
+        },
+        "calibration_edges": [
+          0.0,
+          0.1,
+          0.2,
+          0.3,
+          0.4,
+          0.5,
+          0.6,
+          0.7,
+          0.8,
+          0.9,
+          1.0
+        ],
+        "candidates": [
+          {
+            "family": "logistic_regression",
+            "id": "logistic_regression-000",
+            "parameters": {
+              "C": 0.01,
+              "class_weight": null,
+              "fit_intercept": true,
+              "max_iter": 2000,
+              "penalty": "l2",
+              "solver": "liblinear",
+              "tol": 0.0001
+            },
+            "preprocessing": {
+              "numeric_missing": "reject",
+              "numeric_scaling": "standard",
+              "text_parameters": null
+            },
+            "seed": 42
+          },
+          {
+            "family": "logistic_regression",
+            "id": "logistic_regression-001",
+            "parameters": {
+              "C": 0.01,
+              "class_weight": "balanced",
+              "fit_intercept": true,
+              "max_iter": 2000,
+              "penalty": "l2",
+              "solver": "liblinear",
+              "tol": 0.0001
+            },
+            "preprocessing": {
+              "numeric_missing": "reject",
+              "numeric_scaling": "standard",
+              "text_parameters": null
+            },
+            "seed": 42
+          },
+          {
+            "family": "logistic_regression",
+            "id": "logistic_regression-002",
+            "parameters": {
+              "C": 0.1,
+              "class_weight": null,
+              "fit_intercept": true,
+              "max_iter": 2000,
+              "penalty": "l2",
+              "solver": "liblinear",
+              "tol": 0.0001
+            },
+            "preprocessing": {
+              "numeric_missing": "reject",
+              "numeric_scaling": "standard",
+              "text_parameters": null
+            },
+            "seed": 42
+          },
+          {
+            "family": "logistic_regression",
+            "id": "logistic_regression-003",
+            "parameters": {
+              "C": 0.1,
+              "class_weight": "balanced",
+              "fit_intercept": true,
+              "max_iter": 2000,
+              "penalty": "l2",
+              "solver": "liblinear",
+              "tol": 0.0001
+            },
+            "preprocessing": {
+              "numeric_missing": "reject",
+              "numeric_scaling": "standard",
+              "text_parameters": null
+            },
+            "seed": 42
+          },
+          {
+            "family": "logistic_regression",
+            "id": "logistic_regression-004",
+            "parameters": {
+              "C": 1.0,
+              "class_weight": null,
+              "fit_intercept": true,
+              "max_iter": 2000,
+              "penalty": "l2",
+              "solver": "liblinear",
+              "tol": 0.0001
+            },
+            "preprocessing": {
+              "numeric_missing": "reject",
+              "numeric_scaling": "standard",
+              "text_parameters": null
+            },
+            "seed": 42
+          },
+          {
+            "family": "logistic_regression",
+            "id": "logistic_regression-005",
+            "parameters": {
+              "C": 1.0,
+              "class_weight": "balanced",
+              "fit_intercept": true,
+              "max_iter": 2000,
+              "penalty": "l2",
+              "solver": "liblinear",
+              "tol": 0.0001
+            },
+            "preprocessing": {
+              "numeric_missing": "reject",
+              "numeric_scaling": "standard",
+              "text_parameters": null
+            },
+            "seed": 42
+          },
+          {
+            "family": "logistic_regression",
+            "id": "logistic_regression-006",
+            "parameters": {
+              "C": 10.0,
+              "class_weight": null,
+              "fit_intercept": true,
+              "max_iter": 2000,
+              "penalty": "l2",
+              "solver": "liblinear",
+              "tol": 0.0001
+            },
+            "preprocessing": {
+              "numeric_missing": "reject",
+              "numeric_scaling": "standard",
+              "text_parameters": null
+            },
+            "seed": 42
+          },
+          {
+            "family": "logistic_regression",
+            "id": "logistic_regression-007",
+            "parameters": {
+              "C": 10.0,
+              "class_weight": "balanced",
+              "fit_intercept": true,
+              "max_iter": 2000,
+              "penalty": "l2",
+              "solver": "liblinear",
+              "tol": 0.0001
+            },
+            "preprocessing": {
+              "numeric_missing": "reject",
+              "numeric_scaling": "standard",
+              "text_parameters": null
+            },
+            "seed": 42
+          }
+        ],
+        "configurations": [
+          "U1"
+        ],
+        "omitted_features": [
+          "DomainLength",
+          "IsDomainIP",
+          "TLDLength",
+          "NoOfSubDomain"
+        ],
+        "protocol_reference": "research:candidate-phiusiil-exploratory-design-20261118-not-authorization",
+        "threshold": {
+          "mode": "fixed",
+          "value": 0.5
+        }
+      }
+    }
+  ],
+  "training_boundary": "All scaling/search/calibration learn only within applicable training folds; new internal calibration/evaluation predictors and outcomes excluded from model selection; no historical protected access",
+  "uncertainty": {
+    "confidence": 0.95,
+    "execution": "not run",
+    "method": "paired_group_bootstrap",
+    "resamples": 2000,
+    "seed": 42
+  }
+}

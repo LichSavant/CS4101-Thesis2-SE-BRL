@@ -1,0 +1,17 @@
+{
+  "recorded_at": "2026-11-24T09:13:57.494358+00:00",
+  "historical_population": 38759,
+  "candidate_development_observations": 27129,
+  "crosswalk_sha256": "895b9e3dd47b4daa8c8b1514d7f422c9e39ba75297c4190b28eaf1bfdaf59375",
+  "mechanical_mapping_verified": true,
+  "historical_lineage_authenticated": false,
+  "manifest_contains_record_fingerprints": false,
+  "preferred_resolution": "recover_original_lineage_evidence",
+  "alternative_resolution": "approved_prospective_identity_protocol",
+  "alternative_protocol_approved": false,
+  "preserve_original_datasets": true,
+  "preserve_historical_results": true,
+  "preserve_original_implementation": true,
+  "scientific_admission_verified": false,
+  "research_fitting_authorized": false
+}

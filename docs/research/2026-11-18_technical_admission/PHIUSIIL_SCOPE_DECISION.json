@@ -1,0 +1,62 @@
+{
+  "record_type": "recorded_direct_researcher_scope_decision_not_execution_receipt",
+  "status": "ACCEPTED_BY_DIRECT_USER; JOINT_ACCEPTANCE_REPORTED_PENDING_CONFIRMATION",
+  "proposal_path": "docs/research/2026-11-18_technical_admission/PHIUSIIL_POPULATION_DECISION_PROPOSAL.md",
+  "proposal_sha256": "2941fa249de79c63545fd1d49f17dd2199e11d3c27ff801774e8e314b34e7fb8",
+  "attribution": {
+    "direct_respondent": "Dhanwil, as identified in this conversation",
+    "identity_independently_verified": false,
+    "exact_proposal_acceptance_supplied": true,
+    "joint_acceptance": "Reported by direct respondent; subject to Vera confirmation if not documented",
+    "vera_confirmation_independently_documented": false,
+    "independently_verified_signatures": false
+  },
+  "decision_requested": "Superseded by the direct response recorded above; this record is methodological acceptance, not exact-file C/D execution acceptance.",
+  "proposed_scope": {
+    "version": "phiusiil-former-development-exploratory-v1",
+    "population_records": 165089,
+    "population": "Existing verified former-development source-bound IDs and native labels only",
+    "historical_protected_records_excluded": 70706,
+    "snapshot_sha256": "a236549cd369cd80bd478ff8e1779cbf44c58d5c3f79f7a51a1adbed7d06d1c6",
+    "source_file": "PhiUSIIL_Phishing_URL_Dataset.csv",
+    "input_namespace": "phiusiil-former-development-input-v1",
+    "allocation_output_namespace": "phiusiil-former-development-allocation-v1",
+    "fractions": [
+      0.7,
+      0.15,
+      0.15
+    ],
+    "seed": 42,
+    "development_folds": 5,
+    "maximum_per_class_fraction_error": 0.05,
+    "allocator": "prospective-components-greedy-allocation-0.1.0",
+    "relationships": "Connected components of verified literal normalized-domain and exact URL-equality edges within permitted positions; no invented edges",
+    "coverage_limits": [
+      "near_duplicate",
+      "template",
+      "campaign"
+    ],
+    "conflict_policy": "Retain observations and all 36 known mixed-label groups intact; no relabeling or group splitting",
+    "failure_policy": "Abort unmet constraints; no seed search, silent fallback or observation removal",
+    "exposure": "Exploratory previously exposed; new internal roles are not untouched holdouts",
+    "claims": "U1 technical subset only; no behavioral-indicator or Transformer validation",
+    "feature_dictionary": "Reuse existing ten-field implementation freeze; new role/fold metadata needs a separate bound handoff",
+    "preservation": "All existing delivery records, assignments, hashes, receipts and original CSVs remain unchanged"
+  },
+  "boundaries": {
+    "preparation_authorized_by_direct_response": true,
+    "gated_allocation_execution_authorized": false,
+    "fitting_authorized": false,
+    "historical_protected_access_authorized": false,
+    "execution_acceptance_receipt_created": false,
+    "independent_digest_asserted": false
+  },
+  "minimum_external_action": [
+    "Supply genuinely trusted upstream ID-universe authentication and exact-file C-allocation acceptance/digest once the permitted inputs are prepared.",
+    "Confirm joint deviation acceptance where required; Vera confirmation remains reported rather than independently documented.",
+    "D-features admission and frozen fitting settings/authorization remain separate later requirements."
+  ],
+  "decision_date": "2026-11-18",
+  "direct_response_text": "Research Decision ? November 18, 2026\n\nI confirm my acceptance of the proposed PhiUSIIL exploratory research scope:\n\n- Population: 165,089 verified former-development records.\n- Allocation: Group-safe 70% development, 15% calibration, 15% evaluation.\n- Random seed: 42.\n- Development cross-validation: Five folds.\n- Research scope: Exploratory technical-feature evaluation only.\n- Safeguards: Preserve original records, exclude historical protected observations, prevent group leakage, and explicitly disclose historical exposure and methodological limitations.\n\nVera and I have discussed the research direction. I report joint acceptance of these exact terms, subject to her confirmation if not already documented.\n\nRecord this decision with accurate attribution and date. Continue all permitted preparation and validation immediately.\n\nThis methodological acceptance does not replace independently trusted evidence, dataset admission, or separate fitting authorization. Do not bypass those requirements.",
+  "direct_response_text_note": "Plain-text transcription of this user message; Markdown emphasis removed, not independently signed."
+}

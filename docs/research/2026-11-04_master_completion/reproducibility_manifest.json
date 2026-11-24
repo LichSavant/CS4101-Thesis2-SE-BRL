@@ -1,0 +1,72 @@
+{
+  "result_category": "VERIFIED SOFTWARE RESULT",
+  "date": "2026-11-04",
+  "git_head": "6bded57d38e9b83ba718d7795b97e2130128c23f",
+  "dirty_working_tree": true,
+  "research_execution_authorized": false,
+  "scientific_freeze": false,
+  "environment": {
+    "python": "3.12.10 (tags/v3.12.10:0cc8128, Apr  8 2025, 12:21:36) [MSC v.1943 64 bit (AMD64)]",
+    "platform": "Windows-11-10.0.26200-SP0",
+    "packages": {
+      "numpy": null,
+      "pandas": null,
+      "scipy": null,
+      "scikit-learn": null,
+      "xgboost": null,
+      "pytest": "8.4.2"
+    },
+    "logical_cpu_count": 12,
+    "processor": "AMD64 Family 25 Model 124 Stepping 0, AuthenticAMD",
+    "machine": "AMD64"
+  },
+  "code_hashes": {
+    "ml/development_experiments.py": "f977c4057b7cc56260f1dd0866d3ee2e2fb5f93ab5571663148a3e274a538ac8",
+    "ml/uci_preparation.py": "e949a40d49eb975bdd2e1a603094b3de0ece5d95ef9186d6aec864c0423d0c03",
+    "ml/evaluation_metrics.py": "36ce8855bfb85511727d9539005fa34620a23cfe86e86c630403b13b74a20445",
+    "ml/development_runner.py": "1bd00a8a7558a8fdabcf6d263b236d65090bf26979989b329bc6bf021361c6c7",
+    "ml/inference_benchmark.py": "45cf542e28d5f39c99c55f3022bca1e8cbe1833dcdbd3e5323cedd700d0b05af",
+    "ml/synthetic_demo.py": "b2fb87772ddff188b37d005f95443ded2f15c9f4f8658a5adc20b1fbdb17d616",
+    "ml/tests/test_evaluation_metrics.py": "ac6ca14025b4b7b021eac78cf082ea3296a530096bc674a383ffcced03e4ae03",
+    "ml/tests/test_development_runner.py": "a58e18dca4e2e35faf34a53c52d82bcd99f25c2873418f054fbf89659f0135a2",
+    "ml/tests/test_numeric_boundaries.py": "d1f10d160ac94e8c9e3a2061999b0f4d0df9a4154f965cf30e7ee304cd05cdf1",
+    "ml/tests/test_inference_benchmark.py": "84f4da3f00ceeec2d187bfd50561e54d79e44f1b07a6f5c116320a74d11b1481",
+    "ml/tests/test_synthetic_demo.py": "aaec531f3eb402fb1c2894585e829bea08dfc1f29eaffc995ac4c826e58dc279"
+  },
+  "source_evidence_register": "dataset_evidence.json",
+  "protected_artifact_inventory": "artifact_inventory.json",
+  "synthetic_run": {
+    "result_category": "SYNTHETIC RESULT",
+    "manifest": "synthetic_smoke/manifest.json",
+    "manifest_sha256": "3b28482b0ea9d906a28533723fc578b1db6306086230f5341f0a267be8a3821d",
+    "seed": 7,
+    "data": "constructed target-correlated fixtures; no corpus input",
+    "classifier_implementation": "deterministic scoring stub; no LR/SVM/RF/XGBoost implementation",
+    "stub_fit_calls": 40,
+    "actual_research_models_fitted": 0,
+    "outputs": {
+      "metrics.json": "a8610cfe668d6537d8640c731fe1004a91cbef9804322e13e3bb227b22950e55",
+      "oof_predictions.csv": "5803276d8e8c346e0cc87b97de20c74f2df3c7d83cd86f754aa38454268f7310"
+    }
+  },
+  "verification": {
+    "python_tests_passed": 906,
+    "new_focused_tests_passed": 93,
+    "neighboring_tests_passed": 382,
+    "frontend_tests_passed": 25,
+    "notebook_cells_parsed": 275,
+    "notebook_cells_executed": 0,
+    "typescript": "passed both applications, no emit/incremental writes",
+    "builds": "extension popup/background/content and dashboard passed to task temp",
+    "warnings": [
+      "installed Starlette/httpx deprecation",
+      "dashboard external outDir not emptied",
+      "existing .pytest_cache inaccessible"
+    ],
+    "research_analytical_notebooks_executed": 0,
+    "actual_data_handoffs_created": 0
+  },
+  "temporary_storage": "C:\\Users\\Dhanwil\\AppData\\Local\\Temp\\sebrl-master-20261104-xiwva8k4",
+  "database_url_for_tests": "sqlite:///:memory:",
+  "result_category_policy": "Each evidence/run entry has its own category; synthetic metrics never become empirical findings"
+}

@@ -237,7 +237,8 @@ def _read_csv(path: Path, expected_hash: str, *, behavioral: bool, specification
                 raise InputContractError("duplicate_or_missing_csv_columns")
             required = set(METADATA)
             if behavioral:
-                required.update(behavioral_columns())
+                behavior_fields = behavioral_columns()
+                required.update(behavior_fields)
                 if set(headers) != required:
                     raise InputContractError("behavioral_csv_schema_mismatch")
             else:
@@ -268,7 +269,7 @@ def _read_csv(path: Path, expected_hash: str, *, behavioral: bool, specification
                         raise InputContractError("invalid_integer_csv_metadata")
                     row[column] = int(value.removesuffix(".0"))
                 if behavioral:
-                    for column in behavioral_columns():
+                    for column in behavior_fields:
                         value = row.get(column)
                         if value not in {"0", "1", "False", "True"}:
                             raise InputContractError("invalid_behavioral_csv_value")

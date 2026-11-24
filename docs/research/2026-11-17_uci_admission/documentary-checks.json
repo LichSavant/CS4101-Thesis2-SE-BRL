@@ -1,0 +1,12 @@
+{
+  "scope": "documentation_and_native_schema_only_no_payload_access",
+  "documentation_integrity": "PASS",
+  "ordered_feature_domains_verified": 30,
+  "official_feature_document_matches_retained_git_bytes": true,
+  "official_api_target_description": null,
+  "current_license": "CC BY 4.0",
+  "original_acquisition_date_established": false,
+  "scientific_admission": "BLOCKED",
+  "actual_data_no_fit_admission_executed": false,
+  "scientific_experiments_executed": 0
+}

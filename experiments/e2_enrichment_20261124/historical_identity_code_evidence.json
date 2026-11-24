@@ -1,0 +1,44 @@
+{
+  "recorded_at": "2026-11-24T09:15:30.712235+00:00",
+  "historical_commit": "1a45c53",
+  "historical_notebook_sha256": "f59c99a770e86cd847ad70930c3174bb6751b2fc0c5f4db985494ccb7b362765",
+  "population_cell": "email_parts = []\n\n# Phishing-positive observations\nnazario = data[\"Nazario\"].copy()\nnazario[\"source_dataset\"] = \"Nazario\"\nnazario[\"target\"] = 1\nemail_parts.append(nazario)\n\n# Legitimate / ham negative observations only\nfor source in [\"CEAS-08\", \"Enron\", \"SpamAssassin\"]:\n    df = data[source].copy()\n\n    legitimate = df[df[\"label\"] == 0].copy()\n\n    legitimate[\"source_dataset\"] = source\n    legitimate[\"target\"] = 0\n\n    email_parts.append(legitimate)\n\nemail_binary = pd.concat(\n    email_parts,\n    ignore_index=True,\n    sort=False\n)\n\nprint(\"Email binary rows:\", len(email_binary))\nprint()\n\nprint(\"Target distribution:\")\nprint(email_binary[\"target\"].value_counts().sort_index())\n\nprint(\"\\nSource \u00d7 target:\")\nprint(\n    pd.crosstab(\n        email_binary[\"source_dataset\"],\n        email_binary[\"target\"]\n    )\n)",
+  "identity_cell": "email_binary = email_binary.copy()\n\nemail_binary[\"source_row_id\"] = (\n    email_binary\n    .groupby(\"source_dataset\")\n    .cumcount()\n)\n\nemail_binary[\"observation_id\"] = (\n    email_binary[\"source_dataset\"].astype(str)\n    + \"::\"\n    + email_binary[\"source_row_id\"].astype(str)\n)\n\nprint(\"Rows:\", len(email_binary))\nprint(\n    \"Unique observation IDs:\",\n    email_binary[\"observation_id\"].nunique()\n)\nprint(\n    \"Duplicate observation IDs:\",\n    email_binary[\"observation_id\"].duplicated().sum()\n)\n\nemail_binary[\n    [\n        \"observation_id\",\n        \"source_dataset\",\n        \"source_row_id\",\n        \"target\"\n    ]\n].head(10)",
+  "historical_grouping_cells": {
+    "22": "import re\n\ndef normalize_text(value):\n    if pd.isna(value):\n        return \"\"\n\n    value = str(value).lower().strip()\n    value = re.sub(r\"\\s+\", \" \", value)\n\n    return value\n\n\ndef sha256_text(value):\n    return hashlib.sha256(\n        value.encode(\"utf-8\")\n    ).hexdigest()",
+    "23": "email_grouping = email_binary.copy()\n\nemail_grouping[\"normalized_body\"] = (\n    email_grouping[\"body\"]\n    .fillna(\"\")\n    .map(normalize_text)\n)\n\nemail_grouping[\"body_hash\"] = (\n    email_grouping[\"normalized_body\"]\n    .map(sha256_text)\n)\n\nif \"sender\" in email_grouping.columns:\n    email_grouping[\"normalized_sender\"] = (\n        email_grouping[\"sender\"]\n        .fillna(\"\")\n        .map(normalize_text)\n    )\nelse:\n    email_grouping[\"normalized_sender\"] = \"\"",
+    "27": "# Union-Find / Disjoint Set implementation\nparent = list(range(len(email_grouping)))\nrank = [0] * len(email_grouping)\n\n\ndef find(x):\n    while parent[x] != x:\n        parent[x] = parent[parent[x]]\n        x = parent[x]\n    return x\n\n\ndef union(a, b):\n    root_a = find(a)\n    root_b = find(b)\n\n    if root_a == root_b:\n        return\n\n    if rank[root_a] < rank[root_b]:\n        parent[root_a] = root_b\n\n    elif rank[root_a] > rank[root_b]:\n        parent[root_b] = root_a\n\n    else:\n        parent[root_b] = root_a\n        rank[root_a] += 1",
+    "28": "sender_groups = (\n    email_grouping.loc[\n        email_grouping[\"normalized_sender\"] != \"\"\n    ]\n    .groupby(\"normalized_sender\")\n    .groups\n)\n\nfor indices in sender_groups.values():\n    indices = list(indices)\n\n    first = indices[0]\n\n    for idx in indices[1:]:\n        union(first, idx)",
+    "29": "body_groups = (\n    email_grouping.loc[\n        email_grouping[\"normalized_body\"] != \"\"\n    ]\n    .groupby(\"body_hash\")\n    .groups\n)\n\nfor indices in body_groups.values():\n    indices = list(indices)\n\n    first = indices[0]\n\n    for idx in indices[1:]:\n        union(first, idx)",
+    "30": "roots = [find(i) for i in range(len(email_grouping))]\n\nroot_to_group = {\n    root: f\"email_group_{group_number:06d}\"\n    for group_number, root in enumerate(\n        sorted(set(roots)),\n        start=1\n    )\n}\n\nemail_grouping[\"group_id\"] = [\n    root_to_group[root]\n    for root in roots\n]"
+  },
+  "identity_convention": "post_filter_source_specific_rank",
+  "candidate_crosswalk_convention_matches": true,
+  "source_snapshots": {
+    "ceas_08_clean.csv": {
+      "md5": "1f0d59191eec892a709995d48cd8decb",
+      "sha256": "22375e7d5f5a8229dbe987914ee9b3705656c590038662a7df6054629b376074",
+      "matches_reference_md5": true
+    },
+    "enron_clean.csv": {
+      "md5": "10489e0fdcc8af6fe62135c689367d40",
+      "sha256": "11f28a5bdd3603f1829681ab6b55071b5f9af781b4e6694e39216b2996a96883",
+      "matches_reference_md5": true
+    },
+    "nazario_clean.csv": {
+      "md5": "4022d055bb7cf8602f30f768f652e91e",
+      "sha256": "b8fbc4158fbdfaff1ed98584c43d72e283c6352d7ade4d457d34c1d79488d184",
+      "matches_reference_md5": true
+    },
+    "spamassassin_clean.csv": {
+      "md5": "d921e0b2333bfaa058bd38193e6b3fbd",
+      "sha256": "3bfe8f8abff89f69a98456be50413c2fcb20a476141116dd84ee1507b980c00e",
+      "matches_reference_md5": true
+    }
+  },
+  "candidate_crosswalk_sha256": "895b9e3dd47b4daa8c8b1514d7f422c9e39ba75297c4190b28eaf1bfdaf59375",
+  "historical_manifest_sha256": "38c87c522da47fea6f8f584c2e487af73d89502e9db3130f6298006829241ae4",
+  "historical_execution_authenticated": false,
+  "scientific_admission_verified": false,
+  "research_fitting_authorized": false
+}

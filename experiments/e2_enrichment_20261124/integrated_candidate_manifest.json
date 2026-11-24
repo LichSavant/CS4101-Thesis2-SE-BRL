@@ -1,0 +1,17 @@
+{
+  "status": "integrated_development_candidate",
+  "candidate_version": "0.2.0-e2-dev-candidate3-context1",
+  "feature_count": 44,
+  "technical_predictors": 0,
+  "integration_passed": 12,
+  "integration_total": 12,
+  "production_regression_passed_with_candidate_context": 98,
+  "independent_validation": false,
+  "research_fitting_authorized": false,
+  "models_fitted": 0,
+  "artifacts": {
+    "behavioral_enrichment.py": "33a905956e00e5e7668cab442f7fe113ea729118113c2ee0929eb592c55d4579",
+    "candidate_rules_v3.json": "b58d2ac7dadbae7e581d97845f74d0a111102eed2bc39e7fb154fa79b2ee1371",
+    "candidate_context_v1.py": "7e429131813423c14d2964b004e6dc9f5edfe9aa471eb20734245b3a1a7225c9"
+  }
+}

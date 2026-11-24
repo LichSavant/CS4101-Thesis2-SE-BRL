@@ -1,0 +1,64 @@
+{
+  "accepted_at": "2026-11-24T09:29:45.834114+00:00",
+  "authority": "Dhanwil Nick M. Alcover",
+  "capacity": "Researcher acting on behalf of both researchers",
+  "joint_authority_basis": "Researcher-reported agreement",
+  "scope": "Supplementary experimental design preparation",
+  "researcher_acceptance": true,
+  "decisions": {
+    "primary_sources": [
+      "Nazario",
+      "Enron",
+      "SpamAssassin"
+    ],
+    "ceas_role": "separate_sensitivity_analysis",
+    "candidate_primary_development_rows": 15011,
+    "representations": [
+      8,
+      24,
+      36,
+      44
+    ],
+    "compare_original_and_refined_extraction": true,
+    "preserve_original_results": true,
+    "preserve_original_datasets": true,
+    "preserve_original_architecture": true,
+    "assignment_reuse_conditional_on_lineage": true,
+    "transformer_policy": "review_only",
+    "classifier_families": [
+      "logistic_regression",
+      "linear_svm",
+      "random_forest",
+      "xgboost"
+    ],
+    "evaluation": "grouped_nested_development_cv",
+    "outer_folds": 5,
+    "minimum_performance_objective": {
+      "ap": 0.8,
+      "f1": 0.8
+    },
+    "stretch_performance_objective": {
+      "ap": 0.9,
+      "f1": 0.9
+    },
+    "claim_scope": "exploratory_internal_validation",
+    "historical_holdout_optimization": false
+  },
+  "bound_artifacts": {
+    "historical_identity_code_evidence.json": "d5440c7e1d4d2f9fcc419f6e0f81a2000ae21a940899769730495d5254171fd8",
+    "candidate_development_crosswalk.csv": "895b9e3dd47b4daa8c8b1514d7f422c9e39ba75297c4190b28eaf1bfdaf59375",
+    "primary_source_label_evidence.json": "bcc9747a88c95f773135ec5764eb78d7beb3bac5c574d39dc207e31632573f03",
+    "ordered_predictor_dictionary.json": "905116bb7ec0843d7b9b6fcee52c33dec00313f1df908dc9bbb43d8ed5321607",
+    "candidate_rules_v3.json": "b58d2ac7dadbae7e581d97845f74d0a111102eed2bc39e7fb154fa79b2ee1371",
+    "candidate_context_v1.py": "7e429131813423c14d2964b004e6dc9f5edfe9aa471eb20734245b3a1a7225c9",
+    "integrated_extraction_adapter.py": "157aa5b927296e06f61923d313a11eae8398e1062b4aedb40c51b8061874a999",
+    "supplementary_exporter.py": "e71723041e3a5236e5e14ffc895d25cb4f0bb19ea1ceba7f78d781271167ab33",
+    "development_harness.py": "d95e5e4a48e1ebf003c236728fafda930e19f08c7bd679afda2309edd94b2619",
+    "statistical_evaluation.py": "f1defd7cd37d5decefec8225e9735fcd7da53c2e4aab7dd0bf82728987898259"
+  },
+  "historical_lineage_authenticated": false,
+  "independent_custody_verified": false,
+  "adviser_approval_verified": false,
+  "scientific_admission_verified": false,
+  "research_fitting_authorized": false
+}

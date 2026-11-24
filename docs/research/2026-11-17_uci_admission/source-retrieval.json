@@ -1,0 +1,29 @@
+[
+  {
+    "artifact": "uci-page.html",
+    "requested_url": "https://archive.ics.uci.edu/dataset/327/phishing+websites",
+    "effective_url": "https://archive.ics.uci.edu/dataset/327/phishing+websites",
+    "retrieved_utc": "2026-11-17T14:52:52.560800+00:00",
+    "sha256": "f90391f6c638b135be0c3d3a824770ab379fc70e545b4dd12862c06a5364aa44",
+    "bytes": 179039,
+    "scope": "source documentation only; no dataset records"
+  },
+  {
+    "artifact": "uci-metadata.json",
+    "requested_url": "https://archive.ics.uci.edu/api/dataset?id=327",
+    "effective_url": "https://archive.ics.uci.edu/api/dataset?id=327",
+    "retrieved_utc": "2026-11-17T14:52:52.021736+00:00",
+    "sha256": "95c3a03b584e36286d50d7521c6f7244d9c9d1129cfb9fca6c16f76d82ce0722",
+    "bytes": 6395,
+    "scope": "source documentation only; no dataset records"
+  },
+  {
+    "artifact": "uci-feature-document.docx",
+    "requested_url": "https://archive.ics.uci.edu/ml/machine-learning-databases/00327/Phishing%20Websites%20Features.docx",
+    "effective_url": "https://archive.ics.uci.edu/ml/machine-learning-databases/00327/Phishing%20Websites%20Features.docx",
+    "retrieved_utc": "2026-11-17T14:52:52.135827+00:00",
+    "sha256": "f6f9326f45659a7b5ef947fa744cec2c379dbea17de56d34436312407faca43c",
+    "bytes": 38995,
+    "scope": "source documentation only; no dataset records"
+  }
+]

@@ -1,0 +1,78 @@
+{
+  "baseline_version": "0.2.0",
+  "candidate_version": "0.2.0-e2-dev-candidate2",
+  "status": "development_candidate_only",
+  "independent_validation": false,
+  "fitting_authorized": false,
+  "rules": [
+    {
+      "rule_id": "pressure.immediate_action",
+      "indicator_id": "urgency",
+      "pattern": "(?:\\b(?:act now|(?:click|reply|respond|verify|pay|submit)\\b.{0,40}?\\b(?:immediately|right now))\\b)|(?:\\b(?:act immediately|immediate action is required)\\b)"
+    },
+    {
+      "rule_id": "pressure.adverse_consequence",
+      "indicator_id": "fear_threat",
+      "pattern": "(?:\\b(?:your (?:account|access) will be (?:suspended|terminated|locked)|you will (?:lose access|face penalties))\\b)|(?:\\bfailure to comply will result in (?:account termination|account suspension|loss of access)\\b)"
+    },
+    {
+      "rule_id": "pressure.limited_action",
+      "indicator_id": "scarcity",
+      "pattern": "\\b(?:act|claim|buy|order)\\b.{0,60}?\\b(?:before (?:it|they) (?:expires?|runs? out)|only \\d+ (?:left|remaining)|limited time)\\b"
+    },
+    {
+      "rule_id": "lure.information_gap",
+      "indicator_id": "curiosity",
+      "pattern": "\\b(?:click|open)\\b.{0,40}?\\b(?:find out|see who|discover (?:who|what)|reveal)\\b"
+    },
+    {
+      "rule_id": "lure.claim_benefit",
+      "indicator_id": "reward_lure",
+      "pattern": "(?:\\b(?:click|reply|claim)\\b.{0,45}?\\b(?:your|a) (?:prize|reward|free gift|refund)\\b)|(?:\\b(?:you have|you've) won (?:a|the) (?:cash prize|prize|reward)\\b)"
+    },
+    {
+      "rule_id": "trust.prevent_verification",
+      "indicator_id": "confidentiality_isolation",
+      "pattern": "\\b(?:do not|don't|never) (?:tell|contact|consult) (?:anyone|your (?:bank|manager|IT department))\\b"
+    },
+    {
+      "rule_id": "action.interact",
+      "indicator_id": "call_to_action",
+      "pattern": "\\b(?:click (?:here|the link|this link)|(?:visit|open) (?:this|the) (?:website|link)|download (?:the|this) (?:file|attachment)|reply (?:to this|with)|submit (?:your|the) (?:details|password|information))\\b"
+    },
+    {
+      "rule_id": "action.disclose_sensitive",
+      "indicator_id": "credential_sensitive_data_request",
+      "pattern": "\\b(?:send|share|provide|submit|enter|confirm)\\s+(?:(?:us|me)\\s+)?(?:your|the)\\s+(?:password|login credentials|verification code|credit card number|social security number)\\b"
+    },
+    {
+      "rule_id": "action.transfer_money",
+      "indicator_id": "financial_action_request",
+      "pattern": "(?:\\b(?:transfer (?:the |your )?(?:funds|money)|send (?:us |me )?(?:money|payment)|pay (?:the|this) (?:fee|invoice)|purchase (?:a |the )?gift cards?|update your bank account)\\b)|(?:\\b(?:transfer|send|wire)\\s+(?:(?:the|your|us|me)\\s+)?(?:payment|money|funds)\\b)"
+    },
+    {
+      "rule_id": "pressure.action_deadline",
+      "indicator_id": "urgency",
+      "pattern": "(?:(?<!no )(?<!no immediate )\\b(?:action required|verify (?:your account|your identity) (?:today|within \\d+ hours)|respond within \\d+ hours)\\b)|(?:\\b(?:verify|respond|reply|submit|pay)\\b.{0,40}?\\bbefore (?:midnight|noon)\\b)"
+    },
+    {
+      "rule_id": "pressure.account_restriction",
+      "indicator_id": "fear_threat",
+      "pattern": "\\b(?:your account (?:has been|will be) restricted|avoid (?:account )?suspension|your account is on security hold)\\b"
+    },
+    {
+      "rule_id": "action.disclose_otp_pin",
+      "indicator_id": "credential_sensitive_data_request",
+      "pattern": "(?<!never )\\b(?:enter|send|share|provide|submit|confirm)\\s+(?:your|the)\\s+(?:OTP|one.time password|PIN)\\b"
+    },
+    {
+      "rule_id": "action.wire_settle",
+      "indicator_id": "financial_action_request",
+      "pattern": "\\b(?:wire (?:the|your) payment|settle (?:the|your) outstanding balance)\\b"
+    }
+  ],
+  "development_conformance": {
+    "passed": 27,
+    "total": 27
+  }
+}

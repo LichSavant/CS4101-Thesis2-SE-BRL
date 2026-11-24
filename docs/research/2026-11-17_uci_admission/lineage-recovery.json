@@ -1,0 +1,60 @@
+{
+  "baseline_commit": "7b5c70e5b32c8e4d1274697bac718a20c869ee3b",
+  "historical_lineage": "INCOMPLETE",
+  "authorized_repository_candidates_exhausted": true,
+  "authenticated_mapping_pairs_recovered": 0,
+  "repository_identified_external_backup": null,
+  "scope": "named Git trees, metadata artifact names and previously inspected source-only N02/N03 cells; no source or reserved predictor payloads",
+  "checks": [
+    {
+      "command": [
+        "git",
+        "log",
+        "7b5c70e5b32c8e4d1274697bac718a20c869ee3b",
+        "--format=%H %s",
+        "--",
+        "experiments/results/preprocessing/partitions/uci_partition_manifest.csv",
+        "experiments/results/cleaning/cleaning_log.csv",
+        "experiments/notebooks/02_data_cleaning.ipynb"
+      ],
+      "exit_code": 0,
+      "output": [
+        "abfe2f4d0f1ffefb8b666dae8ecce2e37f21f09f Add UCI partition manifest",
+        "3ae39faef0898e5cfc4f807b5bbafeaec855c510 Add data cleaning log",
+        "cf4f6770db707611176622a33d4d44b2bb65120f Complete data cleaning notebook",
+        "2f4e731919798088894b3d12201e7879b6388aa5 Initialize data cleaning notebook",
+        "fd47c15fa1fe669e6c45006bd33c79774a1064d8 Add data preprocessing experiment structure"
+      ]
+    },
+    {
+      "command": [
+        "git",
+        "ls-tree",
+        "-r",
+        "--name-only",
+        "cf4f677",
+        "experiments/results"
+      ],
+      "exit_code": 0,
+      "output": [
+        "experiments/results/audits/uci_native_value_audit.csv"
+      ]
+    },
+    {
+      "command": [
+        "git",
+        "ls-tree",
+        "-r",
+        "--name-only",
+        "abfe2f4",
+        "experiments/results/preprocessing"
+      ],
+      "exit_code": 0,
+      "output": [
+        "experiments/results/preprocessing/partitions/uci_partition_manifest.csv",
+        "experiments/results/preprocessing/preprocessing_policy.csv"
+      ]
+    }
+  ],
+  "conclusion": "Recipes and aggregate/assignment records found; no authenticated original-record correspondence ledger. Further recovery requires an existing custodian-held ledger, not additional local payload discovery."
+}

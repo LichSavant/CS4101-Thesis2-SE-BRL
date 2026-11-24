@@ -1,0 +1,31 @@
+[
+  {
+    "name": "authors-2012.pdf",
+    "url": "https://eprints.hud.ac.uk/id/eprint/16229/1/The_7th_ICITST_2012_Conference_-An_Assessment_of_Features_Related_to_Phishing_Websites_using_an_Automated_Technique.pdf",
+    "effective_url": "https://eprints.hud.ac.uk/id/eprint/16229/1/The_7th_ICITST_2012_Conference_-An_Assessment_of_Features_Related_to_Phishing_Websites_using_an_Automated_Technique.pdf",
+    "bytes": 850826,
+    "sha256": "40d9af331e68e4bbbe18daa0c03dd7d68767e97fd955169b8a61024bbb116e63",
+    "retrieved_utc": "2026-11-18T01:13:27.112708+00:00"
+  },
+  {
+    "name": "authors-2014.pdf",
+    "url": "https://eprints.hud.ac.uk/id/eprint/17994/3/RamiIntelligent_Rule_based_Phishing_Websites_Classification_IET_Journal.pdf",
+    "effective_url": "https://eprints.hud.ac.uk/id/eprint/17994/3/RamiIntelligent_Rule_based_Phishing_Websites_Classification_IET_Journal.pdf",
+    "bytes": 415304,
+    "sha256": "8c03386f0a7f7d4ce76943fe0d20e8de8a690446c5db2ecda6822e68551633ff",
+    "retrieved_utc": "2026-11-18T01:13:29.781894+00:00"
+  },
+  {
+    "name": "secondary-2016.pdf",
+    "url": "https://www.ijcaonline.org/archives/volume147/number5/aldiabat-2016-ijca-911061.pdf",
+    "effective_url": "https://www.ijcaonline.org/archives/volume147/number5/aldiabat-2016-ijca-911061.pdf",
+    "bytes": 555008,
+    "sha256": "093d97414cbaa7bb7d39f36524a867f6c5e3ca0d4bea9afb09c8c2650f9ded0f",
+    "retrieved_utc": "2026-11-18T01:13:32.078307+00:00"
+  },
+  {
+    "name": "secondary-2018.pdf",
+    "url": "https://eudl.eu/pdf/10.1007/978-3-030-00557-3_46",
+    "retrieval_error": "HTTPError"
+  }
+]

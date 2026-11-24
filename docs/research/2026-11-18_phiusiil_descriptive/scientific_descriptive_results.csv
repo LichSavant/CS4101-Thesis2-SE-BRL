@@ -1,0 +1,33 @@
+metric,scope,value,unit,denominator,evidence
+source_records,original PhiUSIIL snapshot,235795,records,,reused verified source/assignment aggregate; not reread
+permitted_records,former-development population,165089,records,,observed existing feature delivery
+historical_protected_records_excluded,outside permitted population,70706,records,,reused verified role accounting
+target_class_count,target=0,94582,records,,observed existing feature delivery
+target_class_fraction,target=0,0.5729152154292533,fraction,165089,observed existing feature delivery
+target_class_count,target=1,70507,records,,observed existing feature delivery
+target_class_fraction,target=1,0.42708478457074667,fraction,165089,observed existing feature delivery
+historical_fold_target_count,fold=1;target=0,18664,records,,observed existing feature delivery
+historical_fold_target_count,fold=1;target=1,14309,records,,observed existing feature delivery
+historical_fold_target_count,fold=2;target=0,19111,records,,observed existing feature delivery
+historical_fold_target_count,fold=2;target=1,13941,records,,observed existing feature delivery
+historical_fold_target_count,fold=3;target=0,18992,records,,observed existing feature delivery
+historical_fold_target_count,fold=3;target=1,14039,records,,observed existing feature delivery
+historical_fold_target_count,fold=4;target=0,18905,records,,observed existing feature delivery
+historical_fold_target_count,fold=4;target=1,14111,records,,observed existing feature delivery
+historical_fold_target_count,fold=5;target=0,18910,records,,observed existing feature delivery
+historical_fold_target_count,fold=5;target=1,14107,records,,observed existing feature delivery
+components,permitted former-development population,154096,groups,,reused hash-bound source relationship verification
+mixed_native_label_components,permitted former-development population,36,groups,,reused hash-bound source relationship verification
+historical_groups_split,permitted former-development population,0,groups,,reused hash-bound source relationship verification
+components_merging_historical_groups,permitted former-development population,0,groups,,reused hash-bound source relationship verification
+historical_role_group_crossings,historical assignments,0,groups,,reused unchanged-input recorded group isolation
+historical_fold_group_crossings,historical assignments,0,groups,,reused unchanged-input recorded group isolation
+numeric_predictors,ten-field technical subset,10,features,,observed existing feature delivery
+official_feature_coverage_fraction,source-declared 54 features,0.18518518518518517,fraction,54,observed existing feature delivery
+source_numeric_feature_coverage_fraction,source-declared 50 numeric features,0.2,fraction,50,observed existing feature delivery
+behavioral_indicators_available,technical-only modality,0,indicators,12,existing modality constraint; no indicator evidence generated
+constant_predictors,ten-field technical subset,0,features,,observed existing feature delivery
+near_constant_predictors_99pct,ten-field technical subset,3,features,,observed existing feature delivery
+missing_numeric_cells,ten-field technical subset,0,cells,,observed existing feature delivery
+nonfinite_numeric_cells,ten-field technical subset,0,cells,,observed existing feature delivery
+exact_target_or_complement_columns,ten-field technical subset,0,features,,observed existing feature delivery

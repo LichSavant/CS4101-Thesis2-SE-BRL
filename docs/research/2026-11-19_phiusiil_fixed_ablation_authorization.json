@@ -1,0 +1,10 @@
+
+{
+  "schema": "sebrl-phiusiil-fixed-rf-ablation-acceptance-v1",
+  "request_sha256": "3f29d2d60abd479b84fa50d7845ce423d7d6ff08411821a50125e569839dd887",
+  "decision": "ACCEPT_EXACT_TEN_FIXED_RF_ABLATION_FITS",
+  "researcher": "Dhanwil Alcover and Vera Marie Therese A. Orbello",
+  "role": "researcher",
+  "date": "2026-11-19",
+  "response_text": "Both researchers jointly approve exactly 10 exploratory fixed-configuration Random Forest ablation fits: five omit_obfuscation and five omit_host_structure. This acceptance applies only to the exact SHA-256-bound request. No tuning, calibration, protected evaluation, additional datasets, baseline refitting, or formal model-selection claims are authorized."
+}

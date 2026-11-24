@@ -1,0 +1,153 @@
+........................................................................ [  9%]
+........................................................................ [ 18%]
+........................................................................ [ 27%]
+........................................................................ [ 37%]
+........................................................................ [ 46%]
+........................................................................ [ 55%]
+............................sssssssss......................s............ [ 64%]
+F....................................................................... [ 74%]
+........................................................................ [ 83%]
+........................................................................ [ 92%]
+........................................................                 [100%]
+================================== FAILURES ===================================
+________ test_fresh_diagnostic_readback_verifies_scope_without_fitting ________
+
+tmp_path = WindowsPath('C:/Users/Dhanwil/Desktop/Projects/Thesis_Prototype_Git/.scientific-validation-20261117/.validation-scratch/pytest/test_fresh_diagnostic_readback0')
+
+    def test_fresh_diagnostic_readback_verifies_scope_without_fitting(tmp_path):
+        """Real verifier on a synthetic Email dossier; no bundle fitting/loading."""
+        import shutil
+        from ml.branch_preparation import export_selected_handoff
+        from ml.development_experiments import behavioral_columns, METADATA
+        from ml.research_protocol import prospective_id
+        protocol, receipt, _, _, dataset, experiment = fixture_packet(tmp_path)
+        population = json.loads((protocol/'population.json').read_bytes())
+        assignments = list(csv.DictReader(io.StringIO((protocol/'assignments.csv').read_text())))
+        old = {r['observation_id']:dict(r) for r in population['records']}
+        for row in population['records']:
+            row.update(source_dataset='Nazario' if row['target'] else 'Enron', source_file='fixture.csv', native_label=row['target'])
+            row['observation_id'] = prospective_id(row['source_dataset'], row['snapshot_sha256'], row['source_file'], row['source_row_id'])
+        mapped = {oid:r for oid,r in zip(old, population['records'])}
+        for row in assignments:
+            p = mapped[row['observation_id']]
+            row.update(observation_id=p['observation_id'], source_dataset=p['source_dataset'])
+        run_id = 'synthetic-diagnostic-input'
+        output_id = 'synthetic-diagnostic-output'
+        new_root = protocol.parent.parent/run_id
+        main, vectors = [], []
+        for row in dataset.observations:
+            p = mapped[row.observation_id]
+            meta = dict(observation_id=p['observation_id'],target=row.target,group_id=row.group_id,partition='development',cv_fold=row.fold)
+            main.append(dict(meta,source_dataset=p['source_dataset'],source_row_id=p['source_row_id'],label=row.target,
+                subject='Synthetic subject',body='Synthetic body', URL_Length=row.conventional[0], Redirect=row.conventional[1]))
+            vectors.append({**meta, **dict.fromkeys(behavioral_columns(),0)})
+        export_selected_handoff(new_root, ('Email',), {'Email':main}, {'Email':vectors})
+        new_protocol = new_root/'protocol'; shutil.copytree(protocol,new_protocol)
+        def write(name,value): (new_protocol/name).write_text(canonical_json(value))
+        audit = {'category':'ACTUAL SOURCE AUDIT; NOT A MODEL RESULT','model_fits':0,'source_records':len(assignments),
+            'source_files':{s:{'dataset':s,'source_file':'fixture.csv','snapshot_sha256':'e'*64} for s in ('Nazario','Enron')}}
+        # Multi-file keys are exact filenames; two sources may share a filename only
+        # when entries explicitly name it, rather than guessing from a source key.
+        audit['source_files'] = {s+'.csv':{**v,'source_file':s+'.csv'} for s,v in audit['source_files'].items()}
+        for p in population['records']: p['source_file'] = p['source_dataset']+'.csv'
+        # Recompute IDs after the explicit file names change, preserving positions.
+        mapping = {}
+        for p in population['records']:
+            before = p['observation_id']; p['observation_id'] = prospective_id(p['source_dataset'],p['snapshot_sha256'],p['source_file'],p['source_row_id']); mapping[before]=p['observation_id']
+        for rows in (main,vectors,assignments):
+            for row in rows: row['observation_id'] = mapping[row['observation_id']]
+        # The first export was a distinct fixture staging namespace; final delivery
+        # is a fresh exclusive namespace, never a rewrite of existing handoff output.
+        final_id = 'synthetic-diagnostic-final-input'
+        final_root = protocol.parent.parent/final_id
+>       export_selected_handoff(final_root, ('Email',), {'Email':main}, {'Email':vectors})
+
+ml\tests\test_engineering_completion.py:287:
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+run_root = WindowsPath('C:/Users/Dhanwil/Desktop/Projects/Thesis_Prototype_Git/.scientific-validation-20261117/.validation-scratch/pytest/test_fresh_diagnostic_readback0/experiments/runs/synthetic-diagnostic-final-input')
+branches = ('Email',)
+development = {'Email': [{'Redirect': 0.0, 'URL_Length': -1.0, 'body': 'Synthetic body', 'cv_fold': 1, ...}, {'Redirect': 1.0, 'URL_...tic body', 'cv_fold': 3, ...}, {'Redirect': 1.0, 'URL_Length': 1.0, 'body': 'Synthetic body', 'cv_fold': 3, ...}, ...]}
+behavioral = {'Email': [{'cv_fold': 1, 'group_id': 'synthetic-pair-1', 'lure_attention_cues_available': 0, 'lure_attention_cues_sup... 3, 'group_id': 'synthetic-pair-3', 'lure_attention_cues_available': 0, 'lure_attention_cues_supported': 0, ...}, ...]}
+
+    def export_selected_handoff(run_root: Path, branches, development, behavioral, *, shared_outputs=None) -> tuple[Path, ...]:
+        """Validate/serialize/preflight everything before exclusive creation.
+
+        On ordinary IO failure remove only this call's newly created files and empty
+        directories. Pre-existing paths are never removed. A process crash is not a
+        transaction: the manifest is written last and collisions prohibit reuse.
+        """
+        branches = select_branches(branches)
+        _selected_mapping(development, branches)
+        _selected_mapping(behavioral, branches)
+        run_root = Path(run_root)
+        if not re.fullmatch(r"[a-z0-9][a-z0-9-]{0,63}", run_root.name):
+            raise InputContractError("invalid_run_id")
+        shared_outputs = {} if shared_outputs is None else shared_outputs
+        if (not isinstance(shared_outputs, Mapping) or not set(shared_outputs).issubset(SHARED_OUTPUTS)
+                or any(type(value) is not bytes for value in shared_outputs.values())):
+            raise InputContractError("invalid_shared_preparation_output")
+        payloads, entries = {}, {}
+        columns = (*METADATA, *behavioral_columns())
+        for name in branches:
+            rows, vectors = tuple(development[name]), tuple(behavioral[name])
+            validate_feature_boundary(rows, dataset=name, development_only=True)
+            if any(not isinstance(r, Mapping) or set(r) != set(columns) for r in vectors):
+                raise InputContractError("behavioral_schema_mismatch")
+            index = {r["observation_id"]: r for r in vectors}
+            if len(index) != len(vectors) or set(index) != {r["observation_id"] for r in rows}:
+                raise InputContractError("behavioral_population_mismatch")
+            for row in rows:
+                vector = index[row["observation_id"]]
+                if type(vector["target"]) is not int or type(vector["cv_fold"]) not in (int, float):
+                    raise InputContractError("invalid_behavioral_metadata_types")
+                if any(row[key] != vector[key] for key in METADATA):
+                    raise InputContractError("behavioral_metadata_mismatch")
+                bits = tuple(_bit(vector[key]) for key in behavioral_columns())
+                if any(s > a for s, a in zip(bits[:4], bits[4:])) or (name not in {"Email", "Web"} and any(bits)):
+                    raise InputContractError("invalid_behavioral_preparation_values")
+            main = "data/processed/features/development/" + DEVELOPMENT_FILES[name]
+            behavior = "data/processed/features/sebrl/" + BEHAVIORAL_FILES[name]
+            payloads[main], payloads[behavior] = _csv_bytes(rows), _csv_bytes(vectors)
+            entries[name] = {"development_file": DEVELOPMENT_FILES[name], "behavioral_file": BEHAVIORAL_FILES[name],
+                             "development_sha256": hashlib.sha256(payloads[main]).hexdigest(),
+                             "behavioral_sha256": hashlib.sha256(payloads[behavior]).hexdigest()}
+        payloads.update(shared_outputs)
+        manifest = "data/processed/features/development/development_input_manifest.json"
+        payloads[manifest] = json.dumps({"contract_version": CONTRACT_VERSION, "run_id": run_root.name,
+                                        "inputs": entries}, indent=2).encode("utf-8")
+        targets = {_within(run_root, name): value for name, value in payloads.items()}
+        assert_new_outputs(targets)
+        created_files, created_dirs = [], []
+        try:
+            for path, content in targets.items():
+                missing = []
+                parent = path.parent
+                while not parent.exists():
+                    missing.append(parent)
+                    parent = parent.parent
+                for directory in reversed(missing):
+                    directory.mkdir()
+                    created_dirs.append(directory)
+                with path.open("xb") as stream:
+                    created_files.append(path)
+                    stream.write(content)
+        except OSError:
+            for path in reversed(created_files):
+                path.unlink()
+            for directory in reversed(created_dirs):
+                directory.rmdir()
+>           raise InputContractError("preparation_export_failed") from None
+E           ml.experiment_inputs.InputContractError: preparation_export_failed
+
+ml\branch_preparation.py:203: InputContractError
+============================== warnings summary ===============================
+..\..\..\..\AppData\Local\Temp\sebrl-submission-20261117\venv\Lib\site-packages\fastapi\testclient.py:1
+  C:\Users\Dhanwil\AppData\Local\Temp\sebrl-submission-20261117\venv\Lib\site-packages\fastapi\testclient.py:1: StarletteDeprecationWarning: Using `httpx` with `starlette.testclient` is deprecated; install `httpx2` instead.
+    from starlette.testclient import TestClient as TestClient  # noqa
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+No-fit process guard: 0 blocked fitting attempts; 0 fitting executions.
+=========================== short test summary info ===========================
+FAILED ml/tests/test_engineering_completion.py::test_fresh_diagnostic_readback_verifies_scope_without_fitting
+1 failed, 765 passed, 10 skipped, 1 deselected, 1 warning in 34.09s

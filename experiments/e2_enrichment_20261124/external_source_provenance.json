@@ -1,0 +1,71 @@
+{
+  "verified_utc": "2026-11-24T08:21:35.396340+00:00",
+  "release": "Phishing Email Curated Datasets",
+  "authors": [
+    "Champa",
+    "Rabbi",
+    "Zibran"
+  ],
+  "doi": "10.5281/zenodo.8339691",
+  "repository": "https://zenodo.org/records/8339691",
+  "published_license": "CC BY 4.0",
+  "sources": {
+    "CEAS-08": {
+      "filename": "ceas_08_clean.csv",
+      "published_md5": "1f0d59191eec892a709995d48cd8decb",
+      "local_md5": "1f0d59191eec892a709995d48cd8decb",
+      "local_sha256": "22375e7d5f5a8229dbe987914ee9b3705656c590038662a7df6054629b376074",
+      "snapshot_verified": true,
+      "historical_acquisition_date": null,
+      "primary_label_documentation_complete": false
+    },
+    "Enron": {
+      "filename": "enron_clean.csv",
+      "published_md5": "10489e0fdcc8af6fe62135c689367d40",
+      "local_md5": "10489e0fdcc8af6fe62135c689367d40",
+      "local_sha256": "11f28a5bdd3603f1829681ab6b55071b5f9af781b4e6694e39216b2996a96883",
+      "snapshot_verified": true,
+      "historical_acquisition_date": null,
+      "primary_label_documentation_complete": false
+    },
+    "Nazario": {
+      "filename": "nazario_clean.csv",
+      "published_md5": "4022d055bb7cf8602f30f768f652e91e",
+      "local_md5": "4022d055bb7cf8602f30f768f652e91e",
+      "local_sha256": "b8fbc4158fbdfaff1ed98584c43d72e283c6352d7ade4d457d34c1d79488d184",
+      "snapshot_verified": true,
+      "historical_acquisition_date": null,
+      "primary_label_documentation_complete": false
+    },
+    "SpamAssassin": {
+      "filename": "spamassassin_clean.csv",
+      "published_md5": "d921e0b2333bfaa058bd38193e6b3fbd",
+      "local_md5": "d921e0b2333bfaa058bd38193e6b3fbd",
+      "local_sha256": "3bfe8f8abff89f69a98456be50413c2fcb20a476141116dd84ee1507b980c00e",
+      "snapshot_verified": true,
+      "historical_acquisition_date": null,
+      "primary_label_documentation_complete": false
+    }
+  },
+  "proposed_label_mapping": {
+    "Nazario": {
+      "1": "phishing"
+    },
+    "Enron": {
+      "0": "ham",
+      "1": "spam"
+    },
+    "SpamAssassin": {
+      "0": "ham",
+      "1": "spam"
+    },
+    "CEAS-08": {
+      "0": "ham",
+      "1": "spam"
+    }
+  },
+  "snapshot_verification": "PASS",
+  "label_semantics": "PARTIALLY_CORROBORATED",
+  "scientific_admission": "PENDING",
+  "research_fitting_authorized": false
+}

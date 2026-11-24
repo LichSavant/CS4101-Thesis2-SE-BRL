@@ -1,0 +1,35 @@
+{
+  "status": "ENGINEERING_CANDIDATE_PENDING_SCIENTIFIC_ADMISSION",
+  "statistical_runtime_verification": "PASS",
+  "candidate_feature_count": 44,
+  "classifier_families": 4,
+  "candidate_development_population": 15011,
+  "research_fitting_authorized": false,
+  "research_models_fitted": 0,
+  "independent_validation": false,
+  "new_e2_ap": null,
+  "new_e2_f1": null,
+  "target_ap": 0.9,
+  "target_f1": 0.9,
+  "remaining": [
+    "Scientific admission",
+    "Authorized development delivery",
+    "Accepted feature dictionaries",
+    "Frozen evaluation settings",
+    "Cross-fitted calibration",
+    "Exact-run authorization binding",
+    "Empirical model fitting and evaluation"
+  ],
+  "artifacts": {
+    "behavioral_enrichment.py": "33a905956e00e5e7668cab442f7fe113ea729118113c2ee0929eb592c55d4579",
+    "candidate_context_v1.py": "7e429131813423c14d2964b004e6dc9f5edfe9aa471eb20734245b3a1a7225c9",
+    "candidate_rules_v2.json": "a4f04e857860164f69655b5c89cf6f9da5a40f9c173e82f81f1c2ef8e6485249",
+    "candidate_rules_v3.json": "b58d2ac7dadbae7e581d97845f74d0a111102eed2bc39e7fb154fa79b2ee1371",
+    "development_harness.py": "d95e5e4a48e1ebf003c236728fafda930e19f08c7bd679afda2309edd94b2619",
+    "external_source_provenance.json": "7069c1c57e3ad07370ecbae042bf5bed5a8da0489bd0e0114fc9a9adb1711a9d",
+    "integrated_candidate_manifest.json": "3de67220c3feef7ec6fa32474e3313f7b83139a7515e3d6c8edfa99bc61cd05f",
+    "primary_source_label_evidence.json": "bcc9747a88c95f773135ec5764eb78d7beb3bac5c574d39dc207e31632573f03",
+    "proposed_experimental_protocol.json": "bef0c28952fba0aaa3a701189dd4bd86e3f94ecd7e3d4b68ee3e679c46a7f18b",
+    "statistical_evaluation.py": "f1defd7cd37d5decefec8225e9735fcd7da53c2e4aab7dd0bf82728987898259"
+  }
+}

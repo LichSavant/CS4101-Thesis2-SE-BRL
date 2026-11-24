@@ -1,0 +1,42 @@
+{
+  "scope": "Attributable existing requirements and verified facts only; not new scientific acceptance",
+  "records": [
+    {
+      "decision": "PhiUSIIL remains the selected next U1 technical admission branch, separate from UCI",
+      "attribution": "Current user mission and approved proposal Table 4.7; prior admission-race.json",
+      "grants": "Task priority only; no row, split or fitting authorization"
+    },
+    {
+      "decision": "Preserve existing native 0 -> study target 1, native 1 -> study target 0",
+      "attribution": "Official UCI-967 Class Labels section, label-verification.json and unchanged LABEL_MAPPINGS",
+      "verified": true
+    },
+    {
+      "decision": "Exclude FILENAME, labels and assignment metadata from predictors",
+      "attribution": "Current user step 7, official FILENAME Other role, existing select_predictors deny-list",
+      "verified_rejected_fields": [
+        "FILENAME",
+        "filename",
+        "FiLeNaMe",
+        "label",
+        "target",
+        "group_id",
+        "partition",
+        "cv_fold"
+      ]
+    },
+    {
+      "decision": "Keep all technical behavioral states unavailable; do not manufacture E2/E3 evidence",
+      "attribution": "Approved U1 modality contract and existing technical_indicator_columns",
+      "grants": "No behavioral interpretation of engineered fields"
+    }
+  ],
+  "not_recorded_as_approved": [
+    "Actual source-original development membership",
+    "Grouping/conflict/exposure disposition",
+    "Final feature dictionary or source-derived-feature split assumptions",
+    "Independent D-features acceptance/digest",
+    "Any model-fitting scope"
+  ],
+  "no_signatures_or_approval_receipts_created": true
+}

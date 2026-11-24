@@ -1,0 +1,362 @@
+{
+  "report_date": "2026-11-04",
+  "scope": "Master completion sprint; software progress is separate from empirical approval",
+  "research_execution_authorized": false,
+  "scientific_freeze": false,
+  "tasks": [
+    {
+      "id": "D1",
+      "status": "IN PROGRESS",
+      "implementation_evidence": "Approved paper and current interfaces reconciled; transformer divergence isolated",
+      "test_evidence": {
+        "classification": "VERIFIED SOFTWARE RESULT",
+        "scope": "Protocol matrix; approved PDF pp.21-24,56-75"
+      },
+      "scientific_evidence": {
+        "classification": "PENDING SCIENTIFIC APPROVAL",
+        "basis": "Signed branch-specific source/feature/evaluation decisions and title disposition"
+      },
+      "remaining_acceptance_criteria": "Signed branch-specific source/feature/evaluation decisions and title disposition",
+      "blocking_dependency": "Scientific decisions H1/H3/H4/H5/H6-H11",
+      "dependencies": [],
+      "responsible_decision_maker": "Researchers/adviser"
+    },
+    {
+      "id": "D2",
+      "status": "IN PROGRESS",
+      "implementation_evidence": "Existing preprocessing retained; numeric overflow rejection repaired",
+      "test_evidence": {
+        "classification": "VERIFIED SOFTWARE RESULT",
+        "scope": "UCI and D9 regression boundaries"
+      },
+      "scientific_evidence": {
+        "classification": "PENDING SCIENTIFIC APPROVAL",
+        "basis": "Real source screening/lineage and accepted no-regeneration input path"
+      },
+      "remaining_acceptance_criteria": "Real source screening/lineage and accepted no-regeneration input path",
+      "blocking_dependency": "D1,D3,D4",
+      "dependencies": [
+        "D1"
+      ],
+      "responsible_decision_maker": "Dhanwil; source custodian for provenance"
+    },
+    {
+      "id": "D3",
+      "status": "IN PROGRESS",
+      "implementation_evidence": "Eight raw/clean source pairs hashed/header-inspected; four historical metadata manifests checked",
+      "test_evidence": {
+        "classification": "VERIFIED SOFTWARE RESULT",
+        "scope": "Existing synthetic population/partition/fold validators and the complete 906-test suite; no actual-data eligibility inference"
+      },
+      "scientific_evidence": {
+        "classification": "PENDING SCIENTIFIC APPROVAL",
+        "basis": "Original-ID attrition, license/access, class semantics and eligibility acceptance"
+      },
+      "remaining_acceptance_criteria": "Original-ID attrition, license/access, class semantics and eligibility acceptance",
+      "blocking_dependency": "Source records and acceptance packet",
+      "dependencies": [
+        "D1"
+      ],
+      "responsible_decision_maker": "Vera/source custodian and researchers",
+      "data_evidence": {
+        "classification": "VERIFIED DATA RESULT",
+        "scope": "Fresh fixed-path header/hash and supplied historical partition-metadata checks in dataset_evidence.json",
+        "scientific_acceptance_inferred": false
+      }
+    },
+    {
+      "id": "D4",
+      "status": "BLOCKED",
+      "implementation_evidence": "Zero supplied group crossings found in four historical manifests",
+      "test_evidence": {
+        "classification": "VERIFIED SOFTWARE RESULT",
+        "scope": "Existing synthetic population/partition/fold validators and the complete 906-test suite; no actual-data eligibility inference"
+      },
+      "scientific_evidence": {
+        "classification": "PENDING SCIENTIFIC APPROVAL",
+        "basis": "Accepted complete relationships and exposure-aware custody/split reuse"
+      },
+      "remaining_acceptance_criteria": "Accepted complete relationships and exposure-aware custody/split reuse",
+      "blocking_dependency": "D3; H3/H5",
+      "dependencies": [
+        "D3"
+      ],
+      "responsible_decision_maker": "Researchers/adviser",
+      "data_evidence": {
+        "classification": "VERIFIED DATA RESULT",
+        "scope": "Fresh fixed-path header/hash and supplied historical partition-metadata checks in dataset_evidence.json",
+        "scientific_acceptance_inferred": false
+      }
+    },
+    {
+      "id": "D5",
+      "status": "IN PROGRESS",
+      "implementation_evidence": "Canonical 12 indicators/4 dimensions and U1 unavailability preserved",
+      "test_evidence": {
+        "classification": "VERIFIED SOFTWARE RESULT",
+        "scope": "Existing rule/modality suites"
+      },
+      "scientific_evidence": {
+        "classification": "PENDING SCIENTIFIC APPROVAL",
+        "basis": "Frozen operational rule/locator/language/availability conformance; runtime experiment reconciliation"
+      },
+      "remaining_acceptance_criteria": "Frozen operational rule/locator/language/availability conformance; runtime experiment reconciliation",
+      "blocking_dependency": "D1; H4",
+      "dependencies": [
+        "D1"
+      ],
+      "responsible_decision_maker": "Vera/researchers for specification; Dhanwil for mechanics"
+    },
+    {
+      "id": "D6",
+      "status": "IN PROGRESS",
+      "implementation_evidence": "Matched ID/feature/fold and availability contracts exercised synthetically",
+      "test_evidence": {
+        "classification": "VERIFIED SOFTWARE RESULT",
+        "scope": "Existing alignment suite and new OOF identity tests"
+      },
+      "scientific_evidence": {
+        "classification": "PENDING SCIENTIFIC APPROVAL",
+        "basis": "Accepted actual development inputs and dataset-to-feature conformance"
+      },
+      "remaining_acceptance_criteria": "Accepted actual development inputs and dataset-to-feature conformance",
+      "blocking_dependency": "D2,D3,D4,D5",
+      "dependencies": [
+        "D2",
+        "D3",
+        "D4",
+        "D5"
+      ],
+      "responsible_decision_maker": "Dhanwil with source/specification owners"
+    },
+    {
+      "id": "D7",
+      "status": "IN PROGRESS",
+      "implementation_evidence": "Source confounding and historical exposure documented; slice/paired-control checks implemented",
+      "test_evidence": {
+        "classification": "VERIFIED SOFTWARE RESULT",
+        "scope": "Synthetic one-class slice and predictor exclusion checks"
+      },
+      "scientific_evidence": {
+        "classification": "PENDING SCIENTIFIC APPROVAL",
+        "basis": "Source/duplicate/calibration leakage evidence on accepted inputs"
+      },
+      "remaining_acceptance_criteria": "Source/duplicate/calibration leakage evidence on accepted inputs",
+      "blocking_dependency": "D3,D4,D6",
+      "dependencies": [
+        "D3",
+        "D4",
+        "D6"
+      ],
+      "responsible_decision_maker": "Researchers/adviser; Dhanwil audits"
+    },
+    {
+      "id": "D8",
+      "status": "COMPLETE",
+      "implementation_evidence": "Available Python/frontend tests, TypeScript checks, production builds and notebook syntax passed",
+      "test_evidence": {
+        "classification": "VERIFIED SOFTWARE RESULT",
+        "scope": "Verification commands in experiment_readiness.md"
+      },
+      "scientific_evidence": {
+        "classification": "VERIFIED SOFTWARE RESULT",
+        "basis": "No scientific result or approval is required for software-only D8 scope; empirical validity remains separate."
+      },
+      "remaining_acceptance_criteria": "Maintain passing checks after future changes; does not establish research validity",
+      "blocking_dependency": "Available software scope only",
+      "dependencies": [],
+      "responsible_decision_maker": "Dhanwil"
+    },
+    {
+      "id": "D9",
+      "status": "IN PROGRESS",
+      "implementation_evidence": "Strict D9/branch/UCI handoff contracts preserved; fixed hashes and exclusive synthetic bundles",
+      "test_evidence": {
+        "classification": "VERIFIED SOFTWARE RESULT",
+        "scope": "382 neighboring tests; handoff and bundle round trips"
+      },
+      "scientific_evidence": {
+        "classification": "PENDING SCIENTIFIC APPROVAL",
+        "basis": "Accepted real dictionary, population and delivery records; real handoff authorization"
+      },
+      "remaining_acceptance_criteria": "Accepted real dictionary, population and delivery records; real handoff authorization",
+      "blocking_dependency": "D6,D7",
+      "dependencies": [
+        "D6",
+        "D7",
+        "D8"
+      ],
+      "responsible_decision_maker": "Dhanwil and research acceptance owners"
+    },
+    {
+      "id": "D10",
+      "status": "IN PROGRESS",
+      "implementation_evidence": "Synthetic grouped CV runner with four family slots; no real estimator factories or research fits",
+      "test_evidence": {
+        "classification": "VERIFIED SOFTWARE RESULT",
+        "scope": "OOF, fold isolation, failure sanitization, matched representation tests"
+      },
+      "scientific_evidence": {
+        "classification": "PENDING SCIENTIFIC APPROVAL",
+        "basis": "Approved data/settings, isolated scientific environment, genuine factories/tuning and research execution"
+      },
+      "remaining_acceptance_criteria": "Approved data/settings, isolated scientific environment, genuine factories/tuning and research execution",
+      "blocking_dependency": "D1,D3,D4,D6,D7,D9",
+      "dependencies": [
+        "D1",
+        "D9"
+      ],
+      "responsible_decision_maker": "Dhanwil after researchers/adviser freeze"
+    },
+    {
+      "id": "D11",
+      "status": "PENDING",
+      "implementation_evidence": "Transformer feasibility/amendment proposal prepared; no architecture adopted",
+      "test_evidence": {
+        "classification": "VERIFIED SOFTWARE RESULT",
+        "scope": "Unknown transformer family rejected; no weights or transformer training"
+      },
+      "scientific_evidence": {
+        "classification": "PENDING SCIENTIFIC APPROVAL",
+        "basis": "Choose title alignment or explicit amendment; independent labels needed only for supervised behavioral claim"
+      },
+      "remaining_acceptance_criteria": "Choose title alignment or explicit amendment; independent labels needed only for supervised behavioral claim",
+      "blocking_dependency": "D1; explicit methodological approval",
+      "dependencies": [
+        "D1"
+      ],
+      "responsible_decision_maker": "Researchers/adviser"
+    },
+    {
+      "id": "D12",
+      "status": "IN PROGRESS",
+      "implementation_evidence": "Binary metrics/reliability/paired group bootstrap implemented and analytically tested",
+      "test_evidence": {
+        "classification": "VERIFIED SOFTWARE RESULT",
+        "scope": "Known rational metrics, ties, orientation, one-class cases and cluster pairing"
+      },
+      "scientific_evidence": {
+        "classification": "PENDING SCIENTIFIC APPROVAL",
+        "basis": "Accepted probability/metric conventions and real predictions/calibration; no fitted calibrator"
+      },
+      "remaining_acceptance_criteria": "Accepted probability/metric conventions and real predictions/calibration; no fitted calibrator",
+      "blocking_dependency": "D10 and frozen H9",
+      "dependencies": [
+        "D10"
+      ],
+      "responsible_decision_maker": "Dhanwil; researchers freeze conventions"
+    },
+    {
+      "id": "D13",
+      "status": "IN PROGRESS",
+      "implementation_evidence": "Matched CV, four dimension omissions, explicit family omissions and paired differences prepared",
+      "test_evidence": {
+        "classification": "VERIFIED SOFTWARE RESULT",
+        "scope": "Synthetic ablations and fixed-classifier comparison guards"
+      },
+      "scientific_evidence": {
+        "classification": "PENDING SCIENTIFIC APPROVAL",
+        "basis": "Approved real CV/ablation/sensitivity execution and uncertainty/score policy"
+      },
+      "remaining_acceptance_criteria": "Approved real CV/ablation/sensitivity execution and uncertainty/score policy",
+      "blocking_dependency": "D10,D12 and H6/H8/H9",
+      "dependencies": [
+        "D10",
+        "D12"
+      ],
+      "responsible_decision_maker": "Dhanwil after protocol decisions"
+    },
+    {
+      "id": "D14",
+      "status": "IN PROGRESS",
+      "implementation_evidence": "Input/code/output hashes, environment and exclusive replayable synthetic bundle saved",
+      "test_evidence": {
+        "classification": "VERIFIED SOFTWARE RESULT",
+        "scope": "Bundle collision, rollback, tamper and path guards"
+      },
+      "scientific_evidence": {
+        "classification": "PENDING SCIENTIFIC APPROVAL",
+        "basis": "Pinned scientific environment, actual accepted source/model/selection artifact versions"
+      },
+      "remaining_acceptance_criteria": "Pinned scientific environment, actual accepted source/model/selection artifact versions",
+      "blocking_dependency": "D3,D9,D10",
+      "dependencies": [
+        "D3",
+        "D9",
+        "D10"
+      ],
+      "responsible_decision_maker": "Dhanwil; researchers accept freeze"
+    },
+    {
+      "id": "D15",
+      "status": "IN PROGRESS",
+      "implementation_evidence": "Manuscript evidence/limitations and per-finding categories documented",
+      "test_evidence": {
+        "classification": "VERIFIED SOFTWARE RESULT",
+        "scope": "Current reports plus protected historical references"
+      },
+      "scientific_evidence": {
+        "classification": "PENDING SCIENTIFIC APPROVAL",
+        "basis": "Empirical conclusions from authorized experiments; no synthetic thesis-performance claims"
+      },
+      "remaining_acceptance_criteria": "Empirical conclusions from authorized experiments; no synthetic thesis-performance claims",
+      "blocking_dependency": "D1-D14 evidence and decisions",
+      "dependencies": [
+        "D12",
+        "D13",
+        "D14"
+      ],
+      "responsible_decision_maker": "Dhanwil/Vera"
+    },
+    {
+      "id": "D16",
+      "status": "IN PROGRESS",
+      "implementation_evidence": "Final audit, artifact index, progress/decision handoff prepared",
+      "test_evidence": {
+        "classification": "VERIFIED SOFTWARE RESULT",
+        "scope": "Preservation comparison and reproducibility instructions"
+      },
+      "scientific_evidence": {
+        "classification": "PENDING SCIENTIFIC APPROVAL",
+        "basis": "All scientific gates and final compatible model/calibration/risk/system freeze"
+      },
+      "remaining_acceptance_criteria": "All scientific gates and final compatible model/calibration/risk/system freeze",
+      "blocking_dependency": "D1-D15",
+      "dependencies": [
+        "D1",
+        "D2",
+        "D3",
+        "D4",
+        "D5",
+        "D6",
+        "D7",
+        "D8",
+        "D9",
+        "D10",
+        "D11",
+        "D12",
+        "D13",
+        "D14",
+        "D15"
+      ],
+      "responsible_decision_maker": "Researchers/adviser; Dhanwil technical release"
+    }
+  ],
+  "software_verification": {
+    "python_tests_passed": 906,
+    "new_focused_tests_passed": 93,
+    "neighboring_tests_passed": 382,
+    "frontend_tests_passed": 25,
+    "notebook_cells_parsed": 275,
+    "notebook_cells_executed": 0,
+    "typescript": "passed both applications, no emit/incremental writes",
+    "builds": "extension popup/background/content and dashboard passed to task temp",
+    "warnings": [
+      "installed Starlette/httpx deprecation",
+      "dashboard external outDir not emptied",
+      "existing .pytest_cache inaccessible"
+    ],
+    "research_analytical_notebooks_executed": 0,
+    "actual_data_handoffs_created": 0
+  }
+}

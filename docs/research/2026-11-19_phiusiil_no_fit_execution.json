@@ -1,0 +1,193 @@
+{
+  "category": "ACTUAL JOINTLY AUTHORIZED NO-FIT EXECUTION; NOT MODEL RESULTS",
+  "recorded_date_local": "2026-11-19",
+  "approval_dates": "2026-11-18",
+  "joint_revision_status": "ACCEPTED: both directly supplied approvals apply to the same exact proposal; no independent identity signatures claimed",
+  "approval_artifact": "docs/research/2026-11-18_technical_admission/VERA_AUTHENTICATION_REVISION_APPROVAL_20261118.json",
+  "accepted_policy": "docs/research/2026-11-18_technical_admission/PHIUSIIL_AUTHENTICATION_REVISION_ACCEPTED.json",
+  "integration": "Already integrated in research/scientific-validation-20261117; no branch/worktree or cherry-pick needed",
+  "narrow_change": "Jointly approved PhiUSIIL C/D version2 researcher-controlled authority; legacy and all fitting gates preserved",
+  "C_allocation": {
+    "digest_semantics": "Integrity under jointly accepted researcher-controlled policy; not third-party trust",
+    "feature_index_sha256": "b48f0468f1c19bcb5d6b195e78406460d1976876cf5a7c5a6f15f0bc2a8137ce",
+    "model_fits": 0,
+    "receipt_integrity_sha256": "926a75ec193f3c74fc0131899702f5915c6a4d85d9923bfa60aebba7c339fa5d",
+    "report": {
+      "assignment_fingerprint": "a1219e0629cde4276c1027f996026582d6d7b4a6ea1fc4c6d2896aae54637ce4",
+      "development_fold_class_counts": [
+        [
+          13241,
+          9871
+        ],
+        [
+          13241,
+          9871
+        ],
+        [
+          13242,
+          9871
+        ],
+        [
+          13242,
+          9871
+        ],
+        [
+          13242,
+          9871
+        ]
+      ],
+      "exposure_note": "New allocation does not reseal historically exposed observations.",
+      "fractions": [
+        0.7,
+        0.15,
+        0.15
+      ],
+      "groups": 154096,
+      "maximum_fraction_error": 0.05,
+      "mixed_target_groups_retained_unsplit": 36,
+      "model_fits": 0,
+      "observations": 165089,
+      "partition_class_counts": {
+        "calibration": [
+          14187,
+          10576
+        ],
+        "development": [
+          66208,
+          49355
+        ],
+        "test": [
+          14187,
+          10576
+        ]
+      },
+      "policy_reference": "phiusiil-former-development-exploratory-v1; decision-sha256:b13848a17d4aca2b074c697ca141108af5ace4803e30d46b8fc0aff9c4d8e93d",
+      "seed": 42,
+      "version": "prospective-components-greedy-allocation-0.1.0"
+    },
+    "result": {
+      "allocation_manifest_sha256": "6aac65442bef8a901b0d4380b14845abca2e4c39dcc48b778e7fd4c528a5666f",
+      "completion_integrity_sha256": "7c7d125731dae0f9af1c5dc1e3d632f98d7908c35dc0616e0771f0d1710afe0c",
+      "model_fits": 0,
+      "observations": 165089,
+      "output_run_id": "phiusiil-former-development-allocation-v1",
+      "stage": "C-allocation",
+      "status": "accepted_metadata_allocated"
+    },
+    "stage": "C-allocation"
+  },
+  "D_features": {
+    "fixed_baseline": {
+      "fit_estimate_if_separately_authorized": {
+        "base_fits": 105,
+        "calibration_fits": 5
+      },
+      "input_run": "phiusiil-former-development-features-v1",
+      "note": "One fixed candidate; training-only nested calibration still performs multiple fits. No protected evaluation or behavioral comparison.",
+      "runner_specification": {
+        "calibration": {
+          "clip_epsilon": 1e-06,
+          "parameters": {
+            "C": 1000000.0,
+            "class_weight": null,
+            "fit_intercept": true,
+            "max_iter": 2000,
+            "penalty": "l2",
+            "solver": "lbfgs",
+            "tol": 1e-06
+          },
+          "seed": 42,
+          "transform": "logit_probability"
+        },
+        "calibration_edges": [
+          0.0,
+          0.1,
+          0.2,
+          0.3,
+          0.4,
+          0.5,
+          0.6,
+          0.7,
+          0.8,
+          0.9,
+          1.0
+        ],
+        "candidates": [
+          {
+            "family": "logistic_regression",
+            "id": "logistic_regression-004",
+            "parameters": {
+              "C": 1.0,
+              "class_weight": null,
+              "fit_intercept": true,
+              "max_iter": 2000,
+              "penalty": "l2",
+              "solver": "liblinear",
+              "tol": 0.0001
+            },
+            "preprocessing": {
+              "numeric_missing": "reject",
+              "numeric_scaling": "standard",
+              "text_parameters": null
+            },
+            "seed": 42
+          }
+        ],
+        "configurations": [
+          "U1"
+        ],
+        "omitted_features": [],
+        "protocol_reference": "research:candidate-phiusiil-exploratory-design-20261118-not-authorization",
+        "threshold": {
+          "mode": "fixed",
+          "value": 0.5
+        }
+      },
+      "status": "PREPARED FIXED BASELINE; FITTING NOT AUTHORIZED"
+    },
+    "handoff_readback": "PASS; exact development IDs and group-safe folds",
+    "historical_protected_records_accessed": 0,
+    "independent_third_party_authentication_claimed": false,
+    "model_fits": 0,
+    "new_calibration_or_evaluation_predictors_decoded": 0,
+    "new_development_feature_records": 115563,
+    "receipt_integrity_sha256": "7e2c2c5efb37a9112a46157bdd3e7fe1115531af1c040d801cac4267ea631a1c",
+    "result": {
+      "branch": "PhiUSIIL",
+      "completion_integrity_sha256": "9a872eecc81b5cc719fb7c5bfc589b8c243afece375ba5989d7523b63824aa43",
+      "development_manifest_sha256": "cfbbbe47b3e241e8410ac78f02f600d7e157f1824176e8e553c618fefb3c6e7a",
+      "model_fits": 0,
+      "output_files": 3,
+      "output_run_id": "phiusiil-former-development-features-v1",
+      "stage": "D-features",
+      "status": "accepted_no_fit_handoff_created"
+    },
+    "scientific_fitting_admission": "Not granted by no-fit handoff; separate exact fitting evidence/settings/authority required",
+    "stage": "D-features"
+  },
+  "partition_counts": {
+    "development": 115563,
+    "calibration": 24763,
+    "test": 24763
+  },
+  "integrity_recheck": "PASS: C/D completion receipts, recorded authority/code maps, group-disjoint partition validation and every previous delivery hash",
+  "legacy_and_new_no_fit_tests": {
+    "passed": 45,
+    "failed": 0,
+    "skipped": 0,
+    "fitting_attempts": 0,
+    "fitting_executions": 0,
+    "command": "python -B -m pytest -p ml.tests.no_fit_guard -p no:cacheprovider -q ml/tests/test_no_fit_authority.py ml/tests/test_preparation_execution.py ml/tests/test_preparation_integrity.py ml/tests/test_prospective_allocation.py"
+  },
+  "reproduction_commands": [
+    "python -B -m scripts.execute_phiusiil_no_fit_revision --stage C",
+    "python -B -m scripts.execute_phiusiil_no_fit_revision --stage D"
+  ],
+  "reproduction_note": "Exclusive immutable output namespaces: do not rerun into existing outputs. Reproduce only using a separately permitted output-policy version; current outputs verify by their recorded completion hashes.",
+  "baseline_status": "One fixed logistic_regression-004 specification prepared; 105 base fits plus 5 calibrator fits estimated only. No fitting authorization supplied.",
+  "remaining_requirement": "Separate exact development-only fitting approval, frozen run budget/settings and fitting-admission evidence; no new external-authentication requirement for completed C/D stages",
+  "model_fits": 0,
+  "predictive_metrics": null,
+  "original_delivery_unchanged": true,
+  "workflow_script_sha256": "f5afee9524988f9c0d3cd1cc7f3dc838935a402b9d1809998425594a33f106ce"
+}

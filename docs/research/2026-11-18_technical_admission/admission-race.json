@@ -1,0 +1,55 @@
+{
+  "baseline_commit": "d0f44c482375547a3bfa71524e625795a9c10227",
+  "selected_next_branch": "PhiUSIIL-967",
+  "selection_type": "verification priority only; not scientific acceptance or model selection",
+  "selection_reason": "Authoritative native label meanings are now verified directly by UCI; UCI-327 has exhausted contradictory target evidence. No historical readiness percentage or model performance was used.",
+  "shared_authority": "Existing approved proposal Stage 2/3 and researcher-authority-matrix.json; public rights do not authorize unrestricted source-row access or a fitting run",
+  "branches": {
+    "UCI-327": {
+      "admission": "BLOCKED",
+      "fully_satisfied_conditions": 0,
+      "result_semantics": "UNRESOLVED",
+      "reuse": "No repeated lineage/publication search; evidence reused from existing dossier",
+      "requires": [
+        "creator/UCI release-specific Result definition",
+        "permitted original-record scope and authentic lineage",
+        "accepted group/exposure/dictionary and run decisions"
+      ]
+    },
+    "PhiUSIIL-967": {
+      "admission": "BLOCKED",
+      "source_facts": "VERIFIED: official source/license, exact ZIP hash and actual header",
+      "native_label_meanings": "VERIFIED: 0 phishing, 1 legitimate; existing target mapping correct",
+      "source_evidence": "phiusiil/source-snapshot.json; phiusiil/label-verification.json",
+      "record_identity_and_transformations": "BLOCKED: no current authenticated development-original-key/transform ledger; FILENAME existence is not uniqueness/custody proof",
+      "historical_assignment_evidence": {
+        "source": "docs/research/2026-11-17_scientific_validation/assignment-metadata.json",
+        "evidence_sha256": "665c8367d82b51d7e6012484d530c44969a818017230a2488026ad3a7aa59879",
+        "rows": 235795,
+        "groups": 220086,
+        "mixed_target_groups": 54,
+        "partitions": {
+          "calibration": 35358,
+          "development": 165089,
+          "test": 35348
+        },
+        "recorded_role_crossings": 0,
+        "recorded_fold_crossings": 0,
+        "meaning": "historical metadata assertions, not current scientific acceptance or original-row/group correspondence"
+      },
+      "dictionary": "PARTIAL: full declaration verified; 50-numeric projection for review only, not frozen; domains/derivation and encoding remain to be accepted",
+      "development_custody": "BLOCKED: no exact permitted real delivery/independent expected IDs",
+      "grouping_and_exposure": "BLOCKED: actual relationship evidence, mixed-target policy and exposure-aware role/claim disposition not accepted",
+      "leakage": "UNVERIFIED: source-engineered feature references/statistics and split/exposure scope need documentary/accepted-data checks; no leakage finding inferred from field names",
+      "no_fit_admission": "NOT_EXECUTED: real delivery/authorization prerequisites absent",
+      "fit_settings_and_authorization": "BLOCKED: no accepted exact E configuration/receipt",
+      "source_records_processed": 0,
+      "experimental_fits": 0
+    }
+  },
+  "datasets_pooled": false,
+  "U1_only": "Neither technical branch supports an E2/E3 behavioral contribution comparison. U1 results, if later authorized, remain dataset-specific technical benchmarks.",
+  "primary_label_condition_resolved_for_phiusiil": true,
+  "scientific_metrics": null,
+  "decision_packet": "DECISION_PACKET.md"
+}

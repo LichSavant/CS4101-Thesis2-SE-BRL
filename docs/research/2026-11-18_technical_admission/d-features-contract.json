@@ -1,0 +1,133 @@
+{
+  "scope": "descriptive contract extracted from existing validators, not a delivery or acceptance",
+  "contract_version": "scoped-no-fit-preparation-1",
+  "entry_point": "ml.preparation_execution.run_preparation(stage=\"D-features\")",
+  "branch": "PhiUSIIL",
+  "root": "experiments/runs/<externally named input run>",
+  "files": [
+    {
+      "path": "protocol/population.json",
+      "required_structure": {
+        "records": "nonempty list; no invented originals"
+      },
+      "record_required_fields": [
+        "observation_id",
+        "source_dataset",
+        "source_file",
+        "source_row_id",
+        "snapshot_sha256",
+        "native_label",
+        "target"
+      ],
+      "conditions": [
+        "Source is exactly PhiUSIIL; native int label 0/1 maps to target 1/0",
+        "Snapshot/file/original nonnegative integer position determine the existing prospective_id",
+        "Unique original locators and IDs; consistent native meanings",
+        "Accepted source population is upstream evidence independent of the proposed payload; expected IDs must not be reverse-engineered from delivered records"
+      ],
+      "assembly": "CREATED_DEVELOPMENT_ONLY: 165089 verified reconstructed prospective locators; accepted complete three-role population/independent universe still absent"
+    },
+    {
+      "path": "protocol/assignments.csv",
+      "columns": [
+        "observation_id",
+        "target",
+        "group_id",
+        "partition",
+        "cv_fold",
+        "source_dataset"
+      ],
+      "conditions": [
+        "Exact six-column set, unique population coverage, preserved source/target",
+        "CSV target 0 or 1; cv_fold text empty or a canonical digit 1 through 5",
+        "All three roles covered; reserved folds empty; five development folds and both classes",
+        "Groups cannot cross roles/folds; assignments and conflict/exposure policy must be authentic"
+      ],
+      "assembly": "CREATED_DEVELOPMENT_ONLY: Prospective-ID aliases preserve all historical development memberships, targets, groups and normalized folds; no reserved source-locator metadata invented"
+    },
+    {
+      "path": "protocol/dictionary.json",
+      "consumed_fields": [
+        "dataset",
+        "conventional",
+        "protocol_reference",
+        "feature_dictionary_reference"
+      ],
+      "conventional_entry": [
+        "name",
+        "kind"
+      ],
+      "conditions": [
+        "Dataset PhiUSIIL; nonempty unique ordered FeatureColumn names",
+        "kind numeric or text; nonempty actual protocol/dictionary references",
+        "Forbidden metadata, target, FILENAME and behavioral fields excluded",
+        "50 numeric source fields are only a review candidate, not a frozen choice; missingness/encoding and source-derived-feature interpretation require actual decisions"
+      ],
+      "assembly": "IMPLEMENTATION_FROZEN: Ten ordered numeric URL-structure fields under reported joint direction; independent acceptance not claimed"
+    },
+    {
+      "path": "protocol/feature_freeze.json",
+      "checked_fields": [
+        "code_sha256",
+        "assignment_sha256",
+        "dictionary_sha256",
+        "data_scope"
+      ],
+      "conditions": [
+        "Code map exactly equals current code_hashes(root)",
+        "Assignment/dictionary hashes equal the receipt-bound actual files",
+        "data_scope is development_only; no invented hashes for absent files"
+      ],
+      "assembly": "IMPLEMENTATION_FROZEN: Actual code/assignment/dictionary hashes; data_scope development_only; not scientific acceptance"
+    },
+    {
+      "path": "data/development/phiusiil_records.json",
+      "required_content": [
+        "Development-only original observation IDs, source_dataset, source_row_id, label, target, group_id, partition, cv_fold",
+        "Every selected predictor in the exact accepted dictionary"
+      ],
+      "conditions": [
+        "Exactly accepted development IDs and original locators; native labels/source metadata unchanged",
+        "No reserved predictor/outcome records; full metadata does not authorize reserved payload access",
+        "Feature values validated; shared boundary enforces fold classes and group isolation",
+        "Technical behavioral states remain unavailable; FILENAME is not a predictor"
+      ],
+      "assembly": "CREATED_VERIFIED_DEVELOPMENT: 165089 records; source values, typed metadata and forbidden-predictor checks pass"
+    },
+    {
+      "path": "protocol/feature_acceptance.json",
+      "exact_keys": [
+        "version",
+        "stage",
+        "authority",
+        "branch",
+        "output_run_id",
+        "input_sha256",
+        "code_sha256",
+        "access"
+      ],
+      "authority_exact_keys": [
+        "name",
+        "role",
+        "date",
+        "response_reference",
+        "response_text"
+      ],
+      "conditions": [
+        "Version scoped-no-fit-preparation-1; stage D-features; branch PhiUSIIL",
+        "Real dated authority response; role researcher or adviser; no assistant-created signatures",
+        "input_sha256 has exactly the other five relative paths and their actual digests",
+        "Current code identity and a distinct unused output run",
+        "Caller supplies the genuinely independently trusted receipt digest; hashing this same candidate receipt is not evidence of independent trust",
+        "authority values are nonempty strings; date is ISO and not future; response_text length at least 40",
+        "Input/output run names match [a-z0-9][a-z0-9-]{0,63}; output differs from input and is unused",
+        "Each of the five inputs is hash-checked under the accepted run; no arbitrary discovery or self-issued approval flag"
+      ],
+      "assembly": "BLOCKED_INDEPENDENT_ACCEPTANCE: No authentic exact-file receipt/independently trusted digest supplied; reported joint direction is not such a receipt"
+    }
+  ],
+  "independence_boundary": "The code recomputes IDs and joins, but cannot authenticate historical source facts or human authority. Expected IDs come from an accepted upstream population, not the payload. Digest trust is an independently established operator input, not a boolean or self-generated hash.",
+  "existing_scientific_gates_unchanged": true,
+  "actual_contract_files_created": 5,
+  "latest_delivery_status_reference": "d-features-delivery-status.json:latest_development_delivery"
+}

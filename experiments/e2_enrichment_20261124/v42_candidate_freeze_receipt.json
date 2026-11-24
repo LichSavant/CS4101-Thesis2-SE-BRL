@@ -1,0 +1,24 @@
+{
+  "candidate": "V4.2",
+  "created_utc": "2026-11-24T12:28:01.325081+00:00",
+  "status": "frozen_exploratory_candidate",
+  "artifact_hashes": {
+    "candidate_context_v2.py": "ad97ae1b1a2071064d6518dc67b180352a4f895b168ee5c7f32853ed33407c04",
+    "integrated_behavioral_rules_v42.json": "315b480eb0bce3e8c6e1455c288081727feb1cbf41f037a58913e217474c8b54",
+    "v42_pilot_1000.csv": "ea8cb2eb55f9d2d0d258e16838833f099691c00f52a5d2505a7818f9ac216fb0"
+  },
+  "rules": 35,
+  "authored_cases_passed": 30,
+  "authored_cases_total": 30,
+  "pilot_observations": 1000,
+  "pilot_phishing_observations": 74,
+  "pilot_optimistic_ap": 0.575489,
+  "pilot_optimistic_f1": 0.566038,
+  "pilot_labels_exposed": true,
+  "multiline_refinement_adopted": false,
+  "context_safeguards_retained": true,
+  "independent_behavioral_accuracy_established": false,
+  "scientific_fitting_authorized": false,
+  "classifier_fitting_performed": false,
+  "production_promotion_authorized": false
+}

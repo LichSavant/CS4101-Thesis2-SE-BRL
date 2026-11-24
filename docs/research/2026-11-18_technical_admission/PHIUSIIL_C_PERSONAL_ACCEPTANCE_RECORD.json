@@ -1,0 +1,42 @@
+{
+  "record_type": "direct_user_personal_conditional_acceptance_and_remaining_actions_not_execution_receipt",
+  "researcher": "Dhanwil",
+  "role": "researcher",
+  "decision_date": "2026-11-18",
+  "date_basis": "Acceptance received during this session; clock tool observed 2026-11-18 13:00:57 UTC and host local clock 2026-11-18 +08:00. Not backdated from the earlier methodology decision.",
+  "response_text_verbatim": "I accept the specified PhiUSIIL C-allocation inputs for the 165,089-record exploratory population, including the reconstructed prospective lineage, group-safe allocation methodology, mixed-label grouping limitations, and historical exposure restrictions. I authorize metadata-only C-allocation under the stated scope, subject to successful independent verification of the exact input files and acceptance evidence. This acceptance does not authorize model fitting or protected evaluation.",
+  "identity_or_signature_independently_verified": false,
+  "joint_attribution": "Earlier joint methodological agreement reported; no personal Vera response documented or created",
+  "prior_methodological_reference": "docs/research/2026-11-18_technical_admission/PHIUSIIL_SCOPE_DECISION.json",
+  "specific_run_requirements": {
+    "Vera_in_C_schema": "Not mandatory: exact authority schema accepts one researcher or adviser; no two-signature field or Vera-specific requirement.",
+    "joint_methodology_condition": "Approved proposal p.63 requires joint approval for a later change to an already frozen protocol. Existing preparation is explicitly not scientific acceptance; no authenticated prior scientific freeze establishing this trigger was identified in the controlling evidence. Do not impose a universal Vera co-signature or claim her confirmation.",
+    "independent_authentication": "Mandatory under this conditional acceptance and trusted-digest boundary: a trusted operator must independently authenticate actual personal response provenance and exact upstream/file evidence before supplying the receipt digest. Neither a distinct institution nor a specifically named reviewer is mandated; agent self-hashing is insufficient."
+  },
+  "reviewer_actions": [
+    "Review exact file references/hashes in PHIUSIIL_C_ALLOCATION_ACCEPTANCE_PACKET.json and the actual code_sha256 map; reuse PHIUSIIL_C_SOURCE_VERIFICATION.json with its same-agent limitation, or run the read-only reviewer in an independent review session.",
+    "Authenticate this personal response and the bounded upstream population evidence; record genuine confirmation rather than modifying attribution flags based on JSON syntax.",
+    "After confirming the acceptance condition is satisfied, finalize the exact unchanged-schema receipt at experiments/runs/phiusiil-former-development-input-v1/protocol/allocation_acceptance.json; independently authenticate and supply its actual SHA-256 through a trusted channel.",
+    "Use scripts.review_phiusiil_c_acceptance with that supplied digest, then the existing C command; D-features and fitting retain their own later boundaries."
+  ],
+  "references": {
+    "acceptance_packet": "docs/research/2026-11-18_technical_admission/PHIUSIIL_C_ALLOCATION_ACCEPTANCE_PACKET.json",
+    "source_verification": "docs/research/2026-11-18_technical_admission/PHIUSIIL_C_SOURCE_VERIFICATION.json",
+    "reviewer": "scripts/review_phiusiil_c_acceptance.py",
+    "code_map": {
+      "path": "experiments/runs/phiusiil-former-development-input-v1/preparation_checks.json",
+      "file_sha256": "39f32d2aaeda459c1817d627da61fd844d919584c918ff91712b7e8c8cb07e0b",
+      "json_pointer": "/code_sha256",
+      "requirement": "Copy the complete existing map exactly; it must still match code_hashes(current checkout) at execution."
+    },
+    "exact_input_sha256": {
+      "protocol/allocation_settings.json": "12ba404731616f8cc6bd0062b8d2fe9f67389147a0d06ede5a16ef5f8279824c",
+      "protocol/population.json": "a56fe920af493aff1238c9a30b5db14a5d0bc371a92e9ac85966531d45eded16",
+      "protocol/relationships.json": "93c18fcc240cf852f1e8e609d2a45bd66e6c274a2eb5f0e9dbfaf663db2adbb3"
+    }
+  },
+  "active_receipt_created": false,
+  "independent_digest_supplied": false,
+  "allocation_executed": false,
+  "model_fits": 0
+}

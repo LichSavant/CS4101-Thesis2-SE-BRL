@@ -1,0 +1,39 @@
+{
+  "result_category": "SYNTHETIC RESULT",
+  "genuine_estimator_fit_calls": 180,
+  "research_models_fitted": 0,
+  "calibration_fits": 0,
+  "selection_performed": false,
+  "research_execution": "BLOCKED",
+  "bundles": [
+    {
+      "family": "logistic_regression",
+      "bundle": "logistic_regression",
+      "manifest_sha256": "226e8fb5e9960e46347e8f8bd7de8e28eac653bdf4c624cd7cae341c1a3a8726",
+      "email_oof_rows": 30,
+      "score_kind": "probability"
+    },
+    {
+      "family": "linear_svm",
+      "bundle": "linear_svm",
+      "manifest_sha256": "6fb59180a45cca52faae143156179d55c43c5b5866ecb0ff565041159cffe205",
+      "email_oof_rows": 30,
+      "score_kind": "margin"
+    },
+    {
+      "family": "random_forest",
+      "bundle": "random_forest",
+      "manifest_sha256": "39709f8e10e88327c40930eb5457f521be8813fca81724b23bf0d950a0f4816a",
+      "email_oof_rows": 30,
+      "score_kind": "probability"
+    },
+    {
+      "family": "xgboost",
+      "bundle": "xgboost",
+      "manifest_sha256": "6ae798fbdbe6d0c83d8a643bf0d3ef2765f7d548d31e8ebf908a2e3b58392410",
+      "email_oof_rows": 30,
+      "score_kind": "probability"
+    }
+  ],
+  "incomplete_export_rule": "Each bundle validates independently; no summary.json means the multi-family export is incomplete."
+}

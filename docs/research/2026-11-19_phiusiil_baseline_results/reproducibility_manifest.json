@@ -1,0 +1,871 @@
+{
+  "category": "ACTUAL AUTHORIZED EXPLORATORY BASELINE RESULT",
+  "date_local": "2026-11-19",
+  "request": {
+    "path": "docs/research/2026-11-19_phiusiil_fixed_baseline_request.json",
+    "sha256": "ecfb31e52af4f11d6f0ac480504361d618034151585eedba5a7ef59ab426687c"
+  },
+  "actual_authorization": {
+    "path": "docs/research/2026-11-19_phiusiil_fixed_baseline_fitting_authorization.json",
+    "sha256": "1f3aeac087623e6c43c5e5dd0fa8746fa2b00397d876528ac8d7e33bc3766d80",
+    "attribution": "Direct Dhanwil acceptance dated 2026-11-19; no external signature/authentication claimed"
+  },
+  "personal_response": "docs/research/2026-11-19_phiusiil_fixed_baseline_personal_acceptance.json",
+  "source_run": "experiments/runs/phiusiil-fixed-logreg-oof-v1",
+  "private_artifacts": {
+    "baseline_results.md": {
+      "sha256": "b08c740e5c979be7606db170193cc901625d7994425c4623441ac0caf1a1001d",
+      "bytes": 341
+    },
+    "metrics.csv": {
+      "sha256": "341b07bb37ad79f1207281a678632299ad2ddf7931a699fed4c3125ed4efa2fb",
+      "bytes": 546
+    },
+    "oof_predictions.csv": {
+      "sha256": "68136746e88fe3fdbd2927af91ee968fe7078c163a28ba3a60d641dc472ef848",
+      "bytes": 20628657
+    },
+    "reproducibility_manifest.json": {
+      "sha256": "6c54a16f9b13b21c6207dd3575f0ac963e2068536a9b091560d6aa267adb531e",
+      "bytes": 10434
+    },
+    "result.json": {
+      "sha256": "b192a2796dda4cbe6dc6d89fc1e2ea8d205ba93d982a220a364b4b1acdf7879e",
+      "bytes": 5322301
+    }
+  },
+  "executed_identity": {
+    "code_sha256": {
+      "ml/__init__.py": "f971a899c6bf1f7f268632950807dda14efc9248bd6e884a8399e624a0143b9e",
+      "ml/annotation_validation.py": "d7f5ad3cb8cc6b948b45097a1ca109393a84ec8024fbdc1c99454db96d983f94",
+      "ml/artifact_analysis.py": "dcd5db04bc38c6b2b6f7d31d104933187826958fad8a5e362fb152789fb17a98",
+      "ml/attribution.py": "c5fe27128e5094061f2cf0c308e02cf5a27f73d4b0aafaa58188d69e3e66e766",
+      "ml/behavioral_compatibility.py": "40740f98bda1653eaefe6dc45d3d3feef406dde24f9a67df9adff7d4c6ca93f8",
+      "ml/behavioral_validation.py": "c646494c6b917995af4a1fe021c0379e81d2291837bea98aaf4670cbb6a45501",
+      "ml/branch_preparation.py": "64fe86d78f83f33929b696d665079f5333515bf0c5f286c51bc0f82df3f5e22c",
+      "ml/classifier_adapters.py": "ae9de9c7b961bda6908f8e22aad605717b3536a064a86dd55d472331b6fcbc1b",
+      "ml/content_preparation.py": "f0d59a036a6fbd46e5887e8517b35a4aa5933781df75c0cb81a6807f6e43d065",
+      "ml/counterpart_checkout.py": "aaa6cfcc2abdee995bededcdd5f313be60bdd8461514fdeb8401e87a1c9a2d3e",
+      "ml/csv_source_audit.py": "64e4341bfd00a96090aa30fbf5d187f016326b5eb0d0dcefc0d2c47b803175dc",
+      "ml/datasets.py": "6fe4faf8e0d5ec88cae39cb6062e9f838ca5221d86e76bccc599898a8b9fbc88",
+      "ml/decision.py": "3e61c9550f14e87c807311fcceae1c76d71459224bdb8cfe693858a6419d98c0",
+      "ml/development_experiments.py": "f322d8771cf4b3be894654759f084718779bff93e3f8ac2eb74a79bfa9f493ff",
+      "ml/development_runner.py": "921aabc761f0d1a80b33a5a4896d939e1d8b0f94d82b359bb070b21b987ca395",
+      "ml/diagnostic_execution.py": "17bb8dcd7b2947e756607a228d6a07c1e3e2486b4fe6c80d81a80cd79a255eb2",
+      "ml/evaluation_metrics.py": "6a75d67da27028fc96f9724f558676aacbc940f551e8e5ffc58e9259dddf11c3",
+      "ml/execution_identity.py": "a1024c150881e3fcb870a984e829aa59f9d9fd0fb176ddc3cd55ce1a6eda3bdf",
+      "ml/experiment_artifacts.py": "49b4b4f4d2352a90eb2997a56d5b7606ee138aab87d922df5e087a6dcc240d1f",
+      "ml/experiment_engine.py": "dde10a4657450ee706d91cdb3e23980da26960170e872b5090115a77f5c94315",
+      "ml/experiment_inputs.py": "e1517359f017d6eb9faad24da7f5c9fd33255033015a9d98495f4d7e7f33291a",
+      "ml/experiment_integration.py": "6c9fc0f70b9497ca8c820d10086d28df39cdf5abad645dba82c932c520d54894",
+      "ml/feature_freeze.py": "8d7b421cc2be6413b68bf595e921adec2595d84ff159c8ad895e9229848c4488",
+      "ml/feature_freeze_candidate.v0.1.0.json": "68baece3014723c9ec85f4e19a4e0d80f1b9baa67d5d63454e18e4b1793081e0",
+      "ml/feature_schema.py": "7b5c36655e492901898b64b2c5a5c2f455f3819279b0a24e0b49426b25f217de",
+      "ml/feature_storage.py": "9294868d832d187b459b3c196447de7b698a9da6970523ac33ce872ac2bcc3aa",
+      "ml/features.py": "484d779be067633a1ec2fb2acab86643cd198f4d587b15e786d8e729917febe3",
+      "ml/finalization.py": "d4a43fd9d2bb786ee81b0b968801054262f586d609b8832d243812279ebc69ef",
+      "ml/fixed_baseline.py": "a0b1255c6dc7b1f6f60fd2829915d270ea3fd79b11e36e50e7a965c1ccfc4aae",
+      "ml/fixtures/runtime-compatibility-v1/declaration.local.json": "6ee8e8cdab40616202a4e9ac1c1ce454bcd349cae0d4d22943812f8e510bdee4",
+      "ml/fixtures/semantic-review-v1/interface.json": "943cdab824c2683678d33556f8b3729572b01021a4f34043f2ff1cfef618c131",
+      "ml/fixtures/semantic-review-v1/request.json": "cae1ad2a7aada43b2cc986508d9045a2192b7ff7de99e42580b794df39fbe9b7",
+      "ml/fixtures/semantic-review-v1/response.json": "a0ef0a3aad974a07d0efcee6b03e584aea39d5d2d0957dca5f67b63c4f43639f",
+      "ml/genuine_classifier_smoke.py": "756fe05e85e99440424c832a15fdce2cabf2629a101beeae819ca93ae676e7aa",
+      "ml/grouping.py": "ae783e916347d396a533915a8b52cc02163c3e32ee8db0ed798173199aa4a836",
+      "ml/handoff.py": "93b214fefb1d20b74fd9bc3230597e19258c339c277b11d5fe8b2a4d88bea524",
+      "ml/inference_benchmark.py": "3ce8ec5b2d90c70269f5f6dd04b517b93e61fc7df49c3cec5860b25758b21d76",
+      "ml/metadata.py": "09040b8f3a6425aabd0bdf26f5e0219d8b0be7f8a5e9060d4a900eb36e2b8463",
+      "ml/model_persistence.py": "dd8b8c29d7ab3e5d344b736dad88e326e1d646549950e9604f709b11c117b9f0",
+      "ml/model_selection.py": "e949f4ed226a5099ddafbc45c2e590784c7cb677e2afa61f5f7197dcca9e4b08",
+      "ml/models.py": "7c1be7772b88b0627bbfb5d39079aabe16a1b337851ff66dae78280c02d2529a",
+      "ml/no_fit_authority.py": "090edb642d10f1cb7249477de9444374e1c155e012bc4f76e029f0aae75e66f6",
+      "ml/notebook_contracts.py": "0dc0075bdbc885acf6cad43d2aac1464054d850fe2b0aed78af11f07da422e65",
+      "ml/notebook_sources.py": "2aae6287260701505496bdd9e333031a9d37eb04074f8fae3b3d4b1301383036",
+      "ml/observed_features.py": "090154f1104c1ba720ea3b368dd7244c1e074310174b2dc75e5f7ce29247f429",
+      "ml/pipeline.py": "995cefbd6b376721f83fb7c1e5b55bde315f2084ab8781248c6db5d07eafe8ef",
+      "ml/preflight.py": "49fa96269555676d1dcf2ebae81410157483285667f83533402e139e170c5b59",
+      "ml/preparation_execution.py": "deccffc9e5d8ac87fafef2fcafb29912969da84167aa058649a74f32e3dadd94",
+      "ml/preparation_integrity.py": "913daec3b81dc9f176fcc93367db17c2b7a0f5a88e8efcf64a502e16058e8205",
+      "ml/preprocessing.py": "5ba0a5b69b21b6845ddc39843b6d2e1d855536046dc9a9c394256155a6c0cfd6",
+      "ml/prospective_allocation.py": "b21b1f3db2349049171e35fabb0a9dcb643f48d7519ac92f9dc97bbb39f06c60",
+      "ml/readiness.py": "77a544cb2059361ab35a63ccf12dd8e09acd0c6cc239fdf19fbf1ca913748a27",
+      "ml/requirements-classifiers-synthetic.txt": "15112bf5735e0973ade50c6e3dd8369f562c274ba4d3d59929d3c116d98d890e",
+      "ml/requirements-grouping.txt": "808b89b667e6f1a4b56279a755284e5410fa0dbbd7c488a65c57103711d493eb",
+      "ml/requirements-persistence-synthetic.txt": "86c7a92de3702a7d40ff5a00233e164de5246fb029fb4fb0800403bae1e80df5",
+      "ml/research-inputs.v1.json": "87c0d379e2de2825933e10f5074822ef72271c1d898caaf113ed7f73acce7d02",
+      "ml/research_execution.py": "039c6b0dff988c6b53f5e4fd0162ef8f7e08a39c91fd3dc578b6fe26206358df",
+      "ml/research_policy.py": "2efa813501c0b27a21759835e56e9206c9c24a21e343f53918535fe9ac48b56a",
+      "ml/research_protocol.py": "236954f356e34d4d847347bb76f0b048b89b90f2a2138c199271660cd2badf10",
+      "ml/research_settings_candidate.v0.1.0.json": "c1f5e102ed994bd17656a9f5c582763f533c102947b6cce59b0164370c5706b9",
+      "ml/run_preflight.py": "4e91c73e0392a743041e7d8a15992ab2627b6106dc26633858186a5644114d43",
+      "ml/scoped_json_records.py": "6ff4e985538875f26ce532d1aa0b3ce2509482ebf4aaef6f8ef9b2d1a3fcd971",
+      "ml/se_brl/__init__.py": "fa66105a5913eb775559eb7d0648ab5b8591357809a1d3ed46fb2a1ef0531e9b",
+      "ml/se_brl/assessment.py": "e9a3574709fcf0ca0429a630911c9ed2d69f1f30892f605274cf293d4090db93",
+      "ml/se_brl/codebook.py": "df22964c35d53ab89e06f8e8d6d6876cd1768459c98a50b1755eac33f81641e7",
+      "ml/se_brl/codebook.v0.1.0.json": "36ad77a3f06a962003f8383b4390f2410f93cd7f38eeee3f4d30cad20d839021",
+      "ml/se_brl/context.py": "c4b848d538610f896dc511ddbde09f9fc44e7b3465a82f09f016acc9059288d5",
+      "ml/se_brl/detectors.py": "2af4d738c796fc9d61361ecbd7cb55b2867bca730bd1b79d5c339343fa17ef48",
+      "ml/se_brl/extraction.py": "9e104ca3e7c3de0d6eaf2ea32e074a8b6f2aa2f413393412c3a90cc89ea21616",
+      "ml/se_brl/joint_integration.py": "3521976c23b9d104d1cbab9010580e3ff447c9bd8f05340a970992a52e73caf7",
+      "ml/se_brl/representation.py": "e6b1e8157c8ad5c0fe4b15b1f139fb00389fbb9dc5e8ec61539267ec06f925c4",
+      "ml/se_brl/representation_contract.py": "6b83210b1fd4a03be05cc45c00f56db58ae6fe859c18c55fe6dad59bf444521c",
+      "ml/se_brl/result-envelope.v0.1.0.json": "2ffb720c9306a7c5c5147c0e54b763d5447a4376634a197056f71f4b15c5a63a",
+      "ml/se_brl/result_envelope.py": "c8bee8d6758a57479439ab20e7753a57e782930b074353d85436622f5596353b",
+      "ml/se_brl/review_adapter.py": "71143f51d568c4923a35287217251fac03d1bfa9d4dc45565eb57a40a517e6fc",
+      "ml/se_brl/rules.py": "9b50b0b9439aac4b8d1113755e5bbde6759ed3e3cf59f43855a4d01d052aff71",
+      "ml/se_brl/runtime_compatibility.py": "539aba07f56b1b16aa79c0582d94e0a4ae47bc45c90fab43bd2d9cc0a88e1e30",
+      "ml/se_brl/semantic-model.v1.json": "8df00c4c4d5958f7dfc8f1efd7d588a5b91aa76c923bd0d5ea2528fe556271be",
+      "ml/se_brl/semantic_candidates.py": "e6e8a577e4712e841a93ff91a96bc011c554c94866974e5dd10b79c3f3bd0121",
+      "ml/se_brl/semantic_review.py": "1f7fefae9a6f8276010bb61a81a9b3444fcd8ddbb05847daf61b941435c9f156",
+      "ml/source_acquisition.py": "f45d6a6e27ac329133db21322c242b15bad35b6e9c4f49bb70162a2ec1086adf",
+      "ml/source_audit.py": "01c167e8f07a1d4c2bdd49ca9afc5075ebcf4404419df5ff3075977a51f10f7a",
+      "ml/source_controls.py": "9de0242ac6d24c5a2beed646153b645ec42cf86244a3e77fe8a92138306d8461",
+      "ml/synthetic_demo.py": "0da3dc46ae5f6de49c1cdab412a8f4f79c8780ba8bfeb703e384adf639aa1c73",
+      "ml/synthetic_readback.py": "3096c3deeaed52fe8dc34de69e82140a7b33b8a6602618edc9f6d6f639c74e7c",
+      "ml/synthetic_system.py": "fa48229a0aa54da244eb3d448be2232bc596d782624ed015ff66be8e7ef68b67",
+      "ml/uci-native-schema.v1.json": "01d342a9ffb892e297df0e395a81fdd2119ed9ae746c7efcc95177bb343e07de",
+      "ml/uci_archive_verification.py": "d713cafa7c20c758547f36b69f630aae21a50d7b888f2657a80f63a16f5d137a",
+      "ml/uci_lineage.py": "5be0a6e09ccd7a1cf8ae4d958a32049c17001e979628bbf1840d31d2a5a877bd",
+      "ml/uci_preparation.py": "f22f7813ecfdfebd6dd7c5703f4f622288d1efc41f33a08eb2f678359afb8f6d",
+      "ml/uci_reconstruction.py": "01820c3c27c7e9c34d0dff83d36cfbc8b1574cc6f2d9901af9c0250d8c959eb9",
+      "ml/uci_schema.py": "352663b7cf03426af89e0523891316532175b935e1eb21f5beb42c5f3e876c06",
+      "ml/uci_snapshot.py": "c20e49f2361edfcd541d4f9edd0041e0070400033ce5cb2a05837a5a2c33ff26",
+      "ml/web_source_audit.py": "f15e4599288bd7c4bde7c6305facdf6c748a4c4cccd2a95ba94de41012322c89"
+    },
+    "git": {
+      "branch": "research/scientific-validation-20261117",
+      "dirty": true,
+      "head": "63b5badb69358af4bb5b02e57c69f4c494890af7",
+      "state": "observed",
+      "status_sha256": "6d39e937c34790d60917662389425483ccb364ef32a255b6691df7d401713b83"
+    },
+    "libraries": {
+      "fastapi": "0.141.1",
+      "joblib": "1.5.1",
+      "numpy": "2.2.6",
+      "pydantic": "2.13.5",
+      "scikit-learn": "1.6.1",
+      "scipy": "1.15.3",
+      "skops": "0.13.0",
+      "threadpoolctl": "3.6.0",
+      "xgboost": "2.1.4"
+    },
+    "platform": "Windows-11-10.0.26200-SP0",
+    "python": "3.12.10 (tags/v3.12.10:0cc8128, Apr  8 2025, 12:21:36) [MSC v.1943 64 bit (AMD64)]",
+    "reproducible_from_head_alone": false,
+    "schema": "execution-identity-1",
+    "settings_sha256": "ddedf1807ea588724888ab7a023230ed5a152897f7bf35c163e68e007fa95262",
+    "source_custody_established": false
+  },
+  "source_input_fingerprint": "a80426df6bc711df89b766fed8ec7173c7b5b82b48f3c1ceaa555c089e7661a6",
+  "settings": {
+    "family": "logistic_regression",
+    "parameters": {
+      "C": 1.0,
+      "class_weight": null,
+      "fit_intercept": true,
+      "max_iter": 2000,
+      "penalty": "l2",
+      "solver": "liblinear",
+      "tol": 0.0001
+    },
+    "seed": 42,
+    "preprocessing": {
+      "numeric_missing": "reject",
+      "numeric_scaling": "standard",
+      "text_parameters": null
+    },
+    "feature_columns": [
+      "URLLength",
+      "DomainLength",
+      "IsDomainIP",
+      "TLDLength",
+      "NoOfSubDomain",
+      "HasObfuscation",
+      "NoOfObfuscatedChar",
+      "NoOfLettersInURL",
+      "NoOfDegitsInURL",
+      "IsHTTPS"
+    ],
+    "positive_label": 1,
+    "evaluation": "five supplied grouped development folds; each observation predicted once by a model trained on the other four folds",
+    "hyperparameter_search": false,
+    "calibration": "none",
+    "threshold": 0.5,
+    "base_fits": 5,
+    "calibrator_fits": 0,
+    "metrics": [
+      "precision",
+      "recall",
+      "f1",
+      "balanced_accuracy",
+      "confusion_matrix"
+    ],
+    "confusion_matrix_order": [
+      [
+        "TN",
+        "FP"
+      ],
+      [
+        "FN",
+        "TP"
+      ]
+    ],
+    "reporting": "Per-fold metrics, fold mean and population SD (not independent-sample confidence intervals), plus pooled out-of-fold metrics",
+    "candidate_budget": {
+      "max_base_fits": 5,
+      "max_calibration_fits": 0,
+      "max_training_rows": 115563,
+      "max_seconds": 3600,
+      "threads": 1
+    },
+    "scope_exclusions": [
+      "new internal calibration/evaluation predictors and outcomes",
+      "historical protected observations",
+      "ablations",
+      "other classifiers",
+      "behavioral/Transformer effectiveness claims"
+    ]
+  },
+  "actual_completed_base_fits": 5,
+  "calibration_fits": 0,
+  "OOF_predictions": 115563,
+  "positive_phishing_records": 49355,
+  "negative_legitimate_records": 66208,
+  "OOF_groups": 104570,
+  "pooled_metrics": {
+    "positive_label": 1,
+    "score_orientation": "higher_is_phishing",
+    "threshold": 0.5,
+    "threshold_scale": "supplied_scores",
+    "observations": 115563,
+    "confusion_matrix": [
+      [
+        66195,
+        13
+      ],
+      [
+        761,
+        48594
+      ]
+    ],
+    "precision": 0.9997325488098422,
+    "recall": 0.9845810961402087,
+    "f1": 0.9920989771544068,
+    "specificity": 0.9998036491058483,
+    "balanced_accuracy": 0.9921923726230285,
+    "mcc": 0.9863738009872924,
+    "average_precision": 0.997639557704991,
+    "pr_auc_definition": "non_interpolated_average_precision",
+    "roc_auc": 0.9970288734094664,
+    "brier_score": null,
+    "ece": null,
+    "probability_provenance": "not_supplied"
+  },
+  "fold_descriptives": {
+    "precision": {
+      "fold_mean": 0.9997326683052822,
+      "fold_population_sd": 0.00010474400205401534,
+      "defined_folds": 5
+    },
+    "recall": {
+      "fold_mean": 0.9845810961402087,
+      "fold_population_sd": 0.0019490976207178314,
+      "defined_folds": 5
+    },
+    "f1": {
+      "fold_mean": 0.9920980068471503,
+      "fold_population_sd": 0.000964171162324166,
+      "defined_folds": 5
+    },
+    "balanced_accuracy": {
+      "fold_mean": 0.9921923733072892,
+      "fold_population_sd": 0.0009548561872721954,
+      "defined_folds": 5
+    }
+  },
+  "fold_results": [
+    {
+      "fold": 1,
+      "training_rows": 92451,
+      "validation_rows": 23112,
+      "seconds": 4.064214700018056,
+      "metrics": {
+        "positive_label": 1,
+        "score_orientation": "higher_is_phishing",
+        "threshold": 0.5,
+        "threshold_scale": "supplied_scores",
+        "observations": 23112,
+        "confusion_matrix": [
+          [
+            13240,
+            1
+          ],
+          [
+            185,
+            9686
+          ]
+        ],
+        "precision": 0.9998967688654898,
+        "recall": 0.9812582311822511,
+        "f1": 0.9904898251354944,
+        "specificity": 0.9999244770032475,
+        "balanced_accuracy": 0.9905913540927493,
+        "mcc": 0.9836465147911374,
+        "average_precision": 0.9973934928693619,
+        "pr_auc_definition": "non_interpolated_average_precision",
+        "roc_auc": 0.9968551071912024,
+        "brier_score": null,
+        "ece": null,
+        "probability_provenance": "not_supplied"
+      }
+    },
+    {
+      "fold": 2,
+      "training_rows": 92451,
+      "validation_rows": 23112,
+      "seconds": 2.539298100047745,
+      "metrics": {
+        "positive_label": 1,
+        "score_orientation": "higher_is_phishing",
+        "threshold": 0.5,
+        "threshold_scale": "supplied_scores",
+        "observations": 23112,
+        "confusion_matrix": [
+          [
+            13238,
+            3
+          ],
+          [
+            132,
+            9739
+          ]
+        ],
+        "precision": 0.9996920550195032,
+        "recall": 0.9866274946813899,
+        "f1": 0.9931168102788966,
+        "specificity": 0.9997734310097425,
+        "balanced_accuracy": 0.9932004628455662,
+        "mcc": 0.988108587367854,
+        "average_precision": 0.9975428871733887,
+        "pr_auc_definition": "non_interpolated_average_precision",
+        "roc_auc": 0.9968978800929698,
+        "brier_score": null,
+        "ece": null,
+        "probability_provenance": "not_supplied"
+      }
+    },
+    {
+      "fold": 3,
+      "training_rows": 92450,
+      "validation_rows": 23113,
+      "seconds": 2.5005884999991395,
+      "metrics": {
+        "positive_label": 1,
+        "score_orientation": "higher_is_phishing",
+        "threshold": 0.5,
+        "threshold_scale": "supplied_scores",
+        "observations": 23113,
+        "confusion_matrix": [
+          [
+            13238,
+            4
+          ],
+          [
+            149,
+            9722
+          ]
+        ],
+        "precision": 0.9995887312358627,
+        "recall": 0.9849052780873265,
+        "f1": 0.992192682553452,
+        "specificity": 0.9996979308261592,
+        "balanced_accuracy": 0.9923016044567429,
+        "mcc": 0.98652898629793,
+        "average_precision": 0.9977682138307192,
+        "pr_auc_definition": "non_interpolated_average_precision",
+        "roc_auc": 0.9971712113908753,
+        "brier_score": null,
+        "ece": null,
+        "probability_provenance": "not_supplied"
+      }
+    },
+    {
+      "fold": 4,
+      "training_rows": 92450,
+      "validation_rows": 23113,
+      "seconds": 2.5206086999969557,
+      "metrics": {
+        "positive_label": 1,
+        "score_orientation": "higher_is_phishing",
+        "threshold": 0.5,
+        "threshold_scale": "supplied_scores",
+        "observations": 23113,
+        "confusion_matrix": [
+          [
+            13240,
+            2
+          ],
+          [
+            135,
+            9736
+          ]
+        ],
+        "precision": 0.9997946190182789,
+        "recall": 0.9863235741059669,
+        "f1": 0.9930134122086797,
+        "specificity": 0.9998489654130795,
+        "balanced_accuracy": 0.9930862697595233,
+        "mcc": 0.9879352748948912,
+        "average_precision": 0.9978063807235438,
+        "pr_auc_definition": "non_interpolated_average_precision",
+        "roc_auc": 0.9972664782429483,
+        "brier_score": null,
+        "ece": null,
+        "probability_provenance": "not_supplied"
+      }
+    },
+    {
+      "fold": 5,
+      "training_rows": 92450,
+      "validation_rows": 23113,
+      "seconds": 2.6049443000229076,
+      "metrics": {
+        "positive_label": 1,
+        "score_orientation": "higher_is_phishing",
+        "threshold": 0.5,
+        "threshold_scale": "supplied_scores",
+        "observations": 23113,
+        "confusion_matrix": [
+          [
+            13239,
+            3
+          ],
+          [
+            160,
+            9711
+          ]
+        ],
+        "precision": 0.9996911673872761,
+        "recall": 0.983790902644109,
+        "f1": 0.991677304059229,
+        "specificity": 0.9997734481196194,
+        "balanced_accuracy": 0.9917821753818642,
+        "mcc": 0.9856549424514065,
+        "average_precision": 0.9975914926744018,
+        "pr_auc_definition": "non_interpolated_average_precision",
+        "roc_auc": 0.996996873625363,
+        "brier_score": null,
+        "ece": null,
+        "probability_provenance": "not_supplied"
+      }
+    }
+  ],
+  "validation": {
+    "private_output_hashes": "PASS",
+    "request_and_authority_code_identity": "PASS",
+    "once_only_OOF_ID_coverage": "PASS",
+    "OOF_group_fold_isolation": "PASS",
+    "saved_prediction_metrics_recomputed_exactly": "PASS",
+    "additional_verification_model_fits": 0
+  },
+  "technical_attempts": [
+    {
+      "status": "Initial CLI produced no result; corrected module dispatch class identity. No fold diagnostics were persisted by that earlier wrapper."
+    },
+    {
+      "status": "Owned subsequent worker stopped for repeated codebook validation; captured fit_started fold 1 and no fit_completed event. No completed scientific result; estimator-training completion not asserted from method entry."
+    },
+    {
+      "status": "After equivalent validation caching, final worker logged fit_started and fit_completed for each fold 1 through 5. Frozen parameters/data/folds unchanged; no outcome-driven tuning."
+    }
+  ],
+  "focused_regressions": {
+    "final_baseline_suite": {
+      "passed": 11,
+      "failed": 0,
+      "fit_attempts": 0,
+      "fitting_executions": 0
+    },
+    "guarded_selection_mistake": "An earlier broader selection called prohibited fit-oriented synthetic tests: 17 attempts blocked by process guard, 0 executions. Corrected focused selection passed."
+  },
+  "reproduction_command": "python -B -m ml.fixed_baseline --execute",
+  "reproduction_preconditions": "Exact recorded authority, request, code and admitted data required. Existing immutable output namespace cannot be overwritten; refit reproduction requires a separately permitted output namespace/run identity. No independent refit was performed.",
+  "remaining_scope": "No other classifier, ablation, calibration, protected evaluation or behavioral/Transformer claim authorized",
+  "public_outputs": {
+    "baseline_results.md": {
+      "sha256": "d04abca44ff0deec533e690e603ddebfadc1ce5a52caa9dabb80bcb14563bce2",
+      "bytes": 3932
+    },
+    "confusion_matrices.csv": {
+      "sha256": "23613c25ec3fddc67fefe1943763eb2c2f2e010feb098f1092110afeb365db23",
+      "bytes": 217
+    },
+    "metrics.csv": {
+      "sha256": "341b07bb37ad79f1207281a678632299ad2ddf7931a699fed4c3125ed4efa2fb",
+      "bytes": 546
+    }
+  },
+  "upstream_admission_and_source": {
+    "status": "PASS_NO_FIT_DATA_COMPONENTS; FORMAL_FITTING_ADMISSION_PENDING",
+    "C_completion_sha256": "7c7d125731dae0f9af1c5dc1e3d632f98d7908c35dc0616e0771f0d1710afe0c",
+    "D_completion_sha256": "9a872eecc81b5cc719fb7c5bfc589b8c243afece375ba5989d7523b63824aa43",
+    "D_manifest_path": "experiments/runs/phiusiil-former-development-features-v1/data/processed/features/development/development_input_manifest.json",
+    "D_manifest_sha256": "cfbbbe47b3e241e8410ac78f02f600d7e157f1824176e8e553c618fefb3c6e7a",
+    "roles": {
+      "development": 115563,
+      "calibration": 24763,
+      "test": 24763
+    },
+    "development_fold_target_counts": {
+      "1": {
+        "0": 13241,
+        "1": 9871
+      },
+      "2": {
+        "0": 13241,
+        "1": 9871
+      },
+      "3": {
+        "0": 13242,
+        "1": 9871
+      },
+      "4": {
+        "0": 13242,
+        "1": 9871
+      },
+      "5": {
+        "0": 13242,
+        "1": 9871
+      }
+    },
+    "group_disjoint_roles_and_folds": "PASS existing validator; no groups split",
+    "source_readback": "Existing successful D readback reused; unchanged completion outputs verified, not rerun",
+    "forbidden_predictor_exclusion": "PASS existing select_predictors on exact ten-field dictionary",
+    "raw_or_reserved_predictor_rows_read": 0,
+    "existing_policy_scope": "Joint researcher-controlled revision grants no-fit C/D only",
+    "original_source_snapshot_sha256": "a236549cd369cd80bd478ff8e1779cbf44c58d5c3f79f7a51a1adbed7d06d1c6",
+    "D_input_manifest": {
+      "contract_version": "notebook-boundary-0.1.0",
+      "run_id": "phiusiil-former-development-features-v1",
+      "inputs": {
+        "PhiUSIIL": {
+          "development_file": "phiusiil_development.csv",
+          "behavioral_file": "phiusiil_sebrl_features.csv",
+          "development_sha256": "8073c2417ece06c30fb1af9a309fad4413f015869c23b35df09e6530f0cd2dd5",
+          "behavioral_sha256": "80dea1f0630796702fc667d90f615b17b3ce6b12314f4c5c1c02f605528add79"
+        }
+      }
+    }
+  },
+  "pipeline_audits": [
+    {
+      "adapter_version": "genuine-fold-classifiers-0.1.0",
+      "estimator": "sklearn.linear_model._logistic.LogisticRegression",
+      "family": "logistic_regression",
+      "parameters": {
+        "C": 1.0,
+        "class_weight": null,
+        "fit_intercept": true,
+        "max_iter": 2000,
+        "penalty": "l2",
+        "solver": "liblinear",
+        "tol": 0.0001
+      },
+      "resolved_estimator_parameters": {
+        "C": 1.0,
+        "class_weight": null,
+        "dual": false,
+        "fit_intercept": true,
+        "intercept_scaling": 1,
+        "l1_ratio": null,
+        "max_iter": 2000,
+        "multi_class": "deprecated",
+        "n_jobs": null,
+        "penalty": "l2",
+        "random_state": 42,
+        "solver": "liblinear",
+        "tol": 0.0001,
+        "verbose": 0,
+        "warm_start": false
+      },
+      "preprocessing": {
+        "numeric_missing": "reject",
+        "numeric_scaling": "standard",
+        "text_parameters": null
+      },
+      "feature_names": [
+        "URLLength",
+        "DomainLength",
+        "IsDomainIP",
+        "TLDLength",
+        "NoOfSubDomain",
+        "HasObfuscation",
+        "NoOfObfuscatedChar",
+        "NoOfLettersInURL",
+        "NoOfDegitsInURL",
+        "IsHTTPS"
+      ],
+      "dictionary_reference": "docs/research/2026-11-18_technical_admission/PHIUSIIL_DECISION_REGISTER.md#ordered-numeric-fields",
+      "protocol_reference": "docs/research/2026-11-18_technical_admission/PHIUSIIL_DECISION_REGISTER.md",
+      "training_rows": 92451,
+      "training_matrix_hash": "9aed9976a3df3350b728011b8349e86c348be914527e6337b949cd28307247f7",
+      "positive_label": 1,
+      "calibration": "none; raw estimator output",
+      "seed": 42,
+      "versions": {
+        "numpy": "2.2.6",
+        "scipy": "1.15.3",
+        "scikit-learn": "1.6.1"
+      }
+    },
+    {
+      "adapter_version": "genuine-fold-classifiers-0.1.0",
+      "estimator": "sklearn.linear_model._logistic.LogisticRegression",
+      "family": "logistic_regression",
+      "parameters": {
+        "C": 1.0,
+        "class_weight": null,
+        "fit_intercept": true,
+        "max_iter": 2000,
+        "penalty": "l2",
+        "solver": "liblinear",
+        "tol": 0.0001
+      },
+      "resolved_estimator_parameters": {
+        "C": 1.0,
+        "class_weight": null,
+        "dual": false,
+        "fit_intercept": true,
+        "intercept_scaling": 1,
+        "l1_ratio": null,
+        "max_iter": 2000,
+        "multi_class": "deprecated",
+        "n_jobs": null,
+        "penalty": "l2",
+        "random_state": 42,
+        "solver": "liblinear",
+        "tol": 0.0001,
+        "verbose": 0,
+        "warm_start": false
+      },
+      "preprocessing": {
+        "numeric_missing": "reject",
+        "numeric_scaling": "standard",
+        "text_parameters": null
+      },
+      "feature_names": [
+        "URLLength",
+        "DomainLength",
+        "IsDomainIP",
+        "TLDLength",
+        "NoOfSubDomain",
+        "HasObfuscation",
+        "NoOfObfuscatedChar",
+        "NoOfLettersInURL",
+        "NoOfDegitsInURL",
+        "IsHTTPS"
+      ],
+      "dictionary_reference": "docs/research/2026-11-18_technical_admission/PHIUSIIL_DECISION_REGISTER.md#ordered-numeric-fields",
+      "protocol_reference": "docs/research/2026-11-18_technical_admission/PHIUSIIL_DECISION_REGISTER.md",
+      "training_rows": 92451,
+      "training_matrix_hash": "ad58cba34af5cce070004f2cd3e45101fa7d8eafd6042160651af26c71ebfa52",
+      "positive_label": 1,
+      "calibration": "none; raw estimator output",
+      "seed": 42,
+      "versions": {
+        "numpy": "2.2.6",
+        "scipy": "1.15.3",
+        "scikit-learn": "1.6.1"
+      }
+    },
+    {
+      "adapter_version": "genuine-fold-classifiers-0.1.0",
+      "estimator": "sklearn.linear_model._logistic.LogisticRegression",
+      "family": "logistic_regression",
+      "parameters": {
+        "C": 1.0,
+        "class_weight": null,
+        "fit_intercept": true,
+        "max_iter": 2000,
+        "penalty": "l2",
+        "solver": "liblinear",
+        "tol": 0.0001
+      },
+      "resolved_estimator_parameters": {
+        "C": 1.0,
+        "class_weight": null,
+        "dual": false,
+        "fit_intercept": true,
+        "intercept_scaling": 1,
+        "l1_ratio": null,
+        "max_iter": 2000,
+        "multi_class": "deprecated",
+        "n_jobs": null,
+        "penalty": "l2",
+        "random_state": 42,
+        "solver": "liblinear",
+        "tol": 0.0001,
+        "verbose": 0,
+        "warm_start": false
+      },
+      "preprocessing": {
+        "numeric_missing": "reject",
+        "numeric_scaling": "standard",
+        "text_parameters": null
+      },
+      "feature_names": [
+        "URLLength",
+        "DomainLength",
+        "IsDomainIP",
+        "TLDLength",
+        "NoOfSubDomain",
+        "HasObfuscation",
+        "NoOfObfuscatedChar",
+        "NoOfLettersInURL",
+        "NoOfDegitsInURL",
+        "IsHTTPS"
+      ],
+      "dictionary_reference": "docs/research/2026-11-18_technical_admission/PHIUSIIL_DECISION_REGISTER.md#ordered-numeric-fields",
+      "protocol_reference": "docs/research/2026-11-18_technical_admission/PHIUSIIL_DECISION_REGISTER.md",
+      "training_rows": 92450,
+      "training_matrix_hash": "abd22656bcacec2ebf31b111c99462e84cd830c88fe59af6be0f3251e6bb5b36",
+      "positive_label": 1,
+      "calibration": "none; raw estimator output",
+      "seed": 42,
+      "versions": {
+        "numpy": "2.2.6",
+        "scipy": "1.15.3",
+        "scikit-learn": "1.6.1"
+      }
+    },
+    {
+      "adapter_version": "genuine-fold-classifiers-0.1.0",
+      "estimator": "sklearn.linear_model._logistic.LogisticRegression",
+      "family": "logistic_regression",
+      "parameters": {
+        "C": 1.0,
+        "class_weight": null,
+        "fit_intercept": true,
+        "max_iter": 2000,
+        "penalty": "l2",
+        "solver": "liblinear",
+        "tol": 0.0001
+      },
+      "resolved_estimator_parameters": {
+        "C": 1.0,
+        "class_weight": null,
+        "dual": false,
+        "fit_intercept": true,
+        "intercept_scaling": 1,
+        "l1_ratio": null,
+        "max_iter": 2000,
+        "multi_class": "deprecated",
+        "n_jobs": null,
+        "penalty": "l2",
+        "random_state": 42,
+        "solver": "liblinear",
+        "tol": 0.0001,
+        "verbose": 0,
+        "warm_start": false
+      },
+      "preprocessing": {
+        "numeric_missing": "reject",
+        "numeric_scaling": "standard",
+        "text_parameters": null
+      },
+      "feature_names": [
+        "URLLength",
+        "DomainLength",
+        "IsDomainIP",
+        "TLDLength",
+        "NoOfSubDomain",
+        "HasObfuscation",
+        "NoOfObfuscatedChar",
+        "NoOfLettersInURL",
+        "NoOfDegitsInURL",
+        "IsHTTPS"
+      ],
+      "dictionary_reference": "docs/research/2026-11-18_technical_admission/PHIUSIIL_DECISION_REGISTER.md#ordered-numeric-fields",
+      "protocol_reference": "docs/research/2026-11-18_technical_admission/PHIUSIIL_DECISION_REGISTER.md",
+      "training_rows": 92450,
+      "training_matrix_hash": "be69c4c946665e471eb12b6366c0395f3bce8ee62a5f11cad7e5238061cdfb69",
+      "positive_label": 1,
+      "calibration": "none; raw estimator output",
+      "seed": 42,
+      "versions": {
+        "numpy": "2.2.6",
+        "scipy": "1.15.3",
+        "scikit-learn": "1.6.1"
+      }
+    },
+    {
+      "adapter_version": "genuine-fold-classifiers-0.1.0",
+      "estimator": "sklearn.linear_model._logistic.LogisticRegression",
+      "family": "logistic_regression",
+      "parameters": {
+        "C": 1.0,
+        "class_weight": null,
+        "fit_intercept": true,
+        "max_iter": 2000,
+        "penalty": "l2",
+        "solver": "liblinear",
+        "tol": 0.0001
+      },
+      "resolved_estimator_parameters": {
+        "C": 1.0,
+        "class_weight": null,
+        "dual": false,
+        "fit_intercept": true,
+        "intercept_scaling": 1,
+        "l1_ratio": null,
+        "max_iter": 2000,
+        "multi_class": "deprecated",
+        "n_jobs": null,
+        "penalty": "l2",
+        "random_state": 42,
+        "solver": "liblinear",
+        "tol": 0.0001,
+        "verbose": 0,
+        "warm_start": false
+      },
+      "preprocessing": {
+        "numeric_missing": "reject",
+        "numeric_scaling": "standard",
+        "text_parameters": null
+      },
+      "feature_names": [
+        "URLLength",
+        "DomainLength",
+        "IsDomainIP",
+        "TLDLength",
+        "NoOfSubDomain",
+        "HasObfuscation",
+        "NoOfObfuscatedChar",
+        "NoOfLettersInURL",
+        "NoOfDegitsInURL",
+        "IsHTTPS"
+      ],
+      "dictionary_reference": "docs/research/2026-11-18_technical_admission/PHIUSIIL_DECISION_REGISTER.md#ordered-numeric-fields",
+      "protocol_reference": "docs/research/2026-11-18_technical_admission/PHIUSIIL_DECISION_REGISTER.md",
+      "training_rows": 92450,
+      "training_matrix_hash": "0323f6041f1765ec180e40190d3681ddcf17692a7d495cd580f65a4bfa53cb9b",
+      "positive_label": 1,
+      "calibration": "none; raw estimator output",
+      "seed": 42,
+      "versions": {
+        "numpy": "2.2.6",
+        "scipy": "1.15.3",
+        "scikit-learn": "1.6.1"
+      }
+    }
+  ],
+  "byte_exact_executed_code_archive": {
+    "path": "experiments/runs/phiusiil-fixed-logreg-reproducibility/executed_code.zip",
+    "sha256": "8bfa5193d8a9ccbf3042ff2fe2d825b2c145ccd37d80a7b6c24502c2595890bf",
+    "bytes": 264713,
+    "code_files": 94,
+    "verification": "Every archived source entry matches the executed code digest; no research rows or model weights included",
+    "purpose": "Preserve exact runtime source bytes where historical Git newline filters differ. Current committed source is logically identical; archive is the byte-exact reproduction reference.",
+    "restoration": "In an authorized reproduction checkout, restore these ML bytes before checking exact code identity. Retain original experiment outputs; use a separately permitted run/output identity for any refit."
+  }
+}

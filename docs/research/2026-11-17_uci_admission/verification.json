@@ -1,0 +1,79 @@
+{
+  "starting_commit": "cee80d97c8454e726d55a97abb98fda74a8e2b7f",
+  "branch": "research/scientific-validation-20261117",
+  "uci_admission": "BLOCKED",
+  "whole_conditions_resolved": 0,
+  "documentary_components_completed": 3,
+  "software_defects_repaired": 1,
+  "scientific_experiments_executed": 0,
+  "actual_data_no_fit_admission_executed": false,
+  "focused_tests": {
+    "passed": 130,
+    "failed": 0,
+    "skipped": 0,
+    "fitting_attempts": 0,
+    "fitting_executions": 0,
+    "command": [
+      "C:\\Users\\Dhanwil\\AppData\\Local\\Temp\\sebrl-submission-20261117\\venv\\Scripts\\python.exe",
+      "-B",
+      "-m",
+      "pytest",
+      "-p",
+      "ml.tests.no_fit_guard",
+      "-p",
+      "no:cacheprovider",
+      "-q",
+      "-rs",
+      "--basetemp",
+      ".u/b",
+      "ml/tests/test_uci_preparation.py",
+      "ml/tests/test_preparation_execution.py",
+      "ml/tests/test_research_protocol.py",
+      "ml/tests/test_preparation_integrity.py"
+    ],
+    "environment": {
+      "PYTHONDONTWRITEBYTECODE": "1",
+      "PYTEST_DISABLE_PLUGIN_AUTOLOAD": "1",
+      "OMP_NUM_THREADS": "1",
+      "OPENBLAS_NUM_THREADS": "1",
+      "DATABASE_URL": "sqlite:///:memory:",
+      "TEMP": "<workspace>/.u",
+      "TMP": "<workspace>/.u"
+    }
+  },
+  "documentary_check": {
+    "command": [
+      "C:\\Users\\Dhanwil\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+      "-B",
+      "-m",
+      "tools.verify_uci_admission_evidence"
+    ],
+    "exit_code": 0
+  },
+  "compile_changed_python_sources": "PASS",
+  "research_payload_materializations": 0,
+  "sealed_predictor_or_prediction_reads": 0,
+  "reused_source_identity": {
+    "archive_sha256": "514f582cb44cba17251baf1d59f64cddff16efa2b644d091ce8d2a1e8d492940",
+    "raw_arff_sha256": "3bcf93b1612306537ee2737751f1bac185b2a77886ab376644c3bf0c7f7cb3e6",
+    "clean_csv_sha256": "5bdf3b3429f31b4c31d137f3872eede81fe45f9473ad033afb425dd50e62ba92",
+    "authority": "Prior UCI scientific acceptance packet and previous sprint pointer-identity evidence; not freshly materialized or parsed"
+  },
+  "source_documents_retrieval": "source-retrieval.json; original-source HTTPS documentation only; no dataset CSV/ARFF/ZIP requested",
+  "artifact_sha256": {
+    "docs/research/2026-11-17_uci_admission/development-metadata.json": "a9d1d54d2773ce609612c419f6093c081b8326c417adc371a9e07a740a9f7789",
+    "docs/research/2026-11-17_uci_admission/documentary-checks.json": "7d288d30ca34b0a7de0d9040c7b937946e983cd5d78a3900305bea01913dce54",
+    "docs/research/2026-11-17_uci_admission/DOSSIER.md": "6cc0f55bd5488cc1084d935e5a8f89986697bfb18ef2ccfa14adfd7700a348ff",
+    "docs/research/2026-11-17_uci_admission/focused-tests.txt": "ca624ea3332c1e7828656d933b6520b6e50d1a22c8c031e7a7bd2b34b3dedad3",
+    "docs/research/2026-11-17_uci_admission/source-retrieval.json": "e5a3bc0555762dfa79f3faa27de574bdb26ec3b7128c9316c3d79183061e189c",
+    "docs/research/2026-11-17_uci_admission/uci-feature-document.docx": "f6f9326f45659a7b5ef947fa744cec2c379dbea17de56d34436312407faca43c",
+    "docs/research/2026-11-17_uci_admission/uci-metadata.json": "95c3a03b584e36286d50d7521c6f7244d9c9d1129cfb9fca6c16f76d82ce0722",
+    "docs/research/2026-11-17_uci_admission/uci-page.html": "f90391f6c638b135be0c3d3a824770ab379fc70e545b4dd12862c06a5364aa44",
+    "ml/uci_schema.py": "352663b7cf03426af89e0523891316532175b935e1eb21f5beb42c5f3e876c06",
+    "ml/uci-native-schema.v1.json": "01d342a9ffb892e297df0e395a81fdd2119ed9ae746c7efcc95177bb343e07de",
+    "ml/uci_preparation.py": "f22f7813ecfdfebd6dd7c5703f4f622288d1efc41f33a08eb2f678359afb8f6d",
+    "ml/tests/test_uci_preparation.py": "cd7e5493f53c4429243b4c8dfc1def94867aefa86c6dc6e737ecbfed9e9b661d",
+    "tools/verify_uci_admission_evidence.py": "11c42caa478ce474d1ab0b467ca49e9a0baf98761e1972f146f4b5287de1bf36",
+    ".gitattributes": "47abc44559f3180272df417d96b7df92d86d7bb1749e1a3fea1c8fc92fded0a0"
+  }
+}

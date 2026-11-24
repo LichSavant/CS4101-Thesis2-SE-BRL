@@ -1,0 +1,116 @@
+{
+  "schema": "sebrl-phiusiil-fixed-rf-exploratory-ablation-request-v1",
+  "status": "PROPOSED_NOT_AUTHORIZED",
+  "scientific_scope": "exploratory technical sensitivity, not original nested calibrated design",
+  "comparison_request_sha256": "a513d557307b7f5d73e64c543703b7d158d8b5c9635efbf7d31244189237ac84",
+  "original_comparison_authorization_sha256": "320ec213d679dbfe16c5d55c2f28396d74a1d715e44a44879b833921e683eeb5",
+  "protocol_sha256": "ffcb21a45405df4444bba2d29ba54050f0302e7327dae72fe52321fff1c55e30",
+  "runner_sha256": "523d06fa8dbe46ed9dbb5e10690a14d19ca99827fc9cb4f75a78c4c6d322c942",
+  "full_feature_rf_completion_sha256": "1d122c9795207b61ea13dfb5dc105f435bb301eda4c74ae63bb530ef6e735a8a",
+  "full_feature_rf_predictions_sha256": "ceb12159dd7cd2d6e50c1ced8294f9e50bafb66688b9da37d40c93eeb9d54f43",
+  "input_fingerprint": "a80426df6bc711df89b766fed8ec7173c7b5b82b48f3c1ceaa555c089e7661a6",
+  "D_manifest_sha256": "cfbbbe47b3e241e8410ac78f02f600d7e157f1824176e8e553c618fefb3c6e7a",
+  "C_completion_sha256": "7c7d125731dae0f9af1c5dc1e3d632f98d7908c35dc0616e0771f0d1710afe0c",
+  "D_completion_sha256": "9a872eecc81b5cc719fb7c5bfc589b8c243afece375ba5989d7523b63824aa43",
+  "eligible_observations": 115563,
+  "config": "U1",
+  "development_folds": [
+    1,
+    2,
+    3,
+    4,
+    5
+  ],
+  "full_feature_names": [
+    "URLLength",
+    "DomainLength",
+    "IsDomainIP",
+    "TLDLength",
+    "NoOfSubDomain",
+    "HasObfuscation",
+    "NoOfObfuscatedChar",
+    "NoOfLettersInURL",
+    "NoOfDegitsInURL",
+    "IsHTTPS"
+  ],
+  "model": {
+    "family": "random_forest",
+    "id": "random_forest-000",
+    "parameters": {
+      "bootstrap": true,
+      "class_weight": "balanced",
+      "criterion": "gini",
+      "max_depth": null,
+      "max_features": "sqrt",
+      "min_samples_leaf": 1,
+      "n_estimators": 300,
+      "n_jobs": 1
+    },
+    "preprocessing": {
+      "numeric_missing": "reject",
+      "numeric_scaling": "none",
+      "text_parameters": null
+    },
+    "seed": 42,
+    "score_kind": "probability",
+    "decision_threshold": 0.5,
+    "base_fits": 5,
+    "calibration_fits": 0,
+    "choice_rationale": "First declared existing grid point; lowest declared tree/depth option where applicable; not chosen using held-out outcomes"
+  },
+  "ablations": [
+    {
+      "name": "omit_obfuscation",
+      "omitted_features": [
+        "HasObfuscation",
+        "NoOfObfuscatedChar"
+      ],
+      "retained_features": [
+        "URLLength",
+        "DomainLength",
+        "IsDomainIP",
+        "TLDLength",
+        "NoOfSubDomain",
+        "NoOfLettersInURL",
+        "NoOfDegitsInURL",
+        "IsHTTPS"
+      ],
+      "base_fits": 5
+    },
+    {
+      "name": "omit_host_structure",
+      "omitted_features": [
+        "DomainLength",
+        "IsDomainIP",
+        "TLDLength",
+        "NoOfSubDomain"
+      ],
+      "retained_features": [
+        "URLLength",
+        "HasObfuscation",
+        "NoOfObfuscatedChar",
+        "NoOfLettersInURL",
+        "NoOfDegitsInURL",
+        "IsHTTPS"
+      ],
+      "base_fits": 5
+    }
+  ],
+  "fit_budget": {
+    "base_fits": 10,
+    "calibration_fits": 0,
+    "hyperparameter_search": false,
+    "threshold_optimization": false
+  },
+  "output": "experiments/runs/phiusiil-fixed-rf-ablations-v1",
+  "prohibited": [
+    "protected calibration and evaluation populations",
+    "additional datasets",
+    "new baseline fitting",
+    "calibration",
+    "tuning",
+    "source/target leakage",
+    "original protocol alteration",
+    "model selection claims"
+  ]
+}

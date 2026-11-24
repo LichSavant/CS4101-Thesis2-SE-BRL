@@ -64,6 +64,14 @@ def require_research_fitting(verified_run=None) -> None:
     """Typed verified context required; never accepts an approved=True flag."""
     from ml.experiment_inputs import InputContractError
     from ml.research_protocol import VerifiedResearchRun
+    from ml.fixed_baseline import VerifiedFixedBaseline
+    from ml.comparison_batch import VerifiedComparison
+    if isinstance(verified_run, VerifiedComparison):
+        verified_run.require_verified()
+        return
+    if isinstance(verified_run, VerifiedFixedBaseline):
+        verified_run.require_verified()
+        return
     if not isinstance(verified_run, VerifiedResearchRun):
         raise InputContractError("research_fitting_not_authorized")
     verified_run.require_verified()

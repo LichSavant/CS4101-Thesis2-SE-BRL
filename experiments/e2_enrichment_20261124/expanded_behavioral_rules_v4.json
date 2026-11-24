@@ -1,0 +1,220 @@
+{
+  "version": "0.2.0-research-candidate-v4",
+  "status": "experimental_pending_validation",
+  "rules": [
+    {
+      "rule_id": "pressure.immediate_action",
+      "indicator_id": "urgency",
+      "pattern": "\\b(?:act now|(?:click|reply|respond|verify|pay|submit)\\b.{0,40}?\\b(?:immediately|right now))\\b",
+      "allow_negative_instruction": false
+    },
+    {
+      "rule_id": "pressure.adverse_consequence",
+      "indicator_id": "fear_threat",
+      "pattern": "\\b(?:your (?:account|access) will be (?:suspended|terminated|locked)|you will (?:lose access|face penalties))\\b",
+      "allow_negative_instruction": false
+    },
+    {
+      "rule_id": "pressure.limited_action",
+      "indicator_id": "scarcity",
+      "pattern": "\\b(?:act|claim|buy|order)\\b.{0,60}?\\b(?:before (?:it|they) (?:expires?|runs? out)|only \\d+ (?:left|remaining)|limited time)\\b",
+      "allow_negative_instruction": false
+    },
+    {
+      "rule_id": "lure.information_gap",
+      "indicator_id": "curiosity",
+      "pattern": "\\b(?:click|open)\\b.{0,40}?\\b(?:find out|see who|discover (?:who|what)|reveal)\\b",
+      "allow_negative_instruction": false
+    },
+    {
+      "rule_id": "lure.claim_benefit",
+      "indicator_id": "reward_lure",
+      "pattern": "\\b(?:click|reply|claim)\\b.{0,45}?\\b(?:your|a) (?:prize|reward|free gift|refund)\\b",
+      "allow_negative_instruction": false
+    },
+    {
+      "rule_id": "trust.prevent_verification",
+      "indicator_id": "confidentiality_isolation",
+      "pattern": "\\b(?:do not|don't|never) (?:tell|contact|consult) (?:anyone|your (?:bank|manager|IT department))\\b",
+      "allow_negative_instruction": true
+    },
+    {
+      "rule_id": "action.interact",
+      "indicator_id": "call_to_action",
+      "pattern": "\\b(?:click (?:here|the link|this link)|(?:visit|open) (?:this|the) (?:website|link)|download (?:the|this) (?:file|attachment)|reply (?:to this|with)|submit (?:your|the) (?:details|password|information))\\b",
+      "allow_negative_instruction": false
+    },
+    {
+      "rule_id": "action.disclose_sensitive",
+      "indicator_id": "credential_sensitive_data_request",
+      "pattern": "\\b(?:send|share|provide|submit|enter|confirm)\\s+(?:(?:us|me)\\s+)?(?:your|the)\\s+(?:password|login credentials|verification code|credit card number|social security number)\\b",
+      "allow_negative_instruction": false
+    },
+    {
+      "rule_id": "action.transfer_money",
+      "indicator_id": "financial_action_request",
+      "pattern": "\\b(?:transfer (?:the |your )?(?:funds|money)|send (?:us |me )?(?:money|payment)|pay (?:the|this) (?:fee|invoice)|purchase (?:a |the )?gift cards?|update your bank account)\\b",
+      "allow_negative_instruction": false
+    },
+    {
+      "rule_id": "pressure.action_deadline",
+      "indicator_id": "urgency",
+      "pattern": "(?<!no )\\b(?:action required|verify (?:your account|your identity) (?:today|within \\d+ hours)|respond within \\d+ hours)\\b",
+      "allow_negative_instruction": false
+    },
+    {
+      "rule_id": "pressure.account_restriction",
+      "indicator_id": "fear_threat",
+      "pattern": "\\b(?:your account (?:has been|will be) restricted|avoid (?:account )?suspension|your account is on security hold)\\b",
+      "allow_negative_instruction": false
+    },
+    {
+      "rule_id": "action.disclose_otp_pin",
+      "indicator_id": "credential_sensitive_data_request",
+      "pattern": "(?<!never )\\b(?:enter|send|share|provide|submit|confirm)\\s+(?:your|the)\\s+(?:OTP|one.time password|PIN)\\b",
+      "allow_negative_instruction": false
+    },
+    {
+      "rule_id": "action.wire_settle",
+      "indicator_id": "financial_action_request",
+      "pattern": "\\b(?:wire (?:the|your) payment|settle (?:the|your) outstanding balance)\\b",
+      "allow_negative_instruction": false
+    },
+    {
+      "rule_id": "research.v4.urgency.1",
+      "indicator_id": "urgency",
+      "pattern": "\\b(?:urgent|immediate)\\s+(?:action|response|attention)\\s+(?:is\\s+)?required\\b",
+      "allow_negative_instruction": false
+    },
+    {
+      "rule_id": "research.v4.urgency.2",
+      "indicator_id": "urgency",
+      "pattern": "\\b(?:act|respond|reply|verify|confirm|complete)\\b.{0,45}?\\b(?:without delay|as soon as possible|within the next \\d+ hours?)\\b",
+      "allow_negative_instruction": false
+    },
+    {
+      "rule_id": "research.v4.urgency.3",
+      "indicator_id": "urgency",
+      "pattern": "\\b(?:final|last)\\s+(?:notice|warning)\\b.{0,80}?\\b(?:verify|respond|pay|confirm)\\b",
+      "allow_negative_instruction": false
+    },
+    {
+      "rule_id": "research.v4.fear_threat.1",
+      "indicator_id": "fear_threat",
+      "pattern": "\\byour\\s+(?:account|mailbox|access|service)\\b.{0,45}?\\b(?:will be|may be|could be)\\s+(?:disabled|deleted|deactivated|blocked|closed|restricted)\\b",
+      "allow_negative_instruction": false
+    },
+    {
+      "rule_id": "research.v4.fear_threat.2",
+      "indicator_id": "fear_threat",
+      "pattern": "\\b(?:failure to|if you do not)\\s+(?:verify|respond|comply|pay|confirm)\\b.{0,80}?\\b(?:suspension|termination|penalty|loss of access)\\b",
+      "allow_negative_instruction": false
+    },
+    {
+      "rule_id": "research.v4.scarcity.1",
+      "indicator_id": "scarcity",
+      "pattern": "\\b(?:claim|redeem|reserve|secure)\\b.{0,60}?\\b(?:before the offer expires|while supplies last|before it is too late)\\b",
+      "allow_negative_instruction": false
+    },
+    {
+      "rule_id": "research.v4.scarcity.2",
+      "indicator_id": "scarcity",
+      "pattern": "\\b(?:limited time|last chance)\\b.{0,50}?\\b(?:claim|redeem|purchase|reserve)\\b",
+      "allow_negative_instruction": false
+    },
+    {
+      "rule_id": "research.v4.curiosity.1",
+      "indicator_id": "curiosity",
+      "pattern": "\\b(?:click|open|view|follow)\\b.{0,60}?\\b(?:to find out|to discover|to reveal|to see who)\\b",
+      "allow_negative_instruction": false
+    },
+    {
+      "rule_id": "research.v4.curiosity.2",
+      "indicator_id": "curiosity",
+      "pattern": "\\b(?:see who|discover who)\\b.{0,60}?\\b(?:click|open|follow the link)\\b",
+      "allow_negative_instruction": false
+    },
+    {
+      "rule_id": "research.v4.reward_lure.1",
+      "indicator_id": "reward_lure",
+      "pattern": "\\b(?:you have won|you are eligible for|you have been selected for)\\b.{0,60}?\\b(?:prize|reward|cash award|free gift|lottery)\\b",
+      "allow_negative_instruction": false
+    },
+    {
+      "rule_id": "research.v4.reward_lure.2",
+      "indicator_id": "reward_lure",
+      "pattern": "\\b(?:claim|collect|redeem)\\b.{0,40}?\\b(?:your winnings|your cash prize|your reward|your refund)\\b",
+      "allow_negative_instruction": false
+    },
+    {
+      "rule_id": "research.v4.confidentiality_isolation.1",
+      "indicator_id": "confidentiality_isolation",
+      "pattern": "\\b(?:keep|please keep)\\s+(?:this transaction|this request|this payment)\\s+(?:secret|confidential)\\b",
+      "allow_negative_instruction": true
+    },
+    {
+      "rule_id": "research.v4.confidentiality_isolation.2",
+      "indicator_id": "confidentiality_isolation",
+      "pattern": "\\b(?:do not|don't|never)\\s+(?:discuss|disclose|mention)\\b.{0,50}?\\b(?:your manager|your bank|your colleagues|anyone else)\\b",
+      "allow_negative_instruction": true
+    },
+    {
+      "rule_id": "research.v4.call_to_action.1",
+      "indicator_id": "call_to_action",
+      "pattern": "\\b(?:please\\s+)?(?:follow|access|use)\\s+(?:the|this|following)\\s+link\\b",
+      "allow_negative_instruction": false
+    },
+    {
+      "rule_id": "research.v4.call_to_action.2",
+      "indicator_id": "call_to_action",
+      "pattern": "\\b(?:please\\s+)?(?:log\\s*in|sign\\s*in)\\s+(?:to|using|through)\\b",
+      "allow_negative_instruction": false
+    },
+    {
+      "rule_id": "research.v4.call_to_action.3",
+      "indicator_id": "call_to_action",
+      "pattern": "\\b(?:please\\s+)?(?:verify|confirm|update)\\s+your\\s+(?:account|identity|account details|payment details)\\b",
+      "allow_negative_instruction": false
+    },
+    {
+      "rule_id": "research.v4.call_to_action.4",
+      "indicator_id": "call_to_action",
+      "pattern": "\\b(?:complete|fill out|submit)\\s+(?:the|this|following)\\s+(?:form|application|questionnaire)\\b",
+      "allow_negative_instruction": false
+    },
+    {
+      "rule_id": "research.v4.credential_sensitive_data_request.1",
+      "indicator_id": "credential_sensitive_data_request",
+      "pattern": "\\b(?:enter|provide|submit|confirm|verify|send)\\s+(?:your|the)\\s+(?:account password|user name and password|username and password|security code|authentication code|bank account number|card details)\\b",
+      "allow_negative_instruction": false
+    },
+    {
+      "rule_id": "research.v4.credential_sensitive_data_request.2",
+      "indicator_id": "credential_sensitive_data_request",
+      "pattern": "\\b(?:send|provide|submit)\\s+(?:us|me)\\s+(?:your|the)\\s+(?:personal information|banking details|login details)\\b",
+      "allow_negative_instruction": false
+    },
+    {
+      "rule_id": "research.v4.financial_action_request.1",
+      "indicator_id": "financial_action_request",
+      "pattern": "\\b(?:make|complete|arrange|authorize)\\s+(?:the|your|a)\\s+(?:payment|wire transfer|bank transfer)\\b",
+      "allow_negative_instruction": false
+    },
+    {
+      "rule_id": "research.v4.financial_action_request.2",
+      "indicator_id": "financial_action_request",
+      "pattern": "\\b(?:send|transfer|deposit)\\b.{0,50}?\\b(?:to the following account|to our bank account|via wire transfer)\\b",
+      "allow_negative_instruction": false
+    },
+    {
+      "rule_id": "research.v4.financial_action_request.3",
+      "indicator_id": "financial_action_request",
+      "pattern": "\\b(?:purchase|buy)\\b.{0,35}?\\b(?:gift cards|prepaid cards)\\b",
+      "allow_negative_instruction": false
+    }
+  ],
+  "canonical_dimensions": 4,
+  "canonical_indicators": 12,
+  "independent_trust_requirements_preserved": true,
+  "transformer_policy": "review_only"
+}

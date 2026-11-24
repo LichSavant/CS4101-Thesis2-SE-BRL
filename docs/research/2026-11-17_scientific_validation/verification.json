@@ -1,0 +1,40 @@
+{
+  "baseline_commit": "ee7976ef04aa6060b0c7a5e18e5a6529e0af695e",
+  "branch": "research/scientific-validation-20261117",
+  "dataset_readiness": {
+    "Email": "BLOCKED",
+    "Webpage": "BLOCKED",
+    "URL_U1_UCI": "BLOCKED",
+    "URL_U1_PhiUSIIL": "BLOCKED"
+  },
+  "scientific_experiments_executed": 0,
+  "research_model_results": null,
+  "unit_tests": {
+    "passed": 8,
+    "failed": 0
+  },
+  "guarded_regression": {
+    "passed": 766,
+    "skipped": 10,
+    "deselected": 1,
+    "failed": 0,
+    "blocked_fitting_attempts": 0,
+    "fitting_executions": 0
+  },
+  "research_gate_exit_code": 2,
+  "pip_check": "No broken requirements found.",
+  "new_python_sources_compile": "PASS",
+  "frontend_checks": "not rerun; no frontend changes",
+  "artifact_sha256": {
+    "docs/research/2026-11-17_scientific_validation/assignment-metadata.json": "665c8367d82b51d7e6012484d530c44969a818017230a2488026ad3a7aa59879",
+    "docs/research/2026-11-17_scientific_validation/commands.json": "d4d5a280168f64ef2077354afacbf6f8a889a1a7e361c39c0d666856a12ff86c",
+    "docs/research/2026-11-17_scientific_validation/input-identities.json": "6a697d6249e1133889ee7e276ad00bc745ec6ef28af9f13bdff8ea72b10fc3af",
+    "docs/research/2026-11-17_scientific_validation/metadata-tests.txt": "27fa08ccaf72f62c167e6399fabd552e2ff4f1841a594879616af5bfb3028959",
+    "docs/research/2026-11-17_scientific_validation/no-fit-tests-short-path.txt": "63d64a799c1f1f7557876507e0337218706d2964afa31dbca87f713cc6164c26",
+    "docs/research/2026-11-17_scientific_validation/no-fit-tests.txt": "a2f974b028c277ee65e8d1c252b1785f3005437b231c34217a8c84abbbfb7736",
+    "docs/research/2026-11-17_scientific_validation/REPORT.md": "4d3a2253ce0eb051d029ff1c3dd8ce6e5e1fa62b44920e122820a7d68399cee4",
+    "docs/research/2026-11-17_scientific_validation/research-gate.json": "2f514a0df79a8de35697d97c949ed7c11255b47ce240df1ded949a750765ff61",
+    "tools/scientific_validation_snapshot.py": "d5176ee9ca3df33362ecad3fdd4fab7f3b529dda873bf8fc5f18bc3d283363d2",
+    "tools/test_scientific_validation_snapshot.py": "0ab5ffa2dca3ef3da73d81f59c7245d2551980f5aab9905c1de0d61fa87445ae"
+  }
+}

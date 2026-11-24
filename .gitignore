@@ -27,3 +27,37 @@ Thumbs.db
 
 # Isolated research Transformer verification runtime.
 .venv-transformer/
+
+# Authorized opaque UCI source acquisition; keep research payloads local.
+experiments/source-snapshots/uci-327-20261117/
+experiments/source-snapshots/phiusiil-967-20261118/
+
+# Local development-only PhiUSIIL delivery; never commit observation records.
+experiments/runs/phiusiil-development-20261118/
+
+# Accepted-scope metadata preparation; row IDs/edges remain local.
+experiments/runs/phiusiil-former-development-input-v1/
+experiments/runs/phiusiil-former-development-allocation-v1/
+experiments/runs/phiusiil-former-development-features-input-v1/
+experiments/runs/phiusiil-former-development-features-v1/
+experiments/runs/phiusiil-fixed-logreg-oof-v1/
+experiments/runs/phiusiil-fixed-logreg-reproducibility/
+experiments/runs/phiusiil-fixed-comparison-v1/
+
+# Reconciliation recovery and restricted local research (never publish wholesale).
+/.reconciliation-local/
+/.r22-*/
+/.scientific-validation-20261117/
+/.sprint-transformer-release-readiness/
+/experiments/e2_enrichment_20261124/
+/experiments/chapter5/
+/experiments/runs/
+/experiments/datasets-raw/
+/experiments/datasets-acquired/
+/experiments/data/interim/
+/docs/research/**/*.csv
+/engineering_completion_*/
+/engineering_release_candidate_*/
+/engineering_repairs_*/
+*.tsbuildinfo
+*.log

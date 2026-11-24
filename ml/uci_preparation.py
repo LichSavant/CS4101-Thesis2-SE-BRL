@@ -22,6 +22,7 @@ from ml.experiment_inputs import (
 from ml.notebook_contracts import (
     _fold, canonical_notebook_codebook, technical_indicator_columns, validate_feature_boundary,
 )
+from ml.uci_schema import validate_native_feature
 
 # Existing N03 manifest and D9 conventional-input fields, not an alternate schema.
 ASSIGNMENT_COLUMNS = frozenset((*METADATA, "source_dataset"))
@@ -124,6 +125,7 @@ def prepare_uci_handoff(
         for column in specification.conventional:
             value = row[column.name]
             _validate_numeric_predictor(value)
+            validate_native_feature(column.name, value)
 
     prepared = prepare_selected_branches({"UCI": rows}, ("UCI",))["UCI"]
     vectors = tuple({key: row[key] for key in (*METADATA, *behavioral_columns())}
