@@ -60,7 +60,8 @@ def main():
               'checks': checks, 'matrices': matrices, 'python_modules_parsed': parsed,
               'classifier_fitting_performed': False, 'scientific_admission_granted': False,
               'scope': 'byte integrity, development schema and existing group/fold isolation only; no near-duplicate or campaign-isolation claim'}
-    out = ROOT / '.reconciliation-local/e2-verification.json'
+    out = ROOT / '.local/e2-verification.json'
+    out.parent.mkdir(parents=True, exist_ok=True)
     out.write_text(json.dumps(result, indent=2), encoding='utf-8')
     print(result['status'], len(checks), 'checks;', parsed, 'modules parsed; no fitting')
     for c in checks:

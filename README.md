@@ -6,6 +6,12 @@ The current system provides a tested vertical slice with preserved mock mode, a 
 
 The existing `/api/v1/analyze-email` endpoint uses transparent prototype rules. These outputs are kept separate from SE-BRL and are **not presented as trained machine-learning predictions**.
 
+Open [SE-BRL.code-workspace](SE-BRL.code-workspace) for the canonical development
+environment. Active experiments, including frozen E2 inputs and Chapter 5
+artifacts, stay under `experiments/`; verified local Transformer assets stay in
+ignored `.venv-transformer/`. See the [workspace cleanup report](docs/reconciliation/2026-11-25-cleanup-report.md)
+for the historical archive, relocation index and preservation limitations.
+
 ## Current progress
 
 ### Step 1 — Prototype Foundation: Complete

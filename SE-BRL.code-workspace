@@ -1,0 +1,44 @@
+{
+  "folders": [
+    {
+      "name": "SE-BRL canonical",
+      "path": "."
+    }
+  ],
+  "settings": {
+    "git.autorefresh": true,
+    "git.autoRepositoryDetection": false,
+    "git.openRepositoryInParentFolders": "never",
+    "terminal.integrated.cwd": "${workspaceFolder}",
+    "files.exclude": {
+      "**/.local/**": true,
+      "**/.venv/**": true,
+      "**/.venv-transformer/**": true,
+      "**/.pytest_cache/**": true,
+      "**/.r22-review/**": true,
+      "**/.r22-vera/**": true,
+      "**/node_modules/**": true,
+      "**/__pycache__/**": true
+    },
+    "search.exclude": {
+      "**/.local/**": true,
+      "**/.venv/**": true,
+      "**/.venv-transformer/**": true,
+      "**/.pytest_cache/**": true,
+      "**/.r22-review/**": true,
+      "**/.r22-vera/**": true,
+      "**/node_modules/**": true,
+      "**/__pycache__/**": true
+    },
+    "files.watcherExclude": {
+      "**/.local/**": true,
+      "**/.venv/**": true,
+      "**/.venv-transformer/**": true,
+      "**/.pytest_cache/**": true,
+      "**/.r22-review/**": true,
+      "**/.r22-vera/**": true,
+      "**/node_modules/**": true,
+      "**/__pycache__/**": true
+    }
+  }
+}

@@ -4,7 +4,7 @@ import path from 'node:path';
 import crypto from 'node:crypto';
 const root=process.cwd(),out=path.join(root,'apps/gmail-extension/dist/local');
 // Reuse verified local assets; never download or relax integrity checks.
-const assetRoot=process.env.SEBRL_LOCAL_ASSET_ROOT || ['.venv-transformer','.r22-phase1-integration/.venv-transformer'].find(candidate=>fs.existsSync(path.join(candidate,'browser-harness/package-integrity.json')));
+const assetRoot=process.env.SEBRL_LOCAL_ASSET_ROOT || ['.venv-transformer'].find(candidate=>fs.existsSync(path.join(candidate,'browser-harness/package-integrity.json')));
 if(!assetRoot)throw Error('Verified local assets unavailable. Set SEBRL_LOCAL_ASSET_ROOT.');
 const asset=relative=>path.join(assetRoot,relative);
 const hash=bytes=>crypto.createHash('sha256').update(bytes).digest('hex');

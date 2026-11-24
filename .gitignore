@@ -45,6 +45,7 @@ experiments/runs/phiusiil-fixed-logreg-reproducibility/
 experiments/runs/phiusiil-fixed-comparison-v1/
 
 # Reconciliation recovery and restricted local research (never publish wholesale).
+/.local/
 /.reconciliation-local/
 /.r22-*/
 /.scientific-validation-20261117/
@@ -56,6 +57,9 @@ experiments/runs/phiusiil-fixed-comparison-v1/
 /experiments/datasets-acquired/
 /experiments/data/interim/
 /docs/research/**/*.csv
+/experiments/source-snapshots/
+/experiments/vera_validation/*.csv
+/experiments/vera_validation/v13g_selective_review/
 /engineering_completion_*/
 /engineering_release_candidate_*/
 /engineering_repairs_*/
