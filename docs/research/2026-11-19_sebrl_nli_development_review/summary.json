@@ -1,0 +1,42 @@
+{
+  "status": "DEVELOPMENT_NLI_REVIEW_COMPLETE",
+  "scope": "synthetic/development challenge diagnostic; no independent ground truth",
+  "fits": 0,
+  "real_pinned_local_nli_executed": true,
+  "all_deterministic_labels_preserved": true,
+  "cases": 60,
+  "lexical_judgments": 20,
+  "counterfactual_judgments": 40,
+  "review_flags_lexical": 16,
+  "review_flags_counterfactual": 30,
+  "l003": [
+    {
+      "dataset": "lexical",
+      "case_id": "L003",
+      "variant": "single",
+      "indicator": "urgency",
+      "rules_state": "absent",
+      "provisional_expected": "supported",
+      "matches_provisional": "false",
+      "needs_review": "true",
+      "semantic_review": "hypothesis_disagreement",
+      "nli_top_labels_json": "[\"entailment\", \"neutral\", \"neutral\"]",
+      "nli_scores_json": "[{\"entailment\": 0.851745, \"neutral\": 0.125103, \"contradiction\": 0.023152}, {\"entailment\": 0.015521, \"neutral\": 0.959312, \"contradiction\": 0.025167}, {\"entailment\": 0.20261, \"neutral\": 0.614996, \"contradiction\": 0.182394}]",
+      "rule_evidence_json": "[]"
+    }
+  ],
+  "source_sha256": {
+    "lexical": "12def22436059f56d5cb5448a395e670d3bb1b1789a230fa7c138c37ea651dc5",
+    "counterfactual": "6d2304796edeb522e42c39b0f215849fcd0cbf12000a0208fae000c548efb1ac",
+    "extractor": "7b1c66b65ba5ade290c5b4b561be10fe55cc76fcdc269b9df137c34450a84feb",
+    "review_policy": "14925eb4b704d8401671fa7eb621858ae5f9de667850279710091388cf8d317a",
+    "hypotheses": "e4ccfdbb799d064c13ccccedf50be1a49818e910b9e9c0f9b3557b7da1ecfb2d",
+    "codebook": "36ad77a3f06a962003f8383b4390f2410f93cd7f38eeee3f4d30cad20d839021"
+  },
+  "cautions": [
+    "AI-assisted/provisional expectations are not independent human ground truth",
+    "Development cases were previously exposed; no held-out inference claim",
+    "NLI review flags are not corrections or automatic changes to labels",
+    "No test/calibration partitions accessed; scientific validation gate unchanged"
+  ]
+}

@@ -1,0 +1,19 @@
+{
+  "candidate": "V4.2",
+  "observations": 15011,
+  "rules": 35,
+  "candidate_freeze_sha256": "633787da6d5eef949d65359b576026ca0f46f2cf08667c765959c9de12f03672",
+  "feature_hashes": {
+    "e2-a.csv": "17c93e7cb4e965d10701946243498648bfab2b1dd3ff223cd3f0b5bc1e84c827",
+    "e2-b.csv": "fcfa5ae3ec3bf9fb8bae19f88ea4d8ef548e45eeb0961665e9e326f62e1b600d",
+    "e2-c.csv": "332839a1d807a8c324bda462cc6565f7c162476084ba6a4229dc9ac5b387f5b1",
+    "e2-d.csv": "41905c7de047a2244e8aef8d7337a36402f92eaa3b5df2685472eb339cb16843"
+  },
+  "baseline_reused": "primary_real_features_run03\\e2-original.csv",
+  "baseline_sha256": "8ac263f8f849e62ea4d6bc11a5f692ee705a32162004bd3aa6bedf66412d640f",
+  "elapsed_seconds": 273.38,
+  "metadata_alignment": "PASS",
+  "classifier_fitting_performed": false,
+  "scientific_fitting_authorized": false,
+  "independent_predictive_accuracy_established": false
+}

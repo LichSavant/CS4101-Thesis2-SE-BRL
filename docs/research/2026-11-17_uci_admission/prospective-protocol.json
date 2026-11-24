@@ -1,0 +1,124 @@
+{
+  "protocol_version": "uci-prospective-reconstruction-1-proposed",
+  "status": "UNAPPROVED_READY_FOR_REVIEW",
+  "execution_authorized": false,
+  "scope": "Separately scoped source reconstruction by authorized researchers/data holder; agent receives only permitted development payloads and metadata",
+  "source": {
+    "dataset": "UCI Phishing Websites",
+    "repository_id": 327,
+    "doi": "10.24432/C51W2X",
+    "original_file": "Training Dataset.arff",
+    "snapshot_sha256": "3bcf93b1612306537ee2737751f1bac185b2a77886ab376644c3bf0c7f7cb3e6",
+    "archive_sha256": "514f582cb44cba17251baf1d59f64cddff16efa2b644d091ce8d2a1e8d492940",
+    "historical_clean_sha256": "5bdf3b3429f31b4c31d137f3872eede81fe45f9473ad033afb425dd50e62ba92",
+    "identity_authority": "prior UCI packet; byte identity is not custody or acquisition proof",
+    "class_meanings": "BLOCKED: require exact release-specific Result definition before any target construction",
+    "official_archive_acquisition": "source-snapshot.json; current download authenticated against pinned archive SHA-256; no ARFF member payload opened"
+  },
+  "identity": {
+    "algorithm": "existing ml.research_protocol.prospective_id",
+    "fields": [
+      "source_dataset",
+      "snapshot_sha256",
+      "source_file",
+      "source_row_id"
+    ],
+    "source_row_id": "zero-based logical ARFF data-record ordinal assigned before any screening; skip blank/comment lines, never renumber survivors",
+    "historical_assignment_transfer": false
+  },
+  "parsing": {
+    "proposed_encoding": "UTF-8-sig strict; optional BOM decoding only; abort on invalid encoding or unsupported syntax",
+    "columns": "all 30 ordered native feature names followed by Result",
+    "validate": "strict ARFF header/domains and each native integer; no missing-value substitution or ignored parse errors",
+    "raw_records_count_candidate": 11055,
+    "candidate_implementation": "ml.uci_reconstruction.reconstruct_candidate: in-memory bytes only; no source loader or real execution authorization"
+  },
+  "deduplication": {
+    "policy": "complete 31-value equality including native Result; retain earliest original record; reason every later exact copy",
+    "digest_definition": "ml.metadata.fingerprint of canonical JSON object {columns: ordered original field names, values: corresponding native integer list}; predictor digest uses only the 30 features",
+    "identity_is_not_content_hash": true,
+    "retained_count_candidate": 5849,
+    "removed_count_candidate": 5206,
+    "mismatch_action": "abort and investigate; never force historical counts by extra exclusions"
+  },
+  "ledger": {
+    "validator": "ml.uci_lineage.validate_prospective_uci_ledger",
+    "fields": [
+      "source_row_id",
+      "observation_id",
+      "native_label",
+      "record_sha256",
+      "predictor_sha256",
+      "action",
+      "representative_id",
+      "cleaned_position"
+    ],
+    "custodian_receipt_requires": [
+      "original acquisition/release record",
+      "source/parser/transform code and environment hashes",
+      "complete original-record coverage",
+      "native-label preservation and independent class definition",
+      "actual record/predictor digest recomputation",
+      "retained/removed original locators and reason totals"
+    ],
+    "metadata_validator_does_not_authenticate_custody": true,
+    "construction": "ml.uci_reconstruction.reconstruct_candidate; computes prefilter IDs, digests, exact duplicate dispositions and native-only retained rows"
+  },
+  "grouping": {
+    "proposed_relationship": "exact equality of all 30 native predictor codes, independent of native Result",
+    "mixed_target_policy_proposed": "retain distinct complete records with differing native labels; keep equal-vector records in the same indivisible group; no relabeling or selective removal",
+    "other_relationships": "domain/campaign/template identity unavailable unless custodian supplies authentic evidence; explicit limitation acceptance required",
+    "group_counts": "must be measured; historical 5785/64 are comparison context, not required reconstructed truth"
+  },
+  "allocation": {
+    "generate_now": false,
+    "implementation": "existing connected_groups/allocate under accepted relationship evidence and frozen settings",
+    "proposed_fractions": [
+      0.7,
+      0.15,
+      0.15
+    ],
+    "development_folds": 5,
+    "required_before_allocation": [
+      "explicit seed and tolerances",
+      "accepted group/conflict policy",
+      "source-native label mapping",
+      "exposure and role/custody disposition"
+    ],
+    "historical_roles_or_folds_transferred": false,
+    "calibration_and_test": "reserved groups isolated and unavailable to agent; no final evaluation authorized"
+  },
+  "exposure": {
+    "known": "historical UCI holdout evaluated; original snapshot includes historically exposed observations",
+    "proposed_claim": "exploratory/internal development only",
+    "no_resealing": true,
+    "no_unexposed_claim_from_new_ids_or_splits": true,
+    "reserved_payload_access_by_agent": false,
+    "custodian_original_source_access_requires_separate_scope": true,
+    "data_holder_may_be_researcher": true
+  },
+  "features": {
+    "schema_path": "ml/uci-native-schema.v1.json",
+    "schema_sha256": "01d342a9ffb892e297df0e395a81fdd2119ed9ae746c7efcc95177bb343e07de",
+    "predictors": 30,
+    "native_codes_preserved": true,
+    "Result_excluded": true,
+    "behavioral_predictors": "none; U1 only",
+    "prose_code_conflicts": "Request_URL and Redirect require resolved or explicitly accepted limited interpretation",
+    "required_freeze": [
+      "null eligibility",
+      "nominal/numeric encoding",
+      "ordered dictionary and code hashes",
+      "train-fold-local learned transforms"
+    ]
+  },
+  "authorization_requirements": [
+    "authentic source/release/class facts; obtain third-party evidence only when held externally",
+    "researcher approval of this prospective design and actual metadata",
+    "adviser/researcher exposure and claim-scope disposition",
+    "exact source/data-holder access scope; holder may be a researcher; never agent reserved-payload access",
+    "exact D-features receipt and independently trusted digest after accepted delivery",
+    "separate frozen E development fit authorization; none inferred from D"
+  ],
+  "research_fits": 0
+}

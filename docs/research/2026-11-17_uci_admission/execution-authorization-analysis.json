@@ -1,0 +1,70 @@
+{
+  "baseline_commit": "19884dc9b614aa8ee1f47e38c3a7c3c33b8d03d6",
+  "question": "Does existing authority permit the agent to process the original public development scope now?",
+  "conclusion": "NO_VERIFIED_EXACT_DEVELOPMENT_SCOPE",
+  "genuine_processing_authorized": false,
+  "reason": "Researchers may record routine preparation/custody decisions under the approved methodology; no blanket external signature requirement was identified. Exact original-row membership of a permitted development slice remains unrecorded, while authoritative Result semantics remain unresolved.",
+  "permitted_in_this_turn": [
+    "pinned archive integrity and member metadata",
+    "release feature documentation and ARFF header through @data only",
+    "generated-input regressions and bounded-processing repair"
+  ],
+  "research_records_processed": 0,
+  "authorization_request": "execution-authorization-request.md",
+  "evidence": [
+    {
+      "path": "docs/research/2026-11-01_uci_metadata_readiness.md",
+      "sha256": "d9ff4336d3a901c90a721a9f467dc6406a0d978da9de1ccbe8e59bb52313bc8f",
+      "lines": [
+        208,
+        211,
+        214,
+        220,
+        222
+      ]
+    },
+    {
+      "path": "docs/research/2026-11-01_uci_scientific_acceptance_packet.md",
+      "sha256": "9b39b120496b9c0c7cfdb9e04f22cea4f87241d205fbf8a5ff801a97881ed9c3",
+      "lines": [
+        68,
+        69,
+        343,
+        347
+      ]
+    },
+    {
+      "path": "ml/README.md",
+      "sha256": "7b7372a54d164e8ff1e4cc4354f6545b13a210a8f881153d370972954f8809f9",
+      "lines": [
+        61,
+        63
+      ]
+    },
+    {
+      "path": "docs/research/2026-11-09_deterministic_finalization/approval_packet.md",
+      "sha256": "c3b0c806c1cb4b72dedcdf5d61a46468324b86de328d623777b27929e8d5d176",
+      "lines": [
+        17,
+        18,
+        19,
+        22,
+        25
+      ]
+    },
+    {
+      "path": "ml/preparation_execution.py",
+      "sha256": "43e206c964390c81182425d7fab971ed38d003d403c25ac7b069516ead1d03e3",
+      "lines": [
+        60,
+        62,
+        68,
+        73,
+        77
+      ]
+    }
+  ],
+  "primary_governance_review": "research-authority-primary-evidence.json",
+  "A_B_C_authority_matrix": "researcher-authority-matrix.json",
+  "earlier_pending_forms": "Evidence of unresolved decisions, not independent institutional rules imposing universal custodian/adviser approval."
+}

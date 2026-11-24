@@ -1,0 +1,44 @@
+{
+  "version": "phiusiil-researcher-controlled-no-fit-authority-1",
+  "proposal_path": "docs/research/2026-11-18_technical_admission/PHIUSIIL_AUTHENTICATION_REVISION_PROPOSAL.md",
+  "proposal_sha256": "daf5fb61dcf772075a73045c9c98183722a1e68af1fcaf2e8f0e6a638792a835",
+  "joint_approval": {
+    "Dhanwil": {
+      "path": "docs/research/2026-11-18_technical_admission/PHIUSIIL_AUTHENTICATION_REVISION_DECISION.json",
+      "sha256": "a834b08923f1322cf5212c5361ad1fc839700083aeffe04243be5a808880a826"
+    },
+    "Vera": {
+      "path": "docs/research/2026-11-18_technical_admission/VERA_AUTHENTICATION_REVISION_APPROVAL_20261118.json",
+      "sha256": "0d6788d69f7769ebf8a3bd2fc4063f9666d33d4909e0b0e5cb8dba3f80f3c1e7"
+    }
+  },
+  "approval_attribution": "Both direct researcher responses recorded; no independent identity authentication or signatures invented",
+  "scope": {
+    "branch": "PhiUSIIL",
+    "observations": 165089,
+    "population_fingerprint": "120fb148d2a59f83aafb0a5cf37df3a577ca0549a8d3b9885ae4cc3b8560c2a8",
+    "source_snapshot_sha256": "a236549cd369cd80bd478ff8e1779cbf44c58d5c3f79f7a51a1adbed7d06d1c6",
+    "population_file_sha256": "a56fe920af493aff1238c9a30b5db14a5d0bc371a92e9ac85966531d45eded16",
+    "C_input_run": "phiusiil-former-development-input-v1",
+    "C_output_run": "phiusiil-former-development-allocation-v1",
+    "D_input_run": "phiusiil-former-development-features-input-v1",
+    "D_output_run": "phiusiil-former-development-features-v1",
+    "C_input_sha256": {
+      "protocol/allocation_settings.json": "12ba404731616f8cc6bd0062b8d2fe9f67389147a0d06ede5a16ef5f8279824c",
+      "protocol/population.json": "a56fe920af493aff1238c9a30b5db14a5d0bc371a92e9ac85966531d45eded16",
+      "protocol/relationships.json": "93c18fcc240cf852f1e8e609d2a45bd66e6c274a2eb5f0e9dbfaf663db2adbb3"
+    },
+    "fractions": [
+      0.7,
+      0.15,
+      0.15
+    ],
+    "seed": 42,
+    "maximum_fraction_error": 0.05,
+    "feature_dictionary_sha256": "15998d1286b4d8ec54044b92e55e52f8ceffe7b87efb13e3d2f76bf6f4f14834"
+  },
+  "change": "For this exact no-fit C/D scope, researcher-controlled exact-file verification replaces outside receipt authentication. Digests establish integrity, not independent authority.",
+  "protected_boundary": "No historical protected observations accessed by this integration; new internal reserved predictors are excluded from D reading.",
+  "model_fitting_authorized": false,
+  "protected_evaluation_authorized": false
+}

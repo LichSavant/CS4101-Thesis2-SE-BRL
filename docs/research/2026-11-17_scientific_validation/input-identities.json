@@ -1,0 +1,62 @@
+[
+  {
+    "path": "experiments/data/interim/email/enron_clean.csv",
+    "git_blob_sha256": "8d5f5193a4f3527b3a00bb393257a50f29c82bdd80081129b886dd1c8153b06c",
+    "working_file_present": false,
+    "storage": "lfs_pointer_only",
+    "payload_sha256": "11f28a5bdd3603f1829681ab6b55071b5f9af781b4e6694e39216b2996a96883",
+    "payload_bytes": 44837129,
+    "matches_registered_identity": true
+  },
+  {
+    "path": "experiments/data/interim/email/nazario_clean.csv",
+    "git_blob_sha256": "38ab4731a396c7d5d2177e7b3dd66f1de957955eca8dfe8e33ec3da9d0a14df3",
+    "working_file_present": false,
+    "storage": "lfs_pointer_only",
+    "payload_sha256": "b8fbc4158fbdfaff1ed98584c43d72e283c6352d7ade4d457d34c1d79488d184",
+    "payload_bytes": 7811841,
+    "matches_registered_identity": true
+  },
+  {
+    "path": "experiments/data/interim/email/ceas_08_clean.csv",
+    "git_blob_sha256": "634f4e3efa2d2b7ff6279488a26c219a2d4fe27816292aa2c47ab86f9018139d",
+    "working_file_present": false,
+    "storage": "lfs_pointer_only",
+    "payload_sha256": "22375e7d5f5a8229dbe987914ee9b3705656c590038662a7df6054629b376074",
+    "payload_bytes": 67902056,
+    "matches_registered_identity": true
+  },
+  {
+    "path": "experiments/data/interim/email/spamassassin_clean.csv",
+    "git_blob_sha256": "aac6ca93a6098d4b0db585a13448869cafd48517e66a9d8e5ed46394bf0633f8",
+    "working_file_present": false,
+    "storage": "lfs_pointer_only",
+    "payload_sha256": "3bfe8f8abff89f69a98456be50413c2fcb20a476141116dd84ee1507b980c00e",
+    "payload_bytes": 14879195,
+    "matches_registered_identity": true
+  },
+  {
+    "path": "experiments/data/interim/webpage/phiusiil_clean.csv",
+    "git_blob_sha256": "f12b266cdd5063f19619c18d53d169cfb69d3818db39b6b657ad367607e97cb2",
+    "working_file_present": false,
+    "storage": "lfs_pointer_only",
+    "payload_sha256": "8e2776b211706bff45ec9543c8fcd7dabfec43af9839b0f41875ccf1f26da386",
+    "payload_bytes": 58920541,
+    "matches_registered_identity": true
+  },
+  {
+    "path": "experiments/data/interim/webpage/uci_phishing_websites_clean.csv",
+    "git_blob_sha256": "e91438178fda54d9e675bf2dcb1035ed04592087cd0e927808b3576e71e987c3",
+    "working_file_present": false,
+    "storage": "lfs_pointer_only",
+    "payload_sha256": "5bdf3b3429f31b4c31d137f3872eede81fe45f9473ad033afb425dd50e62ba92",
+    "payload_bytes": 420700,
+    "matches_registered_identity": true
+  },
+  {
+    "path": "Thesis_Proposal_Documents/Alcover & Orbello_Approved Document Proposal.pdf",
+    "git_blob_sha256": "283338c5535c5553e35266f5083a6380e014637e63d42161c659238e257ad1fe",
+    "working_file_present": true,
+    "storage": "ordinary_git_blob"
+  }
+]

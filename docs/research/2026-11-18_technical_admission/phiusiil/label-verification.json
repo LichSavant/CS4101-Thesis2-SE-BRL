@@ -1,0 +1,21 @@
+{
+  "dataset": "PhiUSIIL-967",
+  "status": "VERIFIED",
+  "authority": "official UCI-967 Class Labels section; not class counts or conventions",
+  "source_url": "https://archive.ics.uci.edu/dataset/967/phiusiil+phishing+url+dataset",
+  "source_page_sha256": "d06adef2c2fe7a7f8d535640217fb290904628a8fbd0736d73a7734229c5dbeb",
+  "native_meanings": {
+    "0": "phishing",
+    "1": "legitimate"
+  },
+  "existing_standardized_target": {
+    "0": 1,
+    "1": 0
+  },
+  "existing_mapping_matches_primary_evidence": true,
+  "archive_sha256": "0a639fd03aea6308c5b1c10c92aa23c2ce1505447a9137271865cd0badc9a59a",
+  "source_release_binding": "Official id-967 archive exactly equals the independent pre-existing raw ZIP LFS identity; actual 56-column header matches the id-967 metadata.",
+  "FILENAME_role": "Other; official variable information says it can be ignored; excluded from predictors, uniqueness not yet checked",
+  "research_records_processed": 0,
+  "scientific_admission": false
+}

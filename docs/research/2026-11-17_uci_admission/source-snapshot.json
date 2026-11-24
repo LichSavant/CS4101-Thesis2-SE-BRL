@@ -1,0 +1,54 @@
+{
+  "operation": "opaque_official_archive_acquisition",
+  "source_url": "https://archive.ics.uci.edu/static/public/327/phishing%2Bwebsites.zip",
+  "effective_url": "https://archive.ics.uci.edu/static/public/327/phishing%2Bwebsites.zip",
+  "sha256": "514f582cb44cba17251baf1d59f64cddff16efa2b644d091ce8d2a1e8d492940",
+  "bytes": 1011184,
+  "acquired_utc": "2026-11-17T15:18:49.441992+00:00",
+  "local_path": "experiments/source-snapshots/uci-327-20261117/phishing-websites.zip",
+  "authorization_reference": "User Phase A request; attachment SHA-256 cf6d8a6411954c59b8bb8560913ab27f0d4a86e15820493e3cef22a825aa3b3a; opaque official source acquisition only",
+  "license": "CC BY 4.0; official UCI page retained in source-retrieval.json",
+  "source_records_parsed": 0,
+  "archive_extracted": false,
+  "historical_acquisition_date_established": false,
+  "scientific_admission": false,
+  "members_metadata_only": [
+    {
+      "name": ".old.arff",
+      "uncompressed_bytes": 170897,
+      "crc32": "c44509a4"
+    },
+    {
+      "name": "Training Dataset.arff",
+      "uncompressed_bytes": 800920,
+      "crc32": "fc2a0ebd"
+    },
+    {
+      "name": "Phishing Websites Features.docx",
+      "uncompressed_bytes": 38995,
+      "crc32": "34fc277e"
+    }
+  ],
+  "archive_member_payloads_opened": 0,
+  "source_snapshot_id": "uci-327-official-archive-sha256-514f582cb44cba17251baf1d59f64cddff16efa2b644d091ce8d2a1e8d492940",
+  "source_authenticated": "official HTTPS archive matches independently retained historical archive digest",
+  "native_result_meanings_verified": false,
+  "raw_arff_sha256_from_prior_evidence": "3bcf93b1612306537ee2737751f1bac185b2a77886ab376644c3bf0c7f7cb3e6",
+  "raw_arff_digest_freshly_recomputed": false,
+  "repository_record": {
+    "id": 327,
+    "doi": "10.24432/C51W2X",
+    "creators": [
+      "Rami Mohammad",
+      "Lee McCluskey"
+    ],
+    "provider_last_updated": "Tue Mar 05 2024",
+    "metadata_artifact": "uci-metadata.json",
+    "metadata_sha256": "95c3a03b584e36286d50d7521c6f7244d9c9d1129cfb9fca6c16f76d82ce0722",
+    "provider_archive_version": "unversioned URL; exact returned content frozen by SHA-256, not a fabricated release number",
+    "expected_instances_from_provider_metadata": 11055,
+    "record_count_checked": false
+  },
+  "license_url": "https://creativecommons.org/licenses/by/4.0/",
+  "scope_limit": "Opaque acquisition only. Historical reserved-record correspondence is unresolved; no member payload extraction or processing authorized by this receipt."
+}

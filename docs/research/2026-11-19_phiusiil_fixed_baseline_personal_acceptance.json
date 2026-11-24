@@ -1,0 +1,25 @@
+{
+  "decision": "ACCEPT_FIXED_UNCALIBRATED_FITTING",
+  "request_path": "docs/research/2026-11-19_phiusiil_fixed_baseline_request.json",
+  "request_sha256": "ecfb31e52af4f11d6f0ac480504361d618034151585eedba5a7ef59ab426687c",
+  "authority": {
+    "name": "Dhanwil",
+    "role": "researcher",
+    "date": "2026-11-19",
+    "response_reference": "docs/research/2026-11-19_phiusiil_fixed_baseline_personal_acceptance.json",
+    "response_text": "# SE-BRL ? EXACT BASELINE FITTING AUTHORIZATION\n\nI, Dhanwil, explicitly authorize the fixed-baseline experiment identified by SHA-256:\n\n`ecfb31e52af4f11d6f0ac480504361d618034151585eedba5a7ef59ab426687c`\n\n**Authorized scope:**\n\n- PhiUSIIL technical-feature experiment only.\n- Existing admitted development-only observations and five group-isolated folds.\n- Five fixed, uncalibrated logistic-regression fits.\n- No hyperparameter search, calibration, protected-test evaluation or unauthorized data access.\n- Preserve all source, leakage and reproducibility safeguards.\n\nRecord my actual acceptance date and exact request identity. This authorization does not extend to other experiments or datasets.\n\n**CODEX:**\n\n1. Verify the request hash against the actual file and confirm its contents match this authorization.\n2. Record my attributable acceptance.\n3. Check whether any additional approval is genuinely required by the existing fitting contract.\n4. If all admission and authorization conditions pass, execute the five-fold baseline immediately.\n5. Save real predictions, metrics and reproducibility evidence.\n6. Do not generate another approval packet or repeat completed audits.\n\nIf another genuine authorization is required, identify it once and stop only that stage.\n\n**ANTI-LOOP POLICY:** No redundant reports, no new worktrees, no gate bypasses, no unnecessary refactoring. Prioritize real measured results.\n\nReport actual fits, metrics and remaining blockers in 100 words maximum."
+  },
+  "date_basis": "Direct acceptance received on client date 2026-11-19, Asia/Manila; execution-host clock also observed 2026-11-19 +08:00.",
+  "attribution": "Direct user acceptance; no independent identity verification or signature invented",
+  "scope_note": "Exactly five uncalibrated development fits only; no calibration, tuning, comparison, ablation or protected evaluation",
+  "implementation_repair": {
+    "reason": "Canonical CLI dispatch preserves the single verified context class/token; no model, population, fold or setting change. The rejected noncanonical context cannot pass the fitting gate.",
+    "previous_baseline_module_sha256": "d604c20af440a566dd6dddbe218bb3f13904e1ffe991b466ba918c754b1f2705",
+    "current_baseline_module_sha256": "a0b1255c6dc7b1f6f60fd2829915d270ea3fd79b11e36e50e7a965c1ccfc4aae",
+    "approval_scope_unchanged": true,
+    "annotation_author": "Research implementation record; not additional researcher speech",
+    "additional_repairs": "Hoist unchanged behavioral codebook column validation once per CSV rather than once per row; preserve actual worker diagnostic and fit-count events. No scientific setting or permission change.",
+    "matrix_validation_repair": "Cache unchanged ordered behavioral fields once per FoldClassifier; preserve numeric/binary/missingness validation and all model parameters. Prior owned worker stopped during first-fold preparation; progress recorded fit_started=1, fit_completed=0, no result artifact.",
+    "classifier_adapter_sha256": "ae9de9c7b961bda6908f8e22aad605717b3536a064a86dd55d472331b6fcbc1b"
+  }
+}

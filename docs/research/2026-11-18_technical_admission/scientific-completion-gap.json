@@ -1,0 +1,54 @@
+{
+  "baseline_commit": "54fc83a75795e840ab544209cf15a97eab2cf5af",
+  "completion": "PARTIAL - EXTERNAL EVIDENCE/AUTHORIZATION BLOCKED",
+  "dataset_selected": "PhiUSIIL-967",
+  "scientific_admission": "BLOCKED",
+  "current_request_sha256": "ae2b22b8a06189949cab670aadacba133eff588c8b22e8e009834cedbcd9c9d5",
+  "new_authenticated_development_evidence_supplied": false,
+  "expected_research_run_root_exists": false,
+  "prior_evidence_identity_check": "PASS; every recorded artifact hash in the prior technical-admission verification matches",
+  "fitting_gate_check": {
+    "operation": "existing require_research_fitting with no verified context",
+    "outcome": "EXPECTED_REFUSAL",
+    "code": "research_fitting_not_authorized",
+    "dataset_specific_real_data_admission_executed": false
+  },
+  "genuine_records_processed": 0,
+  "new_development_folds": 0,
+  "new_baselines_comparisons_ablations": 0,
+  "scientific_metrics": null,
+  "manuscript_results_produced": false,
+  "fitting_attempts": 0,
+  "fitting_executions": 0,
+  "tests": {
+    "source": "prior unchanged-code guarded selection, reused rather than rerun",
+    "passed": 814,
+    "failed": 0,
+    "skipped": 10,
+    "deselected": 1
+  },
+  "minimum_next_input": {
+    "decision_maker": "researchers/data holder; no universal outside signature is presumed",
+    "action": "Record and supply one exact permitted PhiUSIIL no-fit development delivery under the existing D-features contract",
+    "requires": [
+      "Authentic original-record locators and independent expected development ID universe, with source/transform hashes",
+      "Accepted group/conflict/exposure and exact dictionary/missingness/encoding dispositions, including source-engineered feature derivation and split/exposure limitations",
+      "Hashed population, assignments, dictionary, feature freeze and development-only records; no reserved predictors/outcomes",
+      "Actual dated scoped no-fit acceptance and independently trusted digest; no invented receipt"
+    ],
+    "contract_paths": [
+      "protocol/population.json",
+      "protocol/assignments.csv",
+      "protocol/dictionary.json",
+      "protocol/feature_freeze.json",
+      "data/development/phiusiil_records.json",
+      "protocol/feature_acceptance.json"
+    ],
+    "later_fitting": "Separate exact frozen E configuration and fitting authorization after admission; not a prerequisite to earlier permitted metadata review"
+  },
+  "stop_reason": "All remaining genuine-data steps depend on authentic scope/evidence or actual researcher decisions absent from the new request. No further source/history audit, speculative lineage or source-wide parse performed.",
+  "artifact_sha256": {
+    "docs/research/2026-11-18_technical_admission/DECISION_PACKET.md": "bd1e14cbc4a3f6421c09a3fa78202c9cac0338d572a2c71849a21cad54e4281c",
+    "docs/research/2026-11-17_uci_admission/DOSSIER.md": "6b250ed81e0746534ed597fd185000117116a1c754a69a2f65730882c9223677"
+  }
+}

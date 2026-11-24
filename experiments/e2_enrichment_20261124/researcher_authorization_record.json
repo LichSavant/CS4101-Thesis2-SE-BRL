@@ -1,0 +1,34 @@
+{
+  "recorded_at": "2026-11-24T09:04:39.562789+00:00",
+  "experiment": "SE-BRL supplementary behavioral representation",
+  "authorization_basis": "Researcher-reported confirmation",
+  "joint_researcher_agreement_reported": true,
+  "development_data_processing_authorized_reported": true,
+  "adviser_approval_verified": false,
+  "scientific_admission_verified": false,
+  "research_fitting_authorized": false,
+  "scope": {
+    "preserve_original_datasets": true,
+    "preserve_original_implementation": true,
+    "preserve_historical_results": true,
+    "preserve_original_partitions": true,
+    "preserve_original_methodology": true,
+    "behavioral_dimensions": 4,
+    "behavioral_indicators": 12,
+    "baseline_features": 8,
+    "supplementary_feature_counts": [
+      24,
+      36,
+      44
+    ],
+    "transformer_policy": "review_only",
+    "ceas_sensitivity_analysis": true,
+    "development_only": true,
+    "reserved_test_optimization": false,
+    "minimum_target_ap": 0.8,
+    "minimum_target_f1": 0.8,
+    "stretch_target_ap": 0.9,
+    "stretch_target_f1": 0.9,
+    "report_all_valid_results": true
+  }
+}

@@ -1,0 +1,28 @@
+{
+  "recorded_at": "2026-11-24T09:56:28.296177+00:00",
+  "evidence_basis": "Researcher-reported Step 85 terminal output",
+  "historical_preprocessing_commit": "1a45c53",
+  "observations_matched": 38759,
+  "historical_groups": 21601,
+  "reconstructed_groups": 21601,
+  "historical_groups_split": 0,
+  "historical_groups_merged": 0,
+  "partition_crossings": 0,
+  "development_fold_crossings": 0,
+  "group_membership_equivalence": "PASS",
+  "historical_execution_independently_authenticated": false,
+  "near_duplicate_isolation_verified": false,
+  "campaign_isolation_verified": false,
+  "historical_assignments_modified": false,
+  "classifier_fitting_performed": false,
+  "scientific_admission_automatically_granted": false,
+  "current_artifact_hashes": {
+    "experiments\\data\\interim\\email\\nazario_clean.csv": "b8fbc4158fbdfaff1ed98584c43d72e283c6352d7ade4d457d34c1d79488d184",
+    "experiments\\data\\interim\\email\\ceas_08_clean.csv": "22375e7d5f5a8229dbe987914ee9b3705656c590038662a7df6054629b376074",
+    "experiments\\data\\interim\\email\\enron_clean.csv": "11f28a5bdd3603f1829681ab6b55071b5f9af781b4e6694e39216b2996a96883",
+    "experiments\\data\\interim\\email\\spamassassin_clean.csv": "3bfe8f8abff89f69a98456be50413c2fcb20a476141116dd84ee1507b980c00e",
+    "experiments\\results\\preprocessing\\partitions\\email_partition_manifest.csv": "38c87c522da47fea6f8f584c2e487af73d89502e9db3130f6298006829241ae4",
+    ".scientific-validation-20261117\\experiments\\e2_enrichment_20261124\\primary_development_crosswalk.csv": "6128b38fb32f502bc7cb20e5e7cf2c0c763dda6889b6aac7b37fc74cd619f5c6",
+    ".scientific-validation-20261117\\experiments\\e2_enrichment_20261124\\historical_identity_code_evidence.json": "d5440c7e1d4d2f9fcc419f6e0f81a2000ae21a940899769730495d5254171fd8"
+  }
+}

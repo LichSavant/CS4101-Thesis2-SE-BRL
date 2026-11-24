@@ -1,0 +1,86 @@
+{
+  "created_utc": "2026-11-24T12:36:16.820646+00:00",
+  "experiment": "SE-BRL V4.2 supplementary Email E2",
+  "status": "PREPARED_PENDING_ACCEPTANCE",
+  "population": {
+    "development_observations": 15011,
+    "phishing": 1095,
+    "legitimate": 13916,
+    "sources": [
+      "Nazario",
+      "Enron",
+      "SpamAssassin"
+    ],
+    "ceas_role": "separate_sensitivity_analysis",
+    "reserved_records_allowed": false
+  },
+  "candidate": {
+    "version": "V4.2",
+    "rules": 35,
+    "dimensions": 4,
+    "indicators": 12,
+    "feature_counts": [
+      8,
+      24,
+      36,
+      44
+    ],
+    "authored_conformance": "30/30",
+    "transformer_policy": "review_only"
+  },
+  "evaluation": {
+    "claim_scope": "exploratory_internal_validation",
+    "outer_folds": 5,
+    "inner_folds": 3,
+    "seed": 42,
+    "primary_metric": "average_precision",
+    "secondary_metric": "f1",
+    "fold_local_preprocessing": true,
+    "training_only_threshold_selection": true,
+    "report_all_valid_results": true,
+    "historical_holdout_access": false
+  },
+  "limitations": [
+    "Development labels previously exposed",
+    "Source-class confounding",
+    "Native label semantics partially corroborated",
+    "Historical execution not independently authenticated",
+    "Near-duplicate and campaign isolation not established",
+    "Independent behavioral accuracy not established",
+    "Matched E1/E2/E3 evaluation not completed",
+    "Performance targets are aspirational"
+  ],
+  "artifact_hashes": {
+    "researcher_authorization_record.json": "6b958995ecc1482fbf1f7f0bd27aa44a4bcb2478bcfa1d7c0e799e977b6dc9e1",
+    "researcher_design_acceptance.json": "609fa75581f28c1328fa139917b5bb939be1f6a3d606be2450baf2b5a47f6cd7",
+    "external_source_provenance.json": "7069c1c57e3ad07370ecbae042bf5bed5a8da0489bd0e0114fc9a9adb1711a9d",
+    "primary_source_label_evidence.json": "bcc9747a88c95f773135ec5764eb78d7beb3bac5c574d39dc207e31632573f03",
+    "historical_identity_code_evidence.json": "d5440c7e1d4d2f9fcc419f6e0f81a2000ae21a940899769730495d5254171fd8",
+    "historical_grouping_verification_receipt.json": "f05715a33a63d9e445c5fd15fc28a430b4c5890921a3c4597027e1c8533d25ce",
+    "primary_development_crosswalk.csv": "6128b38fb32f502bc7cb20e5e7cf2c0c763dda6889b6aac7b37fc74cd619f5c6",
+    "restricted_delivery/delivery_receipt.json": "da25e785ff811bffaead07227ea9943d9923b7fb1af92ea2ed4088ddfb14ed0f",
+    "ordered_predictor_dictionary.json": "905116bb7ec0843d7b9b6fcee52c33dec00313f1df908dc9bbb43d8ed5321607",
+    "proposed_classifier_search.json": "fcae0b5440205062401cc7366ccc39accfb49b6f53e11f45abed6a831323c99f",
+    "development_harness.py": "d95e5e4a48e1ebf003c236728fafda930e19f08c7bd679afda2309edd94b2619",
+    "nested_calibration.py": "12848c1ed6fdaf771cf949bd788abd2b17b4a39f4171741254fbb5b11c7333a3",
+    "nested_experimental_engine.py": "bed6c328bf95a4658ab2de77433e56c7778ac59df36aac933c3539edb9680ae1",
+    "experiment_execution_coordinator.py": "fc79e1a3ae36fd406145bdfcb31d005a74480c587c9cc5e178cb396721aea1e6",
+    "statistical_evaluation.py": "f1defd7cd37d5decefec8225e9735fcd7da53c2e4aab7dd0bf82728987898259",
+    "research_preprocessing_adapter.py": "aa0b3b88e8aa58d803407daaacbfba773568ed6c37fd627eca3bb34ec271b2a6",
+    "supplementary_exporter.py": "e71723041e3a5236e5e14ffc895d25cb4f0bb19ea1ceba7f78d781271167ab33",
+    "candidate_context_v2.py": "ad97ae1b1a2071064d6518dc67b180352a4f895b168ee5c7f32853ed33407c04",
+    "integrated_behavioral_rules_v42.json": "315b480eb0bce3e8c6e1455c288081727feb1cbf41f037a58913e217474c8b54",
+    "v42_candidate_freeze_receipt.json": "633787da6d5eef949d65359b576026ca0f46f2cf08667c765959c9de12f03672",
+    "primary_real_features_run03/e2-original.csv": "8ac263f8f849e62ea4d6bc11a5f692ee705a32162004bd3aa6bedf66412d640f",
+    "primary_v42_features_run01/e2-a.csv": "17c93e7cb4e965d10701946243498648bfab2b1dd3ff223cd3f0b5bc1e84c827",
+    "primary_v42_features_run01/e2-b.csv": "fcfa5ae3ec3bf9fb8bae19f88ea4d8ef548e45eeb0961665e9e326f62e1b600d",
+    "primary_v42_features_run01/e2-c.csv": "332839a1d807a8c324bda462cc6565f7c162476084ba6a4229dc9ac5b387f5b1",
+    "primary_v42_features_run01/e2-d.csv": "41905c7de047a2244e8aef8d7337a36402f92eaa3b5df2685472eb339cb16843",
+    "primary_v42_features_run01/extraction_receipt.json": "c7459fc4fb106ab809ac4997099911bf2d79b1ca3b9dc86503ad9480feafcdb9",
+    "primary_v42_features_run01/representation_assessment.json": "32d3f305d0efc889af5b050825d1a930fa58dcb9f5f3ad7dce00f4a2a1714deb"
+  },
+  "researcher_exact_run_acceptance": false,
+  "adviser_approval_verified": false,
+  "scientific_admission_verified": false,
+  "research_fitting_authorized": false
+}

@@ -1,0 +1,104 @@
+{
+  "status": "UNRESOLVED",
+  "existing_implementation_mapping": {
+    "-1": "phishing",
+    "1": "legitimate"
+  },
+  "implementation_changed": false,
+  "sources": [
+    {
+      "id": "original-2012",
+      "authority": "original dataset authors; primary feature-method paper",
+      "authors": [
+        "Rami M. Mohammad",
+        "T. L. McCluskey",
+        "Fadi Thabtah"
+      ],
+      "title": "An Assessment of Features Related to Phishing Websites using an Automated Technique",
+      "publication_date": "2012-12-10",
+      "citation": "ICITST 2012, pp.492-497; author-deposited accepted version",
+      "url": "https://eprints.hud.ac.uk/id/eprint/16229/1/The_7th_ICITST_2012_Conference_-An_Assessment_of_Features_Related_to_Phishing_Websites_using_an_Automated_Technique.pdf",
+      "pdf_sha256": "40d9af331e68e4bbbe18daa0c03dd7d68767e97fd955169b8a61024bbb116e63",
+      "relevant_pdf_pages": [
+        4
+      ],
+      "finding": "Describes collection of 2500 phishing URLs and qualitative feature rules. No release-bound numeric Result definition established.",
+      "mapping_claim": null,
+      "release_bridge": "Not the 11055-record UCI-327 snapshot; authorship alone does not bridge versions"
+    },
+    {
+      "id": "original-2014",
+      "authority": "original dataset authors; primary method paper",
+      "authors": [
+        "Rami M. Mohammad",
+        "T. L. McCluskey",
+        "Fadi Thabtah"
+      ],
+      "title": "Intelligent Rule based Phishing Websites Classification",
+      "publication_date": "2014-05",
+      "citation": "IET Information Security 8(3), pp.153-160; DOI 10.1049/iet-ifs.2013.0202",
+      "url": "https://eprints.hud.ac.uk/id/eprint/17994/3/RamiIntelligent_Rule_based_Phishing_Websites_Classification_IET_Journal.pdf",
+      "pdf_sha256": "8c03386f0a7f7d4ce76943fe0d20e8de8a690446c5db2ecda6822e68551633ff",
+      "relevant_pdf_pages": [
+        17,
+        19
+      ],
+      "finding": "Accepted manuscript describes 2500 phishing and 450 legitimate collected URLs and a separate experimental subset. No release-specific Result numeric codebook established.",
+      "mapping_claim": null,
+      "release_bridge": "Earlier, different experimental population; no authenticated binding to the pinned 2015 UCI archive"
+    },
+    {
+      "id": "independent-2016",
+      "authority": "independent academic use; secondary for original dataset semantics",
+      "authors": [
+        "Mofleh Al-diabat"
+      ],
+      "title": "Detection and Prediction of Phishing Websites using Classification Mining Techniques",
+      "publication_date": "2016-08",
+      "citation": "International Journal of Computer Applications 147(5), pp.5-11, Section 4",
+      "url": "https://www.ijcaonline.org/archives/volume147/number5/aldiabat-2016-ijca-911061.pdf",
+      "pdf_sha256": "093d97414cbaa7bb7d39f36524a867f6c5e3ca0d4bea9afb09c8c2650f9ded0f",
+      "relevant_pdf_pages": [
+        4
+      ],
+      "exact_quote": "Legitimate (1) and Phishy (-1).",
+      "mapping_claim": {
+        "-1": "phishing",
+        "1": "legitimate"
+      },
+      "release_bridge": "Cites Mohammad et al. 2015 UCI data with 30 features, but no archive digest or original codebook receipt"
+    },
+    {
+      "id": "independent-2018",
+      "authority": "independent academic use; secondary for original dataset semantics",
+      "authors": [
+        "Shinelle Hutchinson",
+        "Zhaohe Zhang",
+        "Qingzhong Liu"
+      ],
+      "title": "Detecting Phishing Websites with Random Forest",
+      "publication_date": "2018",
+      "citation": "MLICOM 2018, DOI 10.1007/978-3-030-00557-3_46, Section 3.1, printed p.471",
+      "url": "https://eudl.eu/pdf/10.1007/978-3-030-00557-3_46",
+      "pdf_sha256": null,
+      "byte_download_status": "HTTPError; web PDF parser successfully exposed the cited page; no downloaded-byte digest invented",
+      "relevant_pdf_pages": [
+        3
+      ],
+      "exact_quote": "1 if it is a phishing site and \u22121 if it a legitimate site.",
+      "mapping_claim": {
+        "-1": "legitimate",
+        "1": "phishing"
+      },
+      "release_bridge": "References the 11055-row UCI dataset but supplies no authenticated original codebook or archive hash"
+    }
+  ],
+  "official_primary_evidence": {
+    "uci_metadata": "uci-metadata.json: result is a Target, description null",
+    "pinned_archive": "release-comparison.json: Result domain {-1,1}, no meanings; bundled feature document has no Result token",
+    "creator_2015_record": "https://eprints.hud.ac.uk/id/eprint/24330/; no numeric target definition on the record page"
+  },
+  "contradiction": "Independent 2016 and 2018 publications give opposite explicit mappings; neither resolves the original release codebook.",
+  "decision_basis": "No convention, majority vote, class frequency, feature correlations or model performance used.",
+  "stop_boundary": "Accessible original-source documentation and targeted original-author publications do not authenticate the numeric Result definition for the pinned release. Require a release-specific creator/UCI codebook or clarification."
+}

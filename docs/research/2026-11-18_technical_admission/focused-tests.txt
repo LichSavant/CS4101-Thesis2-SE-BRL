@@ -1,0 +1,78 @@
+F................                                                        [100%]
+================================== FAILURES ===================================
+__________ test_phiusiil_checks_all_development_folds_before_export ___________
+
+tmp_path = WindowsPath('C:/Users/Dhanwil/Desktop/Projects/Thesis_Prototype_Git/.scientific-validation-20261117/.t/a/test_phiusiil_checks_all_devel0')
+
+    def test_phiusiil_checks_all_development_folds_before_export(tmp_path):
+        protocol, receipt, digest, run_id = phiusiil_packet(tmp_path, single_class_fold=True)
+        with pytest.raises(InputContractError, match="invalid_development_fold"):
+>           run_preparation(tmp_path, run_id, stage="D-features", expected_authorization_sha256=digest)
+
+ml\tests\test_phiusiil_preparation.py:63:
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+ml\preparation_execution.py:141: in run_preparation
+    validate_feature_boundary(rows,dataset="PhiUSIIL",development_only=True)
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+records = [{'Redirect': 0.0, 'URL_Length': -1.0, 'cv_fold': 1, 'group_id': 'synthetic-pair-1', ...}, {'Redirect': 1.0, 'URL_Leng...'synthetic-pair-3', ...}, {'Redirect': 1.0, 'URL_Length': 1.0, 'cv_fold': 3, 'group_id': 'synthetic-pair-3', ...}, ...]
+
+    def validate_feature_boundary(records, *, dataset: str, expected_population=None,
+                                  development_only: bool = False) -> dict:
+        """Validate supplied metadata; never allocate or repair groups/partitions."""
+        rows = tuple(records)
+        population = capture_population(rows, dataset=dataset)
+        if expected_population is not None:
+            validate_population_coverage(rows, expected_population, dataset=dataset)
+        assignments = []
+        for row in rows:
+            if not {"group_id", "partition", "cv_fold"}.issubset(row):
+                raise InputContractError("required_partition_metadata_missing")
+            assignments.append(PartitionAssignment(row["observation_id"], row["group_id"],
+                                                   row["partition"], _fold(row["cv_fold"])))
+            if dataset == "Email":
+                if not {"subject", "body"}.issubset(row):
+                    raise InputContractError("missing_required_email_fields")
+                for field in ("subject", "body", "sender", "receiver"):
+                    _text_availability(row.get(field))
+                _language(row.get("language"))
+            elif dataset == "Web":
+                if not {"html", "visible_text"}.issubset(row):
+                    raise InputContractError("explicit_web_evidence_availability_required")
+                for field in ("html", "visible_text"):
+                    _text_availability(row[field])
+                if all(row[field] is None for field in ("html", "visible_text")):
+                    raise InputContractError("content_bearing_web_evidence_required")
+                _language(row.get("language"))
+        counts = validate_supplied_partitions(assignments, folds=5)
+        expected_parts = {"development"} if development_only else {"development", "calibration", "test"}
+        if {a.partition for a in assignments} != expected_parts:
+            raise InputContractError("partition_coverage_mismatch")
+        for partition in expected_parts:
+            if {r["target"] for r in rows if r["partition"] == partition} != {0, 1}:
+                raise InputContractError("partition_requires_both_classes")
+        for fold in range(1, 6):
+            if {r["target"] for r, a in zip(rows, assignments)
+                    if a.partition == "development" and a.cv_fold == fold} != {0, 1}:
+>               raise InputContractError("fold_requires_both_classes")
+E               ml.experiment_inputs.InputContractError: fold_requires_both_classes
+
+ml\notebook_contracts.py:176: InputContractError
+
+During handling of the above exception, another exception occurred:
+
+tmp_path = WindowsPath('C:/Users/Dhanwil/Desktop/Projects/Thesis_Prototype_Git/.scientific-validation-20261117/.t/a/test_phiusiil_checks_all_devel0')
+
+    def test_phiusiil_checks_all_development_folds_before_export(tmp_path):
+        protocol, receipt, digest, run_id = phiusiil_packet(tmp_path, single_class_fold=True)
+>       with pytest.raises(InputContractError, match="invalid_development_fold"):
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       AssertionError: Regex pattern did not match.
+E        Regex: 'invalid_development_fold'
+E        Input: 'fold_requires_both_classes'
+
+ml\tests\test_phiusiil_preparation.py:62: AssertionError
+No-fit process guard: 0 blocked fitting attempts; 0 fitting executions.
+=========================== short test summary info ===========================
+FAILED ml/tests/test_phiusiil_preparation.py::test_phiusiil_checks_all_development_folds_before_export
+1 failed, 16 passed in 11.18s

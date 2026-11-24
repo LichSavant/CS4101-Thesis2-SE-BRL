@@ -13,7 +13,9 @@ Historical reproduction commands below are retained as prior evidence.
 ## Current continuation — 2026-11-12
 
 Engineering continuation evidence is recorded in
-[`engineering_completion_20261112/REPORT.md`](../engineering_completion_20261112/REPORT.md).
+the archived `engineering_completion_20261112/REPORT.md`. The
+[cleanup report](../docs/reconciliation/2026-11-25-cleanup-report.md) and ignored
+`.local/cleanup-state.json` locate the preserved evidence and its recovery copies.
 The shared selector now explicitly rejects native PhiUSIIL `FILENAME`, including
 case variants, at dictionary construction and final matrix selection. Predictor
 lookup otherwise remains case-sensitive. C/D additionally recomputes prospective

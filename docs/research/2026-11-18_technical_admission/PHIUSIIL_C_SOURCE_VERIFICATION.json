@@ -1,0 +1,28 @@
+{
+  "acceptance_packet_sha256": "d93b2060173b1dfcedee80c2f73289575ab8ba782c73507a1cb84f3809c74846",
+  "all_supplied_relationship_edges_match_source_values": true,
+  "allocation_acceptance_exists": false,
+  "allocation_executed": false,
+  "automated_checks": "PASS",
+  "command": "python -B -m scripts.verify_phiusiil_c_acceptance --source-root ..",
+  "components": 154096,
+  "domain_and_exact_url_connectivity_complete_within_scope": true,
+  "expected_original_development_positions_exact_match": true,
+  "historical_groups_split": 0,
+  "historical_manifest_lf_sha256": "5e8fd44753f8bef7ac9987d7cdc35c7172a0bcbdf9ad42925a058ce20334847e",
+  "historical_protected_source_records_decoded": 0,
+  "independent_historical_lineage_or_human_acceptance_established": false,
+  "input_sha256": {
+    "protocol/allocation_settings.json": "12ba404731616f8cc6bd0062b8d2fe9f67389147a0d06ede5a16ef5f8279824c",
+    "protocol/population.json": "a56fe920af493aff1238c9a30b5db14a5d0bc371a92e9ac85966531d45eded16",
+    "protocol/relationships.json": "93c18fcc240cf852f1e8e609d2a45bd66e6c274a2eb5f0e9dbfaf663db2adbb3"
+  },
+  "inputs_rewritten": false,
+  "mixed_label_components": 36,
+  "model_fits": 0,
+  "native_labels_targets_and_locator_ids": "PASS",
+  "source_records_checked": 165089,
+  "source_snapshot_sha256": "a236549cd369cd80bd478ff8e1779cbf44c58d5c3f79f7a51a1adbed7d06d1c6",
+  "verification_mode": "Separate source-bound automated comparison by the same agent; NOT independent human verification or trusted acceptance",
+  "verifier_sha256": "36e3e41d80873e984f72da828d3f949338ced226f23afb4a48c18b58148be5fb"
+}

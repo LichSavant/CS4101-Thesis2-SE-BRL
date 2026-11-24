@@ -1,0 +1,542 @@
+{
+  "source_repository": "https://github.com/veramarietherese/-SE-BRL-Research-Review-Vera",
+  "source_commit": "337c3c4f23c1aeff7b16f5d6924eb377a52393af",
+  "prior_review_commit": "25677a98236895ad16c6acf6aa75499dd2552fd9",
+  "files": [
+    {
+      "source_path": ".gitattributes",
+      "source_commit": "337c3c4f23c1aeff7b16f5d6924eb377a52393af",
+      "sha256": "f99e3d1360cde0c8bcba8fc17de31e534860a5d695675517807216b4e437607b",
+      "disposition": "historical_review_variant",
+      "destination": "research/historical/vera-review-337c3c4/.gitattributes"
+    },
+    {
+      "source_path": "README.md",
+      "source_commit": "337c3c4f23c1aeff7b16f5d6924eb377a52393af",
+      "sha256": "27f6b9541971ec12e4c251a0b48b80ba1f000d8817511dd3f7817ed74accb9f5",
+      "disposition": "historical_review_variant",
+      "destination": "research/historical/vera-review-337c3c4/README.md"
+    },
+    {
+      "source_path": "VERA_FINAL_ENGINEERING_COMPLETION_REPORT.md",
+      "source_commit": "337c3c4f23c1aeff7b16f5d6924eb377a52393af",
+      "sha256": "47f0adf0326888a999ec16b3e03a3ed3ba0a7f97fd34c38885c4d0748c4de1c5",
+      "disposition": "historical_review_variant",
+      "destination": "research/historical/vera-review-337c3c4/VERA_FINAL_ENGINEERING_COMPLETION_REPORT.md"
+    },
+    {
+      "source_path": "apps/gmail-extension/src/adapters/gmailEmailSourceAdapter.test.ts",
+      "source_commit": "337c3c4f23c1aeff7b16f5d6924eb377a52393af",
+      "sha256": "1e89041af7b6b9176df7d556b2a957c98448401d02c7cefc7039be5232b937fc",
+      "disposition": "canonical_duplicate"
+    },
+    {
+      "source_path": "apps/gmail-extension/src/fixtures/gmail-open-message.html",
+      "source_commit": "337c3c4f23c1aeff7b16f5d6924eb377a52393af",
+      "sha256": "ea368a760533dc6555aebfc241ebbe716648e575754f68ea5d1fcd642280a19d",
+      "disposition": "canonical_duplicate"
+    },
+    {
+      "source_path": "backend/tests/test_api.py",
+      "source_commit": "337c3c4f23c1aeff7b16f5d6924eb377a52393af",
+      "sha256": "61d7598b8baad9beef5ea7f2fa453e075b26d7591de82a20abd4c77c76db0da0",
+      "disposition": "canonical_duplicate"
+    },
+    {
+      "source_path": "docs/methodology-review/SEBRL_ADVISER_APPROVAL_CHECKLIST.md",
+      "source_commit": "337c3c4f23c1aeff7b16f5d6924eb377a52393af",
+      "sha256": "c61b216370608083dccbd7b4f23b291a8f4eeb095f6b470fac3f67a7def440d9",
+      "disposition": "canonical_duplicate"
+    },
+    {
+      "source_path": "docs/methodology-review/SEBRL_APPROVED_VS_EXTENSION_MATRIX.md",
+      "source_commit": "337c3c4f23c1aeff7b16f5d6924eb377a52393af",
+      "sha256": "e1ad4aeaed89c747874a8dbff76274da4d80a11d382a619c7b746d09015c54f9",
+      "disposition": "canonical_duplicate"
+    },
+    {
+      "source_path": "docs/methodology-review/SEBRL_METHODOLOGY_TRACEABILITY.md",
+      "source_commit": "337c3c4f23c1aeff7b16f5d6924eb377a52393af",
+      "sha256": "7a9a0cdb50a8e6f495af44b3cc6b72dc16c2c1f413019b58bec98b37f22f0099",
+      "disposition": "canonical_duplicate"
+    },
+    {
+      "source_path": "docs/methodology-review/SEBRL_SCOPE_DECISION_MEMO.md",
+      "source_commit": "337c3c4f23c1aeff7b16f5d6924eb377a52393af",
+      "sha256": "cae60ecc84b0ed989ef76be624e5fa04ae683cdac695326f2e2dc3c7ac705218",
+      "disposition": "canonical_duplicate"
+    },
+    {
+      "source_path": "docs/r22-parser-repair-2026-11-16/README.md",
+      "source_commit": "337c3c4f23c1aeff7b16f5d6924eb377a52393af",
+      "sha256": "5b8532951718da97d6d88424c4bfb7984dd103d5715cdb40c22d7a14bc176953",
+      "disposition": "canonical_duplicate"
+    },
+    {
+      "source_path": "docs/r22-parser-repair-2026-11-16/agreed-integration-contract.md",
+      "source_commit": "337c3c4f23c1aeff7b16f5d6924eb377a52393af",
+      "sha256": "a9f8aff2c036844c63bd1d6743865aa72abd23f9fb7e7bb03d66913a047ddf0b",
+      "disposition": "canonical_duplicate"
+    },
+    {
+      "source_path": "docs/r22-parser-repair-2026-11-16/commit-source-verification.json",
+      "source_commit": "337c3c4f23c1aeff7b16f5d6924eb377a52393af",
+      "sha256": "fe6772da634631190fe313b6ac5ff612b4b258c1862445d20fd30dd091198930",
+      "disposition": "canonical_duplicate"
+    },
+    {
+      "source_path": "docs/r22-parser-repair-2026-11-16/counterpart-runtime.json",
+      "source_commit": "337c3c4f23c1aeff7b16f5d6924eb377a52393af",
+      "sha256": "32b8465bb873d8a055dc8ab948c05a156a76bb14b7833187a80f4a2c7aa68bc7",
+      "disposition": "canonical_duplicate"
+    },
+    {
+      "source_path": "docs/r22-parser-repair-2026-11-16/counterpart-source-manifest.json",
+      "source_commit": "337c3c4f23c1aeff7b16f5d6924eb377a52393af",
+      "sha256": "a42ef2053d7f6e973765f137739261fb97941dd106450efc74dfcbf0cfe2b994",
+      "disposition": "canonical_duplicate"
+    },
+    {
+      "source_path": "docs/r22-parser-repair-2026-11-16/historical-evidence-reuse.public.json",
+      "source_commit": "337c3c4f23c1aeff7b16f5d6924eb377a52393af",
+      "sha256": "0098806cd33fe6009c123f94f6e0d0b3526de994ff3de8d0970404dd27db2004",
+      "disposition": "canonical_duplicate"
+    },
+    {
+      "source_path": "docs/r22-parser-repair-2026-11-16/indicator-audit.public.json",
+      "source_commit": "337c3c4f23c1aeff7b16f5d6924eb377a52393af",
+      "sha256": "862babcdd06c12ae15d8be07a40d0c047c444d9181af9e8e8bdae479d2f3be3a",
+      "disposition": "canonical_duplicate"
+    },
+    {
+      "source_path": "docs/r22-parser-repair-2026-11-16/integration-acceptance.json",
+      "source_commit": "337c3c4f23c1aeff7b16f5d6924eb377a52393af",
+      "sha256": "fd1a74dcd4aa97a42782398289b06c18da387861d537227f62bc3392eba28ced",
+      "disposition": "canonical_duplicate"
+    },
+    {
+      "source_path": "docs/r22-parser-repair-2026-11-16/javascript-verification.public.json",
+      "source_commit": "337c3c4f23c1aeff7b16f5d6924eb377a52393af",
+      "sha256": "f0138336468bf56a03239fe2c2f25c915d596a854e97c2ec201593a86dc27a45",
+      "disposition": "canonical_duplicate"
+    },
+    {
+      "source_path": "docs/r22-parser-repair-2026-11-16/joint-regression.public.xml",
+      "source_commit": "337c3c4f23c1aeff7b16f5d6924eb377a52393af",
+      "sha256": "ba5e97fd348124667da49061c9a9db573ce9fecf9177f6faf29f3c5ae960b6e2",
+      "disposition": "canonical_duplicate"
+    },
+    {
+      "source_path": "docs/r22-parser-repair-2026-11-16/joint-verification.public.json",
+      "source_commit": "337c3c4f23c1aeff7b16f5d6924eb377a52393af",
+      "sha256": "0f941d07f5d2a5bae12f345cb103e3692f7ae412f3eeb282df684b0e1d11f04b",
+      "disposition": "canonical_duplicate"
+    },
+    {
+      "source_path": "docs/r22-parser-repair-2026-11-16/owned-regression.public.xml",
+      "source_commit": "337c3c4f23c1aeff7b16f5d6924eb377a52393af",
+      "sha256": "a86bff1529567b05fa89a34ad0bb52c008343e214dc92e55575e99377791247c",
+      "disposition": "canonical_duplicate"
+    },
+    {
+      "source_path": "docs/r22-parser-repair-2026-11-16/owned-verification.public.json",
+      "source_commit": "337c3c4f23c1aeff7b16f5d6924eb377a52393af",
+      "sha256": "2d8e1893223926f504380e759d8b9e20dc102f6ecf97c74a72de5f1bbf6beff0",
+      "disposition": "canonical_duplicate"
+    },
+    {
+      "source_path": "docs/r22-parser-repair-2026-11-16/parser-regression.public.xml",
+      "source_commit": "337c3c4f23c1aeff7b16f5d6924eb377a52393af",
+      "sha256": "5b20dd74a4cf2dabb433ebe6fe84f1cdf3c9923fd5097bce739aff8158714eca",
+      "disposition": "canonical_duplicate"
+    },
+    {
+      "source_path": "docs/r22-parser-repair-2026-11-16/parser-verification.public.json",
+      "source_commit": "337c3c4f23c1aeff7b16f5d6924eb377a52393af",
+      "sha256": "7de887842830ec0be16d747cee44a6d34954ade92d8cfcba3382d8500b5265ee",
+      "disposition": "canonical_duplicate"
+    },
+    {
+      "source_path": "docs/r22-parser-repair-2026-11-16/preprocessing-regression.public.xml",
+      "source_commit": "337c3c4f23c1aeff7b16f5d6924eb377a52393af",
+      "sha256": "3395ad10eff83858c53916f423db43c5d933b38dfbfffcb427ced6147c8337eb",
+      "disposition": "canonical_duplicate"
+    },
+    {
+      "source_path": "docs/r22-parser-repair-2026-11-16/preprocessing-verification.public.json",
+      "source_commit": "337c3c4f23c1aeff7b16f5d6924eb377a52393af",
+      "sha256": "3a9c6d07c2dc10ff060dbf5fade5432c36944f799551a24950c894b4b13aac43",
+      "disposition": "canonical_duplicate"
+    },
+    {
+      "source_path": "docs/r22-parser-repair-2026-11-16/requirements-audit.public.json",
+      "source_commit": "337c3c4f23c1aeff7b16f5d6924eb377a52393af",
+      "sha256": "d45e2368d71af929f4fe807380540c5623738eb1855d518fa31f298141d6031b",
+      "disposition": "canonical_duplicate"
+    },
+    {
+      "source_path": "docs/r22-parser-repair-2026-11-16/requirements.json",
+      "source_commit": "337c3c4f23c1aeff7b16f5d6924eb377a52393af",
+      "sha256": "a30442f1263773f1952ec23951919be912328100ca9541bdfdcb5dbb32cf9f78",
+      "disposition": "canonical_duplicate"
+    },
+    {
+      "source_path": "docs/r22-parser-repair-2026-11-16/source-comparison.json",
+      "source_commit": "337c3c4f23c1aeff7b16f5d6924eb377a52393af",
+      "sha256": "d9591d976e561092055e827976648d91ad82c7c8b3f9ea24b3344265a77f0524",
+      "disposition": "canonical_duplicate"
+    },
+    {
+      "source_path": "docs/r22-parser-repair-2026-11-16/upstream-identity.json",
+      "source_commit": "337c3c4f23c1aeff7b16f5d6924eb377a52393af",
+      "sha256": "280393d1bc292c204a3fd4f987c324cb92e3ddd38a10b44c1e63862fdde87994",
+      "disposition": "canonical_duplicate"
+    },
+    {
+      "source_path": "docs/r22-parser-repair-2026-11-16/vera-runtime-manifest.json",
+      "source_commit": "337c3c4f23c1aeff7b16f5d6924eb377a52393af",
+      "sha256": "212a81e5221c1867c9a0a4008a2b31120ee735b60095c6fe2f0e93c1aff7f3cd",
+      "disposition": "canonical_duplicate"
+    },
+    {
+      "source_path": "docs/r22-parser-repair-2026-11-16/vera-runtime-manifest.previous.json",
+      "source_commit": "337c3c4f23c1aeff7b16f5d6924eb377a52393af",
+      "sha256": "a34a4cdb741583afaec27f982bb7ebd21bd4d601745e712e48eb1dc17aa83f77",
+      "disposition": "canonical_duplicate"
+    },
+    {
+      "source_path": "docs/r22-parser-repair-2026-11-16/whole-runtime-comparison.json",
+      "source_commit": "337c3c4f23c1aeff7b16f5d6924eb377a52393af",
+      "sha256": "3d7b84b193cd81fd7f0162b4004b980f2ef5bd06799c1d7db3d6c34ded970e16",
+      "disposition": "canonical_duplicate"
+    },
+    {
+      "source_path": "docs/vera-master2-2026-11-15/INTEGRATION.md",
+      "source_commit": "337c3c4f23c1aeff7b16f5d6924eb377a52393af",
+      "sha256": "0a60cb2cc87181de40c6e21b9568c82522ce74f09683f8e00ddf11fab4a0d2be",
+      "disposition": "canonical_duplicate"
+    },
+    {
+      "source_path": "docs/vera-master2-2026-11-15/POLICY_COMPATIBILITY.md",
+      "source_commit": "337c3c4f23c1aeff7b16f5d6924eb377a52393af",
+      "sha256": "ff6faeb0dbcadee8ba7c3127aa88147956b7c0de52f8612d484601316e726b90",
+      "disposition": "canonical_duplicate"
+    },
+    {
+      "source_path": "experiments/notebook-sources/01_data_audit.source.json",
+      "source_commit": "337c3c4f23c1aeff7b16f5d6924eb377a52393af",
+      "sha256": "927df8bedc9851683783596f406d7bc6197c3e32faabeacab13d99d8ce160f03",
+      "disposition": "canonical_duplicate"
+    },
+    {
+      "source_path": "experiments/notebook-sources/02_data_cleaning.source.json",
+      "source_commit": "337c3c4f23c1aeff7b16f5d6924eb377a52393af",
+      "sha256": "dd03f08a12d890840a0a598e9b1357736926125ead6112299cadec57f4768350",
+      "disposition": "canonical_duplicate"
+    },
+    {
+      "source_path": "experiments/notebook-sources/03_preprocessing.source.json",
+      "source_commit": "337c3c4f23c1aeff7b16f5d6924eb377a52393af",
+      "sha256": "3fc78e6c58bf5bd9b15b7afa4169de93b06d14b971fa01fc183494fc22e91c76",
+      "disposition": "canonical_duplicate"
+    },
+    {
+      "source_path": "experiments/notebook-sources/04_feature_extraction.source.json",
+      "source_commit": "337c3c4f23c1aeff7b16f5d6924eb377a52393af",
+      "sha256": "1f67fd2f1515a92309c4773f113ac82deaf2a51e35e3973737b01988ea9998e9",
+      "disposition": "canonical_duplicate"
+    },
+    {
+      "source_path": "experiments/notebook-sources/05_experiments.source.json",
+      "source_commit": "337c3c4f23c1aeff7b16f5d6924eb377a52393af",
+      "sha256": "24255614ee8d702bd1f591ea31fa825e5216bcb4dfea3f5950250d714961536c",
+      "disposition": "canonical_duplicate"
+    },
+    {
+      "source_path": "experiments/vera_validation/V13D_hybrid_extractor.py",
+      "source_commit": "337c3c4f23c1aeff7b16f5d6924eb377a52393af",
+      "sha256": "bb50b0395e1914dec2945c470db08197de906e13ee72eaeee7a91a20b230816e",
+      "disposition": "canonical_duplicate"
+    },
+    {
+      "source_path": "experiments/vera_validation/V13D_run_regression.py",
+      "source_commit": "337c3c4f23c1aeff7b16f5d6924eb377a52393af",
+      "sha256": "122b002b664b3a0e15ef277776778016ac385e8a231321f654034835684c2626",
+      "disposition": "canonical_duplicate"
+    },
+    {
+      "source_path": "experiments/vera_validation/V13D_test_extractor.py",
+      "source_commit": "337c3c4f23c1aeff7b16f5d6924eb377a52393af",
+      "sha256": "085903b9e7aff766a7c023e0f2b2f401415f9b66a728deddc99d93360b273e47",
+      "disposition": "canonical_duplicate"
+    },
+    {
+      "source_path": "experiments/vera_validation/V13E_review_policy.py",
+      "source_commit": "337c3c4f23c1aeff7b16f5d6924eb377a52393af",
+      "sha256": "da2d2cbf66d486618f4c2835462aa0370d7adadae5c55e25333235b7df7ee062",
+      "disposition": "canonical_duplicate"
+    },
+    {
+      "source_path": "experiments/vera_validation/V13F_ablation_audit.py",
+      "source_commit": "337c3c4f23c1aeff7b16f5d6924eb377a52393af",
+      "sha256": "3a5997e749f3850cf39750536af3c8eb7f337dc38a23f5b6f9577964acd9a4b7",
+      "disposition": "canonical_duplicate"
+    },
+    {
+      "source_path": "experiments/vera_validation/V14_annotation_integrity.py",
+      "source_commit": "337c3c4f23c1aeff7b16f5d6924eb377a52393af",
+      "sha256": "949c4429d371ef97d4a3b59fabae0de6aa2e3e9eaf585fd24b3cb0f21f8ff0ce",
+      "disposition": "canonical_duplicate"
+    },
+    {
+      "source_path": "experiments/vera_validation/V14_dataset_lineage.py",
+      "source_commit": "337c3c4f23c1aeff7b16f5d6924eb377a52393af",
+      "sha256": "bbbcf691ddc8739269e8dd993a919c5efc5b4d0fb5177e4eed20154fc8f5e0fc",
+      "disposition": "canonical_duplicate"
+    },
+    {
+      "source_path": "experiments/vera_validation/V15_autonomous_inference.py",
+      "source_commit": "337c3c4f23c1aeff7b16f5d6924eb377a52393af",
+      "sha256": "0446f1011008ab186c658ce0371e5b365b9d78b10d447d263342d765b24a3145",
+      "disposition": "canonical_duplicate"
+    },
+    {
+      "source_path": "experiments/vera_validation/V16_constraint_governed_controller.py",
+      "source_commit": "337c3c4f23c1aeff7b16f5d6924eb377a52393af",
+      "sha256": "f8d44336658b32309434523ead3652f2a4eb79d6c4147927028082938bb748ee",
+      "disposition": "canonical_duplicate"
+    },
+    {
+      "source_path": "experiments/vera_validation/V17_semantic_controller.py",
+      "source_commit": "337c3c4f23c1aeff7b16f5d6924eb377a52393af",
+      "sha256": "613f385c67dc4276aa4f8020f5d50fb85b219a5ce6b022ddb3fe04aff4293682",
+      "disposition": "canonical_duplicate"
+    },
+    {
+      "source_path": "experiments/vera_validation/V21_semantic_candidates.py",
+      "source_commit": "337c3c4f23c1aeff7b16f5d6924eb377a52393af",
+      "sha256": "d7fbfab74e245cf9060a633d819ba63d14ceb6cd50a7543513aea7fa6ea43fb8",
+      "disposition": "canonical_duplicate"
+    },
+    {
+      "source_path": "ml/behavioral_validation.py",
+      "source_commit": "337c3c4f23c1aeff7b16f5d6924eb377a52393af",
+      "sha256": "1911fa85428eb98f231bead3097de8925358aeb683ac82eefaf4fcd57741b456",
+      "disposition": "canonical_duplicate"
+    },
+    {
+      "source_path": "ml/counterpart_checkout.py",
+      "source_commit": "337c3c4f23c1aeff7b16f5d6924eb377a52393af",
+      "sha256": "7e09e824c62e1ef79a54c4bbb496202927bfa0a7ced891fd9e3c023cb2f6ad6f",
+      "disposition": "canonical_duplicate"
+    },
+    {
+      "source_path": "ml/fixtures/runtime-compatibility-v1/declaration.local.json",
+      "source_commit": "337c3c4f23c1aeff7b16f5d6924eb377a52393af",
+      "sha256": "ed8b74166261546a76aab1d3ec1b65f90bf680980cbac6851c9ba6b45d503f04",
+      "disposition": "historical_review_variant",
+      "destination": "research/historical/vera-review-337c3c4/ml/fixtures/runtime-compatibility-v1/declaration.local.json"
+    },
+    {
+      "source_path": "ml/fixtures/semantic-review-v1/interface.json",
+      "source_commit": "337c3c4f23c1aeff7b16f5d6924eb377a52393af",
+      "sha256": "41a0bb74779f421f13b62202e451f4f0ab8ee9f69be813853c6f641420af602b",
+      "disposition": "historical_review_variant",
+      "destination": "research/historical/vera-review-337c3c4/ml/fixtures/semantic-review-v1/interface.json"
+    },
+    {
+      "source_path": "ml/fixtures/semantic-review-v1/request.json",
+      "source_commit": "337c3c4f23c1aeff7b16f5d6924eb377a52393af",
+      "sha256": "616ba9ab1fbc75672f8fef4778670b332e0ecda04d673be3dd5eeb29b0cf4c3b",
+      "disposition": "canonical_duplicate"
+    },
+    {
+      "source_path": "ml/fixtures/semantic-review-v1/response.json",
+      "source_commit": "337c3c4f23c1aeff7b16f5d6924eb377a52393af",
+      "sha256": "798390b12726ac8405ee2e12bcf0c9d6f9a884b4a35de6a423a9c25fcadab516",
+      "disposition": "historical_review_variant",
+      "destination": "research/historical/vera-review-337c3c4/ml/fixtures/semantic-review-v1/response.json"
+    },
+    {
+      "source_path": "ml/notebook_sources.py",
+      "source_commit": "337c3c4f23c1aeff7b16f5d6924eb377a52393af",
+      "sha256": "e735d3a9d583166d90fdc2cc79a125f04589beee767e19792ed070819897d07a",
+      "disposition": "canonical_duplicate"
+    },
+    {
+      "source_path": "ml/research-inputs.v1.json",
+      "source_commit": "337c3c4f23c1aeff7b16f5d6924eb377a52393af",
+      "sha256": "828300024f3f6e17016469b0406181ce06f71b377b9f48dfa3454fe120c22d38",
+      "disposition": "canonical_duplicate"
+    },
+    {
+      "source_path": "ml/research_policy.py",
+      "source_commit": "337c3c4f23c1aeff7b16f5d6924eb377a52393af",
+      "sha256": "1ebcb5ea14146ef301a5328586352f46a36cdbfaa8b86a0636470480fd827ea2",
+      "disposition": "canonical_duplicate"
+    },
+    {
+      "source_path": "ml/se_brl/detectors.py",
+      "source_commit": "337c3c4f23c1aeff7b16f5d6924eb377a52393af",
+      "sha256": "330f39c2dafb148f13ca10501f6cfbe73c396e73da1b4b692068c2cf456f2352",
+      "disposition": "canonical_duplicate"
+    },
+    {
+      "source_path": "ml/se_brl/joint_integration.py",
+      "source_commit": "337c3c4f23c1aeff7b16f5d6924eb377a52393af",
+      "sha256": "b957b621b555095444d602fa20e72feabb15faa554f369e435f5d727ca3964e6",
+      "disposition": "canonical_duplicate"
+    },
+    {
+      "source_path": "ml/se_brl/review_adapter.py",
+      "source_commit": "337c3c4f23c1aeff7b16f5d6924eb377a52393af",
+      "sha256": "e3af9338d043c48ebbd2b90eb70257a747315fad81127c148b8a671e7afb5bb7",
+      "disposition": "canonical_duplicate"
+    },
+    {
+      "source_path": "ml/se_brl/runtime_compatibility.py",
+      "source_commit": "337c3c4f23c1aeff7b16f5d6924eb377a52393af",
+      "sha256": "6d967418e5ebd3ca8990b8fab3724c2e22570ede90619d3df61ec30a3a7f52f0",
+      "disposition": "canonical_duplicate"
+    },
+    {
+      "source_path": "ml/se_brl/semantic_candidates.py",
+      "source_commit": "337c3c4f23c1aeff7b16f5d6924eb377a52393af",
+      "sha256": "b38573962980dd4b99b47688083d172c250271502b0a66046f9afd2b67b195c3",
+      "disposition": "canonical_duplicate"
+    },
+    {
+      "source_path": "ml/se_brl/semantic_review.py",
+      "source_commit": "337c3c4f23c1aeff7b16f5d6924eb377a52393af",
+      "sha256": "1411f43f4068e442dd0ca51be991bf725a11c7e48c6dce5e7da77ba83a193ad6",
+      "disposition": "canonical_duplicate"
+    },
+    {
+      "source_path": "ml/tests/test_behavioral_validation.py",
+      "source_commit": "337c3c4f23c1aeff7b16f5d6924eb377a52393af",
+      "sha256": "c573d93f66aa7f5483fa418dea8f694f59543e18c04634a43945ec1e928075ae",
+      "disposition": "canonical_duplicate"
+    },
+    {
+      "source_path": "ml/tests/test_counterpart_sources.py",
+      "source_commit": "337c3c4f23c1aeff7b16f5d6924eb377a52393af",
+      "sha256": "5150342dba319a3ae667912528475c15dae2a701fd50f735dbbc658e3cf7c674",
+      "disposition": "canonical_duplicate"
+    },
+    {
+      "source_path": "ml/tests/test_finalization_policy.py",
+      "source_commit": "337c3c4f23c1aeff7b16f5d6924eb377a52393af",
+      "sha256": "cde8206da675ac37dfda824cf7cf8705658e67f5902906352e5cbe3af0b84e4f",
+      "disposition": "canonical_duplicate"
+    },
+    {
+      "source_path": "ml/tests/test_handoff.py",
+      "source_commit": "337c3c4f23c1aeff7b16f5d6924eb377a52393af",
+      "sha256": "e44a35fac655ed60b42afcb5f05fbdf3b21ea4b67d19871bfd3a37435d17fe8a",
+      "disposition": "canonical_duplicate"
+    },
+    {
+      "source_path": "ml/tests/test_joint_integration.py",
+      "source_commit": "337c3c4f23c1aeff7b16f5d6924eb377a52393af",
+      "sha256": "266233fa374b1244b36334797995817a5b6438710268504ff6ed3e109efb755e",
+      "disposition": "canonical_duplicate"
+    },
+    {
+      "source_path": "ml/tests/test_joint_parser_repair.py",
+      "source_commit": "337c3c4f23c1aeff7b16f5d6924eb377a52393af",
+      "sha256": "b69af2f939e58636301772c6d707a1d7332cd08a01c7be6c6df1dda1a8ee64e4",
+      "disposition": "canonical_duplicate"
+    },
+    {
+      "source_path": "ml/tests/test_legacy_semantic_boundaries.py",
+      "source_commit": "337c3c4f23c1aeff7b16f5d6924eb377a52393af",
+      "sha256": "a574a4d0f83bf80619c7ae702577cefb69b118a77b6f98002207a45b2658df90",
+      "disposition": "canonical_duplicate"
+    },
+    {
+      "source_path": "ml/tests/test_master3_regressions.py",
+      "source_commit": "337c3c4f23c1aeff7b16f5d6924eb377a52393af",
+      "sha256": "3e3b322615456761aff45b6a658dff689a108894c5c8f6cdfb39e3ab2eac0b12",
+      "disposition": "canonical_duplicate"
+    },
+    {
+      "source_path": "ml/tests/test_notebook_sources.py",
+      "source_commit": "337c3c4f23c1aeff7b16f5d6924eb377a52393af",
+      "sha256": "cec3788732091d1d04d321ff2eaa6637420a6a7e265a6fad5482405dbfa9b45d",
+      "disposition": "canonical_duplicate"
+    },
+    {
+      "source_path": "ml/tests/test_review_adapter.py",
+      "source_commit": "337c3c4f23c1aeff7b16f5d6924eb377a52393af",
+      "sha256": "696d12f5c468c9f51ab6c79da4755868b3b3d0eb93b11a63d186262286c21f30",
+      "disposition": "canonical_duplicate"
+    },
+    {
+      "source_path": "ml/tests/test_runtime_compatibility.py",
+      "source_commit": "337c3c4f23c1aeff7b16f5d6924eb377a52393af",
+      "sha256": "79ca6b3e333721a706fb11cf1536fafa3170a7b6e2fd99859fc790f19f7b7d04",
+      "disposition": "historical_review_variant",
+      "destination": "research/historical/vera-review-337c3c4/ml/tests/test_runtime_compatibility.py"
+    },
+    {
+      "source_path": "ml/tests/test_semantic_model_failures.py",
+      "source_commit": "337c3c4f23c1aeff7b16f5d6924eb377a52393af",
+      "sha256": "ec8d1886b4ae5e1ae37149f282c81ec92196a190a94a9fc99735bbae9f3e39b7",
+      "disposition": "canonical_duplicate"
+    },
+    {
+      "source_path": "ml/tests/test_semantic_review.py",
+      "source_commit": "337c3c4f23c1aeff7b16f5d6924eb377a52393af",
+      "sha256": "ee7c0082e5a52ced1745cbdad6cc6658962beafad8f827e1b9177edd8a81fc8c",
+      "disposition": "canonical_duplicate"
+    },
+    {
+      "source_path": "scripts/prepare_r22_handoff.py",
+      "source_commit": "337c3c4f23c1aeff7b16f5d6924eb377a52393af",
+      "sha256": "4ba467a8901e62bc9154f8c8c4c401dd45a828d45ee5514dd27cef7cf4139939",
+      "disposition": "canonical_duplicate"
+    },
+    {
+      "source_path": "scripts/r22_execution_environment.py",
+      "source_commit": "337c3c4f23c1aeff7b16f5d6924eb377a52393af",
+      "sha256": "77de3b12ca58a01c82d505d19ceecbf29394842584e19eccc1a99c82c3db28bf",
+      "disposition": "canonical_duplicate"
+    },
+    {
+      "source_path": "scripts/verify_counterpart_contracts.py",
+      "source_commit": "337c3c4f23c1aeff7b16f5d6924eb377a52393af",
+      "sha256": "e6c83eff4fc216ff26e1c6f885be55a7139b3db5323cfca01ad097b649b75219",
+      "disposition": "canonical_duplicate"
+    },
+    {
+      "source_path": "scripts/verify_notebook_sources.py",
+      "source_commit": "337c3c4f23c1aeff7b16f5d6924eb377a52393af",
+      "sha256": "4983fc6e2b966521cbc15aecaff5cd14d134b32af5d65a3d08a4b366f8ca8537",
+      "disposition": "canonical_duplicate"
+    },
+    {
+      "source_path": "scripts/verify_r22_counterpart.py",
+      "source_commit": "337c3c4f23c1aeff7b16f5d6924eb377a52393af",
+      "sha256": "1929bf24250cc0670761bb91bfcf2957dae14f81627e46007d5479787930cb72",
+      "disposition": "canonical_duplicate"
+    },
+    {
+      "source_path": "scripts/verify_r22_joint.py",
+      "source_commit": "337c3c4f23c1aeff7b16f5d6924eb377a52393af",
+      "sha256": "d684714a0f8018730e34a0297d9b403d2b843783953142ec3237a786128e5fa9",
+      "disposition": "canonical_duplicate"
+    },
+    {
+      "source_path": "scripts/verify_semantic_review.py",
+      "source_commit": "337c3c4f23c1aeff7b16f5d6924eb377a52393af",
+      "sha256": "f26ad51e4f9dd532cc835370da49fe31a03284db733ef9838ad5dcfa06ef14b3",
+      "disposition": "canonical_duplicate"
+    },
+    {
+      "source_path": "tools/review_verification/run_safe_owned.py",
+      "source_commit": "337c3c4f23c1aeff7b16f5d6924eb377a52393af",
+      "sha256": "448c3eaf2aa47244001686e2a278cf49e1b5aaee38f7d679a5e3d1a033fd4ecc",
+      "disposition": "canonical_duplicate"
+    }
+  ]
+}

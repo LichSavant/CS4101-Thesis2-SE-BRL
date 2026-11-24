@@ -1,0 +1,39 @@
+{
+  "status": "DEVELOPMENT_CHALLENGE_COMPARISON_COMPLETE",
+  "scope": "synthetic development-only, known provisional expected states; not independent human ground truth",
+  "extractor_mode": "rules_only",
+  "modality_assumption": "content_bearing_email",
+  "model_fits": 0,
+  "nli_inference": false,
+  "lexical": {
+    "total": 20,
+    "matches_provisional": 19,
+    "mismatches": [
+      "L003"
+    ],
+    "categories": {
+      "keyword_without_behavior": 10,
+      "implicit_behavior": 10
+    }
+  },
+  "counterfactual": {
+    "pairs": 20,
+    "both_states_match_provisional": 20,
+    "absent_to_supported_directional": 20,
+    "mismatches": []
+  },
+  "source_sha256": {
+    "experiments/vera_validation/V13D_hybrid_extractor.py": "7b1c66b65ba5ade290c5b4b561be10fe55cc76fcdc269b9df137c34450a84feb",
+    "experiments/vera_validation/lexical_shortcut_challenges.csv": "12def22436059f56d5cb5448a395e670d3bb1b1789a230fa7c138c37ea651dc5",
+    "experiments/vera_validation/counterfactual_pairs.csv": "6d2304796edeb522e42c39b0f215849fcd0cbf12000a0208fae000c548efb1ac",
+    "ml/se_brl/codebook.v0.1.0.json": "36ad77a3f06a962003f8383b4390f2410f93cd7f38eeee3f4d30cad20d839021"
+  },
+  "scientific_limitations": [
+    "Original challenge files contain visible provisional expectations; no blinding",
+    "These are synthetic development cases, not independently adjudicated real-world labels",
+    "Behavioral scientific validation authorization remains closed and unchanged",
+    "Only target-indicator states are assessed; no full 12-indicator effectiveness claim",
+    "Transformer/NLI is not executed; review-only contribution is not evaluated",
+    "No train/test generalization or statistical significance is implied"
+  ]
+}

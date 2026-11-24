@@ -1,0 +1,81 @@
+{
+  "results": {
+    "Original E2": {
+      "observations": 15011,
+      "features": 8,
+      "variable_features": 5,
+      "unique_patterns": 11,
+      "optimistic_ap": 0.421461,
+      "optimistic_f1": 0.433955
+    },
+    "V3 E2-A": {
+      "observations": 15011,
+      "features": 8,
+      "variable_features": 5,
+      "unique_patterns": 11,
+      "optimistic_ap": 0.422682,
+      "optimistic_f1": 0.433955
+    },
+    "V4.2 E2-A": {
+      "observations": 15011,
+      "features": 8,
+      "variable_features": 5,
+      "unique_patterns": 11,
+      "optimistic_ap": 0.532618,
+      "optimistic_f1": 0.558603
+    },
+    "V3 E2-B": {
+      "observations": 15011,
+      "features": 24,
+      "variable_features": 13,
+      "unique_patterns": 25,
+      "optimistic_ap": 0.427355,
+      "optimistic_f1": 0.434265
+    },
+    "V4.2 E2-B": {
+      "observations": 15011,
+      "features": 24,
+      "variable_features": 13,
+      "unique_patterns": 26,
+      "optimistic_ap": 0.536485,
+      "optimistic_f1": 0.56005
+    },
+    "V3 E2-C": {
+      "observations": 15011,
+      "features": 36,
+      "variable_features": 22,
+      "unique_patterns": 47,
+      "optimistic_ap": 0.440141,
+      "optimistic_f1": 0.434438
+    },
+    "V4.2 E2-C": {
+      "observations": 15011,
+      "features": 36,
+      "variable_features": 22,
+      "unique_patterns": 61,
+      "optimistic_ap": 0.551002,
+      "optimistic_f1": 0.560748
+    },
+    "V3 E2-D": {
+      "observations": 15011,
+      "features": 44,
+      "variable_features": 27,
+      "unique_patterns": 47,
+      "optimistic_ap": 0.440141,
+      "optimistic_f1": 0.434438
+    },
+    "V4.2 E2-D": {
+      "observations": 15011,
+      "features": 44,
+      "variable_features": 27,
+      "unique_patterns": 61,
+      "optimistic_ap": 0.551002,
+      "optimistic_f1": 0.560748
+    }
+  },
+  "feature_integrity": "PASS",
+  "metadata_alignment": "PASS",
+  "diagnostic_type": "optimistic_in_sample",
+  "classifier_fitting_performed": false,
+  "independent_predictive_accuracy_established": false
+}

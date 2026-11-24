@@ -1,0 +1,19 @@
+{
+  "scope": "historical_assignment_metadata_only_not_predictor_validation",
+  "git_commit": "cee80d97c8454e726d55a97abb98fda74a8e2b7f",
+  "manifest_path": "experiments/results/preprocessing/partitions/uci_partition_manifest.csv",
+  "git_blob_sha256": "304bb9446748e27bd4d1a7521513b1b2e31e0bab3be4f6fac0c8a0673ca7e6fd",
+  "historical_mixed_target_groups": 64,
+  "mixed_target_group_sizes": {
+    "2": 64
+  },
+  "mixed_target_groups_by_partition": {
+    "development": 44,
+    "calibration": 10,
+    "test": 10
+  },
+  "development_rows": 4094,
+  "development_groups": 4050,
+  "source_vector_to_group_correspondence_verified": false,
+  "assignment_reuse_accepted": false
+}

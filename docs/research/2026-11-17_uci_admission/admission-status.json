@@ -1,0 +1,151 @@
+{
+  "version": "uci-admission-status-1",
+  "baseline_commit": "d0f44c482375547a3bfa71524e625795a9c10227",
+  "admission": "BLOCKED",
+  "fully_satisfied_conditions": 0,
+  "status_definitions": {
+    "VERIFIED": "Every criterion of the stated item evidenced; all ten mandatory conditions plus exact authorization are required to fit",
+    "PARTIAL": "Some criterion evidence verified, but whole condition not satisfied",
+    "BLOCKED_EXTERNAL": "Missing authentic facts or an actual authorized researcher/joint decision outside this automated verification; this does not imply a mandatory adviser or third-party custodian signature.",
+    "BLOCKED_TECHNICAL": "Necessary verified software check currently fails or is absent"
+  },
+  "conditions": [
+    {
+      "id": "UCI-S01",
+      "status": "PARTIAL",
+      "fully_satisfied": false,
+      "acceptance_criterion": "Exact release/acquisition/source-custody evidence plus researcher source acceptance",
+      "evidence": "source-retrieval.json; documentary-checks.json; prior source pointer identities; source-snapshot.json: genuine official opaque acquisition and exact archive SHA-256; release-comparison.json verifies source members and bundled documentation against the frozen archive; source_manifest.csv; researcher-authority-matrix.json",
+      "external_requirement": "No blanket external custodian/adviser signoff for ordinary source capture. Source class-definition facts and an actual researcher-recorded prospective scope remain incomplete."
+    },
+    {
+      "id": "UCI-S02",
+      "status": "BLOCKED_EXTERNAL",
+      "fully_satisfied": false,
+      "acceptance_criterion": "Authoritative UCI-327 release-specific Result numeric class definition",
+      "evidence": "uci-metadata.json:data.variables[30].description=null; authenticated feature DOCX has no Result definition; label-source-checks.json; release-comparison.json: actual source header declares codes only; release document contains no Result token; result-semantics-evidence.json: original-author papers lack a release-bound codebook; 2016/2018 secondary publications assert opposite mappings",
+      "external_requirement": "Obtain a release-specific UCI/creator Result definition or clarification; neither secondary majority nor researcher approval resolves contradictory facts."
+    },
+    {
+      "id": "UCI-S03",
+      "status": "BLOCKED_EXTERNAL",
+      "fully_satisfied": false,
+      "acceptance_criterion": "Authenticated original-record through transformation to cleaned-development identity, with complete attrition receipts",
+      "evidence": "lineage-recovery.json; historical recipe only; prospective-protocol.json is unapproved; ml.uci_reconstruction: synthetic-tested source-byte-to-ledger construction; genuine payload execution remains blocked; execution-authorization-analysis.json; execution-authorization-request.md",
+      "external_requirement": "Researchers may record a consistent prospective preparation design; need exact permitted original-row scope and authentic source facts. No authenticated historical bridge was found."
+    },
+    {
+      "id": "UCI-S04",
+      "status": "PARTIAL",
+      "fully_satisfied": false,
+      "acceptance_criterion": "Source-permitted group relations verified against original records; accepted conflict policy and limitations",
+      "evidence": "development-metadata.json; prospective-protocol.json:grouping",
+      "external_requirement": "Researchers accept exact-vector scope and conflict preservation; custodian proves actual vector-to-group correspondence"
+    },
+    {
+      "id": "UCI-S05",
+      "status": "PARTIAL",
+      "fully_satisfied": false,
+      "acceptance_criterion": "Exact assignment manifest accepted after identity/group/exposure checks",
+      "evidence": "development-metadata.json; previous zero-crossing/five-fold verification",
+      "external_requirement": "Joint researchers authorize exact historical reuse, or separately accept prospective allocation settings; no implicit transfer"
+    },
+    {
+      "id": "UCI-S06",
+      "status": "PARTIAL",
+      "fully_satisfied": false,
+      "acceptance_criterion": "Accepted 30-feature dictionary, code meanings/limitations, null eligibility and train-local encoding",
+      "evidence": "ml/uci-native-schema.v1.json; documentary-checks.json; native-domain regressions; release-comparison.json: actual ordered source header and all native domains match",
+      "external_requirement": "Researchers freeze dictionary hash and resolve or bound Request_URL/Redirect prose-code discrepancies"
+    },
+    {
+      "id": "UCI-S07",
+      "status": "BLOCKED_EXTERNAL",
+      "fully_satisfied": false,
+      "acceptance_criterion": "Authenticated named development-only delivery with independent population/lineage IDs and access scope",
+      "evidence": "Existing in-memory UCI handoff and guarded fixture tests; real delivery absent; execution-authorization-analysis.json; execution-authorization-request.md",
+      "external_requirement": "Researchers/data holder record allowed material, original locators and delivery hashes; separate custodian attestation only if that party controls the required evidence or access."
+    },
+    {
+      "id": "UCI-S08",
+      "status": "PARTIAL",
+      "fully_satisfied": false,
+      "acceptance_criterion": "Accepted exposure/claim/access disposition acknowledging historical holdout evaluation",
+      "evidence": "Prior UCI packet exposure section; prospective-protocol.json:exposure",
+      "external_requirement": "Researchers/adviser accept exploratory/internal-only limits, or provide genuine unexposed-scope evidence"
+    },
+    {
+      "id": "UCI-S09",
+      "status": "BLOCKED_EXTERNAL",
+      "fully_satisfied": false,
+      "acceptance_criterion": "Accepted source/population/assignment/dictionary/freeze/delivery and exact bounded D-features authorization, then actual-data checks",
+      "evidence": "recovery-focused-tests.txt; prospective metadata mechanics only; execution-authorization-analysis.json; execution-authorization-request.md",
+      "external_requirement": "Actual bounded researcher no-fit acceptance and authenticated inputs/digest remain absent; ordinary mechanics do not independently require an adviser amendment."
+    },
+    {
+      "id": "UCI-S10",
+      "status": "BLOCKED_EXTERNAL",
+      "fully_satisfied": false,
+      "acceptance_criterion": "Frozen exact U1 experiment/selection/calibration/threshold/budgets and separately authenticated E run",
+      "evidence": "Governing family/protocol requirements remain unchanged; no accepted current UCI run",
+      "external_requirement": "Researchers freeze complete settings and authorize exact development-only E run after applicable admission checks"
+    }
+  ],
+  "component_checks": [
+    {
+      "item": "Current official source/license and document identity",
+      "status": "VERIFIED",
+      "evidence": "source-retrieval.json; documentary-checks.json"
+    },
+    {
+      "item": "Thirty ordered native feature domain transcription",
+      "status": "VERIFIED",
+      "evidence": "ml/uci-native-schema.v1.json; documentary-checks.json; no semantic acceptance implied"
+    },
+    {
+      "item": "Historical metadata disjointness and conflict counts",
+      "status": "VERIFIED",
+      "evidence": "development-metadata.json; prior validation; not raw-to-group proof"
+    },
+    {
+      "item": "Prospective ledger metadata consistency mechanics",
+      "status": "VERIFIED",
+      "evidence": "recovery-focused-tests.txt; synthetic only"
+    },
+    {
+      "item": "Official original archive acquired and frozen without member payload access",
+      "status": "VERIFIED",
+      "evidence": "source-snapshot.json; current user Phase A acquisition request; local ignored snapshot"
+    },
+    {
+      "item": "Exact native ARFF parsing and prospective lineage/attrition candidate pipeline",
+      "status": "VERIFIED",
+      "evidence": "ml/uci_reconstruction.py; reconstruction-focused-tests.txt; generated inputs only"
+    },
+    {
+      "item": "Pinned release member sizes, bundled feature-document digest and exact source header/dictionary comparison without rows",
+      "status": "VERIFIED",
+      "evidence": "release-comparison.json"
+    },
+    {
+      "item": "Processing counts validated before decoding and record limit enforced before extra-row interpretation",
+      "status": "VERIFIED",
+      "evidence": "ml/uci_reconstruction.py; execution-readiness-focused.txt"
+    },
+    {
+      "item": "Direct approved-proposal and supervision-agreement governance review; researcher/external roles distinguished",
+      "status": "VERIFIED",
+      "evidence": "research-authority-primary-evidence.json; researcher-authority-matrix.json"
+    }
+  ],
+  "historical_lineage": "INCOMPLETE",
+  "prospective_protocol": "READY_FOR_APPROVAL",
+  "prospective_protocol_approved": false,
+  "actual_data_admission_run": false,
+  "fitting_authorized": false,
+  "scientific_experiments_executed": 0,
+  "source_snapshot_authenticated": true,
+  "source_acquisition_status": "VERIFIED for newly acquired prospective archive; no historical acquisition date inferred",
+  "authority_assessment": "RESEARCHER_PERMITTED_FOR_ROUTINE_DECISIONS; exact genuine-data scope is unrecorded and source-label facts unresolved",
+  "race_priority": "PhiUSIIL-967, evaluated independently; see ../2026-11-18_technical_admission/admission-race.json"
+}

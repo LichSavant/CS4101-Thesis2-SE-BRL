@@ -1,7 +1,8 @@
 """Scoped C-allocation/D-feature commands; no model-fitting prerequisites.
 
-Only an independently authenticated researcher's dated exact-scope receipt opens
-these stages. No approved=True flag, original-source discovery or test predictors.
+Legacy receipts require independently authenticated researcher evidence. A narrow
+jointly accepted PhiUSIIL v2 policy uses recorded researcher-controlled authority.
+No approved=True flag, original-source discovery or test predictors.
 Receipts record an existing human decision; this command never creates approval.
 """
 import argparse
@@ -33,7 +34,8 @@ def _completion(root, output, receipt, authorization_sha256):
     identity = execution_identity(root, code_sha256=receipt["code_sha256"],
         settings_sha256=hashlib.sha256(canonical_json(receipt["input_sha256"]).encode()).hexdigest())
     return write_integrity_receipt(output, identity=identity,
-        input_sha256={**receipt["input_sha256"], "external_authorization_receipt":authorization_sha256},
+        input_sha256={**receipt["input_sha256"],
+            ("researcher_authorization_receipt" if receipt["version"] != VERSION else "external_authorization_receipt"):authorization_sha256},
         category="no_fit_preparation")
 
 
@@ -55,10 +57,11 @@ def run_preparation(root, input_run_id, *, stage, expected_authorization_sha256)
     receipt_path = _within(run, "protocol/"+("allocation_acceptance.json" if stage == "C-allocation" else "feature_acceptance.json"))
     receipt = _json(_read(receipt_path, expected_authorization_sha256, 1_000_000))
     try:
+        from ml.no_fit_authority import VERSION as RESEARCHER_VERSION
         authority = receipt["authority"]
         output_run_id, branch = receipt["output_run_id"], receipt["branch"]
         if (set(receipt) != {"version", "stage", "authority", "branch", "output_run_id", "input_sha256", "code_sha256", "access"}
-                or receipt["version"] != VERSION or receipt["stage"] != stage or branch not in PAYLOAD
+                or receipt["version"] not in {VERSION, RESEARCHER_VERSION} or receipt["stage"] != stage or branch not in PAYLOAD
                 or set(authority) != {"name", "role", "date", "response_reference", "response_text"}
                 or any(type(v) is not str or not v.strip() for v in authority.values())
                 or authority["role"] not in {"researcher", "adviser"} or date.fromisoformat(authority["date"]) > date.today()
@@ -66,6 +69,10 @@ def run_preparation(root, input_run_id, *, stage, expected_authorization_sha256)
                 or not re.fullmatch(r"[a-z0-9][a-z0-9-]{0,63}", output_run_id)
                 or output_run_id == input_run_id):
             raise InputContractError("dated_exact_no_fit_acceptance_required")
+        policy = None
+        if receipt['version'] == RESEARCHER_VERSION:
+            from ml.no_fit_authority import validate_authority
+            policy = validate_authority(root, receipt, stage, input_run_id)
         output = _within(root, "experiments/runs/"+output_run_id)
         if output.exists():
             raise InputContractError("unused_preparation_output_required")
@@ -81,12 +88,18 @@ def run_preparation(root, input_run_id, *, stage, expected_authorization_sha256)
         records = population["records"]
         validate_prospective_population(records)
         validate_preparation_sources(records, branch)
+        if policy is not None:
+            from ml.no_fit_authority import validate_population
+            validate_population(policy, records, stage, receipt['input_sha256'])
         ids = frozenset(r["observation_id"] for r in records)
         if len(ids) != len(records) or not records:
             raise InputContractError("unique_accepted_population_required")
         if stage == "C-allocation":
             relationships = _json(content["protocol/relationships.json"])
             settings = _json(content["protocol/allocation_settings.json"])
+            if policy is not None:
+                from ml.no_fit_authority import validate_allocation_settings
+                validate_allocation_settings(policy, settings)
             if (set(settings) != {"fractions", "seed", "maximum_fraction_error", "policy_reference"}
                     or not relationships["policy_reference"] == settings["policy_reference"]
                     or set(relationships["coverage"]) != {"exact_duplicate", "near_duplicate", "template", "campaign", "domain"}
@@ -116,6 +129,9 @@ def run_preparation(root, input_run_id, *, stage, expected_authorization_sha256)
             raise InputContractError("exact_accepted_feature_freeze_required")
         rows = _json(content["data/development/"+PAYLOAD[branch]])
         validate_development_locators(records, rows, branch)
+        if policy is not None:
+            from ml.no_fit_authority import validate_feature_derivation
+            validate_feature_derivation(root, receipt, rows, dictionary)
         if branch in {"Email", "Web"}:
             access = receipt["access"]
             main, vectors, evidence, summary = extract_content_handoff(rows, assignment_manifest=assignments,

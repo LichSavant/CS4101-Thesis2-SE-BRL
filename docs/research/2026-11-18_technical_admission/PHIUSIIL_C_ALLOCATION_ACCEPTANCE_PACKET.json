@@ -1,0 +1,164 @@
+{
+  "packet_type": "C-allocation acceptance request; NOT an acceptance receipt",
+  "baseline_commit": "65dfa3f15f1e1658146dc9a150c72f895ca60503",
+  "allocation_status": "BLOCKED_NOT_EXECUTED; no valid allocation_acceptance.json or independently supplied trusted digest available",
+  "input_run_id": "phiusiil-former-development-input-v1",
+  "input_run_root": "experiments/runs/phiusiil-former-development-input-v1",
+  "required_output_run_id": "phiusiil-former-development-allocation-v1",
+  "scope": {
+    "population_records": 165089,
+    "source_snapshot_sha256": "a236549cd369cd80bd478ff8e1779cbf44c58d5c3f79f7a51a1adbed7d06d1c6",
+    "source_path_relative_to_original_repository": "experiments/datasets-raw/webpage/PhiUSIL/PhiUSIIL_Phishing_URL_Dataset.csv",
+    "identity": "Existing source-v1 IDs bound to source snapshot, original file and zero-based original CSV record position; prospective reconstructed correspondence, not independently authenticated historical lineage",
+    "historical_protected_records_excluded": 70706,
+    "fractions": [
+      0.7,
+      0.15,
+      0.15
+    ],
+    "internal_role_names": [
+      "development",
+      "calibration",
+      "test"
+    ],
+    "seed": 42,
+    "development_folds": 5,
+    "maximum_per_class_fraction_error": 0.05,
+    "grouping": "Connected components of verified literal-domain strip/lower relationships and exact URL equality in former-development positions only",
+    "relationship_counts": {
+      "components": 154096,
+      "components_merging_historical_groups": 0,
+      "edge_counts": {
+        "domain": 10993,
+        "exact_duplicate": 272
+      },
+      "historical_groups": 154096,
+      "historical_groups_split": 0,
+      "mixed_native_label_components": 36,
+      "observations": 165089,
+      "raw_url_domain_values_exported": false
+    },
+    "unavailable_coverage_accepted_as_limitation": [
+      "near_duplicate",
+      "template",
+      "campaign"
+    ],
+    "conflict_policy": "Retain all observations, all 36 mixed-label groups unsplit; no relabeling, seed search, fallback or removal",
+    "exposure": "Exploratory previously exposed; internal test is not an untouched historical holdout",
+    "claims": "Technical-only U1; no behavioral-indicator or Transformer validation",
+    "permission_boundary": "C metadata allocation only; no historical protected predictors/outcomes, no fitting, no protected evaluation"
+  },
+  "exact_inputs": [
+    {
+      "path": "experiments/runs/phiusiil-former-development-input-v1/protocol/allocation_settings.json",
+      "receipt_relative_path": "protocol/allocation_settings.json",
+      "sha256": "12ba404731616f8cc6bd0062b8d2fe9f67389147a0d06ede5a16ef5f8279824c",
+      "bytes": 251
+    },
+    {
+      "path": "experiments/runs/phiusiil-former-development-input-v1/protocol/population.json",
+      "receipt_relative_path": "protocol/population.json",
+      "sha256": "a56fe920af493aff1238c9a30b5db14a5d0bc371a92e9ac85966531d45eded16",
+      "bytes": 61995919
+    },
+    {
+      "path": "experiments/runs/phiusiil-former-development-input-v1/protocol/relationships.json",
+      "receipt_relative_path": "protocol/relationships.json",
+      "sha256": "93c18fcc240cf852f1e8e609d2a45bd66e6c274a2eb5f0e9dbfaf663db2adbb3",
+      "bytes": 4635250
+    }
+  ],
+  "supporting_evidence": [
+    {
+      "path": "docs/research/2026-11-18_technical_admission/PHIUSIIL_SCOPE_DECISION.json",
+      "sha256": "b13848a17d4aca2b074c697ca141108af5ace4803e30d46b8fc0aff9c4d8e93d",
+      "bytes": 4638
+    },
+    {
+      "path": "experiments/runs/phiusiil-former-development-input-v1/preparation_checks.json",
+      "sha256": "39f32d2aaeda459c1817d627da61fd844d919584c918ff91712b7e8c8cb07e0b",
+      "bytes": 10967
+    },
+    {
+      "path": "docs/research/2026-11-18_technical_admission/PHIUSIIL_POPULATION_DECISION_PROPOSAL.md",
+      "sha256": "2941fa249de79c63545fd1d49f17dd2199e11d3c27ff801774e8e314b34e7fb8",
+      "bytes": 6911
+    },
+    {
+      "path": "experiments/runs/phiusiil-development-20261118/historical_id_aliases.jsonl",
+      "sha256": "0ad4ba87171d2467b0fc94327dfdaf282fe39b903224d58ec769ab51a62e3657",
+      "bytes": 28735263
+    },
+    {
+      "path": "experiments/source-snapshots/phiusiil-967-20261118/reconciliation-20261118-v2/reconciliation_receipt.json",
+      "sha256": "f218c6b857df72d48fc917657c716c9b8a2629fa83c987de79dca2c2dd4a3176",
+      "bytes": 3516
+    }
+  ],
+  "upstream_population_authentication_required": {
+    "responsible_authority": "Researcher/data holder or trusted independent operator able to verify the allowed upstream population; no universal external institution or third-party signature is required",
+    "verify": "Independently of this generating agent, establish that the exact upstream permitted population is the 165089 reconciled former-development original positions in the authenticated snapshot. Check source-bound IDs/locators, native labels 0 phishing/1 legitimate and target inversion, exact ID coverage, and absence of all historical protected positions. Bind the reviewed upstream ledger by path and SHA-256.",
+    "existing_evidence_to_reuse": "Hash-bound original source, original-position reconciliation receipt, historical/prospective alias ledger and prepared population. Reconstructed evidence must be accepted with its limitations; historical rank or aggregate source count alone is insufficient.",
+    "expected_original_locators_fingerprint": "62b015cb7bc0d478bfb693aabd35d4879c756e39271775f3872c483109bfc64c",
+    "expected_population_fingerprint": "120fb148d2a59f83aafb0a5cf37df3a577ca0549a8d3b9885ae4cc3b8560c2a8",
+    "not_independent_evidence": "This packet, its hashes or a second hash computed by the same generating agent do not establish independent authorization/custody. Do not reopen protected records or manufacture new signatures.",
+    "record_actual_review": "Provide a dated attributable review reference and actual acceptance of these exact inputs and reconstruction/relationship/exposure limitations; retain an independently checkable source of the review."
+  },
+  "methodological_authority": {
+    "direct_researcher_acceptance_date": "2026-11-18",
+    "direct_response_record": "docs/research/2026-11-18_technical_admission/PHIUSIIL_SCOPE_DECISION.json",
+    "attribution": "Direct user acceptance; joint acceptance reported subject to Vera confirmation. Neither independent signature verification nor exact-file C acceptance has been supplied.",
+    "joint_confirmation": "Record Vera confirmation if needed for the joint methodological deviation; do not infer it from the direct respondent report."
+  },
+  "exact_receipt_to_be_supplied": {
+    "path": "experiments/runs/phiusiil-former-development-input-v1/protocol/allocation_acceptance.json",
+    "root_keys_exact": [
+      "version",
+      "stage",
+      "authority",
+      "branch",
+      "output_run_id",
+      "input_sha256",
+      "code_sha256",
+      "access"
+    ],
+    "fixed_values": {
+      "version": "scoped-no-fit-preparation-1",
+      "stage": "C-allocation",
+      "branch": "PhiUSIIL",
+      "output_run_id": "phiusiil-former-development-allocation-v1"
+    },
+    "authority_exact_keys": [
+      "name",
+      "role",
+      "date",
+      "response_reference",
+      "response_text"
+    ],
+    "authority_requirements": "Actual nonempty attributable authority values; role researcher or adviser; genuine ISO approval date not future; response_text at least 40 characters explicitly accepting exact files/code/scope, upstream population and relationship/exposure limitations. No agent-created authority response.",
+    "input_sha256_exact": {
+      "protocol/allocation_settings.json": "12ba404731616f8cc6bd0062b8d2fe9f67389147a0d06ede5a16ef5f8279824c",
+      "protocol/population.json": "a56fe920af493aff1238c9a30b5db14a5d0bc371a92e9ac85966531d45eded16",
+      "protocol/relationships.json": "93c18fcc240cf852f1e8e609d2a45bd66e6c274a2eb5f0e9dbfaf663db2adbb3"
+    },
+    "code_sha256_source": {
+      "path": "experiments/runs/phiusiil-former-development-input-v1/preparation_checks.json",
+      "file_sha256": "39f32d2aaeda459c1817d627da61fd844d919584c918ff91712b7e8c8cb07e0b",
+      "json_pointer": "/code_sha256",
+      "requirement": "Copy the complete existing map exactly; it must still match code_hashes(current checkout) at execution."
+    },
+    "access_requirement": "Root access field is mandatory. Record truthful metadata-only/no historical protected source access/no fitting restrictions. C does not independently evaluate the contents of this field; it cannot substitute for genuine scoped authority.",
+    "bounds": "Receipt at most 1000000 bytes; each input at most 100000000 bytes; output namespace must be absent and distinct from input.",
+    "receipt_not_generated": true
+  },
+  "independently_trusted_digest_required": {
+    "action": "After the real accepting authority finalizes the exact receipt, verify its bytes through a genuinely independent trusted channel/tool and supply its actual SHA-256 to the operator. The digest must identify that real receipt; input hashes and this packet hash cannot substitute.",
+    "value_supplied": false,
+    "no_fake_digest": "No digest value is proposed or asserted trusted here."
+  },
+  "launch_only_after_receipt_and_trust_are_supplied": [
+    "python -B -m ml.preparation_execution --root . --input-run-id phiusiil-former-development-input-v1 --stage C-allocation --authorization-sha256 <actual independently trusted receipt SHA-256>",
+    "Verify the resulting allocation manifest and group/class/fold constraints; stop on any failure. No fitting is authorized by C allocation."
+  ],
+  "validation_scope": "This packet only reuses prepared evidence; no population generation, source-row processing or allocation rerun performed."
+}

@@ -1,0 +1,20 @@
+[
+  {
+    "artifact": "official-metadata.json",
+    "url": "https://archive.ics.uci.edu/api/dataset?id=967",
+    "effective_url": "https://archive.ics.uci.edu/api/dataset?id=967",
+    "retrieved_utc": "2026-11-18T01:29:43.215780+00:00",
+    "bytes": 9475,
+    "sha256": "82cdd5117a3b8f42d65edbcbeb84b5f5d487f3c14ca3ac62c972f33822d09189",
+    "scope": "source documentation only; zero research rows"
+  },
+  {
+    "artifact": "official-page.html",
+    "url": "https://archive.ics.uci.edu/dataset/967/phiusiil+phishing+url+dataset",
+    "effective_url": "https://archive.ics.uci.edu/dataset/967/phiusiil+phishing+url+dataset",
+    "retrieved_utc": "2026-11-18T01:29:43.940769+00:00",
+    "bytes": 232543,
+    "sha256": "d06adef2c2fe7a7f8d535640217fb290904628a8fbd0736d73a7734229c5dbeb",
+    "scope": "source documentation only; zero research rows"
+  }
+]

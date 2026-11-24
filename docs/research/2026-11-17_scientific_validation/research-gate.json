@@ -1,0 +1,82 @@
+{
+  "gate_version": "email-research-admission-0.1.0",
+  "scope": "accepted development research fitting",
+  "status": "FAIL",
+  "research_fitting_enabled": false,
+  "scientific_authorization_verified": false,
+  "reason": "accepted_exact_run_evidence_not_supplied",
+  "checks": [
+    {
+      "id": "population",
+      "requirement": "Approved Email population",
+      "status": "FAIL",
+      "required_evidence": "Dated population/CEAS role and exact eligible ID-universe acceptance",
+      "reason": "accepted_branch_evidence_not_verified"
+    },
+    {
+      "id": "source_labels",
+      "requirement": "Verified source and label semantics",
+      "status": "FAIL",
+      "required_evidence": "Source snapshot/access/license records and source-backed native class definitions",
+      "reason": "accepted_branch_evidence_not_verified"
+    },
+    {
+      "id": "identity",
+      "requirement": "Accepted identity and lineage",
+      "status": "FAIL",
+      "required_evidence": "Authenticated record lineage, or an accepted prospective identity/ingestion protocol",
+      "reason": "accepted_branch_evidence_not_verified"
+    },
+    {
+      "id": "assignments",
+      "requirement": "Accepted grouping and partitions",
+      "status": "FAIL",
+      "required_evidence": "Accepted relationship policy and versioned supplied group/role/fold manifest; exposure disposition",
+      "reason": "accepted_branch_evidence_not_verified"
+    },
+    {
+      "id": "custody",
+      "requirement": "Authorized development custody",
+      "status": "FAIL",
+      "required_evidence": "Named hashed development-only delivery and access authorization",
+      "reason": "accepted_branch_evidence_not_verified"
+    },
+    {
+      "id": "behavior",
+      "requirement": "Approved deterministic feature definitions",
+      "status": "FAIL",
+      "required_evidence": "Accepted twelve-rule/language/locator/availability specification and conformance evidence",
+      "reason": "accepted_branch_evidence_not_verified"
+    },
+    {
+      "id": "dictionaries",
+      "requirement": "Approved matched E1/E2/E3 dictionaries",
+      "status": "FAIL",
+      "required_evidence": "Ordered typed predictors, forbidden-field controls and matched population/fold validation",
+      "reason": "accepted_branch_evidence_not_verified"
+    },
+    {
+      "id": "evaluation",
+      "requirement": "Approved candidate and evaluation settings",
+      "status": "FAIL",
+      "required_evidence": "Predeclared ranges/budgets/nesting/seeds/score/calibration/selection settings",
+      "reason": "accepted_branch_evidence_not_verified"
+    },
+    {
+      "id": "leakage",
+      "requirement": "Verified research leakage safeguards",
+      "status": "FAIL",
+      "required_evidence": "Accepted-data duplicate/group/target/source/preprocessing isolation evidence, beyond synthetic checks",
+      "reason": "accepted_branch_evidence_not_verified"
+    },
+    {
+      "id": "reproducibility",
+      "requirement": "Configured research reproducibility outputs",
+      "status": "FAIL",
+      "required_evidence": "Accepted run/code/environment/input/model provenance and exclusive complete research-output plan",
+      "reason": "accepted_branch_evidence_not_verified"
+    }
+  ],
+  "synthetic_success_authorizes_research": false,
+  "reference_strings_authorize_research": false
+}

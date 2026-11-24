@@ -1,0 +1,7 @@
+scope,true_negative,false_positive,false_negative,true_positive
+fold-1,13240,1,185,9686
+fold-2,13238,3,132,9739
+fold-3,13238,4,149,9722
+fold-4,13240,2,135,9736
+fold-5,13239,3,160,9711
+pooled,66195,13,761,48594

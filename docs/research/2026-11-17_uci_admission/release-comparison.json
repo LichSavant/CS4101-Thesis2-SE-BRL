@@ -1,0 +1,35 @@
+{
+  "scope": "release_document_and_source_header_only",
+  "archive_sha256": "514f582cb44cba17251baf1d59f64cddff16efa2b644d091ce8d2a1e8d492940",
+  "member_sizes": {
+    ".old.arff": 170897,
+    "Training Dataset.arff": 800920,
+    "Phishing Websites Features.docx": 38995
+  },
+  "document_sha256": "f6f9326f45659a7b5ef947fa744cec2c379dbea17de56d34436312407faca43c",
+  "header_sha256": "bbd3e4bce3d4dfcb389ab902e694a7f6c69ba69dd772d290ea7b77e95a01cd25",
+  "header_bytes_returned": 1145,
+  "header_comparison": {
+    "ordered_predictors": 30,
+    "target_field": "Result",
+    "target_codes": [
+      -1,
+      1
+    ],
+    "native_result_meanings_established": false
+  },
+  "feature_document_contains_Result_token": false,
+  "existing_native_to_target_mapping": {
+    "-1": 1,
+    "1": 0
+  },
+  "existing_mapping_code_set_matches_header": true,
+  "existing_target_convention": {
+    "1": "phishing",
+    "0": "legitimate"
+  },
+  "mapping_authoritatively_verified": false,
+  "research_rows_returned_or_processed": 0,
+  "files_extracted": 0,
+  "scientific_admission": false
+}

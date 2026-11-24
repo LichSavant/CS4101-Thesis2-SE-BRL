@@ -1,0 +1,167 @@
+{
+  "schema": "phiusiil-fixed-three-family-comparison-request-1",
+  "status": "CANDIDATE - NOT FITTING AUTHORIZATION",
+  "eligible_observations": 115563,
+  "development_folds": 5,
+  "feature_columns": [
+    "URLLength",
+    "DomainLength",
+    "IsDomainIP",
+    "TLDLength",
+    "NoOfSubDomain",
+    "HasObfuscation",
+    "NoOfObfuscatedChar",
+    "NoOfLettersInURL",
+    "NoOfDegitsInURL",
+    "IsHTTPS"
+  ],
+  "input_fingerprint": "a80426df6bc711df89b766fed8ec7173c7b5b82b48f3c1ceaa555c089e7661a6",
+  "D_manifest_path": "experiments/runs/phiusiil-former-development-features-v1/data/processed/features/development/development_input_manifest.json",
+  "D_manifest_sha256": "cfbbbe47b3e241e8410ac78f02f600d7e157f1824176e8e553c618fefb3c6e7a",
+  "C_completion_sha256": "7c7d125731dae0f9af1c5dc1e3d632f98d7908c35dc0616e0771f0d1710afe0c",
+  "D_completion_sha256": "9a872eecc81b5cc719fb7c5bfc589b8c243afece375ba5989d7523b63824aa43",
+  "baseline": {
+    "manifest_path": "docs/research/2026-11-19_phiusiil_baseline_results/reproducibility_manifest.json",
+    "manifest_sha256": "9f956b694149a2a8919628511d6856ab2b617167524f4d3e4cc8754b29ebe771",
+    "run": "experiments/runs/phiusiil-fixed-logreg-oof-v1",
+    "prediction_sha256": "68136746e88fe3fdbd2927af91ee968fe7078c163a28ba3a60d641dc472ef848",
+    "pooled_metrics": {
+      "precision": 0.9997325488098422,
+      "recall": 0.9845810961402087,
+      "f1": 0.9920989771544068,
+      "balanced_accuracy": 0.9921923726230285,
+      "average_precision": 0.997639557704991,
+      "confusion_matrix": [
+        [
+          66195,
+          13
+        ],
+        [
+          761,
+          48594
+        ]
+      ]
+    },
+    "repeat_fitting": false
+  },
+  "configuration_source": {
+    "path": "docs/research/2026-11-18_phiusiil_descriptive/candidate_experiment_configuration.json",
+    "sha256": "75897ce48cd5644782f77eac1f09f378aba8b4fe6b70dae6da8d4b79eee58518",
+    "scientific_status": "Existing Pending grids; selected fixed points require actual combined acceptance"
+  },
+  "models": [
+    {
+      "family": "linear_svm",
+      "id": "linear_svm-004",
+      "parameters": {
+        "C": 1.0,
+        "class_weight": null,
+        "dual": false,
+        "fit_intercept": true,
+        "loss": "squared_hinge",
+        "max_iter": 2000,
+        "penalty": "l2",
+        "tol": 0.0001
+      },
+      "preprocessing": {
+        "numeric_missing": "reject",
+        "numeric_scaling": "standard",
+        "text_parameters": null
+      },
+      "seed": 42,
+      "score_kind": "margin",
+      "decision_threshold": 0.0,
+      "base_fits": 5,
+      "calibration_fits": 0,
+      "choice_rationale": "Predeclared C=1 matching the LR regularization level"
+    },
+    {
+      "family": "random_forest",
+      "id": "random_forest-000",
+      "parameters": {
+        "bootstrap": true,
+        "class_weight": "balanced",
+        "criterion": "gini",
+        "max_depth": null,
+        "max_features": "sqrt",
+        "min_samples_leaf": 1,
+        "n_estimators": 300,
+        "n_jobs": 1
+      },
+      "preprocessing": {
+        "numeric_missing": "reject",
+        "numeric_scaling": "none",
+        "text_parameters": null
+      },
+      "seed": 42,
+      "score_kind": "probability",
+      "decision_threshold": 0.5,
+      "base_fits": 5,
+      "calibration_fits": 0,
+      "choice_rationale": "First declared existing grid point; lowest declared tree/depth option where applicable; not chosen using held-out outcomes"
+    },
+    {
+      "family": "xgboost",
+      "id": "xgboost-000",
+      "parameters": {
+        "booster": "gbtree",
+        "colsample_bytree": 0.8,
+        "device": "cpu",
+        "eval_metric": "logloss",
+        "learning_rate": 0.03,
+        "max_depth": 3,
+        "min_child_weight": 1,
+        "n_estimators": 500,
+        "n_jobs": 1,
+        "objective": "binary:logistic",
+        "reg_lambda": 1,
+        "scale_pos_weight": "fold_ratio",
+        "subsample": 0.8,
+        "tree_method": "hist"
+      },
+      "preprocessing": {
+        "numeric_missing": "reject",
+        "numeric_scaling": "none",
+        "text_parameters": null
+      },
+      "seed": 42,
+      "score_kind": "probability",
+      "decision_threshold": 0.5,
+      "base_fits": 5,
+      "calibration_fits": 0,
+      "choice_rationale": "First declared existing grid point; lowest declared tree/depth option where applicable; not chosen using held-out outcomes"
+    }
+  ],
+  "additional_base_fits": 15,
+  "calibration_fits": 0,
+  "hyperparameter_search": false,
+  "threshold_optimization": false,
+  "budget": {
+    "max_base_fits": 15,
+    "max_fits_per_family": 5,
+    "threads": 1,
+    "max_training_rows": 115563,
+    "max_total_seconds": 10800
+  },
+  "primary_reporting_metric": "noninterpolated_average_precision_pooled_out_of_fold",
+  "selection_policy": {
+    "status": "PROPOSED exploratory point ranking only; not formal implementation/model selection",
+    "rule": "Report highest observed pooled AP, retaining ties; report per-fold AP and fold mean AP alongside it. No significance, practical-equivalence, deployment or final-model-selection claim.",
+    "margin_limitation": "Linear SVM has raw margins and threshold 0; pooling uncalibrated fold scores assumes cross-fold comparability. Within-fold AP is additionally reported to expose that limitation.",
+    "formal_selection_boundary": "Existing select_research_family requires accepted nested calibrated evidence, selection policy and benchmark/SRS decisions. These are not supplied by a fixed uncalibrated comparison and that gate is not bypassed."
+  },
+  "checkpoint_policy": "One immutable result directory and verified completion marker per completed family. Reruns verify and skip completed families; a partial output without a valid marker stops without overwriting.",
+  "boundaries": [
+    "Same eligible observations/features/groups/folds as verified LR",
+    "Fold-local standardization for SVM only; no scaling for RF/XGBoost",
+    "Missing numeric inputs rejected",
+    "XGBoost fold_ratio uses training labels only",
+    "No raw-source or reserved predictor access",
+    "No calibration/search/ablations or other datasets",
+    "Technical exploratory claims only; historical exposure and grouping limitations retained"
+  ],
+  "authority_required": "One genuine dated combined researcher decision accepting this exact request hash and all three fixed configurations, 15 additional fits and descriptive ranking limits; separately materialize exact code/input authority. Prior LR authorization is excluded.",
+  "standalone_entrypoint": "python -B -m ml.comparison_batch --execute",
+  "execution_owner": "Ordinary Python in researcher terminal; Codex need not supervise training",
+  "scientific_results_for_remaining_models": null
+}

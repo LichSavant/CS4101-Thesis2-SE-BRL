@@ -1,0 +1,67 @@
+{
+  "version": "supplementary-e2-v1",
+  "status": "proposed_pending_acceptance",
+  "representations": {
+    "E2-A": {
+      "dimension_support": 4,
+      "dimension_availability": 4,
+      "total": 8
+    },
+    "E2-B": {
+      "indicator_support": 12,
+      "indicator_availability": 12,
+      "total": 24
+    },
+    "E2-C": {
+      "indicator_support": 12,
+      "indicator_availability": 12,
+      "indicator_evidence_count": 12,
+      "total": 36
+    },
+    "E2-D": {
+      "dimension_support": 4,
+      "dimension_availability": 4,
+      "indicator_support": 12,
+      "indicator_availability": 12,
+      "indicator_evidence_count": 12,
+      "total": 44
+    }
+  },
+  "indicators": [
+    "urgency",
+    "fear_threat",
+    "scarcity",
+    "curiosity",
+    "reward_lure",
+    "authority",
+    "impersonation",
+    "brand_exploitation",
+    "confidentiality_isolation",
+    "call_to_action",
+    "credential_sensitive_data_request",
+    "financial_action_request"
+  ],
+  "feature_types": {
+    "support": "binary_or_missing",
+    "availability": "binary_or_missing",
+    "evidence_count": "nonnegative_integer_or_missing"
+  },
+  "forbidden_predictors": [
+    "target",
+    "label",
+    "source_dataset",
+    "source_native_label",
+    "source_row_position",
+    "source_row_id",
+    "observation_id",
+    "group_id",
+    "partition",
+    "cv_fold",
+    "body_hash",
+    "source_filename"
+  ],
+  "semantic_policy": "review_only",
+  "missing_is_not_absent": true,
+  "original_baseline_preserved": true,
+  "scientific_acceptance_verified": false
+}

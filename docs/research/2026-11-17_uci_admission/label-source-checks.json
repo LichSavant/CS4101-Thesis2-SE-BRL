@@ -1,0 +1,19 @@
+{
+  "scope": "available official/creator source documentation; no alternate dataset payloads",
+  "native_result_semantics": "BLOCKED",
+  "official_api": {
+    "url": "https://archive.ics.uci.edu/api/dataset?id=327",
+    "retained_artifact": "uci-metadata.json",
+    "finding": "result Target description is null"
+  },
+  "official_feature_document": {
+    "artifact": "uci-feature-document.docx",
+    "sha256": "f6f9326f45659a7b5ef947fa744cec2c379dbea17de56d34436312407faca43c",
+    "finding": "Qualitative feature rules do not establish a numeric Result target codebook"
+  },
+  "creator_repository": {
+    "url": "https://eprints.hud.ac.uk/id/eprint/24330/",
+    "finding": "Author-deposited 2015 dataset record links official UCI and feature document; record page supplies no release-specific numeric Result definition. Alternate ARFF downloads were not accessed or substituted."
+  },
+  "stop_reason": "No release-specific authoritative target definition in the inspected sources; no inference from mirrors, feature encodings, counts or model outcomes."
+}

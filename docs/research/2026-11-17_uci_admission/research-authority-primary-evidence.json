@@ -1,0 +1,55 @@
+{
+  "proposal_sha256": "283338c5535c5553e35266f5083a6380e014637e63d42161c659238e257ad1fe",
+  "reader": "pypdf 6.3.0 task-local, read-only",
+  "pages": [
+    {
+      "pdf_page": 57,
+      "concept": "Institutional-policy qualification",
+      "extracted_page_sha256": "8b5d023e94c5cfda910980b42b2adea1a8b3393409d310f823f5375328a6ea06"
+    },
+    {
+      "pdf_page": 63,
+      "concept": "Researcher acquisition, record audit and later joint deviations",
+      "extracted_page_sha256": "9fb0a54d7d05e28ab6608704f947d7c5135b731fcdb0440ccad3febe2f5b83d9"
+    },
+    {
+      "pdf_page": 64,
+      "concept": "Label mapping before partitioning; original IDs and duplicate/group evidence",
+      "extracted_page_sha256": "84830309bae9228f11f3cddb4b84351ebca9d7ab53ff32ad6dbc3061122f2ee2"
+    },
+    {
+      "pdf_page": 65,
+      "concept": "Audited and Frozen requires reconciliation",
+      "extracted_page_sha256": "157959ad222e51f31feb573d45102e4d61b8837c42ced34bc30161ee75f33aeb"
+    },
+    {
+      "pdf_page": 66,
+      "concept": "Reserved calibration and one-time sealed test",
+      "extracted_page_sha256": "211798245486f026f503413ae9d08de5e0615e5d7532fa7f4c37f8ecd726a2ba"
+    },
+    {
+      "pdf_page": 83,
+      "concept": "No post-test return to model/feature/threshold selection",
+      "extracted_page_sha256": "e8a23d1742b9484dfa62866740754342299fe4c8194ef486448ece6501e535ed"
+    }
+  ],
+  "findings": {
+    "stage_2_actor": "researchers",
+    "stage_3_actor": "researchers performing source and record audits under the frozen protocol",
+    "class_mapping_deadline": "before partitioning (Table 4.4, PDF page 64)",
+    "later_change": "dated deviation record, technical justification, joint approval and confirmation sealed test has not been accessed (PDF page 63)",
+    "blanket_separate_custodian_requirement_in_proposal": false,
+    "blanket_adviser_signoff_for_routine_audit_in_proposal": false,
+    "institutional_approval": "conditional on actual university policy; none presumed satisfied or required from the qualification alone"
+  },
+  "key_text": {
+    "page_63_source_capture": "The researchers calculate SHA-256 hashes locally, assign a source_snapshot_id",
+    "page_64_label_rule": "Mapping frozen before partitioning",
+    "page_63_deviation": "A later change requires a dated deviation record, technical justification, joint approval, and confirmation that the sealed test has not been accessed."
+  },
+  "supervision_agreement": {
+    "path": "Thesis_Proposal_Documents/[ALCOVER, ORBELLO] - Thesis_Adviser_Advisee_Agreement [SIGNED].pdf",
+    "sha256": "d83b95dc6f1ae6ff715e9c2085d7d7575cbf96ec2004682871dd3fc5a3d5bb24",
+    "finding": "Signed supervision/scheduling agreement; no blanket technical-audit custodian/adviser signoff clause identified. Changes to adviser-advisee arrangements refer to the Thesis Project Policy, whose unstated contents are not invented here."
+  }
+}

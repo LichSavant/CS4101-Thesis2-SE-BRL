@@ -1,0 +1,60 @@
+{
+  "baseline_commit": "19884dc9b614aa8ee1f47e38c3a7c3c33b8d03d6",
+  "branch": "research/scientific-validation-20261117",
+  "result_mapping": "UNRESOLVED",
+  "authority": "RESEARCHER_PERMITTED_FOR_ROUTINE_DECISIONS; no actual exact genuine-data scope recorded",
+  "source_records_processed": 0,
+  "scientific_experiments_executed": 0,
+  "whole_conditions_passed": 0,
+  "new_code_defects_identified": 0,
+  "production_code_or_gate_changes": false,
+  "new_tests_added": 0,
+  "pdf_reader": "pypdf 6.3.0; task-local dependency only; removed after read-only work",
+  "document_reader_recovery": "Sandbox import initially failed due elevated-install ACL; read-only primary inspection completed through approved elevated commands. No application/scientific dependencies altered.",
+  "primary_evidence": "Approved proposal and signed supervision agreement directly inspected; original-author papers and opposing independent articles cited with dates/pages/hash where byte retrieval succeeded.",
+  "publication_snapshot_limit": "2018 direct PDF download failed with HTTPError; successful web PDF page inspection supports the citation; no byte hash invented.",
+  "focused_tests": {
+    "command": [
+      "C:\\Users\\Dhanwil\\AppData\\Local\\Temp\\sebrl-submission-20261117\\venv\\Scripts\\python.exe",
+      "-B",
+      "-m",
+      "pytest",
+      "-p",
+      "ml.tests.no_fit_guard",
+      "-p",
+      "no:cacheprovider",
+      "-q",
+      "--basetemp",
+      ".s/a",
+      "ml/tests/test_uci_archive_verification.py",
+      "ml/tests/test_uci_reconstruction.py",
+      "ml/tests/test_uci_lineage.py"
+    ],
+    "exit_code": 0,
+    "passed": 41,
+    "failed": 0,
+    "skipped": 0,
+    "fitting_attempts": 0,
+    "fitting_executions": 0
+  },
+  "checks": {
+    "citation_orientation_contradiction": "PASS",
+    "primary_mapping_not_invented": "PASS",
+    "matrix_and_manifest_unresolved_consistency": "PASS",
+    "existing_ML_code_identity_unchanged": "PASS",
+    "temporary_PDF_dependencies_removed": "PASS"
+  },
+  "artifact_sha256": {
+    "docs/research/2026-11-17_uci_admission/DOSSIER.md": "ca33eb5e0ba3fb187ee9429f8ab9f5b423c1f9df67ea0fc95107984888559746",
+    "docs/research/2026-11-17_uci_admission/admission-status.json": "d9b68c89e554f45e29fda0248c2ccd32c0e6e7695e25ad00a4e6eabe0616bbbb",
+    "docs/research/2026-11-17_uci_admission/execution-authorization-analysis.json": "4f9c8b95c13030740ab8d3cf0f37628ceb0b0d9a9e80d3297dba90dac0a873e7",
+    "docs/research/2026-11-17_uci_admission/execution-authorization-request.md": "43f541ecc57dc58a697c642f5fad718a7648a2dca19dfca0e5a4eaec4f825dad",
+    "docs/research/2026-11-17_uci_admission/prospective-protocol.json": "6afc6cb693d218edcdd78b84bdf24ae466c9e14670d1af164da600e4db857237",
+    "docs/research/2026-11-17_uci_admission/publication-retrieval.json": "f496b282f1dac18c2f9fa8cd90121f9e52781690cdecbcb3b31f905f20d59974",
+    "docs/research/2026-11-17_uci_admission/result-semantics-evidence.json": "a9d1febf9d518959601bded2c33770ffb48acd2cb72c6afc1cc353f0002c5817",
+    "docs/research/2026-11-17_uci_admission/research-authority-primary-evidence.json": "6b6f880f73d1be8263e155981a1eccac55a7510dabba09bfe5a16c3988b72366",
+    "docs/research/2026-11-17_uci_admission/researcher-authority-matrix.json": "445f686162e0815a9f369c37ebc098456c37297cb5af1b92188f5aa3ea209fe5",
+    "docs/research/2026-11-17_uci_admission/source_manifest.csv": "6bd34fca26c86fe45016a24a8e364cf6ad95b199f8f295db669edb98516dfba4",
+    "docs/research/2026-11-17_uci_admission/semantics-authority-tests.txt": "1972752d4c3d7c5a98d4779495e540ddc3d9f914056d5eb6c5b2161422de9cb8"
+  }
+}

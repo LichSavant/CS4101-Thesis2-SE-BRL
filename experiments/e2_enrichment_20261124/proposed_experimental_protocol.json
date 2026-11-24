@@ -1,0 +1,66 @@
+{
+  "protocol_id": "E2-enrichment-20261124",
+  "created_utc": "2026-11-24T08:20:11.333330+00:00",
+  "status": "PROPOSED_PENDING_ACCEPTANCE",
+  "population": {
+    "primary_sources": [
+      "Nazario",
+      "Enron",
+      "SpamAssassin"
+    ],
+    "auxiliary_sources": [
+      "CEAS-08"
+    ],
+    "candidate_development_records": 15011,
+    "outer_folds": 5,
+    "assignment_reuse_approved": false,
+    "source_class_confounding": true
+  },
+  "representation_candidates": {
+    "E2-A": "8 dimension support/availability features",
+    "E2-B": "24 indicator support/availability features",
+    "E2-C": "36 indicator and evidence-count features",
+    "E2-D": "44 combined behavioral features"
+  },
+  "classifier_families": [
+    "logistic_regression",
+    "linear_svm",
+    "random_forest",
+    "xgboost"
+  ],
+  "evaluation": {
+    "primary_metric": "average_precision",
+    "secondary_metrics": [
+      "precision",
+      "recall",
+      "f1",
+      "roc_auc",
+      "balanced_accuracy",
+      "mcc",
+      "brier",
+      "ece"
+    ],
+    "target_ap": 0.9,
+    "target_f1": 0.9,
+    "grouped_nested_cv": true,
+    "fold_local_preprocessing": true,
+    "historical_holdout_exposed": true,
+    "independent_evaluation_available": false,
+    "search_settings_frozen": false
+  },
+  "safeguards": {
+    "technical_predictors_in_e2": false,
+    "source_identity_predictors": false,
+    "test_driven_selection": false,
+    "transformer_review_only": true,
+    "production_modifications": false
+  },
+  "authorization": {
+    "researcher_acceptance": null,
+    "co_researcher_acceptance": null,
+    "adviser_acceptance": null,
+    "development_custody_verified": false,
+    "research_fitting_authorized": false
+  },
+  "candidate_manifest_sha256": "3de67220c3feef7ec6fa32474e3313f7b83139a7515e3d6c8edfa99bc61cd05f"
+}

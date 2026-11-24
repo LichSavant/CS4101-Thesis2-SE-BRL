@@ -1,0 +1,107 @@
+{
+  "recorded_at": "2026-11-24T09:15:52.930530+00:00",
+  "experiment": "SE-BRL supplementary E2 representation",
+  "workspace_commit": "e95492ef13039782b43e55dcad42f2421b5aee85",
+  "workspace_dirty_status": [
+    " M experiments/vera_validation/V13D_hybrid_extractor.py",
+    " M ml/se_brl/context.py",
+    " M ml/se_brl/rules.py",
+    " M ml/tests/test_context_detectors.py",
+    "?? .pytest-temp-scientific/",
+    "?? .venv-scientific/",
+    "?? docs/research/2026-11-19_phiusiil_comparison_fitting_authorization.json",
+    "?? docs/research/2026-11-19_phiusiil_comparison_personal_acceptance.json",
+    "?? docs/research/2026-11-19_sebrl_nli_development_review/",
+    "?? docs/research/2026-11-21_sebrl_nli_development_review/",
+    "?? experiments/chapter5/",
+    "?? experiments/e2_enrichment_20261124/",
+    "?? experiments/runs/",
+    "?? experiments/vera_validation/SEBRL_AI_counterfactual_annotations.csv",
+    "?? experiments/vera_validation/SEBRL_AI_lexical_annotations.csv",
+    "?? experiments/vera_validation/V13D_hybrid_extractor.py.before_urgency_fix",
+    "?? experiments/vera_validation/counterfactual_pairs_dhanwil_annotation.csv",
+    "?? experiments/vera_validation/counterfactual_pairs_vera_annotation.csv",
+    "?? experiments/vera_validation/lexical_shortcut_challenges_dhanwil_annotation.csv",
+    "?? experiments/vera_validation/lexical_shortcut_challenges_vera_annotation.csv",
+    "?? experiments/vera_validation/v13g_selective_review/",
+    "?? ml/se_brl/context.py.backup-20261121-074819",
+    "?? ml/se_brl/rules.py.backup-20261120-230917526227",
+    "?? ml/se_brl/rules.py.backup-20261120-231009844012",
+    "?? ml/tests/test_candidate_rule_regression.py",
+    "?? scripts/evaluate_sebrl_nli_review_20261121.py",
+    "?? scripts/evaluate_sebrl_nli_review_dev.py"
+  ],
+  "python_version": "3.12.10 (tags/v3.12.10:0cc8128, Apr  8 2025, 12:21:36) [MSC v.1943 64 bit (AMD64)]",
+  "package_versions": {
+    "pandas": "3.1.1",
+    "numpy": "2.2.6",
+    "scikit-learn": "1.6.1",
+    "scipy": "1.15.3",
+    "xgboost": "2.1.4"
+  },
+  "artifacts": {
+    "researcher_authorization_record.json": {
+      "sha256": "6b958995ecc1482fbf1f7f0bd27aa44a4bcb2478bcfa1d7c0e799e977b6dc9e1",
+      "bytes": 1146
+    },
+    "candidate_development_identity_manifest.csv": {
+      "sha256": "20b222993e0d0460d7708f040ab94706161efa4c1f51e1ef8dbf7c4ef095c7f3",
+      "bytes": 1618182
+    },
+    "candidate_development_crosswalk.csv": {
+      "sha256": "895b9e3dd47b4daa8c8b1514d7f422c9e39ba75297c4190b28eaf1bfdaf59375",
+      "bytes": 2300376
+    },
+    "historical_identity_code_evidence.json": {
+      "sha256": "d5440c7e1d4d2f9fcc419f6e0f81a2000ae21a940899769730495d5254171fd8",
+      "bytes": 5552
+    },
+    "external_source_provenance.json": {
+      "sha256": "7069c1c57e3ad07370ecbae042bf5bed5a8da0489bd0e0114fc9a9adb1711a9d",
+      "bytes": 2386
+    },
+    "primary_source_label_evidence.json": {
+      "sha256": "bcc9747a88c95f773135ec5764eb78d7beb3bac5c574d39dc207e31632573f03",
+      "bytes": 938
+    },
+    "behavioral_enrichment.py": {
+      "sha256": "33a905956e00e5e7668cab442f7fe113ea729118113c2ee0929eb592c55d4579",
+      "bytes": 1082
+    },
+    "candidate_rules_v3.json": {
+      "sha256": "b58d2ac7dadbae7e581d97845f74d0a111102eed2bc39e7fb154fa79b2ee1371",
+      "bytes": 4018
+    },
+    "candidate_context_v1.py": {
+      "sha256": "7e429131813423c14d2964b004e6dc9f5edfe9aa471eb20734245b3a1a7225c9",
+      "bytes": 4690
+    },
+    "integrated_candidate_manifest.json": {
+      "sha256": "3de67220c3feef7ec6fa32474e3313f7b83139a7515e3d6c8edfa99bc61cd05f",
+      "bytes": 709
+    },
+    "development_harness.py": {
+      "sha256": "d95e5e4a48e1ebf003c236728fafda930e19f08c7bd679afda2309edd94b2619",
+      "bytes": 7396
+    },
+    "statistical_evaluation.py": {
+      "sha256": "f1defd7cd37d5decefec8225e9735fcd7da53c2e4aab7dd0bf82728987898259",
+      "bytes": 3810
+    },
+    "proposed_experimental_protocol.json": {
+      "sha256": "bef0c28952fba0aaa3a701189dd4bd86e3f94ecd7e3d4b68ee3e679c46a7f18b",
+      "bytes": 1871
+    }
+  },
+  "historical_population": 38759,
+  "candidate_development_population": 27129,
+  "baseline_features": 8,
+  "supplementary_features": [
+    24,
+    36,
+    44
+  ],
+  "historical_holdout_independent": false,
+  "scientific_admission_verified": false,
+  "research_fitting_authorized": false
+}

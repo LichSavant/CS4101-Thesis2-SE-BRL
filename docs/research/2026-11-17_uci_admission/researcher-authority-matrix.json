@@ -1,0 +1,59 @@
+{
+  "version": "uci-research-authority-matrix-1",
+  "status": "RESEARCHER_PERMITTED_FOR_ROUTINE_DECISIONS_NOT_AN_EXECUTION_RECEIPT",
+  "genuine_processing_authorized_now": false,
+  "basis": "research-authority-primary-evidence.json; approved proposal directly read, not merely assistant-authored Pending forms",
+  "A_already_permitted": [
+    {
+      "action": "Official named-source acquisition and factual provenance/schema/header/documentation verification",
+      "basis": "Approved proposal Stage 2, PDF p.63; current user instructions; actual source-snapshot.json"
+    },
+    {
+      "action": "Software checks, metadata integrity and factual source_manifest.csv creation",
+      "basis": "Approved proposal Stage 3 and Table 4.4; acceptance_register.md distinguishes ordinary mechanics from adviser amendments"
+    }
+  ],
+  "B_researchers_can_record_themselves": [
+    {
+      "decision": "Prospective original-record identity and routine deterministic preparation design consistent with approved Stage 3",
+      "limit": "Must state exact bytes/fields, original locator convention and permitted source scope; no retrospective identity claim; actual scope not yet supplied"
+    },
+    {
+      "decision": "Native 30-feature dictionary, missingness/encoding choices and source-permitted grouping limitations before applicable freeze",
+      "limit": "Scientific choices need an actual researcher record, source evidence and joint decisions where applicable; no automatic acceptance from a candidate file"
+    },
+    {
+      "decision": "Custody and bounded no-fit execution of their own properly scoped material",
+      "limit": "No separate custodian signature merely because data are public; researchers may be the data holders. A third-party custodian is needed only when they control required facts/access/delivery."
+    }
+  ],
+  "C_explicit_other_or_joint_authority": [
+    {
+      "item": "Changes to an already frozen protocol or sealed-test-dependent claim scope",
+      "authority": "Dated technical deviation and joint approval under proposal PDF p.63; cannot falsely confirm an already exposed test was untouched"
+    },
+    {
+      "item": "Institutional ethics/administrative review",
+      "authority": "Only if actual university policy requires it (proposal PDF p.57). No blanket such requirement is established by the inspected proposal/agreement."
+    },
+    {
+      "item": "Third-party-controlled source facts or access",
+      "authority": "Authentic source/custody evidence from the party holding it; an evidence dependency, not a universal adviser approval rule"
+    }
+  ],
+  "remaining_factual_dependencies": [
+    "Release-bound authoritative Result mapping; secondary publications explicitly contradict each other",
+    "Independent original-record identity of the permitted development scope; historical cleaned-position IDs do not establish original-row membership"
+  ],
+  "remaining_researcher_decisions": [
+    "Record exact prospective no-fit scope and group/conflict/exposure/dictionary choices consistent with methodology",
+    "Authenticate the existing D-features receipt/digest if proceeding through that runner; separate fitting authorization later"
+  ],
+  "correction_of_prior_dossier": "Earlier references to custodian/adviser approval must not be read as a universal prerequisite for routine public-source audit. No inspected primary provision imposes that blanket rule.",
+  "not_inferred": [
+    "Public accessibility alone does not authorize a full-archive parse as development-only",
+    "P3 principle-level agreement does not specify an actual allowed original-row universe",
+    "Source facts cannot be voted into existence",
+    "This matrix does not sign or create an acceptance receipt"
+  ]
+}

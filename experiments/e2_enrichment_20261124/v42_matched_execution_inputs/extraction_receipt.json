@@ -1,0 +1,25 @@
+{
+  "status": "PREPARED_NOT_AUTHORIZED",
+  "observations": 15011,
+  "candidate": "V4.2",
+  "representations": 5,
+  "feature_hashes": {
+    "e2-original.csv": "8ac263f8f849e62ea4d6bc11a5f692ee705a32162004bd3aa6bedf66412d640f",
+    "e2-a.csv": "17c93e7cb4e965d10701946243498648bfab2b1dd3ff223cd3f0b5bc1e84c827",
+    "e2-b.csv": "fcfa5ae3ec3bf9fb8bae19f88ea4d8ef548e45eeb0961665e9e326f62e1b600d",
+    "e2-c.csv": "332839a1d807a8c324bda462cc6565f7c162476084ba6a4229dc9ac5b387f5b1",
+    "e2-d.csv": "41905c7de047a2244e8aef8d7337a36402f92eaa3b5df2685472eb339cb16843"
+  },
+  "source_paths": {
+    "e2-original.csv": "primary_real_features_run03/e2-original.csv",
+    "e2-a.csv": "primary_v42_features_run01/e2-a.csv",
+    "e2-b.csv": "primary_v42_features_run01/e2-b.csv",
+    "e2-c.csv": "primary_v42_features_run01/e2-c.csv",
+    "e2-d.csv": "primary_v42_features_run01/e2-d.csv"
+  },
+  "metadata_alignment": "PASS",
+  "group_fold_isolation": "PASS",
+  "acceptance_packet_sha256": "7f52837a4080ada934b475422f618e3966bd053e30466df6c449064410eea998",
+  "scientific_fitting_authorized": false,
+  "classifier_fitting_performed": false
+}

@@ -1,0 +1,50 @@
+{
+  "record_type": "dated_researcher_authentication_revision_decision_not_execution_receipt",
+  "decision_date": "2026-11-18",
+  "governing_proposal": "docs/research/2026-11-18_technical_admission/PHIUSIIL_AUTHENTICATION_REVISION_PROPOSAL.md",
+  "status": "DHANWIL_ACCEPTED; JOINT_PROTOCOL_REVISION_PENDING_VERA_CONFIRMATION",
+  "Dhanwil": {
+    "role": "researcher",
+    "attribution": "Direct user response in this conversation; no independent identity/signature authentication claimed",
+    "response_text_verbatim": "I explicitly accept the proposed SE-BRL authentication-procedure revision, replacing my previous independent-verification condition with the researcher-controlled verification process described in the revision proposal, provided all source-integrity, group-isolation, exposure, reproducibility and scientific safeguards remain enforced.\n\nI support proceeding under the approved methodology's dated and justified deviation process. This does not authorize unrestricted fitting or protected evaluation.",
+    "personal_acceptance_recorded": true,
+    "supersedes_personal_independent_verification_condition": true,
+    "superseded_record": "docs/research/2026-11-18_technical_admission/PHIUSIIL_C_PERSONAL_ACCEPTANCE_RECORD.json",
+    "preserved_original_record": "Earlier conditional response retained unchanged as historical evidence"
+  },
+  "Vera": {
+    "specific_personal_approval_documented": false,
+    "attribution": "Prior joint willingness/agreement reported by Dhanwil; no specific personal revision response supplied or invented"
+  },
+  "governing_deviation_requirement": {
+    "source": "Approved proposal PDF p.63; docs/research/2026-11-17_uci_admission/research-authority-primary-evidence.json:key_text.page_63_deviation",
+    "terms": [
+      "Dated deviation record",
+      "Technical justification",
+      "Joint approval",
+      "Confirmation sealed test not accessed"
+    ],
+    "technical_justification": "Use the researcher-controlled source/hash/record audits described by the approved methodology while preserving existing exact-file/code checks and reproducible verification; remove only the additional external receipt-authentication prerequisite after joint acceptance.",
+    "protected_boundary": "No protected source records, predictors or outcomes were read during this revision recording. Existing historical exposure disclosures remain; no claim of an untouched historical holdout."
+  },
+  "unchanged_safeguards": [
+    "Original datasets and historical records immutable",
+    "165089 source-bound former-development positions only; historical protected positions excluded",
+    "Exact source/input/code/environment integrity and native-label checks",
+    "Groups and mixed-label components remain unsplit",
+    "Train-only preprocessing and group-disjoint validation",
+    "Reconstructed-lineage and exposure limitations",
+    "Independent reproducibility of outputs",
+    "Typed verified fitting contexts; separate exact fitting authority"
+  ],
+  "remaining_human_action": "Vera must personally supply a dated acceptance of this exact governing revision and retained safeguards, or a rejection, to complete the approved methodology joint-deviation requirement. General reported willingness is not substituted for that response.",
+  "activation": {
+    "verification_code_changed": false,
+    "joint_revision_activated": false,
+    "allocation_executed": false,
+    "D_features_rebound": false,
+    "fitting_authorized": false,
+    "model_fits": 0,
+    "predictive_metrics": null
+  }
+}

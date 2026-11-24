@@ -228,6 +228,64 @@ def test_missing_numeric_value_is_preserved_without_imputation(tmp_path):
     assert loaded.observations[0].conventional == (None, rows[0]["Redirect"])
 
 
+@pytest.mark.parametrize("name,value", [("URL_Length", .5), ("Redirect", -1),
+                                       ("Redirect", 2), ("having_IP_Address", 0)])
+def test_finite_out_of_domain_codes_fail_before_export(tmp_path, name, value):
+    rows, manifest, ids, spec = synthetic()
+    if name not in {c.name for c in spec.conventional}:
+        spec = replace(spec, conventional=(*spec.conventional, FeatureColumn(name, "numeric")))
+        for row in rows:
+            row[name] = 1
+    rows[0][name] = value
+    with pytest.raises(InputContractError, match="uci_native_feature_domain_mismatch"):
+        invoke(tmp_path, rows, manifest, ids, spec)
+    assert list(tmp_path.iterdir()) == []
+
+
+def test_invented_source_predictor_fails_before_export(tmp_path):
+    rows, manifest, ids, spec = synthetic()
+    spec = replace(spec, conventional=(*spec.conventional, FeatureColumn("invented_signal", "numeric")))
+    for row in rows:
+        row["invented_signal"] = 1
+    with pytest.raises(InputContractError, match="uci_native_feature_required"):
+        invoke(tmp_path, rows, manifest, ids, spec)
+    assert list(tmp_path.iterdir()) == []
+
+
+def test_complete_native_schema_preserves_order_codes_and_excludes_target():
+    from ml.uci_schema import SCHEMA_PATH, NATIVE_DOMAINS, validate_native_feature
+    schema = json.loads(SCHEMA_PATH.read_bytes())
+    features = schema["features"]
+    assert len(features) == len(NATIVE_DOMAINS) == 30
+    assert [f["order"] for f in features] == list(range(1, 31))
+    assert "Result" not in NATIVE_DOMAINS
+    assert list(NATIVE_DOMAINS)[0] == "having_IP_Address"
+    assert list(NATIVE_DOMAINS)[-1] == "Statistical_report"
+    assert NATIVE_DOMAINS["Redirect"] == {0, 1}
+    assert NATIVE_DOMAINS["URL_Length"] == {-1, 0, 1}
+    for name, domain in NATIVE_DOMAINS.items():
+        for value in domain:
+            validate_native_feature(name, value)
+    assert schema["status"] == "evidence_only_not_scientific_acceptance"
+
+
+def test_all_thirty_native_features_roundtrip_without_recode(tmp_path):
+    from ml.uci_schema import NATIVE_DOMAINS
+    rows, manifest, ids, spec = synthetic()
+    spec = replace(spec, conventional=tuple(FeatureColumn(name, "numeric") for name in NATIVE_DOMAINS))
+    for position, row in enumerate(rows):
+        for name, domain in NATIVE_DOMAINS.items():
+            codes = sorted(domain)
+            row[name] = codes[position % len(codes)]
+    before = deepcopy(rows)
+    invoke(tmp_path, rows, manifest, ids, spec)
+    loaded = load_development_dataset(tmp_path, "synthetic-uci-v1", specification=spec)
+    assert tuple(c.name for c in loaded.specification.conventional) == tuple(NATIVE_DOMAINS)
+    for original, observation in zip(before, loaded.observations):
+        assert observation.conventional == tuple(original[name] for name in NATIVE_DOMAINS)
+    assert rows == before
+
+
 def test_lossless_nullable_fold_encoding_does_not_change_supplied_records(tmp_path):
     rows, manifest, ids, spec = synthetic()
     for row in rows: row["cv_fold"] = float(row["cv_fold"])

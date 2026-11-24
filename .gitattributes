@@ -11,3 +11,45 @@ experiments/vera_validation/V13_nli_hypotheses_v0.1.0.json text eol=lf
 
 # Browser packaging checks these canonical port files against approved SHA-256.
 tools/verification/js-review/*.mjs text eol=lf
+
+# Preserve exact publisher bytes recorded by the UCI documentation retrieval.
+docs/research/2026-11-17_uci_admission/uci-page.html -text -diff
+docs/research/2026-11-17_uci_admission/uci-metadata.json -text
+docs/research/2026-11-17_uci_admission/uci-feature-document.docx -text
+
+# Preserve publisher bytes used for PhiUSIIL source/label verification.
+docs/research/2026-11-18_technical_admission/phiusiil/official-page.html -text -diff
+docs/research/2026-11-18_technical_admission/phiusiil/official-metadata.json -text
+
+# Preserve hashes of aggregate-only scientific outputs across Git checkouts.
+docs/research/2026-11-18_phiusiil_descriptive/* -text whitespace=blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol
+scripts/phiusiil_scientific_outputs.py text eol=lf
+ml/tests/test_phiusiil_scientific_outputs.py text eol=lf
+
+# Joint no-fit revision binds these exact approval/proposal bytes.
+docs/research/2026-11-18_technical_admission/VERA_AUTHENTICATION_REVISION_APPROVAL_20261118.json -text
+docs/research/2026-11-18_technical_admission/PHIUSIIL_AUTHENTICATION_REVISION_ACCEPTED.json -text
+docs/research/2026-11-18_technical_admission/PHIUSIIL_AUTHENTICATION_REVISION_DECISION.json -text
+docs/research/2026-11-18_technical_admission/PHIUSIIL_AUTHENTICATION_REVISION_PROPOSAL.md -text
+ml/no_fit_authority.py -text whitespace=blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol
+ml/scoped_json_records.py -text whitespace=blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol
+ml/preparation_execution.py -text whitespace=blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol
+scripts/execute_phiusiil_no_fit_revision.py -text whitespace=blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol
+docs/research/2026-11-19_phiusiil_fixed_baseline_request.json -text
+ml/fixed_baseline.py -text whitespace=blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol
+ml/preflight.py -text whitespace=blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol
+docs/research/2026-11-19_phiusiil_fixed_baseline_personal_acceptance.json -text
+docs/research/2026-11-19_phiusiil_fixed_baseline_fitting_authorization.json -text
+ml/development_experiments.py -text whitespace=blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol
+ml/classifier_adapters.py -text whitespace=blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol
+docs/research/2026-11-19_phiusiil_baseline_results/* -text whitespace=blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol
+docs/research/2026-11-19_phiusiil_comparison_request.json -text
+ml/comparison_batch.py -text whitespace=blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol
+docs/research/2026-11-19_phiusiil_comparison_personal_acceptance.json -text
+docs/research/2026-11-19_phiusiil_comparison_fitting_authorization.json -text
+docs/research/2026-11-19_phiusiil_comparison_results/* -text whitespace=blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol
+
+# Frozen E2 receipts and historical source archives bind exact original bytes.
+experiments/e2_enrichment_20261124/** -text whitespace=blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol
+research/historical/vera-review-337c3c4/** -text whitespace=blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol
+scripts/finalize_phiusiil_comparison.py -text

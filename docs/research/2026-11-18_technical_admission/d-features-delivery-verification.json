@@ -1,0 +1,23 @@
+{
+  "baseline_commit": "185d91e55f9d6157bf1bb7791177f449842ee290",
+  "operation": "targeted six-file schema/provenance inspection and independent-evidence availability check",
+  "research_rows_processed": 0,
+  "six_file_admission_executed": false,
+  "experiments": 0,
+  "production_code_changed": false,
+  "checks": [
+    "Exact current schema and validators inspected",
+    "Official source archive digest and metadata receipt hashes matched",
+    "Current PhiUSIIL native-to-target mapping matches verified primary source",
+    "Existing case-insensitive FILENAME/label/assignment predictor exclusions exercised and rejected",
+    "No named input run or independent original population/digest supplied; no payload discovery performed"
+  ],
+  "tests": "Existing unchanged-code guarded evidence reused; no new software defect, code or redundant test suite",
+  "artifact_sha256": {
+    "docs/research/2026-11-18_technical_admission/d-features-contract.json": "143ebdba18dd03e8fe16feca05eea14a7ec5a12fa5545945c2c386abf4057b77",
+    "docs/research/2026-11-18_technical_admission/d-features-supported-decisions.json": "f2a7458bc89f7784a1e7a786dd99c30ece0f6267628f4b40644959b330999b4f",
+    "docs/research/2026-11-18_technical_admission/d-features-delivery-status.json": "967c530d2dd7c56ec0b19b710b2712f660bcc6dc5258b6553e58bfe1f199a4ae",
+    "docs/research/2026-11-18_technical_admission/DECISION_PACKET.md": "ed37398cc847c3074aa994c85538220c85f0131b9e7591f63a1a451194d2cd76",
+    "docs/research/2026-11-17_uci_admission/DOSSIER.md": "bdbcfd0a96736635d2d7cb08c2f857c277446c2435645111b253e35a855d13db"
+  }
+}

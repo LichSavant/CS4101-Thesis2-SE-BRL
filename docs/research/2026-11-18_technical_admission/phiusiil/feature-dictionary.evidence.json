@@ -1,0 +1,530 @@
+{
+  "dataset": "PhiUSIIL-967",
+  "status": "source_schema_evidence_not_scientific_freeze",
+  "source_metadata_sha256": "82cdd5117a3b8f42d65edbcbeb84b5f5d487f3c14ca3ac62c972f33822d09189",
+  "archive_sha256": "0a639fd03aea6308c5b1c10c92aa23c2ce1505447a9137271865cd0badc9a59a",
+  "ordered_source_fields": [
+    {
+      "name": "FILENAME",
+      "role": "Other",
+      "declared_type": "Categorical",
+      "description": null,
+      "missing_reported": "no",
+      "value_domain": "not established by retrieved metadata"
+    },
+    {
+      "name": "URL",
+      "role": "Feature",
+      "declared_type": "Categorical",
+      "description": null,
+      "missing_reported": "no",
+      "value_domain": "not established by retrieved metadata"
+    },
+    {
+      "name": "URLLength",
+      "role": "Feature",
+      "declared_type": "Integer",
+      "description": null,
+      "missing_reported": "no",
+      "value_domain": "not established by retrieved metadata"
+    },
+    {
+      "name": "Domain",
+      "role": "Feature",
+      "declared_type": "Categorical",
+      "description": null,
+      "missing_reported": "no",
+      "value_domain": "not established by retrieved metadata"
+    },
+    {
+      "name": "DomainLength",
+      "role": "Feature",
+      "declared_type": "Integer",
+      "description": null,
+      "missing_reported": "no",
+      "value_domain": "not established by retrieved metadata"
+    },
+    {
+      "name": "IsDomainIP",
+      "role": "Feature",
+      "declared_type": "Integer",
+      "description": null,
+      "missing_reported": "no",
+      "value_domain": "not established by retrieved metadata"
+    },
+    {
+      "name": "TLD",
+      "role": "Feature",
+      "declared_type": "Categorical",
+      "description": null,
+      "missing_reported": "no",
+      "value_domain": "not established by retrieved metadata"
+    },
+    {
+      "name": "URLSimilarityIndex",
+      "role": "Feature",
+      "declared_type": "Integer",
+      "description": null,
+      "missing_reported": "no",
+      "value_domain": "not established by retrieved metadata"
+    },
+    {
+      "name": "CharContinuationRate",
+      "role": "Feature",
+      "declared_type": "Integer",
+      "description": null,
+      "missing_reported": "no",
+      "value_domain": "not established by retrieved metadata"
+    },
+    {
+      "name": "TLDLegitimateProb",
+      "role": "Feature",
+      "declared_type": "Continuous",
+      "description": null,
+      "missing_reported": "no",
+      "value_domain": "not established by retrieved metadata"
+    },
+    {
+      "name": "URLCharProb",
+      "role": "Feature",
+      "declared_type": "Continuous",
+      "description": null,
+      "missing_reported": "no",
+      "value_domain": "not established by retrieved metadata"
+    },
+    {
+      "name": "TLDLength",
+      "role": "Feature",
+      "declared_type": "Integer",
+      "description": null,
+      "missing_reported": "no",
+      "value_domain": "not established by retrieved metadata"
+    },
+    {
+      "name": "NoOfSubDomain",
+      "role": "Feature",
+      "declared_type": "Integer",
+      "description": null,
+      "missing_reported": "no",
+      "value_domain": "not established by retrieved metadata"
+    },
+    {
+      "name": "HasObfuscation",
+      "role": "Feature",
+      "declared_type": "Integer",
+      "description": null,
+      "missing_reported": "no",
+      "value_domain": "not established by retrieved metadata"
+    },
+    {
+      "name": "NoOfObfuscatedChar",
+      "role": "Feature",
+      "declared_type": "Integer",
+      "description": null,
+      "missing_reported": "no",
+      "value_domain": "not established by retrieved metadata"
+    },
+    {
+      "name": "ObfuscationRatio",
+      "role": "Feature",
+      "declared_type": "Integer",
+      "description": null,
+      "missing_reported": "no",
+      "value_domain": "not established by retrieved metadata"
+    },
+    {
+      "name": "NoOfLettersInURL",
+      "role": "Feature",
+      "declared_type": "Integer",
+      "description": null,
+      "missing_reported": "no",
+      "value_domain": "not established by retrieved metadata"
+    },
+    {
+      "name": "LetterRatioInURL",
+      "role": "Feature",
+      "declared_type": "Continuous",
+      "description": null,
+      "missing_reported": "no",
+      "value_domain": "not established by retrieved metadata"
+    },
+    {
+      "name": "NoOfDegitsInURL",
+      "role": "Feature",
+      "declared_type": "Integer",
+      "description": null,
+      "missing_reported": "no",
+      "value_domain": "not established by retrieved metadata"
+    },
+    {
+      "name": "DegitRatioInURL",
+      "role": "Feature",
+      "declared_type": "Integer",
+      "description": null,
+      "missing_reported": "no",
+      "value_domain": "not established by retrieved metadata"
+    },
+    {
+      "name": "NoOfEqualsInURL",
+      "role": "Feature",
+      "declared_type": "Integer",
+      "description": null,
+      "missing_reported": "no",
+      "value_domain": "not established by retrieved metadata"
+    },
+    {
+      "name": "NoOfQMarkInURL",
+      "role": "Feature",
+      "declared_type": "Integer",
+      "description": null,
+      "missing_reported": "no",
+      "value_domain": "not established by retrieved metadata"
+    },
+    {
+      "name": "NoOfAmpersandInURL",
+      "role": "Feature",
+      "declared_type": "Integer",
+      "description": null,
+      "missing_reported": "no",
+      "value_domain": "not established by retrieved metadata"
+    },
+    {
+      "name": "NoOfOtherSpecialCharsInURL",
+      "role": "Feature",
+      "declared_type": "Integer",
+      "description": null,
+      "missing_reported": "no",
+      "value_domain": "not established by retrieved metadata"
+    },
+    {
+      "name": "SpacialCharRatioInURL",
+      "role": "Feature",
+      "declared_type": "Continuous",
+      "description": null,
+      "missing_reported": "no",
+      "value_domain": "not established by retrieved metadata"
+    },
+    {
+      "name": "IsHTTPS",
+      "role": "Feature",
+      "declared_type": "Integer",
+      "description": null,
+      "missing_reported": "no",
+      "value_domain": "not established by retrieved metadata"
+    },
+    {
+      "name": "LineOfCode",
+      "role": "Feature",
+      "declared_type": "Integer",
+      "description": null,
+      "missing_reported": "no",
+      "value_domain": "not established by retrieved metadata"
+    },
+    {
+      "name": "LargestLineLength",
+      "role": "Feature",
+      "declared_type": "Integer",
+      "description": null,
+      "missing_reported": "no",
+      "value_domain": "not established by retrieved metadata"
+    },
+    {
+      "name": "HasTitle",
+      "role": "Feature",
+      "declared_type": "Integer",
+      "description": null,
+      "missing_reported": "no",
+      "value_domain": "not established by retrieved metadata"
+    },
+    {
+      "name": "Title",
+      "role": "Feature",
+      "declared_type": "Categorical",
+      "description": null,
+      "missing_reported": "no",
+      "value_domain": "not established by retrieved metadata"
+    },
+    {
+      "name": "DomainTitleMatchScore",
+      "role": "Feature",
+      "declared_type": "Integer",
+      "description": null,
+      "missing_reported": "no",
+      "value_domain": "not established by retrieved metadata"
+    },
+    {
+      "name": "URLTitleMatchScore",
+      "role": "Feature",
+      "declared_type": "Integer",
+      "description": null,
+      "missing_reported": "no",
+      "value_domain": "not established by retrieved metadata"
+    },
+    {
+      "name": "HasFavicon",
+      "role": "Feature",
+      "declared_type": "Integer",
+      "description": null,
+      "missing_reported": "no",
+      "value_domain": "not established by retrieved metadata"
+    },
+    {
+      "name": "Robots",
+      "role": "Feature",
+      "declared_type": "Integer",
+      "description": null,
+      "missing_reported": "no",
+      "value_domain": "not established by retrieved metadata"
+    },
+    {
+      "name": "IsResponsive",
+      "role": "Feature",
+      "declared_type": "Integer",
+      "description": null,
+      "missing_reported": "no",
+      "value_domain": "not established by retrieved metadata"
+    },
+    {
+      "name": "NoOfURLRedirect",
+      "role": "Feature",
+      "declared_type": "Integer",
+      "description": null,
+      "missing_reported": "no",
+      "value_domain": "not established by retrieved metadata"
+    },
+    {
+      "name": "NoOfSelfRedirect",
+      "role": "Feature",
+      "declared_type": "Integer",
+      "description": null,
+      "missing_reported": "no",
+      "value_domain": "not established by retrieved metadata"
+    },
+    {
+      "name": "HasDescription",
+      "role": "Feature",
+      "declared_type": "Integer",
+      "description": null,
+      "missing_reported": "no",
+      "value_domain": "not established by retrieved metadata"
+    },
+    {
+      "name": "NoOfPopup",
+      "role": "Feature",
+      "declared_type": "Integer",
+      "description": null,
+      "missing_reported": "no",
+      "value_domain": "not established by retrieved metadata"
+    },
+    {
+      "name": "NoOfiFrame",
+      "role": "Feature",
+      "declared_type": "Integer",
+      "description": null,
+      "missing_reported": "no",
+      "value_domain": "not established by retrieved metadata"
+    },
+    {
+      "name": "HasExternalFormSubmit",
+      "role": "Feature",
+      "declared_type": "Integer",
+      "description": null,
+      "missing_reported": "no",
+      "value_domain": "not established by retrieved metadata"
+    },
+    {
+      "name": "HasSocialNet",
+      "role": "Feature",
+      "declared_type": "Integer",
+      "description": null,
+      "missing_reported": "no",
+      "value_domain": "not established by retrieved metadata"
+    },
+    {
+      "name": "HasSubmitButton",
+      "role": "Feature",
+      "declared_type": "Integer",
+      "description": null,
+      "missing_reported": "no",
+      "value_domain": "not established by retrieved metadata"
+    },
+    {
+      "name": "HasHiddenFields",
+      "role": "Feature",
+      "declared_type": "Integer",
+      "description": null,
+      "missing_reported": "no",
+      "value_domain": "not established by retrieved metadata"
+    },
+    {
+      "name": "HasPasswordField",
+      "role": "Feature",
+      "declared_type": "Integer",
+      "description": null,
+      "missing_reported": "no",
+      "value_domain": "not established by retrieved metadata"
+    },
+    {
+      "name": "Bank",
+      "role": "Feature",
+      "declared_type": "Integer",
+      "description": null,
+      "missing_reported": "no",
+      "value_domain": "not established by retrieved metadata"
+    },
+    {
+      "name": "Pay",
+      "role": "Feature",
+      "declared_type": "Integer",
+      "description": null,
+      "missing_reported": "no",
+      "value_domain": "not established by retrieved metadata"
+    },
+    {
+      "name": "Crypto",
+      "role": "Feature",
+      "declared_type": "Integer",
+      "description": null,
+      "missing_reported": "no",
+      "value_domain": "not established by retrieved metadata"
+    },
+    {
+      "name": "HasCopyrightInfo",
+      "role": "Feature",
+      "declared_type": "Integer",
+      "description": null,
+      "missing_reported": "no",
+      "value_domain": "not established by retrieved metadata"
+    },
+    {
+      "name": "NoOfImage",
+      "role": "Feature",
+      "declared_type": "Integer",
+      "description": null,
+      "missing_reported": "no",
+      "value_domain": "not established by retrieved metadata"
+    },
+    {
+      "name": "NoOfCSS",
+      "role": "Feature",
+      "declared_type": "Integer",
+      "description": null,
+      "missing_reported": "no",
+      "value_domain": "not established by retrieved metadata"
+    },
+    {
+      "name": "NoOfJS",
+      "role": "Feature",
+      "declared_type": "Integer",
+      "description": null,
+      "missing_reported": "no",
+      "value_domain": "not established by retrieved metadata"
+    },
+    {
+      "name": "NoOfSelfRef",
+      "role": "Feature",
+      "declared_type": "Integer",
+      "description": null,
+      "missing_reported": "no",
+      "value_domain": "not established by retrieved metadata"
+    },
+    {
+      "name": "NoOfEmptyRef",
+      "role": "Feature",
+      "declared_type": "Integer",
+      "description": null,
+      "missing_reported": "no",
+      "value_domain": "not established by retrieved metadata"
+    },
+    {
+      "name": "NoOfExternalRef",
+      "role": "Feature",
+      "declared_type": "Integer",
+      "description": null,
+      "missing_reported": "no",
+      "value_domain": "not established by retrieved metadata"
+    },
+    {
+      "name": "label",
+      "role": "Target",
+      "declared_type": "Integer",
+      "description": null,
+      "missing_reported": "no",
+      "value_domain": "not established by retrieved metadata"
+    }
+  ],
+  "numeric_engineered_projection_for_review": [
+    "URLLength",
+    "DomainLength",
+    "IsDomainIP",
+    "URLSimilarityIndex",
+    "CharContinuationRate",
+    "TLDLegitimateProb",
+    "URLCharProb",
+    "TLDLength",
+    "NoOfSubDomain",
+    "HasObfuscation",
+    "NoOfObfuscatedChar",
+    "ObfuscationRatio",
+    "NoOfLettersInURL",
+    "LetterRatioInURL",
+    "NoOfDegitsInURL",
+    "DegitRatioInURL",
+    "NoOfEqualsInURL",
+    "NoOfQMarkInURL",
+    "NoOfAmpersandInURL",
+    "NoOfOtherSpecialCharsInURL",
+    "SpacialCharRatioInURL",
+    "IsHTTPS",
+    "LineOfCode",
+    "LargestLineLength",
+    "HasTitle",
+    "DomainTitleMatchScore",
+    "URLTitleMatchScore",
+    "HasFavicon",
+    "Robots",
+    "IsResponsive",
+    "NoOfURLRedirect",
+    "NoOfSelfRedirect",
+    "HasDescription",
+    "NoOfPopup",
+    "NoOfiFrame",
+    "HasExternalFormSubmit",
+    "HasSocialNet",
+    "HasSubmitButton",
+    "HasHiddenFields",
+    "HasPasswordField",
+    "Bank",
+    "Pay",
+    "Crypto",
+    "HasCopyrightInfo",
+    "NoOfImage",
+    "NoOfCSS",
+    "NoOfJS",
+    "NoOfSelfRef",
+    "NoOfEmptyRef",
+    "NoOfExternalRef"
+  ],
+  "projection_status": "candidate only; not selected or approved by this verification",
+  "categorical_source_features": [
+    "URL",
+    "Domain",
+    "TLD",
+    "Title"
+  ],
+  "forbidden_predictors": [
+    "FILENAME",
+    "label",
+    "observation_id",
+    "target",
+    "group_id",
+    "partition",
+    "cv_fold"
+  ],
+  "unresolved": [
+    "Source declarations do not prove observed native domains or original-row validity",
+    "Uniqueness/authenticity and transform preservation of FILENAME keys require a permitted row audit",
+    "Source-engineered reference/probability features need a documented derivation and exposure/split-scope assessment before accepting an inductive comparison; no actual leakage is asserted from names alone",
+    "Exact accepted U1 dictionary and missingness/encoding policies remain unrecorded"
+  ]
+}

@@ -1,0 +1,477 @@
+{
+  "schema_version": "uci-native-schema-evidence-1",
+  "status": "evidence_only_not_scientific_acceptance",
+  "dataset": "UCI Phishing Websites",
+  "native_audit": {
+    "git_commit": "cee80d97c8454e726d55a97abb98fda74a8e2b7f",
+    "path": "experiments/results/audits/uci_native_value_audit.csv",
+    "sha256": "ebc585d86354b85c57efcaf6dfda07074c0f2733d1a8d0f6fd91638a4d59fdcd"
+  },
+  "target_excluded": "Result",
+  "features": [
+    {
+      "order": 1,
+      "name": "having_IP_Address",
+      "uci_api_name": "having_ip_address",
+      "native_domain": [
+        -1,
+        1
+      ],
+      "kind": "numeric",
+      "source_definition": {
+        "artifact_sha256": "f6f9326f45659a7b5ef947fa744cec2c379dbea17de56d34436312407faca43c",
+        "zero_based_body_paragraph": 5
+      },
+      "numeric_code_meanings": "not_established_by_feature_prose"
+    },
+    {
+      "order": 2,
+      "name": "URL_Length",
+      "uci_api_name": "url_length",
+      "native_domain": [
+        -1,
+        0,
+        1
+      ],
+      "kind": "numeric",
+      "source_definition": {
+        "artifact_sha256": "f6f9326f45659a7b5ef947fa744cec2c379dbea17de56d34436312407faca43c",
+        "zero_based_body_paragraph": 8
+      },
+      "numeric_code_meanings": "not_established_by_feature_prose"
+    },
+    {
+      "order": 3,
+      "name": "Shortining_Service",
+      "uci_api_name": "shortining_service",
+      "native_domain": [
+        -1,
+        1
+      ],
+      "kind": "numeric",
+      "source_definition": {
+        "artifact_sha256": "f6f9326f45659a7b5ef947fa744cec2c379dbea17de56d34436312407faca43c",
+        "zero_based_body_paragraph": 16
+      },
+      "numeric_code_meanings": "not_established_by_feature_prose"
+    },
+    {
+      "order": 4,
+      "name": "having_At_Symbol",
+      "uci_api_name": "having_at_symbol",
+      "native_domain": [
+        -1,
+        1
+      ],
+      "kind": "numeric",
+      "source_definition": {
+        "artifact_sha256": "f6f9326f45659a7b5ef947fa744cec2c379dbea17de56d34436312407faca43c",
+        "zero_based_body_paragraph": 19
+      },
+      "numeric_code_meanings": "not_established_by_feature_prose"
+    },
+    {
+      "order": 5,
+      "name": "double_slash_redirecting",
+      "uci_api_name": "double_slash_redirecting",
+      "native_domain": [
+        -1,
+        1
+      ],
+      "kind": "numeric",
+      "source_definition": {
+        "artifact_sha256": "f6f9326f45659a7b5ef947fa744cec2c379dbea17de56d34436312407faca43c",
+        "zero_based_body_paragraph": 22
+      },
+      "numeric_code_meanings": "not_established_by_feature_prose"
+    },
+    {
+      "order": 6,
+      "name": "Prefix_Suffix",
+      "uci_api_name": "prefix_suffix",
+      "native_domain": [
+        -1,
+        1
+      ],
+      "kind": "numeric",
+      "source_definition": {
+        "artifact_sha256": "f6f9326f45659a7b5ef947fa744cec2c379dbea17de56d34436312407faca43c",
+        "zero_based_body_paragraph": 25
+      },
+      "numeric_code_meanings": "not_established_by_feature_prose"
+    },
+    {
+      "order": 7,
+      "name": "having_Sub_Domain",
+      "uci_api_name": "having_sub_domain",
+      "native_domain": [
+        -1,
+        0,
+        1
+      ],
+      "kind": "numeric",
+      "source_definition": {
+        "artifact_sha256": "f6f9326f45659a7b5ef947fa744cec2c379dbea17de56d34436312407faca43c",
+        "zero_based_body_paragraph": 28
+      },
+      "numeric_code_meanings": "not_established_by_feature_prose"
+    },
+    {
+      "order": 8,
+      "name": "SSLfinal_State",
+      "uci_api_name": "sslfinal_state",
+      "native_domain": [
+        -1,
+        0,
+        1
+      ],
+      "kind": "numeric",
+      "source_definition": {
+        "artifact_sha256": "f6f9326f45659a7b5ef947fa744cec2c379dbea17de56d34436312407faca43c",
+        "zero_based_body_paragraph": 31
+      },
+      "numeric_code_meanings": "not_established_by_feature_prose"
+    },
+    {
+      "order": 9,
+      "name": "Domain_registeration_length",
+      "uci_api_name": "domain_registration_length",
+      "native_domain": [
+        -1,
+        1
+      ],
+      "kind": "numeric",
+      "source_definition": {
+        "artifact_sha256": "f6f9326f45659a7b5ef947fa744cec2c379dbea17de56d34436312407faca43c",
+        "zero_based_body_paragraph": 34
+      },
+      "numeric_code_meanings": "not_established_by_feature_prose"
+    },
+    {
+      "order": 10,
+      "name": "Favicon",
+      "uci_api_name": "favicon",
+      "native_domain": [
+        -1,
+        1
+      ],
+      "kind": "numeric",
+      "source_definition": {
+        "artifact_sha256": "f6f9326f45659a7b5ef947fa744cec2c379dbea17de56d34436312407faca43c",
+        "zero_based_body_paragraph": 38
+      },
+      "numeric_code_meanings": "not_established_by_feature_prose"
+    },
+    {
+      "order": 11,
+      "name": "port",
+      "uci_api_name": "port",
+      "native_domain": [
+        -1,
+        1
+      ],
+      "kind": "numeric",
+      "source_definition": {
+        "artifact_sha256": "f6f9326f45659a7b5ef947fa744cec2c379dbea17de56d34436312407faca43c",
+        "zero_based_body_paragraph": 41
+      },
+      "numeric_code_meanings": "not_established_by_feature_prose"
+    },
+    {
+      "order": 12,
+      "name": "HTTPS_token",
+      "uci_api_name": "https_token",
+      "native_domain": [
+        -1,
+        1
+      ],
+      "kind": "numeric",
+      "source_definition": {
+        "artifact_sha256": "f6f9326f45659a7b5ef947fa744cec2c379dbea17de56d34436312407faca43c",
+        "zero_based_body_paragraph": 46
+      },
+      "numeric_code_meanings": "not_established_by_feature_prose"
+    },
+    {
+      "order": 13,
+      "name": "Request_URL",
+      "uci_api_name": "request_url",
+      "native_domain": [
+        -1,
+        1
+      ],
+      "kind": "numeric",
+      "source_definition": {
+        "artifact_sha256": "f6f9326f45659a7b5ef947fa744cec2c379dbea17de56d34436312407faca43c",
+        "zero_based_body_paragraph": 50
+      },
+      "numeric_code_meanings": "not_established_by_feature_prose"
+    },
+    {
+      "order": 14,
+      "name": "URL_of_Anchor",
+      "uci_api_name": "url_of_anchor",
+      "native_domain": [
+        -1,
+        0,
+        1
+      ],
+      "kind": "numeric",
+      "source_definition": {
+        "artifact_sha256": "f6f9326f45659a7b5ef947fa744cec2c379dbea17de56d34436312407faca43c",
+        "zero_based_body_paragraph": 54
+      },
+      "numeric_code_meanings": "not_established_by_feature_prose"
+    },
+    {
+      "order": 15,
+      "name": "Links_in_tags",
+      "uci_api_name": "links_in_tags",
+      "native_domain": [
+        -1,
+        0,
+        1
+      ],
+      "kind": "numeric",
+      "source_definition": {
+        "artifact_sha256": "f6f9326f45659a7b5ef947fa744cec2c379dbea17de56d34436312407faca43c",
+        "zero_based_body_paragraph": 64
+      },
+      "numeric_code_meanings": "not_established_by_feature_prose"
+    },
+    {
+      "order": 16,
+      "name": "SFH",
+      "uci_api_name": "sfh",
+      "native_domain": [
+        -1,
+        0,
+        1
+      ],
+      "kind": "numeric",
+      "source_definition": {
+        "artifact_sha256": "f6f9326f45659a7b5ef947fa744cec2c379dbea17de56d34436312407faca43c",
+        "zero_based_body_paragraph": 68
+      },
+      "numeric_code_meanings": "not_established_by_feature_prose"
+    },
+    {
+      "order": 17,
+      "name": "Submitting_to_email",
+      "uci_api_name": "submitting_to_email",
+      "native_domain": [
+        -1,
+        1
+      ],
+      "kind": "numeric",
+      "source_definition": {
+        "artifact_sha256": "f6f9326f45659a7b5ef947fa744cec2c379dbea17de56d34436312407faca43c",
+        "zero_based_body_paragraph": 71
+      },
+      "numeric_code_meanings": "not_established_by_feature_prose"
+    },
+    {
+      "order": 18,
+      "name": "Abnormal_URL",
+      "uci_api_name": "abnormal_url",
+      "native_domain": [
+        -1,
+        1
+      ],
+      "kind": "numeric",
+      "source_definition": {
+        "artifact_sha256": "f6f9326f45659a7b5ef947fa744cec2c379dbea17de56d34436312407faca43c",
+        "zero_based_body_paragraph": 74
+      },
+      "numeric_code_meanings": "not_established_by_feature_prose"
+    },
+    {
+      "order": 19,
+      "name": "Redirect",
+      "uci_api_name": "redirect",
+      "native_domain": [
+        0,
+        1
+      ],
+      "kind": "numeric",
+      "source_definition": {
+        "artifact_sha256": "f6f9326f45659a7b5ef947fa744cec2c379dbea17de56d34436312407faca43c",
+        "zero_based_body_paragraph": 78
+      },
+      "numeric_code_meanings": "not_established_by_feature_prose"
+    },
+    {
+      "order": 20,
+      "name": "on_mouseover",
+      "uci_api_name": "on_mouseover",
+      "native_domain": [
+        -1,
+        1
+      ],
+      "kind": "numeric",
+      "source_definition": {
+        "artifact_sha256": "f6f9326f45659a7b5ef947fa744cec2c379dbea17de56d34436312407faca43c",
+        "zero_based_body_paragraph": 81
+      },
+      "numeric_code_meanings": "not_established_by_feature_prose"
+    },
+    {
+      "order": 21,
+      "name": "RightClick",
+      "uci_api_name": "rightclick",
+      "native_domain": [
+        -1,
+        1
+      ],
+      "kind": "numeric",
+      "source_definition": {
+        "artifact_sha256": "f6f9326f45659a7b5ef947fa744cec2c379dbea17de56d34436312407faca43c",
+        "zero_based_body_paragraph": 84
+      },
+      "numeric_code_meanings": "not_established_by_feature_prose"
+    },
+    {
+      "order": 22,
+      "name": "popUpWidnow",
+      "uci_api_name": "popupwindow",
+      "native_domain": [
+        -1,
+        1
+      ],
+      "kind": "numeric",
+      "source_definition": {
+        "artifact_sha256": "f6f9326f45659a7b5ef947fa744cec2c379dbea17de56d34436312407faca43c",
+        "zero_based_body_paragraph": 87
+      },
+      "numeric_code_meanings": "not_established_by_feature_prose"
+    },
+    {
+      "order": 23,
+      "name": "Iframe",
+      "uci_api_name": "iframe",
+      "native_domain": [
+        -1,
+        1
+      ],
+      "kind": "numeric",
+      "source_definition": {
+        "artifact_sha256": "f6f9326f45659a7b5ef947fa744cec2c379dbea17de56d34436312407faca43c",
+        "zero_based_body_paragraph": 90
+      },
+      "numeric_code_meanings": "not_established_by_feature_prose"
+    },
+    {
+      "order": 24,
+      "name": "age_of_domain",
+      "uci_api_name": "age_of_domain",
+      "native_domain": [
+        -1,
+        1
+      ],
+      "kind": "numeric",
+      "source_definition": {
+        "artifact_sha256": "f6f9326f45659a7b5ef947fa744cec2c379dbea17de56d34436312407faca43c",
+        "zero_based_body_paragraph": 94
+      },
+      "numeric_code_meanings": "not_established_by_feature_prose"
+    },
+    {
+      "order": 25,
+      "name": "DNSRecord",
+      "uci_api_name": "dnsrecord",
+      "native_domain": [
+        -1,
+        1
+      ],
+      "kind": "numeric",
+      "source_definition": {
+        "artifact_sha256": "f6f9326f45659a7b5ef947fa744cec2c379dbea17de56d34436312407faca43c",
+        "zero_based_body_paragraph": 97
+      },
+      "numeric_code_meanings": "not_established_by_feature_prose"
+    },
+    {
+      "order": 26,
+      "name": "web_traffic",
+      "uci_api_name": "web_traffic",
+      "native_domain": [
+        -1,
+        0,
+        1
+      ],
+      "kind": "numeric",
+      "source_definition": {
+        "artifact_sha256": "f6f9326f45659a7b5ef947fa744cec2c379dbea17de56d34436312407faca43c",
+        "zero_based_body_paragraph": 100
+      },
+      "numeric_code_meanings": "not_established_by_feature_prose"
+    },
+    {
+      "order": 27,
+      "name": "Page_Rank",
+      "uci_api_name": "page_rank",
+      "native_domain": [
+        -1,
+        1
+      ],
+      "kind": "numeric",
+      "source_definition": {
+        "artifact_sha256": "f6f9326f45659a7b5ef947fa744cec2c379dbea17de56d34436312407faca43c",
+        "zero_based_body_paragraph": 103
+      },
+      "numeric_code_meanings": "not_established_by_feature_prose"
+    },
+    {
+      "order": 28,
+      "name": "Google_Index",
+      "uci_api_name": "google_index",
+      "native_domain": [
+        -1,
+        1
+      ],
+      "kind": "numeric",
+      "source_definition": {
+        "artifact_sha256": "f6f9326f45659a7b5ef947fa744cec2c379dbea17de56d34436312407faca43c",
+        "zero_based_body_paragraph": 106
+      },
+      "numeric_code_meanings": "not_established_by_feature_prose"
+    },
+    {
+      "order": 29,
+      "name": "Links_pointing_to_page",
+      "uci_api_name": "links_pointing_to_page",
+      "native_domain": [
+        -1,
+        0,
+        1
+      ],
+      "kind": "numeric",
+      "source_definition": {
+        "artifact_sha256": "f6f9326f45659a7b5ef947fa744cec2c379dbea17de56d34436312407faca43c",
+        "zero_based_body_paragraph": 109
+      },
+      "numeric_code_meanings": "not_established_by_feature_prose"
+    },
+    {
+      "order": 30,
+      "name": "Statistical_report",
+      "uci_api_name": "statistical_report",
+      "native_domain": [
+        -1,
+        1
+      ],
+      "kind": "numeric",
+      "source_definition": {
+        "artifact_sha256": "f6f9326f45659a7b5ef947fa744cec2c379dbea17de56d34436312407faca43c",
+        "zero_based_body_paragraph": 112
+      },
+      "numeric_code_meanings": "not_established_by_feature_prose"
+    }
+  ],
+  "unresolved": [
+    "Result numeric class meanings require authoritative release-specific definition",
+    "Missingness and model encoding need explicit research freeze",
+    "Request_URL qualitative document has three states but recorded ARFF domain has two codes",
+    "Redirect qualitative document has three states but recorded ARFF domain is {0,1}; no recoding inferred"
+  ]
+}

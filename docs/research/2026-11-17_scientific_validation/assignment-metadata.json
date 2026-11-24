@@ -1,0 +1,240 @@
+{
+  "commit": "ee7976ef04aa6060b0c7a5e18e5a6529e0af695e",
+  "manifests": {
+    "email": {
+      "checks": {
+        "both_targets": true,
+        "both_targets_per_development_fold": true,
+        "five_development_folds": true,
+        "group_disjoint_folds": true,
+        "group_disjoint_roles": true,
+        "nonempty": true,
+        "reserved_folds_empty": true,
+        "unique_ids": true,
+        "valid_fields": true
+      },
+      "development_fold_counts": {
+        "1": 5427,
+        "2": 5427,
+        "3": 5427,
+        "4": 5424,
+        "5": 5424
+      },
+      "development_fold_target_counts": {
+        "1": {
+          "0": 5208,
+          "1": 219
+        },
+        "2": {
+          "0": 5208,
+          "1": 219
+        },
+        "3": {
+          "0": 5208,
+          "1": 219
+        },
+        "4": {
+          "0": 5205,
+          "1": 219
+        },
+        "5": {
+          "0": 5205,
+          "1": 219
+        }
+      },
+      "duplicate_ids": 0,
+      "each_source_has_only_one_historical_target": true,
+      "fold_crossing_groups": 0,
+      "groups": 21601,
+      "historical_source_target_counts": [
+        {
+          "count": 17312,
+          "source": "CEAS-08",
+          "target": "0"
+        },
+        {
+          "count": 15791,
+          "source": "Enron",
+          "target": "0"
+        },
+        {
+          "count": 1565,
+          "source": "Nazario",
+          "target": "1"
+        },
+        {
+          "count": 4091,
+          "source": "SpamAssassin",
+          "target": "0"
+        }
+      ],
+      "historical_target_counts_not_source_verified": {
+        "0": 37194,
+        "1": 1565
+      },
+      "limits": "Historical metadata assertions only; no native-label, original-ID, duplicate-edge, domain/campaign independence or custody proof.",
+      "metadata_integrity_pass": true,
+      "mixed_target_groups": 0,
+      "partition_counts": {
+        "calibration": 5815,
+        "development": 27129,
+        "test": 5815
+      },
+      "role_crossing_groups": 0,
+      "rows": 38759,
+      "scientific_admission": false,
+      "sha256": "e69484a395930f041ed582013cafd4957197057cba295e47d169131416790ceb"
+    },
+    "phiusiil": {
+      "checks": {
+        "both_targets": true,
+        "both_targets_per_development_fold": true,
+        "five_development_folds": true,
+        "group_disjoint_folds": true,
+        "group_disjoint_roles": true,
+        "nonempty": true,
+        "reserved_folds_empty": true,
+        "unique_ids": true,
+        "valid_fields": true
+      },
+      "development_fold_counts": {
+        "1": 32973,
+        "2": 33052,
+        "3": 33031,
+        "4": 33016,
+        "5": 33017
+      },
+      "development_fold_target_counts": {
+        "1": {
+          "0": 18664,
+          "1": 14309
+        },
+        "2": {
+          "0": 19111,
+          "1": 13941
+        },
+        "3": {
+          "0": 18992,
+          "1": 14039
+        },
+        "4": {
+          "0": 18905,
+          "1": 14111
+        },
+        "5": {
+          "0": 18910,
+          "1": 14107
+        }
+      },
+      "duplicate_ids": 0,
+      "each_source_has_only_one_historical_target": false,
+      "fold_crossing_groups": 0,
+      "groups": 220086,
+      "historical_source_target_counts": [
+        {
+          "count": 134850,
+          "source": "PhiUSIIL",
+          "target": "0"
+        },
+        {
+          "count": 100945,
+          "source": "PhiUSIIL",
+          "target": "1"
+        }
+      ],
+      "historical_target_counts_not_source_verified": {
+        "0": 134850,
+        "1": 100945
+      },
+      "limits": "Historical metadata assertions only; no native-label, original-ID, duplicate-edge, domain/campaign independence or custody proof.",
+      "metadata_integrity_pass": true,
+      "mixed_target_groups": 54,
+      "partition_counts": {
+        "calibration": 35358,
+        "development": 165089,
+        "test": 35348
+      },
+      "role_crossing_groups": 0,
+      "rows": 235795,
+      "scientific_admission": false,
+      "sha256": "5e8fd44753f8bef7ac9987d7cdc35c7172a0bcbdf9ad42925a058ce20334847e"
+    },
+    "uci": {
+      "checks": {
+        "both_targets": true,
+        "both_targets_per_development_fold": true,
+        "five_development_folds": true,
+        "group_disjoint_folds": true,
+        "group_disjoint_roles": true,
+        "nonempty": true,
+        "reserved_folds_empty": true,
+        "unique_ids": true,
+        "valid_fields": true
+      },
+      "development_fold_counts": {
+        "1": 820,
+        "2": 820,
+        "3": 817,
+        "4": 818,
+        "5": 819
+      },
+      "development_fold_target_counts": {
+        "1": {
+          "0": 382,
+          "1": 438
+        },
+        "2": {
+          "0": 371,
+          "1": 449
+        },
+        "3": {
+          "0": 423,
+          "1": 394
+        },
+        "4": {
+          "0": 407,
+          "1": 411
+        },
+        "5": {
+          "0": 386,
+          "1": 433
+        }
+      },
+      "duplicate_ids": 0,
+      "each_source_has_only_one_historical_target": false,
+      "fold_crossing_groups": 0,
+      "groups": 5785,
+      "historical_source_target_counts": [
+        {
+          "count": 2830,
+          "source": "UCI Phishing Websites",
+          "target": "0"
+        },
+        {
+          "count": 3019,
+          "source": "UCI Phishing Websites",
+          "target": "1"
+        }
+      ],
+      "historical_target_counts_not_source_verified": {
+        "0": 2830,
+        "1": 3019
+      },
+      "limits": "Historical metadata assertions only; no native-label, original-ID, duplicate-edge, domain/campaign independence or custody proof.",
+      "metadata_integrity_pass": true,
+      "mixed_target_groups": 64,
+      "partition_counts": {
+        "calibration": 878,
+        "development": 4094,
+        "test": 877
+      },
+      "role_crossing_groups": 0,
+      "rows": 5849,
+      "scientific_admission": false,
+      "sha256": "304bb9446748e27bd4d1a7521513b1b2e31e0bab3be4f6fac0c8a0673ca7e6fd"
+    }
+  },
+  "research_fitting_executions": 0,
+  "scientific_experiments_executed": 0,
+  "scope": "historical_assignment_metadata_only_no_content_or_predictions"
+}
