@@ -52,4 +52,7 @@ docs/research/2026-11-19_phiusiil_comparison_results/* -text whitespace=blank-at
 # Frozen E2 receipts and historical source archives bind exact original bytes.
 experiments/e2_enrichment_20261124/** -text whitespace=blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol
 research/historical/vera-review-337c3c4/** -text whitespace=blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol
+
+# Keep the executed provenance implementation's byte digest portable.
+ml/evidence_provenance.py text eol=lf
 scripts/finalize_phiusiil_comparison.py -text

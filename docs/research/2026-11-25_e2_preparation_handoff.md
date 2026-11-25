@@ -1,4 +1,4 @@
-﻿# E2 performance sprint — continuation handoff
+# E2 performance sprint — continuation handoff
 Research: SE-BRL: A Transformer-Augmented, Modality-Aware Neuro-Symbolic
 Architecture for Constraint-Governed Social Engineering Behavior Inference and
 Explainable Phishing Detection. Dhanwil Nick M. Alcover and Vera Marie Therese A.
@@ -7,6 +7,7 @@ Orbello, University of San Carlos.
 ## Current checkpoint
 Branch: research/e2-preparation-20261125.
 Preparation checkpoint: 4c3918e2dec9a0aca03f9db77a4010a1870099e0.
+Provenance implementation: 8a8b736a2c52fa5da6e6a1f16f6a243357e003d3.
 Base main: bb167bd6367cca574885d728f1442bc903c92d9e (cleanup merged as PR #19).
 Original preparation details and primary dataset citations remain in Git at 4c3918e.
 No history, frozen candidate, original result, partition or scientific gate changed.
@@ -21,7 +22,7 @@ Unevaluated/unavailable opportunities remain missing, never negative evidence.
 Semantic output cannot supply these predictors or promote unsupported indicators.
 Coverage is deliberately unchanged; independent truth is not inferred.
 
-One development extraction is running/persisted under:
+One development extraction completed: 15,011 rows, 274.63 seconds; outputs under:
 experiments/e2_enrichment_20261124/provenance_representation_run01/
 Bindings: run_binding.json; predictor_dictionary.json; progress.json.
 Complete outputs: e2-provenance.csv; extraction_receipt.json;
@@ -41,7 +42,9 @@ Frozen V5.3 E2-D diagnostics: AP 0.553640 / F1 0.564326.
 Frozen V5.3 E2-E diagnostics: AP 0.569835 / F1 0.568381.
 Population: 15,011 development rows; 454 supported and 641 unsupported phishing;
 240 supported legitimate; 224 E2-E patterns and 67 variable predictors.
-New outcome: pending persisted representation_assessment.json.
+New provenance outcome: diagnostic AP 0.570329 / F1 0.568738.
+240 patterns (+16); AP gain 0.000494; F1 gain 0.000357; coverage gain zero.
+All 96 V5.3 values matched on every row; supported phishing remains 454/1,095.
 Any new AP/F1 remain explicitly optimistic target-aware in-sample diagnostics.
 Actual classifier AP/F1 are unmeasured. No 0.80 or 0.90 objective is established.
 
@@ -62,7 +65,9 @@ prospective population with comparable collection and independently justified la
 
 ## Exact resume instructions
 Do not rerun extraction or regenerate existing outputs.
-Read the latest progress/log; a still-running process should be allowed to finish:
+The run exited successfully. Historical progress.json is only the last batch;
+extraction_receipt.json and representation_assessment.json establish completion.
+The execution log contains Pandas dtype-fill FutureWarnings, not failures:
 
     Get-Content .local/logs/evidence-provenance-run.log -Tail 8
 
@@ -79,5 +84,6 @@ Never overwrite partial evidence after a failure. Diagnose the specific mismatch
 using the persisted prefix and log. The original instruction hash and all run
 bindings are retained in the output. No classifier evaluation or new rule changes
 may proceed merely because an exploratory representation improves diagnostics.
-Status: implementation/software-verified; development assessment pending;
-not independently behaviorally validated, scientifically admitted or classifier-evaluated.
+Status: implementation/software-verified;
+development-assessed; not independently behaviorally validated, scientifically
+admitted or classifier-evaluated. Neither 0.80 nor 0.90 objective was achieved.

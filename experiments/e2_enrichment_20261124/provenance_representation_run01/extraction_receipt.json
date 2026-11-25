@@ -1,0 +1,19 @@
+{
+  "candidate": "V5.3 authoritative-rule provenance",
+  "context_sha256": "74414ff27be3963ba089c75a4a04bf2ee8975ff74e9e45e68bd25343b2f1ae21",
+  "source_sha256": "08f72e8b3474c7eed907e29034d88fc21b3866a53052bb0240198fcd47734391",
+  "baseline_sha256": "c73d91cc628fe0bda2687725c9a98ec988c31d0a616fe6ea0bfe52fc908042b8",
+  "payload_sha256": "31b9c5dc7a989467a1da3f9c5e829378727c26b5de60e21d110ef4076c4f6504",
+  "crosswalk_sha256": "6128b38fb32f502bc7cb20e5e7cf2c0c763dda6889b6aac7b37fc74cd619f5c6",
+  "researcher_instruction_sha256": "78f047b81cb79ef1bb33400219e75dd6c070c8734e8aaf79dd81fb881ae310e8",
+  "scope": "exploratory development representation only; existing local delivery",
+  "new_representation_predictors": 35,
+  "classifier_fitting_performed": false,
+  "scientific_admission_granted": false,
+  "transformer_policy": "review_only",
+  "reserved_test_accessed": false,
+  "observations": 15011,
+  "feature_hash": "f24ab6d655fbcf874e255f299255b3f812697c6c058bea01a4e19e000f400d4f",
+  "elapsed_seconds": 274.63059219997376,
+  "extraction_complete": true
+}

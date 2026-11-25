@@ -1,0 +1,347 @@
+{
+  "frozen_prefix": [
+    "pressure_threat_cues_supported",
+    "lure_attention_cues_supported",
+    "trust_identity_manipulation_supported",
+    "requested_action_consequence_supported",
+    "pressure_threat_cues_available",
+    "lure_attention_cues_available",
+    "trust_identity_manipulation_available",
+    "requested_action_consequence_available",
+    "urgency_supported",
+    "urgency_available",
+    "fear_threat_supported",
+    "fear_threat_available",
+    "scarcity_supported",
+    "scarcity_available",
+    "curiosity_supported",
+    "curiosity_available",
+    "reward_lure_supported",
+    "reward_lure_available",
+    "authority_supported",
+    "authority_available",
+    "impersonation_supported",
+    "impersonation_available",
+    "brand_exploitation_supported",
+    "brand_exploitation_available",
+    "confidentiality_isolation_supported",
+    "confidentiality_isolation_available",
+    "call_to_action_supported",
+    "call_to_action_available",
+    "credential_sensitive_data_request_supported",
+    "credential_sensitive_data_request_available",
+    "financial_action_request_supported",
+    "financial_action_request_available",
+    "urgency_evidence_count",
+    "fear_threat_evidence_count",
+    "scarcity_evidence_count",
+    "curiosity_evidence_count",
+    "reward_lure_evidence_count",
+    "authority_evidence_count",
+    "impersonation_evidence_count",
+    "brand_exploitation_evidence_count",
+    "confidentiality_isolation_evidence_count",
+    "call_to_action_evidence_count",
+    "credential_sensitive_data_request_evidence_count",
+    "financial_action_request_evidence_count",
+    "urgency_distinct_rules",
+    "urgency_evidence_fields",
+    "urgency_mean_span_length",
+    "urgency_max_span_length",
+    "fear_threat_distinct_rules",
+    "fear_threat_evidence_fields",
+    "fear_threat_mean_span_length",
+    "fear_threat_max_span_length",
+    "scarcity_distinct_rules",
+    "scarcity_evidence_fields",
+    "scarcity_mean_span_length",
+    "scarcity_max_span_length",
+    "curiosity_distinct_rules",
+    "curiosity_evidence_fields",
+    "curiosity_mean_span_length",
+    "curiosity_max_span_length",
+    "reward_lure_distinct_rules",
+    "reward_lure_evidence_fields",
+    "reward_lure_mean_span_length",
+    "reward_lure_max_span_length",
+    "authority_distinct_rules",
+    "authority_evidence_fields",
+    "authority_mean_span_length",
+    "authority_max_span_length",
+    "impersonation_distinct_rules",
+    "impersonation_evidence_fields",
+    "impersonation_mean_span_length",
+    "impersonation_max_span_length",
+    "brand_exploitation_distinct_rules",
+    "brand_exploitation_evidence_fields",
+    "brand_exploitation_mean_span_length",
+    "brand_exploitation_max_span_length",
+    "confidentiality_isolation_distinct_rules",
+    "confidentiality_isolation_evidence_fields",
+    "confidentiality_isolation_mean_span_length",
+    "confidentiality_isolation_max_span_length",
+    "call_to_action_distinct_rules",
+    "call_to_action_evidence_fields",
+    "call_to_action_mean_span_length",
+    "call_to_action_max_span_length",
+    "credential_sensitive_data_request_distinct_rules",
+    "credential_sensitive_data_request_evidence_fields",
+    "credential_sensitive_data_request_mean_span_length",
+    "credential_sensitive_data_request_max_span_length",
+    "financial_action_request_distinct_rules",
+    "financial_action_request_evidence_fields",
+    "financial_action_request_mean_span_length",
+    "financial_action_request_max_span_length",
+    "supported_indicator_diversity",
+    "supported_dimension_diversity",
+    "cross_indicator_min_gap",
+    "cross_indicator_same_field_pairs"
+  ],
+  "additional_predictors": [
+    {
+      "name": "rule_evidence__pressure.immediate_action",
+      "rule_id": "pressure.immediate_action",
+      "indicator_id": "urgency",
+      "missing": "None when indicator not evaluated",
+      "meaning": "matching qualifying deterministic rule evidence present"
+    },
+    {
+      "name": "rule_evidence__pressure.adverse_consequence",
+      "rule_id": "pressure.adverse_consequence",
+      "indicator_id": "fear_threat",
+      "missing": "None when indicator not evaluated",
+      "meaning": "matching qualifying deterministic rule evidence present"
+    },
+    {
+      "name": "rule_evidence__pressure.limited_action",
+      "rule_id": "pressure.limited_action",
+      "indicator_id": "scarcity",
+      "missing": "None when indicator not evaluated",
+      "meaning": "matching qualifying deterministic rule evidence present"
+    },
+    {
+      "name": "rule_evidence__lure.information_gap",
+      "rule_id": "lure.information_gap",
+      "indicator_id": "curiosity",
+      "missing": "None when indicator not evaluated",
+      "meaning": "matching qualifying deterministic rule evidence present"
+    },
+    {
+      "name": "rule_evidence__lure.claim_benefit",
+      "rule_id": "lure.claim_benefit",
+      "indicator_id": "reward_lure",
+      "missing": "None when indicator not evaluated",
+      "meaning": "matching qualifying deterministic rule evidence present"
+    },
+    {
+      "name": "rule_evidence__trust.prevent_verification",
+      "rule_id": "trust.prevent_verification",
+      "indicator_id": "confidentiality_isolation",
+      "missing": "None when indicator not evaluated",
+      "meaning": "matching qualifying deterministic rule evidence present"
+    },
+    {
+      "name": "rule_evidence__action.interact",
+      "rule_id": "action.interact",
+      "indicator_id": "call_to_action",
+      "missing": "None when indicator not evaluated",
+      "meaning": "matching qualifying deterministic rule evidence present"
+    },
+    {
+      "name": "rule_evidence__action.disclose_sensitive",
+      "rule_id": "action.disclose_sensitive",
+      "indicator_id": "credential_sensitive_data_request",
+      "missing": "None when indicator not evaluated",
+      "meaning": "matching qualifying deterministic rule evidence present"
+    },
+    {
+      "name": "rule_evidence__action.transfer_money",
+      "rule_id": "action.transfer_money",
+      "indicator_id": "financial_action_request",
+      "missing": "None when indicator not evaluated",
+      "meaning": "matching qualifying deterministic rule evidence present"
+    },
+    {
+      "name": "rule_evidence__pressure.action_deadline",
+      "rule_id": "pressure.action_deadline",
+      "indicator_id": "urgency",
+      "missing": "None when indicator not evaluated",
+      "meaning": "matching qualifying deterministic rule evidence present"
+    },
+    {
+      "name": "rule_evidence__pressure.account_restriction",
+      "rule_id": "pressure.account_restriction",
+      "indicator_id": "fear_threat",
+      "missing": "None when indicator not evaluated",
+      "meaning": "matching qualifying deterministic rule evidence present"
+    },
+    {
+      "name": "rule_evidence__action.disclose_otp_pin",
+      "rule_id": "action.disclose_otp_pin",
+      "indicator_id": "credential_sensitive_data_request",
+      "missing": "None when indicator not evaluated",
+      "meaning": "matching qualifying deterministic rule evidence present"
+    },
+    {
+      "name": "rule_evidence__action.wire_settle",
+      "rule_id": "action.wire_settle",
+      "indicator_id": "financial_action_request",
+      "missing": "None when indicator not evaluated",
+      "meaning": "matching qualifying deterministic rule evidence present"
+    },
+    {
+      "name": "rule_evidence__research.v4.urgency.1",
+      "rule_id": "research.v4.urgency.1",
+      "indicator_id": "urgency",
+      "missing": "None when indicator not evaluated",
+      "meaning": "matching qualifying deterministic rule evidence present"
+    },
+    {
+      "name": "rule_evidence__research.v4.urgency.2",
+      "rule_id": "research.v4.urgency.2",
+      "indicator_id": "urgency",
+      "missing": "None when indicator not evaluated",
+      "meaning": "matching qualifying deterministic rule evidence present"
+    },
+    {
+      "name": "rule_evidence__research.v4.urgency.3",
+      "rule_id": "research.v4.urgency.3",
+      "indicator_id": "urgency",
+      "missing": "None when indicator not evaluated",
+      "meaning": "matching qualifying deterministic rule evidence present"
+    },
+    {
+      "name": "rule_evidence__research.v4.fear_threat.1",
+      "rule_id": "research.v4.fear_threat.1",
+      "indicator_id": "fear_threat",
+      "missing": "None when indicator not evaluated",
+      "meaning": "matching qualifying deterministic rule evidence present"
+    },
+    {
+      "name": "rule_evidence__research.v4.fear_threat.2",
+      "rule_id": "research.v4.fear_threat.2",
+      "indicator_id": "fear_threat",
+      "missing": "None when indicator not evaluated",
+      "meaning": "matching qualifying deterministic rule evidence present"
+    },
+    {
+      "name": "rule_evidence__research.v4.scarcity.1",
+      "rule_id": "research.v4.scarcity.1",
+      "indicator_id": "scarcity",
+      "missing": "None when indicator not evaluated",
+      "meaning": "matching qualifying deterministic rule evidence present"
+    },
+    {
+      "name": "rule_evidence__research.v4.scarcity.2",
+      "rule_id": "research.v4.scarcity.2",
+      "indicator_id": "scarcity",
+      "missing": "None when indicator not evaluated",
+      "meaning": "matching qualifying deterministic rule evidence present"
+    },
+    {
+      "name": "rule_evidence__research.v4.curiosity.1",
+      "rule_id": "research.v4.curiosity.1",
+      "indicator_id": "curiosity",
+      "missing": "None when indicator not evaluated",
+      "meaning": "matching qualifying deterministic rule evidence present"
+    },
+    {
+      "name": "rule_evidence__research.v4.curiosity.2",
+      "rule_id": "research.v4.curiosity.2",
+      "indicator_id": "curiosity",
+      "missing": "None when indicator not evaluated",
+      "meaning": "matching qualifying deterministic rule evidence present"
+    },
+    {
+      "name": "rule_evidence__research.v4.reward_lure.1",
+      "rule_id": "research.v4.reward_lure.1",
+      "indicator_id": "reward_lure",
+      "missing": "None when indicator not evaluated",
+      "meaning": "matching qualifying deterministic rule evidence present"
+    },
+    {
+      "name": "rule_evidence__research.v4.reward_lure.2",
+      "rule_id": "research.v4.reward_lure.2",
+      "indicator_id": "reward_lure",
+      "missing": "None when indicator not evaluated",
+      "meaning": "matching qualifying deterministic rule evidence present"
+    },
+    {
+      "name": "rule_evidence__research.v4.confidentiality_isolation.1",
+      "rule_id": "research.v4.confidentiality_isolation.1",
+      "indicator_id": "confidentiality_isolation",
+      "missing": "None when indicator not evaluated",
+      "meaning": "matching qualifying deterministic rule evidence present"
+    },
+    {
+      "name": "rule_evidence__research.v4.confidentiality_isolation.2",
+      "rule_id": "research.v4.confidentiality_isolation.2",
+      "indicator_id": "confidentiality_isolation",
+      "missing": "None when indicator not evaluated",
+      "meaning": "matching qualifying deterministic rule evidence present"
+    },
+    {
+      "name": "rule_evidence__research.v4.call_to_action.1",
+      "rule_id": "research.v4.call_to_action.1",
+      "indicator_id": "call_to_action",
+      "missing": "None when indicator not evaluated",
+      "meaning": "matching qualifying deterministic rule evidence present"
+    },
+    {
+      "name": "rule_evidence__research.v4.call_to_action.2",
+      "rule_id": "research.v4.call_to_action.2",
+      "indicator_id": "call_to_action",
+      "missing": "None when indicator not evaluated",
+      "meaning": "matching qualifying deterministic rule evidence present"
+    },
+    {
+      "name": "rule_evidence__research.v4.call_to_action.3",
+      "rule_id": "research.v4.call_to_action.3",
+      "indicator_id": "call_to_action",
+      "missing": "None when indicator not evaluated",
+      "meaning": "matching qualifying deterministic rule evidence present"
+    },
+    {
+      "name": "rule_evidence__research.v4.call_to_action.4",
+      "rule_id": "research.v4.call_to_action.4",
+      "indicator_id": "call_to_action",
+      "missing": "None when indicator not evaluated",
+      "meaning": "matching qualifying deterministic rule evidence present"
+    },
+    {
+      "name": "rule_evidence__research.v4.credential_sensitive_data_request.1",
+      "rule_id": "research.v4.credential_sensitive_data_request.1",
+      "indicator_id": "credential_sensitive_data_request",
+      "missing": "None when indicator not evaluated",
+      "meaning": "matching qualifying deterministic rule evidence present"
+    },
+    {
+      "name": "rule_evidence__research.v4.credential_sensitive_data_request.2",
+      "rule_id": "research.v4.credential_sensitive_data_request.2",
+      "indicator_id": "credential_sensitive_data_request",
+      "missing": "None when indicator not evaluated",
+      "meaning": "matching qualifying deterministic rule evidence present"
+    },
+    {
+      "name": "rule_evidence__research.v4.financial_action_request.1",
+      "rule_id": "research.v4.financial_action_request.1",
+      "indicator_id": "financial_action_request",
+      "missing": "None when indicator not evaluated",
+      "meaning": "matching qualifying deterministic rule evidence present"
+    },
+    {
+      "name": "rule_evidence__research.v4.financial_action_request.2",
+      "rule_id": "research.v4.financial_action_request.2",
+      "indicator_id": "financial_action_request",
+      "missing": "None when indicator not evaluated",
+      "meaning": "matching qualifying deterministic rule evidence present"
+    },
+    {
+      "name": "rule_evidence__research.v4.financial_action_request.3",
+      "rule_id": "research.v4.financial_action_request.3",
+      "indicator_id": "financial_action_request",
+      "missing": "None when indicator not evaluated",
+      "meaning": "matching qualifying deterministic rule evidence present"
+    }
+  ]
+}

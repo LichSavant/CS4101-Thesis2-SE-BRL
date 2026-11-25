@@ -1,0 +1,18 @@
+{
+  "scope": "target-aware in-sample diagnostic; no classifier fitting or independent validation",
+  "baseline": {
+    "optimistic_ap": 0.5698350976436675,
+    "optimistic_best_f1": 0.5683814303638645,
+    "patterns": 224
+  },
+  "candidate": {
+    "optimistic_ap": 0.5703289067057054,
+    "optimistic_best_f1": 0.568738229755179,
+    "patterns": 240
+  },
+  "baseline_patterns_refined": 16,
+  "changed_supported_indicators": 0,
+  "changed_availability_states": 0,
+  "classifier_performance": null,
+  "complete_source_class_confounding": true
+}
